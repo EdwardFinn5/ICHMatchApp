@@ -1,0 +1,50 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+
+
+  <img src='../../assets/ICF_Logo.jpg' routerLink="" class="logo" height="40" width="40" style="margin-right: 20px" />
+  <a class="navbar-brand" routerLink="/">ICF Match</a>
+
+  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto" style="font-size: 1.3em">
+
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/">Students</a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/">Employers</a>
+      </li>
+
+    </ul>
+    <ul class="navbar-nav ml-auto" *ngIf="(accountService.currentUser$ | async) === null" style="font-size: 1.3em">
+
+
+      <li class="nav-item">
+        <a class="nav-link" routerLink="">Home <span class="sr-only"></span></a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/about">About</a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/userlogin">Sign In</a>
+      </li>
+    </ul>
+
+    <div class="dropdown" style="font-size: 1.3em" *ngIf="accountService.currentUser$ | async" dropdown>
+      <a class="dropdown-toggle text-light mt-5" dropdownToggle>Welcome User</a>
+      <div class="dropdown-menu" *dropdownMenu>
+        <a class="dropdown-item">Edit Profile</a>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item" (click)="logout()">Logout</a>
+      </div>
+    </div>
+
+  </div>
+</nav>

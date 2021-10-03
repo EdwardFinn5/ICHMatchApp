@@ -1,10 +1,46 @@
-<div class="content">
+<!-- <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
 
-<h1 class="title" style="text-align: center;">{{title}}</h1>
 
-<ul>
-  <li *ngFor="let user of users">
-    {{user.appUserId}} - {{user.appUserType}} - {{user.userName}}
-  </li>
-</ul>
-</div>  
+  <img src='../../assets/ICF_Logo.jpg' routerLink="" class="logo" height="40" width="40" style="margin-right: 20px"/>  
+  <a class="navbar-brand" routerLink="/">ICF Match</a>
+  
+    
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" 
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item active">
+          <a class="nav-link" routerLink="">Home <span class="sr-only"></span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/students">Students</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/major">Majors</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/employers">Employers</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/signup">Sign Up</a>
+        </li>
+       
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/about">About</a>
+        </li>
+      </ul>
+    </div>
+</nav> -->
+<app-nav></app-nav>
+
+<router-outlet></router-outlet>
+
+<footer class="text-center mt-2">
+  <p>&copy; ICF Match 2021. All rights reserved.</p>
+</footer>
