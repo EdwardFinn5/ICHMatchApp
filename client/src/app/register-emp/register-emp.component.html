@@ -1,1 +1,42 @@
-<p>register-emp works!</p>
+<section class="signup">
+    <div class="card-header col-lg-4 m-auto">
+        <h3 style="text-align: center;">Employer Sign Up</h3>
+      </div>
+    <div class="login col-lg-4 m-auto shadow-lg">
+  
+        <form #loginForm='ngForm'(ngSubmit)="registerEmp()" autocomplete="off">
+  
+            <div class="form-group">
+                  <input 
+                      name="username"
+                      [(ngModel)]="model.username"
+                      class="form-control shadow-sm" 
+                      type="email"
+                      placeholder="Username (email address)"
+                      >
+            </div>
+    
+              <div class="form-group">
+                  <input 
+                      name="password"
+                      [(ngModel)]="model.password"
+                      class="form-control shadow-sm" 
+                      type="password"
+                      placeholder="Password"
+                      >
+                </div>
+           
+                <div class="form-group">
+                    <!-- <button [disabled]="!loginForm.valid" type="submit" class="btn btn-primary">Login</button> -->
+                    <button [disabled]="!loginForm.valid" type="submit" class="btn btn-primary shadow-sm">Sign Up</button>
+                    <input type="button" class="btn btn-secondary shadow-sm ml-2" (click)="cancel()" value="Cancel"/>
+                  </div>
+  
+                  <div class="footer mx-3">
+                    <a href="#">Forget password?</a>
+                    <p>Don't have an account? <a routerLink="/registerhome">Register here</a></p>
+                  </div>
+  
+          </form>
+    </div>
+  </section>

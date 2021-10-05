@@ -23,8 +23,8 @@ namespace API.Controllers
             _context = context;
         }
 
-        [HttpPost("RegisterColPrep")]
-        public async Task<ActionResult<UserDto>> RegisterColPrep(RegisterColPrepDto registerColPrepDto)
+        [HttpPost("RegisterStud")]
+        public async Task<ActionResult<UserDto>> RegisterStud(RegisterStudDto registerColPrepDto)
         {
             if (await UserExists(registerColPrepDto.Username)) return BadRequest("Username is taken");
 

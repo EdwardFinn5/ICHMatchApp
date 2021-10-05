@@ -18,4 +18,9 @@ export class RegisterHomeComponent implements OnInit {
   onRegisterStud() {
     this.router.navigate(['/registerstud']);
   }
+
+  cancel() {
+    console.log('cancelled');
+    this.router.navigateByUrl('/');
+  }
 }
