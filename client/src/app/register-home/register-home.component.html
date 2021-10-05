@@ -7,7 +7,7 @@
         <img src="../../assets/gradcaps.PNG" height="60" class="mt-1 mb-2" alt="">
         <div class="form-group">
             <!-- <button [disabled]="!loginForm.valid" type="submit" class="btn btn-primary">Login</button> -->
-            <button type="submit" class="btn btn-primary shadow-sm">Sign Up</button>
+            <input type="button" class="btn btn-primary shadow-sm ml-2" (click)="onRegisterEmp()" value="Employer Sign Up"/>
             <button type="button" class="btn btn-secondary ml-2 shadow-sm" >Cancel</button>
           </div>
           
@@ -16,8 +16,11 @@
           <img src="../../assets/cityscape.PNG" height="60" class="mt-1 mb-2" alt="">
           <div class="form-group">
               <!-- <button [disabled]="!loginForm.valid" type="submit" class="btn btn-primary">Login</button> -->
-              <button type="submit" class="btn btn-primary shadow-sm">Sign Up</button>
+              <input type="button" class="btn btn-primary shadow-sm ml-2" (click)="onRegisterStud()" value="Student Sign Up"/>
               <button type="button" class="btn btn-secondary ml-2 shadow-sm" >Cancel</button>
             </div>
     </div>
 </div>
+
+
+

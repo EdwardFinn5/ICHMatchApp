@@ -11,6 +11,8 @@ import { UserLoginComponent } from './user-login/user-login.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { RegisterHomeComponent } from './register-home/register-home.component';
+import { RegisterEmpComponent } from './register-emp/register-emp.component';
+import { RegisterStudComponent } from './register-stud/register-stud.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +21,8 @@ import { RegisterHomeComponent } from './register-home/register-home.component';
     HomeComponent,
     UserLoginComponent,
     RegisterHomeComponent,
+    RegisterEmpComponent,
+    RegisterStudComponent,
   ],
   imports: [
     BrowserModule,
