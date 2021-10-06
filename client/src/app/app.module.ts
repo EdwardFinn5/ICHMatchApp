@@ -13,6 +13,12 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { RegisterHomeComponent } from './register-home/register-home.component';
 import { RegisterEmpComponent } from './register-emp/register-emp.component';
 import { RegisterStudComponent } from './register-stud/register-stud.component';
+import { MemberListComponent } from './members/member-list/member-list.component';
+import { MemberDetailComponent } from './members/member-detail/member-detail.component';
+import { ListsComponent } from './lists/lists.component';
+import { MessagesComponent } from './messages/messages.component';
+import { EmpmemberListComponent } from './empmembers/empmember-list/empmember-list.component';
+import { EmpmemberDetailComponent } from './empmembers/empmember-detail/empmember-detail.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +29,12 @@ import { RegisterStudComponent } from './register-stud/register-stud.component';
     RegisterHomeComponent,
     RegisterEmpComponent,
     RegisterStudComponent,
+    MemberListComponent,
+    MemberDetailComponent,
+    ListsComponent,
+    MessagesComponent,
+    EmpmemberListComponent,
+    EmpmemberDetailComponent,
   ],
   imports: [
     BrowserModule,
