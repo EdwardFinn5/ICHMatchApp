@@ -19,6 +19,7 @@ import { ListsComponent } from './lists/lists.component';
 import { MessagesComponent } from './messages/messages.component';
 import { EmpmemberListComponent } from './empmembers/empmember-list/empmember-list.component';
 import { EmpmemberDetailComponent } from './empmembers/empmember-detail/empmember-detail.component';
+import { AboutComponent } from './about/about.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { EmpmemberDetailComponent } from './empmembers/empmember-detail/empmembe
     MessagesComponent,
     EmpmemberListComponent,
     EmpmemberDetailComponent,
+    AboutComponent,
   ],
   imports: [
     BrowserModule,

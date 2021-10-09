@@ -29,7 +29,7 @@
               <div class="form-group">
                   <!-- <button [disabled]="!loginForm.valid" type="submit" class="btn btn-primary">Login</button> -->
                   <button [disabled]="!loginForm.valid" type="submit" class="btn btn-primary shadow-sm">Sign In</button>
-                  <button type="button" class="btn btn-secondary ml-2 shadow-sm" >Cancel</button>
+                   <input type="button" class="btn btn-secondary shadow-sm ml-2" (click)="cancel()" value="Cancel"/>
                 </div>
 
                 <div class="footer mx-3">

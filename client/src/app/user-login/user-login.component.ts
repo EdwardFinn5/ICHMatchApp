@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { AccountService } from '../_services/account.service';
 
 @Component({
@@ -10,14 +11,14 @@ export class UserLoginComponent implements OnInit {
   model: any = {};
   loggedIn: boolean = false;
 
-  constructor(private accountService: AccountService) {}
+  constructor(private accountService: AccountService, private router: Router) {}
 
   ngOnInit(): void {}
 
   login() {
     this.accountService.login(this.model).subscribe(
       (response) => {
-        console.log(response);
+        this.router.navigateByUrl('/members');
         this.loggedIn = true;
       },
       (error) => {
@@ -26,7 +27,8 @@ export class UserLoginComponent implements OnInit {
     );
   }
 
-  logout() {
-    this.loggedIn = false;
+  cancel() {
+    console.log('cancelled');
+    this.router.navigateByUrl('/');
   }
 }
