@@ -10,13 +10,13 @@
   </button>
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto" style="font-size: 1.3em"  *ngIf="accountService.currentUser$ | async"  >
+    <ul class="navbar-nav mr-auto" style="font-size: 1.3em"  *ngIf="(accountService.currentUser$ | async) as user"  >
       
-      <li class="nav-item">
+      <li class="nav-item" *ngIf="user.appUserType == 'EmpHr'" >
         <a class="nav-link text-white " routerLink="/membersearch" >Search Talent</a>
       </li>
 
-      <li class="nav-item">
+      <li class="nav-item" *ngIf="user.appUserType == 'ColStudent'" >
           <a class="nav-link text-white" routerLink="/empmembersearch" routerLinkActive='active' >Search Jobs</a>
       </li>
 
@@ -37,14 +37,15 @@
       </li>
     </ul>
 
-    <div class="dropdown" style="font-size: 1.3em" *ngIf="accountService.currentUser$ | async" dropdown>
-      <a class="dropdown-toggle text-light mt-5" dropdownToggle>Welcome User</a>
-      <div class="dropdown-menu" *dropdownMenu>
+    <div class="dropdown" style="font-size: 1.3em" *ngIf="(accountService.currentUser$ | async) as user" dropdown>
+      <a class="dropdown-toggle text-light mt-5" dropdownToggle>Welcome {{user.username | titlecase}}</a>
+      <div class="dropdown-menu mt-3" *dropdownMenu>
         <a class="dropdown-item">Edit Profile</a>
         <div class="dropdown-divider"></div>
         <a class="dropdown-item" (click)="logout()">Logout</a>
       </div>
     </div>
-
   </div>
 </nav>
+
+

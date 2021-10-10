@@ -9,7 +9,6 @@ import { NavComponent } from './nav/nav.component';
 import { HomeComponent } from './home/home.component';
 import { UserLoginComponent } from './user-login/user-login.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { RegisterHomeComponent } from './register-home/register-home.component';
 import { RegisterEmpComponent } from './register-emp/register-emp.component';
 import { RegisterStudComponent } from './register-stud/register-stud.component';
@@ -20,9 +19,9 @@ import { MessagesComponent } from './messages/messages.component';
 import { EmpmemberListComponent } from './empmembers/empmember-list/empmember-list.component';
 import { EmpmemberDetailComponent } from './empmembers/empmember-detail/empmember-detail.component';
 import { AboutComponent } from './about/about.component';
-import { ToastrModule } from 'ngx-toastr';
 import { MemberSearchComponent } from './members/member-search/member-search.component';
 import { EmpmemberSearchComponent } from './empmembers/empmember-search/empmember-search.component';
+import { SharedModule } from './_modules/shared.module';
 
 @NgModule({
   declarations: [
@@ -50,10 +49,7 @@ import { EmpmemberSearchComponent } from './empmembers/empmember-search/empmembe
     BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
-    BsDropdownModule.forRoot(),
-    ToastrModule.forRoot({
-      positionClass: 'toast-bottom-right',
-    }),
+    SharedModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
