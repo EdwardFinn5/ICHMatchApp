@@ -20,6 +20,9 @@ import { MessagesComponent } from './messages/messages.component';
 import { EmpmemberListComponent } from './empmembers/empmember-list/empmember-list.component';
 import { EmpmemberDetailComponent } from './empmembers/empmember-detail/empmember-detail.component';
 import { AboutComponent } from './about/about.component';
+import { ToastrModule } from 'ngx-toastr';
+import { MemberSearchComponent } from './members/member-search/member-search.component';
+import { EmpmemberSearchComponent } from './empmembers/empmember-search/empmember-search.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +40,8 @@ import { AboutComponent } from './about/about.component';
     EmpmemberListComponent,
     EmpmemberDetailComponent,
     AboutComponent,
+    MemberSearchComponent,
+    EmpmemberSearchComponent,
   ],
   imports: [
     BrowserModule,
@@ -46,6 +51,9 @@ import { AboutComponent } from './about/about.component';
     FormsModule,
     ReactiveFormsModule,
     BsDropdownModule.forRoot(),
+    ToastrModule.forRoot({
+      positionClass: 'toast-bottom-right',
+    }),
   ],
   providers: [],
   bootstrap: [AppComponent],
