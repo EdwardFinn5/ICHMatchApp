@@ -4,6 +4,9 @@ import { AboutComponent } from './about/about.component';
 import { EmpmemberDetailComponent } from './empmembers/empmember-detail/empmember-detail.component';
 import { EmpmemberListComponent } from './empmembers/empmember-list/empmember-list.component';
 import { EmpmemberSearchComponent } from './empmembers/empmember-search/empmember-search.component';
+import { NotFoundComponent } from './errors/not-found/not-found.component';
+import { ServerErrorComponent } from './errors/server-error/server-error.component';
+import { TestErrorsComponent } from './errors/test-errors/test-errors.component';
 import { HomeComponent } from './home/home.component';
 import { ListsComponent } from './lists/lists.component';
 import { MemberDetailComponent } from './members/member-detail/member-detail.component';
@@ -38,7 +41,10 @@ const routes: Routes = [
   { path: 'lists', component: ListsComponent },
   { path: 'about', component: AboutComponent },
   { path: 'userlogin', component: UserLoginComponent },
-  { path: '**', component: HomeComponent, pathMatch: 'full' },
+  { path: 'errors', component: TestErrorsComponent },
+  { path: 'not-found', component: NotFoundComponent },
+  { path: 'server-error', component: ServerErrorComponent },
+  { path: '**', component: NotFoundComponent, pathMatch: 'full' },
 ];
 
 @NgModule({

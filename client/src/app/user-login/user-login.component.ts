@@ -21,16 +21,10 @@ export class UserLoginComponent implements OnInit {
   ngOnInit(): void {}
 
   login() {
-    this.accountService.login(this.model).subscribe(
-      (response) => {
-        this.router.navigateByUrl('/');
-        this.loggedIn = true;
-      },
-      (error) => {
-        console.log(error);
-        this.toastr.error(error.error);
-      }
-    );
+    this.accountService.login(this.model).subscribe((response) => {
+      this.router.navigateByUrl('/membersearch');
+      this.loggedIn = true;
+    });
   }
 
   cancel() {
