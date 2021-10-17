@@ -1,9 +1,9 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace API.Data.Migrations
+namespace API.Migrations
 {
-    public partial class InitialCreate : Migration
+    public partial class NewInitial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -66,6 +66,8 @@ namespace API.Data.Migrations
                     AppUserId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     UserName = table.Column<string>(type: "nvarchar(255)", nullable: true),
+                    PasswordHash = table.Column<byte[]>(type: "varbinary(max)", nullable: true),
+                    PasswordSalt = table.Column<byte[]>(type: "varbinary(max)", nullable: true),
                     FirstName = table.Column<string>(type: "nvarchar(30)", nullable: true),
                     LastName = table.Column<string>(type: "nvarchar(30)", nullable: true),
                     AppUserType = table.Column<string>(type: "varchar(12)", nullable: true),
@@ -146,14 +148,15 @@ namespace API.Data.Migrations
                     LookingFor = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     PositionType = table.Column<string>(type: "varchar(25)", nullable: true),
                     PositionLocation = table.Column<string>(type: "nvarchar(60)", nullable: true),
+                    DateAdded = table.Column<DateTime>(type: "datetime2", nullable: false),
                     StartDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     AppDeadline = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    Created = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Active = table.Column<bool>(type: "bit", nullable: false),
                     HrContact = table.Column<string>(type: "nvarchar(100)", nullable: true),
                     HrContactTitle = table.Column<string>(type: "nvarchar(100)", nullable: true),
                     HowToApply = table.Column<string>(type: "nvarchar(256)", nullable: true),
                     ApplyEmail = table.Column<string>(type: "nvarchar(255)", nullable: true),
+                    ApplyLink = table.Column<string>(type: "nvarchar(255)", nullable: true),
                     AppUserId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>

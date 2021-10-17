@@ -4,16 +4,14 @@ using API.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
-using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
-namespace API.Data.Migrations
+namespace API.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20210925182220_UserPasswordAdded")]
-    partial class UserPasswordAdded
+    partial class DataContextModelSnapshot : ModelSnapshot
     {
-        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -230,7 +228,10 @@ namespace API.Data.Migrations
                     b.Property<string>("ApplyEmail")
                         .HasColumnType("nvarchar(255)");
 
-                    b.Property<DateTime>("Created")
+                    b.Property<string>("ApplyLink")
+                        .HasColumnType("nvarchar(255)");
+
+                    b.Property<DateTime>("DateAdded")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("HowToApply")
