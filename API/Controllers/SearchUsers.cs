@@ -12,13 +12,13 @@ using Microsoft.EntityFrameworkCore;
 
 namespace API.Controllers
 {
-    // [Authorize]
-    public class UsersController : BaseApiController
+    [Authorize]
+    public class SearchUsersController : BaseApiController
     {
         private readonly IUserRepository _userRepository;
         private readonly IMapper _mapper;
 
-        public UsersController(IUserRepository userRepository, IMapper mapper)
+        public SearchUsersController(IUserRepository userRepository, IMapper mapper)
         {
             _mapper = mapper;
             _userRepository = userRepository;
@@ -26,7 +26,6 @@ namespace API.Controllers
         }
 
         [HttpGet]
-        // [AllowAnonymous]
         public async Task<ActionResult<IEnumerable<MemberDto>>> GetUsers()
         {
             var users = await _userRepository.GetMembersAsync();
@@ -34,7 +33,6 @@ namespace API.Controllers
             return Ok(users);
         }
 
-        // [Authorize]
         [HttpGet("{username}")]
         public async Task<ActionResult<MemberDto>> GetUser(string username)
         {

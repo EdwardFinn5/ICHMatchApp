@@ -42,7 +42,7 @@
     </ul>
 
     <div class="dropdown" style="font-size: 1.3em" *ngIf="(accountService.currentUser$ | async) as user" dropdown>
-      <a class="dropdown-toggle text-light mt-5" dropdownToggle>Welcome {{user.username | titlecase}}</a>
+      <a class="dropdown-toggle text-light mt-5" dropdownToggle>Welcome {{user.firstName | titlecase}}</a>
       <div class="dropdown-menu mt-3" *dropdownMenu>
         <a class="dropdown-item">Edit Profile</a>
         <div class="dropdown-divider"></div>
