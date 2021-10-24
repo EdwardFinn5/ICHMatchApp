@@ -22,6 +22,7 @@ namespace API.Entities
 
         public string Athletics { get; set; }
         public string Arts { get; set; }
+        public bool IsActive { get; set; } = true;
         public string ExtraCurricular { get; set; }
         public string AcademicPlus { get; set; }
         public string WorkPlus { get; set; }

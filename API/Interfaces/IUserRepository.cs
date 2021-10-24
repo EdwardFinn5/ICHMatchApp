@@ -18,6 +18,8 @@ namespace API.Interfaces
         // added the following two methods during video 97 on automapper queryable
 
         Task<IEnumerable<MemberDto>> GetMembersAsync();
+
+        Task<IEnumerable<MemberDto>> GetStudentMembersAsync();
         Task<MemberDto> GetMemberAsync(string username);
     }
 }

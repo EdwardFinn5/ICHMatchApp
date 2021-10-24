@@ -26,6 +26,7 @@ namespace API.DTOs
         public string EmployeeNum { get; set; }
         public DateTime Created { get; set; }
         public DateTime LastActive { get; set; }
+        public String Arts { get; set; }
         public ICollection<PhotoDto> Photos { get; set; }
         public ICollection<StudInfoDto> StudInfos { get; set; }
         public ICollection<EmpInfoDto> EmpInfos { get; set; }

@@ -26,6 +26,10 @@ import { TestErrorsComponent } from './errors/test-errors/test-errors.component'
 import { ErrorInterceptor } from './_interceptors/error.interceptor';
 import { NotFoundComponent } from './errors/not-found/not-found.component';
 import { ServerErrorComponent } from './errors/server-error/server-error.component';
+import { MemberSearchCardComponent } from './members/member-search-card/member-search-card.component';
+import { MemberCardComponent } from './members/member-card/member-card.component';
+import { EmpmemberCardComponent } from './empmembers/empmember-card/empmember-card.component';
+import { JwtInterceptor } from './_interceptors/jwt.interceptor';
 
 @NgModule({
   declarations: [
@@ -48,6 +52,9 @@ import { ServerErrorComponent } from './errors/server-error/server-error.compone
     TestErrorsComponent,
     NotFoundComponent,
     ServerErrorComponent,
+    MemberSearchCardComponent,
+    MemberCardComponent,
+    EmpmemberCardComponent,
   ],
   imports: [
     BrowserModule,
@@ -60,6 +67,7 @@ import { ServerErrorComponent } from './errors/server-error/server-error.compone
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
   ],
   bootstrap: [AppComponent],
 })

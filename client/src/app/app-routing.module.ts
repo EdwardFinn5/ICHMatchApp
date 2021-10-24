@@ -25,9 +25,8 @@ const routes: Routes = [
   { path: 'registerhome', component: RegisterHomeComponent },
   { path: 'registeremp', component: RegisterEmpComponent },
   { path: 'registerstud', component: RegisterStudComponent },
-  { path: 'members', component: MemberListComponent },
-  { path: 'members/:id', component: MemberDetailComponent },
-  { path: 'empmembers', component: EmpmemberListComponent },
+  { path: 'memberslist', component: MemberListComponent },
+  { path: 'empmemberslist', component: EmpmemberListComponent },
   { path: 'empmembers/:id', component: EmpmemberDetailComponent },
   {
     path: '',
@@ -36,6 +35,7 @@ const routes: Routes = [
     children: [
       { path: 'membersearch', component: MemberSearchComponent },
       { path: 'empmembersearch', component: EmpmemberSearchComponent },
+      { path: 'members/:username', component: MemberDetailComponent },
     ],
   },
   { path: 'lists', component: ListsComponent },

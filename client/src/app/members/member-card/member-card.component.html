@@ -1,0 +1,19 @@
+<div class="card mb-4" *ngIf="member.appUserType == 'ColStudent'">
+
+    <div class="card-img-wrapper">
+        <img src="{{member.studentUrl || '../../assets/images/coluser.PNG' }}" alt="{{member.firstName}}" class="card-img-top">
+    </div>   
+    
+    <div class="card-body p-2">
+        <h6 class="card-title text-center mb-1"><i class="fa fa-user mr-2"></i> 
+            <u><strong>{{member.firstName}}</strong></u>
+        </h6>
+        <p class="card-text text-muted text-center">
+            {{member.classYear}} {{member.major}} major
+            <br> 
+            from {{member.location}}
+            <br>
+            attending {{member.college}}
+        </p>
+    </div>
+</div>

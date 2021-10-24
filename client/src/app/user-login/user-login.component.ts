@@ -11,6 +11,7 @@ import { AccountService } from '../_services/account.service';
 export class UserLoginComponent implements OnInit {
   model: any = {};
   loggedIn: boolean = false;
+  appuserType: string;
 
   constructor(
     private accountService: AccountService,

@@ -12,7 +12,7 @@ export class RegisterEmpComponent implements OnInit {
   model: any = {};
 
   constructor(
-    private route: Router,
+    private router: Router,
     private accountService: AccountService,
     private toastr: ToastrService
   ) {}
@@ -24,6 +24,7 @@ export class RegisterEmpComponent implements OnInit {
       (response) => {
         console.log(response);
         this.cancel();
+        this.router.navigateByUrl('/membersearch');
       },
       (error) => {
         console.log(error);
@@ -34,6 +35,6 @@ export class RegisterEmpComponent implements OnInit {
 
   cancel() {
     console.log('cancelled');
-    this.route.navigateByUrl('/');
+    this.router.navigateByUrl('/');
   }
 }

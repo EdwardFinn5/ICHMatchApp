@@ -9,6 +9,7 @@ export interface Member {
   studentUrl: string;
   logoUrl: string;
   hrUrl: string;
+  arts: string;
   firstName: string;
   lastName: string;
   appUserType: string;

@@ -31,6 +31,8 @@ namespace API.Controllers
             var users = await _userRepository.GetMembersAsync();
 
             return Ok(users);
+
+            // could also combine the above into: return Ok(await _userRepository.GetMembersAsync());
         }
 
         [HttpGet("{username}")]

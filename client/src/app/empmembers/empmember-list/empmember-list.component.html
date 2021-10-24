@@ -1,1 +1,7 @@
-<p>empmember-list works!</p>
+<div class="container mt-3">
+    <div class="row">
+        <div *ngFor="let member of members" class="col-lg-3 col-md-6">
+            <app-empmember-card [member]="member" ></app-empmember-card>
+        </div>
+    </div>
+    </div>

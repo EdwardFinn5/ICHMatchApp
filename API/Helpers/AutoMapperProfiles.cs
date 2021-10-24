@@ -18,7 +18,10 @@ namespace API.Helpers
                 .ForMember(dest => dest.LogoUrl, opt => opt
                     .MapFrom(src => src.Photos.FirstOrDefault(x => x.IsMainLogo).LogoUrl))
                 .ForMember(dest => dest.HrUrl, opt => opt
-                    .MapFrom(src => src.Photos.FirstOrDefault(x => x.IsMainHr).HrUrl));
+                    .MapFrom(src => src.Photos.FirstOrDefault(x => x.IsMainHr).HrUrl))
+                 .ForMember(dest => dest.Arts, opt => opt
+                    .MapFrom(src => src.StudInfos.FirstOrDefault(x => x.IsActive).Arts));
+
             CreateMap<Photo, PhotoDto>();
             CreateMap<StudInfo, StudInfoDto>();
             CreateMap<EmpInfo, EmpInfoDto>();

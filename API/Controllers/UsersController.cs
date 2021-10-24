@@ -26,13 +26,27 @@ namespace API.Controllers
         }
 
         [HttpGet]
-        // [AllowAnonymous]
         public async Task<ActionResult<IEnumerable<MemberDto>>> GetUsers()
         {
             var users = await _userRepository.GetMembersAsync();
 
             return Ok(users);
+
+            // could also combine the above into: return Ok(await _userRepository.GetMembersAsync());
         }
+
+
+
+        // [HttpGet]
+        // [ActionName("GetStudentUsers")]
+        // public async Task<ActionResult<IEnumerable<MemberDto>>> GetStudentUsers()
+        // {
+        //     var users = await _userRepository.GetStudentMembersAsync();
+
+        //     return Ok(users);
+
+        //     could also combine the above into: return Ok(await _userRepository.GetMembersAsync());
+        // }
 
         // [Authorize]
         [HttpGet("{username}")]

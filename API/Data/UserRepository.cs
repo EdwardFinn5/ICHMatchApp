@@ -51,6 +51,23 @@ namespace API.Data
                 .ToListAsync();
         }
 
+        public async Task<IEnumerable<MemberDto>> GetStudentMembersAsync()
+        {
+            return await _context.Users
+                .Where(x => x.AppUserType == "ColStudent")
+                .ProjectTo<MemberDto>(_mapper.ConfigurationProvider)
+                .ToListAsync();
+        }
+
+        public async Task<IEnumerable<MemberDto>> GetEmployeeMembersAsync()
+        {
+            return await _context.Users
+                .Where(x => x.AppUserType == "EmpHr")
+                .ProjectTo<MemberDto>(_mapper.ConfigurationProvider)
+                .ToListAsync();
+        }
+
+
         public async Task<AppUser> GetUserByIdAsync(int id)
         {
             return await _context.Users.FindAsync(id);

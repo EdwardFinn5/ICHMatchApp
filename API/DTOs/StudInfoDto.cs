@@ -11,6 +11,7 @@ namespace API.DTOs
         public string BestPhone { get; set; }
         public string Athletics { get; set; }
         public string Arts { get; set; }
+        public bool IsActive { get; set; }
         public string ExtraCurricular { get; set; }
         public string AcademicPlus { get; set; }
         public string WorkPlus { get; set; }
