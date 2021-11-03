@@ -1,8 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
 /* @import "assets/forms.css"; */
 
-body {
+/* body {
   margin: 0px;
   padding: 0px;
   box-sizing: border-box;
-}
+} */
+@import "assets/tabs.css";

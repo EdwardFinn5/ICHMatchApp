@@ -102,3 +102,7 @@ p {
 .tooltip-inner {
   text-align: left;
 }
+
+.padding {
+  padding-bottom: 1rem;
+}

@@ -1,46 +1,72 @@
-<section class="signup" *ngIf="member">
-<!-- <div *ngIf="member"   class="container col-lg-4 m-auto shadow-lg align-content-center"> -->
-    
-    <div class="card-header col-lg-4 m-auto">
-        <h3 style="text-align: center;">{{member.firstName}} {{member.lastName}}</h3>
-      </div>
-    
-    <!-- <div class="card-header col-lg-4 m-auto">
-        <h3 class="text-center ">{{member.firstName}} {{member.lastName}}</h3>
-      </div> -->
-        <!-- <div class="card" *ngIf="member.appUserType == 'ColStudent'"> -->
+<!-- <div class="container-fluid" *ngIf="member">
 
-            <div class="card">
+    <div class="card col-lg-4 col-md-6 col-sm-8 align-content-center m-sm-auto padding">
 
-            <img src="{{member.studentUrl || '.assets/user.png'}}" alt="{{member.firstName}}"
-                class="img-studthumbnail">
-            <div class="card-body">
-                <!-- <div class="mb-1" *ngIf="(presence.onlineUsers$ | async).includes(member.username)">
-                    <i class="fa fa-user-circle text-success"></i> Online now
-                </div> -->
-                <div class="text-center">
-                    <p> <u><strong>-- {{member.firstName}} {{member.lastName}} --</strong></u>
-                        <br><strong>{{member.classYear}} {{member.major}} Major</strong>
-                        <br> from <br>
-                        <strong>{{member.location}}</strong>
-                        <br> attending <br>
-                        <strong>{{member.college}}</strong>
-                        <br> Profile Created: <br>
-                        <strong>{{member.created | date: "MMM dd yyyy" }}</strong>
-                        <br> Last Activity: <br>
-                        <!-- <strong>{{member.lastActive | timeago }}</strong> -->
-                        <strong>{{member.lastActive}}</strong>
-                    </p>
-                </div>
-            </div>
-            
-            <div class="card-footer">
-                <div class="btn-group d-flex">
-                    <!-- <button class="btn btn-primary mr-2">Possible Fit</button> -->
-                    <button class="btn btn-success btn-block">Send {{member.firstName}} a Message</button>
-                </div>
+        <img src="{{member.studentUrl || '.assets/user.png'}}" alt="{{member.firstName}}" class="img-studthumbnail">
+
+        <div class="card-body">
+            <div class="text-center">
+                <p> <u><strong>-- {{member.firstName}} {{member.lastName}} --</strong></u>
+                    <br><strong>{{member.classYear}} {{member.major}} Major</strong>
+                    <br> from <br>
+                    <strong>{{member.location}}</strong>
+                    <br> attending <br>
+                    <strong>{{member.college}}</strong>
+                    <br> Profile Created: <br>
+                    <strong>{{member.created | date: "MMM dd yyyy" }}</strong>
+                    <br> Last Activity: <br>
+                    <strong>{{member.lastActive}}</strong>
+                </p>
             </div>
         </div>
-    <!-- </div> -->
- 
-</section>
+
+        <div class="card-footer">
+            <div class="btn-group d-flex">
+                <button class="btn btn-success btn-block">Send {{member.firstName}} a Message</button>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-8">
+        <tabset class="member-tabset">
+            <tab heading="About">
+                <h2>Description</h2>
+            </tab>
+        </tabset>
+    </div>
+
+</div>> -->
+
+<div class="row shadow">
+    <div class="col-sm-4 p-0">
+        <div class="card">
+            <div class="card-img-wrapper">
+                <img src="{{member.studentUrl || '.assets/user.png'}}" alt="{{member.firstName}}" class="img-studthumbnail">
+            </div>
+            <div class="card-body text-center">
+                <h3 class="card-title"><u><strong>-- {{member.firstName}} {{member.lastName}} --</strong></u></h3>
+                    <div> <strong>{{member.classYear}} {{member.major}} Major</strong></div>
+                    <div> from </div>
+                    <div><strong>{{member.location}}</strong></div>
+                    <div> attending </div>
+                    <div><strong>{{member.college}}</strong></div>
+                    <div> Profile Created: </div>
+                    <div><strong>{{member.created | date: "MMM dd yyyy" }}</strong></div>
+                    <div>Last Activity: </div> 
+                    <div class="mb-2"><strong>{{member.lastActive}}</strong></div>
+                    <div class="btn-group d-flex">
+                        <button class="btn btn-success btn-block">Send {{member.firstName}} a Message</button>
+                    </div>
+            </div>
+        </div>  
+    <div class="col-sm-8" p-0>
+        <div class="tab-panel p-3"></div>
+        <tabset class="member-tabset">
+            <tab heading="Overview">
+
+            </tab>
+        </tabset>
+    </div>   
+        
+    </div>
+</div>

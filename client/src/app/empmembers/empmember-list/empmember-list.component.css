@@ -1,0 +1,17 @@
+.lists {
+  background-color: #eff6ff;
+  width: 95%;
+}
+
+hr {
+  width: 100%;
+}
+
+.padding {
+  padding-bottom: 1rem;
+}
+
+.display-4 {
+  font-size: 200%;
+  font-weight: bold;
+}

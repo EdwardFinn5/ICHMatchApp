@@ -1,4 +1,4 @@
-.signup {
+/* .signup {
   background-color: #eff6ff;
   padding: 60px;
 }
@@ -6,6 +6,10 @@
 .login {
   background-color: #ffffff;
   padding: 20px 30px;
+}
+
+.card {
+  width: 100%;
 }
 
 @media screen and (max-width: 600px) {
@@ -24,6 +28,7 @@
 
 .card-header {
   height: 42;
+  width: 100%;
   padding: 4px 10px !important;
   background-color: #416796 !important;
 }
@@ -36,7 +41,7 @@
   margin: 0px;
   width: 85%;
   height: 85%;
-}
+} */
 /* .img-studthumbnail {
   transform: scale(1, 1);
   transition-duration: 500ms;
@@ -51,3 +56,10 @@
   width: 85%;
   height: 85%; */
 /* }  */
+
+img {
+  width: 100%;
+}
+.padding {
+  padding-top: 0;
+}
