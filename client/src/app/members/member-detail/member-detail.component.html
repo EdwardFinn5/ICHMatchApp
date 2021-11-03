@@ -1,17 +1,24 @@
-<div *ngIf="member"   class="row shadow" style="margin-left: 25px">
-    <div class="col-4">
-        
+<section class="signup" *ngIf="member">
+<!-- <div *ngIf="member"   class="container col-lg-4 m-auto shadow-lg align-content-center"> -->
+    
+    <div class="card-header col-lg-4 m-auto">
+        <h3 style="text-align: center;">{{member.firstName}} {{member.lastName}}</h3>
+      </div>
+    
+    <!-- <div class="card-header col-lg-4 m-auto">
+        <h3 class="text-center ">{{member.firstName}} {{member.lastName}}</h3>
+      </div> -->
         <!-- <div class="card" *ngIf="member.appUserType == 'ColStudent'"> -->
 
             <div class="card">
 
             <img src="{{member.studentUrl || '.assets/user.png'}}" alt="{{member.firstName}}"
-                class="card-img-top img-studthumbnail">
+                class="img-studthumbnail">
             <div class="card-body">
                 <!-- <div class="mb-1" *ngIf="(presence.onlineUsers$ | async).includes(member.username)">
                     <i class="fa fa-user-circle text-success"></i> Online now
                 </div> -->
-                <div>
+                <div class="text-center">
                     <p> <u><strong>-- {{member.firstName}} {{member.lastName}} --</strong></u>
                         <br><strong>{{member.classYear}} {{member.major}} Major</strong>
                         <br> from <br>
@@ -34,4 +41,6 @@
                 </div>
             </div>
         </div>
-    </div>
+    <!-- </div> -->
+ 
+</section>

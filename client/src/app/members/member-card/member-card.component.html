@@ -1,10 +1,11 @@
-<div class="card mb-4" *ngIf="member.appUserType == 'ColStudent'">
+<!-- <div class="card mb-4" *ngIf="member.appUserType == 'ColStudent'"> -->
+    <div class="card mb-4">
 
     <div class="card-img-wrapper">
         <img src="{{member.studentUrl || '../../assets/images/coluser.PNG' }}" alt="{{member.firstName}}" class="card-img-top">
     </div>   
     
-    <div class="card-body p-2">
+    <div class="card-body p-2 mb-2">
         <h6 class="card-title text-center mb-1"><i class="fa fa-user mr-2"></i> 
             <u><strong>{{member.firstName}}</strong></u>
         </h6>
@@ -16,4 +17,24 @@
             attending {{member.college}}
         </p>
     </div>
+  
+
+    <div class="card-img-wrapper">
+        <img src="{{member.logoUrl || '../../assets/images/logo.PNG' }}" alt="{{member.firstName}}" class="card-img-top">
+    </div>   
+    
+    <div class="card-body p-2 mb-2">
+        <h6 class="card-title text-center mb-1">
+            <u><strong>{{member.empName}}</strong></u>
+        </h6>
+        <p class="card-text text-muted text-center">
+            {{member.empIndustry}} industry
+            <br> 
+            Number of employees: {{member.employeeNum}}
+            <br>
+            Located in {{member.location}}
+        </p>
+    </div>
+
+
 </div>

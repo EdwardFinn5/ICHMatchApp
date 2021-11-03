@@ -1,0 +1,53 @@
+.signup {
+  background-color: #eff6ff;
+  padding: 60px;
+}
+
+.login {
+  background-color: #ffffff;
+  padding: 20px 30px;
+}
+
+@media screen and (max-width: 600px) {
+  .signup {
+    background-color: #eff6ff;
+    padding: 30px;
+    align-content: center;
+  }
+}
+
+.card-header > h1,
+.card-header > h2,
+.card-header > h3 {
+  color: white;
+}
+
+.card-header {
+  height: 42;
+  padding: 4px 10px !important;
+  background-color: #416796 !important;
+}
+
+.footer {
+  text-align: center;
+}
+
+.img-studthumbnail {
+  margin: 0px;
+  width: 85%;
+  height: 85%;
+}
+/* .img-studthumbnail {
+  transform: scale(1, 1);
+  transition-duration: 500ms;
+  transition-timing-function: ease-out;
+  /* object-fit: cover; */
+/* height: 80px; */
+/* width: 200px; */
+/* width: 230px; */
+/* height: 270px; */
+/* width: auto; */
+/* margin-left: 10px;
+  width: 85%;
+  height: 85%; */
+/* }  */
