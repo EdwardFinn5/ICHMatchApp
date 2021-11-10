@@ -3,7 +3,7 @@ import { Photo } from './photo';
 import { Position } from './position';
 import { StudInfo } from './studinfo';
 
-export interface Member {
+export interface CardMember {
   appUserId: number;
   username: string;
   studentUrl: string;
@@ -18,6 +18,7 @@ export interface Member {
   classYear: string;
   major: string;
   college: string;
+  givingLevel: string;
   empName: string;
   empIndustry: string;
   employeeNum: string;

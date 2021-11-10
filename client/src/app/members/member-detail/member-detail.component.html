@@ -1,72 +1,73 @@
-<!-- <div class="container-fluid" *ngIf="member">
+<div class="row shadow" style="margin-left: 0px">
+    <div class="col-sm-4 p-0">
+        
+        <!-- <div class="card" *ngIf="member.appUserType == 'ColStudent'"> -->
 
-    <div class="card col-lg-4 col-md-6 col-sm-8 align-content-center m-sm-auto padding">
+            <div class="card">
 
-        <img src="{{member.studentUrl || '.assets/user.png'}}" alt="{{member.firstName}}" class="img-studthumbnail">
-
-        <div class="card-body">
-            <div class="text-center">
-                <p> <u><strong>-- {{member.firstName}} {{member.lastName}} --</strong></u>
-                    <br><strong>{{member.classYear}} {{member.major}} Major</strong>
-                    <br> from <br>
-                    <strong>{{member.location}}</strong>
-                    <br> attending <br>
-                    <strong>{{member.college}}</strong>
-                    <br> Profile Created: <br>
-                    <strong>{{member.created | date: "MMM dd yyyy" }}</strong>
-                    <br> Last Activity: <br>
-                    <strong>{{member.lastActive}}</strong>
-                </p>
+            <img src="{{member.studentUrl || '.assets/user.png'}}" alt="{{member.firstName}}"
+                class="card-img-top img-studthumbnail">
+            <div class="card-body text-center">
+                <!-- <div class="mb-1" *ngIf="(presence.onlineUsers$ | async).includes(member.username)">
+                    <i class="fa fa-user-circle text-success"></i> Online now
+                </div> -->
+                <div>
+                    <p> <u><strong>-- {{member.firstName}} {{member.lastName}} --</strong></u>
+                        <br><strong>{{member.classYear}} {{member.major}} Major</strong>
+                        <br> from <br>
+                        <strong>{{member.location}}</strong>
+                        <br> attending <br>
+                        <strong>{{member.college}}</strong>
+                        <br> Profile Created: <br>
+                        <strong>{{member.created | date: "MMM dd yyyy" }}</strong>
+                        <br> Last Activity: <br>
+                        <strong>{{member.lastActive | date: "MMM dd yyyy" }}</strong>
+                    </p>
+                </div>
             </div>
-        </div>
-
-        <div class="card-footer">
-            <div class="btn-group d-flex">
-                <button class="btn btn-success btn-block">Send {{member.firstName}} a Message</button>
+            
+            <div class="card-footer">
+                <div class="btn-group d-flex">
+                    <!-- <button class="btn btn-primary mr-2">Possible Fit</button> -->
+                    <button class="btn btn-success btn-block">Send {{member.firstName}} a Message</button>
+                </div>
             </div>
         </div>
     </div>
     
-    <div class="col-8">
-        <tabset class="member-tabset">
-            <tab heading="About">
-                <h2>Description</h2>
+     
+        <div class="col-sm-8 p-2">
+
+        <tabset class="member-tabset" #memberTabs>
+            <tab heading='About {{member.firstName}}' >
+                <h4>Academic Highlights</h4>
+                <p>{{"academic plus"}}<br>
+                <strong>GPA: </strong>{{"gpa"}}<br>
+                <strong>Grad Date: </strong>{{"grad date"}}
+                </p>
+                <h4>Work Experiences</h4>
+                <p>{{"work plus"}}</p>
+                <h4>Dream Job</h4>
+                <p>{{"dream job"}}</p>
+                <h4>Resume</h4>
+                <button class="btn btn-info">Resume</button>
             </tab>
+            <tab heading='Extra-Curricular' >
+                <h4>Athletics</h4>
+                <p>{{"athletics"}}</p>
+                <h4>Involvement in the Arts</h4>
+                <p>{{member.arts}}<br>
+                <h4>Clubs and Organizations</h4>
+                <!-- <p>{{member.extraCurricular}}</p> -->
+                <h4>Best way to contact {{member.firstName}}:</h4>
+                <!-- <p *ngIf="member.bestEmail">Email: -->
+                    <!-- {{member.bestEmail}}</p> -->
+                <!-- <p *ngIf="member.bestPhone">Phone: -->
+                        <!-- {{member.bestPhone}}</p> -->
+            </tab>
+            <tab heading='Messages' >
+               
+            </tab>
+
         </tabset>
     </div>
-
-</div>> -->
-
-<div class="row shadow">
-    <div class="col-sm-4 p-0">
-        <div class="card">
-            <div class="card-img-wrapper">
-                <img src="{{member.studentUrl || '.assets/user.png'}}" alt="{{member.firstName}}" class="img-studthumbnail">
-            </div>
-            <div class="card-body text-center">
-                <h3 class="card-title"><u><strong>-- {{member.firstName}} {{member.lastName}} --</strong></u></h3>
-                    <div> <strong>{{member.classYear}} {{member.major}} Major</strong></div>
-                    <div> from </div>
-                    <div><strong>{{member.location}}</strong></div>
-                    <div> attending </div>
-                    <div><strong>{{member.college}}</strong></div>
-                    <div> Profile Created: </div>
-                    <div><strong>{{member.created | date: "MMM dd yyyy" }}</strong></div>
-                    <div>Last Activity: </div> 
-                    <div class="mb-2"><strong>{{member.lastActive}}</strong></div>
-                    <div class="btn-group d-flex">
-                        <button class="btn btn-success btn-block">Send {{member.firstName}} a Message</button>
-                    </div>
-            </div>
-        </div>  
-    <div class="col-sm-8" p-0>
-        <div class="tab-panel p-3"></div>
-        <tabset class="member-tabset">
-            <tab heading="Overview">
-
-            </tab>
-        </tabset>
-    </div>   
-        
-    </div>
-</div>

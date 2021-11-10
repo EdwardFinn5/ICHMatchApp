@@ -66,37 +66,6 @@
             </li>
         </ul>
     </div>   
-    <div class="card-body padding p-2">
-        <h6 *ngIf="member.appUserType == 'ColStudent'" class="card-title text-center mb-1">
-            <!-- <span [class.is-online]="(presence.onlineUsers$ | async).includes(member.username)"> -->
-                <i class="fa fa-user mr-2"></i> 
-            <!-- </span> -->
-           
-            <u><strong>{{member.firstName}}</strong></u>
-        </h6>
-
-        <h6 *ngIf="member.appUserType == 'EmpHr'" class="card-title text-center mb-1">
-            <!-- <span [class.is-online]="(presence.onlineUsers$ | async).includes(member.username)"> -->
-                <i class="fa fa-user mr-2"></i> 
-            <!-- </span> -->
-            <u><strong>{{member.empName}}</strong></u>
-        </h6>
-
-        <p *ngIf="member.appUserType == 'ColStudent'" class="card-text text-muted text-center">
-            {{member.classYear}} {{member.major}} major
-            <br> 
-            from {{member.location}}
-            <br>
-            attending {{member.college}}
-        </p>
-        <p *ngIf="member.appUserType == 'EmpHr'" class="card-text text-muted text-center">
-            {{member.empIndustry}} industry
-            <br>Number of employees: {{member.employeeNum}}
-            <br>Located in {{member.location}} 
-            <!-- <br>Start date: {{member.startDate | date: "MM/dd/yyyy"}}
-            <br>Application deadline: {{member.appDeadline | date: "MM/dd/yyyy"}} -->
-        </p>
-        <!-- <p class="card-text text-muted text-center">{{member.workPlus}}</p> -->
-    </div>
-</div>
-
+    
+    
+   

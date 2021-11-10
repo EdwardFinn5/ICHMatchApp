@@ -14,6 +14,7 @@ export class AccountService {
   private currentUserSource = new ReplaySubject<User>(1);
   currentUser$ = this.currentUserSource.asObservable();
   appUserType: string;
+  givingLevel: string;
 
   constructor(private http: HttpClient, private router: Router) {}
 
@@ -23,6 +24,7 @@ export class AccountService {
         const user = response;
         if (user) {
           this.appUserType = user.appUserType;
+          this.givingLevel = user.givingLevel;
           localStorage.setItem('user', JSON.stringify(user));
           this.currentUserSource.next(user);
         }
@@ -39,6 +41,7 @@ export class AccountService {
           localStorage.setItem('user', JSON.stringify(user));
           this.currentUserSource.next(user);
           this.appUserType = user.appUserType;
+          this.router.navigateByUrl('/membersearch');
         }
       })
     );
@@ -53,7 +56,8 @@ export class AccountService {
           localStorage.setItem('user', JSON.stringify(user));
           this.currentUserSource.next(user);
           this.appUserType = user.appUserType;
-          this.router.navigateByUrl('/memberlist');
+          this.givingLevel = user.givingLevel;
+          this.router.navigateByUrl('/membersearch');
         }
       })
     );

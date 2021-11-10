@@ -7,7 +7,7 @@ using API.Entities;
 
 namespace API.Interfaces
 {
-    public interface IUserRepository
+    public interface ICardUserRepository
     {
         void Update(AppUser user);
         Task<bool> SaveAllAsync();
@@ -17,7 +17,7 @@ namespace API.Interfaces
 
         // added the following two methods during video 97 on automapper queryable
 
-        Task<IEnumerable<MemberDto>> GetMembersAsync();
-        Task<MemberDto> GetMemberAsync(string username);
+        Task<IEnumerable<CardMemberDto>> GetMembersAsync();
+        Task<CardMemberDto> GetMemberAsync(string username);
     }
 }

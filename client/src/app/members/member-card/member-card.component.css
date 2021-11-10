@@ -60,6 +60,25 @@ p {
   transition: all 0.3s ease-in-out;
 }
 
+.a-level {
+  background-color: gold;
+  width: auto;
+}
+
+.b-level {
+  background-color: blue;
+  width: auto;
+}
+.c-level {
+  background-color: red;
+  width: auto;
+}
+
+.d-level {
+  background-color: lightblue;
+  width: auto;
+}
+
 .tooltip-text {
   width: 100px;
   position: absolute;

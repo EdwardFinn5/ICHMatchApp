@@ -38,6 +38,9 @@ namespace API.Entities
         [Column(TypeName = "varchar(30)")]
         public string College { get; set; }
 
+        [Column(TypeName = "varchar(30)")]
+        public string GivingLevel { get; set; }
+
         [Column(TypeName = "nvarchar(60)")]
         public string EmpName { get; set; }
 

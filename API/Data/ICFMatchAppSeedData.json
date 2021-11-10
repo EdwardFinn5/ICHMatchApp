@@ -63,7 +63,7 @@
     ],
     "Photos": [
       {
-        "StudentUrl": "https://srkheadshotday.com/wp-content/uploads/Danielle_Lussier_Q4332_Crop32.jpg",
+        "StudentUrl": "https://sites.providence.edu/news/files/2017/12/phionnaalone-1gkc1ke.jpg",
         "IsMain": true
       }
     ]
@@ -133,7 +133,7 @@
     ],
     "Photos": [
       {
-        "StudentUrl": "https://srkheadshotday.com/wp-content/uploads/Danielle_Lussier_Q4332_Crop32.jpg",
+        "StudentUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRY0kIytjJdPPuCUb6gtYRMnhHFog02enHNeg&usqp=CA",
         "IsMain": true
       }
     ]
@@ -699,6 +699,7 @@
   },
   {
     "UserName": "John@firm.com",
+    "GivingLevel": "b",
     "FirstName": "John",
     "LastName": "Smith",
     "EmpName": "CRST International",
@@ -745,11 +746,12 @@
   },
   {
     "UserName": "Judy@firm.com",
+    "GivingLevel": "a",
     "FirstName": "Judy",
     "LastName": "Smith",
     "EmpName": "Homesteaders Life Company",
     "EmpIndustry": "Insurance",
-    "EmployeeNum": "850",
+    "EmployeeNum": "600",
     "Location": "Des Moines, IA",
     "AppUserType": "EmpHr",
     "Active": true,
@@ -790,10 +792,11 @@
   },
 
   {
-    "UserName": "Carter@firm.com",
-    "FirstName": "Carter",
-    "LastName": "Smith",
-    "EmpName": "Homesteaders Life Company",
+    "UserName": "Marty@firm.com",
+    "GivingLevel": "b",
+    "FirstName": "Marty",
+    "LastName": "Fredericks",
+    "EmpName": "BKD CPAs adn Advisors",
     "EmpIndustry": "Insurance",
     "EmployeeNum": "850",
     "Location": "Des Moines, IA",
@@ -827,7 +830,7 @@
     ],
     "Photos": [
       {
-        "LogoUrl": "https://upload.wikimedia.org/wikipedia/en/thumb/5/5b/CRST_logo.svg/1200px-CRST_logo.svg.png",
+        "LogoUrl": "https://pbs.twimg.com/profile_images/876876941747474432/xxh6VCTN.jpg",
         "IsMainLogo": true,
         "HrUrl": "https://pdaphotography.com/wp-content/uploads/2018/07/Headshot.jpg",
         "IsMainHr": true
@@ -835,11 +838,12 @@
     ]
   },
   {
-    "UserName": "Mary@firm.com",
-    "FirstName": "Mary",
-    "LastName": "Smith",
-    "EmpName": "Homesteaders Life Company",
-    "EmpIndustry": "Insurance",
+    "UserName": "MikeH@firm.com",
+    "GivingLevel": "a",
+    "FirstName": "Mike",
+    "LastName": "Helak",
+    "EmpName": "US Bank",
+    "EmpIndustry": "Banking",
     "EmployeeNum": "850",
     "Location": "Des Moines, IA",
     "AppUserType": "EmpHr",
@@ -872,7 +876,7 @@
     ],
     "Photos": [
       {
-        "LogoUrl": "https://upload.wikimedia.org/wikipedia/en/thumb/5/5b/CRST_logo.svg/1200px-CRST_logo.svg.png",
+        "LogoUrl": "https://s3-us-west-1.amazonaws.com/companies.comparably.com/32944/32944_logo_u-s--bank.png",
         "IsMainLogo": true,
         "HrUrl": "https://pdaphotography.com/wp-content/uploads/2018/07/Headshot.jpg",
         "IsMainHr": true
@@ -880,11 +884,12 @@
     ]
   },
   {
-    "UserName": "George@firm.com",
-    "FirstName": "George",
-    "LastName": "Smith",
-    "EmpName": "Homesteaders Life Company",
-    "EmpIndustry": "Insurance",
+    "UserName": "JimA@firm.com",
+    "GivingLevel": "c",
+    "FirstName": "Jim",
+    "LastName": "Aipperspach",
+    "EmpName": "Bearance Management Group",
+    "EmpIndustry": "Consultants",
     "EmployeeNum": "850",
     "Location": "Des Moines, IA",
     "AppUserType": "EmpHr",
@@ -917,7 +922,7 @@
     ],
     "Photos": [
       {
-        "LogoUrl": "https://upload.wikimedia.org/wikipedia/en/thumb/5/5b/CRST_logo.svg/1200px-CRST_logo.svg.png",
+        "LogoUrl": "https://businessrecord.com/Images/Images/11452.jpg",
         "IsMainLogo": true,
         "HrUrl": "https://pdaphotography.com/wp-content/uploads/2018/07/Headshot.jpg",
         "IsMainHr": true
@@ -926,6 +931,7 @@
   },
   {
     "UserName": "Sandi@firm.com",
+    "GivingLevel": "a",
     "FirstName": "Sandi",
     "LastName": "Smith",
     "EmpName": "Homesteaders Life Company",
@@ -971,6 +977,7 @@
   },
   {
     "UserName": "Tim@firm.com",
+    "GivingLevel": "a",
     "FirstName": "Tim",
     "LastName": "Smith",
     "EmpName": "Homesteaders Life Company",
@@ -1016,6 +1023,7 @@
   },
   {
     "UserName": "Marsha@firm.com",
+    "GivingLevel": "a",
     "FirstName": "Marsha",
     "LastName": "Smith",
     "EmpName": "Homesteaders Life Company",
@@ -1061,6 +1069,7 @@
   },
   {
     "UserName": "Thomas@firm.com",
+    "GivingLevel": "a",
     "FirstName": "Thomas",
     "LastName": "Smith",
     "EmpName": "Homesteaders Life Company",
@@ -1106,6 +1115,7 @@
   },
   {
     "UserName": "Clayton@firm.com",
+    "GivingLevel": "a",
     "FirstName": "Clayton",
     "LastName": "Smith",
     "EmpName": "Homesteaders Life Company",
@@ -1151,6 +1161,7 @@
   },
   {
     "UserName": "Anne@firm.com",
+    "GivingLevel": "a",
     "FirstName": "Anne",
     "LastName": "Smith",
     "EmpName": "Homesteaders Life Company",

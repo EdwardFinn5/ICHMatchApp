@@ -7,4 +7,5 @@ export interface User {
   logoUrl: string;
   hrUrl: string;
   empName: string;
+  givingLevel: string;
 }

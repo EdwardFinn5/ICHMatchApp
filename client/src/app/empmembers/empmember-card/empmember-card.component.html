@@ -1,21 +1,21 @@
-<ng-container *ngIf="member.appUserType == 'EmpHr'">
+<ng-container *ngIf="cardMember.appUserType == 'EmpHr'">
 
 <div class="card mb-4">
 
     <div class="card-img-wrapper">
-        <img src="{{member.logoUrl || '../../assets/images/logo.PNG' }}" alt="{{member.firstName}}" class="card-img-top">
+        <img src="{{cardMember.logoUrl || '../../assets/images/logo.PNG' }}" alt="{{cardMember.firstName}}" class="card-img-top">
     </div>   
     
     <div class="card-body p-2">
         <h6 class="card-title text-center mb-1">
-            <u><strong>{{member.empName}}</strong></u>
+            <u><strong>{{cardMember.empName}}</strong></u>
         </h6>
         <p class="card-text text-muted text-center">
-            {{member.empIndustry}} industry
+            {{cardMember.empIndustry}} industry
             <br> 
-            Number of employees: {{member.employeeNum}}
+            Number of employees: {{cardMember.employeeNum}}
             <br>
-            Located in {{member.location}}
+            Located in {{cardMember.location}}
         </p>
     </div>
 </div>

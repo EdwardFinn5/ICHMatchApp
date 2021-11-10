@@ -1,6 +1,6 @@
 <!---Heading -->
 
-<div class="container-fluid lists mt-3">
+<div class="container-fluid lists mt-2">
     <div class="row welcome text-center">
         <div class="col-12">
             <h1 class="display-4">Student Talent</h1>
@@ -10,16 +10,13 @@
 </div>
 <hr class="col-12">
 
-<!--card-->
-
-<div class="container-fluid">
+<div class="container-fluid mt-2">
     <div class="row">
-        <!-- <div class="col-md-4 col-lg-3"> -->
 
-        <div class="col-xl-4 col-md-3 col-md-6 shadow-sm" *ngFor="let member of members">
-            <app-member-card [member]="member" ></app-member-card>
+        <div *ngFor="let cardMember of cardMembers"  class="col-lg-3 col-md-6">
+            <app-member-card [cardMember]="cardMember"></app-member-card>
         </div>
-        <!-- </div>  -->
+       
     </div>
 </div>
 
