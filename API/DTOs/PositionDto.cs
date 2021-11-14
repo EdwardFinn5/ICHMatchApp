@@ -8,6 +8,7 @@ namespace API.DTOs
         public string PositionName { get; set; }
         public string PositionDescription { get; set; }
         public string LookingFor { get; set; }
+        public string PositionBenefits { get; set; }
         public string PositionType { get; set; }
         public string PositionLocation { get; set; }
         public DateTime DateAdded { get; set; }

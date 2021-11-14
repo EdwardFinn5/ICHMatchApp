@@ -63,3 +63,12 @@ img {
 .padding {
   padding-top: 0;
 }
+
+.details {
+  margin-right: 2em;
+  margin-left: 1em;
+}
+
+.tab-heading {
+  font-weight: bold;
+}

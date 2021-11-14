@@ -27,7 +27,7 @@ const routes: Routes = [
   { path: 'registerstud', component: RegisterStudComponent },
   { path: 'memberslist', component: MemberListComponent },
   { path: 'empmemberslist', component: EmpmemberListComponent },
-  { path: 'empmembers/:id', component: EmpmemberDetailComponent },
+
   {
     path: '',
     runGuardsAndResolvers: 'always',
@@ -36,6 +36,7 @@ const routes: Routes = [
       { path: 'membersearch', component: MemberSearchComponent },
       { path: 'empmembersearch', component: EmpmemberSearchComponent },
       { path: 'members/:username', component: MemberDetailComponent },
+      { path: 'empmembers/:username', component: EmpmemberDetailComponent },
     ],
   },
   { path: 'lists', component: ListsComponent },

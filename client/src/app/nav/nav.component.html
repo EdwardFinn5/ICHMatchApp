@@ -40,6 +40,8 @@
         <a class="nav-link" routerLink="/about" routerLinkActive='active' >About</a>
       </li>
 
+      <ul class="navbar-nav ml-auto" *ngIf="(accountService.currentUser$ | async) === null" style="font-size: 1.3em"></ul>
+
       <li class="nav-item">
         <a class="nav-link" routerLink="/userlogin" routerLinkActive='active' >Sign In</a>
       </li>

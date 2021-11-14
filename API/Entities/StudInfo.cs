@@ -12,7 +12,9 @@ namespace API.Entities
         [Column(TypeName = "varchar(10)")]
         public string GPA { get; set; }
 
-        public DateTime GradDate { get; set; }
+        public Nullable<DateTime> GradDate { get; set; }
+
+        // public DateTime GradDate { get; set; } = DateTime.Now;
 
         [Column(TypeName = "nvarchar(255)")]
         public string BestEmail { get; set; }

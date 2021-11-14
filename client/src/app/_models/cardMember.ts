@@ -19,6 +19,7 @@ export interface CardMember {
   major: string;
   college: string;
   givingLevel: string;
+  giftAmt: number;
   empName: string;
   empIndustry: string;
   employeeNum: string;

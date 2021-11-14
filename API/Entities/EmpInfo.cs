@@ -12,6 +12,7 @@ namespace API.Entities
         public string EmpWebsite { get; set; }
         public string CompanyDescription { get; set; }
         public string WhyWork { get; set; }
+        public bool IsActive { get; set; } = true;
         public virtual AppUser AppUser { get; set; }
         public int AppUserId { get; set; }
     }

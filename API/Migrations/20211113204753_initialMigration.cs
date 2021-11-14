@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace API.Migrations
 {
-    public partial class NewInitial : Migration
+    public partial class initialMigration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -76,6 +76,8 @@ namespace API.Migrations
                     ClassYear = table.Column<string>(type: "varchar(12)", nullable: true),
                     Major = table.Column<string>(type: "nvarchar(60)", nullable: true),
                     College = table.Column<string>(type: "varchar(30)", nullable: true),
+                    GivingLevel = table.Column<string>(type: "varchar(30)", nullable: true),
+                    GiftAmt = table.Column<int>(type: "int", nullable: false),
                     EmpName = table.Column<string>(type: "nvarchar(60)", nullable: true),
                     EmpIndustry = table.Column<string>(type: "varchar(30)", nullable: true),
                     EmployeeNum = table.Column<string>(type: "varchar(30)", nullable: true),
@@ -96,6 +98,7 @@ namespace API.Migrations
                     EmpWebsite = table.Column<string>(type: "nvarchar(255)", nullable: true),
                     CompanyDescription = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     WhyWork = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    IsActive = table.Column<bool>(type: "bit", nullable: false),
                     AppUserId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
@@ -148,10 +151,10 @@ namespace API.Migrations
                     LookingFor = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     PositionType = table.Column<string>(type: "varchar(25)", nullable: true),
                     PositionLocation = table.Column<string>(type: "nvarchar(60)", nullable: true),
-                    DateAdded = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    StartDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    AppDeadline = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    Active = table.Column<bool>(type: "bit", nullable: false),
+                    DateAdded = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    StartDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    AppDeadline = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    IsActive = table.Column<bool>(type: "bit", nullable: false),
                     HrContact = table.Column<string>(type: "nvarchar(100)", nullable: true),
                     HrContactTitle = table.Column<string>(type: "nvarchar(100)", nullable: true),
                     HowToApply = table.Column<string>(type: "nvarchar(256)", nullable: true),
@@ -177,11 +180,12 @@ namespace API.Migrations
                     StudInfoId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     GPA = table.Column<string>(type: "varchar(10)", nullable: true),
-                    GradDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    GradDate = table.Column<DateTime>(type: "datetime2", nullable: true),
                     BestEmail = table.Column<string>(type: "nvarchar(255)", nullable: true),
                     BestPhone = table.Column<string>(type: "varchar(30)", nullable: true),
                     Athletics = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Arts = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    IsActive = table.Column<bool>(type: "bit", nullable: false),
                     ExtraCurricular = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     AcademicPlus = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     WorkPlus = table.Column<string>(type: "nvarchar(max)", nullable: true),

@@ -41,14 +41,14 @@
             <br>Industry: {{cardMember.empIndustry}} 
             <br>Headquarters: {{cardMember.location}}
             </p>
-        <div *ngIf="cardMember.givingLevel == 'a'" class="a-level p-3">
-            {{" "}}
+        <div *ngIf="cardMember.givingLevel == 'a'" class="a-level text-center p-1">
+            {{cardMember.giftAmt}}
         </div>
-        <div *ngIf="cardMember.givingLevel == 'b'" class="b-level p-3">
-            {{" "}}
+        <div *ngIf="cardMember.givingLevel == 'b'" class="b-level text-center p-1">
+            {{cardMember.giftAmt}}
         </div>
-        <div *ngIf="cardMember.givingLevel == 'c'" class="c-level p-3">
-            {{" "}}
+        <div *ngIf="cardMember.givingLevel == 'c'" class="c-level text-center p-1">
+            {{cardMember.giftAmt}}
         </div>
     </ng-container>
         <!-- <p class="card-text text-muted text-center">{{member.workPlus}}</p> -->

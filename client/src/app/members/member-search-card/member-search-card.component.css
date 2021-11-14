@@ -102,3 +102,22 @@ p {
 .tooltip-inner {
   text-align: left;
 }
+
+.a-level {
+  background-color: lightblue;
+  width: auto;
+}
+
+.b-level {
+  background-color: lightgreen;
+  width: auto;
+}
+.c-level {
+  background-color: yellow;
+  width: auto;
+}
+
+.d-level {
+  background-color: lightblue;
+  width: auto;
+}

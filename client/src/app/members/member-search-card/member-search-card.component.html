@@ -2,7 +2,7 @@
     <div class="card-img-wrapper" *ngIf="member.appUserType == 'EmpHr'">
         <img src="{{member.logoUrl || '../../assets/images/logo.PNG' }}" alt="{{member.firstName}}" class="card-img-top">
         <ul class="list-inline member-icons animate text-center">
-            <li class="list-inline-item"><button routerLink='/compmembers/{{member.username}}' class="btn btn-primary">
+            <li class="list-inline-item"><button routerLink='/empmembers/{{member.username}}' class="btn btn-primary">
             <i class="fa fa-info"></i>
                 <span class="tooltip-text">
                     More info
@@ -67,5 +67,51 @@
         </ul>
     </div>   
     
+    <div class="card-body padding p-2">
+        <h6 *ngIf="member.appUserType == 'ColStudent'" class="card-title text-center mb-1">
+            <span>
+                <i class="fa fa-user mr-2"></i> 
+            </span>
+            <u><strong>{{member.firstName}} {{member.lastName}}</strong></u>
+        </h6>
+
+        <h6 *ngIf="member.appUserType == 'EmpHr'" class="card-title text-center mb-1">
+            <span>
+                <i class="fa fa-user mr-2"></i> 
+            </span>
+            <u><strong>{{member.empName}}</strong></u>
+        </h6>
+        <ng-container *ngIf="member.appUserType == 'ColStudent'" class="card-text text-muted text-center">
+            <p class="text-center">
+                {{member.classYear}} {{member.major}} major
+                <br> 
+                from {{member.location}}
+                <br>
+                attending {{member.college}}
+            </p>
+            <div class="d-level p-3">
+                {{" "}}
+            </div>
+            </ng-container>
+            <ng-container *ngIf="member.appUserType == 'EmpHr'" class="card-text text-muted text-center">
+            <p class="text-center">
+                {{member.positionType}} {{member.positionName}} position
+                <br>in {{member.positionLocation}} 
+                <br>Start date: {{member.startDate | date: "MM/dd/yyyy"}}
+                <br>Application deadline: {{member.appDeadline | date: "MM/dd/yyyy"}}
+            </p>
+            <div *ngIf="member.givingLevel == 'a'" class="a-level text-center p-1">
+                {{member.giftAmt}}
+            </div>
+            <div *ngIf="member.givingLevel == 'b'" class="b-level text-center p-1">
+                {{member.giftAmt}}
+            </div>
+            <div *ngIf="member.givingLevel == 'c'" class="c-level text-center p-1">
+                {{member.giftAmt}}
+            </div>
+        </ng-container>
+        <!-- <p class="card-text text-muted text-center">{{member.workPlus}}</p> -->
+    </div>
+</div>
     
    

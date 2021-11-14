@@ -13,16 +13,17 @@ namespace API.Entities
         public string PositionName { get; set; }
         public string PositionDescription { get; set; }
         public string LookingFor { get; set; }
+        public string PositionBenefits { get; set; }
 
         [Column(TypeName = "varchar(25)")]
         public string PositionType { get; set; }
 
         [Column(TypeName = "nvarchar(60)")]
         public string PositionLocation { get; set; }
-        public DateTime DateAdded { get; set; } = DateTime.Now;
-        public DateTime StartDate { get; set; }
-        public DateTime AppDeadline { get; set; }
-        public bool Active { get; set; } = true;
+        public Nullable<DateTime> DateAdded { get; set; }
+        public Nullable<DateTime> StartDate { get; set; }
+        public Nullable<DateTime> AppDeadline { get; set; }
+        public bool IsActive { get; set; } = true;
 
         [Column(TypeName = "nvarchar(100)")]
         public string HrContact { get; set; }

@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace API.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20211024185028_AddedIsActiveToStud")]
-    partial class AddedIsActiveToStud
+    [Migration("20211114012302_addPositionBenefits")]
+    partial class addPositionBenefits
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -54,6 +54,12 @@ namespace API.Migrations
 
                     b.Property<string>("FirstName")
                         .HasColumnType("nvarchar(30)");
+
+                    b.Property<int>("GiftAmt")
+                        .HasColumnType("int");
+
+                    b.Property<string>("GivingLevel")
+                        .HasColumnType("varchar(30)");
 
                     b.Property<DateTime>("LastActive")
                         .HasColumnType("datetime2");
@@ -126,6 +132,9 @@ namespace API.Migrations
 
                     b.Property<string>("EmpWebsite")
                         .HasColumnType("nvarchar(255)");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
 
                     b.Property<string>("WhyWork")
                         .HasColumnType("nvarchar(max)");
@@ -218,10 +227,7 @@ namespace API.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<bool>("Active")
-                        .HasColumnType("bit");
-
-                    b.Property<DateTime>("AppDeadline")
+                    b.Property<DateTime?>("AppDeadline")
                         .HasColumnType("datetime2");
 
                     b.Property<int>("AppUserId")
@@ -233,7 +239,7 @@ namespace API.Migrations
                     b.Property<string>("ApplyLink")
                         .HasColumnType("nvarchar(255)");
 
-                    b.Property<DateTime>("DateAdded")
+                    b.Property<DateTime?>("DateAdded")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("HowToApply")
@@ -245,7 +251,13 @@ namespace API.Migrations
                     b.Property<string>("HrContactTitle")
                         .HasColumnType("nvarchar(100)");
 
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
                     b.Property<string>("LookingFor")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PositionBenefits")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("PositionDescription")
@@ -260,7 +272,7 @@ namespace API.Migrations
                     b.Property<string>("PositionType")
                         .HasColumnType("varchar(25)");
 
-                    b.Property<DateTime>("StartDate")
+                    b.Property<DateTime?>("StartDate")
                         .HasColumnType("datetime2");
 
                     b.HasKey("PositionId");
@@ -304,7 +316,7 @@ namespace API.Migrations
                     b.Property<string>("GPA")
                         .HasColumnType("varchar(10)");
 
-                    b.Property<DateTime>("GradDate")
+                    b.Property<DateTime?>("GradDate")
                         .HasColumnType("datetime2");
 
                     b.Property<bool>("IsActive")

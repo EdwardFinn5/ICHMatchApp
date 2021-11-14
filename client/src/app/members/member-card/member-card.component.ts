@@ -9,6 +9,7 @@ import { Member } from 'src/app/_models/member';
 })
 export class MemberCardComponent implements OnInit {
   @Input() cardMember: CardMember;
+  @Input() member: Member;
 
   constructor() {}
 

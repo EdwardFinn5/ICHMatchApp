@@ -39,31 +39,32 @@
         <div class="col-sm-8 p-2">
 
         <tabset class="member-tabset" #memberTabs>
-            <tab heading='About {{member.firstName}}' >
-                <h4>Academic Highlights</h4>
-                <p>{{"academic plus"}}<br>
-                <strong>GPA: </strong>{{"gpa"}}<br>
-                <strong>Grad Date: </strong>{{"grad date"}}
-                </p>
-                <h4>Work Experiences</h4>
-                <p>{{"work plus"}}</p>
-                <h4>Dream Job</h4>
-                <p>{{"dream job"}}</p>
-                <h4>Resume</h4>
-                <button class="btn btn-info">Resume</button>
+            <tab heading='About {{member.firstName}}' class="tab-heading">
+                <div class="details">
+                <h4><strong>Academic Highlights</strong></h4>
+                {{member.academicPlus}}<br>
+                <h5 class="mt-2 mb-2"><u>GPA:</u> {{member.gpa}}</h5>
+                <h5 class="mt-2 mb-2"><u>Grad Date:</u> {{member.gradDate}}</h5>  
+                <h4 class="mt-2"><strong>Work Experiences</strong></h4>
+                {{member.workPlus}}<br>
+                <h4 class="mt-md-2"><strong>Dream Job</strong></h4>
+                {{member.dreamJob}}<br>
+                <h4 class="mt-2"><strong>Best way to contact {{member.firstName}}:</strong></h4>
+                <p *ngIf="member.bestEmail">Email: 
+                    {{member.bestEmail}}</p> 
+                <p *ngIf="member.bestPhone">Phone:
+                        {{member.bestPhone}}</p>
+            </div>            
             </tab>
-            <tab heading='Extra-Curricular' >
-                <h4>Athletics</h4>
-                <p>{{"athletics"}}</p>
-                <h4>Involvement in the Arts</h4>
-                <p>{{member.arts}}<br>
-                <h4>Clubs and Organizations</h4>
-                <!-- <p>{{member.extraCurricular}}</p> -->
-                <h4>Best way to contact {{member.firstName}}:</h4>
-                <!-- <p *ngIf="member.bestEmail">Email: -->
-                    <!-- {{member.bestEmail}}</p> -->
-                <!-- <p *ngIf="member.bestPhone">Phone: -->
-                        <!-- {{member.bestPhone}}</p> -->
+            <tab heading='Extra-Curricular' class="tab-heading" >
+                <div class="details">
+                <h4><strong>Athletics Experiences</strong></h4>
+                {{member.athletics}}<br>    
+                <h4 class="mt-2"><strong>Involvement in the Arts</strong></h4>
+                {{member.arts}}<br>
+                <h4 class="mt-2"><strong>Clubs and Organizations</strong></h4>
+                {{member.extraCurricular}}<br>
+                </div>
             </tab>
             <tab heading='Messages' >
                

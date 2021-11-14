@@ -2,22 +2,22 @@
 
 namespace API.Migrations
 {
-    public partial class AddGivingLevel : Migration
+    public partial class addPositionBenefits : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.AddColumn<string>(
-                name: "GivingLevel",
-                table: "Users",
-                type: "varchar(30)",
+                name: "PositionBenefits",
+                table: "Positions",
+                type: "nvarchar(max)",
                 nullable: true);
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropColumn(
-                name: "GivingLevel",
-                table: "Users");
+                name: "PositionBenefits",
+                table: "Positions");
         }
     }
 }

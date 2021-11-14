@@ -61,16 +61,16 @@ p {
 }
 
 .a-level {
-  background-color: gold;
+  background-color: lightblue;
   width: auto;
 }
 
 .b-level {
-  background-color: blue;
+  background-color: lightgreen;
   width: auto;
 }
 .c-level {
-  background-color: red;
+  background-color: yellow;
   width: auto;
 }
 

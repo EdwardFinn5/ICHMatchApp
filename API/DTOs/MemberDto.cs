@@ -22,6 +22,7 @@ namespace API.DTOs
         public string Major { get; set; }
         public string College { get; set; }
         public string GivingLevel { get; set; }
+        public int GiftAmt { get; set; }
         public string EmpName { get; set; }
         public string EmpIndustry { get; set; }
         public string EmployeeNum { get; set; }
@@ -34,28 +35,29 @@ namespace API.DTOs
         public String Athletics { get; set; }
         public String Arts { get; set; }
         public String ExtraCurricular { get; set; }
-        public String AcadmicPlus { get; set; }
+        public String AcademicPlus { get; set; }
         public String WorkPlus { get; set; }
         public String DreamJob { get; set; }
-        // public String EmpWebsite { get; set; }
-        // public String CompanyDescription { get; set; }
-        // public String WhyWork { get; set; }
-        // public String PositionName { get; set; }
-        // public String PositionDescription { get; set; }
-        // public String LookingFor { get; set; }
-        // public String PositionType { get; set; }
-        // public String PositionLocation { get; set; }
-        // public DateTime DateAdded { get; set; }
-        // public DateTime StartDate { get; set; }
-        // public DateTime AppDeadline { get; set; }
-        // public String HrContact { get; set; }
-        // public String HrContactTitle { get; set; }
-        // public String HowToApply { get; set; }
-        // public String ApplyEmail { get; set; }
-        // public String ApplyLink { get; set; }
-        // public ICollection<PhotoDto> Photos { get; set; }
-        // public ICollection<StudInfoDto> StudInfos { get; set; }
-        // public ICollection<EmpInfoDto> EmpInfos { get; set; }
-        // public ICollection<PositionDto> Positions { get; set; }
+        public String EmpWebsite { get; set; }
+        public String CompanyDescription { get; set; }
+        public String WhyWork { get; set; }
+        public String PositionName { get; set; }
+        public String PositionDescription { get; set; }
+        public String LookingFor { get; set; }
+        public String PositionBenefits { get; set; }
+        public String PositionType { get; set; }
+        public String PositionLocation { get; set; }
+        public DateTime DateAdded { get; set; }
+        public DateTime StartDate { get; set; }
+        public DateTime AppDeadline { get; set; }
+        public String HrContact { get; set; }
+        public String HrContactTitle { get; set; }
+        public String HowToApply { get; set; }
+        public String ApplyEmail { get; set; }
+        public String ApplyLink { get; set; }
+        public ICollection<PhotoDto> Photos { get; set; }
+        public ICollection<StudInfoDto> StudInfos { get; set; }
+        public ICollection<EmpInfoDto> EmpInfos { get; set; }
+        public ICollection<PositionDto> Positions { get; set; }
     }
 }

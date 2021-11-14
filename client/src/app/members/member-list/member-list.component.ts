@@ -10,6 +10,7 @@ import { MembersService } from 'src/app/_services/members.service';
 })
 export class MemberListComponent implements OnInit {
   cardMembers: CardMember[];
+  members: Member[];
 
   constructor(private memberService: MembersService) {}
 

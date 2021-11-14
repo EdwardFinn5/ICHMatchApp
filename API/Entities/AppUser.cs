@@ -41,6 +41,8 @@ namespace API.Entities
         [Column(TypeName = "varchar(30)")]
         public string GivingLevel { get; set; }
 
+        public int GiftAmt { get; set; }
+
         [Column(TypeName = "nvarchar(60)")]
         public string EmpName { get; set; }
 
@@ -53,6 +55,7 @@ namespace API.Entities
         public DateTime Created { get; set; } = DateTime.Now;
 
         public DateTime LastActive { get; set; } = DateTime.Now;
+        // public DateTime GradDate { get; set; } = DateTime.Now;
 
         public ICollection<Photo> Photos { get; set; }
         public ICollection<StudInfo> StudInfos { get; set; }
