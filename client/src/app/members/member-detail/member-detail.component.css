@@ -72,3 +72,8 @@ img {
 .tab-heading {
   font-weight: bold;
 }
+.img-studthumbnail {
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-top: 15px;
+}

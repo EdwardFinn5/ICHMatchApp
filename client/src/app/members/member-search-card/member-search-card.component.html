@@ -1,4 +1,4 @@
-<div class="card mb-4">
+<div class="card mb-4" *ngIf="member" >
     <div class="card-img-wrapper" *ngIf="member.appUserType == 'EmpHr'">
         <img src="{{member.logoUrl || '../../assets/images/logo.PNG' }}" alt="{{member.firstName}}" class="card-img-top">
         <ul class="list-inline member-icons animate text-center">
