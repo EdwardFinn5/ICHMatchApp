@@ -10,4 +10,5 @@ export interface StudInfo {
   academicPlus: string;
   workPlus: string;
   dreamJob: string;
+  appUserId: number;
 }
