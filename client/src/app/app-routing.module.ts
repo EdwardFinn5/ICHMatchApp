@@ -2,6 +2,9 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AboutComponent } from './about/about.component';
 import { EmpmemberDetailComponent } from './empmembers/empmember-detail/empmember-detail.component';
+import { EmpmemberEditCardnlogoComponent } from './empmembers/empmember-edit-cardnlogo/empmember-edit-cardnlogo.component';
+import { EmpmemberEditEmpinfoComponent } from './empmembers/empmember-edit-empinfo/empmember-edit-empinfo.component';
+import { EmpmemberEditPositionComponent } from './empmembers/empmember-edit-position/empmember-edit-position.component';
 import { EmpmemberListComponent } from './empmembers/empmember-list/empmember-list.component';
 import { EmpmemberSearchComponent } from './empmembers/empmember-search/empmember-search.component';
 import { NotFoundComponent } from './errors/not-found/not-found.component';
@@ -10,6 +13,8 @@ import { TestErrorsComponent } from './errors/test-errors/test-errors.component'
 import { HomeComponent } from './home/home.component';
 import { ListsComponent } from './lists/lists.component';
 import { MemberDetailComponent } from './members/member-detail/member-detail.component';
+import { MemberEditCardnphotoComponent } from './members/member-edit-cardnphoto/member-edit-cardnphoto.component';
+import { MemberEditStudinfoComponent } from './members/member-edit-studinfo/member-edit-studinfo.component';
 import { MemberListComponent } from './members/member-list/member-list.component';
 import { MemberSearchComponent } from './members/member-search/member-search.component';
 import { MessagesComponent } from './messages/messages.component';
@@ -36,7 +41,13 @@ const routes: Routes = [
       { path: 'membersearch', component: MemberSearchComponent },
       { path: 'empmembersearch', component: EmpmemberSearchComponent },
       { path: 'members/:username', component: MemberDetailComponent },
+      { path: 'members/:id', component: MemberDetailComponent },
+      { path: 'member/edit', component: MemberEditCardnphotoComponent },
+      { path: 'academic/edit', component: MemberEditStudinfoComponent },
       { path: 'empmembers/:username', component: EmpmemberDetailComponent },
+      { path: 'empmember/edit', component: EmpmemberEditCardnlogoComponent },
+      { path: 'company/edit', component: EmpmemberEditEmpinfoComponent },
+      { path: 'position/edit', component: EmpmemberEditPositionComponent },
     ],
   },
   { path: 'lists', component: ListsComponent },

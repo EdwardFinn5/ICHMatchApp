@@ -37,5 +37,13 @@ namespace API.Controllers
             return await _cardUserRepository.GetMemberAsync(username);
 
         }
+
+        // [Route("users/{id:int}")]
+        // [HttpGet("{id}")]
+        // public async Task<ActionResult<CardMemberDto>> GetUserbyId(int id)
+        // {
+        //     return await _cardUserRepository.GetMemberIdAsync(id);
+
+        // }
     }
 }

@@ -30,6 +30,11 @@ import { MemberSearchCardComponent } from './members/member-search-card/member-s
 import { MemberCardComponent } from './members/member-card/member-card.component';
 import { EmpmemberCardComponent } from './empmembers/empmember-card/empmember-card.component';
 import { JwtInterceptor } from './_interceptors/jwt.interceptor';
+import { MemberEditCardnphotoComponent } from './members/member-edit-cardnphoto/member-edit-cardnphoto.component';
+import { MemberEditStudinfoComponent } from './members/member-edit-studinfo/member-edit-studinfo.component';
+import { EmpmemberEditCardnlogoComponent } from './empmembers/empmember-edit-cardnlogo/empmember-edit-cardnlogo.component';
+import { EmpmemberEditEmpinfoComponent } from './empmembers/empmember-edit-empinfo/empmember-edit-empinfo.component';
+import { EmpmemberEditPositionComponent } from './empmembers/empmember-edit-position/empmember-edit-position.component';
 
 @NgModule({
   declarations: [
@@ -55,6 +60,11 @@ import { JwtInterceptor } from './_interceptors/jwt.interceptor';
     MemberSearchCardComponent,
     MemberCardComponent,
     EmpmemberCardComponent,
+    MemberEditCardnphotoComponent,
+    MemberEditStudinfoComponent,
+    EmpmemberEditCardnlogoComponent,
+    EmpmemberEditEmpinfoComponent,
+    EmpmemberEditPositionComponent,
   ],
   imports: [
     BrowserModule,

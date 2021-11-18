@@ -1,0 +1,74 @@
+<div class="row shadow"  *ngIf="member" style="margin-left: 0px">
+    <div class="text-center">
+        <h1><strong>Your card info and photo</strong></h1>
+    </div>
+    <div class="text-center">
+        <div class="alert alert-info">
+            <p><strong>Alert: </strong>You have made changes. Any unsaved changes will be lost</p>
+        </div>
+    </div>
+
+    <div class="col-sm-4 p-0">
+            <div class="card">
+            <img src="{{member.studentUrl || '.assets/user.png'}}" alt="{{member.firstName}}"
+                class="card-img-top img-studthumbnail">
+            <div class="card-body text-center">
+                <!-- <div class="mb-1" *ngIf="(presence.onlineUsers$ | async).includes(member.username)">
+                    <i class="fa fa-user-circle text-success"></i> Online now
+                </div> -->
+                
+                    <u><strong>-- {{member.firstName}} {{member.lastName}} --</strong></u>
+                        <br><strong>{{member.classYear}} {{member.major}} Major</strong>
+                        <br> from <br>
+                        <strong>{{member.location}}</strong>
+                        <br> attending <br>
+                        <strong>{{member.college}}</strong>
+                        <br> Profile Created: <br>
+                        <strong>{{member.created | date: "MMM dd yyyy" }}</strong>
+                        <br> Last Activity: <br>
+                        <strong>{{member.lastActive | date: "MMM dd yyyy" }}</strong>
+            </div>
+            
+                <div class="btn-group d-flex card-footer">
+                    <!-- <button class="btn btn-primary mr-2">Possible Fit</button> -->
+                    <button class="btn btn-success btn-block">Save Changes</button>
+                </div>
+        </div>
+    </div>
+    
+     
+        <div class="col-sm-8 p-2">
+
+        <tabset class="member-tabset" #memberTabs>
+            <tab heading='About {{member.firstName}}' class="tab-heading">
+                <div class="details">
+                    <u><strong><h5>Card Information</h5></strong></u>
+                    <label for="classYear"><strong>Class Year: </strong></label>
+                    <input [(ngModel)]="member.classYear" type="text" name="classYear" class="form-control mb-2 mr-5">
+                    <label for="major"><strong>Major: </strong></label>
+                    <input [(ngModel)]="member.major" type="text" name="major" class="form-control mb-2">
+                    <label for="hometown"><strong>Hometown: </strong></label>
+                    <input [(ngModel)]="member.location" type="text" name="hometown" class="form-control mb-2">
+                    <label for="college"><strong>College: </strong></label>
+                    <input [(ngModel)]="member.college" type="text" name="college" class="form-control mb-2">
+            </div>            
+            </tab>
+            <tab heading='Extra-Curricular' class="tab-heading" >
+                <div class="details">
+                <h4><strong>Athletics Experiences</strong></h4>
+                {{member.athletics}}<br>    
+                <h4 class="mt-2"><strong>Involvement in the Arts</strong></h4>
+                {{member.arts}}<br>
+                <h4 class="mt-2"><strong>Clubs and Organizations</strong></h4>
+                {{member.extraCurricular}}<br>
+                </div>
+            </tab>
+            <tab heading='Messages' >
+               
+            </tab>
+
+        </tabset>
+    </div>
+
+
+

@@ -19,5 +19,6 @@ namespace API.Interfaces
 
         Task<IEnumerable<CardMemberDto>> GetMembersAsync();
         Task<CardMemberDto> GetMemberAsync(string username);
+        Task<CardMemberDto> GetMemberIdAsync(int id);
     }
 }

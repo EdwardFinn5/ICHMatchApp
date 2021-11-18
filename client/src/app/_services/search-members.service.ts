@@ -22,6 +22,7 @@ export class SearchMembersService {
   }
 
   getSearchMember(username: string) {
+    console.log('hello');
     return this.http.get<Member>(this.baseUrl + 'searchusers/' + username);
   }
 }

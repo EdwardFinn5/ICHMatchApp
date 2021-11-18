@@ -29,6 +29,14 @@ namespace API.Data
                 .SingleOrDefaultAsync();
         }
 
+        public async Task<CardMemberDto> GetMemberIdAsync(int id)
+        {
+            return await _context.Users
+               .Where(x => x.AppUserId == id)
+               .ProjectTo<CardMemberDto>(_mapper.ConfigurationProvider)
+               .SingleOrDefaultAsync();
+        }
+
         public async Task<IEnumerable<CardMemberDto>> GetMembersAsync()
         {
             return await _context.Users

@@ -76,7 +76,6 @@ namespace API.Helpers
             .ForMember(dest => dest.ApplyLink, opt => opt
                 .MapFrom(src => src.Positions.FirstOrDefault(x => x.IsActive).ApplyLink));
 
-
             CreateMap<AppUser, CardMemberDto>()
                 .ForMember(dest => dest.StudentUrl, opt => opt
                     .MapFrom(src => src.Photos.FirstOrDefault(x => x.IsMain).StudentUrl))
