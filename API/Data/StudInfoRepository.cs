@@ -29,7 +29,7 @@ namespace API.Data
         public async Task<StudInfoDto> GetStudInfoDtoAsync(int id)
         {
             return await _context.StudInfos
-                 .Where(x => x.StudInfoId == id)
+                 .Where(x => x.AppUserId == id)
                  .ProjectTo<StudInfoDto>(_mapper.ConfigurationProvider)
                  .SingleOrDefaultAsync();
         }

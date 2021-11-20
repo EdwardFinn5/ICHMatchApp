@@ -1,1 +1,66 @@
-<p>empmember-edit-cardnlogo works!</p>
+<div class="container-fluid">
+
+    <div class="row shadow"  *ngIf="member" style="margin-left: 0px">
+        <div class="text-center">
+            <h1><strong>Your card info and logo</strong></h1>
+        </div>
+        <div class="text-center">
+            <div class="alert alert-info">
+                <p><strong>Alert: </strong>You have made changes. Any unsaved changes will be lost</p>
+            </div>
+        </div>
+    
+        <div class="col-sm-4 p-0">
+                <div class="card">
+                    <img src="{{member.logoUrl || '../../assets/images/logo.PNG' }}" alt="{{member.empName}}" 
+                    class="card-img-top img-studthumbnail">
+                <div class="card-body text-center">
+                    <!-- <div class="mb-1" *ngIf="(presence.onlineUsers$ | async).includes(member.username)">
+                        <i class="fa fa-user-circle text-success"></i> Online now
+                    </div> -->
+                    
+                    <u><strong>{{member.empName}}</strong></u>
+                
+                <p class="card-text text-muted text-center">
+                    {{member.empIndustry}} industry
+                    <br> 
+                    Number of employees: {{member.employeeNum}}
+                    <br>
+                    Located in {{member.location}}
+                </p>
+                </div>
+                
+                    <div class="btn-group d-flex card-footer">
+                        <!-- <button class="btn btn-primary mr-2">Possible Fit</button> -->
+                        <button class="btn btn-success btn-block">Save Changes</button>
+                    </div>
+            </div>
+        </div>
+    
+        
+         
+            <div class="col-sm-8 p-2">
+    
+            <tabset class="member-tabset" #memberTabs>
+                <tab heading='About {{member.empName}}' class="tab-heading">
+                    <div class="details">
+                        <u><strong><h5>Card Information</h5></strong></u>
+                    <label for="industry"><strong>Industry: </strong></label>
+                    <input [(ngModel)]="member.empIndustry" type="text" name="industry" class="form-control mb-2">
+                    <label for="employeeNum"><strong>Number of employees: </strong></label>
+                    <input [(ngModel)]="member.employeeNum" type="text" name="employeeNum" class="form-control mb-2">
+                    <label for="empLocation"><strong>Employer location: </strong></label>
+                    <input [(ngModel)]="member.location" type="text" name="empLocation" class="form-control mb-2">
+                </div>            
+                </tab>
+                
+                <tab heading='Messages' >
+                   
+                </tab>
+    
+            </tabset>
+        </div>
+    </div> 
+    
+    
+    

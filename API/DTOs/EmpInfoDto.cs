@@ -6,5 +6,6 @@ namespace API.DTOs
         public string EmpWebsite { get; set; }
         public string CompanyDescription { get; set; }
         public string WhyWork { get; set; }
+        public int AppUserId { get; set; }
     }
 }

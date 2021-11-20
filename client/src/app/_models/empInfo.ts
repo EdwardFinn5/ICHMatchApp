@@ -3,4 +3,5 @@ export interface EmpInfo {
   empWebsite: string;
   companyDescription: string;
   whyWork: string;
+  appUserId: number;
 }
