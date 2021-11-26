@@ -5,7 +5,7 @@
             <h1><strong>Your Academic/Work Info</strong></h1>
         </div>
         <div class="text-center">
-            <div class="alert alert-info">
+            <div class="alert alert-info" *ngIf="editForm.dirty">
                 <p><strong>Alert: </strong>You have made changes. Any unsaved changes will be lost</p>
             </div>
         </div>
@@ -18,6 +18,7 @@
                     <!-- <div class="mb-1" *ngIf="(presence.onlineUsers$ | async).includes(member.username)">
                         <i class="fa fa-user-circle text-success"></i> Online now
                     </div> -->
+                    <form #editForm="ngForm" id="editForm" (ngSubmit)="updateStudInfo()">
                     <label for="academicPlus"><strong>Academic Accomplishmensts: </strong></label>
                     <textarea [(ngModel)]="studInfo.academicPlus" name="academicPlus" class="form-control mb-2" ></textarea>
 
@@ -53,11 +54,12 @@
                         <label for="bestPhone"><strong>Best Phone: </strong></label>
                         <input [(ngModel)]=" studInfo.bestPhone" type="text" name="bestPhone" class="form-control mb-2 ml-2 width: 100%">
                     </div> 
+                </form>
                 </div>
                 
                     <div class="btn-group d-flex card-footer">
                         <!-- <button class="btn btn-primary mr-2">Possible Fit</button> -->
-                        <button class="btn btn-success btn-block">Save Changes</button>
+                        <button [disabled]="!editForm.dirty" form="editForm" type="submit" class="btn btn-success btn-block">Save Changes</button>
                     </div>
             </div>
         </div>

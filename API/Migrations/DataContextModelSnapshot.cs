@@ -59,6 +59,9 @@ namespace API.Migrations
                     b.Property<string>("GivingLevel")
                         .HasColumnType("varchar(30)");
 
+                    b.Property<DateTime>("GradDate")
+                        .HasColumnType("datetime2");
+
                     b.Property<DateTime>("LastActive")
                         .HasColumnType("datetime2");
 
@@ -319,6 +322,9 @@ namespace API.Migrations
 
                     b.Property<bool>("IsActive")
                         .HasColumnType("bit");
+
+                    b.Property<string>("StudInfoName")
+                        .HasColumnType("nvarchar(255)");
 
                     b.Property<string>("WorkPlus")
                         .HasColumnType("nvarchar(max)");

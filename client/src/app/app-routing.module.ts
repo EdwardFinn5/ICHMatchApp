@@ -23,6 +23,10 @@ import { RegisterHomeComponent } from './register-home/register-home.component';
 import { RegisterStudComponent } from './register-stud/register-stud.component';
 import { UserLoginComponent } from './user-login/user-login.component';
 import { AuthGuard } from './_guards/auth.guard';
+import { PreventUnsavedEmpmemberCardChangesGuard } from './_guards/prevent-unsaved-empmember-card-changes.guard';
+import { PreventUnsavedEmpmemberCardEmpInfoChangesGuard } from './_guards/prevent-unsaved-empmember-card-emp-info-changes.guard';
+import { PreventUnsavedMemberCardChangesGuard } from './_guards/prevent-unsaved-member-card-changes.guard';
+import { PreventUnsavedMemberStudInfoChangesGuard } from './_guards/prevent-unsaved-member-stud-info-changes.guard';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -42,11 +46,27 @@ const routes: Routes = [
       { path: 'empmembersearch', component: EmpmemberSearchComponent },
       { path: 'members/:username', component: MemberDetailComponent },
       { path: 'members/:id', component: MemberDetailComponent },
-      { path: 'member/edit', component: MemberEditCardnphotoComponent },
-      { path: 'academic/edit', component: MemberEditStudinfoComponent },
+      {
+        path: 'member/edit',
+        component: MemberEditCardnphotoComponent,
+        canDeactivate: [PreventUnsavedMemberCardChangesGuard],
+      },
+      {
+        path: 'academic/edit',
+        component: MemberEditStudinfoComponent,
+        canDeactivate: [PreventUnsavedMemberStudInfoChangesGuard],
+      },
       { path: 'empmembers/:username', component: EmpmemberDetailComponent },
-      { path: 'empmember/edit', component: EmpmemberEditCardnlogoComponent },
-      { path: 'company/edit', component: EmpmemberEditEmpinfoComponent },
+      {
+        path: 'empmember/edit',
+        component: EmpmemberEditCardnlogoComponent,
+        canDeactivate: [PreventUnsavedEmpmemberCardChangesGuard],
+      },
+      {
+        path: 'company/edit',
+        component: EmpmemberEditEmpinfoComponent,
+        canDeactivate: [PreventUnsavedEmpmemberCardEmpInfoChangesGuard],
+      },
       { path: 'position/edit', component: EmpmemberEditPositionComponent },
     ],
   },

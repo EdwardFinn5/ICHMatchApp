@@ -86,6 +86,8 @@ namespace API.Helpers
             CreateMap<StudInfo, StudInfoDto>();
             CreateMap<EmpInfo, EmpInfoDto>();
             CreateMap<Position, PositionDto>();
+            CreateMap<MemberUpdateDto, AppUser>();
+            CreateMap<StudInfoUpdateDto, StudInfo>();
         }
     }
 }

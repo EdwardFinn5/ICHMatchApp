@@ -1,1 +1,100 @@
-<p>empmember-edit-position works!</p>
+<div class="container-fluid">
+
+    <div class="row shadow"  *ngIf="position" style="margin-left: 0px">
+        <div class="text-center">
+            <h1><strong>Your Position Info</strong></h1>
+        </div>
+        <div class="text-center">
+            <div class="alert alert-info" *ngIf="editForm.dirty">
+                <p><strong>Alert: </strong>You have made changes. Any unsaved changes will be lost</p>
+            </div>
+        </div>
+    
+        <div class="col-sm-4 col-lg-8 col-md-6 p-0 mx-auto">
+                <div class="card">
+                <!-- <img src="{{member.studentUrl || '.assets/user.png'}}" alt="{{member.firstName}}"
+                    class="card-img-top img-studthumbnail"> -->
+                <div class="card-body text-center">
+                    <!-- <div class="mb-1" *ngIf="(presence.onlineUsers$ | async).includes(member.username)">
+                        <i class="fa fa-user-circle text-success"></i> Online now
+                    </div> -->
+                    <form #editForm="ngForm" id="editForm" (ngSubmit)="updatePosition()">
+                    <label for="positionName"><strong>Position: </strong></label>
+                    <input [(ngModel)]="position.positionName" type="text" name="positionName" class="form-control mb-2">
+                    <label for="positionType"><strong>Position Type: </strong></label>
+                    <input [(ngModel)]="position.positionType" type="text" name="positionType" class="form-control mb-2">
+                    <label for="positionLocation"><strong>Position Location: </strong></label>
+                    <input [(ngModel)]="position.positionLocation" type="text" name="positionLocation" class="form-control mb-2">
+                    <label for="startDate"><strong>Start Date: </strong></label>
+                    <input [(ngModel)]="position.startDate" type="text" name="startDate" class="form-control mb-2">
+                    <label for="appDeadline"><strong>Application Deadline: </strong></label>
+                    <input [(ngModel)]="position.appDeadline" type="text" name="appDeadline" class="form-control mb-2">
+                   
+                    <u><strong><h5>Position Details</h5></strong></u>
+                    <label for="positionDescription"><strong>Position Description: </strong></label>
+                    <textarea [(ngModel)]="position.positionDescription" name="positionDescription" class="form-control mb-2" rows="3" ></textarea>
+                    <label for="lookingFor"><strong>What we are looking for: </strong></label>
+                    <textarea [(ngModel)]="position.lookingFor" name="lookingFor" class="form-control mb-2" rows="3" ></textarea>
+                    <div *ngIf="position.positionBenefits" >
+                        <label for="positionBenefits"><strong>Benefits of this position: </strong></label>
+                        <textarea [(ngModel)]="position.positionBenefits" name="positionBenefits" class="form-control mb-2" rows="3" ></textarea>
+                    </div>
+                    <u><strong><h5>Application Details</h5></strong></u>
+                    <label for="howToApply"><strong>How to apply: </strong></label>
+                    <textarea [(ngModel)]="position.howToApply" name="howToApply" class="form-control mb-2" rows="3" ></textarea>
+                    <label for="applyLink"><strong>Link to apply: </strong></label>
+                    <input [(ngModel)]="position.applyEmail" type="text" name="applyLink" class="form-control mb-2">
+                    <label for="hrContact"><strong>Contact name: </strong></label>
+                    <input [(ngModel)]="position.hrContact" type="text" name="hrContact" class="form-control mb-2">
+                    <label for="hrContactTitle"><strong>Contact title: </strong></label>
+                    <input [(ngModel)]="position.hrContactTitle" type="text" name="hrContactTitle" class="form-control mb-2">
+                </form>
+                </div>
+                
+                    <div class="btn-group d-flex card-footer">
+                        <!-- <button class="btn btn-primary mr-2">Possible Fit</button> -->
+                        <button [disabled]="!editForm.dirty" form="editForm" type="submit" class="btn btn-success btn-block">Save Changes</button>
+                    </div>
+            </div>
+        </div>
+    
+       
+         
+            <!-- <div class="col-sm-8 p-2">
+    
+            <tabset class="member-tabset" #memberTabs>
+                <tab heading='About {{member.firstName}}' class="tab-heading">
+                    <div class="details">
+                        <u><strong><h5>Card Information</h5></strong></u>
+                        <label for="classYear"><strong>Class Year: </strong></label>
+                        <input [(ngModel)]="member.classYear" type="text" name="classYear" class="form-control mb-2 mr-5">
+                        <label for="major"><strong>Major: </strong></label>
+                        <input [(ngModel)]="member.major" type="text" name="major" class="form-control mb-2">
+                        <label for="hometown"><strong>Hometown: </strong></label>
+                        <input [(ngModel)]="member.location" type="text" name="hometown" class="form-control mb-2">
+                        <label for="college"><strong>College: </strong></label>
+                        <input [(ngModel)]="member.college" type="text" name="college" class="form-control mb-2">
+                </div>            
+                </tab>  -->
+
+                <!-- <tab heading='Extra-Curricular' class="tab-heading" >
+                    <div class="details">
+                    <h4><strong>Athletics Experiences</strong></h4>
+                    {{member.athletics}}<br>    
+                    <h4 class="mt-2"><strong>Involvement in the Arts</strong></h4>
+                    {{member.arts}}<br>
+                    <h4 class="mt-2"><strong>Clubs and Organizations</strong></h4>
+                    {{member.extraCurricular}}<br>
+                    </div>
+                </tab> -->
+                <!-- <tab heading='Messages' >
+                   
+                </tab>
+    
+            </tabset>
+        </div> -->
+    </div> 
+     
+    
+    
+

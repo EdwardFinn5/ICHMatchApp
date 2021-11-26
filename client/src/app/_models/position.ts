@@ -2,6 +2,7 @@ export interface Position {
   positionId: number;
   positionName: string;
   positionDescription: string;
+  positionBenefits: string;
   lookingFor: string;
   positionType: string;
   positionLocation: string;
@@ -14,4 +15,5 @@ export interface Position {
   howToApply: string;
   applyEmail: string;
   applyLink: string;
+  appUserId: number;
 }

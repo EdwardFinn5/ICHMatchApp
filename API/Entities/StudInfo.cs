@@ -9,6 +9,9 @@ namespace API.Entities
         [Key]
         public int StudInfoId { get; set; }
 
+        [Column(TypeName = "nvarchar(255)")]
+        public string StudInfoName { get; set; }
+
         [Column(TypeName = "varchar(10)")]
         public string GPA { get; set; }
 

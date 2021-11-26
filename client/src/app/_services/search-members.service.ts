@@ -4,6 +4,7 @@ import { environment } from 'src/environments/environment';
 import { EmpInfo } from '../_models/empInfo';
 import { Member } from '../_models/member';
 import { StudInfo } from '../_models/studinfo';
+import { Position } from '../_models/position';
 
 // const httpOptions = {
 //   headers: new HttpHeaders({
@@ -38,5 +39,12 @@ export class SearchMembersService {
     console.log(appUserId);
     console.log('previous is appUserId');
     return this.http.get<StudInfo>(this.baseUrl + 'studinfos/' + appUserId);
+  }
+
+  getPosition(appUserId: number) {
+    console.log('getting position info');
+    console.log(appUserId);
+    console.log('previous is appUserId');
+    return this.http.get<Position>(this.baseUrl + 'positions/' + appUserId);
   }
 }

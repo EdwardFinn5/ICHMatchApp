@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace API.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20211114012302_addPositionBenefits")]
-    partial class addPositionBenefits
+    [Migration("20211126163226_newInitial")]
+    partial class newInitial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -60,6 +60,9 @@ namespace API.Migrations
 
                     b.Property<string>("GivingLevel")
                         .HasColumnType("varchar(30)");
+
+                    b.Property<DateTime>("GradDate")
+                        .HasColumnType("datetime2");
 
                     b.Property<DateTime>("LastActive")
                         .HasColumnType("datetime2");
@@ -321,6 +324,9 @@ namespace API.Migrations
 
                     b.Property<bool>("IsActive")
                         .HasColumnType("bit");
+
+                    b.Property<string>("StudInfoName")
+                        .HasColumnType("nvarchar(255)");
 
                     b.Property<string>("WorkPlus")
                         .HasColumnType("nvarchar(max)");

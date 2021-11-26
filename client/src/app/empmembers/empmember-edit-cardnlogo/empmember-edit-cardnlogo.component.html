@@ -5,7 +5,7 @@
             <h1><strong>Your card info and logo</strong></h1>
         </div>
         <div class="text-center">
-            <div class="alert alert-info">
+            <div class="alert alert-info" *ngIf="editForm.dirty">
                 <p><strong>Alert: </strong>You have made changes. Any unsaved changes will be lost</p>
             </div>
         </div>
@@ -32,7 +32,7 @@
                 
                     <div class="btn-group d-flex card-footer">
                         <!-- <button class="btn btn-primary mr-2">Possible Fit</button> -->
-                        <button class="btn btn-success btn-block">Save Changes</button>
+                        <button [disabled]="!editForm.dirty" form="editForm" type="submit" class="btn btn-success btn-block">Save Changes</button>
                     </div>
             </div>
         </div>
@@ -43,6 +43,7 @@
     
             <tabset class="member-tabset" #memberTabs>
                 <tab heading='About {{member.empName}}' class="tab-heading">
+                    <form #editForm="ngForm" id="editForm" (ngSubmit)="updateMemberCard()">
                     <div class="details">
                         <u><strong><h5>Card Information</h5></strong></u>
                     <label for="industry"><strong>Industry: </strong></label>
@@ -51,10 +52,11 @@
                     <input [(ngModel)]="member.employeeNum" type="text" name="employeeNum" class="form-control mb-2">
                     <label for="empLocation"><strong>Employer location: </strong></label>
                     <input [(ngModel)]="member.location" type="text" name="empLocation" class="form-control mb-2">
-                </div>            
+                </div>   
+                    </form>         
                 </tab>
                 
-                <tab heading='Messages' >
+                <tab heading='Edit Logo' >
                    
                 </tab>
     

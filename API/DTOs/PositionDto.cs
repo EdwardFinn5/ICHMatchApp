@@ -20,5 +20,6 @@ namespace API.DTOs
         public string HowToApply { get; set; }
         public string ApplyEmail { get; set; }
         public string ApplyLink { get; set; }
+        public int AppUserId { get; set; }
     }
 }

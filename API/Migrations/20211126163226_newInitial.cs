@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace API.Migrations
 {
-    public partial class initialMigration : Migration
+    public partial class newInitial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -82,7 +82,8 @@ namespace API.Migrations
                     EmpIndustry = table.Column<string>(type: "varchar(30)", nullable: true),
                     EmployeeNum = table.Column<string>(type: "varchar(30)", nullable: true),
                     Created = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    LastActive = table.Column<DateTime>(type: "datetime2", nullable: false)
+                    LastActive = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    GradDate = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -149,6 +150,7 @@ namespace API.Migrations
                     PositionName = table.Column<string>(type: "nvarchar(100)", nullable: true),
                     PositionDescription = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     LookingFor = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    PositionBenefits = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     PositionType = table.Column<string>(type: "varchar(25)", nullable: true),
                     PositionLocation = table.Column<string>(type: "nvarchar(60)", nullable: true),
                     DateAdded = table.Column<DateTime>(type: "datetime2", nullable: true),
@@ -179,6 +181,7 @@ namespace API.Migrations
                 {
                     StudInfoId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
+                    StudInfoName = table.Column<string>(type: "nvarchar(255)", nullable: true),
                     GPA = table.Column<string>(type: "varchar(10)", nullable: true),
                     GradDate = table.Column<DateTime>(type: "datetime2", nullable: true),
                     BestEmail = table.Column<string>(type: "nvarchar(255)", nullable: true),

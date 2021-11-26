@@ -14,7 +14,7 @@ namespace API.Interfaces
         Task<bool> SaveAllAsync();
         Task<IEnumerable<StudInfo>> GetStudInfosAsync();
         Task<StudInfo> GetStudInfoByIdAsync(int id);
-        // Task<StudInfo> GetStudInfoByUsernameAsync(string username);
+        Task<StudInfo> GetStudInfoByUsernameAsync(string username);
 
         // added the following two methods during video 97 on automapper queryable
 

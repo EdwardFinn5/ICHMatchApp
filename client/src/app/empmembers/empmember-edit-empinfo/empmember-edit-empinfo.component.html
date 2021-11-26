@@ -2,10 +2,10 @@
 
     <div class="row shadow"  *ngIf="empInfo" style="margin-left: 0px">
         <div class="text-center">
-            <h1><strong>Your Organization Info</strong></h1>
+            <h1><strong>Your Employer Info</strong></h1>
         </div>
         <div class="text-center">
-            <div class="alert alert-info">
+            <div class="alert alert-info" *ngIf="editForm.dirty">
                 <p><strong>Alert: </strong>You have made changes. Any unsaved changes will be lost</p>
             </div>
         </div>
@@ -18,17 +18,19 @@
                     <!-- <div class="mb-1" *ngIf="(presence.onlineUsers$ | async).includes(member.username)">
                         <i class="fa fa-user-circle text-success"></i> Online now
                     </div> -->
+                    <form #editForm="ngForm" id="editForm" (ngSubmit)="updateEmpInfo()">
                     <label for="empWebsite"><strong>EmpWebsite: </strong></label>
                     <input [(ngModel)]="empInfo.empWebsite" type="text" name="empWebsite" class="form-control mb-2">
                     <label for="companyDescription"><strong>About {{user.empName}}: </strong></label>
                     <textarea [(ngModel)]="empInfo.companyDescription" name="companyDescription" class="form-control mb-2" rows="3" ></textarea>
                     <label for="whyWork"><strong>Why work at {{user.empName}}: </strong></label>
                     <textarea [(ngModel)]="empInfo.whyWork" name="whyWork" class="form-control mb-2" rows="3" ></textarea>
+                </form>
                 </div>
                 
                     <div class="btn-group d-flex card-footer">
                         <!-- <button class="btn btn-primary mr-2">Possible Fit</button> -->
-                        <button class="btn btn-success btn-block">Save Changes</button>
+                        <button [disabled]="!editForm.dirty" form="editForm" type="submit" class="btn btn-success btn-block">Save Changes</button>
                     </div>
             </div>
         </div>

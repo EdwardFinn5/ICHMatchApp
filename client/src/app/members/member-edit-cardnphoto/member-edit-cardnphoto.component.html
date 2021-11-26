@@ -5,8 +5,8 @@
         <h1><strong>Your card info and photo</strong></h1>
     </div>
     <div class="text-center">
-        <div class="alert alert-info">
-            <p><strong>Alert: </strong>You have made changes. Any unsaved changes will be lost</p>
+        <div class="alert alert-info" *ngIf="editForm.dirty" >
+            <strong>Alert: </strong>You have made changes. Any unsaved changes will be lost
         </div>
     </div>
 
@@ -33,7 +33,7 @@
             
                 <div class="btn-group d-flex card-footer">
                     <!-- <button class="btn btn-primary mr-2">Possible Fit</button> -->
-                    <button class="btn btn-success btn-block">Save Changes</button>
+                    <button [disabled]="!editForm.dirty" form="editForm" type="submit" class="btn btn-success btn-block">Save Changes</button>
                 </div>
         </div>
     </div>
@@ -44,20 +44,24 @@
 
         <tabset class="member-tabset" #memberTabs>
             <tab heading='About {{member.firstName}}' class="tab-heading">
-                <div class="details">
-                    <u><strong><h5>Card Information</h5></strong></u>
-                    <label for="classYear"><strong>Class Year: </strong></label>
-                    <input [(ngModel)]="member.classYear" type="text" name="classYear" class="form-control mb-2 mr-5">
-                    <label for="major"><strong>Major: </strong></label>
-                    <input [(ngModel)]="member.major" type="text" name="major" class="form-control mb-2">
-                    <label for="hometown"><strong>Hometown: </strong></label>
-                    <input [(ngModel)]="member.location" type="text" name="hometown" class="form-control mb-2">
-                    <label for="college"><strong>College: </strong></label>
-                    <input [(ngModel)]="member.college" type="text" name="college" class="form-control mb-2">
-            </div>            
+                <form #editForm="ngForm" id="editForm" (ngSubmit)="updateMemberCard()">
+                    <div class="details">
+                        <u><strong>
+                                <h5>Card Information</h5>
+                            </strong></u>
+                        <label for="classYear"><strong>Class Year: </strong></label>
+                        <input [(ngModel)]="member.classYear" type="text" name="classYear" class="form-control mb-2 mr-5">
+                        <label for="major"><strong>Major: </strong></label>
+                        <input [(ngModel)]="member.major" type="text" name="major" class="form-control mb-2">
+                        <label for="hometown"><strong>Hometown: </strong></label>
+                        <input [(ngModel)]="member.location" type="text" name="hometown" class="form-control mb-2">
+                        <label for="college"><strong>College: </strong></label>
+                        <input [(ngModel)]="member.college" type="text" name="college" class="form-control mb-2">
+                    </div>
+                </form>
             </tab>
             
-            <tab heading='Messages' >
+            <tab heading='Edit Photo' >
                
             </tab>
 

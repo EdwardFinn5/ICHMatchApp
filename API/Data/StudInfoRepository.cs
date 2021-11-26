@@ -23,8 +23,21 @@ namespace API.Data
 
         public async Task<StudInfo> GetStudInfoByIdAsync(int id)
         {
-            return await _context.StudInfos.FindAsync(id);
+            return await _context.StudInfos
+                .Where(x => x.AppUserId == id)
+                // .ProjectTo<StudInfoDto>(_mapper.ConfigurationProvider)
+                .SingleOrDefaultAsync();
         }
+
+        public Task<StudInfo> GetStudInfoByUsernameAsync(string username)
+        {
+            throw new NotImplementedException();
+        }
+
+        // public async Task<StudInfo> GetStudInfoByUsernameAsync(string studinfoname)
+        // {
+        //     return await _context.StudInfos
+        // }
 
         public async Task<StudInfoDto> GetStudInfoDtoAsync(int id)
         {
