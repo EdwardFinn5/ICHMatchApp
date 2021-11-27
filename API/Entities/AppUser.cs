@@ -41,7 +41,7 @@ namespace API.Entities
         [Column(TypeName = "varchar(30)")]
         public string GivingLevel { get; set; }
 
-        public int GiftAmt { get; set; }
+        public int? GiftAmt { get; set; }
 
         [Column(TypeName = "nvarchar(60)")]
         public string EmpName { get; set; }

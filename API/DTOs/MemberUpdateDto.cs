@@ -11,7 +11,7 @@ namespace API.DTOs
         public string ClassYear { get; set; }
         public string Major { get; set; }
         public string College { get; set; }
-        public string GiftAmt { get; set; }
+        public int GiftAmt { get; set; }
         public string EmpName { get; set; }
         public string EmpIndustry { get; set; }
         public string EmployeeNum { get; set; }

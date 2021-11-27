@@ -53,7 +53,7 @@ namespace API.Migrations
                     b.Property<string>("FirstName")
                         .HasColumnType("nvarchar(30)");
 
-                    b.Property<int>("GiftAmt")
+                    b.Property<int?>("GiftAmt")
                         .HasColumnType("int");
 
                     b.Property<string>("GivingLevel")

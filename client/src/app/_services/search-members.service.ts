@@ -47,4 +47,14 @@ export class SearchMembersService {
     console.log('previous is appUserId');
     return this.http.get<Position>(this.baseUrl + 'positions/' + appUserId);
   }
+
+  updateStudCardMember(member: Member) {
+    console.log('updating member');
+    return this.http.put(this.baseUrl + 'searchusers', member);
+  }
+
+  updateSearchMember(member: Member) {
+    console.log('updating member');
+    return this.http.put(this.baseUrl + 'searchusers', member);
+  }
 }

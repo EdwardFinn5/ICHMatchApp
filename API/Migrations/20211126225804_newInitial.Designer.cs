@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace API.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20211126163226_newInitial")]
+    [Migration("20211126225804_newInitial")]
     partial class newInitial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -55,7 +55,7 @@ namespace API.Migrations
                     b.Property<string>("FirstName")
                         .HasColumnType("nvarchar(30)");
 
-                    b.Property<int>("GiftAmt")
+                    b.Property<int?>("GiftAmt")
                         .HasColumnType("int");
 
                     b.Property<string>("GivingLevel")

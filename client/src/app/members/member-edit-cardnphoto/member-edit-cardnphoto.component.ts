@@ -49,8 +49,12 @@ export class MemberEditCardnphotoComponent implements OnInit {
   }
 
   updateMemberCard() {
-    console.log(this.member);
-    this.toastr.success('Card info updated');
-    this.editForm.reset(this.member);
+    this.searchMembersService
+      .updateStudCardMember(this.member)
+      .subscribe(() => {
+        console.log(this.member);
+        this.toastr.success('Card info updated');
+        this.editForm.reset(this.member);
+      });
   }
 }

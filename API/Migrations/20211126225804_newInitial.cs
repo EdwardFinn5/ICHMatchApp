@@ -77,7 +77,7 @@ namespace API.Migrations
                     Major = table.Column<string>(type: "nvarchar(60)", nullable: true),
                     College = table.Column<string>(type: "varchar(30)", nullable: true),
                     GivingLevel = table.Column<string>(type: "varchar(30)", nullable: true),
-                    GiftAmt = table.Column<int>(type: "int", nullable: false),
+                    GiftAmt = table.Column<int>(type: "int", nullable: true),
                     EmpName = table.Column<string>(type: "nvarchar(60)", nullable: true),
                     EmpIndustry = table.Column<string>(type: "varchar(30)", nullable: true),
                     EmployeeNum = table.Column<string>(type: "varchar(30)", nullable: true),
