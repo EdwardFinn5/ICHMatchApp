@@ -48,8 +48,10 @@ export class EmpmemberEditCardnlogoComponent implements OnInit {
   }
 
   updateMemberCard() {
-    console.log(this.member);
-    this.toastr.success('Card info updated');
-    this.editForm.reset(this.member);
+    this.searchMembersService.updateMemberCard(this.member).subscribe(() => {
+      console.log(this.member);
+      this.toastr.success('Card info updated');
+      this.editForm.reset(this.member);
+    });
   }
 }

@@ -5,6 +5,7 @@ import { EmpInfo } from '../_models/empInfo';
 import { Member } from '../_models/member';
 import { StudInfo } from '../_models/studinfo';
 import { Position } from '../_models/position';
+import { map } from 'rxjs/operators';
 
 // const httpOptions = {
 //   headers: new HttpHeaders({
@@ -17,6 +18,7 @@ import { Position } from '../_models/position';
 })
 export class SearchMembersService {
   baseUrl = environment.apiUrl;
+  members: Member[] = [];
 
   constructor(private http: HttpClient) {}
 
@@ -48,13 +50,25 @@ export class SearchMembersService {
     return this.http.get<Position>(this.baseUrl + 'positions/' + appUserId);
   }
 
-  updateStudCardMember(member: Member) {
-    console.log('updating member');
-    return this.http.put(this.baseUrl + 'searchusers', member);
+  updateMemberCard(member: Member) {
+    console.log('updating member card');
+    return this.http.put(this.baseUrl + 'searchusers', member).pipe(
+      map(() => {
+        const index = this.members.indexOf(member);
+        this.members[index] = member;
+      })
+    );
   }
 
-  updateSearchMember(member: Member) {
-    console.log('updating member');
-    return this.http.put(this.baseUrl + 'searchusers', member);
+  updateStudInfoMember(studInfo: StudInfo, appUserId: number) {
+    console.log('getting studInfo info');
+    console.log(appUserId);
+    console.log('updating member studinfo');
+    return this.http.put(this.baseUrl + 'studinfos/' + appUserId, studInfo);
   }
+
+  // updateSearchMember(member: Member) {
+  //   console.log('updating member');
+  //   return this.http.put(this.baseUrl + 'searchusers', member);
+  // }
 }

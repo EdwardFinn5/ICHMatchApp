@@ -2,6 +2,7 @@ import { Component, HostListener, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { take } from 'rxjs/operators';
+import { Member } from 'src/app/_models/member';
 import { StudInfo } from 'src/app/_models/studinfo';
 import { User } from 'src/app/_models/user';
 import { AccountService } from 'src/app/_services/account.service';
@@ -15,6 +16,7 @@ import { SearchMembersService } from 'src/app/_services/search-members.service';
 export class MemberEditStudinfoComponent implements OnInit {
   @ViewChild('editForm') editForm: NgForm;
   studInfo: StudInfo;
+  member: Member;
   user: User;
   @HostListener('window:beforeunload', ['$event']) unloadNotification(
     $event: any
@@ -48,8 +50,11 @@ export class MemberEditStudinfoComponent implements OnInit {
   }
 
   updateStudInfo() {
-    console.log(this.studInfo);
-    this.toastr.success('Academic info updated');
-    this.editForm.reset(this.studInfo);
+    this.searchMembersService
+      .updateStudInfoMember(this.studInfo, this.user.appUserId)
+      .subscribe(() => {
+        this.toastr.success('Academic info updated');
+        this.editForm.reset(this.studInfo);
+      });
   }
 }
