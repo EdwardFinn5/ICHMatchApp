@@ -35,12 +35,19 @@ namespace API.Controllers
 
             var studInfo = new StudInfo
             {
-                AcademicPlus = addStudInfoDto.AcademicPlus,
+                StudInfoId = addStudInfoDto.StudInfoId,
                 StudInfoName = addStudInfoDto.StudInfoName,
+                GPA = addStudInfoDto.GPA,
+                GradDate = addStudInfoDto.GradDate,
+                AcademicPlus = addStudInfoDto.AcademicPlus,
+                WorkPlus = addStudInfoDto.WorkPlus,
                 Athletics = addStudInfoDto.Athletics,
                 Arts = addStudInfoDto.Arts,
+                ExtraCurricular = addStudInfoDto.ExtraCurricular,
+                BestEmail = addStudInfoDto.BestEmail,
+                BestPhone = addStudInfoDto.BestPhone,
+                DreamJob = addStudInfoDto.DreamJob,
                 AppUserId = id
-
             };
 
             _context.StudInfos.Add(studInfo);
@@ -48,6 +55,7 @@ namespace API.Controllers
 
             return new StudInfoDto
             {
+                StudInfoId = studInfo.StudInfoId,
                 AcademicPlus = studInfo.AcademicPlus,
                 StudInfoName = studInfo.StudInfoName,
                 Athletics = studInfo.Athletics,
