@@ -21,6 +21,20 @@ export class StudinfoService {
     return this.http.post(this.baseUrl + 'studinfos/' + id, model);
   }
 
+  updateStudInfoMember(studInfo: StudInfo, appUserId: number) {
+    console.log('getting studInfo info');
+    console.log(appUserId);
+    console.log('updating member studinfo');
+    return this.http.put(this.baseUrl + 'studinfos/' + appUserId, studInfo);
+  }
+
+  getStudInfo(appUserId: number) {
+    console.log('getting stud info');
+    console.log(appUserId);
+    console.log('previous is appUserId');
+    return this.http.get<StudInfo>(this.baseUrl + 'studinfos/' + appUserId);
+  }
+
   // setCurrentStudInfo(studInfo: StudInfo) {
   //   this.currentStudInfoSource.next(studInfo);
   // }

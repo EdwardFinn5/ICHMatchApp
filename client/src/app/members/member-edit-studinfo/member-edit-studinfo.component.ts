@@ -7,6 +7,7 @@ import { StudInfo } from 'src/app/_models/studinfo';
 import { User } from 'src/app/_models/user';
 import { AccountService } from 'src/app/_services/account.service';
 import { SearchMembersService } from 'src/app/_services/search-members.service';
+import { StudinfoService } from 'src/app/_services/studinfo.service';
 
 @Component({
   selector: 'app-member-edit-studinfo',
@@ -29,7 +30,8 @@ export class MemberEditStudinfoComponent implements OnInit {
   constructor(
     private accountservice: AccountService,
     private searchMembersService: SearchMembersService,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private studInfoService: StudinfoService
   ) {
     this.accountservice.currentUser$
       .pipe(take(1))
@@ -41,7 +43,7 @@ export class MemberEditStudinfoComponent implements OnInit {
   }
 
   loadStudInfo() {
-    this.searchMembersService
+    this.studInfoService
       .getStudInfo(this.user.appUserId)
       .subscribe((studInfo: StudInfo) => {
         this.studInfo = studInfo;
@@ -50,7 +52,7 @@ export class MemberEditStudinfoComponent implements OnInit {
   }
 
   updateStudInfo() {
-    this.searchMembersService
+    this.studInfoService
       .updateStudInfoMember(this.studInfo, this.user.appUserId)
       .subscribe(() => {
         this.toastr.success('Academic info updated');

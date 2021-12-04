@@ -31,27 +31,36 @@ namespace API.Controllers
 
             if (await StudInfoExists(addStudInfoDto.StudInfoName)) return BadRequest("Student Info name is taken");
 
-            // var colUser = _mapper.Map<ColUser>(hsRegisterDto);
-
             var studInfo = new StudInfo
             {
-                StudInfoId = addStudInfoDto.StudInfoId,
-                StudInfoName = addStudInfoDto.StudInfoName,
-                GPA = addStudInfoDto.GPA,
-                GradDate = addStudInfoDto.GradDate,
-                AcademicPlus = addStudInfoDto.AcademicPlus,
-                WorkPlus = addStudInfoDto.WorkPlus,
-                Athletics = addStudInfoDto.Athletics,
-                Arts = addStudInfoDto.Arts,
-                ExtraCurricular = addStudInfoDto.ExtraCurricular,
-                BestEmail = addStudInfoDto.BestEmail,
-                BestPhone = addStudInfoDto.BestPhone,
-                DreamJob = addStudInfoDto.DreamJob,
                 AppUserId = id
             };
 
+            _mapper.Map(studInfo, addStudInfoDto);
+
+            // var colUser = _mapper.Map<ColUser>(hsRegisterDto);
+
+            // var studInfo = new StudInfo
+            // {
+            //     StudInfoId = addStudInfoDto.StudInfoId,
+            //     StudInfoName = addStudInfoDto.StudInfoName,
+            //     GPA = addStudInfoDto.GPA,
+            //     GradDate = addStudInfoDto.GradDate,
+            //     AcademicPlus = addStudInfoDto.AcademicPlus,
+            //     WorkPlus = addStudInfoDto.WorkPlus,
+            //     Athletics = addStudInfoDto.Athletics,
+            //     Arts = addStudInfoDto.Arts,
+            //     ExtraCurricular = addStudInfoDto.ExtraCurricular,
+            //     BestEmail = addStudInfoDto.BestEmail,
+            //     BestPhone = addStudInfoDto.BestPhone,
+            //     DreamJob = addStudInfoDto.DreamJob,
+            //     AppUserId = id
+            // };
+
             _context.StudInfos.Add(studInfo);
             await _context.SaveChangesAsync();
+
+
 
             return new StudInfoDto
             {

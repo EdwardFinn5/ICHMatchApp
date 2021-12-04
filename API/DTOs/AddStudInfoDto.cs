@@ -10,7 +10,7 @@ namespace API.DTOs
         public int StudInfoId { get; set; }
         public string StudInfoName { get; set; }
         public string GPA { get; set; }
-        public DateTime GradDate { get; set; }
+        public Nullable<DateTime> GradDate { get; set; }
         public string BestEmail { get; set; }
         public string BestPhone { get; set; }
         public string Athletics { get; set; }

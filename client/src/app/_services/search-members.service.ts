@@ -36,12 +36,12 @@ export class SearchMembersService {
     return this.http.get<EmpInfo>(this.baseUrl + 'empinfos/' + appUserId);
   }
 
-  getStudInfo(appUserId: number) {
-    console.log('getting stud info');
-    console.log(appUserId);
-    console.log('previous is appUserId');
-    return this.http.get<StudInfo>(this.baseUrl + 'studinfos/' + appUserId);
-  }
+  // getStudInfo(appUserId: number) {
+  //   console.log('getting stud info');
+  //   console.log(appUserId);
+  //   console.log('previous is appUserId');
+  //   return this.http.get<StudInfo>(this.baseUrl + 'studinfos/' + appUserId);
+  // }
 
   getPosition(appUserId: number) {
     console.log('getting position info');
@@ -60,12 +60,12 @@ export class SearchMembersService {
     );
   }
 
-  updateStudInfoMember(studInfo: StudInfo, appUserId: number) {
-    console.log('getting studInfo info');
-    console.log(appUserId);
-    console.log('updating member studinfo');
-    return this.http.put(this.baseUrl + 'studinfos/' + appUserId, studInfo);
-  }
+  // updateStudInfoMember(studInfo: StudInfo, appUserId: number) {
+  //   console.log('getting studInfo info');
+  //   console.log(appUserId);
+  //   console.log('updating member studinfo');
+  //   return this.http.put(this.baseUrl + 'studinfos/' + appUserId, studInfo);
+  // }
 
   // updateSearchMember(member: Member) {
   //   console.log('updating member');

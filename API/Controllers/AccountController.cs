@@ -44,6 +44,15 @@ namespace API.Controllers
             _context.Users.Add(user);
             await _context.SaveChangesAsync();
 
+            var studInfo = new StudInfo
+            {
+                AppUserId = user.AppUserId
+            };
+
+            _context.StudInfos.Add(studInfo);
+            await _context.SaveChangesAsync();
+
+
             return new UserDto
             {
                 AppUserId = user.AppUserId,
