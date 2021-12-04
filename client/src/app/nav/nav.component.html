@@ -31,12 +31,18 @@
     
     <div *ngIf="accountService.appUserType == 'ColStudent'">
       <div class="dropdown" style="font-size: 1.3em" *ngIf="(accountService.currentUser$ | async) as user" dropdown>
-        <a class="dropdown-toggle text-light mt-5" dropdownToggle>Welcome {{user.firstName | titlecase}}</a>
+        <a class="dropdown-toggle text-light mt-5" dropdownToggle>Welcome {{user.username | titlecase}}</a>
         <div class="dropdown-menu mt-3" *dropdownMenu>
           <a routerLink="/member/edit" class="dropdown-item">Edit card/photo info</a>
           <div class="dropdown-divider"></div>
-          <a routerLink="/academic/edit" class="dropdown-item">Edit academic info</a>
+          
+          <a routerLink="/studinfo/add" class="dropdown-item">Add academic info</a>
+           
           <div class="dropdown-divider"></div>
+          <a routerLink="/studinfo/edit" class="dropdown-item">Edit academic info</a>
+         
+          <div class="dropdown-divider"></div>
+          
           <a class="dropdown-item" (click)="logout()">Logout</a>
         </div>
       </div>
@@ -44,7 +50,7 @@
 
     <div *ngIf="accountService.appUserType == 'EmpHr'">
       <div class="dropdown" style="font-size: 1.3em" *ngIf="(accountService.currentUser$ | async) as user" dropdown>
-        <a class="dropdown-toggle text-light mt-5" dropdownToggle>Welcome {{user.firstName | titlecase}}</a>
+        <a class="dropdown-toggle text-light mt-5" dropdownToggle>Welcome {{user.username | titlecase}}</a>
         <div class="dropdown-menu mt-3" *dropdownMenu>
           <a routerLink="/empmember/edit" class="dropdown-item">Edit card/logo info</a>
           <div class="dropdown-divider"></div>

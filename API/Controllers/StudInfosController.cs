@@ -25,18 +25,22 @@ namespace API.Controllers
             _studInfoRepository = studInfoRepository;
         }
 
-        [HttpPost("AddStudInfo")]
-        public async Task<ActionResult<StudInfoDto>> AddStudInfo(AddStudInfoDto addStudInfoDto)
+        [HttpPost("{id}")]
+        public async Task<ActionResult<StudInfoDto>> AddStudInfo(AddStudInfoDto addStudInfoDto, int id)
         {
-            if (await StudInfoExists(addStudInfoDto.Studinfoname)) return BadRequest("Student Info name is taken");
+
+            if (await StudInfoExists(addStudInfoDto.StudInfoName)) return BadRequest("Student Info name is taken");
 
             // var colUser = _mapper.Map<ColUser>(hsRegisterDto);
 
             var studInfo = new StudInfo
             {
-                StudInfoName = addStudInfoDto.Studinfoname.ToLower(),
+                AcademicPlus = addStudInfoDto.AcademicPlus,
+                StudInfoName = addStudInfoDto.StudInfoName,
+                Athletics = addStudInfoDto.Athletics,
                 Arts = addStudInfoDto.Arts,
-                AppUserId = 3
+                AppUserId = id
+
             };
 
             _context.StudInfos.Add(studInfo);
@@ -44,9 +48,12 @@ namespace API.Controllers
 
             return new StudInfoDto
             {
-                // AppUserId = 3,
-                Studinfoname = studInfo.StudInfoName,
+                AcademicPlus = studInfo.AcademicPlus,
+                StudInfoName = studInfo.StudInfoName,
+                Athletics = studInfo.Athletics,
                 Arts = studInfo.Arts,
+                AppUserId = id
+
             };
         }
 
@@ -99,9 +106,9 @@ namespace API.Controllers
             return BadRequest("Failed to update user");
         }
 
-        private async Task<bool> StudInfoExists(string Studinfoname)
+        private async Task<bool> StudInfoExists(string studinfoname)
         {
-            return await _context.StudInfos.AnyAsync(x => x.StudInfoName == Studinfoname.ToLower());
+            return await _context.StudInfos.AnyAsync(x => x.StudInfoName == studinfoname.ToLower());
         }
     }
 }

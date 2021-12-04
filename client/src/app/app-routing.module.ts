@@ -21,6 +21,8 @@ import { MessagesComponent } from './messages/messages.component';
 import { RegisterEmpComponent } from './register-emp/register-emp.component';
 import { RegisterHomeComponent } from './register-home/register-home.component';
 import { RegisterStudComponent } from './register-stud/register-stud.component';
+import { AddStudInfoComponent } from './studinfos/add-stud-info/add-stud-info.component';
+import { PreventUnsavedAddStudInfoChangesGuard } from './_guards/prevent-unsaved-add-stud-info-changes.guard';
 import { UserLoginComponent } from './user-login/user-login.component';
 import { AuthGuard } from './_guards/auth.guard';
 import { PreventUnsavedEmpmemberCardChangesGuard } from './_guards/prevent-unsaved-empmember-card-changes.guard';
@@ -52,7 +54,7 @@ const routes: Routes = [
         canDeactivate: [PreventUnsavedMemberCardChangesGuard],
       },
       {
-        path: 'academic/edit',
+        path: 'studinfo/edit',
         component: MemberEditStudinfoComponent,
         canDeactivate: [PreventUnsavedMemberStudInfoChangesGuard],
       },
@@ -66,6 +68,11 @@ const routes: Routes = [
         path: 'company/edit',
         component: EmpmemberEditEmpinfoComponent,
         canDeactivate: [PreventUnsavedEmpmemberCardEmpInfoChangesGuard],
+      },
+      {
+        path: 'studinfo/add',
+        component: AddStudInfoComponent,
+        canDeactivate: [PreventUnsavedAddStudInfoChangesGuard],
       },
       { path: 'position/edit', component: EmpmemberEditPositionComponent },
     ],

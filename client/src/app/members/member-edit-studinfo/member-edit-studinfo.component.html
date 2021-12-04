@@ -23,6 +23,11 @@
                     <textarea [(ngModel)]="studInfo.academicPlus" name="academicPlus" class="form-control mb-2" ></textarea>
 
                     <div class="form-inline">
+                        <label for="studInfoName"><strong>StudInfoName: </strong></label>
+                        <input [(ngModel)]=" studInfo.studInfoName" type="text" name="studInfoName" class="form-control mb-2 ml-2">
+                    </div>
+                    
+                    <div class="form-inline">
                         <label for="gpa"><strong>GPA: </strong></label>
                         <input [(ngModel)]=" studInfo.gpa" type="text" name="gpa" class="form-control mb-2 ml-2">
                     </div>

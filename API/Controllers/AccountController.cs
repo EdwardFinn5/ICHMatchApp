@@ -24,9 +24,9 @@ namespace API.Controllers
         }
 
         [HttpPost("RegisterStud")]
-        public async Task<ActionResult<UserDto>> RegisterStud(RegisterStudDto registerColPrepDto)
+        public async Task<ActionResult<UserDto>> RegisterStud(RegisterStudDto registerStudDto)
         {
-            if (await UserExists(registerColPrepDto.Username)) return BadRequest("Username is taken");
+            if (await UserExists(registerStudDto.Username)) return BadRequest("Username is taken");
 
             // var colUser = _mapper.Map<ColUser>(hsRegisterDto);
 
@@ -34,8 +34,9 @@ namespace API.Controllers
 
             var user = new AppUser
             {
-                UserName = registerColPrepDto.Username.ToLower(),
-                PasswordHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(registerColPrepDto.Password)),
+                AppUserId = registerStudDto.AppUserId,
+                UserName = registerStudDto.Username.ToLower(),
+                PasswordHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(registerStudDto.Password)),
                 PasswordSalt = hmac.Key,
                 AppUserType = "ColStudent"
             };
@@ -45,6 +46,7 @@ namespace API.Controllers
 
             return new UserDto
             {
+                AppUserId = user.AppUserId,
                 Username = user.UserName,
                 Token = _tokenService.CreateToken(user),
                 AppUserType = "ColStudent",

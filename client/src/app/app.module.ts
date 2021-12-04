@@ -35,6 +35,7 @@ import { MemberEditStudinfoComponent } from './members/member-edit-studinfo/memb
 import { EmpmemberEditCardnlogoComponent } from './empmembers/empmember-edit-cardnlogo/empmember-edit-cardnlogo.component';
 import { EmpmemberEditEmpinfoComponent } from './empmembers/empmember-edit-empinfo/empmember-edit-empinfo.component';
 import { EmpmemberEditPositionComponent } from './empmembers/empmember-edit-position/empmember-edit-position.component';
+import { AddStudInfoComponent } from './studinfos/add-stud-info/add-stud-info.component';
 
 @NgModule({
   declarations: [
@@ -65,6 +66,7 @@ import { EmpmemberEditPositionComponent } from './empmembers/empmember-edit-posi
     EmpmemberEditCardnlogoComponent,
     EmpmemberEditEmpinfoComponent,
     EmpmemberEditPositionComponent,
+    AddStudInfoComponent,
   ],
   imports: [
     BrowserModule,

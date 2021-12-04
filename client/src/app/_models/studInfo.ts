@@ -1,5 +1,6 @@
 export interface StudInfo {
   studInfoId: number;
+  studInfoName: string;
   gpa: string;
   gradDate: Date;
   bestEmail: string;

@@ -7,6 +7,7 @@ namespace API.DTOs
 {
     public class StudInfoUpdateDto
     {
+        public string StudInfoName { get; set; }
         public string GPA { get; set; }
         public DateTime GradDate { get; set; }
         public string BestEmail { get; set; }
