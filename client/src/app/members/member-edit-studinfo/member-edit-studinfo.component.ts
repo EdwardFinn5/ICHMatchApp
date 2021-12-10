@@ -29,7 +29,7 @@ export class MemberEditStudinfoComponent implements OnInit {
 
   constructor(
     private accountservice: AccountService,
-    private searchMembersService: SearchMembersService,
+    // private searchMembersService: SearchMembersService,
     private toastr: ToastrService,
     private studInfoService: StudinfoService
   ) {

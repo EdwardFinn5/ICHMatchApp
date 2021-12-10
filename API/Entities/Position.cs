@@ -9,6 +9,9 @@ namespace API.Entities
         [Key]
         public int PositionId { get; set; }
 
+        [Column(TypeName = "nvarchar(250)")]
+        public string PositionIdentifier { get; set; }
+
         [Column(TypeName = "nvarchar(100)")]
         public string PositionName { get; set; }
         public string PositionDescription { get; set; }

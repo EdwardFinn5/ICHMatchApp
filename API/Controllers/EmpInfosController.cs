@@ -35,5 +35,24 @@ namespace API.Controllers
 
         }
 
+        [HttpPut("{id}")]
+        public async Task<ActionResult> UpdateEmpInfo(EmpInfoUpdateDto empInfoUpdateDto, int id)
+        {
+            var empInfo = await _empInfoRepository.GetEmpInfoByIdAsync(id);
+
+            _mapper.Map(empInfoUpdateDto, empInfo);
+
+            _empInfoRepository.Update(empInfo);
+
+            if (await _empInfoRepository.SaveAllAsync()) return NoContent();
+
+            return BadRequest("Failed to update user");
+        }
+
+        // private async Task<bool> StudInfoExists(string studinfoname)
+        // {
+        //     return await _context.StudInfos.AnyAsync(x => x.StudInfoName == studinfoname.ToLower());
+        // }
+
     }
 }

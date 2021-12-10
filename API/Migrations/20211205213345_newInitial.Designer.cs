@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace API.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20211204162613_newInitial")]
+    [Migration("20211205213345_newInitial")]
     partial class newInitial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -265,6 +265,9 @@ namespace API.Migrations
 
                     b.Property<string>("PositionDescription")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PositionIdentifier")
+                        .HasColumnType("nvarchar(250)");
 
                     b.Property<string>("PositionLocation")
                         .HasColumnType("nvarchar(60)");

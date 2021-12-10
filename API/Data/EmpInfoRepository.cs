@@ -23,7 +23,10 @@ namespace API.Data
 
         public async Task<EmpInfo> GetEmpInfoByIdAsync(int id)
         {
-            return await _context.EmpInfos.FindAsync(id);
+            return await _context.EmpInfos
+                .Where(x => x.AppUserId == id)
+                // .ProjectTo<StudInfoDto>(_mapper.ConfigurationProvider)
+                .SingleOrDefaultAsync();
         }
 
         public async Task<EmpInfoDto> GetEmpInfoDtoAsync(int id)

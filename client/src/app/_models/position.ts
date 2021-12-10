@@ -1,5 +1,6 @@
 export interface Position {
   positionId: number;
+  positionIdentifier: string;
   positionName: string;
   positionDescription: string;
   positionBenefits: string;

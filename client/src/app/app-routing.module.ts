@@ -29,6 +29,8 @@ import { PreventUnsavedEmpmemberCardChangesGuard } from './_guards/prevent-unsav
 import { PreventUnsavedEmpmemberCardEmpInfoChangesGuard } from './_guards/prevent-unsaved-empmember-card-emp-info-changes.guard';
 import { PreventUnsavedMemberCardChangesGuard } from './_guards/prevent-unsaved-member-card-changes.guard';
 import { PreventUnsavedMemberStudInfoChangesGuard } from './_guards/prevent-unsaved-member-stud-info-changes.guard';
+import { AddPositionComponent } from './positions/add-position/add-position.component';
+import { PreventUnsavedAddPositionChangesGuard } from './_guards/prevent-unsaved-add-position-changes.guard';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -57,6 +59,11 @@ const routes: Routes = [
         path: 'studinfo/edit',
         component: MemberEditStudinfoComponent,
         canDeactivate: [PreventUnsavedMemberStudInfoChangesGuard],
+      },
+      {
+        path: 'position/add',
+        component: AddPositionComponent,
+        canDeactivate: [PreventUnsavedAddPositionChangesGuard],
       },
       { path: 'empmembers/:username', component: EmpmemberDetailComponent },
       {

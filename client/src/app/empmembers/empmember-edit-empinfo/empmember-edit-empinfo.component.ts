@@ -5,6 +5,7 @@ import { take } from 'rxjs/operators';
 import { EmpInfo } from 'src/app/_models/empInfo';
 import { User } from 'src/app/_models/user';
 import { AccountService } from 'src/app/_services/account.service';
+import { EmpinfoService } from 'src/app/_services/empinfo.service';
 import { SearchMembersService } from 'src/app/_services/search-members.service';
 
 @Component({
@@ -27,7 +28,8 @@ export class EmpmemberEditEmpinfoComponent implements OnInit {
   constructor(
     private accountservice: AccountService,
     private searchMembersService: SearchMembersService,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private empInfoService: EmpinfoService
   ) {
     this.accountservice.currentUser$
       .pipe(take(1))
@@ -39,7 +41,7 @@ export class EmpmemberEditEmpinfoComponent implements OnInit {
   }
 
   loadEmpInfo() {
-    this.searchMembersService
+    this.empInfoService
       .getEmpInfo(this.user.appUserId)
       .subscribe((empInfo: EmpInfo) => {
         this.empInfo = empInfo;
@@ -48,8 +50,11 @@ export class EmpmemberEditEmpinfoComponent implements OnInit {
   }
 
   updateEmpInfo() {
-    console.log(this.empInfo);
-    this.toastr.success('Employer info updated');
-    this.editForm.reset(this.empInfo);
+    this.empInfoService
+      .updateEmpInfoMember(this.empInfo, this.user.appUserId)
+      .subscribe(() => {
+        this.toastr.success('Employer info updated');
+        this.editForm.reset(this.empInfo);
+      });
   }
 }

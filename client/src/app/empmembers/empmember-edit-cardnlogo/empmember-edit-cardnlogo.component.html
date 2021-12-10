@@ -46,12 +46,12 @@
                     <form #editForm="ngForm" id="editForm" (ngSubmit)="updateMemberCard()">
                     <div class="details">
                         <u><strong><h5>Card Information</h5></strong></u>
-                    <label for="industry"><strong>Industry: </strong></label>
-                    <input [(ngModel)]="member.empIndustry" type="text" name="industry" class="form-control mb-2">
+                    <label for="empIndustry"><strong>Industry: </strong></label>
+                    <input [(ngModel)]="member.empIndustry" type="text" name="empIndustry" class="form-control mb-2">
                     <label for="employeeNum"><strong>Number of employees: </strong></label>
                     <input [(ngModel)]="member.employeeNum" type="text" name="employeeNum" class="form-control mb-2">
-                    <label for="empLocation"><strong>Employer location: </strong></label>
-                    <input [(ngModel)]="member.location" type="text" name="empLocation" class="form-control mb-2">
+                    <label for="location"><strong>Employer location: </strong></label>
+                    <input [(ngModel)]="member.location" type="text" name="location" class="form-control mb-2">
                 </div>   
                     </form>         
                 </tab>

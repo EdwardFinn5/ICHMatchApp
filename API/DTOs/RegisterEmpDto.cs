@@ -8,6 +8,7 @@ namespace API.DTOs
 {
     public class RegisterEmpDto
     {
+        public int AppUserId { get; set; }
         [Required]
         public string Username { get; set; }
 

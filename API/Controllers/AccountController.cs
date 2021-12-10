@@ -74,6 +74,7 @@ namespace API.Controllers
 
             var user = new AppUser
             {
+                AppUserId = registerEmpDto.AppUserId,
                 UserName = registerEmpDto.Username.ToLower(),
                 PasswordHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(registerEmpDto.Password)),
                 PasswordSalt = hmac.Key,
@@ -83,8 +84,25 @@ namespace API.Controllers
             _context.Users.Add(user);
             await _context.SaveChangesAsync();
 
+            var empInfo = new EmpInfo
+            {
+                AppUserId = user.AppUserId
+            };
+
+            _context.EmpInfos.Add(empInfo);
+            await _context.SaveChangesAsync();
+
+            // var position = new Position
+            // {
+            //     AppUserId = user.AppUserId
+            // };
+
+            // _context.Positions.Add(position);
+            // await _context.SaveChangesAsync();
+
             return new UserDto
             {
+                AppUserId = user.AppUserId,
                 Username = user.UserName,
                 Token = _tokenService.CreateToken(user),
                 AppUserType = "EmpHr",

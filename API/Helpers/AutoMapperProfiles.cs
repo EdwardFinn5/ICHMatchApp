@@ -12,6 +12,11 @@ namespace API.Helpers
     {
         public AutoMapperProfiles()
         {
+
+            // CreateMap<Position, PositionDto>()
+            //      .ForMember(dest => dest.EmpName, opt => opt
+            //         .MapFrom(src => src.Users.FirstOrDefault(x => x.Active).EmpName))
+
             CreateMap<AppUser, MemberDto>()
                 .ForMember(dest => dest.StudentUrl, opt => opt
                     .MapFrom(src => src.Photos.FirstOrDefault(x => x.IsMain).StudentUrl))
@@ -88,6 +93,7 @@ namespace API.Helpers
             CreateMap<Position, PositionDto>();
             CreateMap<MemberUpdateDto, AppUser>();
             CreateMap<StudInfoUpdateDto, StudInfo>();
+            CreateMap<EmpInfoUpdateDto, EmpInfo>();
             CreateMap<AddStudInfoDto, StudInfo>();
             CreateMap<StudInfo, AddStudInfoDto>();
         }

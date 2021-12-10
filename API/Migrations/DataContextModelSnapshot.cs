@@ -264,6 +264,9 @@ namespace API.Migrations
                     b.Property<string>("PositionDescription")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("PositionIdentifier")
+                        .HasColumnType("nvarchar(250)");
+
                     b.Property<string>("PositionLocation")
                         .HasColumnType("nvarchar(60)");
 
