@@ -36,6 +36,7 @@ export interface Member {
   companyDescription: string;
   whyWork: string;
   positionName: string;
+  positionIdentifier: string;
   positionDescription: string;
   lookingFor: string;
   positionBenefits: string;

@@ -42,6 +42,7 @@ namespace API.DTOs
         public String CompanyDescription { get; set; }
         public String WhyWork { get; set; }
         public String PositionName { get; set; }
+        public String PositionIdentifier { get; set; }
         public String PositionDescription { get; set; }
         public String LookingFor { get; set; }
         public String PositionBenefits { get; set; }

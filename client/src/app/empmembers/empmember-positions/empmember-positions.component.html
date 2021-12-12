@@ -1,0 +1,35 @@
+<div class="row shadow mt-3 " *ngIf="member">
+    <div class="positions p-0" style="text-align: center;">
+        <h3>Id: {{member.appUserId}}</h3>
+        <h3>Username: {{member.username}}</h3>
+
+        <h2>Positions:</h2>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Options</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let position of positions">
+                    <td>{{position.positionId}}</td>
+                    <td>{{position.positionName}}</td>
+                    <td>
+                        <button type="button-edit"  class="btn btn-primary btn-sm mr-2">
+                            Edit
+                        </button>
+                        <button type="button-del" (click)="deletePosition(position.positionId)"  class="btn btn-danger btn-sm">
+                            Delete
+                        </button>
+
+                    </td>
+
+
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+</div>

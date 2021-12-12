@@ -102,5 +102,13 @@ namespace API.Data
         {
             _context.Entry(user).State = EntityState.Modified;
         }
+
+        public async Task<MemberDto> GetMemberAsync(int id)
+        {
+            return await _context.Users
+                .Where(x => x.AppUserId == id)
+                .ProjectTo<MemberDto>(_mapper.ConfigurationProvider)
+                .SingleOrDefaultAsync();
+        }
     }
 }

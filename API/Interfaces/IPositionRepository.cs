@@ -18,7 +18,10 @@ namespace API.Interfaces
         // added the following two methods during video 97 on automapper queryable
 
         Task<IEnumerable<PositionDto>> GetPositionDtosAsync();
+        Task<IEnumerable<PositionDto>> GetPositionDtosAsync(int id);
         // Task<CardMemberDto> GetMemberAsync(string username);
         Task<PositionDto> GetPositionDtoAsync(int id);
+        void DeletePosition(Position position);
+        Task<bool> Complete();
     }
 }

@@ -31,6 +31,7 @@ import { PreventUnsavedMemberCardChangesGuard } from './_guards/prevent-unsaved-
 import { PreventUnsavedMemberStudInfoChangesGuard } from './_guards/prevent-unsaved-member-stud-info-changes.guard';
 import { AddPositionComponent } from './positions/add-position/add-position.component';
 import { PreventUnsavedAddPositionChangesGuard } from './_guards/prevent-unsaved-add-position-changes.guard';
+import { EmpmemberPositionsComponent } from './empmembers/empmember-positions/empmember-positions.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -47,6 +48,7 @@ const routes: Routes = [
     canActivate: [AuthGuard],
     children: [
       { path: 'membersearch', component: MemberSearchComponent },
+      { path: 'empmember/positions', component: EmpmemberPositionsComponent },
       { path: 'empmembersearch', component: EmpmemberSearchComponent },
       { path: 'members/:username', component: MemberDetailComponent },
       { path: 'members/:id', component: MemberDetailComponent },

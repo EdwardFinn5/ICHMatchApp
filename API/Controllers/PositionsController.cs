@@ -33,10 +33,12 @@ namespace API.Controllers
             // could also combine the above into: return Ok(await _userRepository.GetMembersAsync());
         }
 
-        [HttpGet("{id}")]
-        public async Task<ActionResult<PositionDto>> GetPosition(int id)
+        [HttpGet("GetById/{id}")]
+        public async Task<ActionResult<IEnumerable<PositionDto>>> GetById(int id)
         {
-            return await _positionRepository.GetPositionDtoAsync(id);
+            var positions = await _positionRepository.GetPositionDtosAsync(id);
+
+            return Ok(positions);
 
         }
 
@@ -78,6 +80,34 @@ namespace API.Controllers
                 AppUserId = id
             };
         }
+
+        [HttpDelete("{id}")]
+        public async Task<ActionResult> DeleteMessage(int id)
+        {
+            var position = await _positionRepository.GetPositionByIdAsync(id);
+
+            _positionRepository.DeletePosition(position);
+
+            if (await _positionRepository.Complete()) return Ok();
+
+            return BadRequest("Problem deleting the position");
+
+        }
+
+        [HttpPut("{id}")]
+        public async Task<ActionResult> UpdatePosition(PositionUpdateDto positionUpdateDto, int id)
+        {
+            var position = await _positionRepository.GetPositionByIdAsync(id);
+
+            _mapper.Map(positionUpdateDto, position);
+
+            _positionRepository.Update(position);
+
+            if (await _positionRepository.SaveAllAsync()) return NoContent();
+
+            return BadRequest("Failed to update user");
+        }
+
 
         private async Task<bool> PositionExists(string positionIdentifier)
         {

@@ -28,7 +28,16 @@ export class SearchMembersService {
 
   getSearchMember(username: string) {
     console.log('hello');
-    return this.http.get<Member>(this.baseUrl + 'searchusers/' + username);
+    return this.http.get<Member>(
+      this.baseUrl + 'searchusers/GetByName/' + username
+    );
+  }
+
+  getSearchMemberById(appUserId: number) {
+    console.log('hello');
+    return this.http.get<Member>(
+      this.baseUrl + 'searchusers/GetById/' + appUserId
+    );
   }
 
   getEmpInfo(appUserId: number) {

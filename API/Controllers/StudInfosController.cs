@@ -29,7 +29,7 @@ namespace API.Controllers
         public async Task<ActionResult<StudInfoDto>> AddStudInfo(AddStudInfoDto addStudInfoDto, int id)
         {
 
-            // if (await StudInfoExists(addStudInfoDto.StudInfoName)) return BadRequest("Student Info name is taken");
+            if (await StudInfoExists(addStudInfoDto.StudInfoName)) return BadRequest("Student Info name is taken");
 
             var studInfo = new StudInfo
             {

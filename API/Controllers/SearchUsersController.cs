@@ -36,11 +36,17 @@ namespace API.Controllers
             // could also combine the above into: return Ok(await _userRepository.GetMembersAsync());
         }
 
-        [HttpGet("{username}")]
-        public async Task<ActionResult<MemberDto>> GetUser(string username)
+        [HttpGet("GetByName/{username}")]
+        public async Task<ActionResult<MemberDto>> GetByName(string username)
         {
             return await _userRepository.GetMemberAsync(username);
 
+        }
+
+        [HttpGet("GetById/{id}")]
+        public async Task<ActionResult<MemberDto>> GetById(int id)
+        {
+            return await _userRepository.GetMemberAsync(id);
         }
 
         [HttpPut]

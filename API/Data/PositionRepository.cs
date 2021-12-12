@@ -21,17 +21,40 @@ namespace API.Data
             _context = context;
         }
 
-        public async Task<Position> GetPositionByIdAsync(int id)
+        public async Task<bool> Complete()
         {
-            return await _context.Positions.FindAsync(id);
+            return await _context.SaveChangesAsync() > 0;
         }
 
-        public async Task<PositionDto> GetPositionDtoAsync(int id)
+        public void DeletePosition(Position position)
+        {
+            _context.Positions.Remove(position);
+        }
+
+        // public async Task<Position> GetPositionByIdAsync(int id)
+        // {
+        //     return await _context.Positions.FindAsync(id);
+        // }
+
+        public async Task<Position> GetPositionByIdAsync(int id)
+        {
+            return await _context.Positions
+                 .Where(x => x.PositionId == id)
+                 // .ProjectTo<StudInfoDto>(_mapper.ConfigurationProvider)
+                 .SingleOrDefaultAsync();
+        }
+
+        public Task<PositionDto> GetPositionDtoAsync(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public async Task<IEnumerable<PositionDto>> GetPositionDtosAsync(int id)
         {
             return await _context.Positions
                   .Where(x => x.AppUserId == id)
                   .ProjectTo<PositionDto>(_mapper.ConfigurationProvider)
-                  .SingleOrDefaultAsync();
+                  .ToListAsync();
         }
 
         public async Task<IEnumerable<PositionDto>> GetPositionDtosAsync()

@@ -54,6 +54,8 @@ namespace API.Helpers
                 .MapFrom(src => src.Positions.FirstOrDefault(x => x.IsActive).DateAdded))
             .ForMember(dest => dest.PositionName, opt => opt
                 .MapFrom(src => src.Positions.FirstOrDefault(x => x.IsActive).PositionName))
+            .ForMember(dest => dest.PositionIdentifier, opt => opt
+                .MapFrom(src => src.Positions.FirstOrDefault(x => x.IsActive).PositionIdentifier))
             .ForMember(dest => dest.StartDate, opt => opt
                 .MapFrom(src => src.Positions.FirstOrDefault(x => x.IsActive).StartDate))
             .ForMember(dest => dest.PositionDescription, opt => opt
@@ -93,6 +95,7 @@ namespace API.Helpers
             CreateMap<Position, PositionDto>();
             CreateMap<MemberUpdateDto, AppUser>();
             CreateMap<StudInfoUpdateDto, StudInfo>();
+            CreateMap<PositionUpdateDto, Position>();
             CreateMap<EmpInfoUpdateDto, EmpInfo>();
             CreateMap<AddStudInfoDto, StudInfo>();
             CreateMap<StudInfo, AddStudInfoDto>();
