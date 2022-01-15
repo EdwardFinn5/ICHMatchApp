@@ -1,0 +1,81 @@
+<div class="container-fluid">
+
+    <div class="row shadow"  *ngIf="position" style="margin-left: 0px">
+        <div class="text-center">
+            <h1><strong>Your positionDescription Info</strong></h1>
+        </div>
+        <div class="text-center">
+            <div class="alert alert-info" *ngIf="editForm.dirty">
+                <p><strong>Alert: </strong>You have made changes. Any unsaved changes will be lost</p>
+            </div>
+        </div>
+    
+        <div class="col-sm-4 col-lg-8 col-md-6 p-0 mx-auto">
+                <div class="card">
+                <!-- <img src="{{member.studentUrl || '.assets/user.png'}}" alt="{{member.firstName}}"
+                    class="card-img-top img-studthumbnail"> -->
+                <div class="card-body text-center">
+                    <!-- <div class="mb-1" *ngIf="(presence.onlineUsers$ | async).includes(member.username)">
+                        <i class="fa fa-user-circle text-success"></i> Online now
+                    </div> -->
+                    <form #editForm="ngForm" id="editForm" (ngSubmit)="updatePosition()">
+                        <div class="form-group">
+                            <label for="positionIdentifier"><strong>Identifier for position</strong></label>
+                              <input 
+                                  name="positionIdentifier"
+                                  [(ngModel)]="position.positionIdentifier"
+                                  class="form-control shadow-sm" 
+                                  type="text"
+                                  >
+                            </div>
+                        
+                        <div class="form-group">
+                            <label for="positionName"><strong>Position Name</strong></label>
+                              <input 
+                                  name="positionName"
+                                  [(ngModel)]="position.positionName"
+                                  class="form-control shadow-sm" 
+                                  type="text"
+                                  >
+                            </div>
+              
+                        <div class="form-group">
+                            <label class="label"><strong>Position Description</strong> </label>
+                              <textarea
+                                  name="positionDescription"
+                                  [(ngModel)]="position.positionDescription"
+                                  class="form-control shadow-sm" 
+                                  >
+                                  </textarea> 
+                        </div>
+            
+                        <div class="form-group">
+                            <label class="label"><strong>Type of person we're looking for</strong> </label>
+                              <textarea
+                                  name="lookingFor"
+                                  [(ngModel)]="position.lookingFor"
+                                  class="form-control shadow-sm" 
+                                  >
+                                  </textarea> 
+                        </div>
+            
+                        <div class="form-group">
+                            <label class="label"><strong>Position Benefits</strong> </label>
+                              <textarea
+                                  name="positionBenefits"
+                                  [(ngModel)]="position.positionBenefits"
+                                  class="form-control shadow-sm" 
+                                  >
+                                  </textarea> 
+                        </div>
+            
+                </form>
+                </div>
+                
+                    <div class="btn-group d-flex card-footer">
+                        <!-- <button class="btn btn-primary mr-2">Possible Fit</button> -->
+                        <button [disabled]="!editForm.dirty" form="editForm" type="submit" class="btn btn-success btn-block">Save Changes</button>
+                    </div>
+            </div>
+        </div>
+ 

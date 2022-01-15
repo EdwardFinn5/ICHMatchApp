@@ -10,6 +10,7 @@ import { SearchMembersService } from 'src/app/_services/search-members.service';
 })
 export class EmpmemberDetailComponent implements OnInit {
   member: Member;
+  username: string;
 
   constructor(
     private searchMemberService: SearchMembersService,
@@ -21,6 +22,9 @@ export class EmpmemberDetailComponent implements OnInit {
   }
 
   loadMember() {
+    this.username = this.route.snapshot.paramMap.get('username');
+    console.log(this.username);
+    console.log('just before this is the first username');
     this.searchMemberService
       .getSearchMember(this.route.snapshot.paramMap.get('username'))
       .subscribe((member) => {

@@ -6,15 +6,15 @@ import {
   UrlTree,
 } from '@angular/router';
 import { Observable } from 'rxjs';
-import { EmpmemberEditPositionComponent } from '../empmembers/empmember-edit-position/empmember-edit-position.component';
+import { EditPositionComponent } from '../positions/edit-position/edit-position.component';
 
 @Injectable({
   providedIn: 'root',
 })
-export class PreventUnsavedEmpmemberCardPositionChangesGuard
+export class PreventUnsavedEditPositionChangesGuard
   implements CanDeactivate<unknown>
 {
-  canDeactivate(component: EmpmemberEditPositionComponent): boolean {
+  canDeactivate(component: EditPositionComponent): boolean {
     if (component.editForm.dirty) {
       return confirm(
         'Are you sure you want to continue? Any changes will be lost'

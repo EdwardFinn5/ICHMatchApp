@@ -1,9 +1,9 @@
 <div class="row shadow mt-3 " *ngIf="member">
     <div class="positions p-0" style="text-align: center;">
-        <h3>Id: {{member.appUserId}}</h3>
-        <h3>Username: {{member.username}}</h3>
+        <!-- <h3>Id: {{member.appUserId}}</h3>
+        <h3>Username: {{member.username}}</h3> -->
 
-        <h2>Positions:</h2>
+        <h2><strong>Current positions for {{member.username}}</strong></h2>
         <table class="table table-striped">
             <thead>
                 <tr>
@@ -17,10 +17,11 @@
                     <td>{{position.positionId}}</td>
                     <td>{{position.positionName}}</td>
                     <td>
-                        <button type="button-edit"  class="btn btn-primary btn-sm mr-2">
-                            Edit
-                        </button>
-                        <button type="button-del" (click)="deletePosition(position.positionId)"  class="btn btn-danger btn-sm">
+                        <input type="button" class="btn btn-primary btn-sm shadow-sm mr-2" (click)="editPosition(position.positionId)" value="View"/>
+                        <input type="button" class="btn btn-primary btn-sm shadow-sm mr-2" (click)="editPosition(position.positionId)" value="Edit"/>
+                           
+                      
+                        <button type="button-del" (click)="deletePosition(position.positionId)"  class="btn btn-danger btn-sm shadow-sm">
                             Delete
                         </button>
 

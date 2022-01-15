@@ -46,6 +46,7 @@ export class AddPositionComponent implements OnInit {
       .subscribe(() => {
         this.toastr.success('Position info added');
         this.addPositionForm.reset(this.model);
+        this.router.navigateByUrl('empmember/positions');
       });
   }
 

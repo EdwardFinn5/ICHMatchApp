@@ -38,6 +38,7 @@ import { EmpmemberEditPositionComponent } from './empmembers/empmember-edit-posi
 import { AddStudInfoComponent } from './studinfos/add-stud-info/add-stud-info.component';
 import { AddPositionComponent } from './positions/add-position/add-position.component';
 import { EmpmemberPositionsComponent } from './empmembers/empmember-positions/empmember-positions.component';
+import { EditPositionComponent } from './positions/edit-position/edit-position.component';
 
 @NgModule({
   declarations: [
@@ -71,6 +72,7 @@ import { EmpmemberPositionsComponent } from './empmembers/empmember-positions/em
     AddStudInfoComponent,
     AddPositionComponent,
     EmpmemberPositionsComponent,
+    EditPositionComponent,
   ],
   imports: [
     BrowserModule,

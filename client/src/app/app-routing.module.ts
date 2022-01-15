@@ -32,6 +32,8 @@ import { PreventUnsavedMemberStudInfoChangesGuard } from './_guards/prevent-unsa
 import { AddPositionComponent } from './positions/add-position/add-position.component';
 import { PreventUnsavedAddPositionChangesGuard } from './_guards/prevent-unsaved-add-position-changes.guard';
 import { EmpmemberPositionsComponent } from './empmembers/empmember-positions/empmember-positions.component';
+import { EditPositionComponent } from './positions/edit-position/edit-position.component';
+import { PreventUnsavedEditPositionChangesGuard } from './_guards/prevent-unsaved-edit-position-changes.guard';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -52,6 +54,7 @@ const routes: Routes = [
       { path: 'empmembersearch', component: EmpmemberSearchComponent },
       { path: 'members/:username', component: MemberDetailComponent },
       { path: 'members/:id', component: MemberDetailComponent },
+      { path: 'editposition', component: EditPositionComponent },
       {
         path: 'member/edit',
         component: MemberEditCardnphotoComponent,
@@ -83,7 +86,17 @@ const routes: Routes = [
         component: AddStudInfoComponent,
         canDeactivate: [PreventUnsavedAddStudInfoChangesGuard],
       },
-      { path: 'position/edit', component: EmpmemberEditPositionComponent },
+      // {
+      //   path: 'position/edit:id',
+      //   component: EditPositionComponent,
+      //   canDeactivate: [PreventUnsavedEditPositionChangesGuard],
+      // },
+
+      // {
+      //   path: 'positions/GetPositionById/:id',
+      //   component: EditPositionComponent,
+      //   canDeactivate: [PreventUnsavedEditPositionChangesGuard],
+      // },
     ],
   },
   { path: 'lists', component: ListsComponent },

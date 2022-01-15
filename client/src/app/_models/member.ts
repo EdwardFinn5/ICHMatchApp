@@ -19,8 +19,8 @@ export interface Member {
   college: string;
   gpa: string;
   gradDate: Date;
-  bestEmail: string;
-  bestPhone: string;
+  bestEmail?: string;
+  bestPhone?: string;
   athletics: string;
   arts: string;
   extraCurricular: string;

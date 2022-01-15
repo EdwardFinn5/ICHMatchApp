@@ -71,6 +71,13 @@ namespace API.Data
                  .ToListAsync();
         }
 
+        public async Task<Position> GetPositionByPositionIdAsync(int id)
+        {
+            return await _context.Positions
+                .Where(x => x.PositionId == id)
+                .SingleOrDefaultAsync();
+        }
+
         public async Task<bool> SaveAllAsync()
         {
             return await _context.SaveChangesAsync() > 0;
@@ -80,5 +87,7 @@ namespace API.Data
         {
             _context.Entry(position).State = EntityState.Modified;
         }
+
+
     }
 }

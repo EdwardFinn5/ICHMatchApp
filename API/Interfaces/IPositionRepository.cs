@@ -13,6 +13,8 @@ namespace API.Interfaces
         Task<bool> SaveAllAsync();
         Task<IEnumerable<Position>> GetPositionsAsync();
         Task<Position> GetPositionByIdAsync(int id);
+        Task<Position> GetPositionByPositionIdAsync(int id);
+
         // Task<StudInfo> GetStudInfoByUsernameAsync(string username);
 
         // added the following two methods during video 97 on automapper queryable

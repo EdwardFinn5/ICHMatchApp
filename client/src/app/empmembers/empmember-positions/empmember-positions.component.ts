@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { take } from 'rxjs/operators';
 import { Member } from 'src/app/_models/member';
@@ -19,12 +19,14 @@ export class EmpmemberPositionsComponent implements OnInit {
   user: User;
   positions: Position[];
   positionIdentifier: string;
+  positionId: number;
 
   constructor(
     private accountService: AccountService,
     private searchMembersService: SearchMembersService,
     private positionService: PositionService,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private router: Router
   ) {
     this.accountService.currentUser$
       .pipe(take(1))
@@ -54,6 +56,9 @@ export class EmpmemberPositionsComponent implements OnInit {
   }
 
   deletePosition(id: number) {
+    this.positionId = id;
+    console.log('The next item is positionId');
+    console.log(this.positionId);
     // this.confirmService
     //   .confirm('Confirm delete message', 'This cannot be undone')
     //   .subscribe((result) => {
@@ -64,6 +69,14 @@ export class EmpmemberPositionsComponent implements OnInit {
         1
       );
     });
+  }
+
+  editPosition(id: number) {
+    console.log('the next number is id');
+    console.log(id);
+
+    // this.router.navigate(['/positions/GetPositionById/' + id]);
+    this.router.navigate(['/positions/GetPositionById/', id]);
   }
 
   // updatePosition(id: number) {

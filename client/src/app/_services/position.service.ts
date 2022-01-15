@@ -11,8 +11,9 @@ import { Position } from '../_models/position';
 export class PositionService {
   baseUrl = environment.apiUrl;
   private currentPositionSource = new ReplaySubject<Position>(1);
-  currentStudInfo$ = this.currentPositionSource.asObservable();
+  currentPosition$ = this.currentPositionSource.asObservable();
   appUserType: string;
+  positionId: number;
 
   constructor(private http: HttpClient, private router: Router) {}
 
@@ -33,6 +34,15 @@ export class PositionService {
     console.log('previous is appUserId');
     return this.http.get<Position[]>(
       this.baseUrl + 'positions/GetById/' + appUserId
+    );
+  }
+
+  getPosition(positionId: number) {
+    console.log('getting position info');
+    console.log(positionId);
+    console.log('previous is positionId');
+    return this.http.get<Position>(
+      this.baseUrl + 'positions/GetPositionById/' + positionId
     );
   }
 
