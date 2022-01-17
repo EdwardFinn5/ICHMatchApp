@@ -22,6 +22,7 @@ namespace API.Extensions
             services.AddScoped<IStudInfoRepository, StudInfoRepository>();
             services.AddScoped<IEmpInfoRepository, EmpInfoRepository>();
             services.AddScoped<IPositionRepository, PositionRepository>();
+            services.AddScoped<IPosition2Repository, Position2Repository>();
             services.AddAutoMapper(typeof(AutoMapperProfiles).Assembly);
             services.AddDbContext<DataContext>(options =>
             {

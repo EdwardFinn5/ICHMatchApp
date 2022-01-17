@@ -62,6 +62,9 @@ namespace API.Migrations
                     b.Property<DateTime>("GradDate")
                         .HasColumnType("datetime2");
 
+                    b.Property<bool>("IsMainLogo")
+                        .HasColumnType("bit");
+
                     b.Property<DateTime>("LastActive")
                         .HasColumnType("datetime2");
 
@@ -70,6 +73,9 @@ namespace API.Migrations
 
                     b.Property<string>("Location")
                         .HasColumnType("nvarchar(60)");
+
+                    b.Property<string>("LogoUrl")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Major")
                         .HasColumnType("nvarchar(60)");

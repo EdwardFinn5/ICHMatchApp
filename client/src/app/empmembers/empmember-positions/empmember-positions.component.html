@@ -7,6 +7,7 @@
         <table class="table table-striped">
             <thead>
                 <tr>
+                    <td></td>
                     <th>Id</th>
                     <th>Name</th>
                     <th>Options</th>
@@ -14,6 +15,7 @@
             </thead>
             <tbody>
                 <tr *ngFor="let position of positions">
+                    
                     <td>{{position.positionId}}</td>
                     <td>{{position.positionName}}</td>
                     <td>

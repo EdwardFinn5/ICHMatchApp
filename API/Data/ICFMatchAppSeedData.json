@@ -802,6 +802,8 @@
   },
   {
     "UserName": "John@firm.com",
+    "LogoUrl": "https://upload.wikimedia.org/wikipedia/en/thumb/5/5b/CRST_logo.svg/1200px-CRST_logo.svg.png",
+    "IsMainLogo": true,
     "GivingLevel": "b",
     "GiftAmt": 4000,
     "FirstName": "John",
@@ -852,6 +854,8 @@
   },
   {
     "UserName": "Judy@firm.com",
+    "LogoUrl": "https://res.cloudinary.com/icf/image/upload/v1626806651/bph419jnsjlo7udocefl.png",
+    "IsMainLogo": true,
     "GivingLevel": "a",
     "GiftAmt": 15000,
     "FirstName": "Judy",
@@ -892,7 +896,7 @@
     ],
     "Photos": [
       {
-        "LogoUrl": "https://upload.wikimedia.org/wikipedia/en/thumb/5/5b/CRST_logo.svg/1200px-CRST_logo.svg.png",
+        "LogoUrl": "https://res.cloudinary.com/icf/image/upload/v1626806651/bph419jnsjlo7udocefl.png",
         "IsMainLogo": true,
         "HrUrl": "https://pdaphotography.com/wp-content/uploads/2018/07/Headshot.jpg",
         "IsMainHr": true
@@ -902,6 +906,8 @@
 
   {
     "UserName": "Marty@firm.com",
+    "LogoUrl": "https://pbs.twimg.com/profile_images/876876941747474432/xxh6VCTN.jpg",
+    "IsMainLogo": true,
     "GivingLevel": "b",
     "GiftAmt": 2500,
     "FirstName": "Marty",
@@ -951,6 +957,8 @@
   },
   {
     "UserName": "MikeH@firm.com",
+    "LogoUrl": "https://s3-us-west-1.amazonaws.com/companies.comparably.com/32944/32944_logo_u-s--bank.png",
+    "IsMainLogo": true,
     "GivingLevel": "a",
     "GiftAmt": 10000,
     "FirstName": "Mike",
@@ -1000,6 +1008,8 @@
   },
   {
     "UserName": "JimA@firm.com",
+    "LogoUrl": "https://businessrecord.com/Images/Images/11452.jpg",
+    "IsMainLogo": true,
     "GivingLevel": "c",
     "GiftAmt": 1000,
     "FirstName": "Jim",
@@ -1049,6 +1059,8 @@
   },
   {
     "UserName": "Tony@firm.com",
+    "LogoUrl": "https://marketplace.connectwise.com/content/images/thumbs/0000429_greatamerica-financial-services_550.png",
+    "IsMainLogo": true,
     "GivingLevel": "a",
     "GiftAmt": 20000,
     "FirstName": "Tony",
@@ -1098,6 +1110,8 @@
   },
   {
     "UserName": "Steveb@firm.com",
+    "LogoUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/HNI_logo.svg/1200px-HNI_logo.svg.png",
+    "IsMainLogo": true,
     "GivingLevel": "c",
     "GiftAmt": 1000,
     "FirstName": "Steve",
@@ -1147,6 +1161,8 @@
   },
   {
     "UserName": "Brian@firm.com",
+    "LogoUrl": "https://res.cloudinary.com/icf/image/upload/v1617377172/yoe9iceyxkgwn7az8bqb.jpg",
+    "IsMainLogo": true,
     "GivingLevel": "a",
     "GiftAmt": 10000,
     "FirstName": "Brian",
@@ -1196,6 +1212,8 @@
   },
   {
     "UserName": "Mike@firm.com",
+    "LogoUrl": "https://chambermaster.blob.core.windows.net/images/members/1185/3721/VM-Logo.jpg",
+    "IsMainLogo": true,
     "GivingLevel": "c",
     "GiftAmt": 1000,
     "FirstName": "Mike",
@@ -1245,6 +1263,8 @@
   },
   {
     "UserName": "Sue@firm.com",
+    "LogoUrl": "https://secureservercdn.net/198.71.233.41/v5v.bff.myftpupload.com/wp-content/uploads/2019/09/Encova-1024x1024.jpg",
+    "IsMainLogo": true,
     "GivingLevel": "b",
     "GiftAmt": 7500,
     "FirstName": "Sue",
@@ -1294,6 +1314,8 @@
   },
   {
     "UserName": "Kent@firm.com",
+    "LogoUrl": "https://res.cloudinary.com/icf/image/upload/v1617376962/l3yhiyi4zrc1en4ljp8z.jpg",
+    "IsMainLogo": true,
     "GivingLevel": "a",
     "GiftAmt": 40000,
     "FirstName": "Kent",
@@ -1343,6 +1365,8 @@
   },
   {
     "UserName": "Nick@firm.com",
+    "LogoUrl": "https://strictlybusinessomaha.com/wp-content/uploads/2015/09/Logo-Holmes-Murphy-and-Associates-Omaha-Nebraska.jpg",
+    "IsMainLogo": true,
     "GivingLevel": "b",
     "GiftAmt": 5000,
     "FirstName": "Nick",
@@ -1393,6 +1417,8 @@
 
   {
     "UserName": "Sean@firm.com",
+    "LogoUrl": "https://cdn.shortpixel.ai/client/q_glossy,ret_img,w_300,h_200/https://wdmchamber.org/wp-content/uploads/2019/05/IMT-Group-300x200.jpg",
+    "IsMainLogo": true,
     "GivingLevel": "b",
     "GiftAmt": 7500,
     "FirstName": "Sean",
@@ -1442,6 +1468,8 @@
   },
   {
     "UserName": "Rob@firm.com",
+    "LogoUrl": "https://image.pngaaa.com/200/633200-small.png",
+    "IsMainLogo": true,
     "GivingLevel": "a",
     "GiftAmt": 11500,
     "FirstName": "Rob",
@@ -1492,6 +1520,8 @@
 
   {
     "UserName": "Lisa@firm.com",
+    "LogoUrl": "https://assets.simpleviewinc.com/simpleview/image/fetch/c_limit,q_75,w_1200/https://assets.simpleviewinc.com/simpleview/image/upload/crm/desmoines/American-Equity-1--5a9f96755056a36_5a9f97f2-5056-a36a-06c7202ee6b35cbd.jpg",
+    "IsMainLogo": true,
     "GivingLevel": "b",
     "GiftAmt": 6000,
     "FirstName": "Lisa",
@@ -1542,6 +1572,8 @@
 
   {
     "UserName": "JohnS@firm.com",
+    "LogoUrl": "https://res.cloudinary.com/icf/image/upload/v1617380191/ipqrc4rcjrfpwex23rxp.png",
+    "IsMainLogo": true,
     "GivingLevel": "a",
     "GiftAmt": 1000,
     "FirstName": "John",
@@ -1591,6 +1623,8 @@
   },
   {
     "UserName": "Ben@firm.com",
+    "LogoUrl": "https://bloximages.chicago2.vip.townnews.com/wcfcourier.com/content/tncms/assets/v3/business/e/e4/ee42cf4b-07b2-51a6-b876-14d0af11f1d0/4e1e05ab9c9f8.image.jpg",
+    "IsMainLogo": true,
     "GivingLevel": "b",
     "GiftAmt": 5000,
     "FirstName": "Ben",
@@ -1640,6 +1674,8 @@
   },
   {
     "UserName": "Steve@firm.com",
+    "LogoUrl": "https://www.jollyholidaylights.org/upl/sponsors/5f98870e28e6462fb1446-0f2b87ca.jpg",
+    "IsMainLogo": true,
     "GivingLevel": "b",
     "GiftAmt": 2500,
     "FirstName": "Steve",
@@ -1690,6 +1726,8 @@
 
   {
     "UserName": "Chris@firm.com",
+    "LogoUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTBekWiudd44Mws3U-RiAA3uvT6jbzx3TfHldaepzilpGzXsA4sAZ2J8ZkoXPmu5LmtwbE&usqp=CAU",
+    "IsMainLogo": true,
     "GivingLevel": "c",
     "GiftAmt": 1000,
     "FirstName": "Chris",
@@ -1739,6 +1777,8 @@
   },
   {
     "UserName": "Kirk@firm.com",
+    "LogoUrl": "https://restaurantiowa.com/wp-content/uploads/2015/10/Coca-Cola-Atlantic-Bottling-Company-Logo1.jpg",
+    "IsMainLogo": true,
     "GivingLevel": "c",
     "GiftAmt": 1000,
     "FirstName": "Kirk",
@@ -1788,6 +1828,8 @@
   },
   {
     "UserName": "Drew@firm.com",
+    "LogoUrl": "https://st.hzcdn.com/simgs/d243dc020400de8a_3-0748/_.jpg",
+    "IsMainLogo": true,
     "GivingLevel": "b",
     "GiftAmt": 3500,
     "FirstName": "Drew",
@@ -1837,6 +1879,8 @@
   },
   {
     "UserName": "Peter@firm.com",
+    "LogoUrl": "https://www.thengfq.com/site/wp-content/uploads/2018/01/Q_Top100_Logos_StandardGolf-1.jpg",
+    "IsMainLogo": true,
     "GivingLevel": "a",
     "GiftAmt": 12000,
     "FirstName": "Peter",
@@ -1886,6 +1930,8 @@
   },
   {
     "UserName": "Charese@firm.com",
+    "LogoUrl": "https://res.cloudinary.com/icf/image/upload/v1618185470/uo4yv5khwq4ndaktkd1b.jpg",
+    "IsMainLogo": true,
     "GivingLevel": "b",
     "GiftAmt": 2500,
     "FirstName": "Charese",
@@ -1935,6 +1981,8 @@
   },
   {
     "UserName": "Charlie@firm.com",
+    "LogoUrl": "https://www.hartigdrug.com/sites/all/themes/hartig_rspsv/images/logo.png",
+    "IsMainLogo": true,
     "GivingLevel": "b",
     "GiftAmt": 2000,
     "FirstName": "Charlie",
@@ -1984,6 +2032,8 @@
   },
   {
     "UserName": "Reynolds@firm.com",
+    "LogoUrl": "https://www.fareway.com/media/healthnews/farewaylogo1C_691FB3DA691F1.jpg",
+    "IsMainLogo": true,
     "GivingLevel": "a",
     "GiftAmt": 10000,
     "FirstName": "Reynolds",
@@ -2033,6 +2083,8 @@
   },
   {
     "UserName": "Randy@firm.com",
+    "LogoUrl": "https://res-1.cloudinary.com/crunchbase-production/image/upload/c_lpad,h_256,w_256,f_auto,q_auto:eco/v1405492308/cu0iioxk557yeprn6p6d.jpg",
+    "IsMainLogo": true,
     "GivingLevel": "a",
     "GiftAmt": 26000,
     "FirstName": "Randy",
@@ -2082,6 +2134,8 @@
   },
   {
     "UserName": "JimR@firm.com",
+    "LogoUrl": "https://www.russellco.com/wp-content/uploads/2018/05/Russell-Logo-2x.png",
+    "IsMainLogo": true,
     "GivingLevel": "b",
     "GiftAmt": 2500,
     "FirstName": "Jim",
@@ -2131,6 +2185,8 @@
   },
   {
     "UserName": "Gage@firm.com",
+    "LogoUrl": "https://restaurantiowa.com/wp-content/uploads/2015/10/Coca-Cola-Atlantic-Bottling-Company-Logo1.jpg",
+    "IsMainLogo": true,
     "GivingLevel": "a",
     "GiftAmt": 25000,
     "FirstName": "Gage",

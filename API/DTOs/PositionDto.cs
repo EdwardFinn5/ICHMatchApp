@@ -23,6 +23,8 @@ namespace API.DTOs
         public string ApplyLink { get; set; }
         public string EmpName { get; set; }
         public string EmpIndustry { get; set; }
+        public string LogoUrl { get; set; }
+        public bool IsMainLogo { get; set; }
         public string CompanyDescription { get; set; }
         public string WhyWork { get; set; }
         public int AppUserId { get; set; }

@@ -22,6 +22,11 @@ namespace API.Data
         {
             base.OnModelCreating(modelBuilder);
 
+            // modelBuilder.Entity<Position>()
+            //     .HasMany(e => e.Photos)
+            //     .WithOne(e => e.Position)
+            //     .OnDelete(DeleteBehavior.ClientCascade);
+
             // modelBuilder.Entity<AppUser>()
             //     .HasMany(ur => ur.UserRoles)
             //     .WithOne(u => u.User)

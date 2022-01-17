@@ -39,6 +39,8 @@ import { AddStudInfoComponent } from './studinfos/add-stud-info/add-stud-info.co
 import { AddPositionComponent } from './positions/add-position/add-position.component';
 import { EmpmemberPositionsComponent } from './empmembers/empmember-positions/empmember-positions.component';
 import { EditPositionComponent } from './positions/edit-position/edit-position.component';
+import { PositionCardComponent } from './positions/position-card.component';
+import { PositionsListComponent } from './positions/positions-list.component';
 
 @NgModule({
   declarations: [
@@ -73,6 +75,8 @@ import { EditPositionComponent } from './positions/edit-position/edit-position.c
     AddPositionComponent,
     EmpmemberPositionsComponent,
     EditPositionComponent,
+    PositionCardComponent,
+    PositionsListComponent,
   ],
   imports: [
     BrowserModule,

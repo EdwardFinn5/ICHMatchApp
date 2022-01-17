@@ -16,5 +16,6 @@ namespace API.Entities
         public string PublicId { get; set; }
         public virtual AppUser AppUser { get; set; }
         public int AppUserId { get; set; }
+
     }
 }

@@ -1,6 +1,8 @@
 export interface Position {
   positionId: number;
   positionIdentifier: string;
+  empName: string;
+  empIndustry: string;
   positionName: string;
   positionDescription: string;
   positionBenefits: string;
@@ -16,5 +18,7 @@ export interface Position {
   howToApply: string;
   applyEmail: string;
   applyLink: string;
+  logoUrl: string;
+  isMainLogo: string;
   appUserId: number;
 }

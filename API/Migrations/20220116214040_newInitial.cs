@@ -81,6 +81,8 @@ namespace API.Migrations
                     EmpName = table.Column<string>(type: "nvarchar(60)", nullable: true),
                     EmpIndustry = table.Column<string>(type: "varchar(30)", nullable: true),
                     EmployeeNum = table.Column<string>(type: "varchar(30)", nullable: true),
+                    LogoUrl = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    IsMainLogo = table.Column<bool>(type: "bit", nullable: false),
                     Created = table.Column<DateTime>(type: "datetime2", nullable: false),
                     LastActive = table.Column<DateTime>(type: "datetime2", nullable: false),
                     GradDate = table.Column<DateTime>(type: "datetime2", nullable: false)

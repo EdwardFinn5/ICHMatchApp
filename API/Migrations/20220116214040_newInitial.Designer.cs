@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace API.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20211205213345_newInitial")]
+    [Migration("20220116214040_newInitial")]
     partial class newInitial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -64,6 +64,9 @@ namespace API.Migrations
                     b.Property<DateTime>("GradDate")
                         .HasColumnType("datetime2");
 
+                    b.Property<bool>("IsMainLogo")
+                        .HasColumnType("bit");
+
                     b.Property<DateTime>("LastActive")
                         .HasColumnType("datetime2");
 
@@ -72,6 +75,9 @@ namespace API.Migrations
 
                     b.Property<string>("Location")
                         .HasColumnType("nvarchar(60)");
+
+                    b.Property<string>("LogoUrl")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Major")
                         .HasColumnType("nvarchar(60)");

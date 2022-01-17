@@ -34,6 +34,7 @@ import { PreventUnsavedAddPositionChangesGuard } from './_guards/prevent-unsaved
 import { EmpmemberPositionsComponent } from './empmembers/empmember-positions/empmember-positions.component';
 import { EditPositionComponent } from './positions/edit-position/edit-position.component';
 import { PreventUnsavedEditPositionChangesGuard } from './_guards/prevent-unsaved-edit-position-changes.guard';
+import { PositionsListComponent } from './positions/positions-list.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -101,6 +102,7 @@ const routes: Routes = [
   },
   { path: 'lists', component: ListsComponent },
   { path: 'about', component: AboutComponent },
+  { path: 'positionslist', component: PositionsListComponent },
   { path: 'userlogin', component: UserLoginComponent },
   { path: 'errors', component: TestErrorsComponent },
   { path: 'not-found', component: NotFoundComponent },

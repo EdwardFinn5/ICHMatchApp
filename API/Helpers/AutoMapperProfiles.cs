@@ -92,7 +92,15 @@ namespace API.Helpers
             CreateMap<Photo, PhotoDto>();
             CreateMap<StudInfo, StudInfoDto>();
             CreateMap<EmpInfo, EmpInfoDto>();
-            CreateMap<Position, PositionDto>();
+
+
+
+            CreateMap<Position, PositionDto>()
+                .ForMember(d => d.EmpIndustry, o => o.MapFrom(s => s.AppUser.EmpIndustry))
+                .ForMember(d => d.EmpName, o => o.MapFrom(s => s.AppUser.EmpName))
+                .ForMember(d => d.LogoUrl, o => o.MapFrom(s => s.AppUser.LogoUrl))
+                .ForMember(d => d.LogoUrl, o => o.MapFrom(s => s.AppUser.LogoUrl));
+
             CreateMap<MemberUpdateDto, AppUser>();
             CreateMap<StudInfoUpdateDto, StudInfo>();
             CreateMap<PositionUpdateDto, Position>();

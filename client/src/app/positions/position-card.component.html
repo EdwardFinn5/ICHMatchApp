@@ -1,0 +1,13 @@
+<div class="card mb-4" *ngIf="position">
+    <div class="card-body">
+        <img src="{{position.logoUrl || '../../assets/images/logo.PNG' }}" alt="{{position.empName}}" class="card-img-top">
+        <p>
+            Id: {{position.positionId}}
+            Company: {{position.empName}}
+            Industry: {{position.empIndustry}}
+            Position: {{position.positionName}}
+            User Id: {{position.appUserId}}
+        </p>  
+    </div>
+
+</div> 
