@@ -1,13 +1,16 @@
 <div class="card mb-4" *ngIf="position">
     <div class="card-body">
         <img src="{{position.logoUrl || '../../assets/images/logo.PNG' }}" alt="{{position.empName}}" class="card-img-top">
-        <p>
-            Id: {{position.positionId}}
-            Company: {{position.empName}}
-            Industry: {{position.empIndustry}}
-            Position: {{position.positionName}}
-            User Id: {{position.appUserId}}
-        </p>  
+        <strong><p class="text-center mt-2">
+            {{position.positionType}} <br>
+            {{position.positionName}} Position <br>
+            with {{position.empName}}
+        </p></strong>
+        <div class="btn-group d-flex card-footer">
+            <button class="btn btn-success btn-block" routerLink='/positions/{{position.positionId}}'>View Details</button>
+        </div>
     </div>
-
+   
+ 
+   
 </div> 

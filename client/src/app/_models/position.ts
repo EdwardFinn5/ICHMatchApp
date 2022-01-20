@@ -13,6 +13,7 @@ export interface Position {
   startDate: Date;
   appDeadline: Date;
   active: boolean;
+  hrUrl: string;
   hrContact: string;
   hrContactTitle: string;
   howToApply: string;
@@ -20,5 +21,8 @@ export interface Position {
   applyLink: string;
   logoUrl: string;
   isMainLogo: string;
+  empWebsite: string;
+  companyDescription: string;
+  whyWork: string;
   appUserId: number;
 }

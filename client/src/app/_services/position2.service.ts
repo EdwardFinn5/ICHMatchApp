@@ -14,10 +14,18 @@ import { Observable } from 'rxjs';
 export class Position2Service {
   baseUrl = environment.apiUrl;
   positions: Position[] = [];
+  positionId: number;
 
   constructor(private http: HttpClient) {}
 
   getPositions() {
     return this.http.get<Position[]>(this.baseUrl + 'positions2');
+  }
+
+  getPositionById(positionId: number) {
+    console.log('getting positionbyid');
+    return this.http.get<Position>(
+      this.baseUrl + 'positions2/GetPositionDtoById/' + positionId
+    );
   }
 }

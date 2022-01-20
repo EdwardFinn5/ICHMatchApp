@@ -30,12 +30,6 @@
         </ul>
     </div>   
 
-    
-    <!-- <div class="tooltip">Hover over me
-        <span class="tooltiptext">Tooltip text</span>
-      </div> -->
-
-
 
     <div class="card-img-wrapper" *ngIf="member.appUserType == 'ColStudent'">
         <img src="{{member.studentUrl || '../../assets/images/coluser.PNG' }}" alt="{{member.firstName}}" class="card-img-top">
@@ -110,8 +104,13 @@
                 {{member.giftAmt}}
             </div>
         </ng-container>
-        <!-- <p class="card-text text-muted text-center">{{member.workPlus}}</p> -->
+       
     </div>
 </div>
-    
-   
+  <!-- <div>
+    <h2>{{member.username}}</h2>
+    <h2>{{member.positionName}}</h2>
+       
+  </div>  
+   -->
+  

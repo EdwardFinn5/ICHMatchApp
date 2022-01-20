@@ -94,12 +94,14 @@ namespace API.Helpers
             CreateMap<EmpInfo, EmpInfoDto>();
 
 
-
             CreateMap<Position, PositionDto>()
                 .ForMember(d => d.EmpIndustry, o => o.MapFrom(s => s.AppUser.EmpIndustry))
                 .ForMember(d => d.EmpName, o => o.MapFrom(s => s.AppUser.EmpName))
-                .ForMember(d => d.LogoUrl, o => o.MapFrom(s => s.AppUser.LogoUrl))
                 .ForMember(d => d.LogoUrl, o => o.MapFrom(s => s.AppUser.LogoUrl));
+            // .ForMember(d => d.LogoUrl, o => o.MapFrom(s => s.AppUser.HrUrl))
+
+
+
 
             CreateMap<MemberUpdateDto, AppUser>();
             CreateMap<StudInfoUpdateDto, StudInfo>();

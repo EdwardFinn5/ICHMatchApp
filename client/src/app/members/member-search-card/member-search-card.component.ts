@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Member } from 'src/app/_models/member';
+import { Position } from 'src/app/_models/position';
 
 @Component({
   selector: 'app-member-search-card',
@@ -8,6 +9,7 @@ import { Member } from 'src/app/_models/member';
 })
 export class MemberSearchCardComponent implements OnInit {
   @Input() member: Member;
+  @Input() position: Position[] = [];
 
   constructor() {}
 

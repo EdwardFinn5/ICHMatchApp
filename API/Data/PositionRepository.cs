@@ -68,6 +68,7 @@ namespace API.Data
         {
             return await _context.Positions
                  .Include(a => a.AppUser)
+                 .ThenInclude(a => a.EmpInfos)
                  .ToListAsync();
         }
 

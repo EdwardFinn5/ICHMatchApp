@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Member } from 'src/app/_models/member';
+import { Position } from 'src/app/_models/position';
 import { SearchMembersService } from 'src/app/_services/search-members.service';
 
 @Component({
@@ -9,6 +10,7 @@ import { SearchMembersService } from 'src/app/_services/search-members.service';
 })
 export class MemberSearchComponent implements OnInit {
   members: Member[];
+  positions: Position[];
 
   constructor(private searchMemberService: SearchMembersService) {}
 

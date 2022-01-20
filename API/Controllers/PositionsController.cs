@@ -51,7 +51,7 @@ namespace API.Controllers
         [HttpPost("{id}")]
         public async Task<ActionResult<PositionDto>> AddPosition(AddPositionDto addPositionDto, int id)
         {
-            if (await PositionExists(addPositionDto.PositionIdentifier)) return BadRequest("Position is already in place");
+            // if (await PositionExists(addPositionDto.PositionIdentifier)) return BadRequest("Position is already in place");
 
             var position = new Position
             {

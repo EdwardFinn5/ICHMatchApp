@@ -49,6 +49,12 @@ namespace API.Controllers
             return await _position2Repository.GetPositionByIdAsync(id);
         }
 
+        [HttpGet("GetPositionDtoById/{id}")] //this is the one I just added
+        public async Task<ActionResult<PositionDto>> GetPositionDtoById(int id)
+        {
+            return await _position2Repository.GetPositionDtoByIdAsync(id);
+        }
+
         [HttpPost("{id}")]
         public async Task<ActionResult<PositionDto>> AddPosition(AddPositionDto addPositionDto, int id)
         {

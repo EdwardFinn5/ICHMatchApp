@@ -35,8 +35,16 @@ namespace API.Data
         {
             return await _context.Positions
                  .Where(x => x.PositionId == id)
-                 //  .ProjectTo<PositionDto>(_mapper.ConfigurationProvider)
+                 //   .ProjectTo<PositionDto>(_mapper.ConfigurationProvider)
                  .SingleOrDefaultAsync();
+        }
+
+        public async Task<PositionDto> GetPositionDtoByIdAsync(int id)
+        {
+            return await _context.Positions
+               .Where(x => x.PositionId == id)
+               .ProjectTo<PositionDto>(_mapper.ConfigurationProvider)
+               .SingleOrDefaultAsync();
         }
 
         public async Task<IEnumerable<PositionDto>> GetPositionDtosAsync(int id)
@@ -71,5 +79,9 @@ namespace API.Data
             _context.Entry(position).State = EntityState.Modified;
         }
 
+        Task<Position> IPosition2Repository.GetPositionByIdAsync(int id)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

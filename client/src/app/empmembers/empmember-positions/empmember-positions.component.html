@@ -3,11 +3,12 @@
         <!-- <h3>Id: {{member.appUserId}}</h3>
         <h3>Username: {{member.username}}</h3> -->
 
-        <h2><strong>Current positions for {{member.username}}</strong></h2>
+        <h2><strong>Current positions for {{member.empName}}</strong></h2>
         <table class="table table-striped">
             <thead>
                 <tr>
-                    <td></td>
+                    <th></th>
+                    <th>Organization</th>
                     <th>Id</th>
                     <th>Name</th>
                     <th>Options</th>
@@ -15,7 +16,8 @@
             </thead>
             <tbody>
                 <tr *ngFor="let position of positions">
-                    
+                    <td> <img src="{{position.logoUrl || '../../assets/images/logo.PNG' }}" alt="{{position.empName}}"></td>
+                    <td>{{position.empName}}</td>
                     <td>{{position.positionId}}</td>
                     <td>{{position.positionName}}</td>
                     <td>
