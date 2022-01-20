@@ -21,7 +21,7 @@
                     <td>{{position.positionId}}</td>
                     <td>{{position.positionName}}</td>
                     <td>
-                        <input type="button" class="btn btn-primary btn-sm shadow-sm mr-2" (click)="editPosition(position.positionId)" value="View"/>
+                        <button class="btn btn-success btn-sm shadow-sm mr-2" routerLink='/positionsnew/{{position.positionId}}'>View</button>
                         <input type="button" class="btn btn-primary btn-sm shadow-sm mr-2" (click)="editPosition(position.positionId)" value="Edit"/>
                            
                       

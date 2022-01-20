@@ -1,0 +1,93 @@
+<!-- <div *ngIf="position" >
+
+<p>{{position.empName}}</p>
+
+</div> -->
+
+<div class="row shadow" *ngIf="position"  style="margin-left: 0px">
+    <div class="col-sm-4 p-0">
+        
+        <!-- <div class="card" *ngIf="member.appUserType == 'ColStudent'"> -->
+
+            <div class="card">
+
+            <img src="{{position.logoUrl || '../../assets/images/logo.PNG' }}" alt="{{position.empName}}"
+                class="card-img-top img-studthumbnail">
+            <div class="card-body text-center">
+                <!-- <div class="mb-1" *ngIf="(presence.onlineUsers$ | async).includes(member.username)">
+                    <i class="fa fa-user-circle text-success"></i> Online now
+                </div> -->
+                        <u><strong>{{position.empName}}</strong></u>
+                        <br> Position: <strong>{{position.positionName}}</strong>
+                        <br> Type of Position: <strong>{{position.positionType}}</strong>
+                        <br> Position Location: <strong>{{position.positionLocation}}</strong>
+                        <br>Date Position was Posted: <strong>{{position.dateAdded | date: "MMM dd yyyy" }}</strong>
+                        <br>Start Date: <strong>{{position.startDate | date: "MMM dd yyyy" }}</strong>
+                        <br>Application Deadline: <strong>{{position.appDeadline | date: "MMM dd yyyy" }}</strong>
+            </div>
+            
+            <div class="card-footer">
+                <div class="btn-group d-flex">
+                    <button class="btn btn-primary btn-block" routerLink='/empmember/positions'>Back to all positions</button>
+                   
+                </div>
+            </div>
+        </div>
+    </div>
+    
+     
+        <div class="col-sm-8 p-2">
+
+        <tabset class="member-tabset" #memberTabs>
+            <tab heading='Position Info' class="tab-heading">
+                <div class="details">
+                <h4><strong>Position </strong></h4>
+                <h5><u><strong>{{position.positionName}} - {{position.positionType}}</strong></u></h5>
+                <h4 class="mt-3"><strong>Position description</strong></h4>
+                {{position.positionDescription}}<br>
+                <h4 class="mt-2"><strong>Person we're looking for</strong></h4>
+                {{position.lookingFor}}
+                <div *ngIf="position.positionBenefits">
+                <h4 class="mt-2"><strong>Benefits of this position</strong></h4>
+                {{position.positionBenefits}}<br>
+                </div>
+                <h4 class="mt-2"><strong>Start Date</strong></h4> 
+                {{position.startDate | date: "MMM dd yyyy" }}
+                <h4 class="mt-2"><strong>Position location</strong></h4> 
+                {{position.positionLocation}}
+            </div>            
+            </tab>
+            <tab heading='Apply Info' class="tab-heading">
+                <div class="details">
+                <h4 class="mt-2"><strong>How to apply</strong></h4> 
+                <p>{{position.howToApply}}</p>
+                <p *ngIf="position.applyEmail"><strong>Here is the link: </strong> <u>{{position.applyEmail}}</u></p>
+                <p>Application deadline: {{position.appDeadline | date: "MMM dd yyyy" }}</p>
+                <h4 class="mt-2"><strong>Contact Person</strong></h4> 
+                <ng-container *ngIf="position.hrUrl">
+                <img src="{{position.hrUrl}}" alt="{{position.hrContact}}"
+                    class="img-hrthumbnail">
+                </ng-container>    
+                <p>{{position.hrContact}}
+                    <br>
+                    {{position.hrContactTitle}}
+                </p>
+                </div>
+            </tab>
+            <tab heading='Company Info' class="tab-heading">
+                <div class="details">
+                <h4 class="mt-2"><strong>About {{position.empName}}</strong></h4> 
+                <p>{{position.companyDescription}}</p>
+                <h4 class="mt-2"><strong>Why work for our company?</strong></h4> 
+                <p>{{position.whyWork}}</p>
+                <p *ngIf="position.empWebsite">Link to our website: <u>{{position.empWebsite}}</u></p>
+                </div>            
+            </tab>
+            <tab heading='Messages' >
+               
+            </tab>
+
+        </tabset>
+    </div>
+
+

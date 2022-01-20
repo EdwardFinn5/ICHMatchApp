@@ -42,6 +42,7 @@ import { EditPositionComponent } from './positions/edit-position/edit-position.c
 import { PositionCardComponent } from './positions/position-card.component';
 import { PositionsListComponent } from './positions/positions-list.component';
 import { PositionDetailComponent } from './positions/position-detail.component';
+import { PositionDetailNewComponent } from './positions/position-detail-new.component';
 
 @NgModule({
   declarations: [
@@ -79,6 +80,7 @@ import { PositionDetailComponent } from './positions/position-detail.component';
     PositionCardComponent,
     PositionsListComponent,
     PositionDetailComponent,
+    PositionDetailNewComponent,
   ],
   imports: [
     BrowserModule,
