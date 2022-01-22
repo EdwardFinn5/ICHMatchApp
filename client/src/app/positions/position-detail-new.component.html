@@ -4,7 +4,7 @@
 
 </div> -->
 
-<div class="row shadow" *ngIf="position"  style="margin-left: 0px">
+<div class="row shadow" *ngIf="position && member"  style="margin-left: 0px">
     <div class="col-sm-4 p-0">
         
         <!-- <div class="card" *ngIf="member.appUserType == 'ColStudent'"> -->
@@ -77,10 +77,10 @@
             <tab heading='Company Info' class="tab-heading">
                 <div class="details">
                 <h4 class="mt-2"><strong>About {{position.empName}}</strong></h4> 
-                <p>{{position.companyDescription}}</p>
+                <p>{{member.companyDescription}}</p>
                 <h4 class="mt-2"><strong>Why work for our company?</strong></h4> 
-                <p>{{position.whyWork}}</p>
-                <p *ngIf="position.empWebsite">Link to our website: <u>{{position.empWebsite}}</u></p>
+                <p>{{member.whyWork}}</p>
+                <p *ngIf="member.empWebsite">Link to our website: <u>{{position.empWebsite}}</u></p>
                 </div>            
             </tab>
             <tab heading='Messages' >

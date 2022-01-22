@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Member } from '../_models/member';
 import { Position } from '../_models/position';
 import { Position2Service } from '../_services/position2.service';
 
@@ -9,6 +10,7 @@ import { Position2Service } from '../_services/position2.service';
 })
 export class PositionsListComponent implements OnInit {
   positions: Position[];
+  member: Member;
 
   constructor(private position2Service: Position2Service) {}
 
