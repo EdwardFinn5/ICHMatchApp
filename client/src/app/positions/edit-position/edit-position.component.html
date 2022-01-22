@@ -2,7 +2,7 @@
 
     <div class="row shadow"  *ngIf="position" style="margin-left: 0px">
         <div class="text-center">
-            <h1><strong>Your positionDescription Info</strong></h1>
+            <h1><strong>Your position Info</strong></h1>
         </div>
         <div class="text-center">
             <div class="alert alert-info" *ngIf="editForm.dirty">
@@ -12,12 +12,9 @@
     
         <div class="col-sm-4 col-lg-8 col-md-6 p-0 mx-auto">
                 <div class="card">
-                <!-- <img src="{{member.studentUrl || '.assets/user.png'}}" alt="{{member.firstName}}"
-                    class="card-img-top img-studthumbnail"> -->
+                
                 <div class="card-body text-center">
-                    <!-- <div class="mb-1" *ngIf="(presence.onlineUsers$ | async).includes(member.username)">
-                        <i class="fa fa-user-circle text-success"></i> Online now
-                    </div> -->
+                    
                     <form #editForm="ngForm" id="editForm" (ngSubmit)="updatePosition()">
                         <div class="form-group">
                             <label for="positionIdentifier"><strong>Identifier for position</strong></label>
@@ -73,7 +70,7 @@
                 </div>
                 
                     <div class="btn-group d-flex card-footer">
-                        <!-- <button class="btn btn-primary mr-2">Possible Fit</button> -->
+                      
                         <button [disabled]="!editForm.dirty" form="editForm" type="submit" class="btn btn-success btn-block">Save Changes</button>
                     </div>
             </div>

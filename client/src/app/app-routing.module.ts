@@ -57,7 +57,6 @@ const routes: Routes = [
       { path: 'empmembersearch', component: EmpmemberSearchComponent },
       { path: 'members/:username', component: MemberDetailComponent },
       { path: 'members/:id', component: MemberDetailComponent },
-      { path: 'editposition', component: EditPositionComponent },
       {
         path: 'member/edit',
         component: MemberEditCardnphotoComponent,
@@ -89,24 +88,22 @@ const routes: Routes = [
         component: AddStudInfoComponent,
         canDeactivate: [PreventUnsavedAddStudInfoChangesGuard],
       },
-      // {
-      //   path: 'position/edit:id',
-      //   component: EditPositionComponent,
-      //   canDeactivate: [PreventUnsavedEditPositionChangesGuard],
-      // },
-
-      // {
-      //   path: 'positions/GetPositionById/:id',
-      //   component: EditPositionComponent,
-      //   canDeactivate: [PreventUnsavedEditPositionChangesGuard],
-      // },
     ],
   },
   { path: 'lists', component: ListsComponent },
-  { path: 'positions/:positionId', component: PositionDetailComponent },
   {
-    path: 'positionsnew/:positionId',
+    path: 'detailofposition/:positionId',
+    component: PositionDetailComponent,
+    pathMatch: 'full',
+  },
+  {
+    path: 'newpositiondetail/:positionId',
     component: PositionDetailNewComponent,
+    pathMatch: 'full',
+  },
+  {
+    path: 'editposition/:positionId',
+    component: EditPositionComponent,
     pathMatch: 'full',
   },
   { path: 'about', component: AboutComponent },

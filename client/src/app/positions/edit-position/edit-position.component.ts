@@ -1,11 +1,11 @@
 import { Component, HostListener, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { take } from 'rxjs/operators';
 import { Position } from 'src/app/_models/position';
 import { User } from 'src/app/_models/user';
-import { AccountService } from 'src/app/_services/account.service';
-import { PositionService } from 'src/app/_services/position.service';
+import { Position2Service } from 'src/app/_services/position2.service';
 
 @Component({
   selector: 'app-edit-position',
@@ -16,7 +16,7 @@ export class EditPositionComponent implements OnInit {
   @ViewChild('editForm') editForm: NgForm;
   position: Position;
   user: User;
-  id: number;
+  positionId: number;
 
   @HostListener('window:beforeunload', ['$event']) unloadNotification(
     $event: any
@@ -27,33 +27,28 @@ export class EditPositionComponent implements OnInit {
   }
 
   constructor(
-    private accountservice: AccountService,
-    private positionService: PositionService,
+    private position2Service: Position2Service,
+    private route: ActivatedRoute,
     private toastr: ToastrService
-  ) {
-    this.positionService.currentPosition$
-      .pipe(take(1))
-      .subscribe((position) => (this.position = position));
-    this.id = this.position.positionId;
-    console.log('in the edit position component here is id');
-    console.log(this.id);
-  }
+  ) {}
 
   ngOnInit(): void {
     this.loadPosition();
   }
 
   loadPosition() {
-    this.positionService
-      .getPosition(this.position.positionId)
-      .subscribe((position: Position) => {
+    this.positionId = +this.route.snapshot.paramMap.get('positionId');
+    console.log('positionId: ', this.positionId);
+    this.position2Service
+      .getPositionById(+this.route.snapshot.paramMap.get('positionId'))
+      .subscribe((position) => {
         this.position = position;
-        console.log(position.positionId);
+        console.log('positionId: ', position.positionId);
       });
   }
 
   updatePosition() {
-    this.positionService
+    this.position2Service
       .updatePosition(this.position, this.position.positionId)
       .subscribe(() => {
         this.toastr.success('Position info updated');

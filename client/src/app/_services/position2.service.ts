@@ -15,6 +15,7 @@ export class Position2Service {
   baseUrl = environment.apiUrl;
   positions: Position[] = [];
   positionId: number;
+  position: Position;
 
   constructor(private http: HttpClient) {}
 
@@ -27,5 +28,12 @@ export class Position2Service {
     return this.http.get<Position>(
       this.baseUrl + 'positions2/GetPositionDtoById/' + positionId
     );
+  }
+
+  updatePosition(position: Position, positionId: number) {
+    console.log('getting position info');
+    console.log('id: ', positionId);
+    console.log('updating position');
+    return this.http.put(this.baseUrl + 'positions2/' + positionId, position);
   }
 }
