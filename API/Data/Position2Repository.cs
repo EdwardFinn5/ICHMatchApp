@@ -78,10 +78,5 @@ namespace API.Data
         {
             _context.Entry(position).State = EntityState.Modified;
         }
-
-        Task<Position> IPosition2Repository.GetPositionByIdAsync(int id)
-        {
-            throw new NotImplementedException();
-        }
     }
 }
