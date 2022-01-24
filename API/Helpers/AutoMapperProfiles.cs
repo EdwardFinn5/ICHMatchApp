@@ -109,6 +109,13 @@ namespace API.Helpers
             CreateMap<EmpInfoUpdateDto, EmpInfo>();
             CreateMap<AddStudInfoDto, StudInfo>();
             CreateMap<StudInfo, AddStudInfoDto>();
+            CreateMap<Category, CategoryDto>();
+            CreateMap<CategoryUpdateDto, Category>();
+            CreateMap<LocationUpdateDto, Location>();
+            CreateMap<MajorUpdateDto, Major>();
+            CreateMap<Major, MajorDto>();
+            CreateMap<LocationUpdateDto, Location>();
+            CreateMap<Location, LocationDto>();
         }
     }
 }

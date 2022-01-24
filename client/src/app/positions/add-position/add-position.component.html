@@ -1,10 +1,19 @@
 <section class="signup">
-    <div class="card-header col-lg-4 m-auto">
-        <h3 style="text-align: center;">Add Position Info</h3>
-      </div>
-    <div class="login col-sm-4 col-lg-8 col-md-6 mx-auto shadow-lg">
   
-        <form  style="text-align: center" #addPositionForm='ngForm' id="addStudInfoForm"  (ngSubmit)="addPosition()" autocomplete="off">
+  <div class="text-center col-sm-4 col-lg-8 col-md-6 p-x m-auto">
+    <div class="alert alert-info" *ngIf="addPositionForm.dirty">
+        <strong>Alert: </strong>You have made changes. Any unsaved changes will be lost
+    </div>
+  </div>
+
+  <div class="card-header col-sm-4 col-lg-8 col-md-6 p-x m-auto">
+      <h3 style="text-align: center;">Add a Position</h3>
+  </div>
+    
+    
+  <div class="login col-sm-4 col-lg-8 col-md-6 mx-auto shadow-lg">
+  
+        <form #addPositionForm='ngForm' id="addStudInfoForm"  (ngSubmit)="addPosition()" autocomplete="off">
 
             <div class="form-group">
                 <label for="positionIdentifier"><strong>Identifier for position</strong></label>
@@ -55,112 +64,14 @@
                       >
                       </textarea> 
             </div>
+        </form>
 
-            <!-- <div class="form-group">
-              <label for="studInfoName"><strong>StudInfoName</strong></label>
-                <input 
-                    name="studInfoName"
-                    [(ngModel)]="model.StudInfoName"
-                    class="form-control shadow-sm" 
-                    type="text"
-                    >
-              </div>
-    
-              <div class="form-group">
-                <label for="gpa"><strong>Your current GPA</strong></label>
-                  <input 
-                      name="gpa"
-                      [(ngModel)]="model.gpa"
-                      class="form-control shadow-sm" 
-                      type="text"
-                      >
-                </div> -->
-
-                <!-- <div class="form-group">
-                    <input 
-                        name="gradDate"
-                        [(ngModel)]="model.gradDate"
-                        class="form-control shadow-sm" 
-                        type="date"
-                        placeholder="Graduation date (approx)"
-                        >
-                  </div>
-                  <div class="form-group">
-                    <input 
-                        name="workPlus"
-                        [(ngModel)]="model.workPlus"
-                        class="form-control shadow-sm" 
-                        type="text"
-                        placeholder="Your internship/work experiences"
-                        >
-                  </div>
-                  <div class="form-group">
-                    <input 
-                        name="dreamJob"
-                        [(ngModel)]="model.dreamJob"
-                        class="form-control shadow-sm" 
-                        type="text"
-                        placeholder="Your dream job"
-                        >
-                  </div>
-                  <div class="form-group">
-                    <input 
-                        name="athletics"
-                        [(ngModel)]="model.athletics"
-                        class="form-control shadow-sm" 
-                        type="text"
-                        placeholder="Your athletic experiences"
-                        >
-                  </div>
-                  <div class="form-group">
-                    <input 
-                        name="arts"
-                        [(ngModel)]="model.arts"
-                        class="form-control shadow-sm" 
-                        type="text"
-                        placeholder="Your music/dance/theatre experiences"
-                        >
-                  </div>
-                  <div class="form-group">
-                    <input 
-                        name="extraCurricular"
-                        [(ngModel)]="model.extraCurricular"
-                        class="form-control shadow-sm" 
-                        type="text"
-                        placeholder="Your clubs/organizations experiences"
-                        >
-                  </div>
-                  <div class="form-group">
-                    <input 
-                        name="bestEfmail"
-                        [(ngModel)]="model.bestEmail"
-                        class="form-control shadow-sm" 
-                        type="email"
-                        placeholder="Best email to contact you"
-                        >
-                  </div>
-                  <div class="form-group">
-                    <input 
-                        name="bestPhone"
-                        [(ngModel)]="model.bestPhone"
-                        class="form-control shadow-sm" 
-                        type="phone"
-                        placeholder="Best phone number to contact you"
-                        >
-                  </div>
-            -->
-                  <div class="btn-group d-flex card-footer">
-                    <!-- <button class="btn btn-primary mr-2">Possible Fit</button> -->
-                    <button [disabled]="!addPositionForm.dirty" form="addStudInfoForm" type="submit" class="btn btn-success btn-block">Save Changes</button>
-                </div>
+        <div>
+            <button [disabled]="!addPositionForm.dirty" form="addStudInfoForm" type="submit" class="btn btn-success btn-block">Save Changes</button>
+        </div>
+          
+      </div>
   
-                  <!-- <div class="footer mx-3">
-                    <a href="#">Forget password?</a>
-                    <p>Don't have an account? <a routerLink="/registerhome">Register here</a></p>
-                  </div> -->
-  
-          </form>
-    </div>
   </section>
   
 

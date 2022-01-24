@@ -23,6 +23,9 @@ namespace API.Extensions
             services.AddScoped<IEmpInfoRepository, EmpInfoRepository>();
             services.AddScoped<IPositionRepository, PositionRepository>();
             services.AddScoped<IPosition2Repository, Position2Repository>();
+            services.AddScoped<ICategoryRepository, CategoryRepository>();
+            services.AddScoped<IMajorRepository, MajorRepository>();
+            services.AddScoped<ILocationRepository, LocationRepository>();
             services.AddAutoMapper(typeof(AutoMapperProfiles).Assembly);
             services.AddDbContext<DataContext>(options =>
             {

@@ -58,7 +58,7 @@ namespace API.Controllers
         [HttpPost("{id}")]
         public async Task<ActionResult<PositionDto>> AddPosition(AddPositionDto addPositionDto, int id)
         {
-            if (await PositionExists(addPositionDto.PositionIdentifier)) return BadRequest("Position is already in place");
+            if (await PositionExists(addPositionDto.PositionName)) return BadRequest("Position is already in place");
 
             var position = new Position
             {
@@ -95,7 +95,7 @@ namespace API.Controllers
         }
 
         [HttpDelete("{id}")]
-        public async Task<ActionResult> DeleteMessage(int id)
+        public async Task<ActionResult> DeletePosition(int id)
         {
             var position = await _position2Repository.GetPositionByIdAsync(id);
 
@@ -118,13 +118,13 @@ namespace API.Controllers
 
             if (await _position2Repository.SaveAllAsync()) return NoContent();
 
-            return BadRequest("Failed to update user");
+            return BadRequest("Failed to update position");
         }
 
 
-        private async Task<bool> PositionExists(string positionIdentifier)
+        private async Task<bool> PositionExists(string positionName)
         {
-            return await _context.Positions.AnyAsync(x => x.PositionIdentifier == positionIdentifier.ToLower());
+            return await _context.Positions.AnyAsync(x => x.PositionName == positionName.ToLower());
         }
 
     }

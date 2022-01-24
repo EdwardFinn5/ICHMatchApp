@@ -10,5 +10,8 @@ namespace API.Entities
 
         [Column(TypeName = "nvarchar(60)")]
         public string MajorName { get; set; }
+
+        public virtual Category Category { get; set; }
+        public int CategoryId { get; set; }
     }
 }

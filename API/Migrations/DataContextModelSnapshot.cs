@@ -94,6 +94,21 @@ namespace API.Migrations
                     b.ToTable("Users");
                 });
 
+            modelBuilder.Entity("API.Entities.Category", b =>
+                {
+                    b.Property<int>("CategoryId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("CategoryName")
+                        .HasColumnType("nvarchar(100)");
+
+                    b.HasKey("CategoryId");
+
+                    b.ToTable("Categories");
+                });
+
             modelBuilder.Entity("API.Entities.College", b =>
                 {
                     b.Property<int>("CollegeId")
@@ -161,7 +176,7 @@ namespace API.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("LocationName")
-                        .HasColumnType("nvarchar(60)");
+                        .HasColumnType("nvarchar(100)");
 
                     b.HasKey("LocationId");
 
@@ -175,10 +190,15 @@ namespace API.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<int>("CategoryId")
+                        .HasColumnType("int");
+
                     b.Property<string>("MajorName")
                         .HasColumnType("nvarchar(60)");
 
                     b.HasKey("MajorId");
+
+                    b.HasIndex("CategoryId");
 
                     b.ToTable("Majors");
                 });
@@ -356,6 +376,17 @@ namespace API.Migrations
                     b.Navigation("AppUser");
                 });
 
+            modelBuilder.Entity("API.Entities.Major", b =>
+                {
+                    b.HasOne("API.Entities.Category", "Category")
+                        .WithMany("Majors")
+                        .HasForeignKey("CategoryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Category");
+                });
+
             modelBuilder.Entity("API.Entities.Photo", b =>
                 {
                     b.HasOne("API.Entities.AppUser", "AppUser")
@@ -398,6 +429,11 @@ namespace API.Migrations
                     b.Navigation("Positions");
 
                     b.Navigation("StudInfos");
+                });
+
+            modelBuilder.Entity("API.Entities.Category", b =>
+                {
+                    b.Navigation("Majors");
                 });
 #pragma warning restore 612, 618
         }

@@ -37,6 +37,7 @@ import { PreventUnsavedEditPositionChangesGuard } from './_guards/prevent-unsave
 import { PositionsListComponent } from './positions/positions-list.component';
 import { PositionDetailComponent } from './positions/position-detail.component';
 import { PositionDetailNewComponent } from './positions/position-detail-new.component';
+import { Empmember2EditEmpinfoComponent } from './empmembers/empmember2-edit-empinfo.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -112,6 +113,11 @@ const routes: Routes = [
   { path: 'errors', component: TestErrorsComponent },
   { path: 'not-found', component: NotFoundComponent },
   { path: 'server-error', component: ServerErrorComponent },
+  {
+    path: 'company2/edit',
+    component: Empmember2EditEmpinfoComponent,
+    pathMatch: 'full',
+  },
   { path: '**', component: NotFoundComponent, pathMatch: 'full' },
 ];
 
