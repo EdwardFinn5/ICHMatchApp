@@ -1,78 +1,56 @@
-<div class="container-fluid">
+<section class="signup" *ngIf="position">
 
-    <div class="row shadow"  *ngIf="position" style="margin-left: 0px">
-        <div class="text-center">
-            <h1><strong>Your position Info</strong></h1>
+    <div class="text-center col-sm-4 col-lg-8 col-md-6 p-x m-auto">
+        <div class="alert alert-info" *ngIf="editForm.dirty">
+            <strong>Alert: </strong>You have made changes. Any unsaved changes will be lost
         </div>
-        <div class="text-center">
-            <div class="alert alert-info" *ngIf="editForm.dirty">
-                <p><strong>Alert: </strong>You have made changes. Any unsaved changes will be lost</p>
+    </div>
+
+    <div class="card-header col-sm-4 col-lg-8 col-md-6 p-x m-auto">
+        <h3 style="text-align: center;">Edit Position</h3>
+    </div>
+
+    <div class="login col-sm-4 col-lg-8 col-md-6 mx-auto shadow-lg">
+
+        <form #editForm="ngForm" id="editForm" (ngSubmit)="updatePosition()" autocomplete="off">
+
+            <div class="form-group">
+                <label for="positionIdentifier"><strong>Identifier for position</strong></label>
+                <input name="positionIdentifier" [(ngModel)]="position.positionIdentifier"
+                    class="form-control shadow-sm" type="text">
             </div>
-        </div>
-    
-        <div class="col-sm-4 col-lg-8 col-md-6 p-0 mx-auto">
-                <div class="card">
-                
-                <div class="card-body text-center">
-                    
-                    <form #editForm="ngForm" id="editForm" (ngSubmit)="updatePosition()">
-                        <div class="form-group">
-                            <label for="positionIdentifier"><strong>Identifier for position</strong></label>
-                              <input 
-                                  name="positionIdentifier"
-                                  [(ngModel)]="position.positionIdentifier"
-                                  class="form-control shadow-sm" 
-                                  type="text"
-                                  >
-                            </div>
-                        
-                        <div class="form-group">
-                            <label for="positionName"><strong>Position Name</strong></label>
-                              <input 
-                                  name="positionName"
-                                  [(ngModel)]="position.positionName"
-                                  class="form-control shadow-sm" 
-                                  type="text"
-                                  >
-                            </div>
-              
-                        <div class="form-group">
-                            <label class="label"><strong>Position Description</strong> </label>
-                              <textarea
-                                  name="positionDescription"
-                                  [(ngModel)]="position.positionDescription"
-                                  class="form-control shadow-sm" 
-                                  >
-                                  </textarea> 
-                        </div>
-            
-                        <div class="form-group">
-                            <label class="label"><strong>Type of person we're looking for</strong> </label>
-                              <textarea
-                                  name="lookingFor"
-                                  [(ngModel)]="position.lookingFor"
-                                  class="form-control shadow-sm" 
-                                  >
-                                  </textarea> 
-                        </div>
-            
-                        <div class="form-group">
-                            <label class="label"><strong>Position Benefits</strong> </label>
-                              <textarea
-                                  name="positionBenefits"
-                                  [(ngModel)]="position.positionBenefits"
-                                  class="form-control shadow-sm" 
-                                  >
-                                  </textarea> 
-                        </div>
-            
-                </form>
-                </div>
-                
-                    <div class="btn-group d-flex card-footer">
-                      
-                        <button [disabled]="!editForm.dirty" form="editForm" type="submit" class="btn btn-success btn-block">Save Changes</button>
-                    </div>
+
+            <div class="form-group">
+                <label for="positionName"><strong>Position Name</strong></label>
+                <input name="positionName" [(ngModel)]="position.positionName" class="form-control shadow-sm"
+                    type="text">
             </div>
-        </div>
- 
+
+            <div class="form-group">
+                <label class="label"><strong>Position Description</strong> </label>
+                <textarea name="positionDescription" [(ngModel)]="position.positionDescription"
+                    class="form-control shadow-sm">
+                                  </textarea>
+            </div>
+
+            <div class="form-group">
+                <label class="label"><strong>Type of person we're looking for</strong> </label>
+                <textarea name="lookingFor" [(ngModel)]="position.lookingFor" class="form-control shadow-sm">
+                                  </textarea>
+            </div>
+
+            <div class="form-group">
+                <label class="label"><strong>Position Benefits</strong> </label>
+                <textarea name="positionBenefits" [(ngModel)]="position.positionBenefits"
+                    class="form-control shadow-sm">
+                                  </textarea>
+            </div>
+        </form>
+
+    <div>
+        <button [disabled]="!editForm.dirty" form="editForm" type="submit" 
+        class="btn btn-success btn-block">Save Changes</button>
+    </div>
+
+    </div>
+</section>

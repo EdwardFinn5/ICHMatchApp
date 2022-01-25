@@ -1,77 +1,55 @@
 <section class="signup">
-  
-  <div class="text-center col-sm-4 col-lg-8 col-md-6 p-x m-auto">
-    <div class="alert alert-info" *ngIf="addPositionForm.dirty">
-        <strong>Alert: </strong>You have made changes. Any unsaved changes will be lost
-    </div>
-  </div>
 
-  <div class="card-header col-sm-4 col-lg-8 col-md-6 p-x m-auto">
-      <h3 style="text-align: center;">Add a Position</h3>
-  </div>
-    
-    
-  <div class="login col-sm-4 col-lg-8 col-md-6 mx-auto shadow-lg">
-  
-        <form #addPositionForm='ngForm' id="addStudInfoForm"  (ngSubmit)="addPosition()" autocomplete="off">
+    <div class="text-center col-sm-4 col-lg-8 col-md-6 p-x m-auto">
+        <div class="alert alert-info" *ngIf="addPositionForm.dirty">
+            <strong>Alert: </strong>You have made changes. Any unsaved changes will be lost
+        </div>
+    </div>
+
+    <div class="card-header col-sm-4 col-lg-8 col-md-6 p-x m-auto">
+        <h3 style="text-align: center;">Add a Position</h3>
+    </div>
+
+    <div class="login col-sm-4 col-lg-8 col-md-6 mx-auto shadow-lg">
+
+        <form #addPositionForm='ngForm' id="addStudInfoForm" (ngSubmit)="addPosition()" autocomplete="off">
 
             <div class="form-group">
                 <label for="positionIdentifier"><strong>Identifier for position</strong></label>
-                  <input 
-                      name="positionIdentifier"
-                      [(ngModel)]="model.positionIdentifier"
-                      class="form-control shadow-sm" 
-                      type="text"
-                      >
-                </div>
-            
+                <input name="positionIdentifier" [(ngModel)]="model.positionIdentifier" class="form-control shadow-sm"
+                    type="text">
+            </div>
+
             <div class="form-group">
                 <label for="positionName"><strong>Position Name</strong></label>
-                  <input 
-                      name="positionName"
-                      [(ngModel)]="model.positionName"
-                      class="form-control shadow-sm" 
-                      type="text"
-                      >
-                </div>
-  
+                <input name="positionName" [(ngModel)]="model.positionName" class="form-control shadow-sm" type="text">
+            </div>
+
             <div class="form-group">
                 <label class="label"><strong>Position Description</strong> </label>
-                  <textarea
-                      name="positionDescription"
-                      [(ngModel)]="model.positionDescription"
-                      class="form-control shadow-sm" 
-                      >
-                      </textarea> 
+                <textarea name="positionDescription" [(ngModel)]="model.positionDescription"
+                    class="form-control shadow-sm">
+                      </textarea>
             </div>
 
             <div class="form-group">
                 <label class="label"><strong>Type of person we're looking for</strong> </label>
-                  <textarea
-                      name="lookingFor"
-                      [(ngModel)]="model.lookingFor"
-                      class="form-control shadow-sm" 
-                      >
-                      </textarea> 
+                <textarea name="lookingFor" [(ngModel)]="model.lookingFor" class="form-control shadow-sm">
+                      </textarea>
             </div>
 
             <div class="form-group">
                 <label class="label"><strong>Position Benefits</strong> </label>
-                  <textarea
-                      name="positionBenefits"
-                      [(ngModel)]="model.positionBenefits"
-                      class="form-control shadow-sm" 
-                      >
-                      </textarea> 
+                <textarea name="positionBenefits" [(ngModel)]="model.positionBenefits" class="form-control shadow-sm">
+                      </textarea>
             </div>
         </form>
 
         <div>
-            <button [disabled]="!addPositionForm.dirty" form="addStudInfoForm" type="submit" class="btn btn-success btn-block">Save Changes</button>
+            <button [disabled]="!addPositionForm.dirty" form="addStudInfoForm" type="submit"
+                class="btn btn-success btn-block">Save Changes</button>
         </div>
-          
-      </div>
-  
-  </section>
-  
 
+    </div>
+
+</section>
