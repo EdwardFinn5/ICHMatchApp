@@ -23,6 +23,7 @@ export class UserLoginComponent implements OnInit {
 
   login() {
     this.accountService.login(this.model).subscribe((response) => {
+      console.log(response);
       this.router.navigateByUrl('/membersearch');
       this.loggedIn = true;
     });

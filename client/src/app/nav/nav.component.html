@@ -1,76 +1,71 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
   <div class="container">
-  <img src='../../assets/ICF_Logo.jpg' routerLink="/" class="logo" height="40" width="40" style="margin-right: 20px" />
-  <a class="navbar-brand" routerLink="/">ICF Connect</a>
-  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto" style="font-size: 1.3em" *ngIf="(accountService.currentUser$ | async) as user">
-      <li class="nav-item" *ngIf="user.appUserType == 'EmpHr'">
-        <a class="nav-link text-white " routerLink="/membersearch">Search Talent</a>
-      </li>
-      <li class="nav-item" *ngIf="user.appUserType == 'ColStudent'">
-        <a class="nav-link text-white" routerLink="/membersearch" routerLinkActive='active'>Search Jobs</a>
-      </li>
-    </ul>
-    <ul class="navbar-nav ml-auto" *ngIf="(accountService.currentUser$ | async) === null" style="font-size: 1.3em">
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/" routerLinkActive='active'>Home</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/about" routerLinkActive='active'>About</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/positionslist" routerLinkActive='active'>List Pos</a>
-      </li>
-      <ul class="navbar-nav ml-auto" *ngIf="(accountService.currentUser$ | async) === null" style="font-size: 1.3em">
+    <img src='../../assets/ICF_Logo.jpg' routerLink="/" class="logo" height="40" width="40"
+      style="margin-right: 20px" />
+    <a class="navbar-brand" routerLink="/">ICF Connect</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto" style="font-size: 1.3em" *ngIf="(accountService.currentUser$ | async) as user">
+        <li class="nav-item" *ngIf="user.appUserType == 'EmpHr'">
+          <a class="nav-link text-white " routerLink="/membersearch">Search Talent</a>
+        </li>
+        <li class="nav-item" *ngIf="user.appUserType == 'ColStudent'">
+          <a class="nav-link text-white" routerLink="/membersearch" routerLinkActive='active'>Search Jobs</a>
+        </li>
       </ul>
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/userlogin" routerLinkActive='active'>Sign In</a>
-      </li>
-    </ul>
-    
-    <div *ngIf="accountService.appUserType == 'ColStudent'">
-      <div class="dropdown" style="font-size: 1.3em" *ngIf="(accountService.currentUser$ | async) as user" dropdown>
-        <a class="dropdown-toggle text-light mt-5" dropdownToggle>Welcome {{user.username | titlecase}}</a>
-        <div class="dropdown-menu mt-3" *dropdownMenu>
-          <a routerLink="/member/edit" class="dropdown-item">Add/Edit card & photo info</a>
-          <div class="dropdown-divider"></div>
-          
-          <!-- <a routerLink="/studinfo/add" class="dropdown-item">Add/Edit academic info</a>
-           
-          <div class="dropdown-divider"></div> -->
-          <a routerLink="/studinfo/edit" class="dropdown-item">Add/Edit academic info</a>
-         
-          <div class="dropdown-divider"></div>
-          
-          <a class="dropdown-item" (click)="logout()">Logout</a>
+      <ul class="navbar-nav ml-auto" *ngIf="(accountService.currentUser$ | async) === null" style="font-size: 1.3em">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/" routerLinkActive='active'>Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/about" routerLinkActive='active'>About</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/positionslist" routerLinkActive='active'>List Pos</a>
+        </li>
+        <ul class="navbar-nav ml-auto" *ngIf="(accountService.currentUser$ | async) === null" style="font-size: 1.3em">
+        </ul>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/userlogin" routerLinkActive='active'>Sign In</a>
+        </li>
+      </ul>
+
+      <div *ngIf="accountService.appUserType == 'ColStudent'">
+        <div class="dropdown" style="font-size: 1.3em" *ngIf="(accountService.currentUser$ | async) as user" dropdown>
+          <a class="dropdown-toggle text-light mt-5" dropdownToggle>Welcome {{user.firstName | titlecase}}</a>
+          <div class="dropdown-menu mt-3" *dropdownMenu>
+            <a routerLink="/member/edit" class="dropdown-item">Add/Edit card & photo info</a>
+            <div class="dropdown-divider"></div>
+
+            <a routerLink="/studinfo/edit" class="dropdown-item">Add/Edit academic info</a>
+
+            <div class="dropdown-divider"></div>
+
+            <a class="dropdown-item" (click)="logout()">Logout</a>
+          </div>
         </div>
       </div>
-    </div>
 
-    <div *ngIf="accountService.appUserType == 'EmpHr'">
-      <div class="dropdown" style="font-size: 1.3em" *ngIf="(accountService.currentUser$ | async) as user" dropdown>
-        <a class="dropdown-toggle text-light mt-5" dropdownToggle>Welcome {{user.username | titlecase}}</a>
-        <div class="dropdown-menu mt-3" *dropdownMenu>
-          <a routerLink="/empmember/edit" class="dropdown-item">Add/Edit card & logo info</a>
-          <div class="dropdown-divider"></div>
-          <a routerLink="/company2/edit" class="dropdown-item">Add/Edit company info</a>
-          <div class="dropdown-divider"></div>
-          <a routerLink="/position/add" class="dropdown-item">Add a position</a>
-          <div class="dropdown-divider"></div>
-          <a routerLink="/empmember/positions" class="dropdown-item">View positions</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" (click)="logout()">Logout</a>
+      <div *ngIf="accountService.appUserType == 'EmpHr'">
+        <div class="dropdown" style="font-size: 1.3em" *ngIf="(accountService.currentUser$ | async) as user" dropdown>
+          <a class="dropdown-toggle text-light mt-5" dropdownToggle>Welcome {{user.firstName | titlecase}}</a>
+          <div class="dropdown-menu mt-3" *dropdownMenu>
+            <a routerLink="/empmember/edit" class="dropdown-item">Add/Edit card & logo info</a>
+            <div class="dropdown-divider"></div>
+            <a routerLink="/company2/edit" class="dropdown-item">Add/Edit company info</a>
+            <div class="dropdown-divider"></div>
+            <a routerLink="/position/add" class="dropdown-item">Add a position</a>
+            <div class="dropdown-divider"></div>
+            <a routerLink="/empmember/positions" class="dropdown-item">View positions</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" (click)="logout()">Logout</a>
+          </div>
         </div>
       </div>
-    </div>
 
-  </div>  
+    </div>
   </div>
-  </nav>
-
-
-
+</nav>

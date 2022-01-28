@@ -26,6 +26,7 @@ export class AccountService {
     return this.http.post(this.baseUrl + 'account/login', model).pipe(
       map((response: User) => {
         const user = response;
+        console.log(user);
         if (user) {
           this.appUserType = user.appUserType;
           this.givingLevel = user.givingLevel;
@@ -69,6 +70,7 @@ export class AccountService {
 
   setCurrentUser(user: User) {
     this.currentUserSource.next(user);
+    this.appUserType = user.appUserType;
   }
 
   logout() {
