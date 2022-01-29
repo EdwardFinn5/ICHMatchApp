@@ -46,8 +46,9 @@ export class AccountService {
           localStorage.setItem('user', JSON.stringify(user));
           this.currentUserSource.next(user);
           this.appUserType = user.appUserType;
-          this.router.navigateByUrl('/membersearch');
+          this.router.navigateByUrl('/positionslist');
         }
+        // return user; (if you include this you don't end up with undefined in the register component)
       })
     );
   }

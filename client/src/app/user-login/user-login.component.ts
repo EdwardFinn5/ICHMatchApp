@@ -10,7 +10,7 @@ import { AccountService } from '../_services/account.service';
 })
 export class UserLoginComponent implements OnInit {
   model: any = {};
-  loggedIn: boolean = false;
+  // loggedIn: boolean = false;
   appuserType: string;
 
   constructor(
@@ -23,9 +23,8 @@ export class UserLoginComponent implements OnInit {
 
   login() {
     this.accountService.login(this.model).subscribe((response) => {
-      console.log(response);
       this.router.navigateByUrl('/membersearch');
-      this.loggedIn = true;
+      // this.loggedIn = true;
     });
   }
 

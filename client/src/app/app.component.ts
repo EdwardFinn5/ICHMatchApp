@@ -10,7 +10,7 @@ import { AccountService } from './_services/account.service';
 })
 export class AppComponent implements OnInit {
   title = 'ICF Match';
-  users: any;
+  // users: any;
   appUserType: string;
 
   constructor(private accountService: AccountService) {}

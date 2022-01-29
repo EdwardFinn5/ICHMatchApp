@@ -24,7 +24,7 @@ export class RegisterStudComponent implements OnInit {
       (response) => {
         console.log(response);
         this.cancel();
-        this.router.navigateByUrl('/membersearch');
+        this.router.navigateByUrl('/positionslist');
       },
       (error) => {
         console.log(error);
