@@ -14,4 +14,12 @@ export class PositionCardComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {}
+
+  addLike(position: Position) {
+    // this.memberService.addLike(member.username).subscribe(() => {
+    //   this.toastr.success(
+    //     'You have indicated ' + member.firstName + ' might be a good fit'
+    //   );
+    // });
+  }
 }

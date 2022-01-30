@@ -22,9 +22,10 @@ export class RegisterStudComponent implements OnInit {
   registerStud() {
     this.accountService.registerStud(this.model).subscribe(
       (response) => {
-        console.log(response);
+        console.log('response: ', response);
         this.cancel();
         this.router.navigateByUrl('/positionslist');
+        this.toastr.success('Registration was successful');
       },
       (error) => {
         console.log(error);

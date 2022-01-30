@@ -1,16 +1,56 @@
 <div class="card mb-4" *ngIf="position">
-    <div class="card-body">
-        <img src="{{position.logoUrl || '../../assets/images/logo.PNG' }}" alt="{{position.empName}}" class="card-img-top">
-        <strong><p class="text-center mt-2">
-            {{position.positionType}} <br>
-            {{position.positionName}} Position <br>
-            with {{position.empName}}
-        </p></strong>
-        <div class="btn-group d-flex card-footer">
-            <button class="btn btn-success btn-block" routerLink='/detailofposition/{{position.positionId}}'>View Details</button>
-        </div>
+    <div class="card-img-wrapper">
+        <img src="{{position.logoUrl || '../../assets/images/logo.PNG' }}" alt="{{position.empName}}"
+            class="card-img-top">
+        <ul class="list-inline member-icons animate text-center">
+            <li class="list-inline-item"><button routerLink='/newpositiondetail/{{position.positionId}}'
+                    class="btn btn-primary">
+                    <i class="fa fa-info"></i>
+                    <span class="tooltip-text">
+                        More info
+                    </span>
+                </button>
+            </li>
+            <li class="list-inline-item"><button (click)="addLike(position)" class="btn btn-primary">
+                    <i class="fa fa-thumbs-up"></i>
+                    <span class="tooltip-text">
+                        Company I like
+                    </span>
+                </button>
+            </li>
+            <li class="list-inline-item">
+                <button routerLink='/newpositiondetail/{{position.positionId}}' class="btn btn-primary">
+                    <i class="fa fa-envelope"></i>
+                    <span class="tooltip-text">
+                        Send message
+                    </span>
+                </button>
+            </li>
+        </ul>
     </div>
-   
- 
-   
+
+    <div class="card-body padding p-2">
+        <h6 class="card-title text-center mb-1">
+            <span>
+                <i class="fa fa-user mr-2"></i> 
+            </span>
+            <u><strong>{{position.empName}}</strong></u>
+        </h6>
+        <ng-container class="card-text text-muted text-center">
+            <p class="text-center">
+                {{position.positionType}} {{position.positionName}} position
+                <br>in {{position.positionLocation}} 
+                <br>Start date: {{position.startDate | date: "MM/dd/yyyy"}}
+                <br>Application deadline: {{position.appDeadline | date: "MM/dd/yyyy"}}
+            </p>
+            <div *ngIf="position.givingLevel == 'a'" class="a-level text-center p-1">
+            </div>
+            <div *ngIf="position.givingLevel == 'b'" class="b-level text-center p-1">
+            </div>
+            <div *ngIf="position.givingLevel == 'c'" class="c-level text-center p-1">
+            </div>
+            <button class="btn btn-success btn-sm shadow-sm mr-2 mb-2" routerLink='/empmembercompdetail/{{position.appUserId}}'>View Company Details</button>
+        </ng-container>
+
+    </div>
 </div> 

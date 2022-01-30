@@ -4,6 +4,8 @@ export interface Position {
   empName: string;
   empIndustry: string;
   positionName: string;
+  givingLevel: string;
+  giftAmt: number;
   positionDescription: string;
   positionBenefits: string;
   lookingFor: string;

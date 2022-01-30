@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { User } from '../_models/user';
 import { AccountService } from '../_services/account.service';
 
 @Component({
@@ -11,7 +12,8 @@ import { AccountService } from '../_services/account.service';
 export class UserLoginComponent implements OnInit {
   model: any = {};
   // loggedIn: boolean = false;
-  appuserType: string;
+  appUserType: string;
+  user: User;
 
   constructor(
     private accountService: AccountService,
@@ -23,7 +25,23 @@ export class UserLoginComponent implements OnInit {
 
   login() {
     this.accountService.login(this.model).subscribe((response) => {
-      this.router.navigateByUrl('/membersearch');
+      this.toastr.success('Login was successful');
+      console.log('response in login: ', response);
+      this.user = response;
+      this.appUserType = this.user.appUserType;
+      console.log('user in login', this.user);
+      console.log('appUserType: ', this.appUserType);
+      if (this.appUserType == 'EmpHr') {
+        console.log('this is navigate user type: ', this.appUserType);
+        this.router.navigateByUrl('/membersearch');
+      } else if (this.appUserType == 'ColStudent') {
+        console.log('this is navigate user type: ', this.appUserType);
+        this.router.navigateByUrl('/positionslist');
+      }
+
+      // if ((this.appUserType = 'EmpHr')) {
+      //   this.router.navigateByUrl('/positionslist');
+      // }
       // this.loggedIn = true;
     });
   }

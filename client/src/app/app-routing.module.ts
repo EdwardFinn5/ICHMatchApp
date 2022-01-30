@@ -38,6 +38,7 @@ import { PositionsListComponent } from './positions/positions-list.component';
 import { PositionDetailComponent } from './positions/position-detail.component';
 import { PositionDetailNewComponent } from './positions/position-detail-new.component';
 import { Empmember2EditEmpinfoComponent } from './empmembers/empmember2-edit-empinfo.component';
+import { EmpmemberCompDetailComponent } from './empmembers/empmember-comp-detail/empmember-comp-detail.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -47,15 +48,27 @@ const routes: Routes = [
   { path: 'registerstud', component: RegisterStudComponent },
   { path: 'memberslist', component: MemberListComponent },
   { path: 'empmemberslist', component: EmpmemberListComponent },
+  {
+    path: 'empmembercompdetail/:appUserId',
+    component: EmpmemberCompDetailComponent,
+  },
 
   {
     path: '',
     runGuardsAndResolvers: 'always',
     canActivate: [AuthGuard],
     children: [
-      { path: 'membersearch', component: MemberSearchComponent },
+      {
+        path: 'membersearch',
+        component: MemberSearchComponent,
+        pathMatch: 'full',
+      },
       { path: 'empmember/positions', component: EmpmemberPositionsComponent },
-      { path: 'empmembersearch', component: EmpmemberSearchComponent },
+      {
+        path: 'empmembersearch',
+        component: EmpmemberSearchComponent,
+        pathMatch: 'full',
+      },
       { path: 'members/:username', component: MemberDetailComponent },
       { path: 'members/:id', component: MemberDetailComponent },
       {
@@ -92,6 +105,7 @@ const routes: Routes = [
     ],
   },
   { path: 'lists', component: ListsComponent },
+  { path: 'messages', component: MessagesComponent },
   {
     path: 'detailofposition/:positionId',
     component: PositionDetailComponent,

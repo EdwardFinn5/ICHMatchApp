@@ -44,6 +44,7 @@ import { PositionsListComponent } from './positions/positions-list.component';
 import { PositionDetailComponent } from './positions/position-detail.component';
 import { PositionDetailNewComponent } from './positions/position-detail-new.component';
 import { Empmember2EditEmpinfoComponent } from './empmembers/empmember2-edit-empinfo.component';
+import { EmpmemberCompDetailComponent } from './empmembers/empmember-comp-detail/empmember-comp-detail.component';
 
 @NgModule({
   declarations: [
@@ -83,6 +84,7 @@ import { Empmember2EditEmpinfoComponent } from './empmembers/empmember2-edit-emp
     PositionDetailComponent,
     PositionDetailNewComponent,
     Empmember2EditEmpinfoComponent,
+    EmpmemberCompDetailComponent,
   ],
   imports: [
     BrowserModule,

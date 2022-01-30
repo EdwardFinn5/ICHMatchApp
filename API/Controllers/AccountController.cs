@@ -76,6 +76,7 @@ namespace API.Controllers
             {
                 AppUserId = registerEmpDto.AppUserId,
                 UserName = registerEmpDto.Username.ToLower(),
+                GivingLevel = registerEmpDto.GivingLevel,
                 PasswordHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(registerEmpDto.Password)),
                 PasswordSalt = hmac.Key,
                 AppUserType = "EmpHr"
@@ -107,7 +108,8 @@ namespace API.Controllers
                 Token = _tokenService.CreateToken(user),
                 AppUserType = "EmpHr",
                 FirstName = user.FirstName,
-                EmpName = user.EmpName
+                EmpName = user.EmpName,
+                GivingLevel = user.GivingLevel
             };
         }
 

@@ -37,7 +37,7 @@
         </ng-container>
         <ng-container *ngIf="cardMember.appUserType == 'EmpHr'" class="card-text text-muted text-center">
         <p class="text-center">
-            Number of employees: {{cardMember.employeeNum}} 
+             Number of employees: {{cardMember.employeeNum}} 
             <br>Industry: {{cardMember.empIndustry}} 
             <br>Headquarters: {{cardMember.location}}
             </p>
@@ -50,9 +50,9 @@
         <div *ngIf="cardMember.givingLevel == 'c'" class="c-level text-center p-1">
             {{cardMember.giftAmt}}
         </div>
+        <!-- <button class="btn btn-success btn-block shadow-sm mr-2 mb-2" routerLink='/empmembercompdetail/{{cardMember.appUserId}}'>View</button> -->
     </ng-container>
-        <!-- <p class="card-text text-muted text-center">{{member.workPlus}}</p> -->
-    <!-- </div> -->
+        
 </div> 
     
 

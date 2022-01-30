@@ -15,6 +15,10 @@ namespace API.DTOs
         [Required]
         [StringLength(8, MinimumLength = 4)]
         public string Password { get; set; }
+
+        [Required]
+        public string GivingLevel { get; set; }
+
         // public string FirstName { get; set; }
         // public string LastName { get; set; }
         // public string Location { get; set; }
