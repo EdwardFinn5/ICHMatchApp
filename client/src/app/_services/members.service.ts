@@ -20,4 +20,11 @@ export class MembersService {
   getMember(username: string) {
     return this.http.get<CardMember>(this.baseUrl + 'cardusers/' + username);
   }
+
+  getCardMemberById(appUserId: number) {
+    console.log('hello');
+    return this.http.get<CardMember>(
+      this.baseUrl + 'cardusers/GetById/' + appUserId
+    );
+  }
 }

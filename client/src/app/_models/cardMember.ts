@@ -23,6 +23,9 @@ export interface CardMember {
   empName: string;
   empIndustry: string;
   employeeNum: string;
+  companyDescription: string;
+  empWebsite: string;
+  whyWork: string;
   created: Date;
   lastActive: Date;
   photos: Photo[];

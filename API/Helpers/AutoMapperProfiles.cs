@@ -83,25 +83,29 @@ namespace API.Helpers
             .ForMember(dest => dest.ApplyLink, opt => opt
                 .MapFrom(src => src.Positions.FirstOrDefault(x => x.IsActive).ApplyLink));
 
+            CreateMap<Position, PositionDto>()
+               .ForMember(d => d.EmpIndustry, o => o.MapFrom(s => s.AppUser.EmpIndustry))
+               .ForMember(d => d.EmpName, o => o.MapFrom(s => s.AppUser.EmpName))
+               .ForMember(d => d.GivingLevel, o => o.MapFrom(s => s.AppUser.GivingLevel))
+               .ForMember(d => d.GiftAmt, o => o.MapFrom(s => s.AppUser.GiftAmt))
+               .ForMember(d => d.LogoUrl, o => o.MapFrom(s => s.AppUser.LogoUrl));
+            // .ForMember(d => d.LogoUrl, o => o.MapFrom(s => s.AppUser.HrUrl))   
+
             CreateMap<AppUser, CardMemberDto>()
                 .ForMember(dest => dest.StudentUrl, opt => opt
                     .MapFrom(src => src.Photos.FirstOrDefault(x => x.IsMain).StudentUrl))
                 .ForMember(dest => dest.LogoUrl, opt => opt
-                    .MapFrom(src => src.Photos.FirstOrDefault(x => x.IsMainLogo).LogoUrl));
+                    .MapFrom(src => src.Photos.FirstOrDefault(x => x.IsMainLogo).LogoUrl))
+                .ForMember(dest => dest.EmpWebsite, opt => opt
+                    .MapFrom(src => src.EmpInfos.FirstOrDefault(x => x.IsActive).EmpWebsite))
+                .ForMember(dest => dest.CompanyDescription, opt => opt
+                    .MapFrom(src => src.EmpInfos.FirstOrDefault(x => x.IsActive).CompanyDescription))
+                .ForMember(dest => dest.WhyWork, opt => opt
+                    .MapFrom(src => src.EmpInfos.FirstOrDefault(x => x.IsActive).WhyWork));
 
             CreateMap<Photo, PhotoDto>();
             CreateMap<StudInfo, StudInfoDto>();
             CreateMap<EmpInfo, EmpInfoDto>();
-
-
-            CreateMap<Position, PositionDto>()
-                .ForMember(d => d.EmpIndustry, o => o.MapFrom(s => s.AppUser.EmpIndustry))
-                .ForMember(d => d.EmpName, o => o.MapFrom(s => s.AppUser.EmpName))
-                .ForMember(d => d.GivingLevel, o => o.MapFrom(s => s.AppUser.GivingLevel))
-                .ForMember(d => d.GiftAmt, o => o.MapFrom(s => s.AppUser.GiftAmt))
-                .ForMember(d => d.LogoUrl, o => o.MapFrom(s => s.AppUser.LogoUrl));
-            // .ForMember(d => d.LogoUrl, o => o.MapFrom(s => s.AppUser.HrUrl))
-
 
 
 

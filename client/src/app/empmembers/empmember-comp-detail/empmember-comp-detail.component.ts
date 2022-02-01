@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { CardMember } from 'src/app/_models/cardMember';
 import { Member } from 'src/app/_models/member';
+import { MembersService } from 'src/app/_services/members.service';
 import { SearchMembersService } from 'src/app/_services/search-members.service';
 
 @Component({
@@ -10,10 +12,10 @@ import { SearchMembersService } from 'src/app/_services/search-members.service';
 })
 export class EmpmemberCompDetailComponent implements OnInit {
   id: number;
-  member: Member;
+  cardMember: CardMember;
 
   constructor(
-    private searchMembersService: SearchMembersService,
+    private membersService: MembersService,
     private route: ActivatedRoute
   ) {}
 
@@ -26,11 +28,9 @@ export class EmpmemberCompDetailComponent implements OnInit {
   loadMember() {
     this.id = +this.route.snapshot.paramMap.get('appUserId');
     console.log('1st id in loadMember: ', this.id);
-    this.searchMembersService
-      .getSearchMemberById(this.id)
-      .subscribe((member) => {
-        this.member = member;
-        console.log('member Id: ', this.member.appUserId);
-      });
+    this.membersService.getCardMemberById(this.id).subscribe((cardMember) => {
+      this.cardMember = cardMember;
+      console.log('member Id: ', this.cardMember.appUserId);
+    });
   }
 }

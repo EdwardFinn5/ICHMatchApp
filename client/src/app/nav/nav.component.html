@@ -18,6 +18,9 @@
       </ul>
       <ul class="navbar-nav ml-auto" *ngIf="(accountService.currentUser$ | async) === null" style="font-size: 1.3em">
         <li class="nav-item">
+          <a class="nav-link" routerLink="/errors" routerLinkActive='active'>Errors</a>
+        </li>
+        <li class="nav-item">
           <a class="nav-link" routerLink="/" routerLinkActive='active'>Home</a>
         </li>
         <li class="nav-item">
