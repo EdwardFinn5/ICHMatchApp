@@ -52,7 +52,6 @@ const routes: Routes = [
     path: 'empmembercompdetail/:appUserId',
     component: EmpmemberCompDetailComponent,
   },
-
   {
     path: '',
     runGuardsAndResolvers: 'always',
@@ -93,9 +92,15 @@ const routes: Routes = [
         canDeactivate: [PreventUnsavedEmpmemberCardChangesGuard],
       },
       {
-        path: 'company/edit',
-        component: EmpmemberEditEmpinfoComponent,
+        path: 'company2/edit',
+        component: Empmember2EditEmpinfoComponent,
+        pathMatch: 'full',
         canDeactivate: [PreventUnsavedEmpmemberCardEmpInfoChangesGuard],
+      },
+      {
+        path: 'positionslist',
+        component: PositionsListComponent,
+        pathMatch: 'full',
       },
       {
         path: 'studinfo/add',
@@ -122,16 +127,12 @@ const routes: Routes = [
     pathMatch: 'full',
   },
   { path: 'about', component: AboutComponent },
-  { path: 'positionslist', component: PositionsListComponent },
+  // { path: 'positionslist', component: PositionsListComponent },
   { path: 'userlogin', component: UserLoginComponent },
   { path: 'errors', component: TestErrorsComponent },
   { path: 'not-found', component: NotFoundComponent },
   { path: 'server-error', component: ServerErrorComponent },
-  {
-    path: 'company2/edit',
-    component: Empmember2EditEmpinfoComponent,
-    pathMatch: 'full',
-  },
+  { path: 'company/edit', component: EmpmemberEditEmpinfoComponent },
   { path: '**', component: NotFoundComponent, pathMatch: 'full' },
 ];
 

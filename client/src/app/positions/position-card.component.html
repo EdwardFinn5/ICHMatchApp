@@ -38,6 +38,7 @@
         </h6>
         <ng-container class="card-text text-muted text-center">
             <p class="text-center">
+                
                 {{position.positionType}} {{position.positionName}} position
                 <br>in {{position.positionLocation}} 
                 <br>Start date: {{position.startDate | date: "MM/dd/yyyy"}}
@@ -49,7 +50,7 @@
             </div>
             <div *ngIf="position.givingLevel == 'c'" class="c-level text-center p-1">
             </div>
-            <button class="btn btn-success btn-sm shadow-sm mr-2 mb-2" routerLink='/empmembercompdetail/{{position.appUserId}}'>View Company Details</button>
+            <!-- <button class="btn btn-success btn-sm shadow-sm mr-2 mb-2" routerLink='/empmembercompdetail/{{position.appUserId}}'>View Company Details</button> -->
         </ng-container>
 
     </div>

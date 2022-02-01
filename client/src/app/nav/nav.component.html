@@ -13,7 +13,7 @@
           <a class="nav-link text-white " routerLink="/membersearch">Search Talent</a>
         </li>
         <li class="nav-item" *ngIf="user.appUserType == 'ColStudent'">
-          <a class="nav-link text-white" routerLink="/positionslist" routerLinkActive='active'>Search Jobs</a>
+          <a class="nav-link text-white" routerLink="/positionslist" routerLinkActive='active'>Search Internships/Jobs</a>
         </li>
       </ul>
       <ul class="navbar-nav ml-auto" *ngIf="(accountService.currentUser$ | async) === null" style="font-size: 1.3em">
