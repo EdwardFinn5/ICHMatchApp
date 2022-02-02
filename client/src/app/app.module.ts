@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -45,6 +46,7 @@ import { PositionDetailComponent } from './positions/position-detail.component';
 import { PositionDetailNewComponent } from './positions/position-detail-new.component';
 import { Empmember2EditEmpinfoComponent } from './empmembers/empmember2-edit-empinfo.component';
 import { EmpmemberCompDetailComponent } from './empmembers/empmember-comp-detail/empmember-comp-detail.component';
+import { LoadingInterceptor } from './_interceptors/loading.interceptor';
 
 @NgModule({
   declarations: [
@@ -93,11 +95,13 @@ import { EmpmemberCompDetailComponent } from './empmembers/empmember-comp-detail
     BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
+    NgxSpinnerModule,
     SharedModule,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: LoadingInterceptor, multi: true },
   ],
   bootstrap: [AppComponent],
 })
