@@ -6,6 +6,7 @@ import { Member } from '../_models/member';
 import { StudInfo } from '../_models/studinfo';
 import { Position } from '../_models/position';
 import { map } from 'rxjs/operators';
+import { of } from 'rxjs';
 
 // const httpOptions = {
 //   headers: new HttpHeaders({
@@ -23,11 +24,20 @@ export class SearchMembersService {
   constructor(private http: HttpClient) {}
 
   getSearchMembers() {
-    return this.http.get<Member[]>(this.baseUrl + 'searchusers');
+    if (this.members.length > 0) {
+      return of(this.members);
+    }
+    return this.http.get<Member[]>(this.baseUrl + 'searchusers').pipe(
+      map((members) => {
+        this.members = members;
+        return members; //map returns members back as observable
+      })
+    );
   }
 
   getSearchMember(username: string) {
-    console.log('hello');
+    const member = this.members.find((x) => x.username === username);
+    if (member !== undefined) return of(member);
     return this.http.get<Member>(
       this.baseUrl + 'searchusers/GetByName/' + username
     );
