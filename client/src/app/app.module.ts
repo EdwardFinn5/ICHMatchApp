@@ -47,6 +47,7 @@ import { PositionDetailNewComponent } from './positions/position-detail-new.comp
 import { Empmember2EditEmpinfoComponent } from './empmembers/empmember2-edit-empinfo.component';
 import { EmpmemberCompDetailComponent } from './empmembers/empmember-comp-detail/empmember-comp-detail.component';
 import { LoadingInterceptor } from './_interceptors/loading.interceptor';
+import { PhotoEditorComponent } from './members/photo-editor/photo-editor.component';
 
 @NgModule({
   declarations: [
@@ -87,6 +88,7 @@ import { LoadingInterceptor } from './_interceptors/loading.interceptor';
     PositionDetailNewComponent,
     Empmember2EditEmpinfoComponent,
     EmpmemberCompDetailComponent,
+    PhotoEditorComponent,
   ],
   imports: [
     BrowserModule,
