@@ -116,5 +116,87 @@ namespace API.Controllers
             // has the following parameters: string routename, object routeValues, object value
             return BadRequest("Problem adding photo");
         }
+
+        [HttpPut("set-main-photo/{photoId}")]
+        public async Task<ActionResult> SetMainPhoto(int photoId)
+        {
+            var user = await _userRepository.GetUserByUsernameAsync(User.GetUsername());
+
+            var photo = user.Photos.FirstOrDefault(x => x.Id == photoId);
+
+            if (user.AppUserType == "ColStudent")
+            {
+                if (photo.IsMain) return BadRequest("This is already your main photo");
+
+                var currentMain = user.Photos.FirstOrDefault(x => x.IsMain);
+
+                if (currentMain != null)
+                {
+                    currentMain.IsMain = false;
+                    photo.IsMain = true;
+                }
+            }
+
+            if (user.AppUserType == "EmpHr")
+            {
+                if (photo.IsMain) return BadRequest("This is already your main logo");
+
+                var currentMain = user.Photos.FirstOrDefault(x => x.IsMainLogo);
+
+                if (currentMain != null)
+                {
+                    currentMain.IsMainLogo = false;
+                    photo.IsMainLogo = true;
+                }
+            }
+
+            if (await _userRepository.SaveAllAsync()) return NoContent();
+
+            return BadRequest("Failed to set main image");
+        }
+
+        [HttpDelete("delete-photo/{photoId}")]
+        public async Task<ActionResult> DeletePhoto(int photoId)
+        {
+            var user = await _userRepository.GetUserByUsernameAsync(User.GetUsername());
+
+            var photo = user.Photos.FirstOrDefault(x => x.Id == photoId);
+
+            if (photo == null)
+            {
+                return NotFound();
+            }
+
+            if (photo.IsMain)
+            {
+                return BadRequest("You cannot delete your main photo");
+            }
+
+            if (photo.IsMainLogo)
+            {
+                return BadRequest("You cannot delete your main logo");
+            }
+
+            if (photo.IsMainHr)
+            {
+                return BadRequest("You cannot delete your main HR Photo");
+            }
+
+            if (photo.PublicId != null)
+            {
+                var result = await _photoService.DeletePhotoAsync(photo.PublicId);
+
+                if (result.Error != null)
+                {
+                    return BadRequest(result.Error.Message);
+                }
+            }
+
+            user.Photos.Remove(photo);
+
+            if (await _userRepository.SaveAllAsync()) return Ok();
+
+            return BadRequest("Failed to delete the photo/logo");
+        }
     }
 }

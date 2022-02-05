@@ -79,6 +79,19 @@ export class SearchMembersService {
     );
   }
 
+  setMainPhoto(photoId: number) {
+    return this.http.put(
+      this.baseUrl + 'searchusers/set-main-photo/' + photoId,
+      {}
+    );
+  }
+
+  deletePhoto(photoId: number) {
+    return this.http.delete(
+      this.baseUrl + 'searchusers/delete-photo/' + photoId
+    );
+  }
+
   // updateStudInfoMember(studInfo: StudInfo, appUserId: number) {
   //   console.log('getting studInfo info');
   //   console.log(appUserId);

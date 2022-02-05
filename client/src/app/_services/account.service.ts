@@ -30,8 +30,7 @@ export class AccountService {
         if (user) {
           this.appUserType = user.appUserType;
           this.givingLevel = user.givingLevel;
-          localStorage.setItem('user', JSON.stringify(user));
-          this.currentUserSource.next(user);
+          this.setCurrentUser(user);
         }
         return user;
       })
@@ -44,7 +43,7 @@ export class AccountService {
         if (user) {
           // this.setCurrentUser(user); //added this line when we moved the one below to setCurrentUser
           // this.presence.createHubConnection(user);
-          localStorage.setItem('user', JSON.stringify(user));
+          this.setCurrentUser(user);
           this.currentUserSource.next(user);
           this.appUserType = user.appUserType;
           this.router.navigateByUrl('/positionslist');
@@ -60,7 +59,7 @@ export class AccountService {
         if (user) {
           // this.setCurrentUser(user); //added this line when we moved the one below to setCurrentUser
           // this.presence.createHubConnection(user);
-          localStorage.setItem('user', JSON.stringify(user));
+          this.setCurrentUser(user);
           this.currentUserSource.next(user);
           this.appUserType = user.appUserType;
           this.givingLevel = user.givingLevel;
@@ -71,6 +70,7 @@ export class AccountService {
   }
 
   setCurrentUser(user: User) {
+    localStorage.setItem('user', JSON.stringify(user));
     this.currentUserSource.next(user);
     this.appUserType = user.appUserType;
   }

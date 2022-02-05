@@ -3,9 +3,11 @@ import { FileUploader } from 'ng2-file-upload';
 import { take } from 'rxjs/operators';
 import { UserLoginComponent } from 'src/app/user-login/user-login.component';
 import { Member } from 'src/app/_models/member';
+import { Photo } from 'src/app/_models/photo';
 import { User } from 'src/app/_models/user';
 import { AccountService } from 'src/app/_services/account.service';
 import { MembersService } from 'src/app/_services/members.service';
+import { SearchMembersService } from 'src/app/_services/search-members.service';
 import { environment } from 'src/environments/environment';
 
 @Component({
@@ -22,7 +24,7 @@ export class PhotoEditorComponent implements OnInit {
 
   constructor(
     private accountService: AccountService,
-    private memberService: MembersService
+    private searchMemberService: SearchMembersService
   ) {
     this.accountService.currentUser$
       .pipe(take(1))
@@ -31,6 +33,60 @@ export class PhotoEditorComponent implements OnInit {
 
   ngOnInit(): void {
     this.initializeUploader();
+  }
+
+  setMainStudentPhoto(photo: Photo) {
+    this.searchMemberService.setMainPhoto(photo.id).subscribe(() => {
+      this.user.studentUrl = photo.studentUrl;
+      this.accountService.setCurrentUser(this.user);
+      this.member.studentUrl = photo.studentUrl;
+      this.member.photos.forEach((p) => {
+        if (p.isMain) {
+          p.isMain = false;
+        }
+        if (p.id === photo.id) {
+          p.isMain = true;
+        }
+      });
+    });
+  }
+
+  setMainCompanyPhoto(photo: Photo) {
+    this.searchMemberService.setMainPhoto(photo.id).subscribe(() => {
+      this.user.logoUrl = photo.logoUrl;
+      this.accountService.setCurrentUser(this.user);
+      this.member.logoUrl = photo.logoUrl;
+      this.member.photos.forEach((p) => {
+        if (p.isMainLogo) {
+          p.isMainLogo = false;
+        }
+        if (p.id === photo.id) {
+          p.isMainLogo = true;
+        }
+      });
+    });
+  }
+
+  setMainHrPhoto(photo: Photo) {
+    this.searchMemberService.setMainPhoto(photo.id).subscribe(() => {
+      this.user.hrUrl = photo.hrUrl;
+      this.accountService.setCurrentUser(this.user);
+      this.member.hrUrl = photo.hrUrl;
+      this.member.photos.forEach((p) => {
+        if (p.isMainHr) {
+          p.isMainHr = false;
+        }
+        if (p.id === photo.id) {
+          p.isMainHr = true;
+        }
+      });
+    });
+  }
+
+  deletePhoto(photoId: number) {
+    this.searchMemberService.deletePhoto(photoId).subscribe(() => {
+      this.member.photos = this.member.photos.filter((x) => x.id !== photoId);
+    });
   }
 
   fileOverBase(event: any) {

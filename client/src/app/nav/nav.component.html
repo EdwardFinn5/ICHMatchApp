@@ -38,7 +38,8 @@
 
       <div *ngIf="accountService.appUserType == 'ColStudent'">
         <div class="dropdown" style="font-size: 1.3em" *ngIf="(accountService.currentUser$ | async) as user" dropdown>
-          <a class="dropdown-toggle text-light mt-5" dropdownToggle>Welcome {{user.username | titlecase}}</a>
+          <img src="{{user.studentUrl || '../../assets/images/coluser.PNG'}}" alt="{{user.username}}">
+          <a class="dropdown-toggle text-light mt-5 ml-2" dropdownToggle>Welcome {{user.username | titlecase}}</a>
           <div class="dropdown-menu mt-3" *dropdownMenu>
             <a routerLink="/member/edit" class="dropdown-item">Add/Edit card & photo info</a>
             <div class="dropdown-divider"></div>
@@ -54,7 +55,8 @@
 
       <div *ngIf="accountService.appUserType == 'EmpHr'">
         <div class="dropdown" style="font-size: 1.3em" *ngIf="(accountService.currentUser$ | async) as user" dropdown>
-          <a class="dropdown-toggle text-light mt-5" dropdownToggle>Welcome {{user.username | titlecase}}</a>
+          <img src="{{user.logoUrl || '../../assets/images/logo.PNG' }}" alt="{{user.username}}" class="logo">
+          <a class="dropdown-toggle text-light mt-5 ml-2" dropdownToggle>Welcome {{user.username | titlecase}}</a>
           <div class="dropdown-menu mt-3" *dropdownMenu>
             <a routerLink="/empmember/edit" class="dropdown-item">Add/Edit card & logo info</a>
             <div class="dropdown-divider"></div>

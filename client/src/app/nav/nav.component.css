@@ -17,6 +17,9 @@ img {
 
 .logo {
   background-color: white;
+  max-height: 50px;
+  border: 2px solid #fff;
+  display: inline;
 }
 .padding {
   padding-bottom: 1rem;
