@@ -43,12 +43,13 @@
         <div class="col-sm-8 p-2">
 
         <tabset class="member-tabset" #memberTabs>
-            <tab heading='About {{member.firstName}}' class="tab-heading">
+            <tab heading='Edit Card Info' class="tab-heading">
                 <form #editForm="ngForm" id="editForm" (ngSubmit)="updateMemberCard()">
-                    <div class="details">
-                        <u><strong>
+                    <div class="details mb-3">
+                        <!-- <u><strong>
                                 <h5>Card Information</h5>
-                            </strong></u>
+                            </strong></u> -->
+
                         <label for="classYear"><strong>Class Year: </strong></label>
                         <input [(ngModel)]="member.classYear" type="text" name="classYear" class="form-control mb-2 mr-5">
                         <label for="major"><strong>Major: </strong></label>
