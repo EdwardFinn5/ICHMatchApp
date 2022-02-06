@@ -51,6 +51,7 @@ namespace API.Entities
 
         [Column(TypeName = "varchar(30)")]
         public string EmployeeNum { get; set; }
+        public string RegisterCode { get; set; }
         public string LogoUrl { get; set; }
         public bool IsMainLogo { get; set; } = false;
         public DateTime Created { get; set; } = DateTime.Now;

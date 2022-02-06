@@ -1,52 +1,83 @@
 <section class="signup">
-    <div class="card-header col-lg-4 m-auto">
-        <h3 style="text-align: center;">Employer Sign Up</h3>
-      </div>
-    <div class="login col-lg-4 m-auto shadow-lg">
-  
-        <form #loginForm='ngForm'(ngSubmit)="registerEmp()" autocomplete="off">
-  
-            <div class="form-group">
-                  <input 
-                      name="username"
-                      [(ngModel)]="model.username"
-                      class="form-control shadow-sm" 
-                      type="email"
-                      placeholder="Username (work email)"
-                      >
-            </div>
-    
-              <div class="form-group">
-                  <input 
-                      name="password"
-                      [(ngModel)]="model.password"
-                      class="form-control shadow-sm" 
-                      type="password"
-                      placeholder="Password"
-                      >
-                </div>
+  <div class="card-header col-lg-4 m-auto">
+    <h3 style="text-align: center;">Employer Sign Up</h3>
+  </div>
+  <div class="login col-lg-4 m-auto shadow-lg">
 
-                <div class="form-group">
-                  <input 
-                      name="givingLevel"
-                      [(ngModel)]="model.givingLevel"
-                      class="form-control shadow-sm" 
-                      type="text"
-                      placeholder="Register Code"
-                      >
-                </div>
-           
-                <div class="form-group">
-                    <!-- <button [disabled]="!loginForm.valid" type="submit" class="btn btn-primary">Login</button> -->
-                    <button [disabled]="!loginForm.valid" type="submit" class="btn btn-primary shadow-sm">Sign Up</button>
-                    <input type="button" class="btn btn-secondary shadow-sm ml-2" (click)="cancel()" value="Cancel"/>
-                  </div>
-  
-                  <!-- <div class="footer mx-3">
+    <form [formGroup]='registerEmpForm' (ngSubmit)="registerEmp()" autocomplete="off">
+
+      <div class="form-group">
+        <input 
+          [class.is-invalid]='registerEmpForm.get("username").errors 
+            && registerEmpForm.get("username").touched'
+          formControlName='username' 
+          class="form-control shadow-sm" 
+          type="email"
+          pattern="^[a-zA-Z0-9_.+-]+@[A-zA-Z0-9-]+\.com$" 
+          placeholder="Username (work email)">
+          <div *ngIf="registerEmpForm.get('username').hasError('required')"
+            class="invalid-feedback">Please enter a username</div> 
+          <div *ngIf="registerEmpForm.get('username').hasError('pattern')"
+            class="invalid-feedback">Username must be your work email</div> 
+      </div>
+
+      <app-text-input [formControl]='registerEmpForm.controls["password"]'
+        [label]='"Password"'
+        [type]='"password"'>
+      </app-text-input>
+
+      <app-text-input [formControl]='registerEmpForm.controls["confirmPassword"]'
+        [label]='"Confirm Password"'
+        [type]='"password"'>
+      </app-text-input>
+
+      <!-- <div class="form-group">
+        <input 
+          [class.is-invalid]='registerEmpForm.get("password").errors 
+            && registerEmpForm.get("password").touched'
+          formControlName='password' 
+          class="form-control shadow-sm" 
+          type="password" 
+          placeholder="Password">
+          <div *ngIf="registerEmpForm.get('password').hasError('required')"
+            class="invalid-feedback">Please enter a password</div> 
+          <div *ngIf="registerEmpForm.get('password').hasError('minlength')"
+            class="invalid-feedback">Password must be at least 4 characters</div>  
+          <div *ngIf="registerEmpForm.get('password').hasError('maxlength')"
+            class="invalid-feedback">Password must be at most 12 characters</div>   
+      </div>
+
+      <div class="form-group">
+        <input 
+          [class.is-invalid]='registerEmpForm.get("confirmPassword").errors 
+            && registerEmpForm.get("confirmPassword").touched'
+          formControlName='confirmPassword' 
+          class="form-control shadow-sm" 
+          type="password"
+          placeholder="Confirm Password">
+          <div *ngIf="registerEmpForm.get('confirmPassword').hasError('required')"
+            class="invalid-feedback">Please enter a confirm password</div> 
+          <div *ngIf="registerEmpForm.get('confirmPassword').hasError('isMatching')"
+            class="invalid-feedback">Confirm password must match password</div>  
+      </div> -->
+
+      <!-- <div class="form-group">
+        <input formControlName='registerCode' class="form-control shadow-sm" type="text" placeholder="Register Code">
+      </div> -->
+
+      <div class="form-group">
+        <!-- <button [disabled]="!loginForm.valid" type="submit" class="btn btn-primary">Login</button> -->
+        <button type="submit" class="btn btn-primary shadow-sm">Sign Up</button>
+        <input type="button" class="btn btn-secondary shadow-sm ml-2" (click)="cancel()" value="Cancel" />
+      </div>
+
+      <!-- <div class="footer mx-3">
                     <a href="#">Forget password?</a>
                     <p>Don't have an account? <a routerLink="/registerhome">Register here</a></p>
                   </div>
    -->
-          </form>
-    </div>
-  </section>
+    </form>
+    <p>form value: {{registerEmpForm.value | json}}</p>
+    <p>form status: {{registerEmpForm.status | json}}</p>
+  </div>
+</section>

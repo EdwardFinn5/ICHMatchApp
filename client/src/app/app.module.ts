@@ -48,6 +48,7 @@ import { Empmember2EditEmpinfoComponent } from './empmembers/empmember2-edit-emp
 import { EmpmemberCompDetailComponent } from './empmembers/empmember-comp-detail/empmember-comp-detail.component';
 import { LoadingInterceptor } from './_interceptors/loading.interceptor';
 import { PhotoEditorComponent } from './members/photo-editor/photo-editor.component';
+import { TextInputComponent } from './_forms/text-input/text-input.component';
 
 @NgModule({
   declarations: [
@@ -89,6 +90,7 @@ import { PhotoEditorComponent } from './members/photo-editor/photo-editor.compon
     Empmember2EditEmpinfoComponent,
     EmpmemberCompDetailComponent,
     PhotoEditorComponent,
+    TextInputComponent,
   ],
   imports: [
     BrowserModule,
