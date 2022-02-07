@@ -31,6 +31,36 @@
         [type]='"password"'>
       </app-text-input>
 
+      <app-text-input [formControl]='registerEmpForm.controls["registerCode"]'
+        [label]='"Register Code"'>
+      </app-text-input>
+
+      <app-text-input [formControl]='registerEmpForm.controls["firstName"]'
+        [label]='"First Name"'>
+      </app-text-input> 
+
+      <app-text-input [formControl]='registerEmpForm.controls["lastName"]'
+        [label]='"Last Name"'>
+      </app-text-input>
+  
+      <app-text-input [formControl]='registerEmpForm.controls["empName"]'
+        [label]='"Name of Company"'>
+      </app-text-input>
+      
+      <app-text-input [formControl]='registerEmpForm.controls["location"]'
+        [label]='"Company Headquarters"'>
+      </app-text-input>
+
+      <app-text-input [formControl]='registerEmpForm.controls["empIndustry"]'
+        [label]='"Industry Name"'>
+      </app-text-input>
+
+      <app-text-input [formControl]='registerEmpForm.controls["employeeNum"]'
+        [label]='"Number of Employees"'>
+      </app-text-input>
+
+      
+
       <!-- <div class="form-group">
         <input 
           [class.is-invalid]='registerEmpForm.get("password").errors 

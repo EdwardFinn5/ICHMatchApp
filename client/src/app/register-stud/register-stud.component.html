@@ -26,10 +26,50 @@
         [type]='"password"'>
       </app-text-input>
 
-    <app-text-input [formControl]='registerStudForm.controls["confirmPassword"]'
-      [label]='"Confirm Password"'
-      [type]='"password"'>
-    </app-text-input>
+      <app-text-input [formControl]='registerStudForm.controls["confirmPassword"]'
+        [label]='"Confirm Password"'
+        [type]='"password"'>
+      </app-text-input>
+
+      <app-text-input [formControl]='registerStudForm.controls["firstName"]'
+        [label]='"First Name"'>
+      </app-text-input>
+
+      <app-text-input [formControl]='registerStudForm.controls["lastName"]'
+        [label]='"Last Name"'>
+      </app-text-input>
+      
+      <app-text-input [formControl]='registerStudForm.controls["location"]'
+        [label]='"Home Town"'>
+      </app-text-input>
+      
+      <div class="form-group">
+        <label class="control-label" style="margin-right: 10px"><u>Class Year: </u></label>
+        <label class="radio-inline">
+          <input type="radio" value='Freshman' formControlName="classYear"> Freshman
+        </label>
+        <label class="radio-inline">
+            <input type="radio" value='Sophomore' formControlName="classYear" class="ml-2"> Sophomore
+        </label>
+        <label class="radio-inline">
+            <input type="radio" value='Junior' formControlName="classYear" class="ml-2"> Junior
+        </label>
+        <label class="radio-inline">
+            <input type="radio" value='Senior' formControlName="classYear" class="ml-2"> Senior
+        </label>
+      </div>
+      
+      <app-text-input [formControl]='registerStudForm.controls["major"]'
+        [label]='"Major"'>
+      </app-text-input>
+
+      <app-text-input [formControl]='registerStudForm.controls["college"]'
+        [label]='"College/University"'>
+      </app-text-input>
+
+      <app-date-input [formControl]='registerStudForm.controls["gradDate"]'
+      [label]='"Graduation Date (approx)"'>
+    </app-date-input>
 
       <!-- <div class="form-group">
         <input 

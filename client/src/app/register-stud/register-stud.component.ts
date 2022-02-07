@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {
   AbstractControl,
+  FormBuilder,
   FormControl,
   FormGroup,
   ValidatorFn,
@@ -22,7 +23,8 @@ export class RegisterStudComponent implements OnInit {
   constructor(
     private router: Router,
     private accountService: AccountService,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private fb: FormBuilder
   ) {}
 
   ngOnInit(): void {
@@ -30,23 +32,27 @@ export class RegisterStudComponent implements OnInit {
   }
 
   initializeForm() {
-    this.registerStudForm = new FormGroup({
-      username: new FormControl('', Validators.required),
-      password: new FormControl('', [
-        Validators.required,
-        Validators.minLength(4),
-        Validators.maxLength(12),
-      ]),
-      confirmPassword: new FormControl('', [
-        Validators.required,
-        this.matchValues('password'),
-      ]),
-      firstName: new FormControl(),
-      lastName: new FormControl(),
-      location: new FormControl(),
-      classYear: new FormControl(),
-      major: new FormControl(),
-      college: new FormControl(),
+    this.registerStudForm = this.fb.group({
+      username: ['', Validators.required],
+      password: [
+        '',
+        [
+          Validators.required,
+          Validators.minLength(4),
+          Validators.maxLength(12),
+        ],
+      ],
+      confirmPassword: [
+        '',
+        [Validators.required, this.matchValues('password')],
+      ],
+      firstName: ['', Validators.required],
+      lastName: ['', Validators.required],
+      location: ['', Validators.required],
+      classYear: ['Junior', Validators.required],
+      major: ['', Validators.required],
+      college: ['', Validators.required],
+      gradDate: ['', Validators.required],
     });
     this.registerStudForm.controls.password.valueChanges.subscribe(() => {
       this.registerStudForm.controls.confirmPassword.updateValueAndValidity();

@@ -12,7 +12,7 @@
                         <br>Industry: {{cardMember.empIndustry}} 
                         <br>Headquarters: {{cardMember.location}}
                         <!-- <br class="mt-3">Website: <a href="https://www.iowacollegefoundation.org/"> Link</a> -->
-                        <button class="btn btn-success btn-block" routerLink="/empmemberslist">Back to company list</button>
+                        <button class="btn btn-success btn-block mt-2" routerLink="/empmemberslist">Back to company list</button>
             </div>
         </div>
     </div>
@@ -61,13 +61,10 @@
                 <h4 class="mt-2"><strong>Why work for our company?</strong></h4> 
                 <p>{{cardMember.whyWork}}</p>
                 <h4 class="mt-2"><strong>Website</strong></h4> 
-                <p *ngIf="cardMember.empWebsite">Link to our website: <a href="{{cardMember.empWebsite}}"></a></p>
-                <br>  <a href="{{cardMember.empWebsite}}"></a> 
-                <br> 
-                <button class="btn nt-primary" routerLink='https://www.iowacollegefoundation.org/'>link</button>
 
-                <a href=""></a>
-            
+                <button type="button"class="btn btn-success mt-2" (click)="goToLink()">Go to Company Website</button>
+                <button type="button"class="btn btn-success mt-2" (click)="goToEmailLink()">Go to Email link</button>
+
             </div>            
             </tab>
 

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {
   AbstractControl,
+  FormBuilder,
   FormControl,
   FormGroup,
   ValidatorFn,
@@ -22,7 +23,8 @@ export class RegisterEmpComponent implements OnInit {
   constructor(
     private router: Router,
     private accountService: AccountService,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private fb: FormBuilder
   ) {}
 
   ngOnInit(): void {
@@ -30,25 +32,27 @@ export class RegisterEmpComponent implements OnInit {
   }
 
   initializeForm() {
-    this.registerEmpForm = new FormGroup({
-      username: new FormControl('', Validators.required),
-      password: new FormControl('', [
-        Validators.required,
-        Validators.minLength(4),
-        Validators.maxLength(12),
-      ]),
-      confirmPassword: new FormControl('', [
-        Validators.required,
-        this.matchValues('password'),
-      ]),
-      firstName: new FormControl(),
-      lastName: new FormControl(),
-      location: new FormControl(),
-      givingLevel: new FormControl(),
-      empName: new FormControl(),
-      empIndustry: new FormControl(),
-      employeeNum: new FormControl(),
-      registerCode: new FormControl(),
+    this.registerEmpForm = this.fb.group({
+      username: ['', Validators.required],
+      password: [
+        '',
+        [
+          Validators.required,
+          Validators.minLength(4),
+          Validators.maxLength(12),
+        ],
+      ],
+      confirmPassword: [
+        '',
+        [Validators.required, this.matchValues('password')],
+      ],
+      registerCode: ['', Validators.required],
+      firstName: ['', Validators.required],
+      lastName: ['', Validators.required],
+      location: ['', Validators.required],
+      empName: ['', Validators.required],
+      empIndustry: ['', Validators.required],
+      employeeNum: ['', Validators.required],
     });
     this.registerEmpForm.controls.password.valueChanges.subscribe(() => {
       this.registerEmpForm.controls.confirmPassword.updateValueAndValidity();
