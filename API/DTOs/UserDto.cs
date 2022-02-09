@@ -5,7 +5,7 @@ namespace API.DTOs
         public int AppUserId { get; set; }
         public string Username { get; set; }
         public string FirstName { get; set; }
-        public string GivingLevel { get; set; }
+        public string RegisterCode { get; set; }
         public string Token { get; set; }
         public string AppUserType { get; set; }
         public string StudentUrl { get; set; }

@@ -21,7 +21,7 @@ namespace API.DTOs
         public string ClassYear { get; set; }
         public string Major { get; set; }
         public string College { get; set; }
-        public string GivingLevel { get; set; }
+        public string RegisterCode { get; set; }
         public int GiftAmt { get; set; }
         public string EmpName { get; set; }
         public string EmpIndustry { get; set; }

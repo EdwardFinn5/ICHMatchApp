@@ -20,8 +20,6 @@ namespace API.DTOs
         public string ConfirmPassword { get; set; }
         [Required]
         public string RegisterCode { get; set; }
-
-        public string GivingLevel { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Location { get; set; }

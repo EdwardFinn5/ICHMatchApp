@@ -38,9 +38,6 @@ namespace API.Entities
         [Column(TypeName = "varchar(30)")]
         public string College { get; set; }
 
-        [Column(TypeName = "varchar(30)")]
-        public string GivingLevel { get; set; }
-
         public int? GiftAmt { get; set; }
 
         [Column(TypeName = "nvarchar(60)")]
@@ -51,6 +48,7 @@ namespace API.Entities
 
         [Column(TypeName = "varchar(30)")]
         public string EmployeeNum { get; set; }
+        [Column(TypeName = "varchar(30)")]
         public string RegisterCode { get; set; }
         public string LogoUrl { get; set; }
         public bool IsMainLogo { get; set; } = false;
