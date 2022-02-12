@@ -122,6 +122,8 @@ namespace API.Helpers
             CreateMap<Major, MajorDto>();
             CreateMap<LocationUpdateDto, Location>();
             CreateMap<Location, LocationDto>();
+            CreateMap<RegisterEmpDto, AppUser>();
+            CreateMap<RegisterStudDto, AppUser>();
         }
     }
 }

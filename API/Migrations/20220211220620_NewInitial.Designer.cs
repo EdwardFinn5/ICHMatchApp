@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace API.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20220122201630_newInitial")]
-    partial class newInitial
+    [Migration("20220211220620_NewInitial")]
+    partial class NewInitial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -58,9 +58,6 @@ namespace API.Migrations
                     b.Property<int?>("GiftAmt")
                         .HasColumnType("int");
 
-                    b.Property<string>("GivingLevel")
-                        .HasColumnType("varchar(30)");
-
                     b.Property<DateTime>("GradDate")
                         .HasColumnType("datetime2");
 
@@ -87,6 +84,9 @@ namespace API.Migrations
 
                     b.Property<byte[]>("PasswordSalt")
                         .HasColumnType("varbinary(max)");
+
+                    b.Property<string>("RegisterCode")
+                        .HasColumnType("varchar(30)");
 
                     b.Property<string>("UserName")
                         .HasColumnType("nvarchar(255)");
@@ -314,6 +314,26 @@ namespace API.Migrations
                     b.ToTable("Positions");
                 });
 
+            modelBuilder.Entity("API.Entities.RegisterCode", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("AppUserId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("RegisterCodeName")
+                        .HasColumnType("varchar(5)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AppUserId");
+
+                    b.ToTable("RegisterCodes");
+                });
+
             modelBuilder.Entity("API.Entities.StudInfo", b =>
                 {
                     b.Property<int>("StudInfoId")
@@ -411,6 +431,17 @@ namespace API.Migrations
                     b.Navigation("AppUser");
                 });
 
+            modelBuilder.Entity("API.Entities.RegisterCode", b =>
+                {
+                    b.HasOne("API.Entities.AppUser", "AppUser")
+                        .WithMany("RegisterCodes")
+                        .HasForeignKey("AppUserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("AppUser");
+                });
+
             modelBuilder.Entity("API.Entities.StudInfo", b =>
                 {
                     b.HasOne("API.Entities.AppUser", "AppUser")
@@ -429,6 +460,8 @@ namespace API.Migrations
                     b.Navigation("Photos");
 
                     b.Navigation("Positions");
+
+                    b.Navigation("RegisterCodes");
 
                     b.Navigation("StudInfos");
                 });

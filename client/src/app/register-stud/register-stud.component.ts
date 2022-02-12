@@ -17,8 +17,8 @@ import { AccountService } from '../_services/account.service';
   styleUrls: ['./register-stud.component.css'],
 })
 export class RegisterStudComponent implements OnInit {
-  model: any = {};
   registerStudForm: FormGroup;
+  validationErrors: string[] = [];
 
   constructor(
     private router: Router,
@@ -68,19 +68,18 @@ export class RegisterStudComponent implements OnInit {
   }
 
   registerStud() {
-    console.log(this.registerStudForm.value);
-    // this.accountService.registerStud(this.model).subscribe(
-    //   (response) => {
-    //     console.log('response: ', response);
-    //     this.cancel();
-    //     this.router.navigateByUrl('/positionslist');
-    //     this.toastr.success('Registration was successful');
-    //   },
-    //   (error) => {
-    //     console.log(error);
-    //     this.toastr.error(error.error);
-    //   }
-    // );
+    this.accountService.registerStud(this.registerStudForm.value).subscribe(
+      (response) => {
+        console.log('response: ', response);
+        this.cancel();
+        this.router.navigateByUrl('/positionslist');
+        this.toastr.success('Registration was successful');
+      },
+      (error) => {
+        console.log(error);
+        this.validationErrors = error;
+      }
+    );
   }
 
   cancel() {

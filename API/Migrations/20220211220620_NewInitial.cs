@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace API.Migrations
 {
-    public partial class newInitial : Migration
+    public partial class NewInitial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -76,11 +76,11 @@ namespace API.Migrations
                     ClassYear = table.Column<string>(type: "varchar(12)", nullable: true),
                     Major = table.Column<string>(type: "nvarchar(60)", nullable: true),
                     College = table.Column<string>(type: "varchar(30)", nullable: true),
-                    GivingLevel = table.Column<string>(type: "varchar(30)", nullable: true),
                     GiftAmt = table.Column<int>(type: "int", nullable: true),
                     EmpName = table.Column<string>(type: "nvarchar(60)", nullable: true),
                     EmpIndustry = table.Column<string>(type: "varchar(30)", nullable: true),
                     EmployeeNum = table.Column<string>(type: "varchar(30)", nullable: true),
+                    RegisterCode = table.Column<string>(type: "varchar(30)", nullable: true),
                     LogoUrl = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     IsMainLogo = table.Column<bool>(type: "bit", nullable: false),
                     Created = table.Column<DateTime>(type: "datetime2", nullable: false),
@@ -199,6 +199,26 @@ namespace API.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "RegisterCodes",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    RegisterCodeName = table.Column<string>(type: "varchar(5)", nullable: true),
+                    AppUserId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_RegisterCodes", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_RegisterCodes_Users_AppUserId",
+                        column: x => x.AppUserId,
+                        principalTable: "Users",
+                        principalColumn: "AppUserId",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "StudInfos",
                 columns: table => new
                 {
@@ -250,6 +270,11 @@ namespace API.Migrations
                 column: "AppUserId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_RegisterCodes_AppUserId",
+                table: "RegisterCodes",
+                column: "AppUserId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_StudInfos_AppUserId",
                 table: "StudInfos",
                 column: "AppUserId");
@@ -277,6 +302,9 @@ namespace API.Migrations
 
             migrationBuilder.DropTable(
                 name: "Positions");
+
+            migrationBuilder.DropTable(
+                name: "RegisterCodes");
 
             migrationBuilder.DropTable(
                 name: "StudInfos");

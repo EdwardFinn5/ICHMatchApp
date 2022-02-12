@@ -8,6 +8,7 @@ using API.Data;
 using API.DTOs;
 using API.Entities;
 using API.Interfaces;
+using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -17,8 +18,10 @@ namespace API.Controllers
     {
         private readonly DataContext _context;
         private readonly ITokenService _tokenService;
-        public AccountController(DataContext context, ITokenService tokenService)
+        private readonly IMapper _mapper;
+        public AccountController(DataContext context, ITokenService tokenService, IMapper mapper)
         {
+            _mapper = mapper;
             _tokenService = tokenService;
             _context = context;
         }
@@ -28,18 +31,14 @@ namespace API.Controllers
         {
             if (await UserExists(registerStudDto.Username)) return BadRequest("Username is taken");
 
-            // var colUser = _mapper.Map<ColUser>(hsRegisterDto);
+            var user = _mapper.Map<AppUser>(registerStudDto);
 
             using var hmac = new HMACSHA512();
 
-            var user = new AppUser
-            {
-                AppUserId = registerStudDto.AppUserId,
-                UserName = registerStudDto.Username.ToLower(),
-                PasswordHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(registerStudDto.Password)),
-                PasswordSalt = hmac.Key,
-                AppUserType = "ColStudent"
-            };
+            user.UserName = registerStudDto.Username.ToLower();
+            user.PasswordHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(registerStudDto.Password));
+            user.PasswordSalt = hmac.Key;
+            user.AppUserType = "ColStudent";
 
             _context.Users.Add(user);
             await _context.SaveChangesAsync();
@@ -51,7 +50,6 @@ namespace API.Controllers
 
             _context.StudInfos.Add(studInfo);
             await _context.SaveChangesAsync();
-
 
             return new UserDto
             {
@@ -66,21 +64,30 @@ namespace API.Controllers
         [HttpPost("RegisterEmp")]
         public async Task<ActionResult<UserDto>> RegisterEmp(RegisterEmpDto registerEmpDto)
         {
+            // private NewRegisterCode == "";
             if (await UserExists(registerEmpDto.Username)) return BadRequest("Username is taken");
 
-            // var colUser = _mapper.Map<ColUser>(hsRegisterDto);
+            if (registerEmpDto.RegisterCode == "auivd"
+                || registerEmpDto.RegisterCode == "bynxf"
+                || registerEmpDto.RegisterCode == "cnsjf"
+                || registerEmpDto.RegisterCode == "dyrba"
+                || registerEmpDto.RegisterCode == "edkmg")
+            {
+                registerEmpDto.RegisterCode = registerEmpDto.RegisterCode;
+            }
+
+            else
+                return BadRequest("Re-enter Register Code");
+
+            var user = _mapper.Map<AppUser>(registerEmpDto);
 
             using var hmac = new HMACSHA512();
 
-            var user = new AppUser
-            {
-                AppUserId = registerEmpDto.AppUserId,
-                UserName = registerEmpDto.Username.ToLower(),
-                RegisterCode = registerEmpDto.RegisterCode,
-                PasswordHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(registerEmpDto.Password)),
-                PasswordSalt = hmac.Key,
-                AppUserType = "EmpHr"
-            };
+            user.UserName = registerEmpDto.Username.ToLower();
+            user.PasswordHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(registerEmpDto.Password));
+            user.PasswordSalt = hmac.Key;
+            user.AppUserType = "EmpHr";
+            user.RegisterCode = registerEmpDto.RegisterCode;
 
             _context.Users.Add(user);
             await _context.SaveChangesAsync();

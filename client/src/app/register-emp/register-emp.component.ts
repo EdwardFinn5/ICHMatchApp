@@ -17,8 +17,8 @@ import { AccountService } from '../_services/account.service';
   styleUrls: ['./register-emp.component.css'],
 })
 export class RegisterEmpComponent implements OnInit {
-  model: any = {};
   registerEmpForm: FormGroup;
+  validationErrors: string[] = [];
 
   constructor(
     private router: Router,
@@ -68,18 +68,17 @@ export class RegisterEmpComponent implements OnInit {
   }
 
   registerEmp() {
-    console.log(this.registerEmpForm.value);
-    // this.accountService.registerEmp(this.model).subscribe(
-    //   (response) => {
-    //     console.log(response);
-    //     this.cancel();
-    //     this.router.navigateByUrl('/membersearch');
-    //   },
-    //   (error) => {
-    //     console.log(error);
-    //     this.toastr.error(error.error);
-    //   }
-    // );
+    this.accountService.registerEmp(this.registerEmpForm.value).subscribe(
+      (response) => {
+        console.log(response);
+        this.cancel();
+        this.router.navigateByUrl('/membersearch');
+      },
+      (error) => {
+        console.log(error);
+        this.validationErrors = error;
+      }
+    );
   }
 
   cancel() {

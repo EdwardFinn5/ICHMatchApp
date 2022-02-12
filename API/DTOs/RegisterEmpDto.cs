@@ -13,18 +13,15 @@ namespace API.DTOs
         public string Username { get; set; }
 
         [Required]
-        [StringLength(8, MinimumLength = 4)]
+        [StringLength(12, MinimumLength = 4)]
         public string Password { get; set; }
         [Required]
-        [StringLength(8, MinimumLength = 4)]
-        public string ConfirmPassword { get; set; }
-        [Required]
         public string RegisterCode { get; set; }
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public string Location { get; set; }
-        public string EmpName { get; set; }
-        public string EmpIndustry { get; set; }
-        public string EmployeeNum { get; set; }
+        [Required] public string FirstName { get; set; }
+        [Required] public string LastName { get; set; }
+        [Required] public string Location { get; set; }
+        [Required] public string EmpName { get; set; }
+        [Required] public string EmpIndustry { get; set; }
+        [Required] public string EmployeeNum { get; set; }
     }
 }

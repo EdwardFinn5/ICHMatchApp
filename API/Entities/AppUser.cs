@@ -56,7 +56,7 @@ namespace API.Entities
 
         public DateTime LastActive { get; set; } = DateTime.Now;
         public DateTime GradDate { get; set; } = DateTime.Now;
-
+        public ICollection<RegisterCode> RegisterCodes { get; set; }
         public ICollection<Photo> Photos { get; set; }
         public ICollection<StudInfo> StudInfos { get; set; }
         public ICollection<EmpInfo> EmpInfos { get; set; }
