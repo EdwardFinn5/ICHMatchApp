@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using API.DTOs;
 using API.Entities;
+using API.Helpers;
 
 namespace API.Interfaces
 {
@@ -17,7 +18,8 @@ namespace API.Interfaces
 
         // added the following two methods during video 97 on automapper queryable
 
-        Task<IEnumerable<MemberDto>> GetMembersAsync();
+        // Task<IEnumerable<MemberDto>> GetMembersAsync(); changes to below after pagination
+        Task<PagedList<MemberDto>> GetMembersAsync(UserParams userParams);
         Task<MemberDto> GetMemberAsync(string username);
         Task<MemberDto> GetMemberAsync(int id);
     }
