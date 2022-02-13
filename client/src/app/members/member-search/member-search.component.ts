@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Member } from 'src/app/_models/member';
+import { Pagination } from 'src/app/_models/pagination';
 import { Position } from 'src/app/_models/position';
 import { SearchMembersService } from 'src/app/_services/search-members.service';
 
@@ -10,18 +11,30 @@ import { SearchMembersService } from 'src/app/_services/search-members.service';
   styleUrls: ['./member-search.component.css'],
 })
 export class MemberSearchComponent implements OnInit {
-  members$: Observable<Member[]>;
-  positions: Position[];
+  // members$: Observable<Member[]>;
+  // positions: Position[];
+  members: Member[];
+  pagination: Pagination;
+  pageNumber = 1;
+  pageSize = 5;
 
   constructor(private searchMemberService: SearchMembersService) {}
 
   ngOnInit(): void {
-    this.members$ = this.searchMemberService.getSearchMembers();
+    this.loadMembers();
   }
 
-  // loadMembers() {
-  //   this.searchMemberService.getSearchMembers().subscribe((members) => {
-  //     this.members = members;
-  //   });
-  // }
+  loadMembers() {
+    this.searchMemberService
+      .getSearchMembers(this.pageNumber, this.pageSize)
+      .subscribe((response) => {
+        this.members = response.result;
+        this.pagination = response.pagination;
+      });
+  }
+
+  pageChanged(event: any) {
+    this.pageNumber = event.page;
+    this.loadMembers();
+  }
 }

@@ -13,10 +13,24 @@
 <div class="container-fluid mt-2">
     <div class="row">
 
-        <div *ngFor="let cardMember of cardMembers$ | async"  class="col-lg-3 col-md-6">
+        <div *ngFor="let cardMember of cardMembers"  class="col-lg-3 col-md-6">
                 <app-member-card [cardMember]="cardMember"></app-member-card>
         </div>
        
     </div>
+</div>
+
+<div class="d-flex justify-content-center" *ngIf="pagination">
+    <pagination 
+        [boundaryLinks]="true" 
+        [totalItems]="pagination.totalItems"
+        [itemsPerPage]="pagination.itemsPerPage"
+        [(ngModel)]="pagination.currentPage"
+        (pageChanged)="pageChanged($event)"
+        previousText="&lsaquo;" 
+        nextText="&rsaquo;" 
+        firstText="&laquo;" 
+        lastText="&raquo;">
+    </pagination>
 </div>
 

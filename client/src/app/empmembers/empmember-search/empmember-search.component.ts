@@ -17,8 +17,8 @@ export class EmpmemberSearchComponent implements OnInit {
   }
 
   loadMembers() {
-    this.searchMemberService.getSearchMembers().subscribe((members) => {
-      this.members = members;
-    });
+    // this.searchMemberService.getSearchMembers().subscribe((members) => {
+    //   this.members = members;
+    // });
   }
 }

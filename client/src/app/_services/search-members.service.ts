@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { EmpInfo } from '../_models/empInfo';
@@ -7,6 +7,7 @@ import { StudInfo } from '../_models/studinfo';
 import { Position } from '../_models/position';
 import { map } from 'rxjs/operators';
 import { of } from 'rxjs';
+import { PaginatedResult } from '../_models/pagination';
 
 // const httpOptions = {
 //   headers: new HttpHeaders({
@@ -20,19 +21,40 @@ import { of } from 'rxjs';
 export class SearchMembersService {
   baseUrl = environment.apiUrl;
   members: Member[] = [];
+  paginatedResult: PaginatedResult<Member[]> = new PaginatedResult<Member[]>();
 
   constructor(private http: HttpClient) {}
 
-  getSearchMembers() {
-    if (this.members.length > 0) {
-      return of(this.members);
+  getSearchMembers(page?: number, itemsPerPage?: number) {
+    let params = new HttpParams();
+
+    if (page !== null && itemsPerPage !== null) {
+      params = params.append('pageNumber', page.toString());
+      params = params.append('pageSize', itemsPerPage.toString());
     }
-    return this.http.get<Member[]>(this.baseUrl + 'searchusers').pipe(
-      map((members) => {
-        this.members = members;
-        return members; //map returns members back as observable
+    // if (this.members.length > 0) {
+    //   return of(this.members);
+    // }
+    return this.http
+      .get<Member[]>(this.baseUrl + 'searchusers', {
+        observe: 'response',
+        params,
       })
-    );
+      .pipe(
+        // map((members) => {
+        //   this.members = members;
+        //   return members; //map returns members back as observable
+        // })
+        map((response) => {
+          this.paginatedResult.result = response.body;
+          if (response.headers.get('Pagination') !== null) {
+            this.paginatedResult.pagination = JSON.parse(
+              response.headers.get('Pagination')
+            );
+          }
+          return this.paginatedResult;
+        })
+      );
   }
 
   getSearchMember(username: string) {

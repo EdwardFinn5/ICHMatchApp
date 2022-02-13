@@ -5,6 +5,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { TabsModule } from 'ngx-bootstrap/tabs';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { FileUploadModule } from 'ng2-file-upload';
+import { PaginationModule } from 'ngx-bootstrap/pagination';
 
 @NgModule({
   declarations: [],
@@ -14,6 +15,7 @@ import { FileUploadModule } from 'ng2-file-upload';
     TabsModule.forRoot(),
     FileUploadModule,
     BsDatepickerModule.forRoot(),
+    PaginationModule.forRoot(),
     ToastrModule.forRoot({
       positionClass: 'toast-bottom-right',
     }),
@@ -24,6 +26,7 @@ import { FileUploadModule } from 'ng2-file-upload';
     TabsModule,
     FileUploadModule,
     BsDatepickerModule,
+    PaginationModule,
   ],
 })
 export class SharedModule {}
