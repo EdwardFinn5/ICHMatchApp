@@ -23,21 +23,32 @@ namespace API.Controllers
 
         }
 
-        [HttpGet]
-        public async Task<ActionResult<IEnumerable<CardMemberDto>>> GetUsers([FromQuery] UserParams userParams)
+        [HttpGet("GetByAppUserType/{appUserType}")]
+        public async Task<ActionResult<IEnumerable<CardMemberDto>>> GetByAppUserType(string appUserType)
         {
-            var users = await _cardUserRepository.GetMembersAsync(userParams);
-
-            Response.AddPaginationHeader(
-                users.CurrentPage,
-                users.PageSize,
-                users.TotalCount,
-                users.TotalPages);
+            var users = await _cardUserRepository.GetStudentMembersAsync(appUserType);
 
             return Ok(users);
 
             // could also combine the above into: return Ok(await _userRepository.GetMembersAsync());
         }
+
+        //   [HttpGet("{appUserType}")]
+        //         public async Task<ActionResult<IEnumerable<CardMemberDto>>> GetUsers([FromQuery] UserParams userParams, string appUserType)
+        //         {
+        //             var users = await _cardUserRepository.GetStudentMembersAsync(userParams, appUserType);
+
+        //             Response.AddPaginationHeader(
+        //                 users.CurrentPage,
+        //                 users.PageSize,
+        //                 users.TotalCount,
+        //                 users.TotalPages,
+        //                 users.AppUserType);
+
+        //             return Ok(users);
+
+        //             // could also combine the above into: return Ok(await _userRepository.GetMembersAsync());
+        //         }
 
         [HttpGet("{username}")]
         public async Task<ActionResult<CardMemberDto>> GetUser(string username)

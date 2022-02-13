@@ -20,7 +20,8 @@ namespace API.Extensions
                 currentPage,
                 itemsPerPage,
                 totalItems,
-                totalPages);
+                totalPages
+            );
 
             var options = new JsonSerializerOptions
             {

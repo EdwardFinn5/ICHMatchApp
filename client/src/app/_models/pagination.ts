@@ -3,6 +3,7 @@ export interface Pagination {
   itemsPerPage: number;
   totalItems: number;
   totalPages: number;
+  appUserType: string;
 }
 
 export class PaginatedResult<T> {

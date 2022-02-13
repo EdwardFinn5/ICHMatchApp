@@ -16,7 +16,8 @@ export class MemberSearchComponent implements OnInit {
   members: Member[];
   pagination: Pagination;
   pageNumber = 1;
-  pageSize = 5;
+  pageSize = 10;
+  appUserType = 'ColStudent';
 
   constructor(private searchMemberService: SearchMembersService) {}
 
@@ -24,12 +25,20 @@ export class MemberSearchComponent implements OnInit {
     this.loadMembers();
   }
 
+  // loadMembers() {
+  //   this.searchMemberService
+  //     .getSearchMembers(this.pageNumber, this.pageSize, this.appUserType)
+  //     .subscribe((response) => {
+  //       this.members = response.result;
+  //       this.pagination = response.pagination;
+  //     });
+  // }
+
   loadMembers() {
     this.searchMemberService
-      .getSearchMembers(this.pageNumber, this.pageSize)
-      .subscribe((response) => {
-        this.members = response.result;
-        this.pagination = response.pagination;
+      .getSearchMembers(this.appUserType)
+      .subscribe((members) => {
+        this.members = members;
       });
   }
 

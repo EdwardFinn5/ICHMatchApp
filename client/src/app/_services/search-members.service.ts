@@ -25,36 +25,43 @@ export class SearchMembersService {
 
   constructor(private http: HttpClient) {}
 
-  getSearchMembers(page?: number, itemsPerPage?: number) {
-    let params = new HttpParams();
+  // getSearchMembers(page?: number, itemsPerPage?: number, appUserType?: string) {
+  //   let params = new HttpParams();
 
-    if (page !== null && itemsPerPage !== null) {
-      params = params.append('pageNumber', page.toString());
-      params = params.append('pageSize', itemsPerPage.toString());
-    }
-    // if (this.members.length > 0) {
-    //   return of(this.members);
-    // }
-    return this.http
-      .get<Member[]>(this.baseUrl + 'searchusers', {
-        observe: 'response',
-        params,
-      })
-      .pipe(
-        // map((members) => {
-        //   this.members = members;
-        //   return members; //map returns members back as observable
-        // })
-        map((response) => {
-          this.paginatedResult.result = response.body;
-          if (response.headers.get('Pagination') !== null) {
-            this.paginatedResult.pagination = JSON.parse(
-              response.headers.get('Pagination')
-            );
-          }
-          return this.paginatedResult;
-        })
-      );
+  //   if (page !== null && itemsPerPage !== null) {
+  //     params = params.append('pageNumber', page.toString());
+  //     params = params.append('pageSize', itemsPerPage.toString());
+  //     params = params.append('appUserType', appUserType);
+  //   }
+  //   // if (this.members.length > 0) {
+  //   //   return of(this.members);
+  //   // }
+  //   return this.http
+  //     .get<Member[]>(this.baseUrl + 'searchusers', {
+  //       observe: 'response',
+  //       params,
+  //     })
+  //     .pipe(
+  //       // map((members) => {
+  //       //   this.members = members;
+  //       //   return members; //map returns members back as observable
+  //       // })
+  //       map((response) => {
+  //         this.paginatedResult.result = response.body;
+  //         if (response.headers.get('Pagination') !== null) {
+  //           this.paginatedResult.pagination = JSON.parse(
+  //             response.headers.get('Pagination')
+  //           );
+  //         }
+  //         return this.paginatedResult;
+  //       })
+  //     );
+  // }
+
+  getSearchMembers(appUserType: string) {
+    return this.http.get<Member[]>(
+      this.baseUrl + 'searchusers/GetByAppUserType/' + appUserType
+    );
   }
 
   getSearchMember(username: string) {

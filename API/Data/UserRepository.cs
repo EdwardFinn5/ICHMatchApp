@@ -45,17 +45,17 @@ namespace API.Data
                 .SingleOrDefaultAsync();
         }
 
-        public async Task<PagedList<MemberDto>> GetMembersAsync(UserParams userParams)
-        {
-            var query = _context.Users
-                .ProjectTo<MemberDto>(_mapper.ConfigurationProvider)
-                .AsNoTracking();
-            return await PagedList<MemberDto>.CreateAsync(
-                query,
-                userParams.PageNumber,
-                userParams.PageSize);
-
-        }
+        // public async Task<PagedList<MemberDto>> GetMembersAsync(UserParams userParams)
+        // {
+        //     var query = _context.Users
+        //         .ProjectTo<MemberDto>(_mapper.ConfigurationProvider)
+        //         .AsNoTracking();
+        //     return await PagedList<MemberDto>.CreateAsync(
+        //         query,
+        //         userParams.PageNumber,
+        //         userParams.PageSize,
+        //         userParams.AppUserType);
+        // }
 
         public async Task<IEnumerable<MemberDto>> GetStudentMembersAsync()
         {
@@ -115,6 +115,14 @@ namespace API.Data
                 .Where(x => x.AppUserId == id)
                 .ProjectTo<MemberDto>(_mapper.ConfigurationProvider)
                 .SingleOrDefaultAsync();
+        }
+
+        public async Task<IEnumerable<MemberDto>> GetMembersAsync(string appUserType)
+        {
+            return await _context.Users
+                .Where(x => x.AppUserType == appUserType)
+                .ProjectTo<MemberDto>(_mapper.ConfigurationProvider)
+                .ToListAsync();
         }
     }
 }

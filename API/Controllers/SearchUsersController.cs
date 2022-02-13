@@ -16,7 +16,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace API.Controllers
 {
-    [Authorize]
+    // [Authorize]
 
     public class SearchUsersController : BaseApiController
     {
@@ -34,16 +34,30 @@ namespace API.Controllers
 
         }
 
-        [HttpGet]
-        public async Task<ActionResult<IEnumerable<MemberDto>>> GetUsers([FromQuery] UserParams userParams)
-        {
-            var users = await _userRepository.GetMembersAsync(userParams);
+        // [HttpGet]
+        // public async Task<ActionResult<IEnumerable<MemberDto>>> GetUsers([FromQuery] UserParams userParams)
+        // {
+        //     var user = await _userRepository.GetUserByUsernameAsync(User.GetUsername());
 
-            Response.AddPaginationHeader(
-                users.CurrentPage,
-                users.PageSize,
-                users.TotalCount,
-                users.TotalPages);
+
+        //     var users = await _userRepository.GetMembersAsync(userParams);
+
+        //     Response.AddPaginationHeader(
+        //         users.CurrentPage,
+        //         users.PageSize,
+        //         users.TotalCount,
+        //         users.TotalPages,
+        //         users.AppUserType);
+
+        //     return Ok(users);
+
+        //     // could also combine the above into: return Ok(await _userRepository.GetMembersAsync());
+        // }
+
+        [HttpGet("GetByAppUserType/{appUserType}")]
+        public async Task<ActionResult<IEnumerable<MemberDto>>> GetByAppUserType(string appUserType)
+        {
+            var users = await _userRepository.GetMembersAsync(appUserType);
 
             return Ok(users);
 
