@@ -50,13 +50,17 @@ namespace API.Data
                 userParams.PageSize
             );
         }
-        public async Task<IEnumerable<CardMemberDto>> GetStudentMembersAsync(string appUserType)
+        public async Task<PagedList<CardMemberDto>> GetStudentMembersAsync(UserParams userParams, string appUserType)
         {
-            return await _context.Users
+            var query = _context.Users
                  .Where(x => x.AppUserType == appUserType)
                  .ProjectTo<CardMemberDto>(_mapper.ConfigurationProvider)
-                 .ToListAsync();
-
+                 .AsNoTracking();
+            return await PagedList<CardMemberDto>.CreateAsync(
+                query,
+                userParams.PageNumber,
+                userParams.PageSize
+            );
         }
 
         public async Task<IEnumerable<CardMemberDto>> GetEmpMembersAsync()

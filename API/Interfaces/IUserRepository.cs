@@ -20,7 +20,7 @@ namespace API.Interfaces
 
         // Task<IEnumerable<MemberDto>> GetMembersAsync(); changes to below after pagination
         // Task<PagedList<MemberDto>> GetMembersAsync(UserParams userParams);
-        Task<IEnumerable<MemberDto>> GetMembersAsync(string appUserType);
+        Task<PagedList<MemberDto>> GetMembersAsync(UserParams userParams, string appUserType);
 
         Task<MemberDto> GetMemberAsync(string username);
         Task<MemberDto> GetMemberAsync(int id);

@@ -37,25 +37,26 @@ namespace API.Data
         //         }).SingleOrDefaultAsync();
         // }
 
-        public async Task<MemberDto> GetMemberAsync(string username)
-        {
-            return await _context.Users
-                .Where(x => x.UserName == username)
-                .ProjectTo<MemberDto>(_mapper.ConfigurationProvider)
-                .SingleOrDefaultAsync();
-        }
-
-        // public async Task<PagedList<MemberDto>> GetMembersAsync(UserParams userParams)
+        // public async Task<MemberDto> GetMemberAsync(string username)
         // {
-        //     var query = _context.Users
+        //     return await _context.Users
+        //         .Where(x => x.UserName == username)
         //         .ProjectTo<MemberDto>(_mapper.ConfigurationProvider)
-        //         .AsNoTracking();
-        //     return await PagedList<MemberDto>.CreateAsync(
-        //         query,
-        //         userParams.PageNumber,
-        //         userParams.PageSize,
-        //         userParams.AppUserType);
+        //         .SingleOrDefaultAsync();
         // }
+
+        public async Task<PagedList<MemberDto>> GetMembersAsync(UserParams userParams, string appUserType)
+        {
+            var query = _context.Users
+                .Where(x => x.AppUserType == appUserType)
+                .ProjectTo<MemberDto>(_mapper.ConfigurationProvider)
+                .AsNoTracking();
+            return await PagedList<MemberDto>.CreateAsync(
+                query,
+                userParams.PageNumber,
+                userParams.PageSize
+            );
+        }
 
         public async Task<IEnumerable<MemberDto>> GetStudentMembersAsync()
         {
@@ -123,6 +124,14 @@ namespace API.Data
                 .Where(x => x.AppUserType == appUserType)
                 .ProjectTo<MemberDto>(_mapper.ConfigurationProvider)
                 .ToListAsync();
+        }
+
+        public async Task<MemberDto> GetMemberAsync(string username)
+        {
+            return await _context.Users
+                 .Where(x => x.UserName == username)
+                 .ProjectTo<MemberDto>(_mapper.ConfigurationProvider)
+                 .SingleOrDefaultAsync();
         }
     }
 }

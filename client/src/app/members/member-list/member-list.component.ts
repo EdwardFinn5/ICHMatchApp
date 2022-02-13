@@ -15,7 +15,7 @@ export class MemberListComponent implements OnInit {
   // members: Member[];
   pagination: Pagination;
   pageNumber = 1;
-  pageSize = 10;
+  pageSize = 4;
   appUserType = 'ColStudent';
 
   constructor(private membersService: MembersService) {}
@@ -24,28 +24,28 @@ export class MemberListComponent implements OnInit {
     this.loadCardMembers();
   }
 
-  // loadCardMembers() {
-  //   this.memberService
-  //     .getMembers(this.pageNumber, this.pageSize, this.appUserType)
-  //     .subscribe((response) => {
-  //       this.cardMembers = response.result;
-  //       this.pagination = response.pagination;
-  //     });
-  // }
+  loadCardMembers() {
+    this.membersService
+      .getMembers(this.pageNumber, this.pageSize, this.appUserType)
+      .subscribe((response) => {
+        this.cardMembers = response.result;
+        this.pagination = response.pagination;
+      });
+  }
 
   // loadCardMembers() {
   //   this.memberService.getStudentMembers(this.appUserType).subscribe;
   // }
 
-  loadCardMembers() {
-    this.membersService
-      .getMembers(this.appUserType)
-      .subscribe((cardMembers) => {
-        this.cardMembers = cardMembers;
-      });
-  }
-  // pageChanged(event: any) {
-  //   this.pageNumber = event.page;
-  //   this.loadCardMembers();
+  // loadCardMembers() {
+  //   this.membersService
+  //     .getMembers(this.appUserType)
+  //     .subscribe((cardMembers) => {
+  //       this.cardMembers = cardMembers;
+  //     });
   // }
+  pageChanged(event: any) {
+    this.pageNumber = event.page;
+    this.loadCardMembers();
+  }
 }

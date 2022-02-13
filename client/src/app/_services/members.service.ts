@@ -19,44 +19,47 @@ export class MembersService {
 
   constructor(private http: HttpClient) {}
 
-  // getMembers(page?: number, itemsPerPage?: number, appUserType?: string) {
-  //   let params = new HttpParams();
+  getMembers(page?: number, itemsPerPage?: number, appUserType?: string) {
+    let params = new HttpParams();
 
-  //   if (page !== null && itemsPerPage !== null) {
-  //     params = params.append('pageNumber', page.toString());
-  //     params = params.append('pageSize', itemsPerPage.toString());
-  //     params = params.append('appUserType', appUserType.toString());
-  //   }
-  //   // if (this.cardMembers.length > 0) {
-  //   //   return of(this.cardMembers);
-  //   // }
-  //   return this.http
-  //     .get<CardMember[]>(this.baseUrl + 'cardusers', {
-  //       observe: 'response',
-  //       params,
-  //     })
-  //     .pipe(
-  //       // map((cardMembers) => {
-  //       //   this.cardMembers = cardMembers;
-  //       //   return cardMembers; //map returns members back as observable
-  //       // })
-  //       map((response) => {
-  //         this.paginatedResult.result = response.body;
-  //         if (response.headers.get('Pagination') !== null) {
-  //           this.paginatedResult.pagination = JSON.parse(
-  //             response.headers.get('Pagination')
-  //           );
-  //         }
-  //         return this.paginatedResult;
-  //       })
-  //     );
-  //}
-
-  getMembers(appUserType: string) {
-    return this.http.get<CardMember[]>(
-      this.baseUrl + 'cardusers/GetByAppUserType/' + appUserType
-    );
+    if (page !== null && itemsPerPage !== null) {
+      params = params.append('pageNumber', page.toString());
+      params = params.append('pageSize', itemsPerPage.toString());
+      // params = params.append('appUserType', appUserType.toString());
+    }
+    // if (this.cardMembers.length > 0) {
+    //   return of(this.cardMembers);
+    // }
+    return this.http
+      .get<CardMember[]>(
+        this.baseUrl + 'cardusers/GetByAppUserType/' + appUserType,
+        {
+          observe: 'response',
+          params,
+        }
+      )
+      .pipe(
+        // map((cardMembers) => {
+        //   this.cardMembers = cardMembers;
+        //   return cardMembers; //map returns members back as observable
+        // })
+        map((response) => {
+          this.paginatedResult.result = response.body;
+          if (response.headers.get('Pagination') !== null) {
+            this.paginatedResult.pagination = JSON.parse(
+              response.headers.get('Pagination')
+            );
+          }
+          return this.paginatedResult;
+        })
+      );
   }
+
+  // getMembers(appUserType: string) {
+  //   return this.http.get<CardMember[]>(
+  //     this.baseUrl + 'cardusers/GetByAppUserType/' + appUserType
+  //   );
+  // }
 
   getMember(username: string) {
     const cardMember = this.cardMembers.find((x) => x.username === username);

@@ -15,7 +15,7 @@ export class EmpmemberListComponent implements OnInit {
   // members: Member[];
   pagination: Pagination;
   pageNumber = 1;
-  pageSize = 10;
+  pageSize = 4;
   appUserType = 'EmpHr';
 
   constructor(private memberService: MembersService) {}
@@ -24,23 +24,23 @@ export class EmpmemberListComponent implements OnInit {
     this.loadCardMembers();
   }
 
+  // loadCardMembers() {
+  //   this.memberService.getMembers(this.appUserType).subscribe((cardMembers) => {
+  //     this.cardMembers = cardMembers;
+  //   });
+  // }
+
   loadCardMembers() {
-    this.memberService.getMembers(this.appUserType).subscribe((cardMembers) => {
-      this.cardMembers = cardMembers;
-    });
+    this.memberService
+      .getMembers(this.pageNumber, this.pageSize, this.appUserType)
+      .subscribe((response) => {
+        this.cardMembers = response.result;
+        this.pagination = response.pagination;
+      });
   }
 
-  // loadCardMembers() {
-  //   this.memberService
-  //     .getMembers(this.pageNumber, this.pageSize, this.appUserType)
-  //     .subscribe((response) => {
-  //       this.cardMembers = response.result;
-  //       this.pagination = response.pagination;
-  //     });
-  // }
-
-  // pageChanged(event: any) {
-  //   this.pageNumber = event.page;
-  //   this.loadCardMembers();
-  // }
+  pageChanged(event: any) {
+    this.pageNumber = event.page;
+    this.loadCardMembers();
+  }
 }
