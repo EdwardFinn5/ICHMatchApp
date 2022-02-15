@@ -54,10 +54,28 @@ namespace API.Controllers
         //     // could also combine the above into: return Ok(await _userRepository.GetMembersAsync());
         // }
 
-        [HttpGet("GetByAppUserType/{appUserType}")]
-        public async Task<ActionResult<IEnumerable<MemberDto>>> GetByAppUserType([FromQuery] UserParams userParams, string appUserType)
+        // [HttpGet("GetByAppUserType/{appUserType}")]
+        // public async Task<ActionResult<IEnumerable<MemberDto>>> GetByAppUserType([FromQuery] UserParams userParams, string appUserType)
+        // {
+        //     var users = await _userRepository.GetMembersAsync(userParams, appUserType);
+
+        //     Response.AddPaginationHeader(
+        //        users.CurrentPage,
+        //        users.PageSize,
+        //        users.TotalCount,
+        //        users.TotalPages
+        //     );
+
+
+        //     return Ok(users);
+
+
+        // }
+
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<MemberDto>>> GetUsers([FromQuery] UserParams userParams)
         {
-            var users = await _userRepository.GetMembersAsync(userParams, appUserType);
+            var users = await _userRepository.GetMembersAsync(userParams);
 
             Response.AddPaginationHeader(
                users.CurrentPage,

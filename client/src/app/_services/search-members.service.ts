@@ -25,7 +25,8 @@ export class SearchMembersService {
 
   constructor(private http: HttpClient) {}
 
-  getSearchMembers(page?: number, itemsPerPage?: number, appUserType?: string) {
+  // getSearchMembers(page?: number, itemsPerPage?: number, appUserType?: string) {
+  getSearchMembers(page?: number, itemsPerPage?: number) {
     let params = new HttpParams();
 
     if (page !== null && itemsPerPage !== null) {
@@ -37,13 +38,10 @@ export class SearchMembersService {
     //   return of(this.members);
     // }
     return this.http
-      .get<Member[]>(
-        this.baseUrl + 'searchusers/GetByAppUserType/' + appUserType,
-        {
-          observe: 'response',
-          params,
-        }
-      )
+      .get<Member[]>(this.baseUrl + 'searchusers', {
+        observe: 'response',
+        params,
+      })
       .pipe(
         // map((members) => {
         //   this.members = members;

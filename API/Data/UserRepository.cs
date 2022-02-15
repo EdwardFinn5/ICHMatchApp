@@ -45,16 +45,39 @@ namespace API.Data
         //         .SingleOrDefaultAsync();
         // }
 
-        public async Task<PagedList<MemberDto>> GetMembersAsync(UserParams userParams, string appUserType)
+        // public async Task<PagedList<MemberDto>> GetMembersAsync(UserParams userParams, string appUserType)
+        // {
+        //     var query = _context.Users
+        //         .Where(x => x.AppUserType == appUserType)
+        //         .ProjectTo<MemberDto>(_mapper.ConfigurationProvider)
+        //         .AsNoTracking();
+
+        //     return await PagedList<MemberDto>.CreateAsync(
+        //         query,
+        //         userParams.PageNumber,
+        //         userParams.PageSize
+        //     );
+        // }
+
+        public async Task<PagedList<MemberDto>> GetMembersAsync(UserParams userParams)
         {
-            var query = _context.Users
-                .Where(x => x.AppUserType == appUserType)
-                .ProjectTo<MemberDto>(_mapper.ConfigurationProvider)
-                .AsNoTracking();
+            var query = _context.Users.AsQueryable();
+
+            query = query.Where(u => u.AppUserType == "ColStudent");
+            if (userParams.Major != null)
+            {
+                query = query.Where(u => u.Major == userParams.Major);
+            }
+            if (userParams.Location != null)
+            {
+                query = query.Where(u => u.Location == userParams.Location);
+            }
+
             return await PagedList<MemberDto>.CreateAsync(
-                query,
-                userParams.PageNumber,
-                userParams.PageSize
+                query.ProjectTo<MemberDto>(_mapper
+                .ConfigurationProvider).AsNoTracking(),
+                    userParams.PageNumber,
+                    userParams.PageSize
             );
         }
 

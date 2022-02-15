@@ -58,6 +58,9 @@ namespace API.Controllers
                 Token = _tokenService.CreateToken(user),
                 AppUserType = "ColStudent",
                 FirstName = user.FirstName,
+                Major = user.Major,
+                ClassYear = user.ClassYear,
+                Location = user.Location
             };
         }
 
@@ -149,6 +152,9 @@ namespace API.Controllers
                 Token = _tokenService.CreateToken(user),
                 AppUserType = user.AppUserType,
                 EmpName = user.EmpName,
+                Major = user.Major,
+                ClassYear = user.ClassYear,
+                Location = user.Location,
                 StudentUrl = user.Photos.FirstOrDefault(x => x.IsMain)?.StudentUrl,
                 LogoUrl = user.Photos.FirstOrDefault(x => x.IsMainLogo)?.LogoUrl,
                 HrUrl = user.Photos.FirstOrDefault(x => x.IsMainHr)?.HrUrl

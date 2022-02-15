@@ -27,7 +27,8 @@ export class MemberSearchComponent implements OnInit {
 
   loadMembers() {
     this.searchMemberService
-      .getSearchMembers(this.pageNumber, this.pageSize, this.appUserType)
+      // .getSearchMembers(this.pageNumber, this.pageSize, this.appUserType)
+      .getSearchMembers(this.pageNumber, this.pageSize)
       .subscribe((response) => {
         this.members = response.result;
         this.pagination = response.pagination;
