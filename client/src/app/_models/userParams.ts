@@ -1,7 +1,8 @@
 export class UserParams {
   appUserType: 'ColStudent';
-  major = 'Accounting';
-  position = 'Finance';
+  major = '';
+  classYear = '';
+  location = '';
   pageNumber = 1;
   pageSize = 4;
   // orderBy = 'lastActive';

@@ -8,7 +8,6 @@ import { Position } from '../_models/position';
 import { map } from 'rxjs/operators';
 import { of } from 'rxjs';
 import { PaginatedResult } from '../_models/pagination';
-import { UserParams } from '../_models/userParams';
 
 @Injectable({
   providedIn: 'root',
@@ -16,24 +15,34 @@ import { UserParams } from '../_models/userParams';
 export class SearchMembersService {
   baseUrl = environment.apiUrl;
   members: Member[] = [];
+  paginatedResult: PaginatedResult<Member[]> = new PaginatedResult<Member[]>();
 
   constructor(private http: HttpClient) {}
 
-  getSearchMembers(userParams: UserParams) {
-    let params = this.getPaginationHeaders(
-      userParams.pageNumber,
-      userParams.pageSize
-    );
+  getSearchMembers(page?: number, itemsPerPage?: number) {
+    let params = new HttpParams();
 
-    params = params.append('major', userParams.major);
-    params = params.append('classYear', userParams.classYear);
-    params = params.append('location', userParams.location);
-    params = params.append('appUserType', userParams.appUserType);
+    if (page !== null && itemsPerPage !== null) {
+      params = params.append('pageNumber', page.toString());
+      params = params.append('pageSize', itemsPerPage.toString());
+    }
 
-    return this.getPaginatedResult<Member[]>(
-      this.baseUrl + 'searchusers',
-      params
-    );
+    return this.http
+      .get<Member[]>(this.baseUrl + 'searchusers', {
+        observe: 'response',
+        params,
+      })
+      .pipe(
+        map((response) => {
+          this.paginatedResult.result = response.body;
+          if (response.headers.get('Pagination') !== null) {
+            this.paginatedResult.pagination = JSON.parse(
+              response.headers.get('Pagination')
+            );
+          }
+          return this.paginatedResult;
+        })
+      );
   }
 
   getSearchMember(username: string) {
@@ -84,34 +93,5 @@ export class SearchMembersService {
     return this.http.delete(
       this.baseUrl + 'searchusers/delete-photo/' + photoId
     );
-  }
-
-  private getPaginatedResult<T>(url, params) {
-    const paginatedResult: PaginatedResult<T> = new PaginatedResult<T>();
-    return this.http
-      .get<T>(url, {
-        observe: 'response',
-        params,
-      })
-      .pipe(
-        map((response) => {
-          paginatedResult.result = response.body;
-          if (response.headers.get('Pagination') !== null) {
-            paginatedResult.pagination = JSON.parse(
-              response.headers.get('Pagination')
-            );
-          }
-          return paginatedResult;
-        })
-      );
-  }
-
-  private getPaginationHeaders(pageNumber: number, pageSize: number) {
-    let params = new HttpParams();
-
-    params = params.append('pageNumber', pageNumber.toString());
-    params = params.append('pageSize', pageSize.toString());
-
-    return params;
   }
 }

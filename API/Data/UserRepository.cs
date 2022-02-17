@@ -72,6 +72,10 @@ namespace API.Data
             {
                 query = query.Where(u => u.Location == userParams.Location);
             }
+            if (userParams.ClassYear != null)
+            {
+                query = query.Where(u => u.ClassYear == userParams.ClassYear);
+            }
 
             return await PagedList<MemberDto>.CreateAsync(
                 query.ProjectTo<MemberDto>(_mapper
