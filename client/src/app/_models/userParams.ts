@@ -5,5 +5,7 @@ export class UserParams {
   location = '';
   pageNumber = 1;
   pageSize = 4;
-  // orderBy = 'lastActive';
+  orderByLastActive = '';
+  orderByMajor = '';
+  orderByLocation = '';
 }

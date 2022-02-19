@@ -21,3 +21,13 @@
     column-count: 5;
   }
 }
+
+.display-4 {
+  font-size: 200%;
+  font-weight: bold;
+}
+
+.lists {
+  background-color: lightblue;
+  width: 98%;
+}

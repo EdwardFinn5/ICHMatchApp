@@ -50,6 +50,11 @@ export class MemberSearchComponent implements OnInit {
       });
   }
 
+  resetFilters() {
+    this.userParams = new UserParams();
+    this.loadMembers();
+  }
+
   pageChanged(event: any) {
     this.userParams.pageNumber = event.page;
     this.loadMembers();

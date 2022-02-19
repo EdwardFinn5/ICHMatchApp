@@ -77,6 +77,35 @@ namespace API.Data
                 query = query.Where(u => u.ClassYear == userParams.ClassYear);
             }
 
+            // if (userParams.OrderByLastActive != null)
+            // {
+            //     query = query.OrderByDescending(u => u.LastActive);
+            // }
+
+            if (userParams.OrderByMajor != null)
+            {
+                query = query.OrderBy(u => u.Major);
+            }
+
+            if (userParams.OrderByLocation != null)
+            {
+                query = query.OrderBy(u => u.Location);
+            }
+
+            // query = userParams.OrderBy switch
+            // {
+            //     "created" => query.OrderByDescending(u => u.Created),
+            //     "lastName" => query.OrderByDescending(u => u.FirstName),
+            //     "Location" => query.OrderByDescending(u => u.Location),
+            //     _ => query.OrderByDescending(u => u.LastActive)
+            // };
+
+            //  query = userParams.OrderBy switch
+            // {
+            //     "created" => query.OrderByDescending(u => u.Created),
+            //     _ => query.OrderByDescending(u => u.LastActive)
+            // };
+
             return await PagedList<MemberDto>.CreateAsync(
                 query.ProjectTo<MemberDto>(_mapper
                 .ConfigurationProvider).AsNoTracking(),
