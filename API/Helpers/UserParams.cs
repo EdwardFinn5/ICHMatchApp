@@ -17,6 +17,11 @@ namespace API.Helpers
         }
         public string CurrentUsername { get; set; }
         public string AppUserType { get; set; }
+        public string LastName { get; set; }
+        public string FirstName { get; set; }
+        public string RegisterCode { get; set; }
+        public string EmpName { get; set; }
+        public string EmpIndustry { get; set; }
         public string Major { get; set; }
         public string Location { get; set; }
         public string ClassYear { get; set; }

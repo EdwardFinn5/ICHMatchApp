@@ -84,13 +84,21 @@ namespace API.Data
 
             if (userParams.OrderByMajor != null)
             {
-                query = query.OrderBy(u => u.Major);
+                query = query.OrderBy(u => u.Major)
+                .ThenBy(u => u.LastName);
             }
 
-            if (userParams.OrderByLocation != null)
+            else if (userParams.OrderByLocation != null)
             {
-                query = query.OrderBy(u => u.Location);
+                query = query.OrderBy(u => u.Location)
+                .ThenBy(u => u.LastName);
             }
+            else
+            {
+                query = query.OrderBy(u => u.LastName);
+            }
+
+
 
             // query = userParams.OrderBy switch
             // {

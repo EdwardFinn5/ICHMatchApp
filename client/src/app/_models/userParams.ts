@@ -1,11 +1,15 @@
 export class UserParams {
-  appUserType: 'ColStudent';
+  appUserType: '';
   major = '';
   classYear = '';
   location = '';
+  lastName = '';
   pageNumber = 1;
-  pageSize = 4;
+  pageSize = 8;
   orderByLastActive = '';
   orderByMajor = '';
+  orderByEmpName = '';
   orderByLocation = '';
+  orderByEmpIndustry = '';
+  orderRegisterCode = '';
 }
