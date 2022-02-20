@@ -6,6 +6,7 @@ import { environment } from 'src/environments/environment';
 import { CardMember } from '../_models/cardMember';
 import { Member } from '../_models/member';
 import { PaginatedResult } from '../_models/pagination';
+import { UserParams } from '../_models/userParams';
 
 @Injectable({
   providedIn: 'root',
@@ -19,47 +20,29 @@ export class MembersService {
 
   constructor(private http: HttpClient) {}
 
-  getMembers(page?: number, itemsPerPage?: number, appUserType?: string) {
-    let params = new HttpParams();
+  getMembers(userParams: UserParams, appUserType?: string) {
+    let params = this.getPaginationHeaders(
+      userParams.pageNumber,
+      userParams.pageSize
+    );
 
-    if (page !== null && itemsPerPage !== null) {
-      params = params.append('pageNumber', page.toString());
-      params = params.append('pageSize', itemsPerPage.toString());
-      // params = params.append('appUserType', appUserType.toString());
-    }
-    // if (this.cardMembers.length > 0) {
-    //   return of(this.cardMembers);
-    // }
-    return this.http
-      .get<CardMember[]>(
-        this.baseUrl + 'cardusers/GetByAppUserType/' + appUserType,
-        {
-          observe: 'response',
-          params,
-        }
-      )
-      .pipe(
-        // map((cardMembers) => {
-        //   this.cardMembers = cardMembers;
-        //   return cardMembers; //map returns members back as observable
-        // })
-        map((response) => {
-          this.paginatedResult.result = response.body;
-          if (response.headers.get('Pagination') !== null) {
-            this.paginatedResult.pagination = JSON.parse(
-              response.headers.get('Pagination')
-            );
-          }
-          return this.paginatedResult;
-        })
-      );
+    params = params.append('major', userParams.major);
+    params = params.append('classYear', userParams.classYear);
+    params = params.append('college', userParams.college);
+    params = params.append('location', userParams.location);
+    params = params.append('empIndustry', userParams.empIndustry);
+    params = params.append('appUserType', userParams.appUserType);
+    params = params.append('orderByMajor', userParams.orderByMajor);
+    params = params.append('orderByCollege', userParams.orderByCollege);
+    params = params.append('orderByLocation', userParams.orderByLocation);
+    params = params.append('orderByEmpName', userParams.orderByEmpName);
+    params = params.append('orderByEmpIndustry', userParams.orderByEmpIndustry);
+
+    return this.getPaginatedResult<CardMember[]>(
+      this.baseUrl + 'cardusers/GetByAppUserType/' + appUserType,
+      params
+    );
   }
-
-  // getMembers(appUserType: string) {
-  //   return this.http.get<CardMember[]>(
-  //     this.baseUrl + 'cardusers/GetByAppUserType/' + appUserType
-  //   );
-  // }
 
   getMember(username: string) {
     const cardMember = this.cardMembers.find((x) => x.username === username);
@@ -72,5 +55,34 @@ export class MembersService {
     return this.http.get<CardMember>(
       this.baseUrl + 'cardusers/GetById/' + appUserId
     );
+  }
+
+  private getPaginatedResult<T>(url, params) {
+    const paginatedResult: PaginatedResult<T> = new PaginatedResult<T>();
+    return this.http
+      .get<T>(url, {
+        observe: 'response',
+        params,
+      })
+      .pipe(
+        map((response) => {
+          paginatedResult.result = response.body;
+          if (response.headers.get('Pagination') !== null) {
+            paginatedResult.pagination = JSON.parse(
+              response.headers.get('Pagination')
+            );
+          }
+          return paginatedResult;
+        })
+      );
+  }
+
+  private getPaginationHeaders(pageNumber: number, pageSize: number) {
+    let params = new HttpParams();
+
+    params = params.append('pageNumber', pageNumber.toString());
+    params = params.append('pageSize', pageSize.toString());
+
+    return params;
   }
 }

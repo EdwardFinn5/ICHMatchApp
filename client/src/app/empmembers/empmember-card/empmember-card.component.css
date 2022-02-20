@@ -102,3 +102,35 @@ p {
 .tooltip-inner {
   text-align: left;
 }
+
+.card-header {
+  height: 1.5em;
+}
+
+/* .b-level {
+  background-color: silver;
+  width: auto;
+  height: 1.5em;
+}
+.c-level {
+  background-color: lightblue;
+  width: auto;
+  height: 1.5em;
+}
+
+.d-level {
+  background-color: lightgreen;
+  width: auto;
+  height: 1.5em;
+}
+
+.e-level {
+  background-color: lightyellow;
+  width: auto;
+  height: 1.5em;
+} */
+
+/* .header {
+  background-color: lightblue;
+  width: auto;
+} */

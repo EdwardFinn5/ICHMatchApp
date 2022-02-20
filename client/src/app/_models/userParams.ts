@@ -3,13 +3,18 @@ export class UserParams {
   major = '';
   classYear = '';
   location = '';
+  empIndustry = '';
+  empName = '';
+  college = '';
+  firstName = '';
   lastName = '';
   pageNumber = 1;
-  pageSize = 8;
+  pageSize = 10;
   orderByLastActive = '';
   orderByMajor = '';
   orderByEmpName = '';
   orderByLocation = '';
+  orderByCollege = '';
   orderByEmpIndustry = '';
-  orderRegisterCode = '';
+  orderByRegisterCode = '';
 }

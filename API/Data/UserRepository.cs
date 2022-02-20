@@ -64,6 +64,7 @@ namespace API.Data
             var query = _context.Users.AsQueryable();
 
             query = query.Where(u => u.AppUserType == "ColStudent");
+
             if (userParams.Major != null)
             {
                 query = query.Where(u => u.Major == userParams.Major);
@@ -97,22 +98,6 @@ namespace API.Data
             {
                 query = query.OrderBy(u => u.LastName);
             }
-
-
-
-            // query = userParams.OrderBy switch
-            // {
-            //     "created" => query.OrderByDescending(u => u.Created),
-            //     "lastName" => query.OrderByDescending(u => u.FirstName),
-            //     "Location" => query.OrderByDescending(u => u.Location),
-            //     _ => query.OrderByDescending(u => u.LastActive)
-            // };
-
-            //  query = userParams.OrderBy switch
-            // {
-            //     "created" => query.OrderByDescending(u => u.Created),
-            //     _ => query.OrderByDescending(u => u.LastActive)
-            // };
 
             return await PagedList<MemberDto>.CreateAsync(
                 query.ProjectTo<MemberDto>(_mapper

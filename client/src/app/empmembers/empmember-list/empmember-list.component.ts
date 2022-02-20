@@ -3,6 +3,7 @@ import { Observable } from 'rxjs';
 import { CardMember } from 'src/app/_models/cardMember';
 import { Member } from 'src/app/_models/member';
 import { Pagination } from 'src/app/_models/pagination';
+import { UserParams } from 'src/app/_models/userParams';
 import { MembersService } from 'src/app/_services/members.service';
 
 @Component({
@@ -12,35 +13,44 @@ import { MembersService } from 'src/app/_services/members.service';
 })
 export class EmpmemberListComponent implements OnInit {
   cardMembers: CardMember[];
-  // members: Member[];
   pagination: Pagination;
-  pageNumber = 1;
-  pageSize = 4;
+  userParams: UserParams;
   appUserType = 'EmpHr';
+  empIndustryList = [
+    { value: 'Manufacturing', display: 'Manufacturing' },
+    { value: 'Insurance', display: 'Insurance' },
+    { value: 'Banking', display: 'Banking' },
+  ];
+  locationList = [
+    { value: 'Des Moines, IA', display: 'Des Moines, IA' },
+    { value: 'Cedar Rapids, IA', display: 'Cedar Rapids, IA' },
+    { value: 'Muscatine, IA', display: 'Muscatine, IA' },
+  ];
 
-  constructor(private memberService: MembersService) {}
+  constructor(private memberService: MembersService) {
+    this.userParams = new UserParams();
+  }
 
   ngOnInit(): void {
     this.loadCardMembers();
   }
 
-  // loadCardMembers() {
-  //   this.memberService.getMembers(this.appUserType).subscribe((cardMembers) => {
-  //     this.cardMembers = cardMembers;
-  //   });
-  // }
-
   loadCardMembers() {
     this.memberService
-      .getMembers(this.pageNumber, this.pageSize, this.appUserType)
+      .getMembers(this.userParams, this.appUserType)
       .subscribe((response) => {
         this.cardMembers = response.result;
         this.pagination = response.pagination;
       });
   }
 
+  resetFilters() {
+    this.userParams = new UserParams();
+    this.loadCardMembers();
+  }
+
   pageChanged(event: any) {
-    this.pageNumber = event.page;
+    this.userParams.pageNumber = event.page;
     this.loadCardMembers();
   }
 }

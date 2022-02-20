@@ -1,16 +1,107 @@
 <div class="container-fluid lists mt-2">
     <div class="row welcome text-center">
         <div class="col-12">
-            <h1 class="display-4">Employers that Support Private Higher Education in Iowa</h1>
+            <h1 class="display-4">{{pagination?.totalItems}} Employers that Support Private Higher Education in Iowa</h1>
         </div>
-        
     </div>
 </div>
-<hr class="col-12">
+
+<div class="container mt-3">
+    <form #form="ngForm" class="form-inline" 
+        (ngSubmit)="loadCardMembers()" autocomplete="off">
+        
+        <!-- <div style="display:flex; flex-direction: row; justify-content: center; align-items: center">
+            <label for="Student">Name:</label>
+            <input name="Student" />
+        </div> -->
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="align-content-center text-center">
+                        <h2><strong><u>First set filters</u></strong></h2>
+        
+                        <div class="form-group align-content-center">
+                            <select name="empIndustry" [(ngModel)]="userParams.empIndustry" style="width: auto"
+                                class="form-control mr-2">
+                                <option value="">--Select Industry--</option>
+                                <option *ngFor="let empIndustry of empIndustryList" [value]="empIndustry.value">
+                                    {{empIndustry.display}}
+                                </option>
+                            </select>
+        
+                            <select name="location" [(ngModel)]="userParams.location" style="width: auto"
+                                class="form-control mr-2">
+                                <option value="">--Select Headquarters--</option>
+                                <option *ngFor="let location of locationList" [value]="location.value">
+                                    {{location.display}}
+                                </option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+  
+
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="text-center mt-2">
+                        <button class="btn btn-primary ml-2 mr-2" type="submit">Apply Filters</button>
+                        <button (click)="resetFilters()" class="btn btn-info ml-1" type="submit">Reset Filters</button>
+                    </div>
+                </div>
+            </div>
+        </div>     
+    
+        <div class="text-center">
+            <h2><strong>Then order the list </strong></h2>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="text-center mt-2">
+                        <button 
+                            type="button"
+                            class="btn btn-info mr-2"
+                            name='orderByEmpName'
+                            (click)="loadCardMembers()"
+                            btnRadio='empName'
+                            [(ngModel)]="userParams.orderByEmpName">
+                            Order by Employer
+                        </button>
+                        <button 
+                            type="button"
+                            class="btn btn-success mr-2"
+                            name='orderByEmpIndustry'
+                            (click)="loadCardMembers()"
+                            btnRadio='empIndustry'
+                            [(ngModel)]="userParams.orderByEmpIndustry">
+                            Order by Industry
+                        </button>
+                        <button
+                            type="button"
+                            class="btn btn-primary mr-2"
+                            name='orderByLocation'
+                            (click)="loadCardMembers()"
+                            btnRadio='location'
+                            [(ngModel)]="userParams.orderByLocation">
+                            Order by Headquarters
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>     
+    </form>
+</div>
+
+
+
+
 
 <div class="container-fluid mt-2">
     <div class="row">
-
         <div class="col-lg-3 col-md-6" *ngFor="let cardMember of cardMembers">
             <app-empmember-card [cardMember]="cardMember" ></app-empmember-card>
         </div>

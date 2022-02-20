@@ -24,8 +24,8 @@ export class MemberSearchComponent implements OnInit {
     { value: 'Business Analytics', display: 'Business Analytics' },
   ];
   locationList = [
-    { value: 'Des Moines, IA', display: 'DSM' },
-    { value: 'Cedar Rapids, IA', display: 'CR' },
+    { value: 'Des Moines, IA', display: 'Des Moines, IA' },
+    { value: 'Cedar Rapids, IA', display: 'Cedar Rapids, IA' },
   ];
   classYearList = [
     { value: 'Junior', display: 'Juniors' },

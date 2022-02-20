@@ -23,8 +23,8 @@ namespace API.DTOs
         public string ApplyLink { get; set; }
         public string EmpName { get; set; }
         public string EmpIndustry { get; set; }
-        public string GivingLevel { get; set; }
-        public int GiftAmt { get; set; }
+        public string EmployeeNum { get; set; }
+        public string RegisterCode { get; set; }
         public string LogoUrl { get; set; }
         public bool IsMainLogo { get; set; }
         public string CompanyDescription { get; set; }

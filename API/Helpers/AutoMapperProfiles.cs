@@ -86,8 +86,8 @@ namespace API.Helpers
             CreateMap<Position, PositionDto>()
                .ForMember(d => d.EmpIndustry, o => o.MapFrom(s => s.AppUser.EmpIndustry))
                .ForMember(d => d.EmpName, o => o.MapFrom(s => s.AppUser.EmpName))
-               .ForMember(d => d.GivingLevel, o => o.MapFrom(s => s.AppUser.RegisterCode))
-               .ForMember(d => d.GiftAmt, o => o.MapFrom(s => s.AppUser.GiftAmt))
+               .ForMember(d => d.RegisterCode, o => o.MapFrom(s => s.AppUser.RegisterCode))
+               .ForMember(d => d.EmployeeNum, o => o.MapFrom(s => s.AppUser.EmployeeNum))
                .ForMember(d => d.LogoUrl, o => o.MapFrom(s => s.AppUser.LogoUrl));
             // .ForMember(d => d.LogoUrl, o => o.MapFrom(s => s.AppUser.HrUrl))   
 

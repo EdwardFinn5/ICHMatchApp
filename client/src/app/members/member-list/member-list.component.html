@@ -1,18 +1,99 @@
-<!---Heading -->
-
 <div class="container-fluid lists mt-2">
     <div class="row welcome text-center">
         <div class="col-12">
-            <h1 class="display-4">Student Talent from 23 Private Colleges & Universities in Iowa</h1>
+            <h1 class="display-4">Talent pool of {{pagination?.totalItems}} students by applying your filters</h1>
         </div>
-        
     </div>
 </div>
 <hr class="col-12">
 
+<div class="container mt-3">
+    <form #form="ngForm" class="form-inline mb-3" 
+        (ngSubmit)="loadCardMembers()" autocomplete="off">
+        
+
+        <div class="form-group inline">
+            <label class="mr-2 ml-auto filter"><strong> Your filters: </strong></label>
+           <select name="major" 
+                [(ngModel)]="userParams.major"
+                style="width: auto" 
+                class="form-control mr-2">
+                <option class="text-center mr-lg-n2" value="">--Select Major--</option>
+                <option *ngFor="let major of majorList" 
+                    [value]="major.value">
+                    {{major.display}}    
+                </option>
+            </select>
+        </div>
+
+        <div class="form-group">
+           <select name="college" 
+                [(ngModel)]="userParams.college"
+                style="width: auto" 
+                class="form-control mr-2">
+                <option value="">--Select College--</option>
+                <option *ngFor="let college of collegeList" 
+                    [value]="college.value">
+                    {{college.display}}    
+                </option>
+            </select>
+        </div>
+    
+        <div class="form-group">
+           <select name="classYear" 
+                [(ngModel)]="userParams.classYear"
+                style="width: auto" 
+                class="form-control">
+                <option value="">--Select Class Year--</option>
+                <option *ngFor="let classYear of classYearList" 
+                    [value]="classYear.value">
+                    {{classYear.display}}    
+                </option>
+            </select>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="text-center mt-2">
+                        <button class="btn btn-primary ml-2 mr-2" type="submit">Apply Filters</button>
+                        <button (click)="resetFilters()" class="btn btn-info ml-1" type="submit">Reset Filters</button>
+                    </div>
+                </div>
+            </div>
+        </div>     
+
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="text-center mt-2">
+                        <button 
+                            type="button"
+                            class="btn btn-primary mr-2"
+                            name='orderByMajor'
+                            (click)="loadCardMembers()"
+                            btnRadio='major'
+                            [(ngModel)]="userParams.orderByMajor">
+                            Order by Major
+                        </button>
+                        <button 
+                            type="button"
+                            class="btn btn-primary mr-2"
+                            name='orderByLocation'
+                            (click)="loadCardMembers()"
+                            btnRadio='location'
+                            [(ngModel)]="userParams.orderByLocation">
+                            Order by Hometown
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>     
+    </form>
+</div>
+
 <div class="container-fluid mt-2">
     <div class="row">
-
         <div *ngFor="let cardMember of cardMembers"  class="col-lg-3 col-md-6">
                 <app-member-card [cardMember]="cardMember"></app-member-card>
         </div>

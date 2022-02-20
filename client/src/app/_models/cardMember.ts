@@ -26,6 +26,7 @@ export interface CardMember {
   companyDescription: string;
   empWebsite: string;
   whyWork: string;
+  registerCode: string;
   created: Date;
   lastActive: Date;
   photos: Photo[];

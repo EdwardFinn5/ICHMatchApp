@@ -10,7 +10,6 @@ import { Position2Service } from '../_services/position2.service';
 })
 export class PositionsListComponent implements OnInit {
   positions: Position[];
-  member: Member;
 
   constructor(private position2Service: Position2Service) {}
 

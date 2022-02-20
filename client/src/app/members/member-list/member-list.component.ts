@@ -3,6 +3,7 @@ import { Observable } from 'rxjs';
 import { CardMember } from 'src/app/_models/cardMember';
 import { Member } from 'src/app/_models/member';
 import { Pagination } from 'src/app/_models/pagination';
+import { UserParams } from 'src/app/_models/userParams';
 import { MembersService } from 'src/app/_services/members.service';
 
 @Component({
@@ -12,13 +13,26 @@ import { MembersService } from 'src/app/_services/members.service';
 })
 export class MemberListComponent implements OnInit {
   cardMembers: CardMember[];
-  // members: Member[];
   pagination: Pagination;
-  pageNumber = 1;
-  pageSize = 4;
+  userParams: UserParams;
   appUserType = 'ColStudent';
+  majorList = [
+    { value: 'Accounting', display: 'Accounting' },
+    { value: 'IT', display: 'IT' },
+    { value: 'Business Analytics', display: 'Business Analytics' },
+  ];
+  collegeList = [
+    { value: 'St. Ambrose University', display: 'St. Ambrose' },
+    { value: 'Grand View University', display: 'Grand View' },
+  ];
+  classYearList = [
+    { value: 'Junior', display: 'Juniors' },
+    { value: 'Senior', display: 'Seniors' },
+  ];
 
-  constructor(private membersService: MembersService) {}
+  constructor(private membersService: MembersService) {
+    this.userParams = new UserParams();
+  }
 
   ngOnInit(): void {
     this.loadCardMembers();
@@ -26,26 +40,20 @@ export class MemberListComponent implements OnInit {
 
   loadCardMembers() {
     this.membersService
-      .getMembers(this.pageNumber, this.pageSize, this.appUserType)
+      .getMembers(this.userParams, this.appUserType)
       .subscribe((response) => {
         this.cardMembers = response.result;
         this.pagination = response.pagination;
       });
   }
 
-  // loadCardMembers() {
-  //   this.memberService.getStudentMembers(this.appUserType).subscribe;
-  // }
+  resetFilters() {
+    this.userParams = new UserParams();
+    this.loadCardMembers();
+  }
 
-  // loadCardMembers() {
-  //   this.membersService
-  //     .getMembers(this.appUserType)
-  //     .subscribe((cardMembers) => {
-  //       this.cardMembers = cardMembers;
-  //     });
-  // }
   pageChanged(event: any) {
-    this.pageNumber = event.page;
+    this.userParams.pageNumber = event.page;
     this.loadCardMembers();
   }
 }
