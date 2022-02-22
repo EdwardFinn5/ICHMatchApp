@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { EmpInfo } from '../_models/empInfo';
@@ -7,6 +7,8 @@ import { StudInfo } from '../_models/studinfo';
 import { Position } from '../_models/position';
 import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
+import { UserParams } from '../_models/userParams';
+import { PaginatedResult } from '../_models/pagination';
 
 @Injectable({
   providedIn: 'root',
@@ -16,11 +18,34 @@ export class Position2Service {
   positions: Position[] = [];
   positionId: number;
   position: Position;
+  paginatedResult: PaginatedResult<Position[]> = new PaginatedResult<
+    Position[]
+  >();
 
   constructor(private http: HttpClient) {}
 
-  getPositions() {
-    return this.http.get<Position[]>(this.baseUrl + 'positions2');
+  getPositions(userParams: UserParams) {
+    let params = this.getPaginationHeaders(
+      userParams.pageNumber,
+      userParams.pageSize
+    );
+
+    params = params.append('positionName', userParams.positionName);
+    params = params.append('positionType', userParams.positionType);
+    params = params.append('positionLocation', userParams.positionLocation);
+    params = params.append(
+      'orderByPositionName',
+      userParams.orderByPositionName
+    );
+    params = params.append(
+      'orderByPositionLocation',
+      userParams.orderByPositionLocation
+    );
+
+    return this.getPaginatedResult<Position[]>(
+      this.baseUrl + 'positions2',
+      params
+    );
   }
 
   getPositionById(positionId: number) {
@@ -35,5 +60,34 @@ export class Position2Service {
     console.log('id: ', positionId);
     console.log('updating position');
     return this.http.put(this.baseUrl + 'positions2/' + positionId, position);
+  }
+
+  private getPaginatedResult<T>(url: string, params: any) {
+    const paginatedResult: PaginatedResult<T> = new PaginatedResult<T>();
+    return this.http
+      .get<T>(url, {
+        observe: 'response',
+        params,
+      })
+      .pipe(
+        map((response) => {
+          paginatedResult.result = response.body;
+          if (response.headers.get('Pagination') !== null) {
+            paginatedResult.pagination = JSON.parse(
+              response.headers.get('Pagination')
+            );
+          }
+          return paginatedResult;
+        })
+      );
+  }
+
+  private getPaginationHeaders(pageNumber: number, pageSize: number) {
+    let params = new HttpParams();
+
+    params = params.append('pageNumber', pageNumber.toString());
+    params = params.append('pageSize', pageSize.toString());
+
+    return params;
   }
 }

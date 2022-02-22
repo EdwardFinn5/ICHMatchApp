@@ -10,8 +10,8 @@ namespace API.Entities
         [Key]
         public int PositionId { get; set; }
 
-        [Column(TypeName = "nvarchar(250)")]
-        public string PositionIdentifier { get; set; }
+        [Column(TypeName = "nvarchar(10)")]
+        public string RegisterCode { get; set; }
 
         [Column(TypeName = "nvarchar(100)")]
         public string PositionName { get; set; }

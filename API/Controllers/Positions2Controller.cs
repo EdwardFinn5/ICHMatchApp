@@ -5,6 +5,8 @@ using System.Threading.Tasks;
 using API.Data;
 using API.DTOs;
 using API.Entities;
+using API.Extensions;
+using API.Helpers;
 using API.Interfaces;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
@@ -26,9 +28,16 @@ namespace API.Controllers
 
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<PositionDto>>> GetPositions()
+        public async Task<ActionResult<IEnumerable<PositionDto>>> GetPositions([FromQuery] UserParams userParams)
         {
-            var positions = await _position2Repository.GetPositionDtosAsync();
+            var positions = await _position2Repository.GetPositionDtosAsync(userParams);
+
+            Response.AddPaginationHeader(
+                       positions.CurrentPage,
+                       positions.PageSize,
+                       positions.TotalCount,
+                       positions.TotalPages
+                       );
 
             return Ok(positions);
             // could also combine the above into: return Ok(await _userRepository.GetMembersAsync());
@@ -63,7 +72,7 @@ namespace API.Controllers
             var position = new Position
             {
                 PositionId = addPositionDto.PositionId,
-                PositionIdentifier = addPositionDto.PositionIdentifier,
+                RegisterCode = addPositionDto.RegisterCode,
                 PositionName = addPositionDto.PositionName,
                 PositionDescription = addPositionDto.PositionDescription,
                 LookingFor = addPositionDto.LookingFor,
@@ -87,7 +96,7 @@ namespace API.Controllers
             return new PositionDto
             {
                 PositionId = position.PositionId,
-                PositionIdentifier = position.PositionIdentifier,
+                RegisterCode = position.RegisterCode,
                 PositionName = position.PositionName,
                 LookingFor = position.LookingFor,
                 AppUserId = id

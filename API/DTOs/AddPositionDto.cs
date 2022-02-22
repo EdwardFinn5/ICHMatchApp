@@ -8,7 +8,7 @@ namespace API.DTOs
     public class AddPositionDto
     {
         public int PositionId { get; set; }
-        public string PositionIdentifier { get; set; }
+        public string RegisterCode { get; set; }
         public string PositionName { get; set; }
         public string PositionDescription { get; set; }
         public string LookingFor { get; set; }

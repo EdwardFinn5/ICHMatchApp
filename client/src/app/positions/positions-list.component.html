@@ -1,20 +1,120 @@
 <div class="container-fluid lists mt-2" *ngIf="positions" >
-    <div class="row welcome text-center">
-        <div class="col-12">
-            <h1 class="display-4">Internship and Job Opportunities</h1>
-        </div>
-    </div>
-</div>
-<hr class="col-12">
-
-<div class="container-fluid mt-2">
-    <div class="row">
-
-        <div *ngFor="let position of positions"  class="col-lg-3 col-md-6">
-            <app-position-card [member]="member"  [position]="position"></app-position-card>
-        </div>
-
-
+    <div class="row welcome text-center col-12">
+        
+            <h1 class="display-4">{{pagination?.totalItems}} Internship and Job Opportunities</h1>
        
     </div>
 </div>
+
+    <form #form="ngForm" class="mb-2 mt-2" (ngSubmit)="loadPositions()" autocomplete="off">
+        <div class="text-center">
+            <!-- <h3>Set filters</h3> -->
+    
+            <div class="form-group">
+                <h3><strong>Filter List:</strong></h3>
+                <div class="row align-content-center">
+                    
+                    <div class="col-6">
+                        <select name="positionName" 
+                            [(ngModel)]="userParams.positionName" 
+                            style="width: 50%"
+                            class="form-control mr-1 float-right">
+                            <option class="text-center" value="">--Select Position--</option>
+                            <option *ngFor="let positionName of positionNameList" class="text-center"
+                            [value]="positionName.value">
+                                {{positionName.display}}
+                            </option>
+                        </select>
+                    </div>
+
+                     <div class="col-md-6">
+                        <select name="positionType" 
+                            [(ngModel)]="userParams.positionType" 
+                            style="width: 50%"
+                            class="form-control ml-1 float-left">
+                            <option class="text-center" value="">--Select Position Type--</option>
+                            <option *ngFor="let positionType of positionTypeList" class="text-center"
+                            [value]="positionType.value">
+                                {{positionType.display}}
+                            </option>
+                        </select>
+                    </div>
+
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div class="text-center mt-2">
+                                    <button class="btn btn-primary mr-1" type="submit">Apply Filters</button>
+                                    <button (click)="resetFilters()" class="btn btn-info ml-1" type="submit">Reset Filters</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>     
+                    <div class="text-center mt-2">
+                        <h3><strong>Order List:</strong></h3>
+                    </div>
+
+                    <div class="container row">
+                        <!-- <div class="row"> -->
+                            <div class="col-xs-12">
+                                <div class="text-center mt-2">
+                                    <button 
+                                        type="button"
+                                        class="btn btn-success mr-1"
+                                        style="width: 180px" 
+                                        name='orderByPositionName'
+                                        (click)="loadPositions()"
+                                        btnRadio='orderByPositionName'
+                                        [(ngModel)]="userParams.orderByPositionName">
+                                        Order by Major
+                                    </button>
+                                    <button 
+                                        type="button"
+                                        class="btn btn-success ml-1"
+                                        style="width: 180px" 
+                                        name='orderByPositionType'
+                                        (click)="loadPositions()"
+                                        btnRadio='orderbyPositionType'
+                                        [(ngModel)]="userParams.orderByPositionLocation">
+                                        Order by Location
+                                    </button>
+                                </div>
+                            <!-- </div> -->
+                        </div>
+                    </div>    
+    
+
+
+                
+                
+                </div>
+            </div>
+        </div>
+    </form>
+<!-- </div> -->
+
+
+<div class="container-fluid mt-2">
+    <div class="row">
+        <div *ngFor="let position of positions"  class="col-lg-3 col-md-6">
+            <app-position-card [member]="member"  [position]="position"></app-position-card>
+        </div>
+       
+    </div>
+</div>
+
+<div class="d-flex justify-content-center" *ngIf="pagination">
+    <pagination 
+        [boundaryLinks]="true" 
+        [totalItems]="pagination.totalItems"
+        [itemsPerPage]="pagination.itemsPerPage"
+        [(ngModel)]="pagination.currentPage"
+        (pageChanged)="pageChanged($event)"
+        previousText="&lsaquo;" 
+        nextText="&rsaquo;" 
+        firstText="&laquo;" 
+        lastText="&raquo;">
+    </pagination>
+</div>
+
+

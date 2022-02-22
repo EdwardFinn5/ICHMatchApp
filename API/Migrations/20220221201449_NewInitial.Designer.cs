@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace API.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20220211220620_NewInitial")]
+    [Migration("20220221201449_NewInitial")]
     partial class NewInitial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -292,9 +292,6 @@ namespace API.Migrations
                     b.Property<string>("PositionDescription")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("PositionIdentifier")
-                        .HasColumnType("nvarchar(250)");
-
                     b.Property<string>("PositionLocation")
                         .HasColumnType("nvarchar(60)");
 
@@ -303,6 +300,9 @@ namespace API.Migrations
 
                     b.Property<string>("PositionType")
                         .HasColumnType("varchar(25)");
+
+                    b.Property<string>("RegisterCode")
+                        .HasColumnType("nvarchar(10)");
 
                     b.Property<DateTime?>("StartDate")
                         .HasColumnType("datetime2");

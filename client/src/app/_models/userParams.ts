@@ -10,7 +10,12 @@ export class UserParams {
   lastName = '';
   pageNumber = 1;
   pageSize = 10;
+  positionName = '';
+  positionType = '';
+  positionLocation = '';
   orderByLastActive = '';
+  orderByPositionName = '';
+  orderByPositionLocation = '';
   orderByMajor = '';
   orderByEmpName = '';
   orderByLocation = '';

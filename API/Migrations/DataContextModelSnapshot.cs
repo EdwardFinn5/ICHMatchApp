@@ -290,9 +290,6 @@ namespace API.Migrations
                     b.Property<string>("PositionDescription")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("PositionIdentifier")
-                        .HasColumnType("nvarchar(250)");
-
                     b.Property<string>("PositionLocation")
                         .HasColumnType("nvarchar(60)");
 
@@ -301,6 +298,9 @@ namespace API.Migrations
 
                     b.Property<string>("PositionType")
                         .HasColumnType("varchar(25)");
+
+                    b.Property<string>("RegisterCode")
+                        .HasColumnType("nvarchar(10)");
 
                     b.Property<DateTime?>("StartDate")
                         .HasColumnType("datetime2");

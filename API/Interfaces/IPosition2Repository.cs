@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using API.DTOs;
 using API.Entities;
+using API.Helpers;
 
 namespace API.Interfaces
 {
@@ -12,7 +13,7 @@ namespace API.Interfaces
         void Update(Position position);
         Task<bool> SaveAllAsync();
         Task<IEnumerable<PositionDto>> GetPositionDtosAsync(int id);
-        Task<IEnumerable<PositionDto>> GetPositionDtosAsync();
+        Task<PagedList<PositionDto>> GetPositionDtosAsync(UserParams userParams);
         Task<PositionDto> GetPositionDtoByIdAsync(int id);
         Task<Position> GetPositionByIdAsync(int id);
         void DeletePosition(Position position);

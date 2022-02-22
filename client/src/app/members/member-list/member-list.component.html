@@ -1,4 +1,4 @@
-<div class="container-fluid lists mt-2">
+<div class="container-fluid lists mt-2" *ngIf="cardMembers">
     <div class="row welcome text-center">
         <div class="col-12">
             <h1 class="display-4">Talent pool of {{pagination?.totalItems}} students by applying your filters</h1>
@@ -18,7 +18,7 @@
                 [(ngModel)]="userParams.major"
                 style="width: auto" 
                 class="form-control mr-2">
-                <option class="text-center mr-lg-n2" value="">--Select Major--</option>
+                <option class="text-center mr-2" value="">--Select Major--</option>
                 <option *ngFor="let major of majorList" 
                     [value]="major.value">
                     {{major.display}}    

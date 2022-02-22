@@ -56,7 +56,6 @@ namespace API.Controllers
             var position = new Position
             {
                 PositionId = addPositionDto.PositionId,
-                PositionIdentifier = addPositionDto.PositionIdentifier,
                 PositionName = addPositionDto.PositionName,
                 PositionDescription = addPositionDto.PositionDescription,
                 LookingFor = addPositionDto.LookingFor,
@@ -80,7 +79,7 @@ namespace API.Controllers
             return new PositionDto
             {
                 PositionId = position.PositionId,
-                PositionIdentifier = position.PositionIdentifier,
+                RegisterCode = position.RegisterCode,
                 PositionName = position.PositionName,
                 LookingFor = position.LookingFor,
                 AppUserId = id
@@ -113,12 +112,10 @@ namespace API.Controllers
 
             return BadRequest("Failed to update user");
         }
-
-
-        private async Task<bool> PositionExists(string positionIdentifier)
-        {
-            return await _context.Positions.AnyAsync(x => x.PositionIdentifier == positionIdentifier.ToLower());
-        }
+        // private async Task<bool> PositionExists(string positionIdentifier)
+        // {
+        //     return await _context.Positions.AnyAsync(x => x.PositionIdentifier == positionIdentifier.ToLower());
+        // }
 
     }
 }

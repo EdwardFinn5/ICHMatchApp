@@ -169,7 +169,7 @@ namespace API.Migrations
                 {
                     PositionId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    PositionIdentifier = table.Column<string>(type: "nvarchar(250)", nullable: true),
+                    RegisterCode = table.Column<string>(type: "nvarchar(10)", nullable: true),
                     PositionName = table.Column<string>(type: "nvarchar(100)", nullable: true),
                     PositionDescription = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     LookingFor = table.Column<string>(type: "nvarchar(max)", nullable: true),
