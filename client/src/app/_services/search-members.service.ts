@@ -16,10 +16,16 @@ import { UserParams } from '../_models/userParams';
 export class SearchMembersService {
   baseUrl = environment.apiUrl;
   members: Member[] = [];
+  memberCache = new Map();
 
   constructor(private http: HttpClient) {}
 
   getSearchMembers(userParams: UserParams) {
+    console.log(Object.values(userParams).join('-'));
+    var response = this.memberCache.get(Object.values(userParams).join('-'));
+    if (response) {
+      return of(response);
+    }
     let params = this.getPaginationHeaders(
       userParams.pageNumber,
       userParams.pageSize
@@ -35,12 +41,24 @@ export class SearchMembersService {
     return this.getPaginatedResult<Member[]>(
       this.baseUrl + 'searchusers',
       params
+    ).pipe(
+      map((response) => {
+        this.memberCache.set(Object.values(userParams).join('-'), response);
+        return response;
+      })
     );
   }
 
   getSearchMember(username: string) {
-    const member = this.members.find((x) => x.username === username);
-    if (member !== undefined) return of(member);
+    // console.log(this.memberCache);
+    const member = [...this.memberCache.values()]
+      .reduce((arr, elem) => arr.concat(elem.result), [])
+      .find((member: Member) => member.username === username);
+    if (member) {
+      return of(member);
+    }
+    console.log(member);
+
     return this.http.get<Member>(
       this.baseUrl + 'searchusers/GetByName/' + username
     );

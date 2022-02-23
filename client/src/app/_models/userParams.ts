@@ -9,7 +9,7 @@ export class UserParams {
   firstName = '';
   lastName = '';
   pageNumber = 1;
-  pageSize = 10;
+  pageSize = 4;
   positionName = '';
   positionType = '';
   positionLocation = '';

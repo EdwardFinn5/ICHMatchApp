@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { Observable, of, pipe } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { CardMember } from '../_models/cardMember';
@@ -14,13 +14,19 @@ import { UserParams } from '../_models/userParams';
 export class MembersService {
   baseUrl = environment.apiUrl;
   cardMembers: CardMember[] = [];
-  paginatedResult: PaginatedResult<CardMember[]> = new PaginatedResult<
-    CardMember[]
-  >();
+  memberCache = new Map();
+  // paginatedResult: PaginatedResult<CardMember[]> = new PaginatedResult<
+  //   CardMember[]
+  // >();
 
   constructor(private http: HttpClient) {}
 
   getMembers(userParams: UserParams, appUserType?: string) {
+    console.log(Object.values(userParams).join('-'));
+    var response = this.memberCache.get(Object.values(userParams).join('-'));
+    if (response) {
+      return of(response);
+    }
     let params = this.getPaginationHeaders(
       userParams.pageNumber,
       userParams.pageSize
@@ -31,7 +37,7 @@ export class MembersService {
     params = params.append('college', userParams.college);
     params = params.append('location', userParams.location);
     params = params.append('empIndustry', userParams.empIndustry);
-    params = params.append('appUserType', userParams.appUserType);
+    // params = params.append('appUserType', userParams.appUserType);
     params = params.append('orderByMajor', userParams.orderByMajor);
     params = params.append('orderByCollege', userParams.orderByCollege);
     params = params.append('orderByLocation', userParams.orderByLocation);
@@ -41,12 +47,18 @@ export class MembersService {
     return this.getPaginatedResult<CardMember[]>(
       this.baseUrl + 'cardusers/GetByAppUserType/' + appUserType,
       params
+    ).pipe(
+      map((response) => {
+        this.memberCache.set(Object.values(userParams).join('-'), response);
+        return response;
+      })
     );
   }
 
   getMember(username: string) {
-    const cardMember = this.cardMembers.find((x) => x.username === username);
-    if (cardMember !== undefined) return of(cardMember);
+    console.log(this.memberCache);
+    // const cardMember = this.cardMembers.find((x) => x.username === username);
+    // if (cardMember !== undefined) return of(cardMember);
     return this.http.get<CardMember>(this.baseUrl + 'cardusers/' + username);
   }
 
