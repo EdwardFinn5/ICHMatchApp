@@ -31,7 +31,7 @@ export class MemberListComponent implements OnInit {
   ];
 
   constructor(private membersService: MembersService) {
-    this.userParams = new UserParams();
+    this.userParams = this.membersService.getUserParams();
   }
 
   ngOnInit(): void {
@@ -39,6 +39,7 @@ export class MemberListComponent implements OnInit {
   }
 
   loadCardMembers() {
+    this.membersService.setUserParams(this.userParams);
     this.membersService
       .getMembers(this.userParams, this.appUserType)
       .subscribe((response) => {
@@ -48,12 +49,13 @@ export class MemberListComponent implements OnInit {
   }
 
   resetFilters() {
-    this.userParams = new UserParams();
+    this.userParams = this.membersService.resetUserParams();
     this.loadCardMembers();
   }
 
   pageChanged(event: any) {
     this.userParams.pageNumber = event.page;
+    this.membersService.setUserParams(this.userParams);
     this.loadCardMembers();
   }
 }

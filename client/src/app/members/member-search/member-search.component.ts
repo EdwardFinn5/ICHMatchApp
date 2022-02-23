@@ -12,8 +12,6 @@ import { SearchMembersService } from 'src/app/_services/search-members.service';
   styleUrls: ['./member-search.component.css'],
 })
 export class MemberSearchComponent implements OnInit {
-  // members$: Observable<Member[]>;
-  // positions: Position[];
   members: Member[];
   pagination: Pagination;
   userParams: UserParams;
@@ -33,7 +31,7 @@ export class MemberSearchComponent implements OnInit {
   ];
 
   constructor(private searchMemberService: SearchMembersService) {
-    this.userParams = new UserParams();
+    this.userParams = this.searchMemberService.getUserParams();
   }
 
   ngOnInit(): void {
@@ -41,8 +39,8 @@ export class MemberSearchComponent implements OnInit {
   }
 
   loadMembers() {
+    this.searchMemberService.setUserParams(this.userParams);
     this.searchMemberService
-      // .getSearchMembers(this.pageNumber, this.pageSize, this.appUserType)
       .getSearchMembers(this.userParams)
       .subscribe((response) => {
         this.members = response.result;
@@ -51,12 +49,13 @@ export class MemberSearchComponent implements OnInit {
   }
 
   resetFilters() {
-    this.userParams = new UserParams();
+    this.userParams = this.searchMemberService.resetUserParams();
     this.loadMembers();
   }
 
   pageChanged(event: any) {
     this.userParams.pageNumber = event.page;
+    this.searchMemberService.setUserParams(this.userParams);
     this.loadMembers();
   }
 }

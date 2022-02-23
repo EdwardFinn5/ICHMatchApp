@@ -17,8 +17,24 @@ export class SearchMembersService {
   baseUrl = environment.apiUrl;
   members: Member[] = [];
   memberCache = new Map();
+  userParams: UserParams;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) {
+    this.userParams = new UserParams();
+  }
+
+  getUserParams() {
+    return this.userParams;
+  }
+
+  setUserParams(params: UserParams) {
+    this.userParams = params;
+  }
+
+  resetUserParams() {
+    this.userParams = new UserParams();
+    return this.userParams;
+  }
 
   getSearchMembers(userParams: UserParams) {
     console.log(Object.values(userParams).join('-'));

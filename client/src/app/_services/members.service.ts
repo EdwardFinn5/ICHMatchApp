@@ -15,11 +15,27 @@ export class MembersService {
   baseUrl = environment.apiUrl;
   cardMembers: CardMember[] = [];
   memberCache = new Map();
+  userParams: UserParams;
   // paginatedResult: PaginatedResult<CardMember[]> = new PaginatedResult<
   //   CardMember[]
   // >();
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) {
+    this.userParams = new UserParams();
+  }
+
+  getUserParams() {
+    return this.userParams;
+  }
+
+  setUserParams(params: UserParams) {
+    this.userParams = params;
+  }
+
+  resetUserParams() {
+    this.userParams = new UserParams();
+    return this.userParams;
+  }
 
   getMembers(userParams: UserParams, appUserType?: string) {
     console.log(Object.values(userParams).join('-'));
@@ -56,9 +72,15 @@ export class MembersService {
   }
 
   getMember(username: string) {
-    console.log(this.memberCache);
-    // const cardMember = this.cardMembers.find((x) => x.username === username);
-    // if (cardMember !== undefined) return of(cardMember);
+    // console.log(this.memberCache);
+    const member = [...this.memberCache.values()]
+      .reduce((arr, elem) => arr.concat(elem.result), [])
+      .find((member: Member) => member.username === username);
+    if (member) {
+      return of(member);
+    }
+    console.log(member);
+
     return this.http.get<CardMember>(this.baseUrl + 'cardusers/' + username);
   }
 
