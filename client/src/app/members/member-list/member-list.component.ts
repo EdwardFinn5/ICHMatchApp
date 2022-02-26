@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { stringify } from 'querystring';
 import { Observable } from 'rxjs';
 import { CardMember } from 'src/app/_models/cardMember';
 import { Member } from 'src/app/_models/member';
@@ -31,15 +32,16 @@ export class MemberListComponent implements OnInit {
   ];
 
   constructor(private membersService: MembersService) {
-    this.userParams = this.membersService.getUserParams();
+    this.userParams = new UserParams();
   }
 
   ngOnInit(): void {
+    // this.resetFilters;
     this.loadCardMembers();
   }
 
   loadCardMembers() {
-    this.membersService.setUserParams(this.userParams);
+    // this.membersService.setUserParams(this.userParams);
     this.membersService
       .getMembers(this.userParams, this.appUserType)
       .subscribe((response) => {
@@ -49,13 +51,13 @@ export class MemberListComponent implements OnInit {
   }
 
   resetFilters() {
-    this.userParams = this.membersService.resetUserParams();
+    this.userParams = new UserParams();
     this.loadCardMembers();
   }
 
   pageChanged(event: any) {
     this.userParams.pageNumber = event.page;
-    this.membersService.setUserParams(this.userParams);
+    // this.membersService.setUserParams(this.userParams);
     this.loadCardMembers();
   }
 }

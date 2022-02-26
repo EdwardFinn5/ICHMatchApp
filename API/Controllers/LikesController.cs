@@ -21,8 +21,8 @@ namespace API.Controllers
             _userRepository = userRepository;
         }
 
-        [HttpPost("{username}")]
-        public async Task<ActionResult> AddLike(string username)
+        [HttpPost("AddByName/{username}")]
+        public async Task<ActionResult> AddByName(string username)
         {
             var sourceUserId = User.GetUserId();
             var likedUser = await _userRepository.GetUserByUsernameAsync(username);
@@ -48,6 +48,36 @@ namespace API.Controllers
 
             return BadRequest("Failed to give a thumbs-up to user");
         }
+
+        [HttpPost("AddById/{id}")]
+        public async Task<ActionResult> AddById(int id)
+        {
+            var sourceUserId = User.GetUserId();
+            var likedUser = await _userRepository.GetUserByIdAsync(id);
+            var sourceUser = await _likesRepository.GetUserWithLikes(sourceUserId);
+
+            if (likedUser == null) return NotFound();
+
+            if (sourceUser.AppUserId == id) return BadRequest("You cannot thumbs-up yourself");
+
+            var userLike = await _likesRepository.GetUserLike(sourceUserId, likedUser.AppUserId);
+
+            if (userLike != null) return BadRequest("You have already given a thumbs-up to this user");
+
+            userLike = new Entities.UserLike
+            {
+                SourceUserId = sourceUserId,
+                LikedUserId = likedUser.AppUserId
+            };
+
+            sourceUser.LikedUsers.Add(userLike);
+
+            if (await _userRepository.SaveAllAsync()) return Ok();
+
+            return BadRequest("Failed to give a thumbs-up to user");
+        }
+
+
 
         [HttpGet]
         public async Task<ActionResult<IEnumerable<LikeDto>>> GetUserLikes(string predicate)

@@ -25,6 +25,7 @@ export class Position2Service {
   constructor(private http: HttpClient) {}
 
   getPositions(userParams: UserParams) {
+    console.log(Object.values(userParams).join('-'));
     let params = this.getPaginationHeaders(
       userParams.pageNumber,
       userParams.pageSize
@@ -60,6 +61,14 @@ export class Position2Service {
     console.log('id: ', positionId);
     console.log('updating position');
     return this.http.put(this.baseUrl + 'positions2/' + positionId, position);
+  }
+
+  addLike(id: number) {
+    return this.http.post(this.baseUrl + 'likes/AddById/' + id, {});
+  }
+
+  getLikes(predicate: string) {
+    return this.http.get(this.baseUrl + 'likes?predicate=' + predicate);
   }
 
   private getPaginatedResult<T>(url: string, params: any) {

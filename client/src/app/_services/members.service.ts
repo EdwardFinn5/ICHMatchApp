@@ -14,44 +14,47 @@ import { UserParams } from '../_models/userParams';
 export class MembersService {
   baseUrl = environment.apiUrl;
   cardMembers: CardMember[] = [];
-  memberCache = new Map();
-  userParams: UserParams;
-  // paginatedResult: PaginatedResult<CardMember[]> = new PaginatedResult<
-  //   CardMember[]
-  // >();
+  appUserType: string;
+  // memberCache = new Map();
+  // userParams: UserParams;
+  paginatedResult: PaginatedResult<CardMember[]> = new PaginatedResult<
+    CardMember[]
+  >();
 
   constructor(private http: HttpClient) {
-    this.userParams = new UserParams();
+    // this.userParams = new UserParams();
   }
 
-  getUserParams() {
-    return this.userParams;
-  }
+  // getUserParams() {
+  //   return this.userParams;
+  // }
 
-  setUserParams(params: UserParams) {
-    this.userParams = params;
-  }
+  // setUserParams(params: UserParams) {
+  //   this.userParams = params;
+  // }
 
-  resetUserParams() {
-    this.userParams = new UserParams();
-    return this.userParams;
-  }
+  // resetUserParams() {
+  //   this.userParams = new UserParams();
+  //   return this.userParams;
+  // }
 
-  getMembers(userParams: UserParams, appUserType?: string) {
+  getMembers(userParams: UserParams, appUserType: string) {
     console.log(Object.values(userParams).join('-'));
-    var response = this.memberCache.get(Object.values(userParams).join('-'));
-    if (response) {
-      return of(response);
-    }
+    // var response = this.memberCache.get(Object.values(userParams).join('-'));
+    // if (response)
+    //   return of(response);
+    // }
     let params = this.getPaginationHeaders(
       userParams.pageNumber,
-      userParams.pageSize
+      userParams.pageSize,
+      userParams.appUserType
     );
 
     params = params.append('major', userParams.major);
     params = params.append('classYear', userParams.classYear);
     params = params.append('college', userParams.college);
     params = params.append('location', userParams.location);
+    // params = params.append('appUserType', this.appUserType);
     params = params.append('empIndustry', userParams.empIndustry);
     // params = params.append('appUserType', userParams.appUserType);
     params = params.append('orderByMajor', userParams.orderByMajor);
@@ -63,24 +66,25 @@ export class MembersService {
     return this.getPaginatedResult<CardMember[]>(
       this.baseUrl + 'cardusers/GetByAppUserType/' + appUserType,
       params
-    ).pipe(
-      map((response) => {
-        this.memberCache.set(Object.values(userParams).join('-'), response);
-        return response;
-      })
+      // ).pipe(
+      //   map((response) => {
+      //     this.memberCache.set(Object.values(userParams).join('-'), response);
+      //     return response;
+      //   })
     );
   }
 
   getMember(username: string) {
     // console.log(this.memberCache);
-    const member = [...this.memberCache.values()]
-      .reduce((arr, elem) => arr.concat(elem.result), [])
-      .find((member: Member) => member.username === username);
-    if (member) {
-      return of(member);
-    }
-    console.log(member);
-
+    // const member = [...this.memberCache.values()]
+    //   .reduce((arr, elem) => arr.concat(elem.result), [])
+    //   .find((member: Member) => member.username === username);
+    // if (member) {
+    //   return of(member);
+    // }
+    // console.log(member);
+    const cardMember = this.cardMembers.find((x) => x.username === username);
+    if (cardMember !== undefined) return of(cardMember);
     return this.http.get<CardMember>(this.baseUrl + 'cardusers/' + username);
   }
 
@@ -111,11 +115,16 @@ export class MembersService {
       );
   }
 
-  private getPaginationHeaders(pageNumber: number, pageSize: number) {
+  private getPaginationHeaders(
+    pageNumber: number,
+    pageSize: number,
+    appUserType: string
+  ) {
     let params = new HttpParams();
 
     params = params.append('pageNumber', pageNumber.toString());
     params = params.append('pageSize', pageSize.toString());
+    params = params.append('appUserType', appUserType);
 
     return params;
   }

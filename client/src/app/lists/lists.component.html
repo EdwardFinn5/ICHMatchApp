@@ -1,1 +1,89 @@
-<p>lists works!</p>
+<!-- <p style="margin-left: 50px">lists works!</p> -->
+<div class="container-fluid">
+
+    <ng-container *ngIf="user.appUserType == 'EmpHr'">
+        <div class="text-center mt-3 mr-5">
+            <h3><strong>{{predicate === 'liked' ? 'Thumbs-up!' : 'Thumbs-up!' }}</strong></h3>
+        </div>
+    
+        <div class="container mt-3">
+            <div class="row">
+                <div class="btn-group" name="predicate"> 
+    
+                    <button class="btn btn-success" 
+                    btnRadio="liked" 
+                    [(ngModel)]="predicate" 
+                    (click)="loadLikes()">
+                    Thumbs-up to these students
+                    </button>
+    
+                    <button class="btn btn-success ml-4" 
+                    btnRadio="likedBy" 
+                    [(ngModel)]="predicate" 
+                    (click)="loadLikes()">
+                    Students who give us the thumbs-up
+                    </button>
+    
+                </div>
+            </div>
+    
+            <div class="row mt-3">
+                <div class="col-4" *ngFor="let member of members">
+                    <app-member-card [member]="member"></app-member-card>
+                </div>
+            </div>
+        </div>
+    </ng-container>
+    
+    <ng-container *ngIf="user.appUserType == 'ColStudent'">
+        <div class="text-centered mt-3">
+            <h2>{{predicate === 'liked' ? 'Companies that might be good fit for me' : 'Companies that have indicated I might be a good fit' }}</h2>
+        </div>
+    
+        <div class="container mt-3">
+            <div class="row">
+                <div class="btn-group" name="predicate"> 
+    
+                    <button class="btn btn-success" 
+                    btnRadio="liked" 
+                    [(ngModel)]="predicate" 
+                    (click)="loadLikes()">
+                    Companies I like
+                    </button>
+    
+                    <button class="btn btn-success ml-4" 
+                    btnRadio="likedBy" 
+                    [(ngModel)]="predicate" 
+                    (click)="loadLikes()">
+                    Companies that like me 
+                    </button>
+    
+                </div>
+            </div>
+    
+            <div class="row mt-3">
+                <div class="col-4" *ngFor="let member of members">
+                    <app-member-search-card [member]="member"></app-member-search-card>
+                </div>
+            </div>
+        </div>
+    </ng-container>
+    
+    <div class="d-flex justify-content-center mt-2" *ngIf="pagination">
+        <pagination 
+            [boundaryLinks]="true" 
+            [totalItems]="pagination.totalItems"
+            [itemsPerPage]="pagination.itemsPerPage"
+            [(ngModel)]="pagination.currentPage"
+            (pageChanged)="pageChanged($event)"
+            previousText="&lsaquo;" 
+            nextText="&rsaquo;" 
+            firstText="&laquo;" 
+            lastText="&raquo;">
+        </pagination>
+    </div>
+    
+    </div>
+    
+    
+    
