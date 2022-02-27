@@ -18,9 +18,9 @@ namespace API.Interfaces
 
         // added the following two methods during video 97 on automapper queryable
 
-        Task<PagedList<CardMemberDto>> GetMembersAsync(UserParams userParams);
-        Task<PagedList<CardMemberDto>> GetStudentMembersAsync(UserParams userParams, string appUserType);
-        Task<IEnumerable<CardMemberDto>> GetEmpMembersAsync();
+        // Task<PagedList<CardMemberDto>> GetMembersAsync(UserParams userParams);
+        Task<PagedList<CardMemberDto>> GetStudentMembersAsync(UserParams userParams);
+        Task<PagedList<CardMemberDto>> GetEmpMembersAsync(UserParams userParams);
 
         Task<CardMemberDto> GetMemberAsync(string username);
         Task<CardMemberDto> GetMemberIdAsync(int id);

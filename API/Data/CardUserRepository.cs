@@ -38,23 +38,23 @@ namespace API.Data
                .SingleOrDefaultAsync();
         }
 
-        public async Task<PagedList<CardMemberDto>> GetMembersAsync(UserParams userParams)
-        {
-            var query = _context.Users
-                .Where(x => x.AppUserType == "EmpHr")
-                .ProjectTo<CardMemberDto>(_mapper.ConfigurationProvider)
-                .AsNoTracking();
-            return await PagedList<CardMemberDto>.CreateAsync(
-                query,
-                userParams.PageNumber,
-                userParams.PageSize
-            );
-        }
-        public async Task<PagedList<CardMemberDto>> GetStudentMembersAsync(UserParams userParams, string appUserType)
+        // public async Task<PagedList<CardMemberDto>> GetMembersAsync(UserParams userParams)
+        // {
+        //     var query = _context.Users
+        //         .Where(x => x.AppUserType == "EmpHr")
+        //         .ProjectTo<CardMemberDto>(_mapper.ConfigurationProvider)
+        //         .AsNoTracking();
+        //     return await PagedList<CardMemberDto>.CreateAsync(
+        //         query,
+        //         userParams.PageNumber,
+        //         userParams.PageSize
+        //     );
+        // }
+        public async Task<PagedList<CardMemberDto>> GetStudentMembersAsync(UserParams userParams)
         {
             var query = _context.Users.AsQueryable();
 
-            query = query.Where(x => x.AppUserType == appUserType);
+            query = query.Where(u => u.AppUserType == "ColStudent");
 
             if (userParams.Major != null)
             {
@@ -68,6 +68,24 @@ namespace API.Data
             {
                 query = query.Where(u => u.ClassYear == userParams.ClassYear);
             }
+
+            query = query.OrderBy(u => u.FirstName);
+            // .ThenBy(u => u.LastName);
+
+            return await PagedList<CardMemberDto>.CreateAsync(
+                query.ProjectTo<CardMemberDto>(_mapper
+                .ConfigurationProvider).AsNoTracking(),
+                    userParams.PageNumber,
+                    userParams.PageSize
+            );
+        }
+
+        public async Task<PagedList<CardMemberDto>> GetEmpMembersAsync(UserParams userParams)
+        {
+            var query = _context.Users.AsQueryable();
+
+            query = query.Where(u => u.AppUserType == "EmpHr");
+
             if (userParams.EmpIndustry != null)
             {
                 query = query.Where(u => u.EmpIndustry == userParams.EmpIndustry);
@@ -77,48 +95,14 @@ namespace API.Data
                 query = query.Where(u => u.Location == userParams.Location);
             }
 
-            if (appUserType == "EmpHr")
+            if (userParams.OrderByEmpName != null)
             {
-                if (userParams.OrderByEmpName != null)
-                {
-                    query = query.OrderBy(u => u.EmpName);
-                }
-
-                else if (userParams.OrderByEmpIndustry != null)
-                {
-                    query = query.OrderBy(u => u.EmpIndustry)
-                    .ThenBy(u => u.RegisterCode);
-                }
-                else if (userParams.OrderByLocation != null)
-                {
-                    query = query.OrderBy(u => u.Location)
-                    .ThenBy(u => u.RegisterCode);
-                }
-                else
-                {
-                    query = query.OrderBy(u => u.RegisterCode)
-                    .ThenBy(u => u.EmpName);
-                    // .ThenBy(u => u.EmpName);
-                }
+                query = query.OrderBy(u => u.EmpName);
             }
-
-            if (appUserType == "ColStudent")
+            else
             {
-                if (userParams.OrderByMajor != null)
-                {
-                    query = query.OrderBy(u => u.Major)
-                    .ThenBy(u => u.FirstName);
-                }
-
-                else if (userParams.OrderByLocation != null)
-                {
-                    query = query.OrderBy(u => u.Location)
-                    .ThenBy(u => u.FirstName);
-                }
-                else
-                {
-                    query = query.OrderBy(u => u.FirstName);
-                }
+                query = query.OrderBy(u => u.RegisterCode)
+                    .ThenBy(u => u.EmpName);
             }
 
             return await PagedList<CardMemberDto>.CreateAsync(

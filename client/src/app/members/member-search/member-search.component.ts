@@ -15,7 +15,7 @@ export class MemberSearchComponent implements OnInit {
   members: Member[];
   pagination: Pagination;
   userParams: UserParams;
-  appUserType = 'ColStudent';
+  // appUserType = 'ColStudent';
   majorList = [
     { value: 'Accounting', display: 'Accounting' },
     { value: 'IT', display: 'IT' },

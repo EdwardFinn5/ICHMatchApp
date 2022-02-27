@@ -23,10 +23,45 @@ namespace API.Controllers
 
         }
 
-        [HttpGet("GetByAppUserType/{appUserType}")]
-        public async Task<ActionResult<IEnumerable<CardMemberDto>>> GetByAppUserType([FromQuery] UserParams userParams, string appUserType)
+        // [HttpGet("GetByAppUserType/{appUserType}")]
+        // public async Task<ActionResult<IEnumerable<CardMemberDto>>> GetByAppUserType([FromQuery] UserParams userParams, string appUserType)
+        // {
+        //     var users = await _cardUserRepository.GetStudentMembersAsync(userParams, appUserType);
+
+        //     Response.AddPaginationHeader(
+        //                 users.CurrentPage,
+        //                 users.PageSize,
+        //                 users.TotalCount,
+        //                 users.TotalPages
+        //                 );
+
+        //     return Ok(users);
+        // }
+
+        [HttpGet("GetByEmpUserType")]
+        public async Task<ActionResult<IEnumerable<CardMemberDto>>> GetByEmpUserType([FromQuery] UserParams userParams)
         {
-            var users = await _cardUserRepository.GetStudentMembersAsync(userParams, appUserType);
+            // userParams.AppUserType = "EmpHr";
+
+            var users = await _cardUserRepository.GetEmpMembersAsync(userParams);
+
+            Response.AddPaginationHeader(
+                        users.CurrentPage,
+                        users.PageSize,
+                        users.TotalCount,
+                        users.TotalPages
+                        );
+
+            return Ok(users);
+        }
+
+        [HttpGet("GetByStudUserType")]
+        public async Task<ActionResult<IEnumerable<CardMemberDto>>> GetByStudUserType([FromQuery] UserParams userParams)
+        {
+
+            // userParams.AppUserType = "ColStudent";
+
+            var users = await _cardUserRepository.GetStudentMembersAsync(userParams);
 
             Response.AddPaginationHeader(
                         users.CurrentPage,

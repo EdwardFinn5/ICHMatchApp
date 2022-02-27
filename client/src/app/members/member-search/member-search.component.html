@@ -1,6 +1,8 @@
-<div class="row lists text-center mt-3">
-    <div class="col-12">
-        <h2 class="display-4">Talent pool applying your filters: {{pagination?.totalItems}} students</h2>
+<div class="row lists text-center mt-2" *ngIf="members">
+    <div class="row welcome text-center">
+        <div class="col-12">
+            <h2 class="display-4">Talent pool applying your filters: {{pagination?.totalItems}} students</h2>
+        </div>
     </div>
 </div>
 
@@ -8,14 +10,13 @@
     <form #form="ngForm" class="form-inline mb-3" 
         (ngSubmit)="loadMembers()" autocomplete="off">
         
-
-        <div class="form-group inline">
-            <label class="mr-2 ml-auto">Major: </label>
-           <select name="major" 
+        <div class="form-group align-content-center">
+            <label class="mr-2 filter" style="font-size: 1.5em"><strong> Filters: </strong></label>
+            <select name="major" 
                 [(ngModel)]="userParams.major"
                 style="width: auto" 
-                class="form-control">
-                <option value="">--Select Major--</option>
+                class="form-control mr-2">
+                <option class="text-center" value="">--Select Major--</option>
                 <option *ngFor="let major of majorList" 
                     [value]="major.value">
                     {{major.display}}    
@@ -24,11 +25,10 @@
         </div>
 
         <div class="form-group">
-            <label class="mr-2 ml-2">Hometown: </label>
            <select name="location" 
                 [(ngModel)]="userParams.location"
                 style="width: auto" 
-                class="form-control">
+                class="form-control mr-2">
                 <option value="">--Select Hometown--</option>
                 <option *ngFor="let location of locationList" 
                     [value]="location.value">
@@ -38,11 +38,10 @@
         </div>
     
         <div class="form-group">
-            <label class="ml-2 mr-2">Class Year: </label>
            <select name="classYear" 
                 [(ngModel)]="userParams.classYear"
                 style="width: auto" 
-                class="form-control">
+                class="form-control mr-1">
                 <option value="">--Select Class Year--</option>
                 <option *ngFor="let classYear of classYearList" 
                     [value]="classYear.value">
@@ -51,21 +50,25 @@
             </select>
         </div>
 
-        <div class="container">
+        <!-- <div class="container">
             <div class="row">
                 <div class="col-xs-12">
-                    <div class="text-center mt-2">
-                        <button class="btn btn-primary ml-2 mr-2" type="submit">Apply Filters</button>
-                        <button (click)="resetFilters()" class="btn btn-info ml-1" type="submit">Reset Filters</button>
-                    </div>
+                    <div class="text-center mt-2"> -->
+                        <button class="btn btn-success ml-2 mr-2" type="submit">Apply Filters</button>
+                        <button (click)="resetFilters()" class="btn btn-info ml-1 mr-2" type="submit">Reset Filters</button>
+                    <!-- </div>
                 </div>
             </div>
-        </div>     
+        </div>      -->
 
-        <div class="container">
+        <div class="text-center">
+            <label class="mr-2 filter" style="font-size: 1.5em"><strong> Sorts: </strong></label>
+        </div>
+        
+        <!-- <div class="container">
             <div class="row">
                 <div class="col-xs-12">
-                    <div class="text-center mt-2">
+                    <div class="text-center mt-2"> -->
                         <button 
                             type="button"
                             class="btn btn-primary mr-2"
@@ -77,30 +80,25 @@
                         </button>
                         <button 
                             type="button"
-                            class="btn btn-primary mr-2"
+                            class="btn btn-info mr-2"
                             name='orderByLocation'
                             (click)="loadMembers()"
                             btnRadio='location'
                             [(ngModel)]="userParams.orderByLocation">
                             Order by Hometown
                         </button>
-                    </div>
-                </div>
-            </div>
-        </div>     
     </form>
 </div>
     
     
 
 
-<div class="container-fluid mt-3">
-<div class="row">
-    <div *ngFor="let member of members" class="col-lg-3 col-md-6">
-        <app-member-search-card [member]="member" [position]="positions" ></app-member-search-card>
-        
+<div class="container-fluid mt-2">
+    <div class="row">
+        <div *ngFor="let member of members" class="col-lg-3 col-md-6">
+            <app-member-search-card [member]="member" [position]="positions"></app-member-search-card>
+        </div>
     </div>
-</div>
 </div>
 
 <div class="d-flex justify-content-center" *ngIf="pagination">

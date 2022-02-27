@@ -1,5 +1,5 @@
 export class UserParams {
-  appUserType: '';
+  // appUserType = '';
   major = '';
   classYear = '';
   location = '';
@@ -17,6 +17,8 @@ export class UserParams {
   orderByPositionName = '';
   orderByPositionLocation = '';
   orderByMajor = '';
+  orderByLastName = '';
+  orderByFirstName = '';
   orderByEmpName = '';
   orderByLocation = '';
   orderByCollege = '';

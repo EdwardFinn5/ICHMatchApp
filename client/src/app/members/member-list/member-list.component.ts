@@ -16,7 +16,7 @@ export class MemberListComponent implements OnInit {
   cardMembers: CardMember[];
   pagination: Pagination;
   userParams: UserParams;
-  appUserType = 'ColStudent';
+  // appUserType = 'ColStudent';
   majorList = [
     { value: 'Accounting', display: 'Accounting' },
     { value: 'IT', display: 'IT' },
@@ -41,9 +41,10 @@ export class MemberListComponent implements OnInit {
   }
 
   loadCardMembers() {
+    // this.appUserType = 'ColStudent';
     // this.membersService.setUserParams(this.userParams);
     this.membersService
-      .getMembers(this.userParams, this.appUserType)
+      .getStudMembers(this.userParams)
       .subscribe((response) => {
         this.cardMembers = response.result;
         this.pagination = response.pagination;

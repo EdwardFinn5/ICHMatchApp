@@ -15,8 +15,7 @@ namespace API.Helpers
             get => _pageSize;
             set => _pageSize = (value > MaxPageSize) ? MaxPageSize : value;
         }
-        public string CurrentUsername { get; set; }
-        public string AppUserType { get; set; }
+        // public string AppUserType { get; set; }
         public string LastName { get; set; }
         public string FirstName { get; set; }
         public string RegisterCode { get; set; }
@@ -29,7 +28,6 @@ namespace API.Helpers
         public string PositionName { get; set; }
         public string PositionType { get; set; }
         public string PositionLocation { get; set; }
-        public string OrderByLastActive { get; set; }
         public string OrderByMajor { get; set; }
         public string OrderByLocation { get; set; }
         public string OrderByCollege { get; set; }

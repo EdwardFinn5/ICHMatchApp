@@ -15,7 +15,7 @@ export class EmpmemberListComponent implements OnInit {
   cardMembers: CardMember[];
   pagination: Pagination;
   userParams: UserParams;
-  appUserType = 'EmpHr';
+  // appUserType = 'EmpHr';
   empIndustryList = [
     { value: 'Manufacturing', display: 'Manufacturing' },
     { value: 'Insurance', display: 'Insurance' },
@@ -38,12 +38,10 @@ export class EmpmemberListComponent implements OnInit {
 
   loadCardMembers() {
     // this.memberService.setUserParams(this.userParams);
-    this.memberService
-      .getMembers(this.userParams, this.appUserType)
-      .subscribe((response) => {
-        this.cardMembers = response.result;
-        this.pagination = response.pagination;
-      });
+    this.memberService.getEmpMembers(this.userParams).subscribe((response) => {
+      this.cardMembers = response.result;
+      this.pagination = response.pagination;
+    });
   }
 
   resetFilters() {
