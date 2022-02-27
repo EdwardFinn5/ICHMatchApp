@@ -18,12 +18,28 @@ export class Position2Service {
   positions: Position[] = [];
   positionId: number;
   position: Position;
+  userParams: UserParams;
   positionCache = new Map();
   // paginatedResult: PaginatedResult<Position[]> = new PaginatedResult<
   //   Position[]
   // >();
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) {
+    this.userParams = new UserParams();
+  }
+
+  getUserParams() {
+    return this.userParams;
+  }
+
+  setUserParams(params: UserParams) {
+    this.userParams = params;
+  }
+
+  resetUserParams() {
+    this.userParams = new UserParams();
+    return this.userParams;
+  }
 
   getPositions(userParams: UserParams) {
     console.log(Object.values(userParams).join('-'));
@@ -61,7 +77,13 @@ export class Position2Service {
   }
 
   getPositionById(positionId: number) {
-    console.log('getting positionbyid');
+    const position = [...this.positionCache.values()]
+      .reduce((arr, elem) => arr.concat(elem.result), [])
+      .find((position: Position) => position.positionId === positionId);
+    console.log(position);
+    if (position) {
+      return of(position);
+    }
     return this.http.get<Position>(
       this.baseUrl + 'positions2/GetPositionDtoById/' + positionId
     );
@@ -69,7 +91,6 @@ export class Position2Service {
 
   updatePosition(position: Position, positionId: number) {
     console.log('getting position info');
-    console.log('id: ', positionId);
     console.log('updating position');
     return this.http.put(this.baseUrl + 'positions2/' + positionId, position);
   }

@@ -17,27 +17,27 @@ export class MembersService {
   // appUserType: string;
   empMemberCache = new Map();
   studMemberCache = new Map();
-  // userParams: UserParams;
+  userParams: UserParams;
   // paginatedResult: PaginatedResult<CardMember[]> = new PaginatedResult<
   //   CardMember[]
   // >();
 
   constructor(private http: HttpClient) {
-    // this.userParams = new UserParams();
+    this.userParams = new UserParams();
   }
 
-  // getUserParams() {
-  //   return this.userParams;
-  // }
+  getUserParams() {
+    return this.userParams;
+  }
 
-  // setUserParams(params: UserParams) {
-  //   this.userParams = params;
-  // }
+  setUserParams(params: UserParams) {
+    this.userParams = params;
+  }
 
-  // resetUserParams() {
-  //   this.userParams = new UserParams();
-  //   return this.userParams;
-  // }
+  resetUserParams() {
+    this.userParams = new UserParams();
+    return this.userParams;
+  }
 
   getStudMembers(userParams: UserParams) {
     console.log(Object.values(userParams).join('-'));
@@ -110,21 +110,17 @@ export class MembersService {
   }
 
   getMember(username: string) {
-    // console.log(this.memberCache);
-    // const member = [...this.memberCache.values()]
-    //   .reduce((arr, elem) => arr.concat(elem.result), [])
-    //   .find((member: Member) => member.username === username);
-    // if (member) {
-    //   return of(member);
-    // }
-    // console.log(member);
-    const cardMember = this.cardMembers.find((x) => x.username === username);
-    if (cardMember !== undefined) return of(cardMember);
     return this.http.get<CardMember>(this.baseUrl + 'cardusers/' + username);
   }
 
   getCardMemberById(appUserId: number) {
-    console.log('hello');
+    const cardMember = [...this.empMemberCache.values()]
+      .reduce((arr, elem) => arr.concat(elem.result), [])
+      .find((cardMember: CardMember) => cardMember.appUserId === appUserId);
+    console.log(cardMember);
+    if (cardMember) {
+      return of(cardMember);
+    }
     return this.http.get<CardMember>(
       this.baseUrl + 'cardusers/GetById/' + appUserId
     );

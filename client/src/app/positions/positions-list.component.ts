@@ -31,7 +31,7 @@ export class PositionsListComponent implements OnInit {
   ];
 
   constructor(private position2Service: Position2Service) {
-    this.userParams = new UserParams();
+    this.userParams = this.position2Service.getUserParams();
   }
 
   ngOnInit(): void {
@@ -39,6 +39,7 @@ export class PositionsListComponent implements OnInit {
   }
 
   loadPositions() {
+    this.position2Service.setUserParams(this.userParams);
     this.position2Service
       .getPositions(this.userParams)
       .subscribe((response) => {
@@ -48,12 +49,13 @@ export class PositionsListComponent implements OnInit {
   }
 
   resetFilters() {
-    this.userParams = new UserParams();
+    this.userParams = this.position2Service.resetUserParams();
     this.loadPositions();
   }
 
   pageChanged(event: any) {
     this.userParams.pageNumber = event.page;
+    this.position2Service.setUserParams(this.userParams);
     this.loadPositions();
   }
 }

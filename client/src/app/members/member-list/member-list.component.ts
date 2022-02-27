@@ -6,6 +6,7 @@ import { Member } from 'src/app/_models/member';
 import { Pagination } from 'src/app/_models/pagination';
 import { UserParams } from 'src/app/_models/userParams';
 import { MembersService } from 'src/app/_services/members.service';
+import { MemberSearchCardComponent } from '../member-search-card/member-search-card.component';
 
 @Component({
   selector: 'app-member-list',
@@ -32,7 +33,7 @@ export class MemberListComponent implements OnInit {
   ];
 
   constructor(private membersService: MembersService) {
-    this.userParams = new UserParams();
+    this.userParams = this.membersService.getUserParams();
   }
 
   ngOnInit(): void {
@@ -41,8 +42,7 @@ export class MemberListComponent implements OnInit {
   }
 
   loadCardMembers() {
-    // this.appUserType = 'ColStudent';
-    // this.membersService.setUserParams(this.userParams);
+    this.membersService.setUserParams(this.userParams);
     this.membersService
       .getStudMembers(this.userParams)
       .subscribe((response) => {
@@ -52,13 +52,13 @@ export class MemberListComponent implements OnInit {
   }
 
   resetFilters() {
-    this.userParams = new UserParams();
+    this.userParams = this.membersService.resetUserParams();
     this.loadCardMembers();
   }
 
   pageChanged(event: any) {
     this.userParams.pageNumber = event.page;
-    // this.membersService.setUserParams(this.userParams);
+    this.membersService.setUserParams(this.userParams);
     this.loadCardMembers();
   }
 }
