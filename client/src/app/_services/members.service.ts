@@ -15,7 +15,8 @@ export class MembersService {
   baseUrl = environment.apiUrl;
   cardMembers: CardMember[] = [];
   // appUserType: string;
-  // memberCache = new Map();
+  empMemberCache = new Map();
+  studMemberCache = new Map();
   // userParams: UserParams;
   // paginatedResult: PaginatedResult<CardMember[]> = new PaginatedResult<
   //   CardMember[]
@@ -40,10 +41,13 @@ export class MembersService {
 
   getStudMembers(userParams: UserParams) {
     console.log(Object.values(userParams).join('-'));
-    // var response = this.memberCache.get(Object.values(userParams).join('-'));
-    // if (response)
-    //   return of(response);
-    // }
+    var response = this.studMemberCache.get(
+      Object.values(userParams).join('-')
+    );
+    if (response) {
+      return of(response);
+    }
+
     let params = this.getPaginationHeaders(
       userParams.pageNumber,
       userParams.pageSize
@@ -64,20 +68,20 @@ export class MembersService {
     return this.getPaginatedResult<CardMember[]>(
       this.baseUrl + 'cardusers/GetByStudUserType',
       params
-      // ).pipe(
-      //   map((response) => {
-      //     this.memberCache.set(Object.values(userParams).join('-'), response);
-      //     return response;
-      //   })
+    ).pipe(
+      map((response) => {
+        this.studMemberCache.set(Object.values(userParams).join('-'), response);
+        return response;
+      })
     );
   }
 
   getEmpMembers(userParams: UserParams) {
     console.log(Object.values(userParams).join('-'));
-    // var response = this.memberCache.get(Object.values(userParams).join('-'));
-    // if (response)
-    //   return of(response);
-    // }
+    var response = this.empMemberCache.get(Object.values(userParams).join('-'));
+    if (response) {
+      return of(response);
+    }
     let params = this.getPaginationHeaders(
       userParams.pageNumber,
       userParams.pageSize
@@ -97,11 +101,11 @@ export class MembersService {
     return this.getPaginatedResult<CardMember[]>(
       this.baseUrl + 'cardusers/GetByEmpUserType',
       params
-      // ).pipe(
-      //   map((response) => {
-      //     this.memberCache.set(Object.values(userParams).join('-'), response);
-      //     return response;
-      //   })
+    ).pipe(
+      map((response) => {
+        this.empMemberCache.set(Object.values(userParams).join('-'), response);
+        return response;
+      })
     );
   }
 

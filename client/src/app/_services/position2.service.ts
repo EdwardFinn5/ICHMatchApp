@@ -6,7 +6,7 @@ import { Member } from '../_models/member';
 import { StudInfo } from '../_models/studinfo';
 import { Position } from '../_models/position';
 import { map } from 'rxjs/operators';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { UserParams } from '../_models/userParams';
 import { PaginatedResult } from '../_models/pagination';
 
@@ -18,14 +18,20 @@ export class Position2Service {
   positions: Position[] = [];
   positionId: number;
   position: Position;
-  paginatedResult: PaginatedResult<Position[]> = new PaginatedResult<
-    Position[]
-  >();
+  positionCache = new Map();
+  // paginatedResult: PaginatedResult<Position[]> = new PaginatedResult<
+  //   Position[]
+  // >();
 
   constructor(private http: HttpClient) {}
 
   getPositions(userParams: UserParams) {
     console.log(Object.values(userParams).join('-'));
+    var response = this.positionCache.get(Object.values(userParams).join('-'));
+    if (response) {
+      return of(response);
+    }
+
     let params = this.getPaginationHeaders(
       userParams.pageNumber,
       userParams.pageSize
@@ -46,6 +52,11 @@ export class Position2Service {
     return this.getPaginatedResult<Position[]>(
       this.baseUrl + 'positions2',
       params
+    ).pipe(
+      map((response) => {
+        this.positionCache.set(Object.values(userParams).join('-'), response);
+        return response;
+      })
     );
   }
 
