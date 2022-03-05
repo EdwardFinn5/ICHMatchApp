@@ -50,6 +50,9 @@ import { LoadingInterceptor } from './_interceptors/loading.interceptor';
 import { PhotoEditorComponent } from './members/photo-editor/photo-editor.component';
 import { TextInputComponent } from './_forms/text-input/text-input.component';
 import { DateInputComponent } from './_forms/date-input/date-input.component';
+import { LikesCardComponent } from './likes/likes-card/likes-card.component';
+import { EmpmemberThumbsupDetailComponent } from './empmembers/empmember-thumbsup-detail/empmember-thumbsup-detail.component';
+import { MemberThumbsupDetailComponent } from './members/member-thumbsup-detail/member-thumbsup-detail.component';
 
 @NgModule({
   declarations: [
@@ -93,6 +96,9 @@ import { DateInputComponent } from './_forms/date-input/date-input.component';
     PhotoEditorComponent,
     TextInputComponent,
     DateInputComponent,
+    LikesCardComponent,
+    EmpmemberThumbsupDetailComponent,
+    MemberThumbsupDetailComponent,
   ],
   imports: [
     BrowserModule,

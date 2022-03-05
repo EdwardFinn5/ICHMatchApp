@@ -39,6 +39,8 @@ import { PositionDetailComponent } from './positions/position-detail.component';
 import { PositionDetailNewComponent } from './positions/position-detail-new.component';
 import { Empmember2EditEmpinfoComponent } from './empmembers/empmember2-edit-empinfo.component';
 import { EmpmemberCompDetailComponent } from './empmembers/empmember-comp-detail/empmember-comp-detail.component';
+import { EmpmemberThumbsupDetailComponent } from './empmembers/empmember-thumbsup-detail/empmember-thumbsup-detail.component';
+import { MemberThumbsupDetailComponent } from './members/member-thumbsup-detail/member-thumbsup-detail.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -51,6 +53,14 @@ const routes: Routes = [
   {
     path: 'empmembercompdetail/:appUserId',
     component: EmpmemberCompDetailComponent,
+  },
+  {
+    path: 'empmemberthumbsupdetail/:appUserId',
+    component: EmpmemberThumbsupDetailComponent,
+  },
+  {
+    path: 'memberthumbsupdetail/:appUserId',
+    component: MemberThumbsupDetailComponent,
   },
   {
     path: '',

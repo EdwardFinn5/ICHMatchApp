@@ -1,23 +1,29 @@
-<!-- <p style="margin-left: 50px">lists works!</p> -->
-<div class="container-fluid">
+<div class="container-fluid lists mt-2 mb-2">
+    <div class="row welcome text-center">
+        <div class="col-12">
+            <h2 class="display-4">Click on buttons to see thumbs-up results</h2>
+        </div>
+    </div>
+</div>
+
 
     <ng-container *ngIf="user.appUserType == 'EmpHr'">
-        <div class="text-center mt-3 mr-5">
+        <!-- <div class="text-center mt-3 mr-5">
             <h3><strong>{{predicate === 'liked' ? 'Thumbs-up!' : 'Thumbs-up!' }}</strong></h3>
-        </div>
+        </div> -->
     
-        <div class="container mt-3">
+        <!-- <div class="container mt-3"> -->
             <div class="row">
                 <div class="btn-group" name="predicate"> 
     
-                    <button class="btn btn-success" 
+                    <button class="btn btn-info mr-4 ml-5 mb-2 mt-2" 
                     btnRadio="liked" 
                     [(ngModel)]="predicate" 
                     (click)="loadLikes()">
-                    Thumbs-up to these students
+                    We give a thumbs-up to these students
                     </button>
     
-                    <button class="btn btn-success ml-4" 
+                    <button class="btn btn-info ml-4 mr-5 mb-2 mt-2" 
                     btnRadio="likedBy" 
                     [(ngModel)]="predicate" 
                     (click)="loadLikes()">
@@ -27,43 +33,45 @@
                 </div>
             </div>
     
-            <div class="row mt-3">
-                <div class="col-4" *ngFor="let member of members">
-                    <app-member-card [member]="member"></app-member-card>
+            <div class="container-fluid mt-2">
+            <div class="row">
+                <div *ngFor="let member of members" class="col-lg-3 col-md-6">
+                    <app-likes-card [member]="member" [position]="positions"></app-likes-card>
                 </div>
             </div>
         </div>
     </ng-container>
     
     <ng-container *ngIf="user.appUserType == 'ColStudent'">
-        <div class="text-centered mt-3">
+        <!-- <div class="text-centered mt-3">
             <h2>{{predicate === 'liked' ? 'Companies that might be good fit for me' : 'Companies that have indicated I might be a good fit' }}</h2>
-        </div>
+        </div> -->
     
-        <div class="container mt-3">
+        <!-- <div class="container mt-3"> -->
             <div class="row">
                 <div class="btn-group" name="predicate"> 
     
-                    <button class="btn btn-success" 
+                    <button class="btn btn-info mr-4 ml-5 mb-2 mt-2" 
                     btnRadio="liked" 
                     [(ngModel)]="predicate" 
                     (click)="loadLikes()">
-                    Companies I like
+                    Companies to which I give a thumbs-up
                     </button>
     
-                    <button class="btn btn-success ml-4" 
+                    <button class="btn btn-info ml-4 mr-5 mb-2 mt-2" 
                     btnRadio="likedBy" 
                     [(ngModel)]="predicate" 
                     (click)="loadLikes()">
-                    Companies that like me 
+                    Companies that have given me a thumbs-up
                     </button>
     
                 </div>
             </div>
-    
-            <div class="row mt-3">
-                <div class="col-4" *ngFor="let member of members">
-                    <app-member-search-card [member]="member"></app-member-search-card>
+            
+            <div class="container-fluid mt-2">
+            <div class="row">
+                <div *ngFor="let member of members" class="col-lg-3 col-md-6">
+                    <app-likes-card [member]="member" [position]="positions"></app-likes-card>
                 </div>
             </div>
         </div>
@@ -82,8 +90,7 @@
             lastText="&raquo;">
         </pagination>
     </div>
-    
-    </div>
+
     
     
     

@@ -1,18 +1,18 @@
-<div class="row shadow" *ngIf="cardMember"  style="margin-left: 0px">
+<div class="row shadow" *ngIf="member"  style="margin-left: 0px">
     <div class="col-sm-4 p-0">
             <div class="card">
-            <img src="{{cardMember.logoUrl || '../../assets/images/logo.PNG' }}" alt="{{cardMember.empName}}"
+            <img src="{{member.logoUrl || '../../assets/images/logo.PNG' }}" alt="{{member.empName}}"
                 class="card-img-top img-studthumbnail">
             <div class="card-body text-center">
                 <!-- <div class="mb-1" *ngIf="(presence.onlineUsers$ | async).includes(member.username)">
                     <i class="fa fa-user-circle text-success"></i> Online now
                 </div> -->
-                        <u><strong>{{cardMember.empName}}</strong></u> <br>
-                        Number of employees: {{cardMember.employeeNum}} 
-                        <br>Industry: {{cardMember.empIndustry}} 
-                        <br>Headquarters: {{cardMember.location}}
+                        <u><strong>{{member.empName}}</strong></u> <br>
+                        Number of employees: {{member.employeeNum}} 
+                        <br>Industry: {{member.empIndustry}} 
+                        <br>Headquarters: {{member.location}}
                         <!-- <br class="mt-3">Website: <a href="https://www.iowacollegefoundation.org/"> Link</a> -->
-                        <button class="btn btn-success btn-block mt-2" routerLink="/empmemberslist">Back to company list</button>
+                        <button class="btn btn-success btn-block mt-2" routerLink="/lists">Back to thumbs-up</button>
             </div>
         </div>
     </div>
@@ -22,10 +22,10 @@
             
             <tab heading='Company Info' class="tab-heading">
                 <div class="details">
-                <h4 class="mt-2"><strong>About {{cardMember.empName}}</strong></h4> 
-                <p>{{cardMember.companyDescription}}</p>
+                <h4 class="mt-2"><strong>About {{member.empName}}</strong></h4> 
+                <p>{{member.companyDescription}}</p>
                 <h4 class="mt-2"><strong>Why work for our company?</strong></h4> 
-                <p>{{cardMember.whyWork}}</p>
+                <p>{{member.whyWork}}</p>
                 <h4 class="mt-2"><strong>Website</strong></h4> 
 
                 <button type="button"class="btn btn-success mt-2" (click)="goToLink()">Go to Company Website</button>
@@ -35,4 +35,5 @@
 
         </tabset>
     </div>
+
 

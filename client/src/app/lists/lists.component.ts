@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { take } from 'rxjs/operators';
+import { CardMember } from '../_models/cardMember';
 import { Member } from '../_models/member';
 import { Pagination } from '../_models/pagination';
 import { User } from '../_models/user';
 import { AccountService } from '../_services/account.service';
+import { MembersService } from '../_services/members.service';
 import { SearchMembersService } from '../_services/search-members.service';
 
 @Component({
@@ -13,10 +15,10 @@ import { SearchMembersService } from '../_services/search-members.service';
 })
 export class ListsComponent implements OnInit {
   members: Partial<Member[]>;
-  predicate = 'Liked';
+  predicate = 'liked';
   user: User;
   pageNumber = 1;
-  pageSize = 10;
+  pageSize = 4;
   pagination: Pagination;
 
   constructor(
@@ -32,8 +34,16 @@ export class ListsComponent implements OnInit {
   }
 
   loadLikes() {
-    this.searchMembersService.getLikes(this.predicate).subscribe((response) => {
-      this.members = response;
-    });
+    this.searchMembersService
+      .getLikes(this.predicate, this.pageNumber, this.pageSize)
+      .subscribe((response) => {
+        this.members = response.result;
+        this.pagination = response.pagination;
+      });
+  }
+
+  pageChanged(event: any) {
+    this.pageNumber = event.page;
+    this.loadLikes();
   }
 }

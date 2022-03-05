@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using API.DTOs;
+using API.Entities;
 using API.Extensions;
+using API.Helpers;
 using API.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -36,7 +38,7 @@ namespace API.Controllers
 
             if (userLike != null) return BadRequest("You have already given a thumbs-up to this user");
 
-            userLike = new Entities.UserLike
+            userLike = new UserLike
             {
                 SourceUserId = sourceUserId,
                 LikedUserId = likedUser.AppUserId
@@ -77,12 +79,14 @@ namespace API.Controllers
             return BadRequest("Failed to give a thumbs-up to user");
         }
 
-
-
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<LikeDto>>> GetUserLikes(string predicate)
+        public async Task<ActionResult<IEnumerable<LikeDto>>> GetUserLikes([FromQuery] LikesParams likesParams)
         {
-            var users = await _likesRepository.GetUserLikes(predicate, User.GetUserId());
+            likesParams.AppUserId = User.GetUserId();
+            var users = await _likesRepository.GetUserLikes(likesParams);
+
+            Response.AddPaginationHeader(users.CurrentPage, users.PageSize,
+                users.TotalCount, users.TotalPages);
 
             return Ok(users);
         }

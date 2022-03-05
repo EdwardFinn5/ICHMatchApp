@@ -1,8 +1,8 @@
 <div class="card mb-4" *ngIf="cardMember">
     
     <div class="card-header bg-success">
-        <div *ngIf="cardMember.registerCode == 'auivd'" class="alevel">
-            <!-- {{''}} -->
+        <!-- <div *ngIf="cardMember.registerCode == 'auivd'" class="alevel">
+            {{''}}
         </div>
         <div *ngIf="cardMember.registerCode == 'bynxf'" class="b-level text-center p-1">
             {{''}}
@@ -15,7 +15,7 @@
         </div>
         <div *ngIf="cardMember.registerCode == 'edkmg'" class="e-level text-center p-1">
             {{''}}
-        </div>
+        </div> -->
     </div>
     
     
@@ -38,7 +38,7 @@
             <br>Industry: {{cardMember.empIndustry}} 
             <br>Headquarters: {{cardMember.location}}
             </p>
-        <button class="btn btn-success btn-block shadow-sm mr-2 mb-2" routerLink='/empmembercompdetail/{{cardMember.appUserId}}'>View Company Details</button>
+        <button class="btn btn-success btn-block shadow-sm mr-2 mb-2" routerLink='/empmembercompdetail/{{cardMember.appUserId}}'>View company details</button>
     </ng-container>
         
 </div> 

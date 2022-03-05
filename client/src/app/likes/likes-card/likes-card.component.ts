@@ -1,15 +1,16 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
+import { CardMember } from 'src/app/_models/cardMember';
 import { Member } from 'src/app/_models/member';
 import { Position } from 'src/app/_models/position';
 import { SearchMembersService } from 'src/app/_services/search-members.service';
 
 @Component({
-  selector: 'app-member-search-card',
-  templateUrl: './member-search-card.component.html',
-  styleUrls: ['./member-search-card.component.css'],
+  selector: 'app-likes-card',
+  templateUrl: './likes-card.component.html',
+  styleUrls: ['./likes-card.component.css'],
 })
-export class MemberSearchCardComponent implements OnInit {
+export class LikesCardComponent implements OnInit {
   @Input() member: Member;
   @Input() position: Position[] = [];
 

@@ -126,6 +126,16 @@ export class MembersService {
     );
   }
 
+  addLike(username: string) {
+    return this.http.post(this.baseUrl + 'likes/AddByName/' + username, {});
+  }
+
+  getLikes(predicate: string) {
+    return this.http.get<Partial<CardMember[]>>(
+      this.baseUrl + 'likes?predicate=' + predicate
+    );
+  }
+
   private getPaginatedResult<T>(url: string, params: any) {
     const paginatedResult: PaginatedResult<T> = new PaginatedResult<T>();
     return this.http
