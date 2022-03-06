@@ -53,6 +53,7 @@ import { DateInputComponent } from './_forms/date-input/date-input.component';
 import { LikesCardComponent } from './likes/likes-card/likes-card.component';
 import { EmpmemberThumbsupDetailComponent } from './empmembers/empmember-thumbsup-detail/empmember-thumbsup-detail.component';
 import { MemberThumbsupDetailComponent } from './members/member-thumbsup-detail/member-thumbsup-detail.component';
+import { MemberMessagesComponent } from './members/member-messages/member-messages.component';
 
 @NgModule({
   declarations: [
@@ -99,6 +100,7 @@ import { MemberThumbsupDetailComponent } from './members/member-thumbsup-detail/
     LikesCardComponent,
     EmpmemberThumbsupDetailComponent,
     MemberThumbsupDetailComponent,
+    MemberMessagesComponent,
   ],
   imports: [
     BrowserModule,

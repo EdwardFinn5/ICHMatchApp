@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Member } from 'src/app/_models/member';
 import { SearchMembersService } from 'src/app/_services/search-members.service';
@@ -9,6 +9,7 @@ import { SearchMembersService } from 'src/app/_services/search-members.service';
   styleUrls: ['./empmember-detail.component.css'],
 })
 export class EmpmemberDetailComponent implements OnInit {
+  @ViewChild('MemberTabs')
   member: Member;
   username: string;
 

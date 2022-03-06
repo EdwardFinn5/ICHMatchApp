@@ -1,1 +1,152 @@
-<p>messages works!</p>
+<div class="container">
+    <div class="row mb-4">
+        <div class="btn-group" name='container'>
+            <button class="btn btn-info mr-2 mt-3" btnRadio='Unread' (click)="loadMessages()" [(ngModel)]="container">
+                <i class="fa fa-envelope"></i> Unread
+            </button>
+            <button class="btn btn-info ml-2 mr-2 mt-3" btnRadio='Inbox' (click)="loadMessages()" [(ngModel)]="container">
+                <i class="fa fa-envelope-open"></i> Inbox
+            </button>
+            <button class="btn btn-info ml-2 mt-3" btnRadio='Outbox' (click)="loadMessages()" [(ngModel)]="container">
+                <i class="fa fa-paper-plane"></i> Outbox
+            </button>
+        </div>
+    </div>
+
+    <div class="row" *ngIf="messages?.length === 0">
+        <strong>
+            <p>No Unread messages<br>
+                Click Inbox and Outbox as well</p>
+        </strong>
+    </div>
+
+    <div class="row" *ngIf="messages?.length > 0 && user.appUserType === 'ColStudent'">
+        <table class="table table-hover" style="cursor:pointer">
+            <tr>
+                <ng-container *ngIf="container === 'Unread'">
+                    <th style="width: 35%">{{user.firstName}}'s Unread Messages </th>
+                    <th style="width: 35%">From/To</th>
+                    <th style="width: 15%">Sent/Received</th>
+                    <th style="width: 15%">Delete</th>
+                </ng-container>
+
+                <ng-container *ngIf="container === 'Inbox'">
+                    <th style="width: 35%">{{user.firstName}}'s Inbox Messages </th>
+                    <th style="width: 35%">From/To</th>
+                    <th style="width: 15%">Sent/Received</th>
+                    <th style="width: 15%">Delete</th>
+                </ng-container>
+
+                <ng-container *ngIf="container === 'Outbox'">
+                    <th style="width: 35%">{{user.firstName}}'s Outbox Messages </th>
+                    <th style="width: 35%">From/To</th>
+                    <th style="width: 15%">Sent/Received</th>
+                    <th style="width: 15%">Delete</th>
+                </ng-container>
+            </tr>
+
+            <tr [hidden]="loading" *ngFor="let message of messages" routerLink='{{container === "Outbox" 
+            ? "/empmembers/" + message.recipientUsername
+            : "/empmembers/" + message.senderUsername}}' [queryParams]='{tab: 2}'>
+
+                <td>{{message.content}}</td>
+                <td>
+                    <div *ngIf="container === 'Outbox'">
+                        <img class="img-circle mr-2"
+                            src="{{message.companyRecipientUrl || '../../assets/images/logo.PNG' }}"
+                            alt="{{message.recipientCompany}}">
+                        <strong>{{message.recipientCompany | titlecase}}</strong>
+                    </div>
+                    <div *ngIf="container !== 'Outbox'">
+                        <img class="img-circle mr-2"
+                            src="{{message.companySenderUrl || '../../assets/images/logo.PNG' }}"
+                            alt="{{message.senderCompany}}">
+                        <strong>{{message.senderCompany | titlecase}}</strong>
+                    </div>
+                </td>
+                <td class="mt-2">{{message.messageSent | timeago }}</td>
+                <td>
+                    <button (click)="$event.stopPropagation()" (click)="deleteMessage(message.id)" class="btn btn-danger">Delete</button>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="row" *ngIf="messages?.length > 0 && user.appUserType === 'EmpHr'">
+        <table class="table table-hover" style="cursor:pointer">
+            <tr>
+                <ng-container *ngIf="container === 'Unread'">
+                    <th style="width: 35%">{{user.firstName}}'s Unread Messages </th>
+                    <th style="width: 35%">From / To</th>
+                    <th style="width: 15%">Sent / Received</th>
+                    <th style="width: 15%">Delete</th>
+                </ng-container>
+
+                <ng-container *ngIf="container === 'Inbox'">
+                    <th style="width: 35%">{{user.firstName}}'s Inbox Messages </th>
+                    <th style="width: 35%">From / To</th>
+                    <th style="width: 15%">Sent / Received</th>
+                    <th style="width: 15%">Delete</th>
+                </ng-container>
+
+                <ng-container *ngIf="container === 'Outbox'">
+                    <th style="width: 35%">{{user.firstName}}'s Outbox Messages </th>
+                    <th style="width: 35%">From / To</th>
+                    <th style="width: 15%">Sent / Received</th>
+                    <th style="width: 15%">Delete</th>
+                </ng-container>
+            </tr>
+
+            <tr [hidden]="loading" *ngFor="let message of messages" routerLink='{{container === "Outbox" 
+            ? "/members/" + message.recipientUsername
+            : "/members/" + message.senderUsername}}' [queryParams]='{tab: 2}'>
+
+                <td>{{message.content}}</td>
+                <td>
+                    <div *ngIf="container === 'Outbox'">
+                        <img class="img-circle rounded-circle mr-2"
+                            src="{{message.studentRecipientUrl || '../../assets/images/coluser.PNG' }}"
+                            alt="{{message.recipientFirstname}}">
+                        <strong>{{message.recipientFirstName | titlecase}} from {{message.recipientCollege}}</strong>
+                    </div>
+                    <div *ngIf="container !== 'Outbox'">
+                        <img class="img-circle rounded-circle mr-2"
+                            src="{{message.studentSenderUrl || '../../assets/images/coluser.PNG' }}"
+                            alt="{{message.senderFirstName}}">
+                        <strong>{{message.senderFirstName | titlecase}} from {{message.senderCollege}}</strong>
+                    </div>
+                </td>
+                <td>{{message.messageSent | timeago }}</td>
+                <td>
+                    <button  (click)="$event.stopPropagation()" (click)="deleteMessage(message.id)" class="btn btn-danger">Delete</button>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+
+
+    <div class="d-flex justify-content-center mt-3" *ngIf="pagination">
+        <pagination 
+            [boundaryLinks]="true" 
+            [totalItems]="pagination.totalItems"
+            [itemsPerPage]="pagination.itemsPerPage"
+            [(ngModel)]="pagination.currentPage"
+            (pageChanged)="pageChanged($event)"
+            previousText="&lsaquo;" 
+            nextText="&rsaquo;" 
+            firstText="&laquo;" 
+            lastText="&raquo;">
+        </pagination>
+    </div>
+
+
+    
+    <!-- <div class="d-flex justify-content-center mt-2" *ngIf="pagination && !loading">
+        <pagination [boundaryLinks]="true" [totalItems]="pagination.totalItems" [itemsPerPage]="pagination.itemsPerPage"
+            [(ngModel)]="pagination.currentPage" (pageChanged)="pageChanged($event)" previousText="&lsaquo;"
+            nextText="&rsaquo;" firstText="&laquo;" lastText="&raquo;">
+        </pagination>
+    </div>  -->
+
+</div>

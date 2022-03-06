@@ -122,6 +122,15 @@ namespace API.Helpers
             CreateMap<Location, LocationDto>();
             CreateMap<RegisterEmpDto, AppUser>();
             CreateMap<RegisterStudDto, AppUser>();
+            CreateMap<Message, MessageDto>()
+                .ForMember(dest => dest.StudentSenderUrl, opt => opt
+                    .MapFrom(src => src.Sender.Photos.FirstOrDefault(x => x.IsMain).StudentUrl))
+                .ForMember(dest => dest.CompanySenderUrl, opt => opt
+                    .MapFrom(src => src.Sender.Photos.FirstOrDefault(x => x.IsMainLogo).LogoUrl))
+                .ForMember(dest => dest.StudentRecipientUrl, opt => opt
+                    .MapFrom(src => src.Recipient.Photos.FirstOrDefault(x => x.IsMain).StudentUrl))
+                .ForMember(dest => dest.CompanyRecipientUrl, opt => opt
+                    .MapFrom(src => src.Recipient.Photos.FirstOrDefault(x => x.IsMainLogo).LogoUrl));
         }
     }
 }

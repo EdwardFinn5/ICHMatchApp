@@ -77,8 +77,8 @@
                 <p *ngIf="member.empWebsite">Link to our website: <u>{{member.empWebsite}}</u></p>
                 </div>            
             </tab>
-            <tab heading='Messages' >
-               
+            <tab heading='New Messages' >
+               <app-member-messages [username]="member.username"></app-member-messages>
             </tab>
 
         </tabset>
