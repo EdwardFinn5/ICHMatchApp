@@ -41,6 +41,9 @@ import { Empmember2EditEmpinfoComponent } from './empmembers/empmember2-edit-emp
 import { EmpmemberCompDetailComponent } from './empmembers/empmember-comp-detail/empmember-comp-detail.component';
 import { EmpmemberThumbsupDetailComponent } from './empmembers/empmember-thumbsup-detail/empmember-thumbsup-detail.component';
 import { MemberThumbsupDetailComponent } from './members/member-thumbsup-detail/member-thumbsup-detail.component';
+import { EmpmemberMessageDetailComponent } from './empmembers/empmember-message-detail/empmember-message-detail.component';
+import { EmpmemberSuperDetailComponent } from './empmembers/empmember-super-detail/empmember-super-detail.component';
+import { EmpmemberListSuperComponent } from './empmembers/empmember-list-super/empmember-list-super.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -50,9 +53,18 @@ const routes: Routes = [
   { path: 'registerstud', component: RegisterStudComponent },
   { path: 'memberslist', component: MemberListComponent },
   { path: 'empmemberslist', component: EmpmemberListComponent },
+  { path: 'empmemberslistsuper', component: EmpmemberListSuperComponent },
   {
     path: 'empmembercompdetail/:appUserId',
     component: EmpmemberCompDetailComponent,
+  },
+  {
+    path: 'empmembersuperdetail/:appUserId',
+    component: EmpmemberSuperDetailComponent,
+  },
+  {
+    path: 'empmembermessagedetail/:appUserId',
+    component: EmpmemberMessageDetailComponent,
   },
   {
     path: 'empmemberthumbsupdetail/:appUserId',

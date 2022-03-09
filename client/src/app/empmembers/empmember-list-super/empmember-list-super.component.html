@@ -1,0 +1,87 @@
+<div class="container-fluid lists mt-2" *ngIf="members">
+    <div class="row welcome text-center">
+        <div class="col-12">
+            <h1 class="display-4">Number of employers using your filters that support private higher education in Iowa: {{pagination?.totalItems}}</h1>
+        </div>
+    </div>
+</div>
+
+<div class="container mt-3">
+    <form #form="ngForm" class="form-inline mb-3" 
+        (ngSubmit)="loadMembers()" autocomplete="off">
+        
+                        <div class="form-group align-content-center">
+                            <label class="mr-2 filter" style="margin-left: 190px; font-size: 1.5em"><strong> Filters: </strong></label>
+                            <select name="empIndustry" 
+                                [(ngModel)]="userParams.empIndustry" 
+                                style="width: auto"
+                                class="form-control mr-2">
+                                <option class="text-center" value="">--Select Industry--</option>
+                                <option *ngFor="let empIndustry of empIndustryList" 
+                                    [value]="empIndustry.value">
+                                    {{empIndustry.display}}
+                                </option>
+                            </select>
+                        </div>
+        
+                        <div class="form-group">
+                            <select name="location" 
+                                [(ngModel)]="userParams.location" 
+                                style="width: auto"
+                                class="form-control mr-2">
+                                <option value="">--Select Headquarters--</option>
+                                <option *ngFor="let location of locationList" 
+                                    [value]="location.value">
+                                    {{location.display}}
+                                </option>
+                            </select>
+                        </div>
+                  
+                        <button class="btn btn-success ml-2 mr-2" type="submit">Apply Filters</button>
+                        <button (click)="resetFilters()" class="btn btn-info ml-1 mr-2" type="submit">Reset Filters</button>
+    
+        <div class="text-center">
+            <label class="mr-2 filter" style="font-size: 1.5em"><strong> Sort: </strong></label>
+        </div>
+
+                        <button 
+                            type="button"
+                            class="btn btn-primary mr-2"
+                            name='orderByEmpName'
+                            (click)="loadMembers()"
+                            btnRadio='empName'
+                            [(ngModel)]="userParams.orderByEmpName">
+                            Order by Employer
+                        </button>
+                       
+    </form>
+</div>
+
+
+
+
+
+<div class="container-fluid mt-2">
+    <div class="row">
+        <div *ngFor="let member of members" class="col-lg-3 col-md-6">
+            <app-empmember-card-super [member]="member"></app-empmember-card-super>
+        </div>
+    </div>
+</div>
+
+
+<div class="d-flex justify-content-center" *ngIf="pagination">
+    <pagination 
+        [boundaryLinks]="true" 
+        [totalItems]="pagination.totalItems"
+        [itemsPerPage]="pagination.itemsPerPage"
+        [(ngModel)]="pagination.currentPage"
+        (pageChanged)="pageChanged($event)"
+        previousText="&lsaquo;" 
+        nextText="&rsaquo;" 
+        firstText="&laquo;" 
+        lastText="&raquo;">
+    </pagination>
+</div>
+
+

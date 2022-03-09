@@ -1,0 +1,43 @@
+<div class="card mb-4" *ngIf="member">
+    <div class="card-img-wrapper">
+        <img src="{{member.logoUrl || '../../assets/images/logo.PNG' }}" alt="{{member.empName}}"
+            class="card-img-top">
+        <ul class="list-inline member-icons animate text-center">
+            <li class="list-inline-item"><button routerLink='/empmembersuperdetail/{{member.appUserId}}'
+                    class="btn btn-primary">
+                    <i class="fa fa-info"></i>
+                    <span class="tooltip-text">
+                        More info
+                    </span>
+                </button>
+            </li>
+            <li class="list-inline-item"><button (click)="addLike(member)" class="btn btn-primary">
+                    <i class="fa fa-thumbs-up"></i>
+                    <span class="tooltip-text">
+                        Company I like
+                    </span>
+                </button>
+            </li>
+            <li class="list-inline-item">
+                <button routerLink='/empmembersuperdetail/{{member.appUserId}}' class="btn btn-primary">
+                    <i class="fa fa-envelope"></i>
+                    <span class="tooltip-text">
+                        Send message
+                    </span>
+                </button>
+            </li>
+        </ul>
+    </div>
+
+    <h6 class="card-title text-center mb-1 mt-1">
+        <span>
+            <i class="fa fa-user mr-2"></i>
+        </span>
+        <u><strong>{{member.empName}}</strong></u>
+    </h6>
+    <div class="card-text text-muted text-center">
+        <p class="text-center">
+            Number of employees: {{member.employeeNum}}
+            <br>Industry: {{member.empIndustry}}
+            <br>Headquarters: {{member.location}}
+        </p>

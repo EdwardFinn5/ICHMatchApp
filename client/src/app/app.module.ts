@@ -54,6 +54,11 @@ import { LikesCardComponent } from './likes/likes-card/likes-card.component';
 import { EmpmemberThumbsupDetailComponent } from './empmembers/empmember-thumbsup-detail/empmember-thumbsup-detail.component';
 import { MemberThumbsupDetailComponent } from './members/member-thumbsup-detail/member-thumbsup-detail.component';
 import { MemberMessagesComponent } from './members/member-messages/member-messages.component';
+import { EmpmemberMessageDetailComponent } from './empmembers/empmember-message-detail/empmember-message-detail.component';
+import { EmpmemberSuperDetailComponent } from './empmembers/empmember-super-detail/empmember-super-detail.component';
+import { EmpmemberListSuperComponent } from './empmembers/empmember-list-super/empmember-list-super.component';
+import { EmpmemberCardSuperComponent } from './empmembers/empmember-card-super/empmember-card-super.component';
+import { PositionDetailSuperNewComponent } from './positions/position-detail-super-new/position-detail-super-new.component';
 
 @NgModule({
   declarations: [
@@ -101,6 +106,11 @@ import { MemberMessagesComponent } from './members/member-messages/member-messag
     EmpmemberThumbsupDetailComponent,
     MemberThumbsupDetailComponent,
     MemberMessagesComponent,
+    EmpmemberMessageDetailComponent,
+    EmpmemberSuperDetailComponent,
+    EmpmemberListSuperComponent,
+    EmpmemberCardSuperComponent,
+    PositionDetailSuperNewComponent,
   ],
   imports: [
     BrowserModule,

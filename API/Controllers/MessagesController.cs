@@ -46,7 +46,9 @@ namespace API.Controllers
             var message = new Message
             {
                 Sender = sender,
+                SenderId = sender.AppUserId,
                 Recipient = recipient,
+                RecipientId = recipient.AppUserId,
                 SenderUsername = sender.UserName,
                 SenderFirstName = sender.FirstName,
                 SenderCollege = sender.College,

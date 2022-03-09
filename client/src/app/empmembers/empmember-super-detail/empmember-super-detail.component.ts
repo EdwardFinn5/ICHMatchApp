@@ -7,11 +7,11 @@ import { PositionService } from 'src/app/_services/position.service';
 import { SearchMembersService } from 'src/app/_services/search-members.service';
 
 @Component({
-  selector: 'app-empmember-thumbsup-detail',
-  templateUrl: './empmember-thumbsup-detail.component.html',
-  styleUrls: ['./empmember-thumbsup-detail.component.css'],
+  selector: 'app-empmember-super-detail',
+  templateUrl: './empmember-super-detail.component.html',
+  styleUrls: ['./empmember-super-detail.component.css'],
 })
-export class EmpmemberThumbsupDetailComponent implements OnInit {
+export class EmpmemberSuperDetailComponent implements OnInit {
   id: number;
   member: Member;
   link: string;

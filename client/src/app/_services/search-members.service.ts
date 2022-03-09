@@ -18,6 +18,7 @@ export class SearchMembersService {
   baseUrl = environment.apiUrl;
   members: Member[] = [];
   memberCache = new Map();
+  searchEmpMemberCache = new Map();
   userParams: UserParams;
 
   constructor(private http: HttpClient) {
@@ -82,6 +83,44 @@ export class SearchMembersService {
     );
   }
 
+  getSearchEmpMembers(userParams: UserParams) {
+    console.log(Object.values(userParams).join('-'));
+    var response = this.searchEmpMemberCache.get(
+      Object.values(userParams).join('-')
+    );
+    if (response) {
+      return of(response);
+    }
+    let params = this.getPaginationHeaders(
+      userParams.pageNumber,
+      userParams.pageSize
+    );
+
+    // params = params.append('major', userParams.major);
+    // params = params.append('classYear', userParams.classYear);
+    // params = params.append('college', userParams.college);
+    params = params.append('location', userParams.location);
+    params = params.append('empIndustry', userParams.empIndustry);
+    // params = params.append('orderByMajor', userParams.orderByMajor);
+    // params = params.append('orderByCollege', userParams.orderByCollege);
+    // params = params.append('orderByLocation', userParams.orderByLocation);
+    params = params.append('orderByEmpName', userParams.orderByEmpName);
+    // params = params.append('orderByEmpIndustry', userParams.orderByEmpIndustry);
+
+    return this.getPaginatedResult<Member[]>(
+      this.baseUrl + 'searchusers/GetByEmpMemberType',
+      params
+    ).pipe(
+      map((response) => {
+        this.searchEmpMemberCache.set(
+          Object.values(userParams).join('-'),
+          response
+        );
+        return response;
+      })
+    );
+  }
+
   getSearchMemberById(appUserId: number) {
     console.log('hello');
     return this.http.get<Member>(
@@ -139,5 +178,34 @@ export class SearchMembersService {
     // return this.http.get<Partial<Member[]>>(
     //   this.baseUrl + 'likes?predicate=' + predicate
     // );
+  }
+
+  private getPaginatedResult<T>(url: string, params: any) {
+    const paginatedResult: PaginatedResult<T> = new PaginatedResult<T>();
+    return this.http
+      .get<T>(url, {
+        observe: 'response',
+        params,
+      })
+      .pipe(
+        map((response) => {
+          paginatedResult.result = response.body;
+          if (response.headers.get('Pagination') !== null) {
+            paginatedResult.pagination = JSON.parse(
+              response.headers.get('Pagination')
+            );
+          }
+          return paginatedResult;
+        })
+      );
+  }
+
+  private getPaginationHeaders(pageNumber: number, pageSize: number) {
+    let params = new HttpParams();
+
+    params = params.append('pageNumber', pageNumber.toString());
+    params = params.append('pageSize', pageSize.toString());
+
+    return params;
   }
 }

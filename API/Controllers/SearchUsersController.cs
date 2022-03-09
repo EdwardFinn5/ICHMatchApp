@@ -90,6 +90,23 @@ namespace API.Controllers
             // could also combine the above into: return Ok(await _userRepository.GetMembersAsync());
         }
 
+        [HttpGet("GetByEmpMemberType")]
+        public async Task<ActionResult<IEnumerable<MemberDto>>> GetByEmpMemberType([FromQuery] UserParams userParams)
+        {
+            // userParams.AppUserType = "EmpHr";
+
+            var users = await _userRepository.GetEmpMembersAsync(userParams);
+
+            Response.AddPaginationHeader(
+                        users.CurrentPage,
+                        users.PageSize,
+                        users.TotalCount,
+                        users.TotalPages
+                        );
+
+            return Ok(users);
+        }
+
         [HttpGet("GetByName/{username}", Name = "GetUser")]
         public async Task<ActionResult<MemberDto>> GetByName(string username)
         {

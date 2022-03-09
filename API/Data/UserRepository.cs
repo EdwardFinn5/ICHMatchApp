@@ -115,6 +115,40 @@ namespace API.Data
                 .ToListAsync();
         }
 
+        public async Task<PagedList<MemberDto>> GetEmpMembersAsync(UserParams userParams)
+        {
+            var query = _context.Users.AsQueryable();
+
+            query = query.Where(u => u.AppUserType == "EmpHr");
+
+            if (userParams.EmpIndustry != null)
+            {
+                query = query.Where(u => u.EmpIndustry == userParams.EmpIndustry);
+            }
+            if (userParams.Location != null)
+            {
+                query = query.Where(u => u.Location == userParams.Location);
+            }
+
+            if (userParams.OrderByEmpName != null)
+            {
+                query = query.OrderBy(u => u.EmpName);
+            }
+            else
+            {
+                query = query.OrderBy(u => u.RegisterCode)
+                    .ThenBy(u => u.EmpName);
+            }
+
+            return await PagedList<MemberDto>.CreateAsync(
+                query.ProjectTo<MemberDto>(_mapper
+                .ConfigurationProvider).AsNoTracking(),
+                    userParams.PageNumber,
+                    userParams.PageSize
+            );
+        }
+
+
         public async Task<IEnumerable<MemberDto>> GetEmployeeMembersAsync()
         {
             return await _context.Users
