@@ -44,6 +44,9 @@ import { MemberThumbsupDetailComponent } from './members/member-thumbsup-detail/
 import { EmpmemberMessageDetailComponent } from './empmembers/empmember-message-detail/empmember-message-detail.component';
 import { EmpmemberSuperDetailComponent } from './empmembers/empmember-super-detail/empmember-super-detail.component';
 import { EmpmemberListSuperComponent } from './empmembers/empmember-list-super/empmember-list-super.component';
+import { PositionDetailEmployerComponent } from './positions/position-detail-employer/position-detail-employer.component';
+import { PositionDetailThumbsupComponent } from './positions/position-detail-thumbsup/position-detail-thumbsup.component';
+import { PositionDetailmessageComponent } from './positions/position-detailmessage/position-detailmessage.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -141,6 +144,21 @@ const routes: Routes = [
   {
     path: 'newpositiondetail/:positionId',
     component: PositionDetailNewComponent,
+    pathMatch: 'full',
+  },
+  {
+    path: 'employerpositiondetail/:positionId',
+    component: PositionDetailEmployerComponent,
+    pathMatch: 'full',
+  },
+  {
+    path: 'thumbsuppositiondetail/:positionId',
+    component: PositionDetailThumbsupComponent,
+    pathMatch: 'full',
+  },
+  {
+    path: 'messagepositiondetail/:positionId',
+    component: PositionDetailmessageComponent,
     pathMatch: 'full',
   },
   {

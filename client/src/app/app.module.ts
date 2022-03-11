@@ -59,6 +59,9 @@ import { EmpmemberSuperDetailComponent } from './empmembers/empmember-super-deta
 import { EmpmemberListSuperComponent } from './empmembers/empmember-list-super/empmember-list-super.component';
 import { EmpmemberCardSuperComponent } from './empmembers/empmember-card-super/empmember-card-super.component';
 import { PositionDetailSuperNewComponent } from './positions/position-detail-super-new/position-detail-super-new.component';
+import { PositionDetailEmployerComponent } from './positions/position-detail-employer/position-detail-employer.component';
+import { PositionDetailThumbsupComponent } from './positions/position-detail-thumbsup/position-detail-thumbsup.component';
+import { PositionDetailmessageComponent } from './positions/position-detailmessage/position-detailmessage.component';
 
 @NgModule({
   declarations: [
@@ -111,6 +114,9 @@ import { PositionDetailSuperNewComponent } from './positions/position-detail-sup
     EmpmemberListSuperComponent,
     EmpmemberCardSuperComponent,
     PositionDetailSuperNewComponent,
+    PositionDetailEmployerComponent,
+    PositionDetailThumbsupComponent,
+    PositionDetailmessageComponent,
   ],
   imports: [
     BrowserModule,

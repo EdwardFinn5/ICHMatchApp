@@ -63,9 +63,9 @@
     
     <div class="card-body padding p-2">
         <h6 *ngIf="member.appUserType == 'ColStudent'" class="card-title text-center mb-1">
-            <span>
+            <!-- <span>
                 <i class="fa fa-user mr-2"></i> 
-            </span>
+            </span> -->
             <u><strong>{{member.firstName}} {{member.lastName}}</strong></u>
         </h6>
 
@@ -83,9 +83,9 @@
                 <br>
                 attending {{member.college}}
             </p>
-            <div class="d-level p-3">
-                {{" "}}
-            </div>
+            <button class="btn btn-info button btn-block shadow-sm mr-2 mb-2">
+           
+            </button>
             </ng-container>
             <ng-container *ngIf="member.appUserType == 'EmpHr'" class="card-text text-muted text-center">
             <p class="text-center">

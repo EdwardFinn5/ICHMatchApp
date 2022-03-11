@@ -9,20 +9,20 @@
                 class="card-img-top">
         </div>
         <h6 class="card-title text-center mb-1 mt-1">
-            <span>
+            <!-- <span>
                 <i class="fa fa-user mr-2"></i>
-            </span>
+            </span> -->  
             <u><strong>{{member.empName}}</strong></u>
         </h6>
-        <div class="card-text text-muted text-center">
+        <ng-copntainer class="card-text text-muted text-center">
             <p class="text-center">
-                Number of employees: {{member.employeeNum}}
-                <br>Industry: {{member.empIndustry}}
-                <br>Headquarters: {{member.location}}
+                Number of employees: <strong>{{member.employeeNum}}</strong>
+                <br>Industry: <strong>{{member.empIndustry}}</strong>
+                <br>Headquarters: <strong>{{member.location}}</strong>
             </p>
-            <button class="btn btn-success btn-block shadow-sm mr-2 mb-2"
+            <button class="btn btn-info button btn-block shadow-sm mr-2 mb-2"
                 routerLink='/empmemberthumbsupdetail/{{member.appUserId}}'>View company details</button>
-        </div>
+        </ng-copntainer>
     </ng-container>
 <!-- </div> -->
 
@@ -48,7 +48,7 @@
                 <br> 
                 from {{member.location}}
                 <br>
-                attending {{member.college}}
+                attending {{member.college}} 
             </p>
             <button class="btn btn-success btn-block shadow-sm mr-2 mb-2"
                 routerLink='/memberthumbsupdetail/{{member.appUserId}}'>View student details</button>

@@ -3,28 +3,25 @@
         
         <!-- <div class="card" *ngIf="member.appUserType == 'ColStudent'"> -->
 
-            <div class="card">
+            <div class="card" style="align-items: center">
 
             <img src="{{member.studentUrl || '../../assets/images/coluser.PNG'}}" alt="{{member.firstName}}"
                 class="card-img-top img-studthumbnail">
-            <div class="card-body text-center">
-                <!-- <div class="mb-1" *ngIf="(presence.onlineUsers$ | async).includes(member.username)">
-                    <i class="fa fa-user-circle text-success"></i> Online now
-                </div> -->
-                <!-- <div> -->
+            <p class="card-body padding p-2">
+               
                     <u><strong>-- {{member.firstName}} {{member.lastName}} --</strong></u>
                         <br><strong>{{member.classYear}} {{member.major}} Major</strong>
-                        <br> from <br>
+                        <br>member-thumbsup-detail from <br>
                         <strong>{{member.location}}</strong>
                         <br> attending <br>
                         <strong>{{member.college}}</strong>
                         <br> Profile Created: <br>
                         <strong>{{member.created | date: "MMM dd yyyy" }}</strong>
-                        <br> Last Activity: <br>
-                        <strong>{{member.lastActive | timeago }}</strong>
+                        <!-- <br> Last Activity: <br>
+                        <strong>{{member.lastActive | timeago }}</strong> -->
                     
                 <!-- </div> -->
-            </div>
+                        </p>
             
             <!-- <div class="card-footer"> -->
                 <div class="btn-group d-flex card-footer">
@@ -67,7 +64,8 @@
                 </div>
             </tab>
             <tab heading='Messages' >
-               
+                <div class="p-3 font" style="font-size:large"><strong>Remember to specify which position at {{member.empName}} you are messaging about:</strong></div>
+                <app-member-messages [username]="member.username"></app-member-messages>
             </tab>
 
         </tabset>

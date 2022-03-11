@@ -11,7 +11,6 @@
                 <!-- <div class="mb-1" *ngIf="(presence.onlineUsers$ | async).includes(member.username)">
                     <i class="fa fa-user-circle text-success"></i> Online now
                 </div> -->
-                    <p class="text-center">
                         <u><strong>{{position.empName}}</strong></u>
                         <br> Position: <strong>{{position.positionName}}</strong>
                         <br> Type of Position: <strong>{{position.positionType}}</strong>
@@ -19,13 +18,13 @@
                         <br>Date Position was Posted: <strong>{{position.dateAdded | date: "MMM dd yyyy" }}</strong>
                         <br>Start Date: <strong>{{position.startDate | date: "MMM dd yyyy" }}</strong>
                         <br>Application Deadline: <strong>{{position.appDeadline | date: "MMM dd yyyy" }}</strong>
-                    </p>
-                <div class="btn-group d-flex">
-                    <button class="btn btn-info btn-block shadow-sm" routerLink='/positionslist'>Back to all positions</button>
-                </div>
            
+                <div class="btn-group d-flex">
+                    <button class="btn btn-info btn-block mt-2 shadow-sm" routerLink='/lists'>Back to thumbs-up</button>
+                </div>
+
+            </div>
         </div>
-    </div>
     </div>
     
      
@@ -87,5 +86,6 @@
 
         </tabset>
     </div>
+
 
 

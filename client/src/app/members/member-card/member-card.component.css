@@ -128,3 +128,7 @@ p {
 .padding {
   padding-bottom: 1rem;
 }
+
+button {
+  height: 1.5em;
+}

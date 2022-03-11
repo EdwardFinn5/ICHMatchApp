@@ -1,6 +1,9 @@
 /* img {
   width: 100%;
 } */
+/* img {
+  width: 100%;
+} */
 .padding {
   padding-top: 0;
 }
@@ -22,11 +25,11 @@
 
 .card-body {
   text-align: center;
-  font-weight: bold;
-  font-size: medium;
 }
 .img-studthumbnail {
   padding-left: 15px;
   padding-right: 15px;
   padding-top: 15px;
+  width: 60%;
+  height: 60%;
 }

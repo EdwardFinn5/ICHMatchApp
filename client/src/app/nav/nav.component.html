@@ -22,8 +22,8 @@
           <div class="dropdown-menu mt-2" aria-labelledby="dropdown01">
             <!-- <a class="dropdown-item" routerLink='/membersearch'>Talent</a> -->
             <a *ngIf="accountService.currentUser$ | async" class="dropdown-item" routerLink='/membersearch'>See Talent</a>
-            <a *ngIf="accountService.currentUser$ | async" class="dropdown-item" routerLink='/lists'>Thumbs-up</a>
-            <a *ngIf="accountService.currentUser$ | async" class="dropdown-item" routerLink='/messages'>Messages</a>
+            <a *ngIf="accountService.currentUser$ | async" class="dropdown-item" routerLink='/lists'>See Thumbs-up</a>
+            <a *ngIf="accountService.currentUser$ | async" class="dropdown-item" routerLink='/messages'>See Messages</a>
           </div>
         </li>
 
@@ -34,8 +34,8 @@
             <!-- <a class="dropdown-item" routerLink='/job'>Search Internships/Jobs</a> -->
             <a *ngIf="accountService.currentUser$ | async" class="dropdown-item" routerLink='/positionslist'>See Positions</a>
             <a *ngIf="accountService.currentUser$ | async" class="dropdown-item" routerLink='/empmemberslistsuper'>See Employers</a>
-            <a *ngIf="accountService.currentUser$ | async" class="dropdown-item" routerLink='/lists'>Thumbs-up</a>
-            <a *ngIf="accountService.currentUser$ | async" class="dropdown-item" routerLink='/messages'>Messages</a>
+            <a *ngIf="accountService.currentUser$ | async" class="dropdown-item" routerLink='/lists'>See Thumbs-up</a>
+            <a *ngIf="accountService.currentUser$ | async" class="dropdown-item" routerLink='/messages'>See Messages</a>
           </div>
         </li>
         

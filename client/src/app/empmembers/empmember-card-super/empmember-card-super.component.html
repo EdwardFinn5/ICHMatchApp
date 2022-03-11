@@ -29,15 +29,20 @@
         </ul>
     </div>
 
-    <h6 class="card-title text-center mb-1 mt-1">
-        <span>
+    <div class="card-body padding p-2">
+    <h6 class="card-title text-center mb-1">
+        <!-- <span>
             <i class="fa fa-user mr-2"></i>
-        </span>
+        </span> -->
         <u><strong>{{member.empName}}</strong></u>
     </h6>
-    <div class="card-text text-muted text-center">
+    <ng-container class="card-text text-muted text-center">
         <p class="text-center">
             Number of employees: {{member.employeeNum}}
             <br>Industry: {{member.empIndustry}}
             <br>Headquarters: {{member.location}}
         </p>
+        <button class="btn btn-info button btn-block shadow-sm mr-2 mb-2"></button>
+        </ng-container>
+        </div>
+</div>

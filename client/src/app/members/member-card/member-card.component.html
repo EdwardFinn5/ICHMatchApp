@@ -1,59 +1,29 @@
 <div class="card mb-4" *ngIf="cardMember">
-    <div class="card-img-wrapper" *ngIf="cardMember.appUserType == 'EmpHr'">
-        <img src="{{cardMember.logoUrl || '../../assets/images/logo.PNG' }}" alt="{{cardMember.firstName}}" class="card-img-top">
-    </div>   
 
     <div class="card-img-wrapper" *ngIf="cardMember.appUserType == 'ColStudent'">
         <img src="{{cardMember.studentUrl || '../../assets/images/coluser.PNG' }}" alt="{{cardMember.firstName}}" class="card-img-top">
-    </div>   
-    
-    
+    </div>
+
+
     <div class="card-body padding p-2">
         <h6 *ngIf="cardMember.appUserType == 'ColStudent'" class="card-title text-center mb-1">
-            <!-- <span [class.is-online]="(presence.onlineUsers$ | async).includes(member.username)">
-                <i class="fa fa-user mr-2"></i> 
-            </span> -->
-           
             <u><strong>{{cardMember.firstName}}</strong></u>
         </h6>
 
-        <h6 *ngIf="cardMember.appUserType == 'EmpHr'" class="card-title text-center mb-1">
-            <!-- <span [class.is-online]="(presence.onlineUsers$ | async).includes(member.username)">
-                <i class="fa fa-user mr-2"></i> 
-            </span> -->
-            <u><strong>{{cardMember.empName}}</strong></u>
-        </h6>
         <ng-container *ngIf="cardMember.appUserType == 'ColStudent'" class="card-text text-muted text-center">
         <p class="text-center">
             {{cardMember.classYear}} {{cardMember.major}} major
-            <br> 
+            <br>
             from {{cardMember.location}}
             <br>
             attending {{cardMember.college}}
         </p>
-        <div class="d-level p-3">
-            {{" "}}
-        </div>
+        <button class="btn btn-info btn-block shadow-sm mr-2 mb-2">
+           
+        </button>
         </ng-container>
-        <ng-container *ngIf="cardMember.appUserType == 'EmpHr'" class="card-text text-muted text-center">
-        <p class="text-center">
-             Number of employees: {{cardMember.employeeNum}} 
-            <br>Industry: {{cardMember.empIndustry}} 
-            <br>Headquarters: {{cardMember.location}}
-            </p>
-        <div *ngIf="cardMember.givingLevel == 'a'" class="a-level text-center p-1">
-            {{cardMember.giftAmt}}
-        </div>
-        <div *ngIf="cardMember.givingLevel == 'b'" class="b-level text-center p-1">
-            {{cardMember.giftAmt}}
-        </div>
-        <div *ngIf="cardMember.givingLevel == 'c'" class="c-level text-center p-1">
-            {{cardMember.giftAmt}}
-        </div>
-        <!-- <button class="btn btn-success btn-block shadow-sm mr-2 mb-2" routerLink='/empmembercompdetail/{{cardMember.appUserId}}'>View</button> -->
-    </ng-container>
-        
-</div> 
-    
+
+</div>
+
 
 

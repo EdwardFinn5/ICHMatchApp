@@ -1,21 +1,7 @@
 <div class="card mb-4" *ngIf="cardMember">
     
     <div class="card-header bg-success">
-        <!-- <div *ngIf="cardMember.registerCode == 'auivd'" class="alevel">
-            {{''}}
-        </div>
-        <div *ngIf="cardMember.registerCode == 'bynxf'" class="b-level text-center p-1">
-            {{''}}
-        </div>
-        <div *ngIf="cardMember.registerCode == 'cnsjf'" class="c-level text-center p-1">
-            {{''}}
-        </div>
-        <div *ngIf="cardMember.registerCode == 'dyrba'" class="d-level text-center p-1">
-            {{''}}
-        </div>
-        <div *ngIf="cardMember.registerCode == 'edkmg'" class="e-level text-center p-1">
-            {{''}}
-        </div> -->
+       
     </div>
     
     
@@ -26,9 +12,7 @@
     <div class="card-body padding p-2">
         
         <h6 *ngIf="cardMember.appUserType == 'EmpHr'" class="card-title text-center mb-1">
-            <!-- <span [class.is-online]="(presence.onlineUsers$ | async).includes(member.username)">
-                <i class="fa fa-user mr-2"></i> 
-            </span> -->
+           
             <u><strong>{{cardMember.empName}}</strong></u>
         </h6>
         
@@ -37,8 +21,8 @@
              Number of employees: {{cardMember.employeeNum}} 
             <br>Industry: {{cardMember.empIndustry}} 
             <br>Headquarters: {{cardMember.location}}
-            </p>
-        <button class="btn btn-success btn-block shadow-sm mr-2 mb-2" routerLink='/empmembercompdetail/{{cardMember.appUserId}}'>View company details</button>
+            </p><button class="btn btn-info btn-block shadow-sm mr-2 mb-2" routerLink='/empmembercompdetail/{{cardMember.appUserId}}'>View company details</button>
+        
     </ng-container>
         
 </div> 
