@@ -45,6 +45,7 @@ namespace API.Data
                 Username = user.UserName,
                 AppUserType = user.AppUserType,
                 FirstName = user.FirstName,
+                LastName = user.LastName,
                 Major = user.Major,
                 ClassYear = user.ClassYear,
                 College = user.College,
