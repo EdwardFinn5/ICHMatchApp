@@ -22,8 +22,13 @@
                 routerLink='/empmemberthumbsupdetail/{{member.appUserId}}'>View company details</button>
         </ng-copntainer>
     </ng-container>
+<!-- </div> -->
+
+<!-- <div class="card mb-4" *ngIf="member"> -->
 
     <ng-container *ngIf="member.appUserType == 'ColStudent'">
+        <!-- <div class="card-header bg-success">
+        </div> -->
 
         <div class="card-img-wrapper">
             <img src="{{member.studentUrl || '../../assets/images/coluser.PNG' }}" alt="{{member.firstName}}" 
@@ -40,7 +45,7 @@
                 <br>attending {{member.college}} 
             </p>
             <button class="btn btn-info button btn-block shadow-sm mr-2 mb-2"
-                routerLink='/memberthumbsupdetail/{{member.appUserId}}'>View student details</button>
+                routerLink='/membermessagedetail/{{member.appUserId}}'>View student details</button>
     </ng-container>
 </ng-container>
 </div>

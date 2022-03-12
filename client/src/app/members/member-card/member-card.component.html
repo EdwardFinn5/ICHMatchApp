@@ -1,5 +1,8 @@
 <div class="card mb-4" *ngIf="cardMember">
 
+    <!-- <div class="card-header bg-success">
+    </div> -->
+
     <div class="card-img-wrapper" *ngIf="cardMember.appUserType == 'ColStudent'">
         <img src="{{cardMember.studentUrl || '../../assets/images/coluser.PNG' }}" alt="{{cardMember.firstName}}" class="card-img-top">
     </div>
@@ -18,8 +21,8 @@
             <br>
             attending {{cardMember.college}}
         </p>
-        <button class="btn btn-info btn-block shadow-sm mr-2 mb-2">
-           
+        <button class="btn btn-info btn-block shadow-sm mr-2 mb-2" routerLink='/userlogin'>
+           Employers click here to see student details
         </button>
         </ng-container>
 

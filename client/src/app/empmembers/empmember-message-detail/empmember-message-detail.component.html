@@ -42,11 +42,14 @@
                 
                 <div class="row shadow mt-3 " *ngIf="member">
                     <div class="positions p-0" style="text-align: center;">
-                        <!-- <h3>Id: {{member.appUserId}}</h3>
-                        <h3>Username: {{member.username}}</h3> -->
                 
                         <h2><strong>Current positions for {{member.empName}}</strong></h2>
                        
+                        <div *ngIf="positions?.length === 0" class="mt-4">
+                            <h3><strong>No positions at this time -- please check back!</strong></h3>
+                        </div>
+
+                        <div *ngIf="positions?.length > 0" class="mt-4">  
                         <table class="table table-striped col-sm-4 col-lg-8 col-md-6 m-auto">
                             <thead>
                                 <tr>
@@ -68,6 +71,7 @@
                             </tbody>
                            
                         </table>
+                        </div>
                 
                     </div>
                 </div>

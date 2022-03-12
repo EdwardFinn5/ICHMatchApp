@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { DOCUMENT } from '@angular/common';
+import { Component, Inject, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Member } from 'src/app/_models/member';
 import { Position } from 'src/app/_models/position';
 import { Position2Service } from 'src/app/_services/position2.service';
@@ -19,7 +20,9 @@ export class PositionDetailThumbsupComponent implements OnInit {
   constructor(
     private position2Service: Position2Service,
     private searchMembersService: SearchMembersService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router: Router,
+    @Inject(DOCUMENT) private document: Document
   ) {}
 
   ngOnInit(): void {
@@ -45,5 +48,9 @@ export class PositionDetailThumbsupComponent implements OnInit {
       this.member = member;
       console.log('member Id: ', this.member.appUserId);
     });
+  }
+
+  goToLink() {
+    this.document.location.href = this.member.empWebsite;
   }
 }

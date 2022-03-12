@@ -4,23 +4,22 @@
             <img src="{{member.studentUrl || '../../assets/images/coluser.PNG'}}" alt="{{member.firstName}}"
                 class="card-img-top img-studthumbnail">
             <div class="card-body text-center">
-              
-                    <p>
-                    <u><strong>{{member.firstName}} {{member.lastName}}</strong></u><br>
-                        {{member.classYear}} {{member.major}} Major
-                        <br> from {{member.location}} 
-                        <br> attending {{member.college}}
-                      
-                        <br> Profile Created: {{member.created | date: "MMM dd yyyy" }}
-                    </p>
-            
-
-            <!-- <div class="btn-group d-flex"> -->
-                <button class="btn btn-info btn-block shadow-sm" routerLink='/membersearch'>Back to list of talent</button>
-            <!-- </div> -->
-            
-            </div>
+                <h6 class="card-title text-center">
+                    <u><strong>{{member.firstName}} {{member.lastName}}</strong></u>
+                </h6>
+                <ng-container class="card-text text-muted text-center">
+                <p class="text-center">
+                    <strong>{{member.classYear}} {{member.major}} Major</strong>
+                    <br>from <strong>{{member.location}}</strong>
+                    <br>attending <strong>{{member.college}}</strong>
+                    <br>Profile Created: <strong>{{member.created | date: "MMM dd yyyy" }}</strong>
+                </p>
+                <div class="btn-group d-flex">
+                    <button class="btn btn-info btn-block shadow-sm" routerLink="/messages">Back to messages</button>
+                </div>
+                </ng-container>
         </div>
+    </div>
     </div>
     
      
@@ -54,9 +53,14 @@
                 {{member.extraCurricular}}<br>
                 </div>
             </tab>
-            <tab heading='Messages' >
-               <app-member-messages [username]="member.username"></app-member-messages>
-            </tab>
+            <!-- <tab heading='Messages' >
+                <div class="p-3 font" style="font-size:large">
+                    <h4><strong>Remember to specify which position at {{member.empName}} you are messaging about:</strong></h4>
+                </div>
+                <app-member-messages [username]="member.username"></app-member-messages>
+            </tab> -->
 
         </tabset>
     </div>
+
+

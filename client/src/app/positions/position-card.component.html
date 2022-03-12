@@ -44,7 +44,9 @@
                 <br>Start date: {{position.startDate | date: "MM/dd/yyyy"}}
                 <br>Application deadline: {{position.appDeadline | date: "MM/dd/yyyy"}}
             </p>
-            <button class="btn btn-info button btn-block shadow-sm mr-2 mb-2"></button>
+            <button class="btn btn-info button btn-block shadow-sm mr-2 mb-2" routerLink='/newpositiondetail/{{position.positionId}}'>
+                Click to see position details
+            </button>
         </ng-container>
 
     </div>

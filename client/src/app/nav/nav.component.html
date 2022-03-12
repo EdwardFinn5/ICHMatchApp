@@ -22,7 +22,9 @@
           <div class="dropdown-menu mt-2" aria-labelledby="dropdown01">
             <!-- <a class="dropdown-item" routerLink='/membersearch'>Talent</a> -->
             <a *ngIf="accountService.currentUser$ | async" class="dropdown-item" routerLink='/membersearch'>See Talent</a>
+            <div class="dropdown-divider"></div>
             <a *ngIf="accountService.currentUser$ | async" class="dropdown-item" routerLink='/lists'>See Thumbs-up</a>
+            <div class="dropdown-divider"></div>
             <a *ngIf="accountService.currentUser$ | async" class="dropdown-item" routerLink='/messages'>See Messages</a>
           </div>
         </li>
@@ -33,8 +35,11 @@
           <div class="dropdown-menu mt-2" aria-labelledby="dropdown01">
             <!-- <a class="dropdown-item" routerLink='/job'>Search Internships/Jobs</a> -->
             <a *ngIf="accountService.currentUser$ | async" class="dropdown-item" routerLink='/positionslist'>See Positions</a>
+            <div class="dropdown-divider"></div>
             <a *ngIf="accountService.currentUser$ | async" class="dropdown-item" routerLink='/empmemberslistsuper'>See Employers</a>
+            <div class="dropdown-divider"></div>
             <a *ngIf="accountService.currentUser$ | async" class="dropdown-item" routerLink='/lists'>See Thumbs-up</a>
+            <div class="dropdown-divider"></div>
             <a *ngIf="accountService.currentUser$ | async" class="dropdown-item" routerLink='/messages'>See Messages</a>
           </div>
         </li>
@@ -71,7 +76,7 @@
         <div class="dropdown" style="font-size: 1.3em" *ngIf="(accountService.currentUser$ | async) as user" dropdown>
           <img src="{{user.studentUrl || '../../assets/images/coluser.PNG'}}" alt="{{user.username}}">
           <a class="dropdown-toggle text-light mt-2 ml-2" dropdownToggle>Welcome {{user.firstName | titlecase}}</a>
-          <div class="dropdown-menu mt-3" *dropdownMenu>
+          <div class="dropdown-menu mt-2" *dropdownMenu>
             <a routerLink="/member/edit" class="dropdown-item">Add/Edit card & photo info</a>
             <div class="dropdown-divider"></div>
 

@@ -126,6 +126,10 @@ p {
   width: auto;
 }
 
-.button {
+/* .button {
+  height: 1.5em;
+} */
+
+.card-header {
   height: 1.5em;
 }

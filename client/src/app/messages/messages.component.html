@@ -1,7 +1,7 @@
 <div class="container-fluid lists mt-2 mb-2">
     <div class="row welcome text-center">
         <div class="col-12">
-            <h2 class="display-4">Click on buttons to see messages and then logo/photo to see details</h2>
+            <h2 class="display-4">Click buttons to see messages then logo/photo to see details</h2>
         </div>
     </div>
 </div>
@@ -106,8 +106,8 @@
             </tr>
 
             <tr [hidden]="loading" *ngFor="let message of messages" routerLink='{{container === "Outbox" 
-            ? "/members/" + message.recipientUsername
-            : "/members/" + message.senderUsername}}' [queryParams]='{tab: 2}'>
+            ? "/membermessagedetail/" + message.recipientUsername
+            : "/membermessagedetail/" + message.senderUsername}}' [queryParams]='{tab: 2}'>
 
                 <td>{{message.content}}</td>
                 <td>

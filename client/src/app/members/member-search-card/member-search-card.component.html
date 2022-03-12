@@ -1,4 +1,6 @@
 <div class="card mb-4" *ngIf="member" >
+
+
     <div class="card-img-wrapper" *ngIf="member.appUserType == 'EmpHr'">
         <img src="{{member.logoUrl || '../../assets/images/logo.PNG' }}" alt="{{member.firstName}}" class="card-img-top">
         <ul class="list-inline member-icons animate text-center">
@@ -30,8 +32,11 @@
         </ul>
     </div>   
 
-
+    
     <div class="card-img-wrapper" *ngIf="member.appUserType == 'ColStudent'">
+        <!-- <div class="card-header bg-success">
+        </div> -->
+       
         <img src="{{member.studentUrl || '../../assets/images/coluser.PNG' }}" alt="{{member.firstName}}" class="card-img-top">
         <ul class="list-inline member-icons animate text-center">
             <li class="list-inline-item"><button routerLink='/members/{{member.username}}' class="btn btn-primary">
@@ -83,8 +88,8 @@
                 <br>
                 attending {{member.college}}
             </p>
-            <button class="btn btn-info button btn-block shadow-sm mr-2 mb-2">
-           
+            <button class="btn btn-info button btn-block shadow-sm mr-2 mb-2" routerLink='/members/{{member.username}}'>
+                Click to see student details
             </button>
             </ng-container>
             <ng-container *ngIf="member.appUserType == 'EmpHr'" class="card-text text-muted text-center">

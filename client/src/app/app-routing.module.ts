@@ -47,6 +47,7 @@ import { EmpmemberListSuperComponent } from './empmembers/empmember-list-super/e
 import { PositionDetailEmployerComponent } from './positions/position-detail-employer/position-detail-employer.component';
 import { PositionDetailThumbsupComponent } from './positions/position-detail-thumbsup/position-detail-thumbsup.component';
 import { PositionDetailmessageComponent } from './positions/position-detailmessage/position-detailmessage.component';
+import { MemberMessageDetailComponent } from './members/member-message-detail/member-message-detail.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -76,6 +77,10 @@ const routes: Routes = [
   {
     path: 'memberthumbsupdetail/:appUserId',
     component: MemberThumbsupDetailComponent,
+  },
+  {
+    path: 'membermessagedetail/:username',
+    component: MemberMessageDetailComponent,
   },
   {
     path: '',

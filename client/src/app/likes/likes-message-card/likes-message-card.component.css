@@ -11,7 +11,7 @@
   transition-timing-function: ease-out;
   /* object-fit: cover; */
   /* height: 230p;
-        width: 200px; */
+          width: 200px; */
   /* width: 230px; */
   height: 270px;
   padding-left: 15px;
@@ -26,19 +26,19 @@ p {
 }
 
 /* .card img {
-        width: 100%;
-        height: auto;
-        
-    } */
+          width: 100%;
+          height: auto;
+          
+      } */
 
 /* .compimg {
-        transform: scale(1.0, 1.0);
-        transition-duration: 500ms;
-        transition-timing-function: ease-out;
-        object-fit: fill;
-        height: 100px;
-        width: 100px; 
-    } */
+          transform: scale(1.0, 1.0);
+          transition-duration: 500ms;
+          transition-timing-function: ease-out;
+          object-fit: fill;
+          height: 100px;
+          width: 100px; 
+      } */
 
 .card-img-wrapper {
   overflow: hidden;
@@ -86,27 +86,47 @@ p {
   color: black;
   animation: none;
 }
+
+.card-header {
+  height: 1.5em;
+}
+
 /* @-webkit-keyframes fadeIn {
-      from {
-        opacity: 0;
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
       }
-      to {
-        opacity: 1;
-      }
-    }
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-      }
-      to {
-        opacity: 1;
-      }
-    } */
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      } */
 
 .tooltip-inner {
   text-align: left;
 }
 
-/* .button {
-  height: 1.5em;
-} */
+.a-level {
+  background-color: lightblue;
+  width: auto;
+}
+
+.b-level {
+  background-color: lightgreen;
+  width: auto;
+}
+.c-level {
+  background-color: yellow;
+  width: auto;
+}
+
+.d-level {
+  background-color: lightblue;
+  width: auto;
+}

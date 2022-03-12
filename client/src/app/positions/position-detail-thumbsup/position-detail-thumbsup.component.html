@@ -8,9 +8,7 @@
             <img src="{{position.logoUrl || '../../assets/images/logo.PNG' }}" alt="{{position.empName}}"
                 class="card-img-top img-studthumbnail">
             <div class="card-body text-center">
-                <!-- <div class="mb-1" *ngIf="(presence.onlineUsers$ | async).includes(member.username)">
-                    <i class="fa fa-user-circle text-success"></i> Online now
-                </div> -->
+                    <p>
                         <u><strong>{{position.empName}}</strong></u>
                         <br> Position: <strong>{{position.positionName}}</strong>
                         <br> Type of Position: <strong>{{position.positionType}}</strong>
@@ -18,7 +16,7 @@
                         <br>Date Position was Posted: <strong>{{position.dateAdded | date: "MMM dd yyyy" }}</strong>
                         <br>Start Date: <strong>{{position.startDate | date: "MMM dd yyyy" }}</strong>
                         <br>Application Deadline: <strong>{{position.appDeadline | date: "MMM dd yyyy" }}</strong>
-           
+                    </p>
                 <div class="btn-group d-flex">
                     <button class="btn btn-info btn-block mt-2 shadow-sm" routerLink='/lists'>Back to thumbs-up</button>
                 </div>
@@ -72,14 +70,16 @@
                 <p>{{member.companyDescription}}</p>
                 <h4 class="mt-2"><strong>Why work for our company?</strong></h4> 
                 <p>{{member.whyWork}}</p>
-                <p *ngIf="member.empWebsite">Link to our website: <u>{{position.empWebsite}}</u></p>
-                
-                <!-- <button class="btn btn-success" style="align-items: center;"><i class="fa fa-arrow-left">  or click on back arrow</i></button> -->
+                <h4 class="mt-2"><strong>Website</strong></h4> 
+
+                <button type="button"class="btn btn-success mt-2" (click)="goToLink()">Go to company website</button>
             
             </div>            
             </tab>
             <tab heading='Messages' >
-                <div class="p-3 font" style="font-size:large"><strong>Remember to specify which position at {{member.empName}} you are messaging about:</strong></div>
+                <div class="p-3 font" style="font-size:large">
+                    <h4><strong>Remember to specify which position at {{member.empName}} you are messaging about:</strong></h4>
+                </div>
                 <app-member-messages [username]="member.username"></app-member-messages>
                 
             </tab>

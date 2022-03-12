@@ -42,7 +42,9 @@
             <br>Industry: {{member.empIndustry}}
             <br>Headquarters: {{member.location}}
         </p>
-        <button class="btn btn-info button btn-block shadow-sm mr-2 mb-2"></button>
+        <button class="btn btn-info button btn-block shadow-sm mr-2 mb-2" routerLink='/empmembersuperdetail/{{member.appUserId}}'>
+            Click to see details & positions
+        </button>
         </ng-container>
         </div>
 </div>

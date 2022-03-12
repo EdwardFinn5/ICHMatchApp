@@ -53,3 +53,7 @@
 p {
   font-weight: bold;
 }
+
+.space {
+  height: 1em;
+}

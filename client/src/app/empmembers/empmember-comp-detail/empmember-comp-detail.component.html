@@ -7,15 +7,21 @@
                 <!-- <div class="mb-1" *ngIf="(presence.onlineUsers$ | async).includes(member.username)">
                     <i class="fa fa-user-circle text-success"></i> Online now
                 </div> -->
+                    <p>
                         <u><strong>{{cardMember.empName}}</strong></u> <br>
                         Number of employees: {{cardMember.employeeNum}} 
                         <br>Industry: {{cardMember.empIndustry}} 
                         <br>Headquarters: {{cardMember.location}}
-                        
+                    </p>
                         <!-- <div class="card-footer"> -->
                             <div class="btn-group d-flex">
                                 <button class="btn btn-info btn-block mt-2 shadow-sm" routerLink="/empmemberslist">Back to employer
                                     list</button>
+                            </div>
+                            <div class="btn-group d-flex">
+                                <button class="btn btn-primary btn-block mt-2 shadow-sm" routerLink="/userlogin">
+                                    Students click here to see positions
+                                    </button>
                             </div>
                         <!-- </div> -->
 

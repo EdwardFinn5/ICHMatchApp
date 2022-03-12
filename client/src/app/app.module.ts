@@ -62,6 +62,8 @@ import { PositionDetailSuperNewComponent } from './positions/position-detail-sup
 import { PositionDetailEmployerComponent } from './positions/position-detail-employer/position-detail-employer.component';
 import { PositionDetailThumbsupComponent } from './positions/position-detail-thumbsup/position-detail-thumbsup.component';
 import { PositionDetailmessageComponent } from './positions/position-detailmessage/position-detailmessage.component';
+import { MemberMessageDetailComponent } from './members/member-message-detail/member-message-detail.component';
+import { LikesMessageCardComponent } from './likes/likes-message-card/likes-message-card.component';
 
 @NgModule({
   declarations: [
@@ -117,6 +119,8 @@ import { PositionDetailmessageComponent } from './positions/position-detailmessa
     PositionDetailEmployerComponent,
     PositionDetailThumbsupComponent,
     PositionDetailmessageComponent,
+    MemberMessageDetailComponent,
+    LikesMessageCardComponent,
   ],
   imports: [
     BrowserModule,

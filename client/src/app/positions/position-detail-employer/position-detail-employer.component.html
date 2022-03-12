@@ -11,6 +11,7 @@
                 <!-- <div class="mb-1" *ngIf="(presence.onlineUsers$ | async).includes(member.username)">
                     <i class="fa fa-user-circle text-success"></i> Online now
                 </div> -->
+                    <p>
                         <u><strong>{{position.empName}}</strong></u>
                         <br> Position: <strong>{{position.positionName}}</strong>
                         <br> Type of Position: <strong>{{position.positionType}}</strong>
@@ -18,7 +19,7 @@
                         <br>Date Position was Posted: <strong>{{position.dateAdded | date: "MMM dd yyyy" }}</strong>
                         <br>Start Date: <strong>{{position.startDate | date: "MMM dd yyyy" }}</strong>
                         <br>Application Deadline: <strong>{{position.appDeadline | date: "MMM dd yyyy" }}</strong>
-            
+                    </p>
                 <div class="btn-group d-flex">
                     <button class="btn btn-info btn-block mt-2 shadow-sm" routerLink='/empmemberslistsuper'>Back to all employers</button>
                 </div>
@@ -78,7 +79,9 @@
             </div>            
             </tab>
             <tab heading='Messages' >
-                <div class="p-3 font" style="font-size:large"><strong>Remember to specify which position at {{member.empName}} you are messaging about:</strong></div>
+                <div class="p-3 font" style="font-size:large">
+                    <h4><strong>Remember to specify which position at {{member.empName}} you are messaging about:</strong></h4>
+                </div>
                 <app-member-messages [username]="member.username"></app-member-messages>
                 
             </tab>

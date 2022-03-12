@@ -80,7 +80,9 @@
             </div>            
             </tab>
             <tab heading='Messages' >
-                <div class="p-3 font" style="font-size:large"><strong>Remember to specify which position at {{member.empName}} you are messaging about:</strong></div>
+                <div class="p-3 font" style="font-size:large">
+                    <h4><strong>Remember to specify which position at {{member.empName}} you are messaging about:</strong></h4>
+                </div>
                 <app-member-messages [username]="member.username"></app-member-messages>
                 
             </tab>

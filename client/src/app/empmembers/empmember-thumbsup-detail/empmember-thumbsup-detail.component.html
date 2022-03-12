@@ -48,6 +48,11 @@
                 
                         <h2><strong>Current positions for {{member.empName}}</strong></h2>
                        
+                        <div *ngIf="positions?.length === 0" class="mt-4">
+                            <h3><strong>No positions at this time -- please check back!</strong></h3>
+                        </div>
+                        
+                        <div *ngIf="positions?.length > 0" class="mt-4"> 
                         <table class="table table-striped col-sm-4 col-lg-8 col-md-6 m-auto">
                             <thead>
                                 <tr>
@@ -58,7 +63,6 @@
                             </thead>
                             <tbody>
                                 <tr *ngFor="let position of positions">
-                                    <!-- <td> <img src="{{position.logoUrl || '../../assets/images/logo.PNG' }}" alt="{{position.empName}}"></td> -->
                                     <td>{{position.positionName}}</td>
                                     <td>{{position.positionType}}</td>
                                     <td>
@@ -67,15 +71,17 @@
                                     </td>
                                 </tr>
                             </tbody>
-                           
                         </table>
+                        </div>
                 
                     </div>
                 </div>
 
             </tab>
             <tab heading='Messages' >
-                <div class="p-3 font" style="font-size:large"><strong>Remember to specify which position at {{member.empName}} you are messaging about:</strong></div>
+                <div class="p-3 font" style="font-size:large">
+                   <h4><strong>Remember to specify which position at {{member.empName}} you are messaging about:</strong></h4>
+                </div>
                 <app-member-messages [username]="member.username"></app-member-messages>
             </tab>
 

@@ -11,7 +11,7 @@
         (ngSubmit)="loadPositions()" autocomplete="off">
     
             <div class="form-group align-content-center">
-                <label class="mr-2 filter" style="font-size: 1.5em"><strong> Filters: </strong></label>
+                <label class="mr-2 filter" style="font-size: 1.5em"><strong> Filter by: </strong></label>
                     <select name="positionName" 
                         [(ngModel)]="userParams.positionName" 
                         style="width: auto"
@@ -49,7 +49,7 @@
                     </div>      -->
                     
                     <div class="text-center">
-                        <label class="mr-2 filter" style="font-size: 1.5em"><strong> Sorts: </strong></label>
+                        <label class="mr-2 filter" style="font-size: 1.5em"><strong> Sort by: </strong></label>
                     </div>
 
                     <!-- <div class="container row">
@@ -63,7 +63,7 @@
                                         (click)="loadPositions()"
                                         btnRadio='orderByPositionName'
                                         [(ngModel)]="userParams.orderByPositionName">
-                                        Order by Positions
+                                        Position
                                     </button>
                                     <button 
                                         type="button"
@@ -72,7 +72,7 @@
                                         (click)="loadPositions()"
                                         btnRadio='orderbyPositionType'
                                         [(ngModel)]="userParams.orderByPositionLocation">
-                                        Order by Location
+                                        Location
                                     </button>
     </form>
 </div>
