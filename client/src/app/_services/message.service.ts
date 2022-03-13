@@ -79,11 +79,12 @@ export class MessageService {
     );
   }
 
-  // async sendMessage(username: string, content: string) {
-  //   return this.hubConnection
-  //     .invoke('SendMessage', { recipientUsername: username, content })
-  //     .catch((error) => console.log(error));
-  // }
+  sendMessage(username: string, content: string) {
+    return this.http.post<Message>(this.baseUrl + 'messages', {
+      recipientUsername: username,
+      content,
+    });
+  }
 
   deleteMessage(id: number) {
     return this.http.delete(this.baseUrl + 'messages/' + id);

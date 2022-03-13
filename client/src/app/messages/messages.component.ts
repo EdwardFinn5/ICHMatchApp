@@ -18,7 +18,7 @@ export class MessagesComponent implements OnInit {
   pagination: Pagination;
   container = 'Unread';
   pageNumber = 1;
-  pageSize = 4;
+  pageSize = 8;
   user: User;
   loading = false;
 
@@ -60,6 +60,15 @@ export class MessagesComponent implements OnInit {
   //       }
   //     });
   // }
+
+  deleteMessage(id: number) {
+    this.messageService.deleteMessage(id).subscribe(() => {
+      this.messages.splice(
+        this.messages.findIndex((m) => m.id === id),
+        1
+      );
+    });
+  }
 
   pageChanged(event: any) {
     if (this.pageNumber !== event.page) {

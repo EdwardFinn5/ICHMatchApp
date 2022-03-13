@@ -2,6 +2,7 @@ import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Message } from 'src/app/_models/message';
 import { MessageService } from 'src/app/_services/message.service';
+import { SearchMembersService } from 'src/app/_services/search-members.service';
 
 @Component({
   selector: 'app-member-messages',
@@ -15,27 +16,27 @@ export class MemberMessagesComponent implements OnInit {
   messageContent: string;
   loading = false;
 
-  constructor(public messageService: MessageService) {}
+  constructor(private messageService: MessageService) {}
 
   ngOnInit(): void {
-    this.loadMessages();
+    // this.loadMessages();
   }
 
-  loadMessages() {
-    this.messageService
-      .getMessageThread(this.username)
-      .subscribe((messages) => {
-        this.messages = messages;
-      });
-  }
+  // loadMessages() {
+  //   this.messageService
+  //     .getMessageThread(this.username)
+  //     .subscribe((messages) => {
+  //       this.messages = messages;
+  //     });
+  // }
 
   sendMessage() {
-    //   this.loading = true;
-    //   this.messageService
-    //     .sendMessage(this.username, this.messageContent)
-    //     .then(() => {
-    //       this.messageForm.reset();
-    //     })
-    //     .finally(() => (this.loading = false));
+    // this.loading = true;
+    this.messageService
+      .sendMessage(this.username, this.messageContent)
+      .subscribe((message) => {
+        this.messages.push(message);
+        this.messageForm.reset();
+      });
   }
 }

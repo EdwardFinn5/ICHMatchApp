@@ -21,7 +21,8 @@
                         <br>Application Deadline: <strong>{{position.appDeadline | date: "MMM dd yyyy" }}</strong>
                     </p>
                 <div class="btn-group d-flex">
-                    <button class="btn btn-info btn-block shadow-sm" routerLink='/positionslist'>Back to all positions</button>
+                    <button class="btn btn-info shadow-sm mr-1" routerLink='/positionslist'>See Positions</button>
+                    <button (click)="selectTab(3)" class="btn btn-success shadow-sm ml-1">Send Message</button>
                 </div>
            
         </div>
@@ -32,7 +33,7 @@
         <div class="col-sm-8 p-2">
 
         <tabset class="member-tabset" #memberTabs>
-            <tab heading='Position Info' class="tab-heading">
+            <tab heading='Position Info' class="tab-heading" (selectTab)="onTabActivated($event)" >
                 <div class="details">
                 <h4><strong>Position </strong></h4>
                 <h5><u><strong>{{position.positionName}} - {{position.positionType}}</strong></u></h5>
@@ -50,7 +51,7 @@
                 {{position.positionLocation}}
             </div>            
             </tab>
-            <tab heading='Apply Info' class="tab-heading">
+            <tab heading='Apply Info' class="tab-heading" (selectTab)="onTabActivated($event)">
                 <div class="details">
                 <h4 class="mt-2"><strong>How to apply</strong></h4> 
                 <p>{{position.howToApply}}</p>
@@ -67,7 +68,7 @@
                 </p>
                 </div>
             </tab>
-            <tab heading='Company Info' class="tab-heading">
+            <tab heading='Company Info' class="tab-heading" (selectTab)="onTabActivated($event)">
                 <div class="details">
                 <h4 class="mt-2"><strong><u>About Wow {{member.empName}}</u></strong></h4> 
                 <p>{{member.companyDescription}}</p>
@@ -79,11 +80,12 @@
             
             </div>            
             </tab>
-            <tab heading='Messages' >
+            <tab heading='Messages' (selectTab)="onTabActivated($event)">
                 <div class="p-3 font" style="font-size:large">
                     <h4><strong>Remember to specify which position at {{member.empName}} you are messaging about:</strong></h4>
                 </div>
-                <app-member-messages [username]="member.username"></app-member-messages>
+                <!-- <app-member-messages [username]="member.username"></app-member-messages> -->
+                <app-member-messages [messages]="messages" [username]="member.username"></app-member-messages>
                 
             </tab>
 

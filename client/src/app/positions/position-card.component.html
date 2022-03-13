@@ -19,7 +19,9 @@
                 </button>
             </li>
             <li class="list-inline-item">
-                <button routerLink='/newpositiondetail/{{position.positionId}}' class="btn btn-primary">
+                <button routerLink='/newpositiondetail/{{position.positionId}}' 
+                    [queryParams]='{tab: 3}'
+                    class="btn btn-primary">
                     <i class="fa fa-envelope"></i>
                     <span class="tooltip-text">
                         Send message

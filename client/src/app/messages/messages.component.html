@@ -55,7 +55,7 @@
 
             <tr [hidden]="loading" *ngFor="let message of messages" routerLink='{{container === "Outbox" 
             ? "/empmembermessagedetail/" + message.recipientId
-            : "/empmembermessagedetail/" + message.senderId}}'>
+            : "/empmembermessagedetail/" + message.senderId}}' [queryParams]='{tab: 3}'>
 
                 <td>{{message.content}}</td>
                 <td>
@@ -63,13 +63,13 @@
                         <img class="img-circle mr-2"
                             src="{{message.companyRecipientUrl || '../../assets/images/logo.PNG' }}"
                             alt="{{message.recipientCompany}}">
-                        <strong>{{message.recipientCompany | titlecase}}</strong>
+                        <strong>{{message.recipientFirstName}} from {{message.recipientCompany | titlecase}}</strong>
                     </div>
                     <div *ngIf="container !== 'Outbox'">
                         <img class="img-circle mr-2"
                             src="{{message.companySenderUrl || '../../assets/images/logo.PNG' }}"
                             alt="{{message.senderCompany}}">
-                        <strong>{{message.senderCompany | titlecase}}</strong>
+                        <strong>{{message.senderFirstName}} from {{message.senderCompany | titlecase}}</strong>
                     </div>
                 </td>
                 <td class="mt-2">{{message.messageSent | timeago }}</td>
@@ -134,7 +134,7 @@
 
 
 
-    <div class="d-flex justify-content-center mt-3" *ngIf="pagination">
+    <div class="d-flex justify-content-center mt-3" *ngIf="pagination && !loading">
         <pagination 
             [boundaryLinks]="true" 
             [totalItems]="pagination.totalItems"
