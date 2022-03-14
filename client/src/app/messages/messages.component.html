@@ -55,7 +55,7 @@
 
             <tr [hidden]="loading" *ngFor="let message of messages" routerLink='{{container === "Outbox" 
             ? "/empmembermessagedetail/" + message.recipientId
-            : "/empmembermessagedetail/" + message.senderId}}' [queryParams]='{tab: 3}'>
+            : "/empmembermessagedetail/" + message.senderId}}'>
 
                 <td>{{message.content}}</td>
                 <td>

@@ -19,7 +19,9 @@
                 </button>
             </li>
             <li class="list-inline-item">
-                <button routerLink='/empmembersuperdetail/{{member.appUserId}}' class="btn btn-primary">
+                <button routerLink='/empmembersuperdetail/{{member.appUserId}}'
+                class="btn btn-primary"
+                [queryParams]="{tab: 2}">
                     <i class="fa fa-envelope"></i>
                     <span class="tooltip-text">
                         Send message

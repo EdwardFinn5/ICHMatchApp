@@ -9,11 +9,12 @@
                        <u><strong>{{member.empName}}</strong></u><br>
                         Number of employees: {{member.employeeNum}} 
                         <br>Industry: {{member.empIndustry}} 
-                        <br>Headquarters: {{member.location}}
+                        <br> super detail Headquarters: {{member.location}}
                     </p>   
                        
                             <div class="btn-group d-flex">
-                                <button class="btn btn-info btn-block shadow-sm" routerLink='/empmemberslistsuper'>Back to employer list</button>
+                                <button class="btn btn-info shadow-sm mr-1" routerLink='/empmemberslistsuper'>Back to employers</button>
+                                <button (click)="selectTab(2)" class="btn btn-success shadow-sm ml-1">Send message</button>
                             </div>
                    
                         
@@ -24,7 +25,9 @@
     <div class="col-sm-8 p-2">
         <tabset class="member-tabset" #memberTabs>
             
-            <tab heading='Company Info' class="tab-heading">
+            <tab heading='Company Info' 
+                class="tab-heading"
+                (selectTab)="onTabActivated($event)">
                 <div class="details">
                 <h4 class="mt-2"><strong>About {{member.empName}}</strong></h4> 
                 <p>{{member.companyDescription}}</p>
@@ -37,7 +40,7 @@
             </div>            
             </tab>
 
-            <tab heading='Current Positions'>
+            <tab heading='Current Positions' (selectTab)="onTabActivated($event)">
                 
                 <div class="row shadow mt-3 " *ngIf="positions">
                     <div class="positions p-0" style="text-align: center;">
@@ -73,11 +76,11 @@
                     </div>
                 </div>
             </tab>
-            <tab heading='Messages' >
+            <tab heading='Messages' (selectTab)="onTabActivated($event)">
                 <div class="p-3 font" style="font-size:large">
                     <h4><strong>Remember to specify which position at {{member.empName}} you are messaging about:</strong></h4>
                 </div>
-                <app-member-messages [username]="member.username"></app-member-messages>
+                <app-member-messages [username]="member.username" [messages]="messages" ></app-member-messages>
             </tab>
 
         </tabset>

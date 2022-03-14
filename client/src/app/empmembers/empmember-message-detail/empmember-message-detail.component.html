@@ -15,7 +15,8 @@
                         <!-- <br class="mt-3">Website: <a href="https://www.iowacollegefoundation.org/"> Link</a> -->
                     </p>
                         <div class="btn-group d-flex">
-                            <button class="btn btn-info btn-block shadow-sm" routerLink="/messages">Back to messages</button>
+                            <button class="btn btn-info shadow-sm mr-1" routerLink="/messages">Back to all messages</button>
+                            <button (click)="selectTab(2)" class="btn btn-success shadow-sm ml-1">Send message</button>
                         </div>
                     </ng-container>    
             </div>
@@ -25,7 +26,9 @@
     <div class="col-sm-8 p-2">
         <tabset class="member-tabset" #memberTabs>
             
-            <tab heading='Company Info' class="tab-heading">
+            <tab heading='Company Info' 
+            class="tab-heading"
+            (selectTab)="onTabActivated($event)">
                 <div class="details">
                 <h4 class="mt-2"><strong>About {{member.empName}}</strong></h4> 
                 <p>{{member.companyDescription}}</p>
@@ -38,7 +41,7 @@
             </div>            
             </tab>
 
-            <tab heading='Current Positions'>
+            <tab heading='Current Positions' (selectTab)="onTabActivated($event)">
                 
                 <div class="row shadow mt-3 " *ngIf="member">
                     <div class="positions p-0" style="text-align: center;">
@@ -76,6 +79,13 @@
                     </div>
                 </div>
 
+            </tab>
+
+            <tab heading='Messages' (selectTab)="onTabActivated($event)">
+                <div class="p-3 font" style="font-size:large">
+                    <h4><strong>Remember to specify which position at {{member.empName}} you are messaging about:</strong></h4>
+                </div>
+                <app-member-messages [username]="member.username" [messages]="messages" ></app-member-messages>
             </tab>
 
         </tabset>

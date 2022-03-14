@@ -15,7 +15,8 @@
                     <br>Profile Created: <strong>{{member.created | date: "MMM dd yyyy" }}</strong>
                 </p>
                 <div class="btn-group d-flex">
-                    <button class="btn btn-info btn-block shadow-sm" routerLink="/messages">Back to messages</button>
+                    <button class="btn btn-info shadow-sm mr-1" routerLink="/messages">Back to all messages</button>
+                    <button (click)="selectTab(2)" class="btn btn-success shadow-sm ml-1">Send message</button>
                 </div>
                 </ng-container>
         </div>
@@ -26,7 +27,9 @@
         <div class="col-sm-8 p-2">
 
         <tabset class="member-tabset" #memberTabs>
-            <tab heading='About {{member.firstName}}' class="tab-heading">
+            <tab heading='About {{member.firstName}}' 
+            class="tab-heading"
+            (selectTab)="onTabActivated($event)">
                 <div class="details">
                 <h4><strong>Academic Highlights</strong></h4>
                 {{member.academicPlus}}<br>
@@ -43,7 +46,9 @@
                         {{member.bestPhone}}</p>
             </div>            
             </tab>
-            <tab heading='Extra-Curricular' class="tab-heading" >
+            <tab heading='Extra-Curricular' 
+            class="tab-heading" 
+            (selectTab)="onTabActivated($event)">
                 <div class="details">
                 <h4><strong>Athletics Experiences</strong></h4>
                 {{member.athletics}}<br>    
@@ -53,12 +58,10 @@
                 {{member.extraCurricular}}<br>
                 </div>
             </tab>
-            <!-- <tab heading='Messages' >
-                <div class="p-3 font" style="font-size:large">
-                    <h4><strong>Remember to specify which position at {{member.empName}} you are messaging about:</strong></h4>
-                </div>
-                <app-member-messages [username]="member.username"></app-member-messages>
-            </tab> -->
+            <tab heading='Messages' (selectTab)="onTabActivated($event)">
+                <app-member-messages [username]="member.username" [messages]="messages"></app-member-messages>
+             </tab>
+ 
 
         </tabset>
     </div>
