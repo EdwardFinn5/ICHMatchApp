@@ -60,6 +60,11 @@ namespace API.Data
             {
                 query = query.Where(u => u.Major == userParams.Major);
             }
+            if (userParams.Category != null)
+            {
+                query = query.Where(u => u.Category == userParams.Category);
+            }
+
             if (userParams.College != null)
             {
                 query = query.Where(u => u.College == userParams.College);
@@ -69,8 +74,8 @@ namespace API.Data
                 query = query.Where(u => u.ClassYear == userParams.ClassYear);
             }
 
-            query = query.OrderBy(u => u.FirstName);
-            // .ThenBy(u => u.LastName);
+            query = query.OrderBy(u => u.Major)
+                .ThenBy(u => u.FirstName);
 
             return await PagedList<CardMemberDto>.CreateAsync(
                 query.ProjectTo<CardMemberDto>(_mapper

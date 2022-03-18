@@ -54,6 +54,7 @@ export class MembersService {
     );
 
     params = params.append('major', userParams.major);
+    params = params.append('category', userParams.category);
     params = params.append('classYear', userParams.classYear);
     params = params.append('college', userParams.college);
     // params = params.append('location', userParams.location);

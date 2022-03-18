@@ -1,6 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output, ViewChild } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { stringify } from 'querystring';
 import { Observable } from 'rxjs';
+import { DateInputComponent } from 'src/app/_forms/date-input/date-input.component';
+import { TextInputComponent } from 'src/app/_forms/text-input/text-input.component';
 import { CardMember } from 'src/app/_models/cardMember';
 import { Category } from 'src/app/_models/category';
 import { Major } from 'src/app/_models/major';
@@ -17,17 +20,20 @@ import { MemberSearchCardComponent } from '../member-search-card/member-search-c
   styleUrls: ['./member-list.component.css'],
 })
 export class MemberListComponent implements OnInit {
+  @Output() value: string = '';
+  // @Input() value: string = '';
+  form: NgForm;
   cardMembers: CardMember[];
   pagination: Pagination;
   userParams: UserParams;
   categories: Category[];
   majors: Major[];
   // appUserType = 'ColStudent';
-  majorList = [
-    { value: 'Accounting', display: 'Accounting' },
-    { value: 'IT', display: 'IT' },
-    { value: 'Business Analytics', display: 'Business Analytics' },
-  ];
+  // majorList = [
+  //   { value: 'Accounting', display: 'Accounting' },
+  //   { value: 'IT', display: 'IT' },
+  //   { value: 'Business Analytics', display: 'Business Analytics' },
+  // ];
   collegeList = [
     { value: 'St. Ambrose University', display: 'St. Ambrose' },
     { value: 'Grand View University', display: 'Grand View' },
@@ -72,6 +78,7 @@ export class MemberListComponent implements OnInit {
       this.majors = majors.filter(
         (e) => e.categoryId == categories.target.value
       );
+      console.log('category id: ', categories.target.value);
       // console.log(
       //   'majors with Category Id of ',
       //   categories.target.value,
@@ -94,6 +101,8 @@ export class MemberListComponent implements OnInit {
   resetFilters() {
     this.userParams = this.membersService.resetUserParams();
     this.loadCardMembers();
+    this.form.reset(this.form);
+    this.value = 'this is a test';
   }
 
   pageChanged(event: any) {
