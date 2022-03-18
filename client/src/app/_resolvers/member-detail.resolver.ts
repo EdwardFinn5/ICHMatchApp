@@ -11,7 +11,7 @@ import { SearchMembersService } from '../_services/search-members.service';
 @Injectable({
   providedIn: 'root',
 })
-export class PositionDetailedNewResolver implements Resolve<Member> {
+export class MemberDetailResolver implements Resolve<Member> {
   constructor(private searchMemberService: SearchMembersService) {}
 
   resolve(route: ActivatedRouteSnapshot): Observable<Member> {

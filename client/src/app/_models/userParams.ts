@@ -1,5 +1,6 @@
 export class UserParams {
   // appUserType = '';
+  category = '';
   major = '';
   classYear = '';
   location = '';

@@ -2,9 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { stringify } from 'querystring';
 import { Observable } from 'rxjs';
 import { CardMember } from 'src/app/_models/cardMember';
+import { Category } from 'src/app/_models/category';
+import { Major } from 'src/app/_models/major';
 import { Member } from 'src/app/_models/member';
 import { Pagination } from 'src/app/_models/pagination';
 import { UserParams } from 'src/app/_models/userParams';
+import { MajorService } from 'src/app/_services/major.service';
 import { MembersService } from 'src/app/_services/members.service';
 import { MemberSearchCardComponent } from '../member-search-card/member-search-card.component';
 
@@ -17,6 +20,8 @@ export class MemberListComponent implements OnInit {
   cardMembers: CardMember[];
   pagination: Pagination;
   userParams: UserParams;
+  categories: Category[];
+  majors: Major[];
   // appUserType = 'ColStudent';
   majorList = [
     { value: 'Accounting', display: 'Accounting' },
@@ -32,13 +37,48 @@ export class MemberListComponent implements OnInit {
     { value: 'Senior', display: 'Seniors' },
   ];
 
-  constructor(private membersService: MembersService) {
+  constructor(
+    private membersService: MembersService,
+    private majorService: MajorService
+  ) {
     this.userParams = this.membersService.getUserParams();
   }
 
   ngOnInit(): void {
     // this.resetFilters;
     this.loadCardMembers();
+    this.loadCategories();
+  }
+
+  loadCategories() {
+    this.majorService.getCategories().subscribe((categories) => {
+      this.categories = categories;
+      // console.log(this.categories);
+    });
+  }
+
+  // loadMajors() {
+  //   this.majorService.getMajors().subscribe((majors) => {
+  //     this.majors = majors;
+  //     console.log(this.majors);
+  //   });
+  // }
+
+  onSelect(categories) {
+    // console.log(categories.target.value);
+    this.majorService.getMajors().subscribe((majors) => {
+      this.majors = majors;
+      // console.log('all majors', majors);
+      this.majors = majors.filter(
+        (e) => e.categoryId == categories.target.value
+      );
+      // console.log(
+      //   'majors with Category Id of ',
+      //   categories.target.value,
+      //   ': ',
+      //   this.majors
+      // );
+    });
   }
 
   loadCardMembers() {

@@ -12,6 +12,7 @@ namespace API.Helpers
         public string RegisterCode { get; set; }
         public string EmpName { get; set; }
         public string EmpIndustry { get; set; }
+        public string Category { get; set; }
         public string Major { get; set; }
         public string Location { get; set; }
         public string ClassYear { get; set; }

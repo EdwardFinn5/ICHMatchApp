@@ -19,6 +19,7 @@ namespace API.DTOs
         public bool Active { get; set; } = true;
         public string Location { get; set; }
         public string ClassYear { get; set; }
+        public string Category { get; set; }
         public string Major { get; set; }
         public string College { get; set; }
         public string RegisterCode { get; set; }

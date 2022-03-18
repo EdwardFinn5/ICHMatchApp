@@ -33,6 +33,9 @@ namespace API.Entities
         public string ClassYear { get; set; }
 
         [Column(TypeName = "nvarchar(60)")]
+        public string Category { get; set; }
+
+        [Column(TypeName = "nvarchar(60)")]
         public string Major { get; set; }
 
         [Column(TypeName = "varchar(30)")]

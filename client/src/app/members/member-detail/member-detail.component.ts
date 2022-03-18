@@ -12,7 +12,7 @@ import { SearchMembersService } from 'src/app/_services/search-members.service';
   styleUrls: ['./member-detail.component.css'],
 })
 export class MemberDetailComponent implements OnInit {
-  @ViewChild('memberTabs') memberTabs: TabsetComponent;
+  @ViewChild('memberTabs', { static: true }) memberTabs: TabsetComponent;
   member: Member;
   activeTab: TabDirective;
   messages: Message[] = [];
@@ -24,17 +24,23 @@ export class MemberDetailComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.loadMember();
+    this.route.data.subscribe((data) => {
+      this.member = data.member;
+    });
+
+    this.route.queryParams.subscribe((params) => {
+      params.tab ? this.selectTab(params.tab) : this.selectTab(0);
+    });
   }
 
-  loadMember() {
-    this.searchMemberService
-      .getSearchMember(this.route.snapshot.paramMap.get('username'))
-      .subscribe((member) => {
-        this.member = member;
-        console.log('username: ', member.username);
-      });
-  }
+  // loadMember() {
+  //   this.searchMemberService
+  //     .getSearchMember(this.route.snapshot.paramMap.get('username'))
+  //     .subscribe((member) => {
+  //       this.member = member;
+  //       console.log('username: ', member.username);
+  //     });
+  // }
 
   loadMessages() {
     this.messageService

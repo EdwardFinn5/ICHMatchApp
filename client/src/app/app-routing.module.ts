@@ -48,6 +48,7 @@ import { PositionDetailEmployerComponent } from './positions/position-detail-emp
 import { PositionDetailThumbsupComponent } from './positions/position-detail-thumbsup/position-detail-thumbsup.component';
 import { PositionDetailmessageComponent } from './positions/position-detailmessage/position-detailmessage.component';
 import { MemberMessageDetailComponent } from './members/member-message-detail/member-message-detail.component';
+import { MemberDetailResolver } from './_resolvers/member-detail.resolver';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -98,7 +99,11 @@ const routes: Routes = [
         component: EmpmemberSearchComponent,
         pathMatch: 'full',
       },
-      { path: 'members/:username', component: MemberDetailComponent },
+      {
+        path: 'members/:username',
+        component: MemberDetailComponent,
+        resolve: { member: MemberDetailResolver },
+      },
       { path: 'members/:id', component: MemberDetailComponent },
       {
         path: 'member/edit',

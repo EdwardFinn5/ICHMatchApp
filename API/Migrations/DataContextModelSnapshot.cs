@@ -194,7 +194,7 @@ namespace API.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("MajorName")
-                        .HasColumnType("nvarchar(60)");
+                        .HasColumnType("nvarchar(100)");
 
                     b.HasKey("MajorId");
 
