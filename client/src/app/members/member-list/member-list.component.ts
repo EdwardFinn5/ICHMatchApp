@@ -6,10 +6,12 @@ import { DateInputComponent } from 'src/app/_forms/date-input/date-input.compone
 import { TextInputComponent } from 'src/app/_forms/text-input/text-input.component';
 import { CardMember } from 'src/app/_models/cardMember';
 import { Category } from 'src/app/_models/category';
+import { College } from 'src/app/_models/college';
 import { Major } from 'src/app/_models/major';
 import { Member } from 'src/app/_models/member';
 import { Pagination } from 'src/app/_models/pagination';
 import { UserParams } from 'src/app/_models/userParams';
+import { CollegeService } from 'src/app/_services/college.service';
 import { MajorService } from 'src/app/_services/major.service';
 import { MembersService } from 'src/app/_services/members.service';
 import { MemberSearchCardComponent } from '../member-search-card/member-search-card.component';
@@ -28,24 +30,28 @@ export class MemberListComponent implements OnInit {
   userParams: UserParams;
   categories: Category[];
   majors: Major[];
+  colleges: College[];
   // appUserType = 'ColStudent';
   // majorList = [
   //   { value: 'Accounting', display: 'Accounting' },
   //   { value: 'IT', display: 'IT' },
   //   { value: 'Business Analytics', display: 'Business Analytics' },
   // ];
-  collegeList = [
-    { value: 'St. Ambrose University', display: 'St. Ambrose' },
-    { value: 'Grand View University', display: 'Grand View' },
-  ];
+  // collegeList = [
+  //   { value: 'St. Ambrose University', display: 'St. Ambrose' },
+  //   { value: 'Grand View University', display: 'Grand View' },
+  // ];
   classYearList = [
+    { value: 'Freshman', display: 'Freshmen' },
+    { value: 'Sophomore', display: 'Sophomores' },
     { value: 'Junior', display: 'Juniors' },
     { value: 'Senior', display: 'Seniors' },
   ];
 
   constructor(
     private membersService: MembersService,
-    private majorService: MajorService
+    private majorService: MajorService,
+    private collegeService: CollegeService
   ) {
     this.userParams = this.membersService.getUserParams();
   }
@@ -54,11 +60,19 @@ export class MemberListComponent implements OnInit {
     // this.resetFilters;
     this.loadCardMembers();
     this.loadCategories();
+    this.loadColleges();
   }
 
   loadCategories() {
     this.majorService.getCategories().subscribe((categories) => {
       this.categories = categories;
+      // console.log(this.categories);
+    });
+  }
+
+  loadColleges() {
+    this.collegeService.getColleges().subscribe((colleges) => {
+      this.colleges = colleges;
       // console.log(this.categories);
     });
   }
@@ -101,7 +115,7 @@ export class MemberListComponent implements OnInit {
   resetFilters() {
     this.userParams = this.membersService.resetUserParams();
     this.loadCardMembers();
-    this.form.reset(this.form);
+    // this.form.reset(this.form);
     this.value = 'this is a test';
   }
 

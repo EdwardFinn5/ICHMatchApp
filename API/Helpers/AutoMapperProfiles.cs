@@ -115,6 +115,8 @@ namespace API.Helpers
             CreateMap<StudInfo, AddStudInfoDto>();
             CreateMap<Category, CategoryDto>();
             CreateMap<CategoryUpdateDto, Category>();
+            CreateMap<College, CollegeDto>();
+            CreateMap<CollegeUpdateDto, College>();
             CreateMap<LocationUpdateDto, Location>();
             CreateMap<MajorUpdateDto, Major>();
             CreateMap<Major, MajorDto>();

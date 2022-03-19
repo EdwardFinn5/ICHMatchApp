@@ -29,6 +29,7 @@ namespace API.Extensions
             services.AddScoped<IPositionRepository, PositionRepository>();
             services.AddScoped<IPosition2Repository, Position2Repository>();
             services.AddScoped<ICategoryRepository, CategoryRepository>();
+            services.AddScoped<ICollegeRepository, CollegeRepository>();
             services.AddScoped<IMajorRepository, MajorRepository>();
             services.AddScoped<ILocationRepository, LocationRepository>();
             services.AddAutoMapper(typeof(AutoMapperProfiles).Assembly);

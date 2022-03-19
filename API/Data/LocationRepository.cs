@@ -50,6 +50,7 @@ namespace API.Data
         public async Task<IEnumerable<LocationDto>> GetLocationsAsync()
         {
             return await _context.Locations
+            .OrderBy(l => l.LocationName)
             .ProjectTo<LocationDto>(_mapper.ConfigurationProvider)
             .ToListAsync();
         }

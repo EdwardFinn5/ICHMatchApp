@@ -32,17 +32,17 @@
                 class=" form-control mr-2"
                 name="category"
                 style="width: auto">
-                <option class="text-center" #value="">1st sort on category</option>
+                <option class="text-center" #value="">--1st select category--</option>
                 <option *ngFor="let category of categories"
                     value="{{category.categoryId}}">
                     {{category.categoryName}}
                 </option>
             </select>
         
-            <select class="mr-2 foprm-group form-control" name="major"
+            <select class="mr-2 form-group form-control" name="major"
                 [(ngModel)]="userParams.major"
                 style="width: auto">
-                <option class="text-center" value="">2nd sort on major</option>
+                <option class="text-center" value="">--2nd select major--</option>
                 <option *ngFor="let major of majors"
                     [value]="major.majorName">
                     {{major.majorName}}
@@ -57,10 +57,10 @@
                 [(ngModel)]="userParams.college"
                 style="width: auto" 
                 class="form-control mr-2">
-                <option value="">--Select College--</option>
-                <option *ngFor="let college of collegeList" 
-                    [value]="college.value">
-                    {{college.display}}    
+                <option class="text-center" value="">--Select College--</option>
+                <option *ngFor="let college of colleges" 
+                    [value]="college.collegeName">
+                    {{college.collegeName}}    
                 </option>
             </select>
         <!-- </div>
