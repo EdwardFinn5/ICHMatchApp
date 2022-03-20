@@ -127,6 +127,21 @@ namespace API.Migrations
                     b.ToTable("Colleges");
                 });
 
+            modelBuilder.Entity("API.Entities.DutyBullet", b =>
+                {
+                    b.Property<int>("DutyBulletId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("DutyBulletText")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("DutyBulletId");
+
+                    b.ToTable("DutyBullets");
+                });
+
             modelBuilder.Entity("API.Entities.EmpIndustry", b =>
                 {
                     b.Property<int>("EmpIndustryId")
@@ -382,6 +397,21 @@ namespace API.Migrations
                     b.ToTable("Positions");
                 });
 
+            modelBuilder.Entity("API.Entities.PositionDutyBullet", b =>
+                {
+                    b.Property<int>("PositionId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("DutyBulletId")
+                        .HasColumnType("int");
+
+                    b.HasKey("PositionId", "DutyBulletId");
+
+                    b.HasIndex("DutyBulletId");
+
+                    b.ToTable("PositionDutyBullets");
+                });
+
             modelBuilder.Entity("API.Entities.RegisterCode", b =>
                 {
                     b.Property<int>("Id")
@@ -533,6 +563,25 @@ namespace API.Migrations
                     b.Navigation("AppUser");
                 });
 
+            modelBuilder.Entity("API.Entities.PositionDutyBullet", b =>
+                {
+                    b.HasOne("API.Entities.Position", "Position")
+                        .WithMany("PositionDutyBullets")
+                        .HasForeignKey("DutyBulletId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("API.Entities.DutyBullet", "DutyBullet")
+                        .WithMany("PositionDutyBullets")
+                        .HasForeignKey("PositionId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("DutyBullet");
+
+                    b.Navigation("Position");
+                });
+
             modelBuilder.Entity("API.Entities.RegisterCode", b =>
                 {
                     b.HasOne("API.Entities.AppUser", "AppUser")
@@ -598,6 +647,16 @@ namespace API.Migrations
             modelBuilder.Entity("API.Entities.Category", b =>
                 {
                     b.Navigation("Majors");
+                });
+
+            modelBuilder.Entity("API.Entities.DutyBullet", b =>
+                {
+                    b.Navigation("PositionDutyBullets");
+                });
+
+            modelBuilder.Entity("API.Entities.Position", b =>
+                {
+                    b.Navigation("PositionDutyBullets");
                 });
 #pragma warning restore 612, 618
         }

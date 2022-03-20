@@ -46,6 +46,7 @@ export class RegisterStudComponent implements OnInit {
         '',
         [Validators.required, this.matchValues('password')],
       ],
+      registerCode: ['', Validators.required],
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
       location: ['', Validators.required],

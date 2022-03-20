@@ -2,11 +2,11 @@
 
 <div class="container">
     <div class="card">
-        <div class="card-body"
-            #scrolMe
+        <div class="card-body">
+            <!-- #scrollMe
             style="overflow: scroll; height: 250px; width: auto;"
-            [scrollTop]="scrolMe.scrollHeight"
-        >
+            [scrollTop]="scrollMe.scrollHeight"
+        > -->
             <!-- <div *ngIf="(messageService.messageThread$ | async)?.length === 0"> -->
             <div *ngIf="messages?.length === 0">
                 <h4><strong>No messages yet...initiate a conversation using message box below</strong></h4>
@@ -14,6 +14,7 @@
 
            
                 <!-- *ngIf="(messageService.messageThread$ | async)?.length > 0"  -->
+                <div class="message-list" style="height:250px;width:100%; overflow: scroll" #messageE1  [scrollTop]="scrollTop">
                 <ul *ngIf="messages?.length > 0" class="chat">
                 <li *ngFor="let message of messages">
                     <div>
@@ -47,6 +48,7 @@
                     </div>
                 </li>
             </ul>
+            </div>
         </div>
 
         <div class="card-footer">

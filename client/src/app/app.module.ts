@@ -64,6 +64,7 @@ import { PositionDetailThumbsupComponent } from './positions/position-detail-thu
 import { PositionDetailmessageComponent } from './positions/position-detailmessage/position-detailmessage.component';
 import { MemberMessageDetailComponent } from './members/member-message-detail/member-message-detail.component';
 import { LikesMessageCardComponent } from './likes/likes-message-card/likes-message-card.component';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 
 @NgModule({
   declarations: [
@@ -129,6 +130,7 @@ import { LikesMessageCardComponent } from './likes/likes-message-card/likes-mess
     BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
+    InfiniteScrollModule,
     NgxSpinnerModule,
     SharedModule,
   ],

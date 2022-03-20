@@ -1,8 +1,7 @@
-import { Component, Input, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Message } from 'src/app/_models/message';
 import { MessageService } from 'src/app/_services/message.service';
-import { SearchMembersService } from 'src/app/_services/search-members.service';
 
 @Component({
   selector: 'app-member-messages',
@@ -10,6 +9,8 @@ import { SearchMembersService } from 'src/app/_services/search-members.service';
   styleUrls: ['./member-messages.component.css'],
 })
 export class MemberMessagesComponent implements OnInit {
+  @ViewChild('messageE1') message: ElementRef;
+  scrollTop: number = null;
   @ViewChild('messageForm') messageForm: NgForm;
   @Input() messages: Message[];
   @Input() username: string;
@@ -19,16 +20,16 @@ export class MemberMessagesComponent implements OnInit {
   constructor(private messageService: MessageService) {}
 
   ngOnInit(): void {
-    // this.loadMessages();
+    this.loadMessages();
   }
 
-  // loadMessages() {
-  //   this.messageService
-  //     .getMessageThread(this.username)
-  //     .subscribe((messages) => {
-  //       this.messages = messages;
-  //     });
-  // }
+  loadMessages() {
+    this.messageService
+      .getMessageThread(this.username)
+      .subscribe((messages) => {
+        this.messages = messages;
+      });
+  }
 
   sendMessage() {
     // this.loading = true;
@@ -36,6 +37,7 @@ export class MemberMessagesComponent implements OnInit {
       .sendMessage(this.username, this.messageContent)
       .subscribe((message) => {
         this.messages.push(message);
+        this.scrollTop = this.message.nativeElement.scrollHeight;
         this.messageForm.reset();
       });
   }

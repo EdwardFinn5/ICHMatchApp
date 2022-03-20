@@ -26,20 +26,20 @@
                 </select>
             </div>
             
-        <label class=" ml-2 mr-2 filter" style="font-size: 1.5em"><strong> Filter on specific major: </strong></label>  
+        <label class="mr-2 filter" style="font-size: 1.5em"><strong> Filter on specific major: </strong></label>  
             
             <select (change)="onSelect($event)" 
                 class=" form-control mr-2"
                 name="category"
                 style="width: auto">
-                <option class="text-center" #value="">--1st select category--</option>
+                <option class="text-center mb-2" #value="">--1st select category--</option>
                 <option *ngFor="let category of categories"
                     value="{{category.categoryId}}">
                     {{category.categoryName}}
                 </option>
             </select>
         
-            <select class="mr-2 form-group form-control" name="major"
+            <select class="mr-2 mt-1 mb-1 form-group form-control" name="major"
                 [(ngModel)]="userParams.major"
                 style="width: auto">
                 <option class="text-center" value="">--2nd select major--</option>
@@ -52,11 +52,11 @@
         
 
         <div class="form-group form-inline">
-            <label class="mr-2 filter" style="font-size: 1.5em"><strong> College Filter: </strong></label>  
+            <label class="mr-2 filter" style="font-size: 1.5em"><strong> College filter: </strong></label>  
             <select name="college" 
                 [(ngModel)]="userParams.college"
                 style="width: auto" 
-                class="form-control mr-2">
+                class="form-control mr-2 mb-2">
                 <option class="text-center" value="">--Select College--</option>
                 <option *ngFor="let college of colleges" 
                     [value]="college.collegeName">
@@ -66,12 +66,12 @@
         <!-- </div>
     
         <div class="form-group"> -->
-        <label class="mr-2 filter" style="font-size: 1.5em"><strong> Class year filter: </strong></label>  
+        <label class="mr-2 filter" style="font-size: 1.5em"><strong> Class yr filter: </strong></label>  
            <select name="classYear" 
                 [(ngModel)]="userParams.classYear"
                 style="width: auto" 
-                class="form-control">
-                <option value="">--Select Class Year--</option>
+                class="form-control mb-2 mr-2">
+                <option value="">--Select Class Yr--</option>
                 <option *ngFor="let classYear of classYearList" 
                     [value]="classYear.value">
                     {{classYear.display}}    
@@ -79,8 +79,8 @@
             </select>
        
 
-                        <button class="btn btn-success ml-2 mr-2" type="submit">Apply Filters</button>
-                        <button (click)="resetFilters()" class="btn btn-info ml-1" type="submit">Reset Filters</button>
+                        <button class="btn btn-success mr-2 mb-2" type="submit">Apply Filters</button>
+                        <button (click)="resetFilters()" class="btn btn-info mb-2" type="submit">Reset Filters</button>
                     </div>
                        </form>
 </div>

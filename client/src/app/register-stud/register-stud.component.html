@@ -31,6 +31,21 @@
         [type]='"password"'>
       </app-text-input>
 
+      <div class="form-group">
+        <input 
+          [class.is-invalid]='registerStudForm.get("registerCode").errors 
+            && registerStudForm.get("registerCode").touched'
+          formControlName='registerCode' 
+          class="form-control shadow-sm" 
+          type="text"
+          pattern="(studentconnect)"
+          placeholder="Register Code">
+          <div *ngIf="registerStudForm.get('registerCode').hasError('required')"
+            class="invalid-feedback">Please enter a register code</div> 
+          <div *ngIf="registerStudForm.get('registerCode').hasError('pattern')"
+            class="invalid-feedback">If you do not have a register code please email: info@iowacollegefoundation.org</div> 
+      </div>
+
       <app-text-input [formControl]='registerStudForm.controls["firstName"]'
         [label]='"First Name"'>
       </app-text-input>

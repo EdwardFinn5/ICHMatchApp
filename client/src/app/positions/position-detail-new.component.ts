@@ -33,9 +33,9 @@ export class PositionDetailNewComponent implements OnInit {
   ngOnInit(): void {
     this.loadPosition();
 
-    this.route.queryParams.subscribe((params) => {
-      params.tab ? this.selectTab(params.tab) : this.selectTab(0);
-    });
+    // this.route.queryParams.subscribe((params) => {
+    //   params.tab ? this.selectTab(params.tab) : this.selectTab(0);
+    // });
   }
 
   loadPosition() {

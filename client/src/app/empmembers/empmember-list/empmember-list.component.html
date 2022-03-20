@@ -11,7 +11,7 @@
         (ngSubmit)="loadCardMembers()" autocomplete="off">
         
                         <div class="form-group align-content-center">
-                            <label class="mr-2 filter" style="margin-left: 190px; font-size: 1.5em"><strong> Filters: </strong></label>
+                            <label class="mr-2 filter" style="font-size: 1.5em"><strong> Filters: </strong></label>
                             <select name="empIndustry" 
                                 [(ngModel)]="userParams.empIndustry" 
                                 style="width: auto"
@@ -51,7 +51,7 @@
         </div>      -->
     
         <div class="text-center">
-            <label class="mr-2 filter" style="font-size: 1.5em"><strong> Sort: </strong></label>
+            <label class="mr-2 filter" style="font-size: 1.5em"><strong> Order by: </strong></label>
         </div>
 
         <!-- <div class="container">
@@ -65,7 +65,7 @@
                             (click)="loadCardMembers()"
                             btnRadio='empName'
                             [(ngModel)]="userParams.orderByEmpName">
-                            Order by Employer
+                            Employer
                         </button>
                         <!-- <button 
                             type="button"

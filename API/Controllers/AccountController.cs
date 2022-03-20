@@ -31,6 +31,14 @@ namespace API.Controllers
         {
             if (await UserExists(registerStudDto.Username)) return BadRequest("Username is taken");
 
+            if (registerStudDto.RegisterCode == "studentconnect")
+            {
+                registerStudDto.RegisterCode = registerStudDto.RegisterCode;
+            }
+
+            else
+                return BadRequest("Re-enter Register Code");
+
             var user = _mapper.Map<AppUser>(registerStudDto);
 
             using var hmac = new HMACSHA512();
@@ -39,6 +47,7 @@ namespace API.Controllers
             user.PasswordHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(registerStudDto.Password));
             user.PasswordSalt = hmac.Key;
             user.AppUserType = "ColStudent";
+            user.RegisterCode = registerStudDto.RegisterCode;
 
             _context.Users.Add(user);
             await _context.SaveChangesAsync();
@@ -60,7 +69,8 @@ namespace API.Controllers
                 FirstName = user.FirstName,
                 Major = user.Major,
                 ClassYear = user.ClassYear,
-                Location = user.Location
+                Location = user.Location,
+                RegisterCode = user.RegisterCode
             };
         }
 
