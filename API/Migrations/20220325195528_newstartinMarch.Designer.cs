@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace API.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20220319221602_NewStart")]
-    partial class NewStart
+    [Migration("20220325195528_newstartinMarch")]
+    partial class newstartinMarch
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -139,7 +139,18 @@ namespace API.Migrations
                     b.Property<string>("DutyBulletText")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
+                    b.Property<float>("Order")
+                        .HasColumnType("real");
+
+                    b.Property<int>("PositionId")
+                        .HasColumnType("int");
+
                     b.HasKey("DutyBulletId");
+
+                    b.HasIndex("PositionId");
 
                     b.ToTable("DutyBullets");
                 });
@@ -399,21 +410,6 @@ namespace API.Migrations
                     b.ToTable("Positions");
                 });
 
-            modelBuilder.Entity("API.Entities.PositionDutyBullet", b =>
-                {
-                    b.Property<int>("PositionId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("DutyBulletId")
-                        .HasColumnType("int");
-
-                    b.HasKey("PositionId", "DutyBulletId");
-
-                    b.HasIndex("DutyBulletId");
-
-                    b.ToTable("PositionDutyBullets");
-                });
-
             modelBuilder.Entity("API.Entities.RegisterCode", b =>
                 {
                     b.Property<int>("Id")
@@ -502,6 +498,17 @@ namespace API.Migrations
                     b.ToTable("Likes");
                 });
 
+            modelBuilder.Entity("API.Entities.DutyBullet", b =>
+                {
+                    b.HasOne("API.Entities.Position", "Position")
+                        .WithMany("DutyBullets")
+                        .HasForeignKey("PositionId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Position");
+                });
+
             modelBuilder.Entity("API.Entities.EmpInfo", b =>
                 {
                     b.HasOne("API.Entities.AppUser", "AppUser")
@@ -563,25 +570,6 @@ namespace API.Migrations
                         .IsRequired();
 
                     b.Navigation("AppUser");
-                });
-
-            modelBuilder.Entity("API.Entities.PositionDutyBullet", b =>
-                {
-                    b.HasOne("API.Entities.Position", "Position")
-                        .WithMany("PositionDutyBullets")
-                        .HasForeignKey("DutyBulletId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("API.Entities.DutyBullet", "DutyBullet")
-                        .WithMany("PositionDutyBullets")
-                        .HasForeignKey("PositionId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("DutyBullet");
-
-                    b.Navigation("Position");
                 });
 
             modelBuilder.Entity("API.Entities.RegisterCode", b =>
@@ -651,14 +639,9 @@ namespace API.Migrations
                     b.Navigation("Majors");
                 });
 
-            modelBuilder.Entity("API.Entities.DutyBullet", b =>
-                {
-                    b.Navigation("PositionDutyBullets");
-                });
-
             modelBuilder.Entity("API.Entities.Position", b =>
                 {
-                    b.Navigation("PositionDutyBullets");
+                    b.Navigation("DutyBullets");
                 });
 #pragma warning restore 612, 618
         }

@@ -2,9 +2,11 @@ import { DOCUMENT } from '@angular/common';
 import { Component, Inject, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { TabDirective, TabsetComponent } from 'ngx-bootstrap/tabs';
+import { EmpInfo } from 'src/app/_models/empInfo';
 import { Member } from 'src/app/_models/member';
 import { Message } from 'src/app/_models/message';
 import { Position } from 'src/app/_models/position';
+import { EmpinfoService } from 'src/app/_services/empinfo.service';
 import { MessageService } from 'src/app/_services/message.service';
 import { Position2Service } from 'src/app/_services/position2.service';
 import { SearchMembersService } from 'src/app/_services/search-members.service';
@@ -20,6 +22,7 @@ export class PositionDetailEmployerComponent implements OnInit {
   positionId: number;
   id: number;
   member: Member;
+  empInfo: EmpInfo;
   activeTab: TabDirective;
   messages: Message[] = [];
 
@@ -28,6 +31,7 @@ export class PositionDetailEmployerComponent implements OnInit {
     private searchMembersService: SearchMembersService,
     private route: ActivatedRoute,
     private messageService: MessageService,
+    private empInfoService: EmpinfoService,
     @Inject(DOCUMENT) private document: Document
   ) {}
 
@@ -53,6 +57,14 @@ export class PositionDetailEmployerComponent implements OnInit {
     this.searchMembersService.getSearchMemberById(id).subscribe((member) => {
       this.member = member;
       console.log('member Id: ', this.member.appUserId);
+      this.loadEmpInfo(this.id);
+    });
+  }
+
+  loadEmpInfo(id: number) {
+    this.searchMembersService.getEmpInfo(id).subscribe((empInfo) => {
+      this.empInfo = empInfo;
+      console.log('member Id: ', this.empInfo.appUserId);
     });
   }
 

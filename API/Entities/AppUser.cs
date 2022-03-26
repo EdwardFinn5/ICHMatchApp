@@ -64,6 +64,7 @@ namespace API.Entities
         public ICollection<StudInfo> StudInfos { get; set; }
         public ICollection<EmpInfo> EmpInfos { get; set; }
         public ICollection<Position> Positions { get; set; }
+        // public ICollection<DutyBullet> DutyBullets { get; set; }
         public ICollection<UserLike> LikedByUsers { get; set; }
         public ICollection<UserLike> LikedUsers { get; set; }
         public ICollection<Message> MessagesSent { get; set; }

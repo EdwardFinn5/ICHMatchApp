@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace API.Migrations
 {
-    public partial class NewStart : Migration
+    public partial class newstartinMarch : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -31,19 +31,6 @@ namespace API.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Colleges", x => x.CollegeId);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "DutyBullets",
-                columns: table => new
-                {
-                    DutyBulletId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    DutyBulletText = table.Column<string>(type: "nvarchar(max)", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_DutyBullets", x => x.DutyBulletId);
                 });
 
             migrationBuilder.CreateTable(
@@ -327,28 +314,31 @@ namespace API.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "PositionDutyBullets",
+                name: "DutyBullets",
                 columns: table => new
                 {
-                    PositionId = table.Column<int>(type: "int", nullable: false),
                     DutyBulletId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    DutyBulletText = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Order = table.Column<float>(type: "real", nullable: false),
+                    IsActive = table.Column<bool>(type: "bit", nullable: false),
+                    PositionId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_PositionDutyBullets", x => new { x.PositionId, x.DutyBulletId });
+                    table.PrimaryKey("PK_DutyBullets", x => x.DutyBulletId);
                     table.ForeignKey(
-                        name: "FK_PositionDutyBullets_DutyBullets_PositionId",
+                        name: "FK_DutyBullets_Positions_PositionId",
                         column: x => x.PositionId,
-                        principalTable: "DutyBullets",
-                        principalColumn: "DutyBulletId",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_PositionDutyBullets_Positions_DutyBulletId",
-                        column: x => x.DutyBulletId,
                         principalTable: "Positions",
                         principalColumn: "PositionId",
                         onDelete: ReferentialAction.Cascade);
                 });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_DutyBullets_PositionId",
+                table: "DutyBullets",
+                column: "PositionId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_EmpInfos_AppUserId",
@@ -381,11 +371,6 @@ namespace API.Migrations
                 column: "AppUserId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_PositionDutyBullets_DutyBulletId",
-                table: "PositionDutyBullets",
-                column: "DutyBulletId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_Positions_AppUserId",
                 table: "Positions",
                 column: "AppUserId");
@@ -405,6 +390,9 @@ namespace API.Migrations
         {
             migrationBuilder.DropTable(
                 name: "Colleges");
+
+            migrationBuilder.DropTable(
+                name: "DutyBullets");
 
             migrationBuilder.DropTable(
                 name: "EmpIndustries");
@@ -428,22 +416,16 @@ namespace API.Migrations
                 name: "Photos");
 
             migrationBuilder.DropTable(
-                name: "PositionDutyBullets");
-
-            migrationBuilder.DropTable(
                 name: "RegisterCodes");
 
             migrationBuilder.DropTable(
                 name: "StudInfos");
 
             migrationBuilder.DropTable(
-                name: "Categories");
-
-            migrationBuilder.DropTable(
-                name: "DutyBullets");
-
-            migrationBuilder.DropTable(
                 name: "Positions");
+
+            migrationBuilder.DropTable(
+                name: "Categories");
 
             migrationBuilder.DropTable(
                 name: "Users");

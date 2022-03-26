@@ -45,7 +45,10 @@ namespace API.Entities
         public string ApplyLink { get; set; }
         public virtual AppUser AppUser { get; set; }
         public int AppUserId { get; set; }
-        public ICollection<PositionDutyBullet> PositionDutyBullets { get; set; }
+
+        public ICollection<DutyBullet> DutyBullets { get; set; }
+
+        // public ICollection<PositionDutyBullet> PositionDutyBullets { get; set; }
 
     }
 }

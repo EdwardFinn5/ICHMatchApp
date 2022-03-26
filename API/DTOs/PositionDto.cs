@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 
 namespace API.DTOs
 {
@@ -29,6 +30,11 @@ namespace API.DTOs
         public bool IsMainLogo { get; set; }
         public string CompanyDescription { get; set; }
         public string WhyWork { get; set; }
+        public string DutyBulletText { get; set; }
         public int AppUserId { get; set; }
+
+
+        public ICollection<DutyBulletDto> DutyBulletDtos { get; set; }
+
     }
 }

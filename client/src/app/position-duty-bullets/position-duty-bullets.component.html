@@ -1,0 +1,66 @@
+<!-- <div class="container"> -->
+<div class="row shadow mt-3" *ngIf="position">
+    <div class="dutybullets p-0" style="text-align: center;">
+
+        <div *ngIf="dutyBullets?.length === 0">
+            <h4><strong>No Responsibilites and Duties yet for this {{position.positionName}} position -- Please add below.</strong></h4>
+        </div>
+
+        <div  *ngIf="dutyBullets?.length > 0">
+            
+        <h2><strong>Current Responsibility and Duties bullet points for this {{position?.positionName}} position</strong></h2>
+       
+        <table class="table table-striped col-sm-4 col-lg-8 col-md-6 m-auto">
+            <thead>
+                <tr>
+                    <th>Bullet Text</th>
+                    <th>Bullet Order</th>                                       
+                    <th>Options</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let dutyBullet of dutyBullets">
+                    
+                    <td>{{dutyBullet.dutyBulletText}}</td>
+                    <td>{{dutyBullet.order}}</td>
+                    <td>
+                        <!-- <button class="btn btn-primary btn-sm shadow-sm mr-2 mb-2" routerLink='/positiondutybullets/{{position.positionId}}'>Add Bullets</button> -->
+                        <button class="btn btn-success btn-sm shadow-sm mr-2 mb-2" routerLink='/newpositiondetail/{{position.positionId}}'>View</button>
+                        <button class="btn btn-primary btn-sm shadow-sm mr-2 mb-2" routerLink='/editposition/{{position.positionId}}'>Edit</button>
+                        <button class="btn btn-danger btn-sm shadow-sm mr-2 mb-2" routerLink='/editposition/{{position.positionId}}'>Delete</button>
+                           
+                      
+                        <!-- <button type="button-del" (click)="deletePosition(position.positionId)"  class="btn btn-danger btn-sm shadow-sm mb-2">
+                            Delete
+                        </button> -->
+
+                    </td>
+                </tr>
+            </tbody>
+           
+        </table>
+    </div>
+
+    <div class="container">
+        <form #dutyBulletForm="ngForm" (ngSubmit)="addDutyBullet()" autocomplete="off">
+            <div class="input-group" >
+                <input name="dutyBulletText" required [(ngModel)]="dutyBulletText" type="text" 
+                    class="form-control input-sm long-input" placeholder="Add bullet point text">
+                    <input name="order" required [(ngModel)]="order" type="number" 
+                    class="form-control input-sm short-input ml-2" placeholder="Order # (1.0,2.0,...)">
+                    <div class="input-group-append">
+                    <button [disabled]="!messageForm.valid || loading" class="btn btn-primary ml-2" style="width:auto" >Add Bullet
+                        <i *ngIf="loading" class="fa fa-spinner fa-spin"></i>
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+        <!-- <div class="text-center col-12">
+            <button class="btn btn-success btn-sm shadow-sm mt-3 mb-3" routerLink="/position/add">Add a new position</button>
+        </div> -->
+
+    </div>
+</div>
+<!-- </div> -->

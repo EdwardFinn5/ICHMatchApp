@@ -44,26 +44,26 @@ namespace API.Helpers
                 .MapFrom(src => src.StudInfos.FirstOrDefault(x => x.IsActive).WorkPlus))
             .ForMember(dest => dest.DreamJob, opt => opt
                 .MapFrom(src => src.StudInfos.FirstOrDefault(x => x.IsActive).DreamJob))
-            .ForMember(dest => dest.EmpWebsite, opt => opt
-                .MapFrom(src => src.EmpInfos.FirstOrDefault(x => x.IsActive).EmpWebsite))
-            .ForMember(dest => dest.CompanyDescription, opt => opt
-                .MapFrom(src => src.EmpInfos.FirstOrDefault(x => x.IsActive).CompanyDescription))
-            .ForMember(dest => dest.WhyWork, opt => opt
-                .MapFrom(src => src.EmpInfos.FirstOrDefault(x => x.IsActive).WhyWork))
+            // .ForMember(dest => dest.EmpWebsite, opt => opt
+            //     .MapFrom(src => src.EmpInfos.FirstOrDefault(x => x.IsActive).EmpWebsite))
+            // .ForMember(dest => dest.CompanyDescription, opt => opt
+            //     .MapFrom(src => src.EmpInfos.FirstOrDefault(x => x.IsActive).CompanyDescription))
+            // .ForMember(dest => dest.WhyWork, opt => opt
+            //     .MapFrom(src => src.EmpInfos.FirstOrDefault(x => x.IsActive).WhyWork))
             .ForMember(dest => dest.DateAdded, opt => opt
                 .MapFrom(src => src.Positions.FirstOrDefault(x => x.IsActive).DateAdded))
-            .ForMember(dest => dest.PositionName, opt => opt
-                .MapFrom(src => src.Positions.FirstOrDefault(x => x.IsActive).PositionName))
+            // .ForMember(dest => dest.PositionName, opt => opt
+            //     .MapFrom(src => src.Positions.FirstOrDefault(x => x.IsActive).PositionName))
             .ForMember(dest => dest.StartDate, opt => opt
                 .MapFrom(src => src.Positions.FirstOrDefault(x => x.IsActive).StartDate))
-            .ForMember(dest => dest.PositionDescription, opt => opt
-                .MapFrom(src => src.Positions.FirstOrDefault(x => x.IsActive).PositionDescription))
-            .ForMember(dest => dest.LookingFor, opt => opt
-                .MapFrom(src => src.Positions.FirstOrDefault(x => x.IsActive).LookingFor))
-            .ForMember(dest => dest.PositionBenefits, opt => opt
-                .MapFrom(src => src.Positions.FirstOrDefault(x => x.IsActive).PositionBenefits))
-            .ForMember(dest => dest.PositionType, opt => opt
-                .MapFrom(src => src.Positions.FirstOrDefault(x => x.IsActive).PositionType))
+            // .ForMember(dest => dest.PositionDescription, opt => opt
+            //     .MapFrom(src => src.Positions.FirstOrDefault(x => x.IsActive).PositionDescription))
+            // .ForMember(dest => dest.LookingFor, opt => opt
+            //     .MapFrom(src => src.Positions.FirstOrDefault(x => x.IsActive).LookingFor))
+            // .ForMember(dest => dest.PositionBenefits, opt => opt
+            //     .MapFrom(src => src.Positions.FirstOrDefault(x => x.IsActive).PositionBenefits))
+            // .ForMember(dest => dest.PositionType, opt => opt
+            //     .MapFrom(src => src.Positions.FirstOrDefault(x => x.IsActive).PositionType))
             .ForMember(dest => dest.PositionLocation, opt => opt
                 .MapFrom(src => src.Positions.FirstOrDefault(x => x.IsActive).PositionLocation))
             .ForMember(dest => dest.DateAdded, opt => opt
@@ -86,7 +86,9 @@ namespace API.Helpers
                .ForMember(d => d.EmpName, o => o.MapFrom(s => s.AppUser.EmpName))
                .ForMember(d => d.RegisterCode, o => o.MapFrom(s => s.AppUser.RegisterCode))
                .ForMember(d => d.EmployeeNum, o => o.MapFrom(s => s.AppUser.EmployeeNum))
-               .ForMember(d => d.LogoUrl, o => o.MapFrom(s => s.AppUser.LogoUrl));
+               .ForMember(d => d.LogoUrl, o => o.MapFrom(s => s.AppUser.LogoUrl))
+               .ForMember(dest => dest.DutyBulletText, opt => opt
+                    .MapFrom(src => src.DutyBullets.FirstOrDefault(x => x.IsActive).DutyBulletText));
             // .ForMember(d => d.LogoUrl, o => o.MapFrom(s => s.AppUser.HrUrl))   
 
             CreateMap<AppUser, CardMemberDto>()
@@ -120,6 +122,8 @@ namespace API.Helpers
             CreateMap<LocationUpdateDto, Location>();
             CreateMap<MajorUpdateDto, Major>();
             CreateMap<Major, MajorDto>();
+            CreateMap<DutyBulletUpdateDto, DutyBullet>();
+            CreateMap<DutyBullet, DutyBulletDto>();
             CreateMap<LocationUpdateDto, Location>();
             CreateMap<Location, LocationDto>();
             CreateMap<RegisterEmpDto, AppUser>();

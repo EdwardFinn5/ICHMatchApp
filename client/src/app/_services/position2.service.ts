@@ -6,7 +6,7 @@ import { Member } from '../_models/member';
 import { StudInfo } from '../_models/studinfo';
 import { Position } from '../_models/position';
 import { map } from 'rxjs/operators';
-import { Observable, of } from 'rxjs';
+import { Observable, of, ReplaySubject } from 'rxjs';
 import { UserParams } from '../_models/userParams';
 import { PaginatedResult } from '../_models/pagination';
 
@@ -20,9 +20,8 @@ export class Position2Service {
   position: Position;
   userParams: UserParams;
   positionCache = new Map();
-  // paginatedResult: PaginatedResult<Position[]> = new PaginatedResult<
-  //   Position[]
-  // >();
+  private currentPositionSource = new ReplaySubject<Position>(1);
+  currentPosition$ = this.currentPositionSource.asObservable();
 
   constructor(private http: HttpClient) {
     this.userParams = new UserParams();

@@ -36,7 +36,6 @@ namespace API.Data
         {
             return await _context.Positions
                  .Where(x => x.PositionId == id)
-                 //   .ProjectTo<PositionDto>(_mapper.ConfigurationProvider)
                  .SingleOrDefaultAsync();
         }
 
@@ -51,6 +50,7 @@ namespace API.Data
         public async Task<IEnumerable<PositionDto>> GetPositionDtosAsync(int id)
         {
             return await _context.Positions
+                  // .Include(u => u.DutyBullets)
                   .Where(x => x.AppUserId == id)
                   .ProjectTo<PositionDto>(_mapper.ConfigurationProvider)
                   .ToListAsync();
@@ -102,6 +102,7 @@ namespace API.Data
         {
             return await _context.Positions
                   .Include(a => a.AppUser)
+                  .Include(b => b.DutyBullets)
                   .ToListAsync();
         }
 

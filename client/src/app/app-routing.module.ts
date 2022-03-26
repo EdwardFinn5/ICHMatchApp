@@ -49,6 +49,8 @@ import { PositionDetailThumbsupComponent } from './positions/position-detail-thu
 import { PositionDetailmessageComponent } from './positions/position-detailmessage/position-detailmessage.component';
 import { MemberMessageDetailComponent } from './members/member-message-detail/member-message-detail.component';
 import { MemberDetailResolver } from './_resolvers/member-detail.resolver';
+import { PositionDutyBulletsComponent } from './position-duty-bullets/position-duty-bullets.component';
+import { PositionBulletResolver } from './_resolvers/position-bullet.Resolver';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -95,6 +97,10 @@ const routes: Routes = [
       },
       { path: 'empmember/positions', component: EmpmemberPositionsComponent },
       {
+        path: 'position/dutybullets',
+        component: PositionDutyBulletsComponent,
+      },
+      {
         path: 'empmembersearch',
         component: EmpmemberSearchComponent,
         pathMatch: 'full',
@@ -136,6 +142,12 @@ const routes: Routes = [
         path: 'positionslist',
         component: PositionsListComponent,
         pathMatch: 'full',
+      },
+      {
+        path: 'positiondutybullets/:positionId',
+        component: PositionDutyBulletsComponent,
+        pathMatch: 'full',
+        resolve: { position: PositionBulletResolver },
       },
       {
         path: 'studinfo/add',

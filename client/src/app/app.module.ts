@@ -65,6 +65,7 @@ import { PositionDetailmessageComponent } from './positions/position-detailmessa
 import { MemberMessageDetailComponent } from './members/member-message-detail/member-message-detail.component';
 import { LikesMessageCardComponent } from './likes/likes-message-card/likes-message-card.component';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
+import { PositionDutyBulletsComponent } from './position-duty-bullets/position-duty-bullets.component';
 
 @NgModule({
   declarations: [
@@ -122,6 +123,7 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
     PositionDetailmessageComponent,
     MemberMessageDetailComponent,
     LikesMessageCardComponent,
+    PositionDutyBulletsComponent,
   ],
   imports: [
     BrowserModule,

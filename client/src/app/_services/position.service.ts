@@ -10,7 +10,7 @@ import { Position } from '../_models/position';
 })
 export class PositionService {
   baseUrl = environment.apiUrl;
-  private currentPositionSource = new ReplaySubject<Position>(1);
+  public currentPositionSource = new ReplaySubject<Position>(1);
   currentPosition$ = this.currentPositionSource.asObservable();
   appUserType: string;
   positionId: number;

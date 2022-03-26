@@ -18,7 +18,7 @@ namespace API.Data
         public DbSet<Photo> Photos { get; set; }
         public DbSet<Position> Positions { get; set; }
         public DbSet<DutyBullet> DutyBullets { get; set; }
-        public DbSet<PositionDutyBullet> PositionDutyBullets { get; set; }
+        // public DbSet<PositionDutyBullet> PositionDutyBullets { get; set; }
         public DbSet<StudInfo> StudInfos { get; set; }
         public DbSet<RegisterCode> RegisterCodes { get; set; }
         public DbSet<UserLike> Likes { get; set; }
@@ -28,20 +28,20 @@ namespace API.Data
         {
             base.OnModelCreating(modelBuilder);
 
-            modelBuilder.Entity<PositionDutyBullet>()
-                .HasKey(cm => new { cm.PositionId, cm.DutyBulletId });
+            // modelBuilder.Entity<PositionDutyBullet>()
+            //     .HasKey(cm => new { cm.PositionId, cm.DutyBulletId });
 
-            modelBuilder.Entity<PositionDutyBullet>()
-                .HasOne(cm => cm.Position)
-                .WithMany(c => c.PositionDutyBullets)
-                .HasForeignKey(cm => cm.DutyBulletId)
-                .OnDelete(DeleteBehavior.Cascade);
+            // modelBuilder.Entity<PositionDutyBullet>()
+            //     .HasOne(cm => cm.Position)
+            //     .WithMany(c => c.PositionDutyBullets)
+            //     .HasForeignKey(cm => cm.PositionId)
+            //     .OnDelete(DeleteBehavior.NoAction);
 
-            modelBuilder.Entity<PositionDutyBullet>()
-                .HasOne(cm => cm.DutyBullet)
-                .WithMany(m => m.PositionDutyBullets)
-                .HasForeignKey(cm => cm.PositionId)
-                .OnDelete(DeleteBehavior.Cascade);
+            // modelBuilder.Entity<PositionDutyBullet>()
+            //     .HasOne(cm => cm.DutyBullet)
+            //     .WithMany(m => m.PositionDutyBullets)
+            //     .HasForeignKey(cm => cm.DutyBulletId)
+            //     .OnDelete(DeleteBehavior.NoAction);
 
             // modelBuilder.Entity<Position>()
             //     .HasMany(e => e.Photos)
@@ -86,6 +86,18 @@ namespace API.Data
             //     .WithMany(c => c.FactFeatures)
             //     .HasForeignKey(ff => ff.CollegeNum)
             //     .OnDelete(DeleteBehavior.Cascade);
+
+            // modelBuilder.Entity<DutyBullet>()
+            //    .HasOne(db => db.Position)
+            //    .WithMany(c => c.DutyBullets)
+            //    .HasForeignKey(ff => ff.PositionId)
+            //    .OnDelete(DeleteBehavior.NoAction);
+
+            // modelBuilder.Entity<DutyBullet>()
+            //     .HasOne(db => db.AppUser)
+            //     .WithMany(c => c.DutyBullets)
+            //     .HasForeignKey(ff => ff.AppUserId)
+            //     .OnDelete(DeleteBehavior.NoAction);
 
             modelBuilder.Entity<UserLike>()
                 .HasKey(k => new { k.SourceUserId, k.LikedUserId });

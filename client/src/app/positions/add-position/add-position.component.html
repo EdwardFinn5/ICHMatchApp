@@ -7,7 +7,7 @@
     </div>
 
     <div class="card-header col-sm-4 col-lg-8 col-md-6 p-x m-auto">
-        <h3 style="text-align: center;">Add a Position</h3>
+        <h3 style="text-align: center;">Add a wow Position</h3>
     </div>
 
     <div class="login col-sm-4 col-lg-8 col-md-6 mx-auto shadow-lg">
@@ -32,6 +32,8 @@
                       </textarea>
             </div>
 
+            <label class="label mt-2 mb-2"><strong><u>Note:</u> You will be able to add bullet points for <u>Responsibilites and Duties</u> as well as <u>Position Requirements and Preferred Skills</u> after you click the Save Changes button below.</strong> </label>
+
             <div class="form-group">
                 <label class="label"><strong>Type of person we're looking for</strong> </label>
                 <textarea name="lookingFor" [(ngModel)]="model.lookingFor" class="form-control shadow-sm">
@@ -45,9 +47,10 @@
             </div>
         </form>
 
-        <div>
+        <div class="btn-group d-flex">
             <button [disabled]="!addPositionForm.dirty" form="addStudInfoForm" type="submit"
-                class="btn btn-success btn-block">Save Changes</button>
+                class="btn btn-success shadow-sm">Save Changes</button>
+                <input type="button" class="btn btn-secondary shadow-sm ml-2" (click)="cancel()" value="Cancel" />
         </div>
 
     </div>

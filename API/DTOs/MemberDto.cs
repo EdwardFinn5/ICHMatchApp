@@ -39,15 +39,15 @@ namespace API.DTOs
         public String AcademicPlus { get; set; }
         public String WorkPlus { get; set; }
         public String DreamJob { get; set; }
-        public String EmpWebsite { get; set; }
-        public String CompanyDescription { get; set; }
-        public String WhyWork { get; set; }
-        public String PositionName { get; set; }
+        // public String EmpWebsite { get; set; }
+        // public String CompanyDescription { get; set; }
+        // public String WhyWork { get; set; }
+        // public String PositionName { get; set; }
         public String PositionIdentifier { get; set; }
-        public String PositionDescription { get; set; }
-        public String LookingFor { get; set; }
-        public String PositionBenefits { get; set; }
-        public String PositionType { get; set; }
+        // public String PositionDescription { get; set; }
+        // public String LookingFor { get; set; }
+        // public String PositionBenefits { get; set; }
+        // public String PositionType { get; set; }
         public String PositionLocation { get; set; }
         public DateTime DateAdded { get; set; }
         public DateTime StartDate { get; set; }
