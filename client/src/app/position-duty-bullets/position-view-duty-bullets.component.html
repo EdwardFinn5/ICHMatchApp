@@ -1,0 +1,20 @@
+<div class="container" *ngIf="position">
+    <div *ngIf="dutyBullets?.length === 0" class="mb-3">
+        <h2 class="mb-3"><strong>No <u>Responsibilites and Duties</u> yet for this {{position.positionName}} position</strong></h2>
+        <button class="btn btn-primary btn-sm shadow-sm mr-2 mb-2" routerLink='/positiondutybullets/{{position.positionId}}'>Click to add bullets</button>
+    </div>
+
+    <div  *ngIf="dutyBullets?.length > 0" class="mb-3 col-sm-8 col-lg-4 col-md-6 m-auto">
+            
+        <h2 class="mb-3"><strong>Current <u>Responsibilites and Duties</u> bullet points for {{position?.positionName}} position:</strong></h2>
+        <h4><strong>Responsibilities and Duties</strong></h4>
+        <ul>
+            <li *ngFor="let dutybullet of dutyBullets">{{dutybullet.dutyBulletText}}</li>
+        </ul>
+        <button class="btn btn-primary btn-sm shadow-sm mr-2 mb-2" routerLink='/positiondutybullets/{{position.positionId}}'>Back to adding bullets</button>
+
+    </div>
+
+
+    
+</div>

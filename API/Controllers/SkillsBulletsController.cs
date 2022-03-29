@@ -2,17 +2,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using API.Data;
-using API.DTOs;
-using API.Entities;
-using API.Interfaces;
-using AutoMapper;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 
 namespace API.Controllers
 {
-    public class DutyBulletsController : BaseApiController
+    public class SkillsBulletsController : BaseApiController
     {
         private readonly IDutyBulletRepository _dutyBulletRepository;
         private readonly IMapper _mapper;

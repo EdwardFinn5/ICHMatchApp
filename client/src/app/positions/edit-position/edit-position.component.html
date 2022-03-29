@@ -47,10 +47,11 @@
             </div>
         </form>
 
-    <div>
-        <button [disabled]="!editForm.dirty" form="editForm" type="submit" 
-        class="btn btn-success btn-block">Save Changes</button>
-    </div>
+        <div class="btn-group d-flex">
+            <button [disabled]="!editForm.dirty" form="editForm" type="submit" 
+            class="btn btn-success shadow-sm mr-1">Save Changes</button>
+            <button class="btn btn-info shadow-sm mr-1" routerLink='/empmember/positions'>Cancel</button>
+        </div>
 
     </div>
 </section>

@@ -54,6 +54,6 @@ export class AddPositionComponent implements OnInit {
 
   cancel() {
     console.log('cancelled');
-    this.router.navigateByUrl('/');
+    this.router.navigateByUrl('/empmember/positions');
   }
 }

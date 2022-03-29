@@ -1,6 +1,6 @@
 import { Component, HostListener, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { take } from 'rxjs/operators';
 import { Position } from 'src/app/_models/position';
@@ -27,6 +27,7 @@ export class EditPositionComponent implements OnInit {
   }
 
   constructor(
+    private router: Router,
     private position2Service: Position2Service,
     private route: ActivatedRoute,
     private toastr: ToastrService
@@ -53,6 +54,7 @@ export class EditPositionComponent implements OnInit {
       .subscribe(() => {
         this.toastr.success('Position info updated');
         this.editForm.reset(this.position);
+        this.router.navigateByUrl('/empmember/positions');
       });
   }
 }

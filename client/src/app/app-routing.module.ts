@@ -51,6 +51,8 @@ import { MemberMessageDetailComponent } from './members/member-message-detail/me
 import { MemberDetailResolver } from './_resolvers/member-detail.resolver';
 import { PositionDutyBulletsComponent } from './position-duty-bullets/position-duty-bullets.component';
 import { PositionBulletResolver } from './_resolvers/position-bullet.Resolver';
+import { PositionViewDutyBulletsComponent } from './position-duty-bullets/position-view-duty-bullets.component';
+import { PositionEditDutyBulletsComponent } from './position-duty-bullets/position-edit-duty-bullets.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -150,6 +152,12 @@ const routes: Routes = [
         resolve: { position: PositionBulletResolver },
       },
       {
+        path: 'positionviewdutybullets/:positionId',
+        component: PositionViewDutyBulletsComponent,
+        pathMatch: 'full',
+        resolve: { position: PositionBulletResolver },
+      },
+      {
         path: 'studinfo/add',
         component: AddStudInfoComponent,
         canDeactivate: [PreventUnsavedAddStudInfoChangesGuard],
@@ -186,6 +194,11 @@ const routes: Routes = [
   {
     path: 'editposition/:positionId',
     component: EditPositionComponent,
+    pathMatch: 'full',
+  },
+  {
+    path: 'positioneditdutybullet/:dutyBulletId',
+    component: PositionEditDutyBulletsComponent,
     pathMatch: 'full',
   },
   { path: 'about', component: AboutComponent },

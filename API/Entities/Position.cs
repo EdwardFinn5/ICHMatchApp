@@ -47,6 +47,7 @@ namespace API.Entities
         public int AppUserId { get; set; }
 
         public ICollection<DutyBullet> DutyBullets { get; set; }
+        public ICollection<SkillsBullet> SkillsBullets { get; set; }
 
         // public ICollection<PositionDutyBullet> PositionDutyBullets { get; set; }
 

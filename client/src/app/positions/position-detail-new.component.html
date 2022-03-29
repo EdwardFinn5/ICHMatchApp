@@ -35,11 +35,19 @@
         <tabset class="member-tabset" #memberTabs>
             <tab heading='Position Info' class="tab-heading">
                 <div class="details">
-                <h4><strong>Position </strong></h4>
-                <h5><u><strong>{{position.positionName}} - {{position.positionType}}</strong></u></h5>
-                <h4 class="mt-3"><strong>Position description</strong></h4>
+                <h3><u><strong>{{position.positionType}} {{position.positionName}} Position </strong></u></h3>
+                
+                <h4 class="mt-2"><strong>Position description</strong></h4>
                 {{position.positionDescription}}<br>
-                <h4 class="mt-2"><strong>Person we're looking for</strong></h4>
+                
+                <div  *ngIf="dutyBullets?.length > 0">
+                    <h4 class="mt-2"><strong>Responsibilities and Duties</strong></h4>
+                    <ul>
+                        <li *ngFor="let dutybullet of dutyBullets">{{dutybullet.dutyBulletText}}</li>
+                    </ul>
+                </div>
+                
+                <h4><strong>Person we're looking for</strong></h4>
                 {{position.lookingFor}}
                 <div *ngIf="position.positionBenefits">
                 <h4 class="mt-2"><strong>Benefits of this position</strong></h4>

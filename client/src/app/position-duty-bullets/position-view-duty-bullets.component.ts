@@ -1,21 +1,17 @@
-import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { take } from 'rxjs/operators';
 import { DutyBullet } from '../_models/DutyBullet';
 import { Position } from '../_models/position';
 import { BulletService } from '../_services/bullet.service';
-import { PositionService } from '../_services/position.service';
 import { Position2Service } from '../_services/position2.service';
 
 @Component({
-  selector: 'app-position-duty-bullets',
-  templateUrl: './position-duty-bullets.component.html',
-  styleUrls: ['./position-duty-bullets.component.css'],
+  selector: 'app-position-view-duty-bullets',
+  templateUrl: './position-view-duty-bullets.component.html',
+  styleUrls: ['./position-view-duty-bullets.component.css'],
 })
-export class PositionDutyBulletsComponent implements OnInit {
-  // @ViewChild('bulletsE1') message: ElementRef;
-  // scrollTop: number = null;
+export class PositionViewDutyBulletsComponent implements OnInit {
   position: Position;
   positionName?: string = '';
   positionId: number;
@@ -23,7 +19,6 @@ export class PositionDutyBulletsComponent implements OnInit {
   @ViewChild('dutyBulletForm') dutyBulletForm: NgForm;
   dutyBullet: string;
   loading = false;
-  dutyBulletId: number;
 
   constructor(
     private bulletService: BulletService,
@@ -71,20 +66,5 @@ export class PositionDutyBulletsComponent implements OnInit {
         this.dutyBulletForm.reset();
         this.loadDutyBullets();
       });
-  }
-
-  deleteDutyBullet(id: number) {
-    this.dutyBulletId = id;
-    console.log('dutyBulletId: ', this.dutyBulletId);
-    // this.confirmService
-    //   .confirm('Confirm delete message', 'This cannot be undone')
-    //   .subscribe((result) => {
-    //     if (result) {
-    this.bulletService.deleteDutyBullet(id).subscribe(() => {
-      this.dutyBullets.splice(
-        this.dutyBullets.findIndex((m) => m.dutyBulletId === id),
-        1
-      );
-    });
   }
 }

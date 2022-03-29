@@ -1,11 +1,13 @@
 import { DOCUMENT } from '@angular/common';
-import { Component, Inject, OnInit, ViewChild } from '@angular/core';
+import { Component, Inject, Input, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { TabDirective, TabsetComponent } from 'ngx-bootstrap/tabs';
+import { DutyBullet } from '../_models/DutyBullet';
 import { EmpInfo } from '../_models/empInfo';
 import { Member } from '../_models/member';
 import { Message } from '../_models/message';
 import { Position } from '../_models/position';
+import { BulletService } from '../_services/bullet.service';
 import { EmpinfoService } from '../_services/empinfo.service';
 import { MembersService } from '../_services/members.service';
 import { MessageService } from '../_services/message.service';
@@ -21,6 +23,7 @@ export class PositionDetailNewComponent implements OnInit {
   @ViewChild('memberTabs') memberTabs: TabsetComponent;
   position: Position;
   positionId: number;
+  @Input() dutyBullets: DutyBullet[];
   id: number;
   member: Member;
   empInfo: EmpInfo;
@@ -28,6 +31,7 @@ export class PositionDetailNewComponent implements OnInit {
   messages: Message[] = [];
 
   constructor(
+    private bulletService: BulletService,
     private position2Service: Position2Service,
     private searchMembersService: SearchMembersService,
     private route: ActivatedRoute,
@@ -54,6 +58,7 @@ export class PositionDetailNewComponent implements OnInit {
         console.log('positionId: ', position.positionId);
         this.id = this.position.appUserId;
         console.log('memberid :', this.id);
+        this.loadDutyBullets(this.positionId);
         this.loadMember(this.id);
       });
   }
@@ -70,6 +75,14 @@ export class PositionDetailNewComponent implements OnInit {
     this.searchMembersService.getEmpInfo(id).subscribe((empInfo) => {
       this.empInfo = empInfo;
       console.log('member Id: ', this.empInfo.appUserId);
+    });
+  }
+
+  loadDutyBullets(id: number) {
+    // this.positionId = +this.route.snapshot.paramMap.get('positionId');
+    // console.log('1st positionId: ', this.positionId);
+    this.bulletService.getdutyBullets(id).subscribe((dutyBullets) => {
+      this.dutyBullets = dutyBullets;
     });
   }
 
