@@ -1,39 +1,31 @@
-import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { take } from 'rxjs/operators';
 import { DutyBullet } from '../_models/dutyBullet';
 import { Position } from '../_models/position';
+import { SkillsBullet } from '../_models/skillsBullet';
 import { BulletService } from '../_services/bullet.service';
-import { PositionService } from '../_services/position.service';
 import { Position2Service } from '../_services/position2.service';
 
 @Component({
-  selector: 'app-position-duty-bullets',
-  templateUrl: './position-duty-bullets.component.html',
-  styleUrls: ['./position-duty-bullets.component.css'],
+  selector: 'app-position-skills-bullets',
+  templateUrl: './position-skills-bullets.component.html',
+  styleUrls: ['./position-skills-bullets.component.css'],
 })
-export class PositionDutyBulletsComponent implements OnInit {
-  // @ViewChild('bulletsE1') message: ElementRef;
-  // scrollTop: number = null;
+export class PositionSkillsBulletsComponent implements OnInit {
   position: Position;
   positionName?: string = '';
   positionId: number;
-  @Input() dutyBullets: DutyBullet[];
-  @ViewChild('dutyBulletForm') dutyBulletForm: NgForm;
-  dutyBullet: string;
+  @Input() skillsBullets: SkillsBullet[];
+  @ViewChild('skillsBulletForm') skillsBulletForm: NgForm;
+  skillsBullet: string;
   loading = false;
-  dutyBulletId: number;
-
+  skillsBulletId: number;
   constructor(
     private bulletService: BulletService,
     private route: ActivatedRoute,
     private position2Service: Position2Service
-  ) {
-    // this.positionService.currentPosition$
-    //   .pipe(take(1))
-    //   .subscribe((position) => (this.position = position));
-  }
+  ) {}
 
   ngOnInit(): void {
     this.loadPosition();
@@ -48,41 +40,41 @@ export class PositionDutyBulletsComponent implements OnInit {
         this.position = position;
         this.positionName = position.positionName;
         console.log('positionId: ', position.positionId);
-        this.loadDutyBullets();
+        this.loadSkillsBullets();
       });
   }
 
-  loadDutyBullets() {
+  loadSkillsBullets() {
     // this.positionId = +this.route.snapshot.paramMap.get('positionId');
     // console.log('1st positionId: ', this.positionId);
     this.bulletService
-      .getDutyBullets(this.positionId)
-      .subscribe((dutyBullets) => {
-        this.dutyBullets = dutyBullets;
+      .getSkillsBullets(this.positionId)
+      .subscribe((skillsBullets) => {
+        this.skillsBullets = skillsBullets;
       });
   }
 
   addDutyBullet() {
     // this.loading = true;
     this.bulletService
-      .addDutyBullet(this.positionId, this.dutyBulletForm.value)
-      .subscribe((dutyBullet) => {
-        this.dutyBullets.push(dutyBullet);
-        this.dutyBulletForm.reset();
-        this.loadDutyBullets();
+      .addSkillsBullet(this.positionId, this.skillsBulletForm.value)
+      .subscribe((skillsBullet) => {
+        this.skillsBullets.push(skillsBullet);
+        this.skillsBulletForm.reset();
+        this.loadSkillsBullets();
       });
   }
 
-  deleteDutyBullet(id: number) {
-    this.dutyBulletId = id;
-    console.log('dutyBulletId: ', this.dutyBulletId);
+  deleteSkillsBullet(id: number) {
+    this.skillsBulletId = id;
+    console.log('skillsBulletId: ', this.skillsBulletId);
     // this.confirmService
     //   .confirm('Confirm delete message', 'This cannot be undone')
     //   .subscribe((result) => {
     //     if (result) {
-    this.bulletService.deleteDutyBullet(id).subscribe(() => {
-      this.dutyBullets.splice(
-        this.dutyBullets.findIndex((m) => m.dutyBulletId === id),
+    this.bulletService.deleteSkillsBullet(id).subscribe(() => {
+      this.skillsBullets.splice(
+        this.skillsBullets.findIndex((m) => m.skillsBulletId === id),
         1
       );
     });

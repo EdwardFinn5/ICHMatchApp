@@ -3,7 +3,7 @@ import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { take } from 'rxjs/operators';
-import { DutyBullet } from '../_models/DutyBullet';
+import { DutyBullet } from '../_models/dutyBullet';
 import { Position } from '../_models/position';
 import { BulletService } from '../_services/bullet.service';
 import { Position2Service } from '../_services/position2.service';

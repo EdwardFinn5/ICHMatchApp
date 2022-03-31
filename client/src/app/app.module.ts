@@ -68,6 +68,9 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { PositionDutyBulletsComponent } from './position-duty-bullets/position-duty-bullets.component';
 import { PositionViewDutyBulletsComponent } from './position-duty-bullets/position-view-duty-bullets.component';
 import { PositionEditDutyBulletsComponent } from './position-duty-bullets/position-edit-duty-bullets.component';
+import { PositionSkillsBulletsComponent } from './position-skills-bullets/position-skills-bullets.component';
+import { PositionEditSkillsBulletsComponent } from './position-skills-bullets/position-edit-skills-bullets.component';
+import { PositionViewSkillsBulletsComponent } from './position-skills-bullets/position-view-skills-bullets.component';
 
 @NgModule({
   declarations: [
@@ -128,6 +131,9 @@ import { PositionEditDutyBulletsComponent } from './position-duty-bullets/positi
     PositionDutyBulletsComponent,
     PositionViewDutyBulletsComponent,
     PositionEditDutyBulletsComponent,
+    PositionSkillsBulletsComponent,
+    PositionEditSkillsBulletsComponent,
+    PositionViewSkillsBulletsComponent,
   ],
   imports: [
     BrowserModule,

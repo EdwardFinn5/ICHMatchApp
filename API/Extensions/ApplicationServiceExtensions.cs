@@ -33,6 +33,7 @@ namespace API.Extensions
             services.AddScoped<IMajorRepository, MajorRepository>();
             services.AddScoped<ILocationRepository, LocationRepository>();
             services.AddScoped<IDutyBulletRepository, DutyBulletRepository>();
+            services.AddScoped<ISkillsBulletRepository, SkillsBulletRepository>();
             services.AddAutoMapper(typeof(AutoMapperProfiles).Assembly);
             services.AddDbContext<DataContext>(options =>
             {

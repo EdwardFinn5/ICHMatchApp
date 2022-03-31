@@ -1,7 +1,7 @@
 import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { DutyBullet } from '../_models/DutyBullet';
+import { DutyBullet } from '../_models/dutyBullet';
 import { Position } from '../_models/position';
 import { BulletService } from '../_services/bullet.service';
 import { Position2Service } from '../_services/position2.service';

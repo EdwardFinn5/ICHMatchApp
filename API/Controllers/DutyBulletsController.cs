@@ -51,7 +51,7 @@ namespace API.Controllers
         [HttpPost("{id}")]
         public async Task<ActionResult<DutyBulletDto>> AddDutyBullet(AddDutyBulletDto addDutyBulletDto, int id)
         {
-            if (await DutyBulletExists(addDutyBulletDto.DutyBulletText)) return BadRequest("Duties/Responsibilities bullet point already in place");
+            if (await DutyBulletExists(addDutyBulletDto.DutyBulletText)) return BadRequest("Duties/Responsibilities bullet point already exists");
 
             var dutyBullet = new DutyBullet
             {
@@ -83,7 +83,7 @@ namespace API.Controllers
 
             if (await _dutyBulletRepository.Complete()) return Ok();
 
-            return BadRequest("Problem deleting the duties/resobsibilities bullet point");
+            return BadRequest("Problem deleting the duties/responsibilities bullet point");
 
         }
 

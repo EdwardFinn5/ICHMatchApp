@@ -18,7 +18,7 @@ namespace API.Data
         public DbSet<Photo> Photos { get; set; }
         public DbSet<Position> Positions { get; set; }
         public DbSet<DutyBullet> DutyBullets { get; set; }
-        // public DbSet<PositionDutyBullet> PositionDutyBullets { get; set; }
+        public DbSet<SkillsBullet> SkillsBullets { get; set; }
         public DbSet<StudInfo> StudInfos { get; set; }
         public DbSet<RegisterCode> RegisterCodes { get; set; }
         public DbSet<UserLike> Likes { get; set; }

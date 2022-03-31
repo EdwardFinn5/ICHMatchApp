@@ -2,7 +2,7 @@ import { DOCUMENT } from '@angular/common';
 import { Component, Inject, Input, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { TabDirective, TabsetComponent } from 'ngx-bootstrap/tabs';
-import { DutyBullet } from '../_models/DutyBullet';
+import { DutyBullet } from '../_models/dutyBullet';
 import { EmpInfo } from '../_models/empInfo';
 import { Member } from '../_models/member';
 import { Message } from '../_models/message';

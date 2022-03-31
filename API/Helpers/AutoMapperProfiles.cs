@@ -124,6 +124,8 @@ namespace API.Helpers
             CreateMap<Major, MajorDto>();
             CreateMap<DutyBulletUpdateDto, DutyBullet>();
             CreateMap<DutyBullet, DutyBulletDto>();
+            CreateMap<SkillsBulletUpdateDto, SkillsBullet>();
+            CreateMap<SkillsBullet, SkillsBulletDto>();
             CreateMap<LocationUpdateDto, Location>();
             CreateMap<Location, LocationDto>();
             CreateMap<RegisterEmpDto, AppUser>();
