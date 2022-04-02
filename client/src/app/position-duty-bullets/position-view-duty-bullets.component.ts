@@ -51,7 +51,7 @@ export class PositionViewDutyBulletsComponent implements OnInit {
     // this.positionId = +this.route.snapshot.paramMap.get('positionId');
     // console.log('1st positionId: ', this.positionId);
     this.bulletService
-      .getdutyBullets(this.positionId)
+      .getDutyBullets(this.positionId)
       .subscribe((dutyBullets) => {
         this.dutyBullets = dutyBullets;
       });

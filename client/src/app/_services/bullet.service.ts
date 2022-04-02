@@ -67,7 +67,7 @@ export class BulletService {
     );
   }
 
-  updateSkilsBullet(skillsBullet: SkillsBullet, skillsBulletId: number) {
+  updateSkillsBullet(skillsBullet: SkillsBullet, skillsBulletId: number) {
     console.log('2nd skillsbulletid: ', skillsBulletId);
     return this.http.put(
       this.baseUrl + 'skillsbullets/' + skillsBulletId,

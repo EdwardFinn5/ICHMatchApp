@@ -21,6 +21,7 @@ export class PositionSkillsBulletsComponent implements OnInit {
   skillsBullet: string;
   loading = false;
   skillsBulletId: number;
+
   constructor(
     private bulletService: BulletService,
     private route: ActivatedRoute,

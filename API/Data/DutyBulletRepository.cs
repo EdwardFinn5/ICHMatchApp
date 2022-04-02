@@ -57,7 +57,6 @@ namespace API.Data
         public async Task<IEnumerable<DutyBulletDto>> GetDutyBulletDtosByPositionIdAsync(int id)
         {
             return await _context.DutyBullets
-                  // .Include(u => u.DutyBullets)
                   .Where(x => x.PositionId == id)
                   .ProjectTo<DutyBulletDto>(_mapper.ConfigurationProvider)
                   .OrderBy(x => x.Order)

@@ -7,6 +7,7 @@ import { EmpInfo } from '../_models/empInfo';
 import { Member } from '../_models/member';
 import { Message } from '../_models/message';
 import { Position } from '../_models/position';
+import { SkillsBullet } from '../_models/skillsBullet';
 import { BulletService } from '../_services/bullet.service';
 import { EmpinfoService } from '../_services/empinfo.service';
 import { MembersService } from '../_services/members.service';
@@ -24,6 +25,7 @@ export class PositionDetailNewComponent implements OnInit {
   position: Position;
   positionId: number;
   @Input() dutyBullets: DutyBullet[];
+  @Input() skillsBullets: SkillsBullet[];
   id: number;
   member: Member;
   empInfo: EmpInfo;
@@ -59,6 +61,7 @@ export class PositionDetailNewComponent implements OnInit {
         this.id = this.position.appUserId;
         console.log('memberid :', this.id);
         this.loadDutyBullets(this.positionId);
+        this.loadSkillsBullets(this.positionId);
         this.loadMember(this.id);
       });
   }
@@ -81,8 +84,16 @@ export class PositionDetailNewComponent implements OnInit {
   loadDutyBullets(id: number) {
     // this.positionId = +this.route.snapshot.paramMap.get('positionId');
     // console.log('1st positionId: ', this.positionId);
-    this.bulletService.getdutyBullets(id).subscribe((dutyBullets) => {
+    this.bulletService.getDutyBullets(id).subscribe((dutyBullets) => {
       this.dutyBullets = dutyBullets;
+    });
+  }
+
+  loadSkillsBullets(id: number) {
+    // this.positionId = +this.route.snapshot.paramMap.get('positionId');
+    // console.log('1st positionId: ', this.positionId);
+    this.bulletService.getSkillsBullets(id).subscribe((skillsBullets) => {
+      this.skillsBullets = skillsBullets;
     });
   }
 

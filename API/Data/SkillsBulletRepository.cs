@@ -6,6 +6,8 @@ using API.DTOs;
 using API.Entities;
 using API.Interfaces;
 using AutoMapper;
+using AutoMapper.QueryableExtensions;
+using Microsoft.EntityFrameworkCore;
 
 namespace API.Data
 {
@@ -28,29 +30,38 @@ namespace API.Data
             _context.SkillsBullets.Remove(skillsBullet);
         }
 
-        public Task<SkillsBullet> GetSkillsBulletByIdAsync(int id)
+        public async Task<SkillsBullet> GetSkillsBulletByIdAsync(int id)
         {
-            throw new NotImplementedException();
+            return await _context.SkillsBullets
+                 .Where(x => x.SkillsBulletId == id)
+                 .SingleOrDefaultAsync();
         }
 
-        public Task<SkillsBulletDto> GetSkillsBulletDtoByIdAsync(int id)
+        public async Task<SkillsBulletDto> GetSkillsBulletDtoByIdAsync(int id)
         {
-            throw new NotImplementedException();
+            return await _context.SkillsBullets
+              .Where(x => x.SkillsBulletId == id)
+              .ProjectTo<SkillsBulletDto>(_mapper.ConfigurationProvider)
+              .SingleOrDefaultAsync();
         }
 
-        public Task<IEnumerable<SkillsBulletDto>> GetSkillsBulletDtosByPositionIdAsync(int id)
+        public async Task<IEnumerable<SkillsBulletDto>> GetSkillsBulletDtosByPositionIdAsync(int id)
         {
-            throw new NotImplementedException();
+            return await _context.SkillsBullets
+                  .Where(x => x.PositionId == id)
+                  .ProjectTo<SkillsBulletDto>(_mapper.ConfigurationProvider)
+                  .OrderBy(x => x.Order)
+                  .ToListAsync();
         }
 
-        public Task<bool> SaveAllAsync()
+        public async Task<bool> SaveAllAsync()
         {
-            throw new NotImplementedException();
+            return await _context.SaveChangesAsync() > 0;
         }
 
         public void Update(SkillsBullet skillsBullet)
         {
-            throw new NotImplementedException();
+            _context.Entry(skillsBullet).State = EntityState.Modified;
         }
     }
 }

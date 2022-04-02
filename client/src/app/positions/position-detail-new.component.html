@@ -43,7 +43,14 @@
                 <div  *ngIf="dutyBullets?.length > 0">
                     <h4 class="mt-2"><strong>Responsibilities and Duties</strong></h4>
                     <ul>
-                        <li *ngFor="let dutybullet of dutyBullets">{{dutybullet.dutyBulletText}}</li>
+                        <li *ngFor="let dutyBullet of dutyBullets">{{dutyBullet.dutyBulletText}}</li>
+                    </ul>
+                </div>
+
+                <div  *ngIf="skillsBullets?.length > 0">
+                    <h4 class="mt-2"><strong>Requirements and Skills</strong></h4>
+                    <ul>
+                        <li *ngFor="let skillsBullet of skillsBullets">{{skillsBullet.skillsBulletText}}</li>
                     </ul>
                 </div>
                 

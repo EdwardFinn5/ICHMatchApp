@@ -53,6 +53,9 @@ import { PositionDutyBulletsComponent } from './position-duty-bullets/position-d
 import { PositionBulletResolver } from './_resolvers/position-bullet.Resolver';
 import { PositionViewDutyBulletsComponent } from './position-duty-bullets/position-view-duty-bullets.component';
 import { PositionEditDutyBulletsComponent } from './position-duty-bullets/position-edit-duty-bullets.component';
+import { PositionSkillsBulletsComponent } from './position-skills-bullets/position-skills-bullets.component';
+import { PositionViewSkillsBulletsComponent } from './position-skills-bullets/position-view-skills-bullets.component';
+import { PositionEditSkillsBulletsComponent } from './position-skills-bullets/position-edit-skills-bullets.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -152,8 +155,20 @@ const routes: Routes = [
         resolve: { position: PositionBulletResolver },
       },
       {
+        path: 'positionskillsbullets/:positionId',
+        component: PositionSkillsBulletsComponent,
+        pathMatch: 'full',
+        resolve: { position: PositionBulletResolver },
+      },
+      {
         path: 'positionviewdutybullets/:positionId',
         component: PositionViewDutyBulletsComponent,
+        pathMatch: 'full',
+        resolve: { position: PositionBulletResolver },
+      },
+      {
+        path: 'positionviewskillsbullets/:positionId',
+        component: PositionViewSkillsBulletsComponent,
         pathMatch: 'full',
         resolve: { position: PositionBulletResolver },
       },
@@ -199,6 +214,11 @@ const routes: Routes = [
   {
     path: 'positioneditdutybullet/:dutyBulletId',
     component: PositionEditDutyBulletsComponent,
+    pathMatch: 'full',
+  },
+  {
+    path: 'positioneditskillsbullet/:dutyBulletId',
+    component: PositionEditSkillsBulletsComponent,
     pathMatch: 'full',
   },
   { path: 'about', component: AboutComponent },
