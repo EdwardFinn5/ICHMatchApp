@@ -19,10 +19,10 @@
                     <td>{{position.positionName}}</td>
                     <td>{{position.positionType}}</td>
                     <td>
-                        <button class="btn btn-primary btn-sm shadow-sm mr-2 mb-2" routerLink='/positiondutybullets/{{position.positionId}}'>Add Duties Bullets</button>
-                        <button class="btn btn-primary btn-sm shadow-sm mr-2 mb-2" routerLink='/positionskillsbullets/{{position.positionId}}'>Add Skills Bullets</button>
-                        <button class="btn btn-success btn-sm shadow-sm mr-2 mb-2" routerLink='/newpositiondetail/{{position.positionId}}'>View</button>
-                        <button class="btn btn-primary btn-sm shadow-sm mr-2 mb-2" routerLink='/editposition/{{position.positionId}}'>Edit</button>
+                        <button class="btn btn-info btn-sm shadow-sm mr-2 mb-2" routerLink='/positionbulletshome/{{position.positionId}}'>Add Bullet Points</button>
+                        <!-- <button class="btn btn-primary btn-sm shadow-sm mr-2 mb-2" routerLink='/positionskillsbullets/{{position.positionId}}'>Add Skills Bullets</button> -->
+                        <button class="btn btn-success btn-sm shadow-sm mr-2 mb-2" routerLink='/newpositiondetail/{{position.positionId}}'>View Position</button>
+                        <button class="btn btn-primary btn-sm shadow-sm mr-2 mb-2" routerLink='/editposition/{{position.positionId}}'>Edit Position</button>
                            
                       
                         <button type="button-del" (click)="deletePosition(position.positionId)"  class="btn btn-danger btn-sm shadow-sm mb-2">

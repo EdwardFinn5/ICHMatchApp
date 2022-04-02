@@ -57,14 +57,14 @@ export class PositionViewDutyBulletsComponent implements OnInit {
       });
   }
 
-  addDutyBullet() {
-    // this.loading = true;
-    this.bulletService
-      .addDutyBullet(this.positionId, this.dutyBulletForm.value)
-      .subscribe((dutyBullet) => {
-        this.dutyBullets.push(dutyBullet);
-        this.dutyBulletForm.reset();
-        this.loadDutyBullets();
-      });
-  }
+  // addSkillsBullet() {
+  //   // this.loading = true;
+  //   this.bulletService
+  //     .addSkillsBullet(this.positionId, this.skillsBulletForm.value)
+  //     .subscribe((skillsBullet) => {
+  //       this.skillsBullets.push(skillsBullet);
+  //       this.skillsBulletForm.reset();
+  //       this.loadSkillsBullets();
+  //     });
+  // }
 }

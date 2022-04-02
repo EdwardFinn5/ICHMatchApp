@@ -9,7 +9,7 @@
         <h2 class="mb-3"><strong>Current <u>Requirements and Skills</u> bullet points for {{position?.positionName}} position:</strong></h2>
         <h4><strong>Requirements and Skills</strong></h4>
         <ul>
-            <li *ngFor="let skillsbullet of skillsBullets">{{skillsbullet.skillsBulletText}}</li>
+            <li *ngFor="let skillsBullet of skillsBullets">{{skillsBullet.skillsBulletText}}</li>
         </ul>
         <button class="btn btn-primary btn-sm shadow-sm mr-2 mb-2" routerLink='/positionskillsbullets/{{position.positionId}}'>Back to adding bullets</button>
 

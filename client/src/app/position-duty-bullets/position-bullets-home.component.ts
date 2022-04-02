@@ -8,19 +8,21 @@ import { BulletService } from '../_services/bullet.service';
 import { Position2Service } from '../_services/position2.service';
 
 @Component({
-  selector: 'app-position-skills-bullets',
-  templateUrl: './position-skills-bullets.component.html',
-  styleUrls: ['./position-skills-bullets.component.css'],
+  selector: 'app-position-bullets-home',
+  templateUrl: './position-bullets-home.component.html',
+  styleUrls: ['./position-bullets-home.component.css'],
 })
-export class PositionSkillsBulletsComponent implements OnInit {
+export class PositionBulletsHomeComponent implements OnInit {
   position: Position;
   positionName?: string = '';
   positionId: number;
+  @Input() dutyBullets: DutyBullet[];
   @Input() skillsBullets: SkillsBullet[];
+  @ViewChild('dutyBulletForm') dutyBulletForm: NgForm;
   @ViewChild('skillsBulletForm') skillsBulletForm: NgForm;
+  dutyBullet: string;
   skillsBullet: string;
   loading = false;
-  skillsBulletId: number;
 
   constructor(
     private bulletService: BulletService,
@@ -41,13 +43,20 @@ export class PositionSkillsBulletsComponent implements OnInit {
         this.position = position;
         this.positionName = position.positionName;
         console.log('positionId: ', position.positionId);
+        this.loadDutyBullets();
         this.loadSkillsBullets();
       });
   }
 
+  loadDutyBullets() {
+    this.bulletService
+      .getDutyBullets(this.positionId)
+      .subscribe((dutyBullets) => {
+        this.dutyBullets = dutyBullets;
+      });
+  }
+
   loadSkillsBullets() {
-    // this.positionId = +this.route.snapshot.paramMap.get('positionId');
-    // console.log('1st positionId: ', this.positionId);
     this.bulletService
       .getSkillsBullets(this.positionId)
       .subscribe((skillsBullets) => {
@@ -55,29 +64,25 @@ export class PositionSkillsBulletsComponent implements OnInit {
       });
   }
 
-  addSkillsBullet() {
+  addDutyBullet() {
     // this.loading = true;
     this.bulletService
-      .addSkillsBullet(this.positionId, this.skillsBulletForm.value)
-      .subscribe((skillsBullet) => {
-        this.skillsBullets.push(skillsBullet);
-        this.skillsBulletForm.reset();
-        this.loadSkillsBullets();
+      .addDutyBullet(this.positionId, this.dutyBulletForm.value)
+      .subscribe((dutyBullet) => {
+        this.dutyBullets.push(dutyBullet);
+        this.dutyBulletForm.reset();
+        this.loadDutyBullets();
       });
   }
 
-  deleteSkillsBullet(id: number) {
-    this.skillsBulletId = id;
-    console.log('skillsBulletId: ', this.skillsBulletId);
-    // this.confirmService
-    //   .confirm('Confirm delete message', 'This cannot be undone')
-    //   .subscribe((result) => {
-    //     if (result) {
-    this.bulletService.deleteSkillsBullet(id).subscribe(() => {
-      this.skillsBullets.splice(
-        this.skillsBullets.findIndex((m) => m.skillsBulletId === id),
-        1
-      );
-    });
+  addSkillsBullet() {
+    // this.loading = true;
+    this.bulletService
+      .addDutyBullet(this.positionId, this.skillsBulletForm.value)
+      .subscribe((skillsBullet) => {
+        this.dutyBullets.push(skillsBullet);
+        this.skillsBulletForm.reset();
+        this.loadSkillsBullets();
+      });
   }
 }

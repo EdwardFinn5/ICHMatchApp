@@ -1,0 +1,38 @@
+<div class="container mt-2" *ngIf="position">
+    <div *ngIf="dutyBullets?.length === 0" class="mb-3">
+        <h3 class="mb-3"><strong>No <u>Responsibilites and Duties</u> yet for this {{position.positionName}} position</strong></h3>
+        <button class="btn btn-info btn-sm shadow-sm mr-2 mb-2" routerLink='/positiondutybullets/{{position.positionId}}'>Add Bullet Points</button>
+    </div>
+
+    <div  *ngIf="dutyBullets?.length > 0" class="mb-3 col-sm-8 col-lg-4 col-md-6 m-auto">
+            
+        <h3 class="mb-3"><strong>Current <u>Responsibilites and Duties</u> bullet points for {{position?.positionName}} position:</strong></h3>
+        <h4><strong>Responsibilities and Duties</strong></h4>
+        <ul>
+            <li *ngFor="let dutyBullet of dutyBullets">{{dutyBullet.dutyBulletText}}</li>
+        </ul>
+        <div class="col text-center">
+            <button class="btn btn-info btn-sm shadow-sm" routerLink='/positiondutybullets/{{position.positionId}}'>Add/Edit Bullet Points</button>
+        </div>
+       
+    </div>
+</div>
+<div class="container" *ngIf="position">
+    <div *ngIf="skillsBullets?.length === 0" class="mb-3">
+        <h3 class="mb-3"><strong>No <u>Requirements and Skills</u> yet for this {{position.positionName}} position</strong></h3>
+        <button class="btn btn-info btn-sm shadow-sm mr-2 mb-2" routerLink='/positionskillsbullets/{{position.positionId}}'>Add Bullet Points</button>
+    </div>
+
+    <div  *ngIf="skillsBullets?.length > 0" class="mb-3 col-sm-8 col-lg-4 col-md-6 m-auto">
+            
+        <h3 class="mb-3"><strong>Current <u>Requirements and Skills</u> bullet points for {{position?.positionName}} position:</strong></h3>
+        <h4><strong>Requirements and Skills</strong></h4>
+        <ul>
+            <li *ngFor="let skillsBullet of skillsBullets">{{skillsBullet.skillsBulletText}}</li>
+        </ul>
+
+        <div class="col text-center">
+            <button class="btn btn-info btn-sm shadow-sm mr-2 mb-2" routerLink='/positionskillsbullets/{{position.positionId}}'>Add/Edit Bullet Points</button>
+        </div>
+    </div>
+</div>

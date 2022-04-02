@@ -56,6 +56,7 @@ import { PositionEditDutyBulletsComponent } from './position-duty-bullets/positi
 import { PositionSkillsBulletsComponent } from './position-skills-bullets/position-skills-bullets.component';
 import { PositionViewSkillsBulletsComponent } from './position-skills-bullets/position-view-skills-bullets.component';
 import { PositionEditSkillsBulletsComponent } from './position-skills-bullets/position-edit-skills-bullets.component';
+import { PositionBulletsHomeComponent } from './position-duty-bullets/position-bullets-home.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -161,6 +162,12 @@ const routes: Routes = [
         resolve: { position: PositionBulletResolver },
       },
       {
+        path: 'positionbulletshome/:positionId',
+        component: PositionBulletsHomeComponent,
+        pathMatch: 'full',
+        resolve: { position: PositionBulletResolver },
+      },
+      {
         path: 'positionviewdutybullets/:positionId',
         component: PositionViewDutyBulletsComponent,
         pathMatch: 'full',
@@ -217,7 +224,7 @@ const routes: Routes = [
     pathMatch: 'full',
   },
   {
-    path: 'positioneditskillsbullet/:dutyBulletId',
+    path: 'positioneditskillsbullet/:skillsBulletId',
     component: PositionEditSkillsBulletsComponent,
     pathMatch: 'full',
   },
