@@ -73,7 +73,7 @@ export class RegisterStudComponent implements OnInit {
       (response) => {
         console.log('response: ', response);
         this.cancel();
-        this.router.navigateByUrl('/positionslist');
+        this.router.navigateByUrl('/member/edit');
         this.toastr.success('Registration was successful');
       },
       (error) => {

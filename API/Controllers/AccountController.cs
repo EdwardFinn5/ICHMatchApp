@@ -167,7 +167,7 @@ namespace API.Controllers
                 Location = user.Location,
                 StudentUrl = user.Photos.FirstOrDefault(x => x.IsMain)?.StudentUrl,
                 LogoUrl = user.Photos.FirstOrDefault(x => x.IsMainLogo)?.LogoUrl,
-                HrUrl = user.Photos.FirstOrDefault(x => x.IsMainHr)?.HrUrl
+                HrUrl = user.PhotoHrs.FirstOrDefault(x => x.IsMainHr)?.HrUrl
             };
         }
         private async Task<bool> UserExists(string username)

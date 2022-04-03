@@ -181,6 +181,39 @@ namespace API.Controllers
             return BadRequest("Problem adding photo");
         }
 
+        [HttpPost("add-hr-photo")]
+        public async Task<ActionResult<PhotoHrDto>> AddHrPhoto(IFormFile file)
+        {
+            var user = await _userRepository.GetUserByUsernameAsync(User.GetUsername());
+
+            var result = await _photoService.AddPhotoAsync(file);
+
+            if (result.Error != null) return BadRequest(result.Error.Message);
+
+            var photo = new PhotoHr
+            {
+                HrUrl = null
+
+            };
+
+            photo.HrUrl = result.SecureUrl.AbsoluteUri;
+            photo.PublicId = result.PublicId;
+
+            if (user.Photos.Count == 0)
+            {
+                photo.IsMainHr = true;
+            }
+
+            user.PhotoHrs.Add(photo);
+
+            if (await _userRepository.SaveAllAsync())
+                // return _mapper.Map<PhotoDto>(photo);
+                // return CreatedAtRoute("GetUser", _mapper.Map<PhotoDto>(photo));
+                return CreatedAtRoute("GetUser", new { username = user.UserName }, _mapper.Map<PhotoHrDto>(photo)); // used 3rd overload which 
+            // has the following parameters: string routename, object routeValues, object value
+            return BadRequest("Problem adding photo");
+        }
+
         [HttpPut("set-main-photo/{photoId}")]
         public async Task<ActionResult> SetMainPhoto(int photoId)
         {
@@ -219,6 +252,29 @@ namespace API.Controllers
             return BadRequest("Failed to set main image");
         }
 
+        [HttpPut("set-main-hr-photo/{photoId}")]
+        public async Task<ActionResult> SetMainHrPhoto(int photoId)
+        {
+            var user = await _userRepository.GetUserByUsernameAsync(User.GetUsername());
+
+            var photo = user.PhotoHrs.FirstOrDefault(x => x.Id == photoId);
+
+            if (photo.IsMainHr) return BadRequest("This is already your main photo");
+
+            var currentMainHr = user.PhotoHrs.FirstOrDefault(x => x.IsMainHr);
+
+            if (currentMainHr != null)
+            {
+                currentMainHr.IsMainHr = false;
+                photo.IsMainHr = true;
+            }
+
+            if (await _userRepository.SaveAllAsync()) return NoContent();
+
+            return BadRequest("Failed to set main image");
+        }
+
+
         [HttpDelete("delete-photo/{photoId}")]
         public async Task<ActionResult> DeletePhoto(int photoId)
         {
@@ -241,10 +297,10 @@ namespace API.Controllers
                 return BadRequest("You cannot delete your main logo");
             }
 
-            if (photo.IsMainHr)
-            {
-                return BadRequest("You cannot delete your main HR Photo");
-            }
+            // if (photo.IsMainHr)
+            // {
+            //     return BadRequest("You cannot delete your main HR Photo");
+            // }
 
             if (photo.PublicId != null)
             {
@@ -261,6 +317,40 @@ namespace API.Controllers
             if (await _userRepository.SaveAllAsync()) return Ok();
 
             return BadRequest("Failed to delete the photo/logo");
+        }
+
+        [HttpDelete("delete-photo-hr/{photoId}")]
+        public async Task<ActionResult> DeletePhotoHr(int photoId)
+        {
+            var user = await _userRepository.GetUserByUsernameAsync(User.GetUsername());
+
+            var photo = user.PhotoHrs.FirstOrDefault(x => x.Id == photoId);
+
+            if (photo == null)
+            {
+                return NotFound();
+            }
+
+            if (photo.IsMainHr)
+            {
+                return BadRequest("You cannot delete your main contact photo");
+            }
+
+            if (photo.PublicId != null)
+            {
+                var result = await _photoService.DeletePhotoAsync(photo.PublicId);
+
+                if (result.Error != null)
+                {
+                    return BadRequest(result.Error.Message);
+                }
+            }
+
+            user.PhotoHrs.Remove(photo);
+
+            if (await _userRepository.SaveAllAsync()) return Ok();
+
+            return BadRequest("Failed to delete the contact photo");
         }
     }
 }

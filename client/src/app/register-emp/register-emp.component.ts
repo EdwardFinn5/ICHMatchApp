@@ -72,7 +72,7 @@ export class RegisterEmpComponent implements OnInit {
       (response) => {
         console.log(response);
         this.cancel();
-        this.router.navigateByUrl('/membersearch');
+        this.router.navigateByUrl('empmember/edit');
       },
       (error) => {
         console.log(error);

@@ -1,21 +1,19 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FileUploader } from 'ng2-file-upload';
 import { take } from 'rxjs/operators';
-import { UserLoginComponent } from 'src/app/user-login/user-login.component';
-import { Member } from 'src/app/_models/member';
-import { Photo } from 'src/app/_models/photo';
-import { User } from 'src/app/_models/user';
-import { AccountService } from 'src/app/_services/account.service';
-import { MembersService } from 'src/app/_services/members.service';
-import { SearchMembersService } from 'src/app/_services/search-members.service';
 import { environment } from 'src/environments/environment';
+import { Member } from '../_models/member';
+import { Photo } from '../_models/photo';
+import { User } from '../_models/user';
+import { AccountService } from '../_services/account.service';
+import { SearchMembersService } from '../_services/search-members.service';
 
 @Component({
-  selector: 'app-photo-editor',
-  templateUrl: './photo-editor.component.html',
-  styleUrls: ['./photo-editor.component.css'],
+  selector: 'app-photo-editor-logo',
+  templateUrl: './photo-editor-logo.component.html',
+  styleUrls: ['./photo-editor-logo.component.css'],
 })
-export class PhotoEditorComponent implements OnInit {
+export class PhotoEditorLogoComponent implements OnInit {
   @Input() member: Member;
   user: User;
   uploader: FileUploader;
@@ -35,21 +33,21 @@ export class PhotoEditorComponent implements OnInit {
     this.initializeUploader();
   }
 
-  setMainStudentPhoto(photo: Photo) {
-    this.searchMemberService.setMainPhoto(photo.id).subscribe(() => {
-      this.user.studentUrl = photo.studentUrl;
-      this.accountService.setCurrentUser(this.user);
-      this.member.studentUrl = photo.studentUrl;
-      this.member.photos.forEach((p) => {
-        if (p.isMain) {
-          p.isMain = false;
-        }
-        if (p.id === photo.id) {
-          p.isMain = true;
-        }
-      });
-    });
-  }
+  // setMainStudentPhoto(photo: Photo) {
+  //   this.searchMemberService.setMainPhoto(photo.id).subscribe(() => {
+  //     this.user.studentUrl = photo.studentUrl;
+  //     this.accountService.setCurrentUser(this.user);
+  //     this.member.studentUrl = photo.studentUrl;
+  //     this.member.photos.forEach((p) => {
+  //       if (p.isMain) {
+  //         p.isMain = false;
+  //       }
+  //       if (p.id === photo.id) {
+  //         p.isMain = true;
+  //       }
+  //     });
+  //   });
+  // }
 
   setMainCompanyPhoto(photo: Photo) {
     this.searchMemberService.setMainPhoto(photo.id).subscribe(() => {
@@ -67,20 +65,21 @@ export class PhotoEditorComponent implements OnInit {
     });
   }
 
-  setMainHrPhoto(photo: Photo) {
-    // this.searchMemberService.setMainPhoto(photo.id).subscribe(() => {
-    this.user.hrUrl = photo.hrUrl;
-    // this.accountService.setCurrentUser(this.user);
-    // this.member.hrUrl = photo.hrUrl;
-    this.member.photos.forEach((p) => {
-      if (p.isMainHr) {
-        p.isMainHr = false;
-      }
-      if (p.id === photo.id) {
-        p.isMainHr = true;
-      }
-    });
-  }
+  // setMainHrPhoto(photo: Photo) {
+  //   this.searchMemberService.setMainPhoto(photo.id).subscribe(() => {
+  //     this.user.hrUrl = photo.hrUrl;
+  //     this.accountService.setCurrentUser(this.user);
+  //     this.member.hrUrl = photo.hrUrl;
+  //     this.member.photos.forEach((p) => {
+  //       if (p.isMainHr) {
+  //         p.isMainHr = false;
+  //       }
+  //       if (p.id === photo.id) {
+  //         p.isMainHr = true;
+  //       }
+  //     });
+  //   });
+  // }
 
   deletePhoto(photoId: number) {
     this.searchMemberService.deletePhoto(photoId).subscribe(() => {
@@ -111,16 +110,16 @@ export class PhotoEditorComponent implements OnInit {
       if (response) {
         const photo: Photo = JSON.parse(response);
         this.member.photos.push(photo);
-        if (photo.isMain) {
-          this.user.studentUrl = photo.studentUrl;
-          this.member.studentUrl = photo.studentUrl;
+        if (photo.isMainHr) {
+          this.user.hrUrl = photo.hrUrl;
+          this.member.hrUrl = photo.hrUrl;
           this.accountService.setCurrentUser(this.user);
         }
-        if (photo.isMainLogo) {
-          this.user.logoUrl = photo.logoUrl;
-          this.member.logoUrl = photo.logoUrl;
-          this.accountService.setCurrentUser(this.user);
-        }
+        // if (photo.isMainLogo) {
+        //   this.user.logoUrl = photo.logoUrl;
+        //   this.member.logoUrl = photo.logoUrl;
+        //   this.accountService.setCurrentUser(this.user);
+        // }
       }
     };
   }
