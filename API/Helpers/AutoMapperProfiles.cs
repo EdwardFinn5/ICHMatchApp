@@ -96,6 +96,8 @@ namespace API.Helpers
                     .MapFrom(src => src.Photos.FirstOrDefault(x => x.IsMain).StudentUrl))
                 .ForMember(dest => dest.LogoUrl, opt => opt
                     .MapFrom(src => src.Photos.FirstOrDefault(x => x.IsMainLogo).LogoUrl))
+                .ForMember(dest => dest.HrUrl, opt => opt
+                    .MapFrom(src => src.PhotoHrs.FirstOrDefault(x => x.IsMainHr).HrUrl))
                 .ForMember(dest => dest.EmpWebsite, opt => opt
                     .MapFrom(src => src.EmpInfos.FirstOrDefault(x => x.IsActive).EmpWebsite))
                 .ForMember(dest => dest.CompanyDescription, opt => opt
@@ -104,6 +106,7 @@ namespace API.Helpers
                     .MapFrom(src => src.EmpInfos.FirstOrDefault(x => x.IsActive).WhyWork));
 
             CreateMap<Photo, PhotoDto>();
+            CreateMap<PhotoHr, PhotoHrDto>();
             CreateMap<StudInfo, StudInfoDto>();
             CreateMap<EmpInfo, EmpInfoDto>();
 

@@ -1,12 +1,10 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FileUploader } from 'ng2-file-upload';
 import { take } from 'rxjs/operators';
-import { UserLoginComponent } from 'src/app/user-login/user-login.component';
 import { Member } from 'src/app/_models/member';
 import { Photo } from 'src/app/_models/photo';
 import { User } from 'src/app/_models/user';
 import { AccountService } from 'src/app/_services/account.service';
-import { MembersService } from 'src/app/_services/members.service';
 import { SearchMembersService } from 'src/app/_services/search-members.service';
 import { environment } from 'src/environments/environment';
 
@@ -67,21 +65,6 @@ export class PhotoEditorComponent implements OnInit {
     });
   }
 
-  setMainHrPhoto(photo: Photo) {
-    // this.searchMemberService.setMainPhoto(photo.id).subscribe(() => {
-    this.user.hrUrl = photo.hrUrl;
-    // this.accountService.setCurrentUser(this.user);
-    // this.member.hrUrl = photo.hrUrl;
-    this.member.photos.forEach((p) => {
-      if (p.isMainHr) {
-        p.isMainHr = false;
-      }
-      if (p.id === photo.id) {
-        p.isMainHr = true;
-      }
-    });
-  }
-
   deletePhoto(photoId: number) {
     this.searchMemberService.deletePhoto(photoId).subscribe(() => {
       this.member.photos = this.member.photos.filter((x) => x.id !== photoId);
@@ -102,6 +85,7 @@ export class PhotoEditorComponent implements OnInit {
       autoUpload: false,
       maxFileSize: 10 * 1024 * 1024,
     });
+    console.log('just initialized fileuploader');
 
     this.uploader.onAfterAddingFile = (file) => {
       file.withCredentials = false;

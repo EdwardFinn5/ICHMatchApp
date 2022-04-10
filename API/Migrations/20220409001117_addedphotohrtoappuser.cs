@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace API.Migrations
 {
-    public partial class newstartinMarch : Migration
+    public partial class addedphotohrtoappuser : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -200,6 +200,30 @@ namespace API.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "PhotoHrs",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    HrUrl = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    DateAdded = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    IsMainHr = table.Column<bool>(type: "bit", nullable: false),
+                    PublicId = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    AppUserId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_PhotoHrs", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_PhotoHrs_Users_AppUserId",
+                        column: x => x.AppUserId,
+                        principalTable: "Users",
+                        principalColumn: "AppUserId",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Photos",
                 columns: table => new
                 {
@@ -207,12 +231,10 @@ namespace API.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     StudentUrl = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     LogoUrl = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    HrUrl = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     DateAdded = table.Column<DateTime>(type: "datetime2", nullable: false),
                     IsMain = table.Column<bool>(type: "bit", nullable: false),
                     IsMainLogo = table.Column<bool>(type: "bit", nullable: false),
-                    IsMainHr = table.Column<bool>(type: "bit", nullable: false),
                     PublicId = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     AppUserId = table.Column<int>(type: "int", nullable: false)
                 },
@@ -335,6 +357,28 @@ namespace API.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "SkillsBullets",
+                columns: table => new
+                {
+                    SkillsBulletId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    SkillsBulletText = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Order = table.Column<float>(type: "real", nullable: false),
+                    IsActive = table.Column<bool>(type: "bit", nullable: false),
+                    PositionId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_SkillsBullets", x => x.SkillsBulletId);
+                    table.ForeignKey(
+                        name: "FK_SkillsBullets_Positions_PositionId",
+                        column: x => x.PositionId,
+                        principalTable: "Positions",
+                        principalColumn: "PositionId",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_DutyBullets_PositionId",
                 table: "DutyBullets",
@@ -366,6 +410,11 @@ namespace API.Migrations
                 column: "SenderId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_PhotoHrs_AppUserId",
+                table: "PhotoHrs",
+                column: "AppUserId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Photos_AppUserId",
                 table: "Photos",
                 column: "AppUserId");
@@ -379,6 +428,11 @@ namespace API.Migrations
                 name: "IX_RegisterCodes_AppUserId",
                 table: "RegisterCodes",
                 column: "AppUserId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_SkillsBullets_PositionId",
+                table: "SkillsBullets",
+                column: "PositionId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_StudInfos_AppUserId",
@@ -413,19 +467,25 @@ namespace API.Migrations
                 name: "Messages");
 
             migrationBuilder.DropTable(
+                name: "PhotoHrs");
+
+            migrationBuilder.DropTable(
                 name: "Photos");
 
             migrationBuilder.DropTable(
                 name: "RegisterCodes");
 
             migrationBuilder.DropTable(
+                name: "SkillsBullets");
+
+            migrationBuilder.DropTable(
                 name: "StudInfos");
 
             migrationBuilder.DropTable(
-                name: "Positions");
+                name: "Categories");
 
             migrationBuilder.DropTable(
-                name: "Categories");
+                name: "Positions");
 
             migrationBuilder.DropTable(
                 name: "Users");

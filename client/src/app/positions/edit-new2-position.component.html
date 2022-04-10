@@ -1,0 +1,99 @@
+<!-- <div class="container-fluid"> -->
+
+    <div class="row shadow" *ngIf="member" style="margin-left: 0px">
+        <div class="text-center">
+            <h2><strong>Add/Edit Position and Hr Contact Photo</strong></h2>
+        </div>
+        <div class="text-center">
+            <div class="alert alert-info" *ngIf="addPositionForm.dirty">
+                <p><strong>Alert: </strong>You have made changes. Any unsaved changes will be lost</p>
+            </div>
+        </div>
+    
+        <div class="col-sm-4 p-0">
+            <div class="card" style="align-items: center">
+                <img src="{{member.logoUrl || '../../assets/images/new_logo.png' }}" alt="{{member.empName}}"
+                    class="card-img-top img-studthumbnail">
+                <div class="card-body text-center">
+                    <p>
+                        <u><strong>{{member.empName}}</strong></u>
+                        <br>
+                        {{member.empIndustry}} industry
+                        <br>
+                        Number of employees: {{member.employeeNum}}
+                        <br>
+                        Located in {{member.location}}
+                    </p>
+    
+                    <
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-sm-8 p-2">
+            <tabset class="member-tabset" #memberTabs>
+                <tab heading='Position Information' class="tab-heading">
+                    <form [formGroup]='addPositionForm' (ngSubmit)="addPositionForm.valid && addPosition()" autocomplete="off">
+                        <div class="details mb-3">
+    
+                            <app-text-input [formControl]='addPositionForm.controls["positionName"]'
+                                [label]='"Position Name"'>
+                            </app-text-input>
+
+                            <div class="form-group">
+                                <label class="control-label" style="margin-right: 10px">Position type: </label>
+                                <label class="radio-inline">
+                                  <input type="radio" value="Full-Time" formControlName="positionType"> Full-Time
+                                </label>
+                                <label class="radio-inline">
+                                    <input type="radio" value="Part-Time" formControlName="positionType" class="ml-2"> Part-Time
+                                </label>
+                                <label class="radio-inline">
+                                    <input type="radio" value="Internship" formControlName="positionType" class="ml-2"> Internship
+                                </label>
+                              </div>
+
+                            <app-text-input [formControl]='addPositionForm.controls["positionLocation"]'
+                                [label]='"Position Location"'>
+                            </app-text-input>
+
+                            <app-text-input [formControl]='addPositionForm.controls["positionDescription"]'
+                                [label]='"Position Description"'>
+                            </app-text-input>
+
+                            <app-text-input [formControl]='addPositionForm.controls["positionBenefits"]'
+                                [label]='"Position Benefits"'>
+                            </app-text-input>
+                           
+                            <div class="row" *ngIf="validationErrors.length > 0" >
+                                <ul class="text-danger">
+                                    <li  *ngFor="let error of validationErrors">
+                                        {{error}}
+                                    </li>
+                                </ul>
+                            </div>  
+                            
+                            <div class="btn-group d-flex">
+                        <!-- <button class="btn btn-primary mr-2">Possible Fit</button> -->
+                                <button [disabled]="!addPositionForm.valid" type="submit"
+                                    class="btn btn-info shadow-sm mr-1">Save Position Info</button>
+                                <button class="btn btn-success shadow-sm ml-1" routerLink='/membersearch'>See talent</button>
+                             </div>
+                         </div>
+                    </form>
+               </tab> 
+        
+                <tab heading='HR Contact Photo'>
+                    <h4><strong>If you want to edit the existing HR Contact Photo you must first add another photo and then mark it as "Main."</strong></h4>
+                    <app-photo-editor-hr [member]="member"></app-photo-editor-hr>
+                </tab>
+        
+            </tabset>
+        </div>
+         
+    
+        
+        
+        
+    
+    

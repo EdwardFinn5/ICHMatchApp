@@ -40,6 +40,10 @@ export class Position2Service {
     return this.userParams;
   }
 
+  addPosition(model: any, id: number) {
+    return this.http.post(this.baseUrl + 'positions/' + id, model);
+  }
+
   getPositions(userParams: UserParams) {
     console.log(Object.values(userParams).join('-'));
     var response = this.positionCache.get(Object.values(userParams).join('-'));

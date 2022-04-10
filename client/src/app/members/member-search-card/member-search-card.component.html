@@ -2,7 +2,7 @@
 
 
     <div class="card-img-wrapper" *ngIf="member.appUserType == 'EmpHr'">
-        <img src="{{member.logoUrl || '../../assets/images/logo.PNG' }}" alt="{{member.firstName}}" class="card-img-top">
+        <img src="{{member.logoUrl || '../../assets/images/new_logo.png' }}" alt="{{member.firstName}}" class="card-img-top">
         <ul class="list-inline member-icons animate text-center">
             <li class="list-inline-item"><button routerLink='/empmembers/{{member.username}}' class="btn btn-primary">
             <i class="fa fa-info"></i>
@@ -35,9 +35,9 @@
     
     <div class="card-img-wrapper" *ngIf="member.appUserType == 'ColStudent'">
         <!-- <div class="card-header bg-success">
-        </div> -->
+        </div> --> 
        
-        <img src="{{member.studentUrl || '../../assets/images/coluser.PNG' }}" alt="{{member.firstName}}" class="card-img-top">
+        <img src="{{member.studentUrl || '../../assets/images/person.png' }}" alt="{{member.firstName}}" class="card-img-top">
         <ul class="list-inline member-icons animate text-center">
             <li class="list-inline-item"><button routerLink='/members/{{member.username}}' class="btn btn-primary">
                 <i class="fa fa-info"></i>

@@ -1,5 +1,6 @@
 import { EmpInfo } from './empInfo';
 import { Photo } from './photo';
+import { PhotoHr } from './photoHr';
 import { Position } from './position';
 import { StudInfo } from './studinfo';
 
@@ -53,6 +54,7 @@ export interface Member {
   created: Date;
   lastActive: Date;
   photos: Photo[];
+  photoHrs: PhotoHr[];
   positions: Position[];
   studInfos: StudInfo[];
   empInfos: EmpInfo[];

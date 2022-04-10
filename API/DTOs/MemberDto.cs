@@ -58,6 +58,7 @@ namespace API.DTOs
         public String ApplyEmail { get; set; }
         public String ApplyLink { get; set; }
         public ICollection<PhotoDto> Photos { get; set; }
+        public ICollection<PhotoHrDto> PhotoHrs { get; set; }
         public ICollection<StudInfoDto> StudInfos { get; set; }
         public ICollection<EmpInfoDto> EmpInfos { get; set; }
         public ICollection<PositionDto> Positions { get; set; }

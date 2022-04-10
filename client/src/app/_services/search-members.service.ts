@@ -157,9 +157,22 @@ export class SearchMembersService {
     );
   }
 
+  setMainHrPhoto(photoId: number) {
+    return this.http.put(
+      this.baseUrl + 'searchusers/set-main-hr-photo/' + photoId,
+      {}
+    );
+  }
+
   deletePhoto(photoId: number) {
     return this.http.delete(
       this.baseUrl + 'searchusers/delete-photo/' + photoId
+    );
+  }
+
+  deleteHrPhoto(photoId: number) {
+    return this.http.delete(
+      this.baseUrl + 'searchusers/delete-photo-hr/' + photoId
     );
   }
 

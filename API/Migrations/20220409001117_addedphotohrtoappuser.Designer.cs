@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace API.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20220402233135_addedphotohr")]
-    partial class addedphotohr
+    [Migration("20220409001117_addedphotohrtoappuser")]
+    partial class addedphotohrtoappuser
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -616,7 +616,7 @@ namespace API.Migrations
             modelBuilder.Entity("API.Entities.PhotoHr", b =>
                 {
                     b.HasOne("API.Entities.AppUser", "AppUser")
-                        .WithMany()
+                        .WithMany("PhotoHrs")
                         .HasForeignKey("AppUserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -698,6 +698,8 @@ namespace API.Migrations
                     b.Navigation("MessagesReceived");
 
                     b.Navigation("MessagesSent");
+
+                    b.Navigation("PhotoHrs");
 
                     b.Navigation("Photos");
 

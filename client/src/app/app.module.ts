@@ -72,7 +72,9 @@ import { PositionSkillsBulletsComponent } from './position-skills-bullets/positi
 import { PositionEditSkillsBulletsComponent } from './position-skills-bullets/position-edit-skills-bullets.component';
 import { PositionViewSkillsBulletsComponent } from './position-skills-bullets/position-view-skills-bullets.component';
 import { PositionBulletsHomeComponent } from './position-duty-bullets/position-bullets-home.component';
-import { PhotoEditorLogoComponent } from './photo-editor-logo/photo-editor-logo.component';
+import { PhotoEditorHrComponent } from './photo-editor-hr/photo-editor-hr.component';
+import { EditNewPositionComponent } from './positions/edit-new-position.component';
+import { EditNew2PositionComponent } from './positions/edit-new2-position.component';
 
 @NgModule({
   declarations: [
@@ -137,7 +139,9 @@ import { PhotoEditorLogoComponent } from './photo-editor-logo/photo-editor-logo.
     PositionEditSkillsBulletsComponent,
     PositionViewSkillsBulletsComponent,
     PositionBulletsHomeComponent,
-    PhotoEditorLogoComponent,
+    PhotoEditorHrComponent,
+    EditNewPositionComponent,
+    EditNew2PositionComponent,
   ],
   imports: [
     BrowserModule,

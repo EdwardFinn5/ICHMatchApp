@@ -8,6 +8,7 @@ import { Position } from 'src/app/_models/position';
 import { User } from 'src/app/_models/user';
 import { AccountService } from 'src/app/_services/account.service';
 import { PositionService } from 'src/app/_services/position.service';
+import { Position2Service } from 'src/app/_services/position2.service';
 
 @Component({
   selector: 'app-add-position',
@@ -29,7 +30,7 @@ export class AddPositionComponent implements OnInit {
   }
   constructor(
     private router: Router,
-    private positionService: PositionService,
+    private position2Service: Position2Service,
     private accountService: AccountService,
     private toastr: ToastrService
   ) {
@@ -41,7 +42,7 @@ export class AddPositionComponent implements OnInit {
   ngOnInit(): void {}
 
   addPosition() {
-    this.positionService
+    this.position2Service
       .addPosition(this.model, this.user.appUserId)
       .subscribe(() => {
         this.toastr.success('Position info added');

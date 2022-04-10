@@ -84,7 +84,8 @@ namespace API.Controllers
                 || registerEmpDto.RegisterCode == "bynxf"
                 || registerEmpDto.RegisterCode == "cnsjf"
                 || registerEmpDto.RegisterCode == "dyrba"
-                || registerEmpDto.RegisterCode == "edkmg")
+                || registerEmpDto.RegisterCode == "edkmg"
+                || registerEmpDto.RegisterCode == "21533")
             {
                 registerEmpDto.RegisterCode = registerEmpDto.RegisterCode;
             }
@@ -138,6 +139,7 @@ namespace API.Controllers
         {
             var user = await _context.Users
                 .Include(p => p.Photos)
+                .Include(h => h.PhotoHrs)
                 .SingleOrDefaultAsync(x => x.UserName == loginDto.Username.ToLower());
 
             if (user == null)

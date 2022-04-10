@@ -103,6 +103,7 @@ namespace API.Data
             return await _context.Positions
                   .Include(a => a.AppUser)
                   .Include(b => b.DutyBullets)
+                  .Include(b => b.SkillsBullets)
                   .ToListAsync();
         }
 

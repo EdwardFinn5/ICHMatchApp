@@ -167,6 +167,7 @@ namespace API.Data
         {
             return await _context.Users
             .Include(p => p.Photos)
+            .Include(h => h.PhotoHrs)
             .Include(s => s.StudInfos)
             .Include(e => e.EmpInfos)
             .Include(j => j.Positions)
@@ -177,6 +178,7 @@ namespace API.Data
         {
             return await _context.Users
             .Include(p => p.Photos)
+            .Include(h => h.PhotoHrs)
             .Include(s => s.StudInfos)
             .Include(e => e.EmpInfos)
             .Include(j => j.Positions)

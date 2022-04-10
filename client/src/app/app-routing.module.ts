@@ -57,6 +57,8 @@ import { PositionSkillsBulletsComponent } from './position-skills-bullets/positi
 import { PositionViewSkillsBulletsComponent } from './position-skills-bullets/position-view-skills-bullets.component';
 import { PositionEditSkillsBulletsComponent } from './position-skills-bullets/position-edit-skills-bullets.component';
 import { PositionBulletsHomeComponent } from './position-duty-bullets/position-bullets-home.component';
+import { EditNewPositionComponent } from './positions/edit-new-position.component';
+import { EditNew2PositionComponent } from './positions/edit-new2-position.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -132,6 +134,21 @@ const routes: Routes = [
         component: AddPositionComponent,
         canDeactivate: [PreventUnsavedAddPositionChangesGuard],
       },
+
+      {
+        path: 'new/position/add',
+        component: EditNewPositionComponent,
+        canDeactivate: [PreventUnsavedAddPositionChangesGuard],
+        pathMatch: 'full',
+      },
+
+      {
+        path: 'new2/position/add',
+        component: EditNew2PositionComponent,
+        canDeactivate: [PreventUnsavedAddPositionChangesGuard],
+        pathMatch: 'full',
+      },
+
       { path: 'empmembers/:username', component: EmpmemberDetailComponent },
       {
         path: 'empmember/edit',

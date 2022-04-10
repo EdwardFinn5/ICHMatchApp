@@ -190,26 +190,26 @@ namespace API.Controllers
 
             if (result.Error != null) return BadRequest(result.Error.Message);
 
-            var photo = new PhotoHr
+            var photoHr = new PhotoHr
             {
                 HrUrl = null
 
             };
 
-            photo.HrUrl = result.SecureUrl.AbsoluteUri;
-            photo.PublicId = result.PublicId;
+            photoHr.HrUrl = result.SecureUrl.AbsoluteUri;
+            photoHr.PublicId = result.PublicId;
 
-            if (user.Photos.Count == 0)
+            if (user.PhotoHrs.Count == 0)
             {
-                photo.IsMainHr = true;
+                photoHr.IsMainHr = true;
             }
 
-            user.PhotoHrs.Add(photo);
+            user.PhotoHrs.Add(photoHr);
 
             if (await _userRepository.SaveAllAsync())
                 // return _mapper.Map<PhotoDto>(photo);
                 // return CreatedAtRoute("GetUser", _mapper.Map<PhotoDto>(photo));
-                return CreatedAtRoute("GetUser", new { username = user.UserName }, _mapper.Map<PhotoHrDto>(photo)); // used 3rd overload which 
+                return CreatedAtRoute("GetUser", new { username = user.UserName }, _mapper.Map<PhotoHrDto>(photoHr)); // used 3rd overload which 
             // has the following parameters: string routename, object routeValues, object value
             return BadRequest("Problem adding photo");
         }

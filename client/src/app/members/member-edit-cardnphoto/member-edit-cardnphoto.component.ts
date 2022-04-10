@@ -1,5 +1,6 @@
 import { Component, HostListener, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { take } from 'rxjs/operators';
 import { Member } from 'src/app/_models/member';
@@ -28,7 +29,8 @@ export class MemberEditCardnphotoComponent implements OnInit {
   constructor(
     private accountService: AccountService,
     private searchMembersService: SearchMembersService,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private router: Router
   ) {
     this.accountService.currentUser$
       .pipe(take(1))
@@ -53,6 +55,7 @@ export class MemberEditCardnphotoComponent implements OnInit {
       console.log(this.member);
       this.toastr.success('Card info updated');
       this.editForm.reset(this.member);
+      // this.router.navigateByUrl('/member/edit');
     });
   }
 }

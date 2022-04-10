@@ -74,13 +74,13 @@
 
       <div *ngIf="accountService.appUserType == 'ColStudent'">
         <div class="dropdown" style="font-size: 1.3em" *ngIf="(accountService.currentUser$ | async) as user" dropdown>
-          <img src="{{user.studentUrl || '../../assets/images/coluser.PNG'}}" alt="{{user.username}}">
+          <img src="{{user.studentUrl || '../../assets/images/person.png'}}" alt="{{user.username}}">
           <a class="dropdown-toggle text-light mt-2 ml-2" dropdownToggle>Welcome {{user.firstName | titlecase}}</a>
           <div class="dropdown-menu mt-2" *dropdownMenu>
-            <a routerLink="/member/edit" class="dropdown-item">Add/Edit card & photo info</a>
+            <a routerLink="/member/edit" class="dropdown-item">Add/Edit Card & Photo Info</a>
             <div class="dropdown-divider"></div>
 
-            <a routerLink="/studinfo/edit" class="dropdown-item">Add/Edit academic info</a>
+            <a routerLink="/studinfo/edit" class="dropdown-item">Add/Edit Student Info</a>
 
             <div class="dropdown-divider"></div>
 
@@ -91,14 +91,14 @@
 
       <div *ngIf="accountService.appUserType == 'EmpHr'">
         <div class="dropdown" style="font-size: 1.3em" *ngIf="(accountService.currentUser$ | async) as user" dropdown>
-          <img src="{{user.logoUrl || '../../assets/images/logo.PNG' }}" alt="{{user.username}}" class="logo">
+          <img src="{{user.logoUrl || '../../assets/images/new_logo.png' }}" alt="{{user.username}}" class="logo">
           <a class="dropdown-toggle text-light mt-5 ml-2" dropdownToggle>Welcome {{user.firstName | titlecase}}</a>
           <div class="dropdown-menu mt-2" *dropdownMenu>
             <a routerLink="/empmember/edit" class="dropdown-item">Add/Edit card & logo info</a>
             <div class="dropdown-divider"></div>
             <a routerLink="/company2/edit" class="dropdown-item">Add/Edit company info</a>
             <div class="dropdown-divider"></div>
-            <a routerLink="/position/add" class="dropdown-item">Add a position</a>
+            <a routerLink="/new2/position/add" class="dropdown-item">Add a position</a>
             <div class="dropdown-divider"></div>
             <a routerLink="/empmember/positions" class="dropdown-item">View positions</a>
             <div class="dropdown-divider"></div>

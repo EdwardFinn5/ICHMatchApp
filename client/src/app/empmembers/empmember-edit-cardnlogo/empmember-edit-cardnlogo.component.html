@@ -1,8 +1,8 @@
-<div class="container-fluid">
+<!-- <div class="container-fluid"> -->
 
     <div class="row shadow"  *ngIf="member" style="margin-left: 0px">
         <div class="text-center">
-            <h2><strong>Add/Edit Logo & Contact Photo and Edit Card Info</strong></h2>
+            <h2><strong>Edit Card Info and Add/Edit Logo</strong></h2>
         </div>
         <div class="text-center">
             <div class="alert alert-info" *ngIf="editForm.dirty">
@@ -11,66 +11,53 @@
         </div>
     
         <div class="col-sm-4 p-0">
-                <div class="card">
-                    <img src="{{member.logoUrl || '../../assets/images/logo.PNG' }}" alt="{{member.empName}}" 
+                <div class="card" style="align-items: center">
+                    <img src="{{member.logoUrl || '../../assets/images/new_logo.png' }}" alt="{{member.empName}}" 
                     class="card-img-top img-studthumbnail">
                 <div class="card-body text-center">
-                    <!-- <div class="mb-1" *ngIf="(presence.onlineUsers$ | async).includes(member.username)">
-                        <i class="fa fa-user-circle text-success"></i> Online now
-                    </div> -->
-                    
+                    <p>                  
                     <u><strong>{{member.empName}}</strong></u>
-                
-                <p class="card-text text-muted text-center">
+                    <br>
                     {{member.empIndustry}} industry
                     <br> 
                     Number of employees: {{member.employeeNum}}
                     <br>
                     Located in {{member.location}}
                 </p>
-                </div>
                 
                     <div class="btn-group d-flex">
                         <!-- <button class="btn btn-primary mr-2">Possible Fit</button> -->
                         <button [disabled]="!editForm.dirty" form="editForm" type="submit" class="btn btn-info mr-1">Save Card Changes</button>
-                        <button class="btn btn-success shadow-sm ml-1" routerLink='/membersearch'>See talent</button>
+                        <button class="btn btn-success shadow-sm ml-1" routerLink='/company2/edit'>Add/Edit Company Info</button>
                     </div>
+                    <button class="btn btn-primary btn-block shadow-sm mt-2" routerLink='/membersearch'>See talent</button>
             </div>
         </div>
-    
-        
+    </div>
          
-            <div class="col-sm-8 p-2">
-    
-            <tabset class="member-tabset" #memberTabs>
+    <div class="col-sm-8 p-2">
+        <tabset class="member-tabset" #memberTabs>
+            <tab heading='Edit Card Info' class="tab-heading">
+                <form #editForm="ngForm" id="editForm" (ngSubmit)="updateMemberCard()">
+                    <div class="details mb-3">
+                    
+                        <label for="empIndustry"><strong>Industry: </strong></label>
+                        <input [(ngModel)]="member.empIndustry" type="text" name="empIndustry" class="form-control mb-2">
+                        <label for="employeeNum"><strong>Number of employees: </strong></label>
+                        <input [(ngModel)]="member.employeeNum" type="text" name="employeeNum" class="form-control mb-2">
+                        <label for="location"><strong>Employer location: </strong></label>
+                        <input [(ngModel)]="member.location" type="text" name="location" class="form-control mb-2">
+                    </div>   
+                </form>         
+            </tab>
 
                 <tab heading='Add/Edit Logo' >
-                    <app-photo-editor-logo [member]="member"></app-photo-editor-logo>
-                 </tab>
-
-                
-
-                <tab heading='About {{member.empName}}' class="tab-heading">
-                    <form #editForm="ngForm" id="editForm" (ngSubmit)="updateMemberCard()">
-                    <div class="details">
-                        <u><strong><h5>Card Information</h5></strong></u>
-                    <label for="empIndustry"><strong>Industry: </strong></label>
-                    <input [(ngModel)]="member.empIndustry" type="text" name="empIndustry" class="form-control mb-2">
-                    <label for="employeeNum"><strong>Number of employees: </strong></label>
-                    <input [(ngModel)]="member.employeeNum" type="text" name="employeeNum" class="form-control mb-2">
-                    <label for="location"><strong>Employer location: </strong></label>
-                    <input [(ngModel)]="member.location" type="text" name="location" class="form-control mb-2">
-                </div>   
-                    </form>         
-                </tab>
-
-                <tab heading='Contact Photo' >
                     <app-photo-editor [member]="member"></app-photo-editor>
                  </tab>
     
             </tabset>
         </div>
-    </div> 
+
     
     
     

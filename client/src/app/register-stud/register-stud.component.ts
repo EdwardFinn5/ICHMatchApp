@@ -72,9 +72,10 @@ export class RegisterStudComponent implements OnInit {
     this.accountService.registerStud(this.registerStudForm.value).subscribe(
       (response) => {
         console.log('response: ', response);
-        this.cancel();
-        this.router.navigateByUrl('/member/edit');
+        // this.cancel();
         this.toastr.success('Registration was successful');
+        this.router.navigateByUrl('/member/edit');
+        // this.toastr.success('Registration was successful');
       },
       (error) => {
         console.log(error);
