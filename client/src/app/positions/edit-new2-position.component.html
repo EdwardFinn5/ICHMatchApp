@@ -40,7 +40,7 @@
                                 [label]='"Position Name"'>
                             </app-text-input>
 
-                            <div class="form-group">
+                            <!-- <div class="form-group">
                                 <label class="control-label" style="margin-right: 10px">Position type: </label>
                                 <label class="radio-inline">
                                   <input type="radio" value="Full-Time" formControlName="positionType"> Full-Time
@@ -51,7 +51,22 @@
                                 <label class="radio-inline">
                                     <input type="radio" value="Internship" formControlName="positionType" class="ml-2"> Internship
                                 </label>
-                              </div>
+                              </div> -->
+
+                              <div class="form-group">
+                                <label>Position Type is Required</label>  
+                                <select
+                                    formControlName='positionType'
+                                    style="width: auto"
+                                    required
+                                    class="form-control mr-2">
+                                    <option value="">--Select Position Type--</option>
+                                    <option *ngFor="let positionType of positionTypeList" 
+                                        [value]="positionType.value">
+                                        {{positionType.display}}
+                                    </option>
+                                </select>
+                            </div> 
 
                             <app-text-input [formControl]='addPositionForm.controls["positionLocation"]'
                                 [label]='"Position Location"'>
