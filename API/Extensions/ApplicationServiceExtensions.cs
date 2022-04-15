@@ -32,6 +32,8 @@ namespace API.Extensions
             services.AddScoped<ICollegeRepository, CollegeRepository>();
             services.AddScoped<IMajorRepository, MajorRepository>();
             services.AddScoped<ILocationRepository, LocationRepository>();
+            services.AddScoped<IPositNameRepository, PositNameRepository>();
+            services.AddScoped<IPosCategoryRepository, PosCategoryRepository>();
             services.AddScoped<IDutyBulletRepository, DutyBulletRepository>();
             services.AddScoped<ISkillsBulletRepository, SkillsBulletRepository>();
             services.AddAutoMapper(typeof(AutoMapperProfiles).Assembly);

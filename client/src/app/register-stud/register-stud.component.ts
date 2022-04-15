@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
 import {
   AbstractControl,
   FormBuilder,
@@ -9,7 +9,11 @@ import {
 } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { Category } from '../_models/category';
+import { Major } from '../_models/major';
 import { AccountService } from '../_services/account.service';
+import { MajorService } from '../_services/major.service';
+import { MembersService } from '../_services/members.service';
 
 @Component({
   selector: 'app-register-stud',
@@ -17,18 +21,23 @@ import { AccountService } from '../_services/account.service';
   styleUrls: ['./register-stud.component.css'],
 })
 export class RegisterStudComponent implements OnInit {
+  @Output() value: string = '';
   registerStudForm: FormGroup;
   validationErrors: string[] = [];
+  categories: Category[];
+  majors: Major[];
 
   constructor(
     private router: Router,
     private accountService: AccountService,
+    private majorService: MajorService,
     private toastr: ToastrService,
     private fb: FormBuilder
   ) {}
 
   ngOnInit(): void {
     this.initializeForm();
+    this.loadCategories();
   }
 
   initializeForm() {
@@ -51,7 +60,8 @@ export class RegisterStudComponent implements OnInit {
       lastName: ['', Validators.required],
       location: ['', Validators.required],
       classYear: ['Junior', Validators.required],
-      major: ['', Validators.required],
+
+      // major: ['', Validators.required],
       college: ['', Validators.required],
       gradDate: ['', Validators.required],
     });
@@ -82,6 +92,25 @@ export class RegisterStudComponent implements OnInit {
         this.validationErrors = error;
       }
     );
+  }
+
+  loadCategories() {
+    this.majorService.getCategories().subscribe((categories) => {
+      this.categories = categories;
+      // console.log(this.categories);
+    });
+  }
+
+  onSelect(categories) {
+    // console.log(categories.target.value);
+    this.majorService.getMajors().subscribe((majors) => {
+      this.majors = majors;
+      // console.log('all majors', majors);
+      this.majors = majors.filter(
+        (e) => e.categoryId == categories.target.value
+      );
+      console.log('category id: ', categories.target.value);
+    });
   }
 
   cancel() {

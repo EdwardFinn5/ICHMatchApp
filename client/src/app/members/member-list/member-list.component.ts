@@ -93,12 +93,6 @@ export class MemberListComponent implements OnInit {
         (e) => e.categoryId == categories.target.value
       );
       console.log('category id: ', categories.target.value);
-      // console.log(
-      //   'majors with Category Id of ',
-      //   categories.target.value,
-      //   ': ',
-      //   this.majors
-      // );
     });
   }
 

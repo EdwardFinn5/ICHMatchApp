@@ -1,7 +1,9 @@
 export class UserParams {
   // appUserType = '';
   category = '';
+  posCategory = '';
   major = '';
+  posName = '';
   classYear = '';
   location = '';
   empIndustry = '';
@@ -11,11 +13,10 @@ export class UserParams {
   lastName = '';
   pageNumber = 1;
   pageSize = 8;
-  positionName = '';
   positionType = '';
   positionLocation = '';
   orderByLastActive = '';
-  orderByPositionName = '';
+  orderByPosName = '';
   orderByPositionLocation = '';
   orderByMajor = '';
   orderByLastName = '';

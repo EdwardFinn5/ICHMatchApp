@@ -25,6 +25,11 @@ export class EditNew2PositionComponent implements OnInit {
   hrUrl?: string = '';
   member: Member;
   user: User;
+  positionTypeList = [
+    { value: 'Internship', display: 'Internship' },
+    { value: 'Full-Time', display: 'Full-Time' },
+    { value: 'Part-Time', display: 'Part-Time' },
+  ];
   @HostListener('window:beforeunload', ['$event']) unloadNotification(
     $event: any
   ) {
@@ -54,7 +59,7 @@ export class EditNew2PositionComponent implements OnInit {
   initializeForm() {
     this.addPositionForm = this.fb.group({
       positionName: ['', Validators.required],
-      positionType: ['', Validators.required],
+      positionType: [''],
       positionLocation: ['', Validators.required],
       positionDescription: ['', Validators.required],
       positionBenefits: [''],
@@ -71,7 +76,7 @@ export class EditNew2PositionComponent implements OnInit {
   }
 
   addPosition() {
-    console.log('form: ', this.addPositionForm);
+    console.log('form: ', this.addPositionForm.value);
     console.log('id: ', this.user.appUserId);
     this.position2Service
       .addPosition(this.addPositionForm.value, this.user.appUserId)

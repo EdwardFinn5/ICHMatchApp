@@ -369,6 +369,41 @@ namespace API.Migrations
                     b.ToTable("PhotoHrs");
                 });
 
+            modelBuilder.Entity("API.Entities.PosCategory", b =>
+                {
+                    b.Property<int>("PosCategoryId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("PosCategoryName")
+                        .HasColumnType("nvarchar(100)");
+
+                    b.HasKey("PosCategoryId");
+
+                    b.ToTable("PosCategories");
+                });
+
+            modelBuilder.Entity("API.Entities.PositName", b =>
+                {
+                    b.Property<int>("PositNameId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("PosCategoryId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("PosName")
+                        .HasColumnType("nvarchar(100)");
+
+                    b.HasKey("PositNameId");
+
+                    b.HasIndex("PosCategoryId");
+
+                    b.ToTable("PositNames");
+                });
+
             modelBuilder.Entity("API.Entities.Position", b =>
                 {
                     b.Property<int>("PositionId")
@@ -406,6 +441,9 @@ namespace API.Migrations
                     b.Property<string>("LookingFor")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("PosName")
+                        .HasColumnType("nvarchar(100)");
+
                     b.Property<string>("PositionBenefits")
                         .HasColumnType("nvarchar(max)");
 
@@ -414,9 +452,6 @@ namespace API.Migrations
 
                     b.Property<string>("PositionLocation")
                         .HasColumnType("nvarchar(60)");
-
-                    b.Property<string>("PositionName")
-                        .HasColumnType("nvarchar(100)");
 
                     b.Property<string>("PositionType")
                         .HasColumnType("varchar(25)");
@@ -622,6 +657,17 @@ namespace API.Migrations
                     b.Navigation("AppUser");
                 });
 
+            modelBuilder.Entity("API.Entities.PositName", b =>
+                {
+                    b.HasOne("API.Entities.PosCategory", "PosCategory")
+                        .WithMany("PositNames")
+                        .HasForeignKey("PosCategoryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("PosCategory");
+                });
+
             modelBuilder.Entity("API.Entities.Position", b =>
                 {
                     b.HasOne("API.Entities.AppUser", "AppUser")
@@ -711,6 +757,11 @@ namespace API.Migrations
             modelBuilder.Entity("API.Entities.Category", b =>
                 {
                     b.Navigation("Majors");
+                });
+
+            modelBuilder.Entity("API.Entities.PosCategory", b =>
+                {
+                    b.Navigation("PositNames");
                 });
 
             modelBuilder.Entity("API.Entities.Position", b =>

@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace API.Migrations
 {
-    public partial class addedphotohrtoappuser : Migration
+    public partial class addedposname : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -60,6 +60,19 @@ namespace API.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "PosCategories",
+                columns: table => new
+                {
+                    PosCategoryId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    PosCategoryName = table.Column<string>(type: "nvarchar(100)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_PosCategories", x => x.PosCategoryId);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Users",
                 columns: table => new
                 {
@@ -110,6 +123,26 @@ namespace API.Migrations
                         column: x => x.CategoryId,
                         principalTable: "Categories",
                         principalColumn: "CategoryId",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "PositNames",
+                columns: table => new
+                {
+                    PositNameId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    PosName = table.Column<string>(type: "nvarchar(100)", nullable: true),
+                    PosCategoryId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_PositNames", x => x.PositNameId);
+                    table.ForeignKey(
+                        name: "FK_PositNames_PosCategories_PosCategoryId",
+                        column: x => x.PosCategoryId,
+                        principalTable: "PosCategories",
+                        principalColumn: "PosCategoryId",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -256,7 +289,7 @@ namespace API.Migrations
                     PositionId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     RegisterCode = table.Column<string>(type: "nvarchar(10)", nullable: true),
-                    PositionName = table.Column<string>(type: "nvarchar(100)", nullable: true),
+                    PosName = table.Column<string>(type: "nvarchar(100)", nullable: true),
                     PositionDescription = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     LookingFor = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     PositionBenefits = table.Column<string>(type: "nvarchar(max)", nullable: true),
@@ -425,6 +458,11 @@ namespace API.Migrations
                 column: "AppUserId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_PositNames_PosCategoryId",
+                table: "PositNames",
+                column: "PosCategoryId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_RegisterCodes_AppUserId",
                 table: "RegisterCodes",
                 column: "AppUserId");
@@ -473,6 +511,9 @@ namespace API.Migrations
                 name: "Photos");
 
             migrationBuilder.DropTable(
+                name: "PositNames");
+
+            migrationBuilder.DropTable(
                 name: "RegisterCodes");
 
             migrationBuilder.DropTable(
@@ -483,6 +524,9 @@ namespace API.Migrations
 
             migrationBuilder.DropTable(
                 name: "Categories");
+
+            migrationBuilder.DropTable(
+                name: "PosCategories");
 
             migrationBuilder.DropTable(
                 name: "Positions");

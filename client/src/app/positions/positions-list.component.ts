@@ -2,9 +2,12 @@ import { LEADING_TRIVIA_CHARS } from '@angular/compiler/src/render3/view/templat
 import { Component, OnInit } from '@angular/core';
 import { Member } from '../_models/member';
 import { Pagination } from '../_models/pagination';
+import { PosCategory } from '../_models/posCategory';
 import { Position } from '../_models/position';
+import { PositName } from '../_models/positName';
 import { UserParams } from '../_models/userParams';
 import { Position2Service } from '../_services/position2.service';
+import { PositNameService } from '../_services/positname.service';
 
 @Component({
   selector: 'app-positions-list',
@@ -15,11 +18,13 @@ export class PositionsListComponent implements OnInit {
   positions: Position[];
   pagination: Pagination;
   userParams: UserParams;
-  positionNameList = [
-    { value: 'Accounting', display: 'Accounting' },
-    { value: 'IT', display: 'IT' },
-    { value: 'Marketing', display: 'Marketing' },
-  ];
+  posCategories: PosCategory[];
+  positNames: PositName[];
+  // positionNameList = [
+  //   { value: 'Accounting', display: 'Accounting' },
+  //   { value: 'IT', display: 'IT' },
+  //   { value: 'Marketing', display: 'Marketing' },
+  // ];
   positionTypeList = [
     { value: 'Internship', display: 'Internships' },
     { value: 'Full-Time', display: 'Full-Time' },
@@ -30,12 +35,48 @@ export class PositionsListComponent implements OnInit {
     { value: 'Cedar Rapids, IA', display: 'Cedar Rapids, IA' },
   ];
 
-  constructor(private position2Service: Position2Service) {
+  constructor(
+    private position2Service: Position2Service,
+    private positNameService: PositNameService
+  ) {
     this.userParams = this.position2Service.getUserParams();
   }
 
   ngOnInit(): void {
     this.loadPositions();
+    this.loadPosCategories();
+  }
+
+  loadPosCategories() {
+    this.positNameService.getPosCategories().subscribe((posCategories) => {
+      this.posCategories = posCategories;
+      // console.log(this.categories);
+    });
+  }
+
+  // loadPositNames() {
+  //   this.positNameService.getPositNames().subscribe((positNames) => {
+  //     this.positNames = positNames;
+  //     // console.log(this.categories);
+  //   });
+  // }
+
+  onSelect(posCategories) {
+    // console.log(categories.target.value);
+    this.positNameService.getPositNames().subscribe((positNames) => {
+      this.positNames = positNames;
+      // console.log('all majors', majors);
+      this.positNames = positNames.filter(
+        (e) => e.posCategoryId == posCategories.target.value
+      );
+      console.log('poscategory id: ', posCategories.target.value);
+      // console.log(
+      //   'majors with Category Id of ',
+      //   categories.target.value,
+      //   ': ',
+      //   this.majors
+      // );
+    });
   }
 
   loadPositions() {

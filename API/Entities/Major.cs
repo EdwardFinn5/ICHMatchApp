@@ -12,6 +12,7 @@ namespace API.Entities
         public string MajorName { get; set; }
 
         public virtual Category Category { get; set; }
+
         public int CategoryId { get; set; }
     }
 }

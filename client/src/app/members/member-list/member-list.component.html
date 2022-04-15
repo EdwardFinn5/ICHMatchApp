@@ -18,10 +18,10 @@
                 [(ngModel)]="userParams.category"
                 style="width: auto" 
                 class="form-control mr-2">
-                <option class="trext-center" value="">--Select Category--</option>
+                <option class="text-center" value="">--Select Category--</option>
                 <option *ngFor="let category of categories" 
                     [value]="category.categoryName">
-                    {{category.categoryName}}    
+                    {{category.categoryName | titlecase}}    
                 </option>
                 </select>
             </div>
@@ -35,7 +35,7 @@
                 <option class="text-center mb-2" #value="">--1st select category--</option>
                 <option *ngFor="let category of categories"
                     value="{{category.categoryId}}">
-                    {{category.categoryName}}
+                    {{category.categoryName | titlecase}}
                 </option>
             </select>
         
@@ -45,7 +45,7 @@
                 <option class="text-center" value="">--2nd select major--</option>
                 <option *ngFor="let major of majors"
                     [value]="major.majorName">
-                    {{major.majorName}}
+                    {{major.majorName | titlecase}}
                 </option>
             </select>
         </div>

@@ -56,13 +56,10 @@ export class Position2Service {
       userParams.pageSize
     );
 
-    params = params.append('positionName', userParams.positionName);
+    params = params.append('positionName', userParams.posName);
     params = params.append('positionType', userParams.positionType);
     params = params.append('positionLocation', userParams.positionLocation);
-    params = params.append(
-      'orderByPositionName',
-      userParams.orderByPositionName
-    );
+    params = params.append('orderByPosName', userParams.orderByPosName);
     params = params.append(
       'orderByPositionLocation',
       userParams.orderByPositionLocation

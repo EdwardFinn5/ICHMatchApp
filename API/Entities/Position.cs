@@ -14,7 +14,8 @@ namespace API.Entities
         public string RegisterCode { get; set; }
 
         [Column(TypeName = "nvarchar(100)")]
-        public string PositionName { get; set; }
+        public string PosName { get; set; }
+        public string PosCategory { get; set; }
         public string PositionDescription { get; set; }
         public string LookingFor { get; set; }
         public string PositionBenefits { get; set; }

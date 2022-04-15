@@ -56,7 +56,7 @@ namespace API.Controllers
             var position = new Position
             {
                 PositionId = addPositionDto.PositionId,
-                PositionName = addPositionDto.PositionName,
+                PosName = addPositionDto.PosName,
                 PositionDescription = addPositionDto.PositionDescription,
                 LookingFor = addPositionDto.LookingFor,
                 PositionBenefits = addPositionDto.PositionBenefits,
@@ -80,7 +80,7 @@ namespace API.Controllers
             {
                 PositionId = position.PositionId,
                 RegisterCode = position.RegisterCode,
-                PositionName = position.PositionName,
+                PosName = position.PosName,
                 LookingFor = position.LookingFor,
                 AppUserId = id
             };

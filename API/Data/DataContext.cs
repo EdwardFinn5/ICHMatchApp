@@ -13,8 +13,10 @@ namespace API.Data
         public DbSet<EmpIndustry> EmpIndustries { get; set; }
         public DbSet<EmpInfo> EmpInfos { get; set; }
         public DbSet<Location> Locations { get; set; }
+        public DbSet<PositName> PositNames { get; set; }
         public DbSet<Major> Majors { get; set; }
         public DbSet<Category> Categories { get; set; }
+        public DbSet<PosCategory> PosCategories { get; set; }
         public DbSet<PhotoHr> PhotoHrs { get; set; }
         public DbSet<Photo> Photos { get; set; }
         public DbSet<Position> Positions { get; set; }
