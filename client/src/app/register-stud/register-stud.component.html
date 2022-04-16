@@ -4,7 +4,7 @@
   </div>
   <div class="login col-lg-4 m-auto shadow-lg">
 
-    <form [formGroup]='registerStudForm' (ngSubmit)="registerStudForm.valid && registerStud()" autocomplete="off">
+    <form [formGroup]='registerStudForm' (ngSubmit)="registerStud()" autocomplete="off">
 
       <div class="form-group">
         <input 
@@ -58,7 +58,7 @@
         [label]='"Home Town"'>
       </app-text-input>
       
-      <div class="form-group">
+      <ng-container class="form-group">
         <label class="control-label" style="margin-right: 10px"><u>Class Year: </u></label>
         <label class="radio-inline">
           <input type="radio" value='Freshman' formControlName="classYear"> Freshman
@@ -72,52 +72,90 @@
         <label class="radio-inline">
             <input type="radio" value='Senior' formControlName="classYear" class="ml-2"> Senior
         </label>
-      </div>
-      
-      <!-- <app-text-input [formControl]='registerStudForm.controls["major"]'
-        [label]='"Major"'>
-      </app-text-input> -->
-      <div class="form-group form-inline">
-        <label class="mr-2 filter" style="font-size: 1.5em"><strong> Filter on major-category: </strong></label>
-        <div class="form-group">
-            <select name="category" 
+      </ng-container>
+
+      <!-- <div class="form-group"> 
+      <label class="mr-2 filter"><strong> First select a major-category (requrired): </strong></label>
+            <select class="form-control"
+              formControllName="category"
             
-            style="width: auto" 
-            class="form-control mr-2">
-            <option class="text-center" value="">--Select Category--</option>
-            <option *ngFor="let category of categories" 
+              style="width: auto">
+              <option class="text-center" value="">--Select Category--</option>
+              <option *ngFor="let category of categories" 
                 [value]="category.categoryName">
                 {{category.categoryName | titlecase}}    
-            </option>
+              </option>
             </select>
-        </div>
-        
-    <label class="mr-2 filter" style="font-size: 1.5em"><strong> Filter on specific major: </strong></label>  
-        
-        <select (change)="onSelect($event)" 
-            class=" form-control mr-2"
+          </div>  -->
+   
+      <!-- <div class="form-group"> -->
+       
+      <label class="filter m-auto"><strong>Filter on major-category and then specific major:</strong></label><br>
+      <label class="filter m-auto"><strong>(these are required fields)</strong></label><br>  
+      
+        <div class=" form-group form-inline"> 
+         <select (change)="onSelect($event)" 
+            class=" form-control form-inline mr-2"
             name="category"
-            required
+            
             style="width: auto">
-            <option class="text-center mb-2" #value="">--1st select category--</option>
+            <br><option class="text-center mb-2" #value="">--1st select category--</option>
             <option *ngFor="let category of categories"
                 value="{{category.categoryId}}">
                 {{category.categoryName | titlecase}}
             </option>
         </select>
-    
-        <select class="mr-2 mt-1 mb-1 form-group form-control" 
-          name="major"
-          required
+
+        <select class="mr-2 mt-1 mb-1 form-control" 
+        formControlName="major"
+   
+          style="width: auto">
+          <option class="text-center" value="">--2nd select major--</option>
+          <option *ngFor="let major of majors"
+              [value]="major.majorName">
+              {{major.majorName | titlecase}}
+          </option>
+      </select>
+      
           
+        <select class="mr-2 mt-1 mb-1 form-control" 
+          formControlName="category"
+     
             style="width: auto">
             <option class="text-center" value="">--2nd select major--</option>
-            <option *ngFor="let major of majors"
-                [value]="major.majorName">
-                {{major.majorName | titlecase}}
+            <option *ngFor="let category of categories"
+                [value]="category.categoryName">
+                {{category.categoryName | titlecase}}
             </option>
         </select>
-    </div>
+      
+
+      <!-- <select class="mr-2 mt-1 mb-1 form-control" 
+      formControlName="major"
+ 
+        style="width: auto">
+        <option class="text-center" value="">--2nd select major--</option>
+        <option *ngFor="let major of majors"
+            [value]="major.majorName">
+            {{major.majorName | titlecase}}
+        </option>
+    </select> -->
+  </div>
+    
+
+    <!-- <div class="form-group"> 
+      <label class="mr-2 filter"><strong> First select a major-category: </strong></label>
+            <select class="form-control"
+              formControllName="category"
+            
+              style="width: auto">
+              <option class="text-center" value="">--Select Category--</option>
+              <option *ngFor="let category of categories" 
+                [value]="category.categoryName">
+                {{category.categoryName | titlecase}}    
+              </option>
+            </select>
+          </div>  -->
 
       <app-text-input [formControl]='registerStudForm.controls["college"]'
         [label]='"College/University"'>
@@ -133,11 +171,11 @@
               {{error}}
           </li>
       </ul>
-  </div>  
+    </div>  
 
       <div class="btn-group d-flex">
         <!-- <button [disabled]="!loginForm.valid" type="submit" class="btn btn-primary">Login</button> -->
-        <button [disabled]="!registerStudForm.valid" type="submit" class="btn btn-info mr-1 shadow-sm">Sign Up</button>
+        <button type="submit" class="btn btn-info mr-1 shadow-sm">Sign Up</button>
         <input type="button" class="btn btn-secondary shadow-sm ml-1" (click)="cancel()" value="Cancel" />
       </div>
 

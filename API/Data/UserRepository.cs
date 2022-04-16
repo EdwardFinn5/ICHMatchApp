@@ -69,6 +69,10 @@ namespace API.Data
             {
                 query = query.Where(u => u.Major == userParams.Major);
             }
+            if (userParams.Category != null)
+            {
+                query = query.Where(u => u.Category == userParams.Category);
+            }
             if (userParams.Location != null)
             {
                 query = query.Where(u => u.Location == userParams.Location);

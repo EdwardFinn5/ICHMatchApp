@@ -22,6 +22,7 @@ namespace API.Helpers
         public string PositionType { get; set; }
         public string PositionLocation { get; set; }
         public string OrderByMajor { get; set; }
+        public string OrderByCategory { get; set; }
         public string OrderByLocation { get; set; }
         public string OrderByCollege { get; set; }
         public string OrderByEmpIndustry { get; set; }

@@ -38,6 +38,7 @@ export class RegisterStudComponent implements OnInit {
   ngOnInit(): void {
     this.initializeForm();
     this.loadCategories();
+    this.loadMajors();
   }
 
   initializeForm() {
@@ -60,8 +61,8 @@ export class RegisterStudComponent implements OnInit {
       lastName: ['', Validators.required],
       location: ['', Validators.required],
       classYear: ['Junior', Validators.required],
-
-      // major: ['', Validators.required],
+      category: ['', Validators.required],
+      major: ['', Validators.required],
       college: ['', Validators.required],
       gradDate: ['', Validators.required],
     });
@@ -97,6 +98,13 @@ export class RegisterStudComponent implements OnInit {
   loadCategories() {
     this.majorService.getCategories().subscribe((categories) => {
       this.categories = categories;
+      // console.log(this.categories);
+    });
+  }
+
+  loadMajors() {
+    this.majorService.getMajors().subscribe((majors) => {
+      this.majors = majors;
       // console.log(this.categories);
     });
   }

@@ -19,6 +19,7 @@ export class UserParams {
   orderByPosName = '';
   orderByPositionLocation = '';
   orderByMajor = '';
+  orderByCategory = '';
   orderByLastName = '';
   orderByFirstName = '';
   orderByEmpName = '';

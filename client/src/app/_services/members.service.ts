@@ -60,6 +60,7 @@ export class MembersService {
     // params = params.append('location', userParams.location);
     // params = params.append('empIndustry', userParams.empIndustry);
     params = params.append('orderByMajor', userParams.orderByMajor);
+    params = params.append('orderByCategory', userParams.orderByCategory);
     params = params.append('orderByFirstName', userParams.orderByFirstName);
     // params = params.append('orderByCollege', userParams.orderByCollege);
     // params = params.append('orderByLocation', userParams.orderByLocation);

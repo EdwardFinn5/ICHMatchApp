@@ -18,6 +18,7 @@ export interface CardMember {
   location: string;
   classYear: string;
   major: string;
+  category: string;
   college: string;
   givingLevel: string;
   giftAmt: number;

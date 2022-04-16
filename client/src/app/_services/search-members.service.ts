@@ -50,10 +50,12 @@ export class SearchMembersService {
     );
 
     params = params.append('major', userParams.major);
+    params = params.append('category', userParams.category);
     params = params.append('classYear', userParams.classYear);
     params = params.append('location', userParams.location);
     // params = params.append('appUserType', userParams.appUserType);
     params = params.append('orderByMajor', userParams.orderByMajor);
+    params = params.append('orderByCategory', userParams.orderByCategory);
     params = params.append('orderByLocation', userParams.orderByLocation);
 
     return getPaginatedResult<Member[]>(

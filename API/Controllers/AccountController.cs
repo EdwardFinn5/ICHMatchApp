@@ -68,6 +68,7 @@ namespace API.Controllers
                 AppUserType = "ColStudent",
                 FirstName = user.FirstName,
                 Major = user.Major,
+                Category = user.Category,
                 ClassYear = user.ClassYear,
                 Location = user.Location,
                 RegisterCode = user.RegisterCode
@@ -165,6 +166,7 @@ namespace API.Controllers
                 AppUserType = user.AppUserType,
                 EmpName = user.EmpName,
                 Major = user.Major,
+                Category = user.Category,
                 ClassYear = user.ClassYear,
                 Location = user.Location,
                 StudentUrl = user.Photos.FirstOrDefault(x => x.IsMain)?.StudentUrl,

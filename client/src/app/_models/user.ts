@@ -10,6 +10,7 @@ export interface User {
   empName: string;
   givingLevel: string;
   major: string;
+  category: string;
   classYear: string;
   location: string;
 }

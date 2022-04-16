@@ -17,6 +17,7 @@ export interface Member {
   location: string;
   classYear: string;
   major: string;
+  category: string;
   college: string;
   gpa: string;
   gradDate: Date;

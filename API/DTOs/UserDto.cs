@@ -6,6 +6,7 @@ namespace API.DTOs
         public string Username { get; set; }
         public string FirstName { get; set; }
         public string Major { get; set; }
+        public string Category { get; set; }
         public string Location { get; set; }
         public string ClassYear { get; set; }
         public string Position { get; set; }

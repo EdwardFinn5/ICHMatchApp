@@ -22,6 +22,7 @@ namespace API.DTOs
         [Required] public string Location { get; set; }
         [Required] public string ClassYear { get; set; }
         [Required] public string Major { get; set; }
+        [Required] public string Category { get; set; }
         [Required] public string College { get; set; }
     }
 }
