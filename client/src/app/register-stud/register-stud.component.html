@@ -4,7 +4,7 @@
   </div>
   <div class="login col-lg-4 m-auto shadow-lg">
 
-    <form [formGroup]='registerStudForm' (ngSubmit)="registerStud()" autocomplete="off">
+    <form [formGroup]='registerStudForm' (ngSubmit)="registerStudForm.valid && registerStud()" autocomplete="off">
 
       <div class="form-group">
         <input 
@@ -90,8 +90,20 @@
    
       <!-- <div class="form-group"> -->
        
-      <label class="filter m-auto"><strong>Filter on major-category and then specific major:</strong></label><br>
-      <label class="filter m-auto"><strong>(these are required fields)</strong></label><br>  
+      <h6 class="filter m-auto"><strong>First select major-category (required):</strong></h6>
+        
+      <select class="mr-2 mt-1 mb-1 form-control" 
+      formControlName="category"
+ 
+        style="width: auto">
+        <option class="text-center" value="">--2nd select major--</option>
+        <option *ngFor="let category of categories"
+            [value]="category.categoryName | titlecase">
+            {{category.categoryName | titlecase}}
+        </option>
+    </select>
+      
+      <h6 class="filter m-auto mt-1 mb-1"><strong>Then re-select major-category & specific major<br>(both required):</strong></h6>
       
         <div class=" form-group form-inline"> 
          <select (change)="onSelect($event)" 
@@ -112,13 +124,13 @@
           style="width: auto">
           <option class="text-center" value="">--2nd select major--</option>
           <option *ngFor="let major of majors"
-              [value]="major.majorName">
+              [value]="major.majorName | titlecase">
               {{major.majorName | titlecase}}
           </option>
       </select>
       
           
-        <select class="mr-2 mt-1 mb-1 form-control" 
+        <!-- <select class="mr-2 mt-1 mb-1 form-control" 
           formControlName="category"
      
             style="width: auto">
@@ -127,7 +139,7 @@
                 [value]="category.categoryName">
                 {{category.categoryName | titlecase}}
             </option>
-        </select>
+        </select> -->
       
 
       <!-- <select class="mr-2 mt-1 mb-1 form-control" 
@@ -175,7 +187,7 @@
 
       <div class="btn-group d-flex">
         <!-- <button [disabled]="!loginForm.valid" type="submit" class="btn btn-primary">Login</button> -->
-        <button type="submit" class="btn btn-info mr-1 shadow-sm">Sign Up</button>
+        <button [disabled]="!registerStudForm.valid" type="submit" class="btn btn-info mr-1 shadow-sm">Sign Up</button>
         <input type="button" class="btn btn-secondary shadow-sm ml-1" (click)="cancel()" value="Cancel" />
       </div>
 

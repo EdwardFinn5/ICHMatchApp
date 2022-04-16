@@ -10,6 +10,8 @@ namespace API.Entities
 
         [Column(TypeName = "nvarchar(60)")]
         public string CollegeName { get; set; }
+        [Column(TypeName = "nvarchar(60)")]
+        public string CollegeNickname { get; set; }
     }
 }
 
