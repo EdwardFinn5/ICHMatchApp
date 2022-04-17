@@ -96,7 +96,7 @@
       formControlName="category"
  
         style="width: auto">
-        <option class="text-center" value="">--2nd select major--</option>
+        <option class="text-center" value="">--select major-category--</option>
         <option *ngFor="let category of categories"
             [value]="category.categoryName | titlecase">
             {{category.categoryName | titlecase}}
@@ -169,9 +169,26 @@
             </select>
           </div>  -->
 
-      <app-text-input [formControl]='registerStudForm.controls["college"]'
+        <h6 class="filter m-auto"><strong>Please select college/univerity (required):</strong></h6>
+        
+        <select 
+          #scrolMe
+              style="overflow: scroll; height: 300px; width: 450px;"
+              [scrollTop]="scrolMe.scrollHeight"
+              class="mr-2 mt-1 mb-1 form-control" 
+              formControlName="college"
+     
+            style="width: auto">
+            <option class="text-center" value="">--Select College--</option>
+            <option *ngFor="let college of colleges"
+                [value]="college.collegeName | titlecase">
+                {{college.collegeNickname | titlecase}}
+            </option>
+        </select>    
+
+      <!-- <app-text-input [formControl]='registerStudForm.controls["college"]'
         [label]='"College/University"'>
-      </app-text-input>
+      </app-text-input> -->
 
       <app-date-input [formControl]='registerStudForm.controls["gradDate"]'
       [label]='"Graduation Date (approx)"'>

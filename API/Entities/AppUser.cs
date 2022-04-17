@@ -37,6 +37,14 @@ namespace API.Entities
 
         [Column(TypeName = "nvarchar(60)")]
         public string Major { get; set; }
+        [Column(TypeName = "nvarchar(60)")]
+        public string CoLocation { get; set; }
+        [Column(TypeName = "nvarchar(60)")]
+        public string StLocation { get; set; }
+        [Column(TypeName = "nvarchar(60)")]
+        public string CiLocation { get; set; }
+        [Column(TypeName = "nvarchar(60)")]
+        public string OtherCC { get; set; }
 
         [Column(TypeName = "varchar(30)")]
         public string College { get; set; }

@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace API.DTOs
 {
-    public class CollegeDto
+    public class AddCollegeDto
     {
         public int CollegeId { get; set; }
         public string CollegeName { get; set; }

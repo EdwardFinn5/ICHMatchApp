@@ -130,6 +130,12 @@ namespace API.Helpers
             CreateMap<LocationUpdateDto, Location>();
             CreateMap<MajorUpdateDto, Major>();
             CreateMap<Major, MajorDto>();
+            CreateMap<CiLocationUpdateDto, CiLocation>();
+            CreateMap<CiLocation, CiLocationDto>();
+            CreateMap<StLocationUpdateDto, StLocation>();
+            CreateMap<StLocation, StLocationDto>();
+            CreateMap<CoLocationUpdateDto, CoLocation>();
+            CreateMap<CoLocation, CoLocationDto>();
             CreateMap<DutyBulletUpdateDto, DutyBullet>();
             CreateMap<DutyBullet, DutyBulletDto>();
             CreateMap<SkillsBulletUpdateDto, SkillsBullet>();

@@ -35,13 +35,15 @@ namespace API.Data
         {
             return await _context.Majors
                .Where(x => x.MajorId == id)
-               // .ProjectTo<StudInfoDto>(_mapper.ConfigurationProvider)
                .SingleOrDefaultAsync();
         }
 
-        public Task<MajorDto> GetMajorDtoByIdAsync(int id)
+        public async Task<MajorDto> GetMajorDtoByIdAsync(int id)
         {
-            throw new NotImplementedException();
+            return await _context.Majors
+             .Where(x => x.MajorId == id)
+             .ProjectTo<MajorDto>(_mapper.ConfigurationProvider)
+             .SingleOrDefaultAsync();
         }
 
         public async Task<IEnumerable<MajorDto>> GetMajorDtosAsync(int id)

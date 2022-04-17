@@ -10,8 +10,10 @@ import {
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Category } from '../_models/category';
+import { College } from '../_models/college';
 import { Major } from '../_models/major';
 import { AccountService } from '../_services/account.service';
+import { CollegeService } from '../_services/college.service';
 import { MajorService } from '../_services/major.service';
 import { MembersService } from '../_services/members.service';
 
@@ -26,11 +28,13 @@ export class RegisterStudComponent implements OnInit {
   validationErrors: string[] = [];
   categories: Category[];
   majors: Major[];
+  colleges: College[];
 
   constructor(
     private router: Router,
     private accountService: AccountService,
     private majorService: MajorService,
+    private collegeService: CollegeService,
     private toastr: ToastrService,
     private fb: FormBuilder
   ) {}
@@ -39,6 +43,7 @@ export class RegisterStudComponent implements OnInit {
     this.initializeForm();
     this.loadCategories();
     this.loadMajors();
+    this.loadColleges();
   }
 
   initializeForm() {
@@ -105,6 +110,13 @@ export class RegisterStudComponent implements OnInit {
   loadMajors() {
     this.majorService.getMajors().subscribe((majors) => {
       this.majors = majors;
+      // console.log(this.categories);
+    });
+  }
+
+  loadColleges() {
+    this.collegeService.getColleges().subscribe((colleges) => {
+      this.colleges = colleges;
       // console.log(this.categories);
     });
   }

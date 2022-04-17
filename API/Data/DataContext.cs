@@ -12,6 +12,9 @@ namespace API.Data
         public DbSet<College> Colleges { get; set; }
         public DbSet<EmpIndustry> EmpIndustries { get; set; }
         public DbSet<EmpInfo> EmpInfos { get; set; }
+        public DbSet<CoLocation> CoLocations { get; set; }
+        public DbSet<StLocation> StLocations { get; set; }
+        public DbSet<CiLocation> CiLocations { get; set; }
         public DbSet<Location> Locations { get; set; }
         public DbSet<PositName> PositNames { get; set; }
         public DbSet<Major> Majors { get; set; }

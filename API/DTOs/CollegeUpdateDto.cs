@@ -8,5 +8,6 @@ namespace API.DTOs
     public class CollegeUpdateDto
     {
         public string CollegeName { get; set; }
+        public string CollegeNickname { get; set; }
     }
 }

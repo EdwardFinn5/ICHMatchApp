@@ -33,6 +33,7 @@ namespace API.Controllers
             {
                 // CategoryId = categoryDto.CategoryId,
                 CollegeName = collegeDto.CollegeName.ToLower(),
+                CollegeNickname = collegeDto.CollegeNickname.ToLower(),
             };
 
             _context.Colleges.Add(college);
