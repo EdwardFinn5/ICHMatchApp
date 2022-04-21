@@ -14,6 +14,7 @@ namespace API.Entities
 
         [Column(TypeName = "nvarchar(60)")]
         public string OtherCCName { get; set; }
+        public virtual CoLocation coLocation { get; set; }
         public int CoLocationId { get; set; }
     }
 }

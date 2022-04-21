@@ -46,13 +46,21 @@ namespace API.Data
              .SingleOrDefaultAsync();
         }
 
-        public async Task<IEnumerable<CiLocationDto>> GetCiLocationDtosAsync(int id)
+        public async Task<IEnumerable<CiLocationDto>> GetCiLocationStLocationIdDtosAsync(int id)
         {
             return await _context.CiLocations
                    .Where(x => x.StLocationId == id)
                    .ProjectTo<CiLocationDto>(_mapper.ConfigurationProvider)
                    .ToListAsync();
         }
+
+        // public async Task<IEnumerable<CiLocationDto>> GetCiLocationOtherCCIdDtosAsync(int id)
+        // {
+        //     return await _context.CiLocations
+        //            .Where(x => x.OtherCCId == id)
+        //            .ProjectTo<CiLocationDto>(_mapper.ConfigurationProvider)
+        //            .ToListAsync();
+        // }
 
         public async Task<IEnumerable<CiLocationDto>> GetCiLocationDtosAsync()
         {

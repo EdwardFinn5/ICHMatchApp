@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace API.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20220416163840_addedcollegenickname")]
-    partial class addedcollegenickname
+    [Migration("20220417233315_addedlocationentities")]
+    partial class addedlocationentities
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -37,8 +37,14 @@ namespace API.Migrations
                     b.Property<string>("Category")
                         .HasColumnType("nvarchar(60)");
 
+                    b.Property<string>("CiLocation")
+                        .HasColumnType("nvarchar(60)");
+
                     b.Property<string>("ClassYear")
                         .HasColumnType("varchar(12)");
+
+                    b.Property<string>("CoLocation")
+                        .HasColumnType("nvarchar(60)");
 
                     b.Property<string>("College")
                         .HasColumnType("varchar(30)");
@@ -82,6 +88,9 @@ namespace API.Migrations
                     b.Property<string>("Major")
                         .HasColumnType("nvarchar(60)");
 
+                    b.Property<string>("OtherCC")
+                        .HasColumnType("nvarchar(60)");
+
                     b.Property<byte[]>("PasswordHash")
                         .HasColumnType("varbinary(max)");
 
@@ -90,6 +99,9 @@ namespace API.Migrations
 
                     b.Property<string>("RegisterCode")
                         .HasColumnType("varchar(30)");
+
+                    b.Property<string>("StLocation")
+                        .HasColumnType("nvarchar(60)");
 
                     b.Property<string>("UserName")
                         .HasColumnType("nvarchar(255)");
@@ -112,6 +124,46 @@ namespace API.Migrations
                     b.HasKey("CategoryId");
 
                     b.ToTable("Categories");
+                });
+
+            modelBuilder.Entity("API.Entities.CiLocation", b =>
+                {
+                    b.Property<int>("CiLocationId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("CiLocationName")
+                        .HasColumnType("nvarchar(60)");
+
+                    b.Property<int>("OtherCCId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("StLocationId")
+                        .HasColumnType("int");
+
+                    b.HasKey("CiLocationId");
+
+                    b.HasIndex("OtherCCId");
+
+                    b.HasIndex("StLocationId");
+
+                    b.ToTable("CiLocations");
+                });
+
+            modelBuilder.Entity("API.Entities.CoLocation", b =>
+                {
+                    b.Property<int>("CoLocationId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("CoLocationName")
+                        .HasColumnType("nvarchar(60)");
+
+                    b.HasKey("CoLocationId");
+
+                    b.ToTable("CoLocations");
                 });
 
             modelBuilder.Entity("API.Entities.College", b =>
@@ -302,6 +354,26 @@ namespace API.Migrations
                     b.HasIndex("SenderId");
 
                     b.ToTable("Messages");
+                });
+
+            modelBuilder.Entity("API.Entities.OtherCC", b =>
+                {
+                    b.Property<int>("OtherCCId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("CoLocationId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("OtherCCName")
+                        .HasColumnType("nvarchar(60)");
+
+                    b.HasKey("OtherCCId");
+
+                    b.HasIndex("CoLocationId");
+
+                    b.ToTable("OtherCCs");
                 });
 
             modelBuilder.Entity("API.Entities.Photo", b =>
@@ -523,6 +595,26 @@ namespace API.Migrations
                     b.ToTable("SkillsBullets");
                 });
 
+            modelBuilder.Entity("API.Entities.StLocation", b =>
+                {
+                    b.Property<int>("StLocationId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("CoLocationId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("StLocationName")
+                        .HasColumnType("nvarchar(60)");
+
+                    b.HasKey("StLocationId");
+
+                    b.HasIndex("CoLocationId");
+
+                    b.ToTable("StLocations");
+                });
+
             modelBuilder.Entity("API.Entities.StudInfo", b =>
                 {
                     b.Property<int>("StudInfoId")
@@ -591,6 +683,25 @@ namespace API.Migrations
                     b.ToTable("Likes");
                 });
 
+            modelBuilder.Entity("API.Entities.CiLocation", b =>
+                {
+                    b.HasOne("API.Entities.OtherCC", "OtherCC")
+                        .WithMany()
+                        .HasForeignKey("OtherCCId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("API.Entities.StLocation", "stLocation")
+                        .WithMany("CiLocations")
+                        .HasForeignKey("StLocationId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("OtherCC");
+
+                    b.Navigation("stLocation");
+                });
+
             modelBuilder.Entity("API.Entities.DutyBullet", b =>
                 {
                     b.HasOne("API.Entities.Position", "Position")
@@ -641,6 +752,17 @@ namespace API.Migrations
                     b.Navigation("Recipient");
 
                     b.Navigation("Sender");
+                });
+
+            modelBuilder.Entity("API.Entities.OtherCC", b =>
+                {
+                    b.HasOne("API.Entities.CoLocation", "coLocation")
+                        .WithMany("OtherCCs")
+                        .HasForeignKey("CoLocationId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("coLocation");
                 });
 
             modelBuilder.Entity("API.Entities.Photo", b =>
@@ -709,6 +831,17 @@ namespace API.Migrations
                     b.Navigation("Position");
                 });
 
+            modelBuilder.Entity("API.Entities.StLocation", b =>
+                {
+                    b.HasOne("API.Entities.CoLocation", "coLocation")
+                        .WithMany("StLocations")
+                        .HasForeignKey("CoLocationId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("coLocation");
+                });
+
             modelBuilder.Entity("API.Entities.StudInfo", b =>
                 {
                     b.HasOne("API.Entities.AppUser", "AppUser")
@@ -767,6 +900,13 @@ namespace API.Migrations
                     b.Navigation("Majors");
                 });
 
+            modelBuilder.Entity("API.Entities.CoLocation", b =>
+                {
+                    b.Navigation("OtherCCs");
+
+                    b.Navigation("StLocations");
+                });
+
             modelBuilder.Entity("API.Entities.PosCategory", b =>
                 {
                     b.Navigation("PositNames");
@@ -777,6 +917,11 @@ namespace API.Migrations
                     b.Navigation("DutyBullets");
 
                     b.Navigation("SkillsBullets");
+                });
+
+            modelBuilder.Entity("API.Entities.StLocation", b =>
+                {
+                    b.Navigation("CiLocations");
                 });
 #pragma warning restore 612, 618
         }

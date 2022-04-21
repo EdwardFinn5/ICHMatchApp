@@ -57,8 +57,9 @@ namespace API.Data
         public async Task<IEnumerable<StLocationDto>> GetStLocationDtosAsync()
         {
             return await _context.StLocations
-           .ProjectTo<StLocationDto>(_mapper.ConfigurationProvider)
-           .ToListAsync();
+                .OrderBy(s => s.StLocationName)
+                .ProjectTo<StLocationDto>(_mapper.ConfigurationProvider)
+                .ToListAsync();
         }
 
         public async Task<bool> SaveAllAsync()

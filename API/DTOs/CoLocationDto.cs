@@ -9,6 +9,7 @@ namespace API.DTOs
     {
         public int CoLocationId { get; set; }
         public string CoLocationName { get; set; }
+        public string CoLocationDisplayName { get; set; }
         public ICollection<StLocationDto> StLocations { get; set; }
     }
 }

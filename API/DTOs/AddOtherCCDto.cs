@@ -5,10 +5,10 @@ using System.Threading.Tasks;
 
 namespace API.DTOs
 {
-    public class AddCoLocationDto
+    public class AddOtherCCDto
     {
+        public int OtherCCId { get; set; }
+        public string OtherCCName { get; set; }
         public int CoLocationId { get; set; }
-        public string CoLocationName { get; set; }
-        public string CoLocationDisplayName { get; set; }
     }
 }

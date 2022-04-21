@@ -14,6 +14,7 @@ namespace API.Data
         public DbSet<EmpInfo> EmpInfos { get; set; }
         public DbSet<CoLocation> CoLocations { get; set; }
         public DbSet<StLocation> StLocations { get; set; }
+        public DbSet<OtherCC> OtherCCs { get; set; }
         public DbSet<CiLocation> CiLocations { get; set; }
         public DbSet<Location> Locations { get; set; }
         public DbSet<PositName> PositNames { get; set; }

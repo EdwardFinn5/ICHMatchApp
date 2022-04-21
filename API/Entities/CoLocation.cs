@@ -14,6 +14,8 @@ namespace API.Entities
 
         [Column(TypeName = "nvarchar(60)")]
         public string CoLocationName { get; set; }
+        public string CoLocationDisplayName { get; set; }
         public ICollection<StLocation> StLocations { get; set; }
+        public ICollection<OtherCC> OtherCCs { get; set; }
     }
 }

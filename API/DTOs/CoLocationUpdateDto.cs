@@ -8,7 +8,6 @@ namespace API.DTOs
     public class CoLocationUpdateDto
     {
         public string CoLocationName { get; set; }
-
-
+        public string CoLocationDisplayName { get; set; }
     }
 }

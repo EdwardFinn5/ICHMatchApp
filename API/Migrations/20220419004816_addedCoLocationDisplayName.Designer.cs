@@ -4,14 +4,16 @@ using API.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace API.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20220419004816_addedCoLocationDisplayName")]
+    partial class addedCoLocationDisplayName
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -134,10 +136,15 @@ namespace API.Migrations
                     b.Property<string>("CiLocationName")
                         .HasColumnType("nvarchar(60)");
 
+                    b.Property<int>("OtherCCId")
+                        .HasColumnType("int");
+
                     b.Property<int>("StLocationId")
                         .HasColumnType("int");
 
                     b.HasKey("CiLocationId");
+
+                    b.HasIndex("OtherCCId");
 
                     b.HasIndex("StLocationId");
 
@@ -681,11 +688,19 @@ namespace API.Migrations
 
             modelBuilder.Entity("API.Entities.CiLocation", b =>
                 {
+                    b.HasOne("API.Entities.OtherCC", "OtherCC")
+                        .WithMany()
+                        .HasForeignKey("OtherCCId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("API.Entities.StLocation", "stLocation")
                         .WithMany("CiLocations")
                         .HasForeignKey("StLocationId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("OtherCC");
 
                     b.Navigation("stLocation");
                 });
