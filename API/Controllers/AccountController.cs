@@ -70,7 +70,9 @@ namespace API.Controllers
                 Major = user.Major,
                 Category = user.Category,
                 ClassYear = user.ClassYear,
-                Location = user.Location,
+                CoLocation = user.CoLocation,
+                StLocation = user.StLocation,
+                CiLocation = user.CiLocation,
                 RegisterCode = user.RegisterCode
             };
         }
@@ -86,6 +88,7 @@ namespace API.Controllers
                 || registerEmpDto.RegisterCode == "cnsjf"
                 || registerEmpDto.RegisterCode == "dyrba"
                 || registerEmpDto.RegisterCode == "edkmg"
+                || registerEmpDto.RegisterCode == "fthkz"
                 || registerEmpDto.RegisterCode == "21533")
             {
                 registerEmpDto.RegisterCode = registerEmpDto.RegisterCode;
@@ -131,6 +134,9 @@ namespace API.Controllers
                 AppUserType = "EmpHr",
                 FirstName = user.FirstName,
                 EmpName = user.EmpName,
+                PosCategory = user.PosCategory,
+                PositName = user.PositName,
+                CiLocation = user.CiLocation,
                 RegisterCode = user.RegisterCode
             };
         }
@@ -167,8 +173,12 @@ namespace API.Controllers
                 EmpName = user.EmpName,
                 Major = user.Major,
                 Category = user.Category,
+                PosCategory = user.PosCategory,
+                PositName = user.PositName,
                 ClassYear = user.ClassYear,
-                Location = user.Location,
+                CoLocation = user.CoLocation,
+                StLocation = user.StLocation,
+                CiLocation = user.CiLocation,
                 StudentUrl = user.Photos.FirstOrDefault(x => x.IsMain)?.StudentUrl,
                 LogoUrl = user.Photos.FirstOrDefault(x => x.IsMainLogo)?.LogoUrl,
                 HrUrl = user.PhotoHrs.FirstOrDefault(x => x.IsMainHr)?.HrUrl

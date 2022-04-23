@@ -107,6 +107,7 @@ export class MemberListComponent implements OnInit {
   }
 
   resetFilters() {
+    this.loadCategories();
     this.userParams = this.membersService.resetUserParams();
     this.loadCardMembers();
     // this.form.reset(this.form);

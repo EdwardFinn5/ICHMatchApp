@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace API.Migrations
 {
-    public partial class addedlocationentities : Migration
+    public partial class changedOtherCC : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -40,7 +40,8 @@ namespace API.Migrations
                 {
                     CoLocationId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    CoLocationName = table.Column<string>(type: "nvarchar(60)", nullable: true)
+                    CoLocationName = table.Column<string>(type: "nvarchar(60)", nullable: true),
+                    CoLocationDisplayName = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -181,7 +182,7 @@ namespace API.Migrations
                         column: x => x.CoLocationId,
                         principalTable: "CoLocations",
                         principalColumn: "CoLocationId",
-                        onDelete: ReferentialAction.NoAction);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -434,24 +435,17 @@ namespace API.Migrations
                     CiLocationId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     CiLocationName = table.Column<string>(type: "nvarchar(60)", nullable: true),
-                    StLocationId = table.Column<int>(type: "int", nullable: false),
-                    OtherCCId = table.Column<int>(type: "int", nullable: false)
+                    StLocationId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_CiLocations", x => x.CiLocationId);
                     table.ForeignKey(
-                        name: "FK_CiLocations_OtherCCs_OtherCCId",
-                        column: x => x.OtherCCId,
-                        principalTable: "OtherCCs",
-                        principalColumn: "OtherCCId",
-                        onDelete: ReferentialAction.NoAction);
-                    table.ForeignKey(
                         name: "FK_CiLocations_StLocations_StLocationId",
                         column: x => x.StLocationId,
                         principalTable: "StLocations",
                         principalColumn: "StLocationId",
-                        onDelete: ReferentialAction.NoAction);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -497,11 +491,6 @@ namespace API.Migrations
                         principalColumn: "PositionId",
                         onDelete: ReferentialAction.Cascade);
                 });
-
-            migrationBuilder.CreateIndex(
-                name: "IX_CiLocations_OtherCCId",
-                table: "CiLocations",
-                column: "OtherCCId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_CiLocations_StLocationId",
@@ -614,6 +603,9 @@ namespace API.Migrations
                 name: "Messages");
 
             migrationBuilder.DropTable(
+                name: "OtherCCs");
+
+            migrationBuilder.DropTable(
                 name: "PhotoHrs");
 
             migrationBuilder.DropTable(
@@ -630,9 +622,6 @@ namespace API.Migrations
 
             migrationBuilder.DropTable(
                 name: "StudInfos");
-
-            migrationBuilder.DropTable(
-                name: "OtherCCs");
 
             migrationBuilder.DropTable(
                 name: "StLocations");

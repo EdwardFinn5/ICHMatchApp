@@ -26,8 +26,14 @@ namespace API.Entities
 
         public bool Active { get; set; } = true;
 
+        [Column(TypeName = "nvarchar(10)")]
+        public string CoLocation { get; set; }
+
         [Column(TypeName = "nvarchar(60)")]
-        public string Location { get; set; }
+        public string StLocation { get; set; }
+
+        [Column(TypeName = "nvarchar(60)")]
+        public string CiLocation { get; set; }
 
         [Column(TypeName = "varchar(12)")]
         public string ClassYear { get; set; }
@@ -37,14 +43,12 @@ namespace API.Entities
 
         [Column(TypeName = "nvarchar(60)")]
         public string Major { get; set; }
+
         [Column(TypeName = "nvarchar(60)")]
-        public string CoLocation { get; set; }
+        public string PosCategory { get; set; }
+
         [Column(TypeName = "nvarchar(60)")]
-        public string StLocation { get; set; }
-        [Column(TypeName = "nvarchar(60)")]
-        public string CiLocation { get; set; }
-        [Column(TypeName = "nvarchar(60)")]
-        public string OtherCC { get; set; }
+        public string PositName { get; set; }
 
         [Column(TypeName = "varchar(30)")]
         public string College { get; set; }
@@ -64,10 +68,8 @@ namespace API.Entities
         public string LogoUrl { get; set; }
         public bool IsMainLogo { get; set; } = false;
         public DateTime Created { get; set; } = DateTime.Now;
-
         public DateTime LastActive { get; set; } = DateTime.Now;
         public DateTime GradDate { get; set; } = DateTime.Now;
-        public ICollection<RegisterCode> RegisterCodes { get; set; }
         public ICollection<Photo> Photos { get; set; }
         public ICollection<PhotoHr> PhotoHrs { get; set; }
         public ICollection<StudInfo> StudInfos { get; set; }

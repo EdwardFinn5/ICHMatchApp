@@ -66,6 +66,7 @@ namespace API.Controllers
             {
                 // CategoryId = categoryDto.CategoryId,
                 StLocationName = addStLocationDto.StLocationName,
+                StLocationSortName = addStLocationDto.StLocationSortName,
                 CoLocationId = id
             };
 
@@ -76,6 +77,7 @@ namespace API.Controllers
             {
                 StLocationId = stLocation.StLocationId,
                 StLocationName = stLocation.StLocationName,
+                StLocationSortName = stLocation.StLocationSortName,
                 CoLocationId = stLocation.CoLocationId
             };
         }

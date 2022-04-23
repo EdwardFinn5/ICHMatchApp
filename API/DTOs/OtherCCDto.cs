@@ -10,6 +10,5 @@ namespace API.DTOs
         public int OtherCCId { get; set; }
         public string OtherCCName { get; set; }
         public int CoLocationId { get; set; }
-        public ICollection<CiLocationDto> CiLocations { get; set; }
     }
 }

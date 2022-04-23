@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace API.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20220421002533_changedOtherCC")]
+    [Migration("20220423003639_changedOtherCC")]
     partial class changedOtherCC
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

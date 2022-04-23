@@ -41,9 +41,9 @@ namespace API.Data
         public async Task<CoLocationDto> GetCoLocationDtoByIdAsync(int id)
         {
             return await _context.CoLocations
-              .Where(x => x.CoLocationId == id)
-              .ProjectTo<CoLocationDto>(_mapper.ConfigurationProvider)
-              .SingleOrDefaultAsync();
+            .OrderBy(x => x.CoLocationSortName)
+            .ProjectTo<CoLocationDto>(_mapper.ConfigurationProvider)
+            .SingleOrDefaultAsync();
         }
 
         // public async Task<IEnumerable<CoLocationDto>> GetCoLocationDtosAsync(int id)
@@ -57,8 +57,9 @@ namespace API.Data
         public async Task<IEnumerable<CoLocationDto>> GetCoLocationDtosAsync()
         {
             return await _context.CoLocations
-           .ProjectTo<CoLocationDto>(_mapper.ConfigurationProvider)
-           .ToListAsync();
+            .OrderBy(x => x.CoLocationSortName)
+            .ProjectTo<CoLocationDto>(_mapper.ConfigurationProvider)
+            .ToListAsync();
         }
 
         public async Task<bool> SaveAllAsync()

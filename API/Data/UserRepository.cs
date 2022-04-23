@@ -73,9 +73,17 @@ namespace API.Data
             {
                 query = query.Where(u => u.Category == userParams.Category);
             }
-            if (userParams.Location != null)
+            if (userParams.CoLocation != null)
             {
-                query = query.Where(u => u.Location == userParams.Location);
+                query = query.Where(u => u.CoLocation == userParams.CoLocation);
+            }
+            if (userParams.StLocation != null)
+            {
+                query = query.Where(u => u.StLocation == userParams.StLocation);
+            }
+            if (userParams.CiLocation != null)
+            {
+                query = query.Where(u => u.CiLocation == userParams.CiLocation);
             }
             if (userParams.ClassYear != null)
             {
@@ -93,9 +101,9 @@ namespace API.Data
                 .ThenBy(u => u.LastName);
             }
 
-            else if (userParams.OrderByLocation != null)
+            else if (userParams.OrderByCiLocation != null)
             {
-                query = query.OrderBy(u => u.Location)
+                query = query.OrderBy(u => u.CiLocation)
                 .ThenBy(u => u.LastName);
             }
             else
@@ -129,9 +137,9 @@ namespace API.Data
             {
                 query = query.Where(u => u.EmpIndustry == userParams.EmpIndustry);
             }
-            if (userParams.Location != null)
+            if (userParams.CiLocation != null)
             {
-                query = query.Where(u => u.Location == userParams.Location);
+                query = query.Where(u => u.CiLocation == userParams.CiLocation);
             }
 
             if (userParams.OrderByEmpName != null)

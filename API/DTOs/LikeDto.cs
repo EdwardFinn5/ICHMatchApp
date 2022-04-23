@@ -14,7 +14,9 @@ namespace API.DTOs
         public string Major { get; set; }
         public string EmpName { get; set; }
         public string ClassYear { get; set; }
-        public string Location { get; set; }
+        public string StLocation { get; set; }
+        public string CoLocation { get; set; }
+        public string CiLocation { get; set; }
         public string College { get; set; }
         public string EmpIndustry { get; set; }
         public string EmployeeNum { get; set; }

@@ -52,7 +52,11 @@ namespace API.Data
                 EmpName = user.EmpName,
                 EmpIndustry = user.EmpIndustry,
                 EmployeeNum = user.EmployeeNum,
-                Location = user.Location,
+                PosCategory = user.PosCategory,
+                PositName = user.PositName,
+                CoLocation = user.CoLocation,
+                CiLocation = user.CiLocation,
+                StLocation = user.StLocation,
                 StudentUrl = user.Photos.FirstOrDefault(p => p.IsMain).StudentUrl,
                 LogoUrl = user.Photos.FirstOrDefault(p => p.IsMainLogo).LogoUrl,
                 AppUserId = user.AppUserId

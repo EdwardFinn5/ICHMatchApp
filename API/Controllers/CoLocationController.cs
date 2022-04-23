@@ -66,7 +66,7 @@ namespace API.Controllers
             {
                 // CategoryId = categoryDto.CategoryId,
                 CoLocationName = addCoLocationDto.CoLocationName,
-                CoLocationDisplayName = addCoLocationDto.CoLocationDisplayName
+                CoLocationSortName = addCoLocationDto.CoLocationSortName
             };
 
             _context.CoLocations.Add(coLocation);
@@ -76,7 +76,7 @@ namespace API.Controllers
             {
                 CoLocationId = coLocation.CoLocationId,
                 CoLocationName = coLocation.CoLocationName,
-                CoLocationDisplayName = coLocation.CoLocationDisplayName,
+                CoLocationSortName = coLocation.CoLocationSortName,
             };
         }
 

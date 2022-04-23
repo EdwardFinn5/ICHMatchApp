@@ -7,12 +7,13 @@ namespace API.DTOs
         public string FirstName { get; set; }
         public string Major { get; set; }
         public string Category { get; set; }
-        public string Location { get; set; }
+        public string CoLocation { get; set; }
+        public string StLocation { get; set; }
+        public string CiLocation { get; set; }
         public string ClassYear { get; set; }
-        public string Position { get; set; }
+        public string PosCategory { get; set; }
+        public string PositName { get; set; }
         public string PositionType { get; set; }
-        public string PositionLocation { get; set; }
-
         public string RegisterCode { get; set; }
         public string Token { get; set; }
         public string AppUserType { get; set; }

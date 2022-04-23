@@ -50,6 +50,7 @@ namespace API.Data
         {
             return await _context.CiLocations
                    .Where(x => x.StLocationId == id)
+                   .OrderBy(x => x.CiLocationSortName)
                    .ProjectTo<CiLocationDto>(_mapper.ConfigurationProvider)
                    .ToListAsync();
         }
@@ -65,8 +66,9 @@ namespace API.Data
         public async Task<IEnumerable<CiLocationDto>> GetCiLocationDtosAsync()
         {
             return await _context.CiLocations
-           .ProjectTo<CiLocationDto>(_mapper.ConfigurationProvider)
-           .ToListAsync();
+            .OrderBy(x => x.CiLocationSortName)
+            .ProjectTo<CiLocationDto>(_mapper.ConfigurationProvider)
+            .ToListAsync();
         }
 
         public async Task<bool> SaveAllAsync()

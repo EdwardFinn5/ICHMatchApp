@@ -14,7 +14,6 @@ namespace API.Data
         public DbSet<EmpInfo> EmpInfos { get; set; }
         public DbSet<CoLocation> CoLocations { get; set; }
         public DbSet<StLocation> StLocations { get; set; }
-        public DbSet<OtherCC> OtherCCs { get; set; }
         public DbSet<CiLocation> CiLocations { get; set; }
         public DbSet<Location> Locations { get; set; }
         public DbSet<PositName> PositNames { get; set; }
@@ -27,7 +26,6 @@ namespace API.Data
         public DbSet<DutyBullet> DutyBullets { get; set; }
         public DbSet<SkillsBullet> SkillsBullets { get; set; }
         public DbSet<StudInfo> StudInfos { get; set; }
-        public DbSet<RegisterCode> RegisterCodes { get; set; }
         public DbSet<UserLike> Likes { get; set; }
         public DbSet<Message> Messages { get; set; }
 
