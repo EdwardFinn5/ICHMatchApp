@@ -75,6 +75,7 @@ import { PositionBulletsHomeComponent } from './position-duty-bullets/position-b
 import { PhotoEditorHrComponent } from './photo-editor-hr/photo-editor-hr.component';
 import { EditNewPositionComponent } from './positions/edit-new-position.component';
 import { EditNew2PositionComponent } from './positions/edit-new2-position.component';
+import { MemberListSearchComponent } from './members/member-list-search/member-list-search.component';
 
 @NgModule({
   declarations: [
@@ -142,6 +143,7 @@ import { EditNew2PositionComponent } from './positions/edit-new2-position.compon
     PhotoEditorHrComponent,
     EditNewPositionComponent,
     EditNew2PositionComponent,
+    MemberListSearchComponent,
   ],
   imports: [
     BrowserModule,

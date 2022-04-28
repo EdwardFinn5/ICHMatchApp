@@ -16,7 +16,7 @@ namespace API.Data
         {
             if (await context.Users.AnyAsync()) return;
 
-            var userData = await System.IO.File.ReadAllTextAsync("Data/ICFMatchAppSeedData.json");
+            var userData = await System.IO.File.ReadAllTextAsync("Data/ICFMatchSeedData2.json");
             var users = JsonSerializer.Deserialize<List<AppUser>>(userData);
             foreach (var user in users)
             {

@@ -57,8 +57,8 @@ namespace API.Controllers
             return await _coLocationRepository.GetCoLocationDtoByIdAsync(id);
         }
 
-        [HttpPost("{id}")]
-        public async Task<ActionResult<CoLocationDto>> AddCoLocation(AddCoLocationDto addCoLocationDto, int id)
+        [HttpPost]
+        public async Task<ActionResult<CoLocationDto>> AddCoLocation(AddCoLocationDto addCoLocationDto)
         {
             if (await CoLocationExists(addCoLocationDto.CoLocationName)) return BadRequest("Country has already been added");
 

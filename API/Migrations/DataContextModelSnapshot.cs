@@ -42,7 +42,7 @@ namespace API.Migrations
                         .HasColumnType("varchar(12)");
 
                     b.Property<string>("CoLocation")
-                        .HasColumnType("nvarchar(60)");
+                        .HasColumnType("nvarchar(10)");
 
                     b.Property<string>("College")
                         .HasColumnType("varchar(30)");
@@ -77,16 +77,10 @@ namespace API.Migrations
                     b.Property<string>("LastName")
                         .HasColumnType("nvarchar(30)");
 
-                    b.Property<string>("Location")
-                        .HasColumnType("nvarchar(60)");
-
                     b.Property<string>("LogoUrl")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Major")
-                        .HasColumnType("nvarchar(60)");
-
-                    b.Property<string>("OtherCC")
                         .HasColumnType("nvarchar(60)");
 
                     b.Property<byte[]>("PasswordHash")
@@ -94,6 +88,12 @@ namespace API.Migrations
 
                     b.Property<byte[]>("PasswordSalt")
                         .HasColumnType("varbinary(max)");
+
+                    b.Property<string>("PosCategory")
+                        .HasColumnType("nvarchar(60)");
+
+                    b.Property<string>("PositName")
+                        .HasColumnType("nvarchar(60)");
 
                     b.Property<string>("RegisterCode")
                         .HasColumnType("varchar(30)");
@@ -134,6 +134,9 @@ namespace API.Migrations
                     b.Property<string>("CiLocationName")
                         .HasColumnType("nvarchar(60)");
 
+                    b.Property<string>("CiLocationSortName")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int>("StLocationId")
                         .HasColumnType("int");
 
@@ -151,11 +154,11 @@ namespace API.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("CoLocationDisplayName")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("CoLocationName")
                         .HasColumnType("nvarchar(60)");
+
+                    b.Property<string>("CoLocationSortName")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("CoLocationId");
 
@@ -250,21 +253,6 @@ namespace API.Migrations
                     b.ToTable("EmpInfos");
                 });
 
-            modelBuilder.Entity("API.Entities.Location", b =>
-                {
-                    b.Property<int>("LocationId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("LocationName")
-                        .HasColumnType("nvarchar(100)");
-
-                    b.HasKey("LocationId");
-
-                    b.ToTable("Locations");
-                });
-
             modelBuilder.Entity("API.Entities.Major", b =>
                 {
                     b.Property<int>("MajorId")
@@ -350,26 +338,6 @@ namespace API.Migrations
                     b.HasIndex("SenderId");
 
                     b.ToTable("Messages");
-                });
-
-            modelBuilder.Entity("API.Entities.OtherCC", b =>
-                {
-                    b.Property<int>("OtherCCId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("CoLocationId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("OtherCCName")
-                        .HasColumnType("nvarchar(60)");
-
-                    b.HasKey("OtherCCId");
-
-                    b.HasIndex("CoLocationId");
-
-                    b.ToTable("OtherCCs");
                 });
 
             modelBuilder.Entity("API.Entities.Photo", b =>
@@ -496,6 +464,9 @@ namespace API.Migrations
                     b.Property<string>("ApplyLink")
                         .HasColumnType("nvarchar(255)");
 
+                    b.Property<string>("CiLocation")
+                        .HasColumnType("nvarchar(60)");
+
                     b.Property<DateTime?>("DateAdded")
                         .HasColumnType("datetime2");
 
@@ -517,7 +488,7 @@ namespace API.Migrations
                     b.Property<string>("PosCategory")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("PosName")
+                    b.Property<string>("PositName")
                         .HasColumnType("nvarchar(100)");
 
                     b.Property<string>("PositionBenefits")
@@ -525,9 +496,6 @@ namespace API.Migrations
 
                     b.Property<string>("PositionDescription")
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("PositionLocation")
-                        .HasColumnType("nvarchar(60)");
 
                     b.Property<string>("PositionType")
                         .HasColumnType("varchar(25)");
@@ -543,26 +511,6 @@ namespace API.Migrations
                     b.HasIndex("AppUserId");
 
                     b.ToTable("Positions");
-                });
-
-            modelBuilder.Entity("API.Entities.RegisterCode", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("AppUserId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("RegisterCodeName")
-                        .HasColumnType("varchar(5)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("AppUserId");
-
-                    b.ToTable("RegisterCodes");
                 });
 
             modelBuilder.Entity("API.Entities.SkillsBullet", b =>
@@ -603,6 +551,9 @@ namespace API.Migrations
 
                     b.Property<string>("StLocationName")
                         .HasColumnType("nvarchar(60)");
+
+                    b.Property<string>("StLocationSortName")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("StLocationId");
 
@@ -742,17 +693,6 @@ namespace API.Migrations
                     b.Navigation("Sender");
                 });
 
-            modelBuilder.Entity("API.Entities.OtherCC", b =>
-                {
-                    b.HasOne("API.Entities.CoLocation", "coLocation")
-                        .WithMany("OtherCCs")
-                        .HasForeignKey("CoLocationId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("coLocation");
-                });
-
             modelBuilder.Entity("API.Entities.Photo", b =>
                 {
                     b.HasOne("API.Entities.AppUser", "AppUser")
@@ -790,17 +730,6 @@ namespace API.Migrations
                 {
                     b.HasOne("API.Entities.AppUser", "AppUser")
                         .WithMany("Positions")
-                        .HasForeignKey("AppUserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("AppUser");
-                });
-
-            modelBuilder.Entity("API.Entities.RegisterCode", b =>
-                {
-                    b.HasOne("API.Entities.AppUser", "AppUser")
-                        .WithMany("RegisterCodes")
                         .HasForeignKey("AppUserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -878,8 +807,6 @@ namespace API.Migrations
 
                     b.Navigation("Positions");
 
-                    b.Navigation("RegisterCodes");
-
                     b.Navigation("StudInfos");
                 });
 
@@ -890,8 +817,6 @@ namespace API.Migrations
 
             modelBuilder.Entity("API.Entities.CoLocation", b =>
                 {
-                    b.Navigation("OtherCCs");
-
                     b.Navigation("StLocations");
                 });
 

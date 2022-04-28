@@ -52,7 +52,6 @@ namespace API.Data
                 EmpName = user.EmpName,
                 EmpIndustry = user.EmpIndustry,
                 EmployeeNum = user.EmployeeNum,
-                PosCategory = user.PosCategory,
                 PositName = user.PositName,
                 CoLocation = user.CoLocation,
                 CiLocation = user.CiLocation,

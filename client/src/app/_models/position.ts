@@ -3,7 +3,8 @@ export interface Position {
   positionIdentifier: string;
   empName: string;
   empIndustry: string;
-  positionName: string;
+  positName: string;
+  posCategory: string;
   givingLevel: string;
   giftAmt: number;
   positionDescription: string;

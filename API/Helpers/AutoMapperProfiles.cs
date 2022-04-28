@@ -64,8 +64,8 @@ namespace API.Helpers
             //     .MapFrom(src => src.Positions.FirstOrDefault(x => x.IsActive).PositionBenefits))
             // .ForMember(dest => dest.PositionType, opt => opt
             //     .MapFrom(src => src.Positions.FirstOrDefault(x => x.IsActive).PositionType))
-            .ForMember(dest => dest.PositionLocation, opt => opt
-                .MapFrom(src => src.Positions.FirstOrDefault(x => x.IsActive).PositionLocation))
+            .ForMember(dest => dest.CiLocation, opt => opt
+                .MapFrom(src => src.Positions.FirstOrDefault(x => x.IsActive).CiLocation))
             .ForMember(dest => dest.DateAdded, opt => opt
                 .MapFrom(src => src.Positions.FirstOrDefault(x => x.IsActive).DateAdded))
             .ForMember(dest => dest.AppDeadline, opt => opt
@@ -127,7 +127,6 @@ namespace API.Helpers
             CreateMap<PosCategoryUpdateDto, PosCategory>();
             CreateMap<College, CollegeDto>();
             CreateMap<CollegeUpdateDto, College>();
-            CreateMap<LocationUpdateDto, Location>();
             CreateMap<MajorUpdateDto, Major>();
             CreateMap<Major, MajorDto>();
             CreateMap<CiLocationUpdateDto, CiLocation>();
@@ -138,12 +137,8 @@ namespace API.Helpers
             CreateMap<CoLocation, CoLocationDto>();
             CreateMap<DutyBulletUpdateDto, DutyBullet>();
             CreateMap<DutyBullet, DutyBulletDto>();
-            CreateMap<OtherCCUpdateDto, OtherCC>();
-            CreateMap<OtherCC, OtherCCDto>();
             CreateMap<SkillsBulletUpdateDto, SkillsBullet>();
             CreateMap<SkillsBullet, SkillsBulletDto>();
-            CreateMap<LocationUpdateDto, Location>();
-            CreateMap<Location, LocationDto>();
             CreateMap<RegisterEmpDto, AppUser>();
             CreateMap<RegisterStudDto, AppUser>();
             CreateMap<Message, MessageDto>()

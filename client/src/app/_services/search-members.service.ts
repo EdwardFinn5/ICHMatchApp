@@ -52,11 +52,11 @@ export class SearchMembersService {
     params = params.append('major', userParams.major);
     params = params.append('category', userParams.category);
     params = params.append('classYear', userParams.classYear);
-    params = params.append('location', userParams.location);
+    params = params.append('ciLocation', userParams.ciLocation);
     // params = params.append('appUserType', userParams.appUserType);
     params = params.append('orderByMajor', userParams.orderByMajor);
     params = params.append('orderByCategory', userParams.orderByCategory);
-    params = params.append('orderByLocation', userParams.orderByLocation);
+    params = params.append('orderByCiLocation', userParams.orderByCiLocation);
 
     return getPaginatedResult<Member[]>(
       this.baseUrl + 'searchusers',
@@ -101,7 +101,7 @@ export class SearchMembersService {
     // params = params.append('major', userParams.major);
     // params = params.append('classYear', userParams.classYear);
     // params = params.append('college', userParams.college);
-    params = params.append('location', userParams.location);
+    params = params.append('ciLocation', userParams.ciLocation);
     params = params.append('empIndustry', userParams.empIndustry);
     // params = params.append('orderByMajor', userParams.orderByMajor);
     // params = params.append('orderByCollege', userParams.orderByCollege);

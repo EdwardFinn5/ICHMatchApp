@@ -8,12 +8,13 @@ namespace API.DTOs
     public class PositionUpdateDto
     {
         public string PositionIdentifier { get; set; }
-        public string PosName { get; set; }
+        public string PositName { get; set; }
+        public string PosCategory { get; set; }
         public string PositionDescription { get; set; }
         public string LookingFor { get; set; }
         public string PositionBenefits { get; set; }
         public string PositionType { get; set; }
-        public string PositionLocation { get; set; }
+        public string CiLocation { get; set; }
         public Nullable<DateTime> DateAdded { get; set; }
         public Nullable<DateTime> StartDate { get; set; }
         public Nullable<DateTime> AppDeadline { get; set; }

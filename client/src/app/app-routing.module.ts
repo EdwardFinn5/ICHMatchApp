@@ -59,6 +59,7 @@ import { PositionEditSkillsBulletsComponent } from './position-skills-bullets/po
 import { PositionBulletsHomeComponent } from './position-duty-bullets/position-bullets-home.component';
 import { EditNewPositionComponent } from './positions/edit-new-position.component';
 import { EditNew2PositionComponent } from './positions/edit-new2-position.component';
+import { MemberListSearchComponent } from './members/member-list-search/member-list-search.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -101,6 +102,11 @@ const routes: Routes = [
       {
         path: 'membersearch',
         component: MemberSearchComponent,
+        pathMatch: 'full',
+      },
+      {
+        path: 'memberlistsearch',
+        component: MemberListSearchComponent,
         pathMatch: 'full',
       },
       { path: 'empmember/positions', component: EmpmemberPositionsComponent },

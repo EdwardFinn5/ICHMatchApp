@@ -18,7 +18,7 @@ export class EmpmemberListSuperComponent implements OnInit {
     { value: 'Insurance', display: 'Insurance' },
     { value: 'Banking', display: 'Banking' },
   ];
-  locationList = [
+  ciLocationList = [
     { value: 'Des Moines, IA', display: 'Des Moines, IA' },
     { value: 'Cedar Rapids, IA', display: 'Cedar Rapids, IA' },
     { value: 'Muscatine, IA', display: 'Muscatine, IA' },

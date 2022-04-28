@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace API.Migrations
 {
-    public partial class changedOtherCC : Migration
+    public partial class newLocation : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -41,7 +41,7 @@ namespace API.Migrations
                     CoLocationId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     CoLocationName = table.Column<string>(type: "nvarchar(60)", nullable: true),
-                    CoLocationDisplayName = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    CoLocationSortName = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -59,19 +59,6 @@ namespace API.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_EmpIndustries", x => x.EmpIndustryId);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Locations",
-                columns: table => new
-                {
-                    LocationId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    LocationName = table.Column<string>(type: "nvarchar(100)", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Locations", x => x.LocationId);
                 });
 
             migrationBuilder.CreateTable(
@@ -100,14 +87,14 @@ namespace API.Migrations
                     LastName = table.Column<string>(type: "nvarchar(30)", nullable: true),
                     AppUserType = table.Column<string>(type: "varchar(12)", nullable: true),
                     Active = table.Column<bool>(type: "bit", nullable: false),
-                    Location = table.Column<string>(type: "nvarchar(60)", nullable: true),
+                    CoLocation = table.Column<string>(type: "nvarchar(10)", nullable: true),
+                    StLocation = table.Column<string>(type: "nvarchar(60)", nullable: true),
+                    CiLocation = table.Column<string>(type: "nvarchar(60)", nullable: true),
                     ClassYear = table.Column<string>(type: "varchar(12)", nullable: true),
                     Category = table.Column<string>(type: "nvarchar(60)", nullable: true),
                     Major = table.Column<string>(type: "nvarchar(60)", nullable: true),
-                    CoLocation = table.Column<string>(type: "nvarchar(60)", nullable: true),
-                    StLocation = table.Column<string>(type: "nvarchar(60)", nullable: true),
-                    CiLocation = table.Column<string>(type: "nvarchar(60)", nullable: true),
-                    OtherCC = table.Column<string>(type: "nvarchar(60)", nullable: true),
+                    PosCategory = table.Column<string>(type: "nvarchar(60)", nullable: true),
+                    PositName = table.Column<string>(type: "nvarchar(60)", nullable: true),
                     College = table.Column<string>(type: "varchar(30)", nullable: true),
                     GiftAmt = table.Column<int>(type: "int", nullable: true),
                     EmpName = table.Column<string>(type: "nvarchar(60)", nullable: true),
@@ -146,32 +133,13 @@ namespace API.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "OtherCCs",
-                columns: table => new
-                {
-                    OtherCCId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    OtherCCName = table.Column<string>(type: "nvarchar(60)", nullable: true),
-                    CoLocationId = table.Column<int>(type: "int", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_OtherCCs", x => x.OtherCCId);
-                    table.ForeignKey(
-                        name: "FK_OtherCCs_CoLocations_CoLocationId",
-                        column: x => x.CoLocationId,
-                        principalTable: "CoLocations",
-                        principalColumn: "CoLocationId",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "StLocations",
                 columns: table => new
                 {
                     StLocationId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     StLocationName = table.Column<string>(type: "nvarchar(60)", nullable: true),
+                    StLocationSortName = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     CoLocationId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
@@ -348,13 +316,13 @@ namespace API.Migrations
                     PositionId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     RegisterCode = table.Column<string>(type: "nvarchar(10)", nullable: true),
-                    PosName = table.Column<string>(type: "nvarchar(100)", nullable: true),
+                    PositName = table.Column<string>(type: "nvarchar(100)", nullable: true),
                     PosCategory = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     PositionDescription = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     LookingFor = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     PositionBenefits = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     PositionType = table.Column<string>(type: "varchar(25)", nullable: true),
-                    PositionLocation = table.Column<string>(type: "nvarchar(60)", nullable: true),
+                    CiLocation = table.Column<string>(type: "nvarchar(60)", nullable: true),
                     DateAdded = table.Column<DateTime>(type: "datetime2", nullable: true),
                     StartDate = table.Column<DateTime>(type: "datetime2", nullable: true),
                     AppDeadline = table.Column<DateTime>(type: "datetime2", nullable: true),
@@ -371,26 +339,6 @@ namespace API.Migrations
                     table.PrimaryKey("PK_Positions", x => x.PositionId);
                     table.ForeignKey(
                         name: "FK_Positions_Users_AppUserId",
-                        column: x => x.AppUserId,
-                        principalTable: "Users",
-                        principalColumn: "AppUserId",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "RegisterCodes",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    RegisterCodeName = table.Column<string>(type: "varchar(5)", nullable: true),
-                    AppUserId = table.Column<int>(type: "int", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_RegisterCodes", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_RegisterCodes_Users_AppUserId",
                         column: x => x.AppUserId,
                         principalTable: "Users",
                         principalColumn: "AppUserId",
@@ -435,6 +383,7 @@ namespace API.Migrations
                     CiLocationId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     CiLocationName = table.Column<string>(type: "nvarchar(60)", nullable: true),
+                    CiLocationSortName = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     StLocationId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
@@ -528,11 +477,6 @@ namespace API.Migrations
                 column: "SenderId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_OtherCCs_CoLocationId",
-                table: "OtherCCs",
-                column: "CoLocationId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_PhotoHrs_AppUserId",
                 table: "PhotoHrs",
                 column: "AppUserId");
@@ -551,11 +495,6 @@ namespace API.Migrations
                 name: "IX_PositNames_PosCategoryId",
                 table: "PositNames",
                 column: "PosCategoryId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_RegisterCodes_AppUserId",
-                table: "RegisterCodes",
-                column: "AppUserId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_SkillsBullets_PositionId",
@@ -594,16 +533,10 @@ namespace API.Migrations
                 name: "Likes");
 
             migrationBuilder.DropTable(
-                name: "Locations");
-
-            migrationBuilder.DropTable(
                 name: "Majors");
 
             migrationBuilder.DropTable(
                 name: "Messages");
-
-            migrationBuilder.DropTable(
-                name: "OtherCCs");
 
             migrationBuilder.DropTable(
                 name: "PhotoHrs");
@@ -613,9 +546,6 @@ namespace API.Migrations
 
             migrationBuilder.DropTable(
                 name: "PositNames");
-
-            migrationBuilder.DropTable(
-                name: "RegisterCodes");
 
             migrationBuilder.DropTable(
                 name: "SkillsBullets");

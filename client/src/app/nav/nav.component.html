@@ -21,7 +21,9 @@
             aria-haspopup="true" aria-expanded="false">Talent</a>
           <div class="dropdown-menu mt-2" aria-labelledby="dropdown01">
             <!-- <a class="dropdown-item" routerLink='/membersearch'>Talent</a> -->
-            <a *ngIf="accountService.currentUser$ | async" class="dropdown-item" routerLink='/membersearch'>See Talent</a>
+            <a *ngIf="accountService.currentUser$ | async" class="dropdown-item" routerLink='/membersearch'>Search Talent by Major</a>
+            <div class="dropdown-divider"></div>
+            <a *ngIf="accountService.currentUser$ | async" class="dropdown-item" routerLink='/memberlistsearch'>Search Talent by Hometown</a>
             <div class="dropdown-divider"></div>
             <a *ngIf="accountService.currentUser$ | async" class="dropdown-item" routerLink='/lists'>See Thumbs-up</a>
             <div class="dropdown-divider"></div>

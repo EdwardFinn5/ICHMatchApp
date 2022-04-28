@@ -14,7 +14,7 @@ namespace API.Entities
         public string RegisterCode { get; set; }
 
         [Column(TypeName = "nvarchar(100)")]
-        public string PosName { get; set; }
+        public string PositName { get; set; }
         public string PosCategory { get; set; }
         public string PositionDescription { get; set; }
         public string LookingFor { get; set; }
@@ -24,7 +24,7 @@ namespace API.Entities
         public string PositionType { get; set; }
 
         [Column(TypeName = "nvarchar(60)")]
-        public string PositionLocation { get; set; }
+        public string CiLocation { get; set; }
         public Nullable<DateTime> DateAdded { get; set; }
         public Nullable<DateTime> StartDate { get; set; }
         public Nullable<DateTime> AppDeadline { get; set; }

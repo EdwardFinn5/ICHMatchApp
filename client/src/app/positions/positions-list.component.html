@@ -39,12 +39,12 @@
             </select>
         
             <select class="mr-2 mt-1 mb-1 form-group form-control" name="major"
-                [(ngModel)]="userParams.posName"
+                [(ngModel)]="userParams.positName"
                 style="width: auto">
                 <option class="text-center" value="">--2nd select position--</option>
                 <option *ngFor="let positName of positNames"
-                    [value]="positName.posName">
-                    {{positName.PosName | titlecase}}
+                    [value]="positName.positName">
+                    {{positName.positName | titlecase}}
                 </option>
             </select>
         </div>
@@ -103,7 +103,7 @@
                                         name='orderByPositionName'
                                         (click)="loadPositions()"
                                         btnRadio='orderByPositionName'
-                                        [(ngModel)]="userParams.orderByPosName">
+                                        [(ngModel)]="userParams.orderByPositName">
                                         Position
                                     </button>
                                     <button 

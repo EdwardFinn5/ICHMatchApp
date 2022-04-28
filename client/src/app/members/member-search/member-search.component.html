@@ -26,13 +26,13 @@
 
         <div class="form-group">
            <select name="location" 
-                [(ngModel)]="userParams.location"
+                [(ngModel)]="userParams.ciLocation"
                 style="width: auto" 
                 class="form-control mr-2">
                 <option value="">--Select Hometown--</option>
-                <option *ngFor="let location of locationList" 
-                    [value]="location.value">
-                    {{location.display}}    
+                <option *ngFor="let ciLocation of ciLocationList" 
+                    [value]="ciLocation.value">
+                    {{ciLocation.display}}    
                 </option>
             </select>
         </div>
@@ -81,10 +81,10 @@
                         <button 
                             type="button"
                             class="btn btn-info mr-2"
-                            name='orderByLocation'
+                            name='orderByCiLocation'
                             (click)="loadMembers()"
                             btnRadio='location'
-                            [(ngModel)]="userParams.orderByLocation">
+                            [(ngModel)]="userParams.orderByCiLocation">
                             Order by Hometown
                         </button>
     </form>

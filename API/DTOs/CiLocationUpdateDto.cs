@@ -7,7 +7,8 @@ namespace API.DTOs
 {
     public class CiLocationUpdateDto
     {
-        public string CiLocation { get; set; }
+        public string CiLocationName { get; set; }
+        public string CiLocationSortName { get; set; }
 
     }
 }

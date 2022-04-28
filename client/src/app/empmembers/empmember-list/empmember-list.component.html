@@ -26,11 +26,11 @@
         
                         <div class="form-group">
                             <select name="location" 
-                                [(ngModel)]="userParams.location" 
+                                [(ngModel)]="userParams.ciLocation" 
                                 style="width: auto"
                                 class="form-control mr-2">
                                 <option value="">--Select Headquarters--</option>
-                                <option *ngFor="let location of locationList" 
+                                <option *ngFor="let ciLocation of ciLocationList" 
                                     [value]="location.value">
                                     {{location.display}}
                                 </option>

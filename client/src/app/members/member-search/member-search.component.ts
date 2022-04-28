@@ -21,7 +21,7 @@ export class MemberSearchComponent implements OnInit {
     { value: 'IT', display: 'IT' },
     { value: 'Business Analytics', display: 'Business Analytics' },
   ];
-  locationList = [
+  ciLocationList = [
     { value: 'Des Moines, IA', display: 'Des Moines, IA' },
     { value: 'Cedar Rapids, IA', display: 'Cedar Rapids, IA' },
   ];

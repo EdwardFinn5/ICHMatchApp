@@ -9,6 +9,7 @@ namespace API.DTOs
     {
         public int CiLocationId { get; set; }
         public string CiLocationName { get; set; }
+        public string CiLocationSortName { get; set; }
         public int StLocationId { get; set; }
     }
 }

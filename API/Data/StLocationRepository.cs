@@ -50,6 +50,7 @@ namespace API.Data
         {
             return await _context.StLocations
                    .Where(x => x.CoLocationId == id)
+                   .OrderBy(x => x.StLocationSortName)
                    .ProjectTo<StLocationDto>(_mapper.ConfigurationProvider)
                    .ToListAsync();
         }
@@ -57,7 +58,7 @@ namespace API.Data
         public async Task<IEnumerable<StLocationDto>> GetStLocationDtosAsync()
         {
             return await _context.StLocations
-                .OrderBy(s => s.StLocationName)
+                .OrderBy(s => s.StLocationSortName)
                 .ProjectTo<StLocationDto>(_mapper.ConfigurationProvider)
                 .ToListAsync();
         }

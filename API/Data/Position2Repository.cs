@@ -60,33 +60,33 @@ namespace API.Data
         {
             var query = _context.Positions.AsQueryable();
 
-            if (userParams.PosName != null)
+            if (userParams.PositName != null)
             {
-                query = query.Where(p => p.PosName == userParams.PosName);
+                query = query.Where(p => p.PositName == userParams.PositName);
             }
             if (userParams.PositionType != null)
             {
                 query = query.Where(p => p.PositionType == userParams.PositionType);
             }
-            if (userParams.PositionLocation != null)
+            if (userParams.CiLocation != null)
             {
-                query = query.Where(p => p.PositionLocation == userParams.PositionLocation);
+                query = query.Where(p => p.CiLocation == userParams.CiLocation);
             }
 
             if (userParams.OrderByPosName != null)
             {
-                query = query.OrderBy(p => p.PosName)
+                query = query.OrderBy(p => p.PositName)
                 .ThenBy(p => p.RegisterCode);
             }
-            else if (userParams.OrderByPositionLocation != null)
+            else if (userParams.OrderByCiLocation != null)
             {
-                query = query.OrderBy(p => p.PositionLocation)
-                .ThenBy(p => p.PositionLocation);
+                query = query.OrderBy(p => p.CiLocation)
+                .ThenBy(p => p.CiLocation);
             }
             else
             {
                 query = query.OrderBy(p => p.RegisterCode)
-                .ThenBy(p => p.PosName);
+                .ThenBy(p => p.PositName);
             }
 
 

@@ -75,6 +75,7 @@ namespace API.Controllers
             {
                 // CategoryId = categoryDto.CategoryId,
                 CiLocationName = addCiLocationDto.CiLocationName,
+                CiLocationSortName = addCiLocationDto.CiLocationSortName,
                 StLocationId = id
             };
 
@@ -85,6 +86,7 @@ namespace API.Controllers
             {
                 CiLocationId = ciLocation.CiLocationId,
                 CiLocationName = ciLocation.CiLocationName,
+                CiLocationSortName = ciLocation.CiLocationSortName,
                 StLocationId = ciLocation.StLocationId
             };
         }

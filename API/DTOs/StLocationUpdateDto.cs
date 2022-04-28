@@ -8,6 +8,7 @@ namespace API.DTOs
     public class StLocationUpdateDto
     {
         public string StLocationName { get; set; }
+        public string StLocationSortName { get; set; }
 
     }
 }

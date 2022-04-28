@@ -84,7 +84,7 @@
             <p class="text-center">
                 {{member.classYear}} {{member.major}} major
                 <br> 
-                from {{member.location}}
+                from {{member.ciLocation}}
                 <br>
                 attending {{member.college}}
             </p>
@@ -94,8 +94,8 @@
             </ng-container>
             <ng-container *ngIf="member.appUserType == 'EmpHr'" class="card-text text-muted text-center">
             <p class="text-center">
-                {{member.positionType}} {{member.positionName}} position
-                <br>in {{member.positionLocation}} 
+                {{member.positionType}} {{member.positName}} position
+                <br>in {{member.ciLocation}} 
                 <br>Start date: {{member.startDate | date: "MM/dd/yyyy"}}
                 <br>Application deadline: {{member.appDeadline | date: "MM/dd/yyyy"}}
             </p>

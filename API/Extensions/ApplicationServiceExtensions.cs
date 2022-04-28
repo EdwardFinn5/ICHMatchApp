@@ -31,11 +31,9 @@ namespace API.Extensions
             services.AddScoped<ICategoryRepository, CategoryRepository>();
             services.AddScoped<ICollegeRepository, CollegeRepository>();
             services.AddScoped<IMajorRepository, MajorRepository>();
-            services.AddScoped<ILocationRepository, LocationRepository>();
             services.AddScoped<ICoLocationRepository, CoLocationRepository>();
             services.AddScoped<IStLocationRepository, StLocationRepository>();
             services.AddScoped<ICiLocationRepository, CiLocationRepository>();
-            services.AddScoped<IOtherCCRepository, OtherCCRepository>();
             services.AddScoped<IPositNameRepository, PositNameRepository>();
             services.AddScoped<IPosCategoryRepository, PosCategoryRepository>();
             services.AddScoped<IDutyBulletRepository, DutyBulletRepository>();
