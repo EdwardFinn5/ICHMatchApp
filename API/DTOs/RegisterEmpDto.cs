@@ -19,7 +19,7 @@ namespace API.DTOs
         public string RegisterCode { get; set; }
         [Required] public string FirstName { get; set; }
         [Required] public string LastName { get; set; }
-        [Required] public string Location { get; set; }
+        [Required] public string ciLocation { get; set; }
         [Required] public string EmpName { get; set; }
         [Required] public string EmpIndustry { get; set; }
         [Required] public string EmployeeNum { get; set; }

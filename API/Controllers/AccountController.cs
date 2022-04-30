@@ -137,6 +137,8 @@ namespace API.Controllers
                 PosCategory = user.PosCategory,
                 PositName = user.PositName,
                 CiLocation = user.CiLocation,
+                StLocation = user.StLocation,
+                CoLocation = user.CoLocation,
                 RegisterCode = user.RegisterCode
             };
         }

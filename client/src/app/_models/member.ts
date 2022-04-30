@@ -14,7 +14,9 @@ export interface Member {
   lastName: string;
   appUserType: string;
   active: boolean;
-  location: string;
+  ciLocation: string;
+  coLocation: string;
+  stLocation: string;
   classYear: string;
   major: string;
   category: string;

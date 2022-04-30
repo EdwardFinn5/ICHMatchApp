@@ -1,1 +1,149 @@
-<p>member-list-search works!</p>
+<div class="container-fluid lists mt-2" *ngIf="members && coLocations">
+    <div class="row welcome text-center">
+        <div class="col-12">
+            <h2 class="display-4"> Student talent applying your filters: {{pagination?.totalItems}}</h2>
+        </div>
+    </div>
+</div>
+
+
+<div class="container mt-3">
+    <form #form="ngForm" class="mb-3 align-content-center" 
+        (ngSubmit)="loadMembers()" autocomplete="off">
+
+        <div class="form-group form-inline">
+            <label class="mr-2 filter" style="font-size: 1.25em"><strong>US/Int'l Students Filter: </strong></label>
+            <div class="form-group">
+                <select name="coLocation" 
+                [(ngModel)]="userParams.coLocation"
+                style="width: auto" 
+                class="form-control mr-5">
+                <option class="text-center" value="">-- Select USA/Other Country --</option>
+                <option *ngFor="let coLocation of coLocations" 
+                    [value]="coLocation.coLocationName">
+                    {{coLocation.coLocationName}}    
+                </option>
+                </select>
+
+                <!-- <button class="btn btn-success mr-2" type="submit">Apply Filters</button>
+                <button (click)="resetFilters()" class="btn btn-info" type="submit">Reset Filters</button> -->
+
+            </div>
+        </div>
+            
+        <div class="form-group form-inline">
+            <label class="mr-2 filter" style="font-size: 1.25em"><strong> US State/Other Country Filter: </strong></label>  
+            <select (change)="onCoSelect($event)" 
+                class=" form-control mr-2"
+                name="coLocation"
+                style="width: auto">
+                <option class="text-center" #value="">-- 1st Select US/Other Country --</option>
+                <option *ngFor="let coLocation of coLocations"
+                    value="{{coLocation.coLocationId}}">
+                    {{coLocation.coLocationName}}
+                </option>
+            </select>
+        
+            <select class="mr-2 mt-1 mb-1 form-group form-control" name="major"
+                [(ngModel)]="userParams.stLocation"
+                style="width: auto">
+                <option class="text-center" value="">-- 2nd Select State/Country --</option>
+                <option *ngFor="let stLocation of stLocations"
+                    [value]="stLocation.stLocationName">
+                    {{stLocation.stLocationName}}
+                </option>
+            </select>
+        </div>
+        
+        <div class="form-group form-inline">
+            <label class="mr-2 filter" style="font-size: 1.25em"><strong> City Filter: </strong></label>  
+            
+            <select (change)="onCoSelect($event)" 
+                class=" form-control mr-2"
+                name="coLocation"
+                style="width: auto">
+                <option class="text-center mb-2" #value="">-- 1st Select US/Other Country --</option>
+                <option *ngFor="let coLocation of coLocations"
+                    value="{{coLocation.coLocationId}}">
+                    {{coLocation.coLocationName}}
+                </option>
+            </select>
+        
+            <select (change)="onStSelect($event)" 
+                class="mr-2 mt-1 mb-1 form-group form-control" name="stLocation"
+                style="width: auto">
+                <option class="text-center" value="">-- 2nd Select State/Country --</option>
+                <option *ngFor="let stLocation of stLocations"
+                    value="{{stLocation.stLocationId}}">
+                    {{stLocation.stLocationName}}
+                </option>
+            </select>
+
+            <select class="mr-2 mt-1 mb-1 form-group form-control" name="ciLocation"
+                [(ngModel)]="userParams.ciLocation"
+                style="width: auto">
+                <option class="text-center" value="">-- 3rd Select City --</option>
+                <option *ngFor="let ciLocation of ciLocations"
+                    [value]="ciLocation.ciLocationName">
+                    {{ciLocation.ciLocationName}}
+                </option>
+            </select>
+        </div>
+        
+        
+
+        <div class="form-group form-inline">
+            <label class="mr-2 filter" style="font-size: 1.25em"><strong> College filter: </strong></label>  
+            <select name="college" 
+                [(ngModel)]="userParams.college"
+                style="width: auto" 
+                class="form-control mr-2 mb-2">
+                <option class="text-center" value="">-- Select college --</option>
+                <option *ngFor="let college of colleges" 
+                    [value]="college.collegeName">
+                    {{college.collegeName}}    
+                </option>
+            </select>
+        
+        <label class="mr-2 filter" style="font-size: 1.25em"><strong> Class Yr filter: </strong></label>  
+           <select name="classYear" 
+                [(ngModel)]="userParams.classYear"
+                style="width: auto" 
+                class="form-control mb-2 mr-2">
+                <option value="">-- Select Class Yr --</option>
+                <option *ngFor="let classYear of classYearList" 
+                    [value]="classYear.value">
+                    {{classYear.display}}    
+                </option>
+            </select>
+       
+
+                        <button class="btn btn-success mr-2 mb-2" type="submit">Apply Filters</button>
+                        <button (click)="resetFilters()" class="btn btn-info mb-2" type="submit">Reset Filters</button>
+                    </div>
+                       </form>
+</div>
+
+<div class="container-fluid mt-2">
+    <div class="row">
+        <div *ngFor="let member of members" class="col-lg-3 col-md-6">
+            <app-member-search-card [member]="member"></app-member-search-card>
+        </div>
+    </div>
+</div>
+
+<div class="d-flex justify-content-center" *ngIf="pagination">
+    <pagination 
+        [boundaryLinks]="true" 
+        [totalItems]="pagination.totalItems"
+        [itemsPerPage]="pagination.itemsPerPage"
+        [(ngModel)]="pagination.currentPage"
+        (pageChanged)="pageChanged($event)"
+        previousText="&lsaquo;" 
+        nextText="&rsaquo;" 
+        firstText="&laquo;" 
+        lastText="&raquo;">
+    </pagination>
+</div>
+
+

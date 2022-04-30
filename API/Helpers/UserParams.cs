@@ -16,6 +16,7 @@ namespace API.Helpers
         public string PosCategory { get; set; }
         public string PositName { get; set; }
         public string Major { get; set; }
+        public string PositionLocation { get; set; }
         public string CoLocation { get; set; }
         public string StLocation { get; set; }
         public string CiLocation { get; set; }
@@ -25,14 +26,12 @@ namespace API.Helpers
         public string PositionType { get; set; }
         public string OrderByMajor { get; set; }
         public string OrderByCategory { get; set; }
-        public string OrderByCiLocation { get; set; }
+        public string OrderByPositionLocation { get; set; }
         public string OrderByCollege { get; set; }
         public string OrderByEmpIndustry { get; set; }
         public string OrderByRegisterCode { get; set; }
         public string OrderByEmpName { get; set; }
         public string OrderByPosName { get; set; }
-        public string OrderByPositionLocation { get; set; }
-
 
     }
 }

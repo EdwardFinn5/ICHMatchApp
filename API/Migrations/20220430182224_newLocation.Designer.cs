@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace API.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20220424223258_newLocation")]
+    [Migration("20220430182224_newLocation")]
     partial class newLocation
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -466,9 +466,6 @@ namespace API.Migrations
                     b.Property<string>("ApplyLink")
                         .HasColumnType("nvarchar(255)");
 
-                    b.Property<string>("CiLocation")
-                        .HasColumnType("nvarchar(60)");
-
                     b.Property<DateTime?>("DateAdded")
                         .HasColumnType("datetime2");
 
@@ -498,6 +495,9 @@ namespace API.Migrations
 
                     b.Property<string>("PositionDescription")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PositionLocation")
+                        .HasColumnType("nvarchar(60)");
 
                     b.Property<string>("PositionType")
                         .HasColumnType("varchar(25)");

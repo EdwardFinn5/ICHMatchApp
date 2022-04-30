@@ -24,7 +24,7 @@ namespace API.Entities
         public string PositionType { get; set; }
 
         [Column(TypeName = "nvarchar(60)")]
-        public string CiLocation { get; set; }
+        public string PositionLocation { get; set; }
         public Nullable<DateTime> DateAdded { get; set; }
         public Nullable<DateTime> StartDate { get; set; }
         public Nullable<DateTime> AppDeadline { get; set; }

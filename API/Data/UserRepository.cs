@@ -101,7 +101,7 @@ namespace API.Data
                 .ThenBy(u => u.LastName);
             }
 
-            else if (userParams.OrderByCiLocation != null)
+            else if (userParams.OrderByPositionLocation != null)
             {
                 query = query.OrderBy(u => u.CiLocation)
                 .ThenBy(u => u.LastName);
@@ -137,9 +137,9 @@ namespace API.Data
             {
                 query = query.Where(u => u.EmpIndustry == userParams.EmpIndustry);
             }
-            if (userParams.CiLocation != null)
+            if (userParams.PositionLocation != null)
             {
-                query = query.Where(u => u.CiLocation == userParams.CiLocation);
+                query = query.Where(u => u.CiLocation == userParams.PositionLocation);
             }
 
             if (userParams.OrderByEmpName != null)

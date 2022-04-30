@@ -19,7 +19,7 @@
                     <u><strong>-- {{member.firstName}} {{member.lastName}} --</strong></u>
                     <br><strong>{{member.classYear}} {{member.major}} Major</strong>
                     <br> from <br>
-                    <strong>{{member.location}}</strong>
+                    <strong>{{member.ciLocation}}</strong>
                     <br> attending <br>
                     <strong>{{member.college}}</strong>
                     <br> Profile Created: <br>
@@ -50,8 +50,8 @@
                         <input [(ngModel)]="member.category" type="text" name="category" class="form-control mb-2">
                         <label for="major"><strong>Major: </strong></label>
                         <input [(ngModel)]="member.major" type="text" name="major" class="form-control mb-2">
-                        <label for="location"><strong>Hometown: </strong></label>
-                        <input [(ngModel)]="member.location" type="text" name="location" class="form-control mb-2">
+                        <label for="ciLocation"><strong>Hometown: </strong></label>
+                        <input [(ngModel)]="member.ciLocation" type="text" name="ciLocation" class="form-control mb-2">
                         <label for="college"><strong>College: </strong></label>
                         <input [(ngModel)]="member.college" type="text" name="college" class="form-control mb-2">
                     </div>

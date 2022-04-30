@@ -13,11 +13,11 @@ namespace API.DTOs
         public string LookingFor { get; set; }
         public string PositionBenefits { get; set; }
         public string PositionType { get; set; }
-        public string CiLocation { get; set; }
+        public string PositionLocation { get; set; }
         public DateTime DateAdded { get; set; }
         public DateTime StartDate { get; set; }
         public DateTime AppDeadline { get; set; }
-        public bool IsActive { get; set; } = true;
+        public bool IsActive { get; set; }
         public string HrContact { get; set; }
         public string HrContactTitle { get; set; }
         public string HowToApply { get; set; }

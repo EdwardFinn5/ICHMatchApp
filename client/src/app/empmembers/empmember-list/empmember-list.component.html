@@ -31,8 +31,8 @@
                                 class="form-control mr-2">
                                 <option value="">--Select Headquarters--</option>
                                 <option *ngFor="let ciLocation of ciLocationList" 
-                                    [value]="location.value">
-                                    {{location.display}}
+                                    [value]="ciLocation.value">
+                                    {{ciLocation.display}}
                                 </option>
                             </select>
                         </div>

@@ -4,5 +4,6 @@ export interface StLocation {
   stLocationId: number;
   stLocationName: string;
   stLocationSortName: string;
-  ciLocations: CiLocation[];
+  coLocationId: number;
+  coLocations: CiLocation[];
 }

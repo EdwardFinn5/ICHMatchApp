@@ -1,0 +1,384 @@
+[
+  {
+    "UserName": "Jill@sau.edu",
+    "FirstName": "Jill",
+    "LastName": "Martin",
+    "ClassYear": "Senior",
+    "College": "St. Ambrose University",
+    "Major": "Computer Science",
+    "Category": "IT",
+    "CoLocation": "USA",
+    "StLocation": "IA",
+    "CiLocation": "Des Moines (area)",
+    "AppUserType": "ColStudent",
+    "GradDate": "2022-05-01",
+    "Active": true,
+    "Created": "2021-10-16",
+    "LastActive": "2021-10-16",
+    "StudInfos": [
+      {
+        "IsActive": true,
+        "GradDate": "2022-05-01",
+        "BestEmail": "Jill@sau.edu",
+        "BestPhone": "515-555-1212",
+        "AcademicPlus": "Jill has been on the Dean's List each semester while at St. Admbrose. \r\n",
+        "Athletics": "I played on the women's soccer team my first two years. I was also involved with the Student Government Association. \r\n",
+        "ExtraCurricular": "I have been involved in the accounting club at St. Ambrose and am the President of the club this year. \r\n",
+        "WorkPlus": "I had an internship with a local IT firm last year and worked in the firm's cyber-security area. I also have worked in retail on a part-time basis since high school. \r\n",
+        "GPA": "3.5",
+        "Arts": "I have been in Show Choir and have also perfomed in my school's theatre program.",
+        "DreamJob": "CIO for a non-profit"
+      }
+    ],
+    "Photos": [
+      {
+        "StudentUrl": "https://srkheadshotday.com/wp-content/uploads/Danielle_Lussier_Q4332_Crop32.jpg",
+        "IsMain": true
+      }
+    ]
+  },
+
+  {
+    "UserName": "Gina@sau.edu",
+    "FirstName": "Gina",
+    "LastName": "Gordan",
+    "ClassYear": "Senior",
+    "College": "Upper Iowa University",
+    "Major": "Accounting",
+    "Category": "Business",
+    "CoLocation": "USA",
+    "StLocation": "IA",
+    "CiLocation": "Sioux City (area)",
+    "AppUserType": "ColStudent",
+    "Active": true,
+    "Created": "2021-10-16",
+    "LastActive": "2021-10-16",
+    "StudInfos": [
+      {
+        "IsActive": true,
+        "GradDate": "2022-05-01",
+        "BestEmail": "Jillian@sau.edu",
+        "BestPhone": "515-555-1212",
+        "AcademicPlus": "I have been on the Dean's List each semester while at St. Admbrose. \r\n",
+        "Athletics": "I played on the women's soccer team my first two years. I was also involved with the Student Government Association. \r\n",
+        "ExtraCurricular": "I have been involved in the accounting club at St. Ambrose and am the President of the club this year. \r\n",
+        "WorkPlus": "I had an internship with a local IT firm last year and worked in the firm's cyber-security area. I also have worked in retail on a part-time basis since high school. \r\n",
+        "GPA": "3.5",
+        "Arts": "I have been in Show Choir and have also perfomed in my school's theatre program.",
+        "DreamJob": "CIO for a non-profit"
+      }
+    ],
+    "Photos": [
+      {
+        "StudentUrl": "https://sites.providence.edu/news/files/2017/12/phionnaalone-1gkc1ke.jpg",
+        "IsMain": true
+      }
+    ]
+  },
+
+  {
+    "UserName": "Lacy@sau.edu",
+    "FirstName": "Lacy",
+    "LastName": "Cline",
+    "ClassYear": "Junior",
+    "College": "Drake University",
+    "Major": "Marketing",
+    "Category": "Business",
+    "CoLocation": "USA",
+    "StLocation": "IL",
+    "CiLocation": "Chicago (area)",
+    "AppUserType": "ColStudent",
+    "Active": true,
+    "Created": "2021-10-16",
+    "LastActive": "2021-10-16",
+    "StudInfos": [
+      {
+        "IsActive": true,
+        "GradDate": "2022-05-01",
+        "BestEmail": "Jillian@sau.edu",
+        "BestPhone": "515-555-1212",
+        "AcademicPlus": "I have been on the Dean's List each semester while at St. Admbrose. \r\n",
+        "Athletics": "I played on the women's soccer team my first two years. I was also involved with the Student Government Association. \r\n",
+        "ExtraCurricular": "I have been involved in the accounting club at St. Ambrose and am the President of the club this year. \r\n",
+        "WorkPlus": "I had an internship with a local IT firm last year and worked in the firm's cyber-security area. I also have worked in retail on a part-time basis since high school. \r\n",
+        "GPA": "3.5",
+        "Arts": "I have been in Show Choir and have also perfomed in my school's theatre program.",
+        "DreamJob": "CIO for a non-profit"
+      }
+    ],
+    "Photos": [
+      {
+        "StudentUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRY0kIytjJdPPuCUb6gtYRMnhHFog02enHNeg&usqp=CAU",
+        "IsMain": true
+      }
+    ]
+  },
+
+  {
+    "UserName": "Kathryn@sau.edu",
+    "FirstName": "Kathryn",
+    "LastName": "Shepard",
+    "ClassYear": "Senior",
+    "College": "Northwestern College",
+    "Major": "Nursing",
+    "Category": "Healthcare",
+    "CoLocation": "Other",
+    "StLocation": "Canada",
+    "CiLocation": "Quebec",
+    "AppUserType": "ColStudent",
+    "Active": true,
+    "Created": "2021-10-16",
+    "LastActive": "2021-10-16",
+    "StudInfos": [
+      {
+        "IsActive": true,
+        "GradDate": "2022-05-01",
+        "BestEmail": "Jillian@sau.edu",
+        "BestPhone": "515-555-1212",
+        "AcademicPlus": "I have been on the Dean's List each semester while at St. Admbrose. \r\n",
+        "Athletics": "I played on the women's soccer team my first two years. I was also involved with the Student Government Association. \r\n",
+        "ExtraCurricular": "I have been involved in the accounting club at St. Ambrose and am the President of the club this year. \r\n",
+        "WorkPlus": "I had an internship with a local IT firm last year and worked in the firm's cyber-security area. I also have worked in retail on a part-time basis since high school. \r\n",
+        "GPA": "3.5",
+        "Arts": "I have been in Show Choir and have also perfomed in my school's theatre program.",
+        "DreamJob": "CIO for a non-profit"
+      }
+    ],
+    "Photos": [
+      {
+        "StudentUrl": "https://res.cloudinary.com/icf/image/upload/v1617048526/ra2vvkjbmbexph19zjza.jpg",
+        "IsMain": true
+      }
+    ]
+  },
+
+  {
+    "UserName": "Sue@firm.com",
+    "LogoUrl": "https://secureservercdn.net/198.71.233.41/v5v.bff.myftpupload.com/wp-content/uploads/2019/09/Encova-1024x1024.jpg",
+    "IsMainLogo": true,
+    "RegisterCode": "cnsjf",
+    "GiftAmt": 7500,
+    "FirstName": "Sue",
+    "LastName": "Haack",
+    "EmpName": "Encova",
+    "EmpIndustry": "Insurance",
+    "EmployeeNum": "850",
+    "CiLocation": "DeWitt",
+    "AppUserType": "EmpHr",
+    "Active": true,
+    "Created": "2021-10-16",
+    "LastActive": "2021-10-16",
+    "EmpInfos": [
+      {
+        "IsActive": true,
+        "EmpWebsite": "https://www.homesteaderslife.com/",
+        "CompanyDescription": "Homesteaders Life Company provides products and services to promote and support the funding of advance funeral planning and end-of-life expenses.",
+        "WhyWork": "Apply for a position at Homesteaders if you want to work for a company that treats its employees like family and where there is much opportuntiy for advancement."
+      }
+    ],
+    "Positions": [
+      {
+        "PosCategory": "Business",
+        "PositName": "Marketing",
+        "RegisterCode": "cnsjf",
+        "PositionDescription": "This marketing position is an internship opportunity for a student exploring the insurance industry and working with some of the finest marketing professionals in Des Moines.",
+        "LookingFor": "We pride ourselves in having many long-time employees. We look are team members who will be a good fit for our company and help us to continue to excell in the logistics industry.",
+        "PositionType": "Full-Time",
+        "PositionBenefits": "There is a special $1,000 signing bonus for this position plus the company will match 5% of your salary your first year to put into your retirment account.",
+        "StartDate": "2022-07-01",
+        "AppDeadline": "2022-03-30",
+        "PositionLocation": "Dubuque (loc)",
+        "IsActive": true,
+        "HrContact": "Joe Cameron",
+        "HrContactTitle": "HR Director",
+        "HowToApply": "Applicants should click on the link below.",
+        "ApplyEmail": "ed@iowacollegefoundation.org",
+        "ApplyLink": "https://www.iowacollegefoundation.org/"
+      }
+    ],
+    "Photos": [
+      {
+        "LogoUrl": "https://secureservercdn.net/198.71.233.41/v5v.bff.myftpupload.com/wp-content/uploads/2019/09/Encova-1024x1024.jpg",
+        "IsMainLogo": true
+      }
+    ],
+    "PhotoHrs": [
+      {
+        "HrUrl": "https://res.cloudinary.com/icf/image/upload/v1617235510/rtqnanswab1ed5ipdaet.jpg",
+        "IsMainHr": true
+      }
+    ]
+  },
+  {
+    "UserName": "Kent@firm.com",
+    "LogoUrl": "https://res.cloudinary.com/icf/image/upload/v1617376962/l3yhiyi4zrc1en4ljp8z.jpg",
+    "IsMainLogo": true,
+    "RegisterCode": "auivd",
+    "GiftAmt": 40000,
+    "FirstName": "Kent",
+    "LastName": "Hall",
+    "EmpName": "Musco",
+    "EmpIndustry": "Lighting Manufacturing",
+    "EmployeeNum": "850",
+    "CiLocation": "Oskaloosa",
+    "AppUserType": "EmpHr",
+    "Active": true,
+    "Created": "2021-10-16",
+    "LastActive": "2021-10-16",
+    "EmpInfos": [
+      {
+        "IsActive": true,
+        "EmpWebsite": "https://www.homesteaderslife.com/",
+        "CompanyDescription": "Homesteaders Life Company provides products and services to promote and support the funding of advance funeral planning and end-of-life expenses.",
+        "WhyWork": "Apply for a position at Homesteaders if you want to work for a company that treats its employees like family and where there is much opportuntiy for advancement."
+      }
+    ],
+    "Positions": [
+      {
+        "PosCategory": "IT",
+        "PositName": "Web Developer",
+        "RegisterCode": "auivd",
+        "PositionDescription": "This marketing position is an internship opportunity for a student exploring the insurance industry and working with some of the finest marketing professionals in Des Moines.",
+        "LookingFor": "We pride ourselves in having many long-time employees. We look are team members who will be a good fit for our company and help us to continue to excell in the logistics industry.",
+        "PositionType": "Full-Time",
+        "PositionBenefits": "There is a special $1,000 signing bonus for this position plus the company will match 5% of your salary your first year to put into your retirment account.",
+        "StartDate": "2022-07-01",
+        "AppDeadline": "2022-03-30",
+        "PositionLocation": "Oskaloosa (loc)",
+        "IsActive": true,
+        "HrContact": "Joe Cameron",
+        "HrContactTitle": "HR Director",
+        "HowToApply": "Applicants should click on the link below.",
+        "ApplyEmail": "ed@iowacollegefoundation.org",
+        "ApplyLink": "https://www.iowacollegefoundation.org/"
+      }
+    ],
+    "Photos": [
+      {
+        "LogoUrl": "https://res.cloudinary.com/icf/image/upload/v1617376962/l3yhiyi4zrc1en4ljp8z.jpg",
+        "IsMainLogo": true
+      }
+    ],
+    "PhotoHrs": [
+      {
+        "HrUrl": "https://res.cloudinary.com/icf/image/upload/v1617235510/rtqnanswab1ed5ipdaet.jpg",
+        "IsMainHr": true
+      }
+    ]
+  },
+  {
+    "UserName": "Nick@firm.com",
+    "LogoUrl": "https://strictlybusinessomaha.com/wp-content/uploads/2015/09/Logo-Holmes-Murphy-and-Associates-Omaha-Nebraska.jpg",
+    "IsMainLogo": true,
+    "RegisterCode": "cnsjf",
+    "GiftAmt": 7500,
+    "FirstName": "Nick",
+    "LastName": "Henderson",
+    "EmpName": "Holmes Murphy",
+    "EmpIndustry": "Insurance",
+    "EmployeeNum": "600",
+    "CiLocation": "Des Moines (area)",
+    "AppUserType": "EmpHr",
+    "Active": true,
+    "Created": "2021-10-16",
+    "LastActive": "2021-10-16",
+    "EmpInfos": [
+      {
+        "IsActive": true,
+        "EmpWebsite": "https://www.homesteaderslife.com/",
+        "CompanyDescription": "Homesteaders Life Company provides products and services to promote and support the funding of advance funeral planning and end-of-life expenses.",
+        "WhyWork": "Apply for a position at Homesteaders if you want to work for a company that treats its employees like family and where there is much opportuntiy for advancement."
+      }
+    ],
+    "Positions": [
+      {
+        "PosCategory": "Business",
+        "PositName": "Accounting",
+        "RegisterCode": "cnsjf",
+        "PositionDescription": "This marketing position is an internship opportunity for a student exploring the insurance industry and working with some of the finest marketing professionals in Des Moines.",
+        "LookingFor": "We pride ourselves in having many long-time employees. We look are team members who will be a good fit for our company and help us to continue to excell in the logistics industry.",
+        "PositionType": "Internship",
+        "PositionBenefits": "There is a special $1,000 signing bonus for this position plus the company will match 5% of your salary your first year to put into your retirment account.",
+        "StartDate": "2022-07-01",
+        "AppDeadline": "2022-03-30",
+        "PositionLocation": "Des Moines (area) loc",
+        "IsActive": true,
+        "HrContact": "Joe Cameron",
+        "HrContactTitle": "HR Director",
+        "HowToApply": "Applicants should click on the link below.",
+        "ApplyEmail": "ed@iowacollegefoundation.org",
+        "ApplyLink": "https://www.iowacollegefoundation.org/"
+      }
+    ],
+    "Photos": [
+      {
+        "LogoUrl": "https://strictlybusinessomaha.com/wp-content/uploads/2015/09/Logo-Holmes-Murphy-and-Associates-Omaha-Nebraska.jpg",
+        "IsMainLogo": true
+      }
+    ],
+    "PhotoHrs": [
+      {
+        "HrUrl": "https://res.cloudinary.com/icf/image/upload/v1617235510/rtqnanswab1ed5ipdaet.jpg",
+        "IsMainHr": true
+      }
+    ]
+  },
+
+  {
+    "UserName": "Sean@firm.com",
+    "LogoUrl": "https://cdn.shortpixel.ai/client/q_glossy,ret_img,w_300,h_200/https://wdmchamber.org/wp-content/uploads/2019/05/IMT-Group-300x200.jpg",
+    "IsMainLogo": true,
+    "RegisterCode": "cnsjf",
+    "GiftAmt": 7500,
+    "FirstName": "Sean",
+    "LastName": "Kennedy",
+    "EmpName": "The IMT Group",
+    "EmpIndustry": "Insurance",
+    "EmployeeNum": "850",
+    "CiLocation": "Des Moines (area)",
+    "AppUserType": "EmpHr",
+    "Active": true,
+    "Created": "2021-10-16",
+    "LastActive": "2021-10-16",
+    "EmpInfos": [
+      {
+        "IsActive": true,
+        "EmpWebsite": "https://www.homesteaderslife.com/",
+        "CompanyDescription": "Homesteaders Life Company provides products and services to promote and support the funding of advance funeral planning and end-of-life expenses.",
+        "WhyWork": "Apply for a position at Homesteaders if you want to work for a company that treats its employees like family and where there is much opportuntiy for advancement."
+      }
+    ],
+    "Positions": [
+      {
+        "PosCategory": "Business",
+        "PositName": "Marketing",
+        "RegisterCode": "cnsjf",
+        "PositionDescription": "This marketing position is an internship opportunity for a student exploring the insurance industry and working with some of the finest marketing professionals in Des Moines.",
+        "LookingFor": "We pride ourselves in having many long-time employees. We look are team members who will be a good fit for our company and help us to continue to excell in the logistics industry.",
+        "PositionType": "Internship",
+        "PositionBenefits": "There is a special $1,000 signing bonus for this position plus the company will match 5% of your salary your first year to put into your retirment account.",
+        "StartDate": "2022-07-01",
+        "AppDeadline": "2022-03-30",
+        "PositionLocation": "Des Moines (area) loc",
+        "IsActive": true,
+        "HrContact": "Joe Cameron",
+        "HrContactTitle": "HR Director",
+        "HowToApply": "Applicants should click on the link below.",
+        "ApplyEmail": "ed@iowacollegefoundation.org",
+        "ApplyLink": "https://www.iowacollegefoundation.org/"
+      }
+    ],
+    "Photos": [
+      {
+        "LogoUrl": "https://cdn.shortpixel.ai/client/q_glossy,ret_img,w_300,h_200/https://wdmchamber.org/wp-content/uploads/2019/05/IMT-Group-300x200.jpg",
+        "IsMainLogo": true
+      }
+    ],
+    "PhotoHrs": [
+      {
+        "HrUrl": "https://res.cloudinary.com/icf/image/upload/v1617235510/rtqnanswab1ed5ipdaet.jpg",
+        "IsMainHr": true
+      }
+    ]
+  }
+]

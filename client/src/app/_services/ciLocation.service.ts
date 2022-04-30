@@ -14,7 +14,7 @@ export class CilocationService {
   constructor(private http: HttpClient) {}
 
   getCiLocations() {
-    return this.http.get<CiLocation[]>(this.baseUrl + 'ciLocation');
+    return this.http.get<CiLocation[]>(this.baseUrl + 'cilocation');
   }
 
   getCoLocations() {

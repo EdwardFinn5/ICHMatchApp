@@ -19,7 +19,9 @@ namespace API.DTOs
         [Required] public string RegisterCode { get; set; }
         [Required] public string FirstName { get; set; }
         [Required] public string LastName { get; set; }
-        [Required] public string Location { get; set; }
+        [Required] public string ciLocation { get; set; }
+        [Required] public string coLocation { get; set; }
+        [Required] public string stLocation { get; set; }
         [Required] public string ClassYear { get; set; }
         [Required] public string Major { get; set; }
         [Required] public string Category { get; set; }

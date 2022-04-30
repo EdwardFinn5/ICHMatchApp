@@ -322,7 +322,7 @@ namespace API.Migrations
                     LookingFor = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     PositionBenefits = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     PositionType = table.Column<string>(type: "varchar(25)", nullable: true),
-                    CiLocation = table.Column<string>(type: "nvarchar(60)", nullable: true),
+                    PositionLocation = table.Column<string>(type: "nvarchar(60)", nullable: true),
                     DateAdded = table.Column<DateTime>(type: "datetime2", nullable: true),
                     StartDate = table.Column<DateTime>(type: "datetime2", nullable: true),
                     AppDeadline = table.Column<DateTime>(type: "datetime2", nullable: true),

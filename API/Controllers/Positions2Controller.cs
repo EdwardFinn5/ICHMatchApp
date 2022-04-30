@@ -78,7 +78,7 @@ namespace API.Controllers
                 LookingFor = addPositionDto.LookingFor,
                 PositionBenefits = addPositionDto.PositionBenefits,
                 PositionType = addPositionDto.PositionType,
-                CiLocation = addPositionDto.CiLocation,
+                PositionLocation = addPositionDto.PositionLocation,
                 DateAdded = addPositionDto.DateAdded,
                 StartDate = addPositionDto.StartDate,
                 AppDeadline = addPositionDto.AppDeadline,
@@ -99,6 +99,7 @@ namespace API.Controllers
                 RegisterCode = position.RegisterCode,
                 PositName = position.PositName,
                 LookingFor = position.LookingFor,
+                PositionLocation = position.PositionLocation,
                 AppUserId = id
             };
         }

@@ -52,6 +52,8 @@ export class SearchMembersService {
     params = params.append('major', userParams.major);
     params = params.append('category', userParams.category);
     params = params.append('classYear', userParams.classYear);
+    params = params.append('coLocation', userParams.coLocation);
+    params = params.append('stLocation', userParams.stLocation);
     params = params.append('ciLocation', userParams.ciLocation);
     // params = params.append('appUserType', userParams.appUserType);
     params = params.append('orderByMajor', userParams.orderByMajor);
