@@ -1,5 +1,6 @@
 import { LEADING_TRIVIA_CHARS } from '@angular/compiler/src/render3/view/template';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { Member } from '../_models/member';
 import { Pagination } from '../_models/pagination';
 import { PosCategory } from '../_models/posCategory';
@@ -15,6 +16,8 @@ import { PositNameService } from '../_services/positname.service';
   styleUrls: ['./positions-list.component.css'],
 })
 export class PositionsListComponent implements OnInit {
+  @Output() value: string = '';
+  form: NgForm;
   positions: Position[];
   pagination: Pagination;
   userParams: UserParams;
@@ -54,13 +57,6 @@ export class PositionsListComponent implements OnInit {
     });
   }
 
-  // loadPositNames() {
-  //   this.positNameService.getPositNames().subscribe((positNames) => {
-  //     this.positNames = positNames;
-  //     // console.log(this.categories);
-  //   });
-  // }
-
   onSelect(posCategories) {
     // console.log(categories.target.value);
     this.positNameService.getPositNames().subscribe((positNames) => {
@@ -70,12 +66,6 @@ export class PositionsListComponent implements OnInit {
         (e) => e.posCategoryId == posCategories.target.value
       );
       console.log('poscategory id: ', posCategories.target.value);
-      // console.log(
-      //   'majors with Category Id of ',
-      //   categories.target.value,
-      //   ': ',
-      //   this.majors
-      // );
     });
   }
 
@@ -90,6 +80,7 @@ export class PositionsListComponent implements OnInit {
   }
 
   resetFilters() {
+    this.loadPosCategories();
     this.userParams = this.position2Service.resetUserParams();
     this.loadPositions();
   }

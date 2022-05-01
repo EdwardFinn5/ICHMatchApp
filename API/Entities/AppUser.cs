@@ -48,7 +48,7 @@ namespace API.Entities
         public string PosCategory { get; set; }
 
         [Column(TypeName = "nvarchar(60)")]
-        public string PositName { get; set; }
+        public string PosName { get; set; }
 
         [Column(TypeName = "varchar(30)")]
         public string College { get; set; }

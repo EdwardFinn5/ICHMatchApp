@@ -21,7 +21,7 @@
                 <option class="text-center" value="">--Select Category--</option>
                 <option *ngFor="let category of categories" 
                     [value]="category.categoryName">
-                    {{category.categoryName | titlecase}}    
+                    {{category.categoryName}}    
                 </option>
                 </select>
             </div>
@@ -34,7 +34,7 @@
                 <option class="text-center mb-2" #value="">--1st select category--</option>
                 <option *ngFor="let category of categories"
                     value="{{category.categoryId}}">
-                    {{category.categoryName | titlecase}}
+                    {{category.categoryName}}
                 </option>
             </select>
         

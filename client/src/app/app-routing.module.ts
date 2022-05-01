@@ -60,6 +60,7 @@ import { PositionBulletsHomeComponent } from './position-duty-bullets/position-b
 import { EditNewPositionComponent } from './positions/edit-new-position.component';
 import { EditNew2PositionComponent } from './positions/edit-new2-position.component';
 import { MemberListSearchComponent } from './members/member-list-search/member-list-search.component';
+import { AddMajorsComponent } from './members/add-majors/add-majors.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -70,6 +71,8 @@ const routes: Routes = [
   { path: 'memberslist', component: MemberListComponent },
   { path: 'empmemberslist', component: EmpmemberListComponent },
   { path: 'empmemberslistsuper', component: EmpmemberListSuperComponent },
+  { path: 'addmajors', component: AddMajorsComponent, pathMatch: 'full' },
+
   {
     path: 'empmembercompdetail/:appUserId',
     component: EmpmemberCompDetailComponent,
@@ -172,6 +175,7 @@ const routes: Routes = [
         component: PositionsListComponent,
         pathMatch: 'full',
       },
+
       {
         path: 'positiondutybullets/:positionId',
         component: PositionDutyBulletsComponent,

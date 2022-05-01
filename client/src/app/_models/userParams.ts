@@ -3,7 +3,7 @@ export class UserParams {
   category = '';
   posCategory = '';
   major = '';
-  positName = '';
+  posName = '';
   classYear = '';
   empIndustry = '';
   empName = '';
@@ -13,14 +13,16 @@ export class UserParams {
   pageNumber = 1;
   pageSize = 8;
   positionType = '';
+  positionLocation = '';
   coLocation = '';
   ciLocation = '';
   stLocation = '';
   orderByLastActive = '';
-  orderByPositName = '';
+  orderByPosName = '';
   orderByPositionLocation = '';
   orderByMajor = '';
   orderByCategory = '';
+  orderByPosCategory = '';
   orderByLastName = '';
   orderByFirstName = '';
   orderByEmpName = '';

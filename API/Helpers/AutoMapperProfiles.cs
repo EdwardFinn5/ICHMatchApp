@@ -66,6 +66,10 @@ namespace API.Helpers
             //     .MapFrom(src => src.Positions.FirstOrDefault(x => x.IsActive).PositionType))
             .ForMember(dest => dest.PositionLocation, opt => opt
                 .MapFrom(src => src.Positions.FirstOrDefault(x => x.IsActive).PositionLocation))
+            .ForMember(dest => dest.PosCategory, opt => opt
+                .MapFrom(src => src.Positions.FirstOrDefault(x => x.IsActive).PosCategory))
+            .ForMember(dest => dest.PosName, opt => opt
+                .MapFrom(src => src.Positions.FirstOrDefault(x => x.IsActive).PosName))
             .ForMember(dest => dest.DateAdded, opt => opt
                 .MapFrom(src => src.Positions.FirstOrDefault(x => x.IsActive).DateAdded))
             .ForMember(dest => dest.AppDeadline, opt => opt

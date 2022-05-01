@@ -17,10 +17,10 @@
                 [(ngModel)]="userParams.posCategory"
                 style="width: auto" 
                 class="form-control mr-2">
-                <option class="trext-center" value="">--Select Category--</option>
+                <option class="text-center" value="">--Select Category--</option>
                 <option *ngFor="let posCategory of posCategories" 
                     [value]="posCategory.posCategoryName">
-                    {{posCategory.posCategoryName | titlecase}}    
+                    {{posCategory.posCategoryName}}    
                 </option>
                 </select>
             </div>
@@ -31,20 +31,20 @@
                 class=" form-control mr-2"
                 name="posCategory"
                 style="width: auto">
-                <option class="text-center mb-2" #value="">--1st select category--</option>
+                <option class="text-center mb-2" #value="">--1st Select Category--</option>
                 <option *ngFor="let posCategory of posCategories"
                     value="{{posCategory.posCategoryId}}">
-                    {{posCategory.posCategoryName | titlecase}}
+                    {{posCategory.posCategoryName}}
                 </option>
             </select>
         
             <select class="mr-2 mt-1 mb-1 form-group form-control" name="major"
-                [(ngModel)]="userParams.positName"
+                [(ngModel)]="userParams.posName"
                 style="width: auto">
-                <option class="text-center" value="">--2nd select position--</option>
+                <option class="text-center" value="">--2nd Select Position--</option>
                 <option *ngFor="let positName of positNames"
-                    [value]="positName.positName">
-                    {{positName.positName | titlecase}}
+                    [value]="positName.posName">
+                    {{positName.posName}}
                 </option>
             </select>
         </div>
@@ -100,18 +100,18 @@
                                     <button 
                                         type="button"
                                         class="btn btn-primary mr-2"
-                                        name='orderByPositionName'
+                                        name='orderByPosName'
                                         (click)="loadPositions()"
-                                        btnRadio='orderByPositionName'
-                                        [(ngModel)]="userParams.orderByPositName">
+                                        btnRadio='orderByPosName'
+                                        [(ngModel)]="userParams.orderByPosName">
                                         Position
                                     </button>
                                     <button 
                                         type="button"
                                         class="btn btn-info mr-2"
-                                        name='orderByPositionType'
+                                        name='orderByPositionLocation'
                                         (click)="loadPositions()"
-                                        btnRadio='orderbyPositionType'
+                                        btnRadio='orderbyPositionLocation'
                                         [(ngModel)]="userParams.orderByPositionLocation">
                                         Location
                                     </button>
@@ -122,7 +122,7 @@
 <div class="container-fluid mt-2">
     <div class="row">
         <div *ngFor="let position of positions"  class="col-lg-3 col-md-6">
-            <app-position-card [member]="member"  [position]="position"></app-position-card>
+            <app-position-card [position]="position"></app-position-card>
         </div>
     </div>
 </div>

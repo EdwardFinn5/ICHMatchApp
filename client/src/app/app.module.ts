@@ -76,6 +76,7 @@ import { PhotoEditorHrComponent } from './photo-editor-hr/photo-editor-hr.compon
 import { EditNewPositionComponent } from './positions/edit-new-position.component';
 import { EditNew2PositionComponent } from './positions/edit-new2-position.component';
 import { MemberListSearchComponent } from './members/member-list-search/member-list-search.component';
+import { AddMajorsComponent } from './members/add-majors/add-majors.component';
 
 @NgModule({
   declarations: [
@@ -144,6 +145,7 @@ import { MemberListSearchComponent } from './members/member-list-search/member-l
     EditNewPositionComponent,
     EditNew2PositionComponent,
     MemberListSearchComponent,
+    AddMajorsComponent,
   ],
   imports: [
     BrowserModule,

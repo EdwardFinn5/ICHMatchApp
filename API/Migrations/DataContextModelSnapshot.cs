@@ -92,7 +92,7 @@ namespace API.Migrations
                     b.Property<string>("PosCategory")
                         .HasColumnType("nvarchar(60)");
 
-                    b.Property<string>("PositName")
+                    b.Property<string>("PosName")
                         .HasColumnType("nvarchar(60)");
 
                     b.Property<string>("RegisterCode")
@@ -485,7 +485,7 @@ namespace API.Migrations
                     b.Property<string>("PosCategory")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("PositName")
+                    b.Property<string>("PosName")
                         .HasColumnType("nvarchar(100)");
 
                     b.Property<string>("PositionBenefits")

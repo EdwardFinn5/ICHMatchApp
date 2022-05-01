@@ -12,7 +12,7 @@ namespace API.DTOs
         public string CiLocation { get; set; }
         public string ClassYear { get; set; }
         public string PosCategory { get; set; }
-        public string PositName { get; set; }
+        public string PosName { get; set; }
         public string PositionType { get; set; }
         public string RegisterCode { get; set; }
         public string Token { get; set; }

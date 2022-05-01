@@ -32,7 +32,7 @@ namespace API.Controllers
             var posCategory = new PosCategory
             {
                 // CategoryId = categoryDto.CategoryId,
-                PosCategoryName = posCategoryDto.PosCategoryName.ToLower(),
+                PosCategoryName = posCategoryDto.PosCategoryName
             };
 
             _context.PosCategories.Add(posCategory);

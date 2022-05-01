@@ -54,9 +54,9 @@
         [label]='"Last Name"'>
       </app-text-input>
       
-      <app-text-input [formControl]='registerStudForm.controls["ciLocation"]'
+      <!-- <app-text-input [formControl]='registerStudForm.controls["ciLocation"]'
         [label]='"Home Town"'>
-      </app-text-input>
+      </app-text-input> -->
       
       <ng-container class="form-group">
         <label class="control-label" style="margin-right: 10px"><u>Class Year: </u></label>
@@ -74,22 +74,6 @@
         </label>
       </ng-container>
 
-      <!-- <div class="form-group"> 
-      <label class="mr-2 filter"><strong> First select a major-category (requrired): </strong></label>
-            <select class="form-control"
-              formControllName="category"
-            
-              style="width: auto">
-              <option class="text-center" value="">--Select Category--</option>
-              <option *ngFor="let category of categories" 
-                [value]="category.categoryName">
-                {{category.categoryName | titlecase}}    
-              </option>
-            </select>
-          </div>  -->
-   
-      <!-- <div class="form-group"> -->
-       
       <h6 class="filter m-auto"><strong>First select major-category (required):</strong></h6>
         
       <select class="mr-2 mt-1 mb-1 form-control" 
@@ -128,6 +112,8 @@
               {{major.majorName | titlecase}}
           </option>
       </select>
+
+      <button class="btn btn-success mt-2 shadow-sm" routerLink='/addmajors'>Click here if you don't see your major</button>
       
           
         <!-- <select class="mr-2 mt-1 mb-1 form-control" 
@@ -175,14 +161,14 @@
           #scrolMe
               style="overflow: scroll; height: 300px; width: 450px;"
               [scrollTop]="scrolMe.scrollHeight"
-              class="mr-2 mt-1 mb-1 form-control" 
+              class="mr-2 mt-1 mb-2 form-control" 
               formControlName="college"
      
             style="width: auto">
             <option class="text-center" value="">--Select College--</option>
             <option *ngFor="let college of colleges"
                 [value]="college.collegeName | titlecase">
-                {{college.collegeNickname | titlecase}}
+                {{college.collegeName | titlecase}}
             </option>
         </select>    
 

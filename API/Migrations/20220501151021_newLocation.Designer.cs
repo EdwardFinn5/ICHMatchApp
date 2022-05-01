@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace API.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20220430182224_newLocation")]
+    [Migration("20220501151021_newLocation")]
     partial class newLocation
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -94,7 +94,7 @@ namespace API.Migrations
                     b.Property<string>("PosCategory")
                         .HasColumnType("nvarchar(60)");
 
-                    b.Property<string>("PositName")
+                    b.Property<string>("PosName")
                         .HasColumnType("nvarchar(60)");
 
                     b.Property<string>("RegisterCode")
@@ -487,7 +487,7 @@ namespace API.Migrations
                     b.Property<string>("PosCategory")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("PositName")
+                    b.Property<string>("PosName")
                         .HasColumnType("nvarchar(100)");
 
                     b.Property<string>("PositionBenefits")

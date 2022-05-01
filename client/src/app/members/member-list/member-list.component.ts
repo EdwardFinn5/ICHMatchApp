@@ -77,13 +77,6 @@ export class MemberListComponent implements OnInit {
     });
   }
 
-  // loadMajors() {
-  //   this.majorService.getMajors().subscribe((majors) => {
-  //     this.majors = majors;
-  //     console.log(this.majors);
-  //   });
-  // }
-
   onSelect(categories) {
     // console.log(categories.target.value);
     this.majorService.getMajors().subscribe((majors) => {

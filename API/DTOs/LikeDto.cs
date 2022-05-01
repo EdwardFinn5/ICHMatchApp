@@ -12,7 +12,7 @@ namespace API.DTOs
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Major { get; set; }
-        public string PositName { get; set; }
+        public string PosName { get; set; }
         public string EmpName { get; set; }
         public string ClassYear { get; set; }
         public string StLocation { get; set; }

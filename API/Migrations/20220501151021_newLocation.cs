@@ -94,7 +94,7 @@ namespace API.Migrations
                     Category = table.Column<string>(type: "nvarchar(60)", nullable: true),
                     Major = table.Column<string>(type: "nvarchar(60)", nullable: true),
                     PosCategory = table.Column<string>(type: "nvarchar(60)", nullable: true),
-                    PositName = table.Column<string>(type: "nvarchar(60)", nullable: true),
+                    PosName = table.Column<string>(type: "nvarchar(60)", nullable: true),
                     College = table.Column<string>(type: "varchar(30)", nullable: true),
                     GiftAmt = table.Column<int>(type: "int", nullable: true),
                     EmpName = table.Column<string>(type: "nvarchar(60)", nullable: true),
@@ -316,7 +316,7 @@ namespace API.Migrations
                     PositionId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     RegisterCode = table.Column<string>(type: "nvarchar(10)", nullable: true),
-                    PositName = table.Column<string>(type: "nvarchar(100)", nullable: true),
+                    PosName = table.Column<string>(type: "nvarchar(100)", nullable: true),
                     PosCategory = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     PositionDescription = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     LookingFor = table.Column<string>(type: "nvarchar(max)", nullable: true),

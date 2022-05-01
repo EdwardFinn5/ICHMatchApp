@@ -13,6 +13,8 @@ namespace API.DTOs
         public string ClassYear { get; set; }
         public string Category { get; set; }
         public string Major { get; set; }
+        public string PosCategory { get; set; }
+        public string PosName { get; set; }
         public string College { get; set; }
         public int GiftAmt { get; set; }
         public string RegisterCode { get; set; }

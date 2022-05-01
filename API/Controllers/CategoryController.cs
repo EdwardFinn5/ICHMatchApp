@@ -32,7 +32,7 @@ namespace API.Controllers
             var category = new Category
             {
                 // CategoryId = categoryDto.CategoryId,
-                CategoryName = categoryDto.CategoryName.ToLower(),
+                CategoryName = categoryDto.CategoryName
             };
 
             _context.Categories.Add(category);
