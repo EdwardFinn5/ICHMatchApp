@@ -60,6 +60,8 @@ namespace API.Data
         {
             var query = _context.Positions.AsQueryable();
 
+            query = query.Where(p => p.IsActive);
+
             if (userParams.PosCategory != null)
             {
                 query = query.Where(p => p.PosCategory == userParams.PosCategory);

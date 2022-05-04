@@ -93,6 +93,7 @@ export class Position2Service {
   updatePosition(position: Position, positionId: number) {
     console.log('getting position info');
     console.log('updating position');
+    console.log(position);
     return this.http.put(this.baseUrl + 'positions2/' + positionId, position);
   }
 

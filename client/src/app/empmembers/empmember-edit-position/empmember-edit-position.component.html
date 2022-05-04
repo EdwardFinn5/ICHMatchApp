@@ -19,8 +19,10 @@
                         <i class="fa fa-user-circle text-success"></i> Online now
                     </div> -->
                     <form #editForm="ngForm" id="editForm" (ngSubmit)="updatePosition()">
-                    <label for="positionName"><strong>Position: </strong></label>
-                    <input [(ngModel)]="position.positionName" type="text" name="positionName" class="form-control mb-2">
+                    <label for="isActive"><strong>Keep Active: 1  Pause: 0 </strong></label>
+                    <input [(ngModel)]="position.isActive" type="text" name="isActive" class="form-control mb-2">
+                    <label for="posName"><strong>Position: </strong></label>
+                    <input [(ngModel)]="position.posName" type="text" name="posName" class="form-control mb-2">
                     <label for="positionType"><strong>Position Type: </strong></label>
                     <input [(ngModel)]="position.positionType" type="text" name="positionType" class="form-control mb-2">
                     <label for="positionLocation"><strong>Position Location: </strong></label>

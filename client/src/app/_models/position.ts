@@ -15,7 +15,7 @@ export interface Position {
   dateAdded: Date;
   startDate: Date;
   appDeadline: Date;
-  active: boolean;
+  isActive: boolean;
   hrUrl: string;
   hrContact: string;
   hrContactTitle: string;

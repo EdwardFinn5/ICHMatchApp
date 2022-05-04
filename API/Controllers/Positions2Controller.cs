@@ -75,6 +75,7 @@ namespace API.Controllers
                 RegisterCode = addPositionDto.RegisterCode,
                 PosName = addPositionDto.PosName,
                 PosCategory = addPositionDto.PosCategory,
+                IsActive = addPositionDto.IsActive,
                 PositionDescription = addPositionDto.PositionDescription,
                 LookingFor = addPositionDto.LookingFor,
                 PositionBenefits = addPositionDto.PositionBenefits,
@@ -97,6 +98,7 @@ namespace API.Controllers
             return new PositionDto
             {
                 PositionId = position.PositionId,
+                IsActive = position.IsActive,
                 RegisterCode = position.RegisterCode,
                 PosCategory = position.PosCategory,
                 PosName = position.PosName,

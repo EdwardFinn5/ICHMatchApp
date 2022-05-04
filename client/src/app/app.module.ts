@@ -77,6 +77,7 @@ import { EditNewPositionComponent } from './positions/edit-new-position.componen
 import { EditNew2PositionComponent } from './positions/edit-new2-position.component';
 import { MemberListSearchComponent } from './members/member-list-search/member-list-search.component';
 import { AddMajorsComponent } from './members/add-majors/add-majors.component';
+import { YesNoPipe } from './yes-no.pipe';
 
 @NgModule({
   declarations: [
@@ -146,6 +147,7 @@ import { AddMajorsComponent } from './members/add-majors/add-majors.component';
     EditNew2PositionComponent,
     MemberListSearchComponent,
     AddMajorsComponent,
+    YesNoPipe,
   ],
   imports: [
     BrowserModule,

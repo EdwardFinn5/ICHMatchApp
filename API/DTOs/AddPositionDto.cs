@@ -19,7 +19,7 @@ namespace API.DTOs
         public DateTime DateAdded { get; set; } = DateTime.Now;
         public DateTime StartDate { get; set; }
         public DateTime AppDeadline { get; set; }
-        public bool Active { get; set; } = true;
+        public bool IsActive { get; set; } = true;
         public string HrContact { get; set; }
         public string HrContactTitle { get; set; }
         public string HowToApply { get; set; }

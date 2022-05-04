@@ -14,15 +14,24 @@
 
         <form #editForm="ngForm" id="editForm" (ngSubmit)="updatePosition()" autocomplete="off">
 
-            <div class="form-group">
-                <label for="positionIdentifier"><strong>Identifier for position</strong></label>
-                <input name="positionIdentifier" [(ngModel)]="position.positionIdentifier"
+            <!-- <div class="form-group">
+                <label for="isActive"><strong> Active: 1  Pause: 0</strong></label>
+                <input name="isActive" [(ngModel)]="position.isActive"
                     class="form-control shadow-sm" type="text">
+            </div> -->
+
+            <div class="form-group">
+                <label><strong>Position Status</strong></label>
+                <div class="form-control">
+                    <label class="checkbox-inline">
+                        <input type="checkbox" name="isActive" [(ngModel)]="position.isActive"> Checked box means keep position posted
+                    </label>
+                </div>
             </div>
 
             <div class="form-group">
-                <label for="positionName"><strong>Position Name</strong></label>
-                <input name="positionName" [(ngModel)]="position.positionName" class="form-control shadow-sm"
+                <label for="posName"><strong>Position Name</strong></label>
+                <input name="posName" [(ngModel)]="position.posName" class="form-control shadow-sm"
                     type="text">
             </div>
 
@@ -31,6 +40,24 @@
                 <textarea name="positionDescription" [(ngModel)]="position.positionDescription"
                     class="form-control shadow-sm">
                                   </textarea>
+            </div>
+
+            <h6><strong>Responsibilities and Duties for this {{position?.positionName}} position:</strong></h6>
+            <ul>
+                <li *ngFor="let dutyBullet of dutyBullets">{{dutyBullet.dutyBulletText}}</li>
+            </ul>
+
+            <div>
+                <button class="btn btn-success btn-sm shadow-sm mb-2 m-auto" routerLink='/positiondutybullets/{{position.positionId}}'>Add/Edit Bullet Points</button>
+            </div>
+
+            <h6><strong>Requirements and Preferred Skills for this {{position?.positionName}} position: </strong></h6>
+            <ul>
+                <li *ngFor="let skillsBullet of skillsBullets">{{skillsBullet.skillsBulletText}}</li>
+            </ul>
+
+            <div>
+                <button class="btn btn-success btn-sm mb-2 shadow-sm m-auto" routerLink='/positiondutybullets/{{position.positionId}}'>Add/Edit Bullet Points</button>
             </div>
 
             <div class="form-group">

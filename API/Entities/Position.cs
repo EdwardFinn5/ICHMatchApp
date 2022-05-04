@@ -28,7 +28,7 @@ namespace API.Entities
         public Nullable<DateTime> DateAdded { get; set; }
         public Nullable<DateTime> StartDate { get; set; }
         public Nullable<DateTime> AppDeadline { get; set; }
-        public bool IsActive { get; set; } = true;
+        public bool IsActive { get; set; }
 
         [Column(TypeName = "nvarchar(100)")]
         public string HrContact { get; set; }
