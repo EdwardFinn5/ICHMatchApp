@@ -58,7 +58,7 @@ export class EditNew2PositionComponent implements OnInit {
 
   initializeForm() {
     this.addPositionForm = this.fb.group({
-      positionName: ['', Validators.required],
+      posName: ['', Validators.required],
       positionType: [''],
       positionLocation: ['', Validators.required],
       positionDescription: ['', Validators.required],

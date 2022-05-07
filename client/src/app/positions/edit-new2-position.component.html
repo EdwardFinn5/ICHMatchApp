@@ -36,7 +36,7 @@
                     <form [formGroup]='addPositionForm' (ngSubmit)="addPositionForm.valid && addPosition()" autocomplete="off">
                         <div class="details mb-3">
     
-                            <app-text-input [formControl]='addPositionForm.controls["positionName"]'
+                            <app-text-input [formControl]='addPositionForm.controls["posName"]'
                                 [label]='"Position Name"'>
                             </app-text-input>
 

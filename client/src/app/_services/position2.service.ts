@@ -97,6 +97,10 @@ export class Position2Service {
     return this.http.put(this.baseUrl + 'positions2/' + positionId, position);
   }
 
+  deletePosition(id: number) {
+    return this.http.delete(this.baseUrl + 'positions/' + id);
+  }
+
   addLike(id: number) {
     return this.http.post(this.baseUrl + 'likes/AddById/' + id, {});
   }

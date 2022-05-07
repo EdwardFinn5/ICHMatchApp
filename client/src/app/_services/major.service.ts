@@ -19,4 +19,34 @@ export class MajorService {
   getMajors() {
     return this.http.get<Major[]>(this.baseUrl + 'major');
   }
+
+  addCategory(model: any) {
+    return this.http.post(this.baseUrl + 'category/', model);
+  }
+
+  deleteCategory(id: number) {
+    return this.http.delete(this.baseUrl + 'category/' + id);
+  }
+
+  updateCategory(category: Category, categoryId: number) {
+    console.log('getting category info');
+    console.log(categoryId);
+    console.log('updating category');
+    return this.http.put(this.baseUrl + 'category/' + categoryId, category);
+  }
+
+  addMajor(model: any, id: number) {
+    return this.http.post(this.baseUrl + 'major/' + id, model);
+  }
+
+  deleteMajor(id: number) {
+    return this.http.delete(this.baseUrl + 'major/' + id);
+  }
+
+  updateMajor(major: Major, majorId: number) {
+    console.log('getting major info');
+    console.log(majorId);
+    console.log('updating major');
+    return this.http.put(this.baseUrl + 'major/' + majorId, major);
+  }
 }

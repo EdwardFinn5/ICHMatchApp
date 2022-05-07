@@ -78,6 +78,9 @@ import { EditNew2PositionComponent } from './positions/edit-new2-position.compon
 import { MemberListSearchComponent } from './members/member-list-search/member-list-search.component';
 import { AddMajorsComponent } from './members/add-majors/add-majors.component';
 import { YesNoPipe } from './yes-no.pipe';
+import { CategoryListComponent } from './categories-and-majors/category-list/category-list.component';
+import { CategoryAddComponent } from './categories-and-majors/category-add/category-add.component';
+import { CategoryEditComponent } from './categories-and-majors/category-edit/category-edit.component';
 
 @NgModule({
   declarations: [
@@ -148,6 +151,9 @@ import { YesNoPipe } from './yes-no.pipe';
     MemberListSearchComponent,
     AddMajorsComponent,
     YesNoPipe,
+    CategoryListComponent,
+    CategoryAddComponent,
+    CategoryEditComponent,
   ],
   imports: [
     BrowserModule,

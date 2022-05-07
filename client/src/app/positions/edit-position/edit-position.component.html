@@ -12,8 +12,9 @@
 
     <div class="login col-sm-4 col-lg-8 col-md-6 mx-auto shadow-lg">
 
-        <form #editForm="ngForm" id="editForm" (ngSubmit)="updatePosition()" autocomplete="off">
-
+        <!-- <form #editForm="ngForm" id="editForm" (ngSubmit)="updatePosition()" autocomplete="off"> -->
+            <form #editForm="ngForm" id="editForm" autocomplete="off">
+             
             <!-- <div class="form-group">
                 <label for="isActive"><strong> Active: 1  Pause: 0</strong></label>
                 <input name="isActive" [(ngModel)]="position.isActive"
@@ -48,7 +49,7 @@
             </ul>
 
             <div>
-                <button class="btn btn-success btn-sm shadow-sm mb-2 m-auto" routerLink='/positiondutybullets/{{position.positionId}}'>Add/Edit Bullet Points</button>
+                <button class="btn btn-success btn-sm shadow-sm mb-3 m-auto" routerLink='/positiondutybullets/{{position.positionId}}'>Add/Edit Bullet Points</button>
             </div>
 
             <h6><strong>Requirements and Preferred Skills for this {{position?.positionName}} position: </strong></h6>
@@ -57,7 +58,7 @@
             </ul>
 
             <div>
-                <button class="btn btn-success btn-sm mb-2 shadow-sm m-auto" routerLink='/positiondutybullets/{{position.positionId}}'>Add/Edit Bullet Points</button>
+                <button class="btn btn-success btn-sm mb-3 shadow-sm m-auto" routerLink='/positionskillsbullets/{{position.positionId}}'>Add/Edit Bullet Points</button>
             </div>
 
             <div class="form-group">
@@ -75,7 +76,9 @@
         </form>
 
         <div class="btn-group d-flex">
-            <button [disabled]="!editForm.dirty" form="editForm" type="submit" 
+            <!-- <button [disabled]="!editForm.dirty" form="editForm" type="submit" 
+            class="btn btn-success shadow-sm mr-1">Save Changes</button> -->
+            <button [disabled]="!editForm.dirty" form="editForm" (click)="updatePosition()" 
             class="btn btn-success shadow-sm mr-1">Save Changes</button>
             <button class="btn btn-info shadow-sm mr-1" routerLink='/empmember/positions'>Cancel</button>
         </div>
