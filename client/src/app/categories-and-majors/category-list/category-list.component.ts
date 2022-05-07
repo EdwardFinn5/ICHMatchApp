@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Category } from 'src/app/_models/category';
@@ -10,8 +11,11 @@ import { MajorService } from 'src/app/_services/major.service';
   styleUrls: ['./category-list.component.css'],
 })
 export class CategoryListComponent implements OnInit {
-  categories: Category[];
+  @Input() categories: Category[];
   categoryId: Number;
+  @ViewChild('categoryForm') categoryForm: NgForm;
+  loading = false;
+  category: string;
 
   constructor(
     private majorService: MajorService,
@@ -29,6 +33,18 @@ export class CategoryListComponent implements OnInit {
     });
   }
 
+  addCategory() {
+    // this.loading = true;
+    this.majorService
+      .addCategory(this.categoryForm.value)
+      .subscribe((category) => {
+        this.categories.push(category);
+        this.toastr.success('Category Added');
+        this.categoryForm.reset();
+        this.loadCategories();
+      });
+  }
+
   deleteCategory(id: number) {
     this.categoryId = id;
     console.log('The next item is categoryId');
@@ -42,14 +58,15 @@ export class CategoryListComponent implements OnInit {
         this.categories.findIndex((m) => m.categoryId === id),
         1
       );
+      this.toastr.success('Category Deleted');
     });
   }
 
-  editCategory(id: number) {
-    console.log('the next number is id');
-    console.log(id);
+  // editCategory(id: number) {
+  //   console.log('the next number is id');
+  //   console.log(id);
 
-    // this.router.navigate(['/positions/GetPositionById/' + id]);
-    this.router.navigate(['/positions/GetPositionById/', id]);
-  }
+  //   // this.router.navigate(['/positions/GetPositionById/' + id]);
+  //   this.router.navigate(['/positions/GetPositionById/', id]);
+  // }
 }

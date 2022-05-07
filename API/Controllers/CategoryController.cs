@@ -59,6 +59,12 @@ namespace API.Controllers
             return await _categoryRepository.GetCategoryDtoByIdAsync(id);
         }
 
+        [HttpGet("GetCategoryById/{id}")] //this is the one I just added
+        public async Task<ActionResult<Category>> GetCategoryByIdAsync(int id)
+        {
+            return await _categoryRepository.GetCategoryByIdAsync(id);
+        }
+
         [HttpPut("{id}")]
         public async Task<ActionResult> UpdateCategory(CategoryUpdateDto categoryUpdateDto, int id)
         {

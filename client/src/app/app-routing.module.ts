@@ -74,7 +74,11 @@ const routes: Routes = [
   { path: 'memberslist', component: MemberListComponent },
   { path: 'empmemberslist', component: EmpmemberListComponent },
   { path: 'empmemberslistsuper', component: EmpmemberListSuperComponent },
-  { path: 'addmajors', component: AddMajorsComponent, pathMatch: 'full' },
+  {
+    path: 'addmajors/:categoryId',
+    component: AddMajorsComponent,
+    pathMatch: 'full',
+  },
 
   {
     path: 'empmembercompdetail/:appUserId',
@@ -108,6 +112,11 @@ const routes: Routes = [
       {
         path: 'membersearch',
         component: MemberSearchComponent,
+        pathMatch: 'full',
+      },
+      {
+        path: 'categoryedit/:categoryId',
+        component: CategoryEditComponent,
         pathMatch: 'full',
       },
       {
@@ -267,11 +276,11 @@ const routes: Routes = [
   { path: 'company/edit', component: EmpmemberEditEmpinfoComponent },
   { path: 'categorylist', component: CategoryListComponent, pathMatch: 'full' },
   { path: 'categoryadd', component: CategoryAddComponent, pathMatch: 'full' },
-  {
-    path: 'categoryedit/:categoryId',
-    component: CategoryEditComponent,
-    pathMatch: 'full',
-  },
+  // {
+  //   path: 'categoryedit/:categoryId',
+  //   component: CategoryEditComponent,
+  //   pathMatch: 'full',
+  // },
   { path: '**', component: NotFoundComponent, pathMatch: 'full' },
 ];
 

@@ -3,7 +3,8 @@
         <!-- <h3>Id: {{member.appUserId}}</h3>
         <h3>Username: {{member.username}}</h3> -->
 
-        <h2><strong>Current Categories</strong></h2>
+        <div>
+        <h3><strong>Current Categories</strong></h3>
        
         <table class="table table-striped col-sm-4 col-lg-8 col-md-6 m-auto">
             <thead>
@@ -19,17 +20,37 @@
                     <td>{{category.categoryId}}</td>
                     <td>{{category.categoryName}}</td>
                     <td>
+                        <button class="btn btn-primary btn-sm shadow-sm mr-2 mb-2" routerLink='/addmajors/{{category.categoryId}}'>See Majors</button>
                         <button class="btn btn-primary btn-sm shadow-sm mr-2 mb-2" routerLink='/categoryedit/{{category.categoryId}}'>Edit Category</button>
                         <button type="button-del" (click)="deleteCategory(category.categoryId)"  class="btn btn-danger btn-sm shadow-sm mb-2">Delete</button>
 
                     </td>
                 </tr>
             </tbody>
-           
         </table>
-        <div class="text-center col-12">
-            <button class="btn btn-success btn-sm shadow-sm mt-3 mb-3" routerLink="/categoryadd">Add Category</button>
-        </div>
-
     </div>
-</div>
+
+    <div class="container mt-3">
+        <h4 class="text-center"><strong>Add Category</strong></h4>
+        <form #categoryForm="ngForm" (ngSubmit)="addCategory()" autocomplete="off">
+            <div class="input-group" >
+                <input name="categoryName" required [(ngModel)]="categoryName" type="text" 
+                    class="form-control input-sm long-input" placeholder="Add category name">
+                    <!-- <input name="order" required [(ngModel)]="order" type="number" 
+                    class="form-control input-sm short-input ml-2 mb-3" placeholder="Order # (1.0,2.0,...)"> -->
+                    <div class="input-group-append">
+                    <button [disabled]="!categoryForm.valid || loading" class="btn btn-primary ml-2 mb-3" style="width:auto" >Add Category
+                        <i *ngIf="loading" class="fa fa-spinner fa-spin"></i>
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+        <div class="text-center col-12">
+            <button class="btn btn-success btn-sm shadow-sm mt-3 mb-3" routerLink="/positionslist">Back to Positions</button>
+        </div>
+    </div>
+    </div>
+
+

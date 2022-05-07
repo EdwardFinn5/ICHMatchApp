@@ -3,12 +3,12 @@
     <div class="dutybullets p-0" style="text-align: center;">
 
         <div *ngIf="dutyBullets?.length === 0" class="mb-3">
-            <h2 class="mb-3"><strong>No <u>Responsibilites and Duties</u> yet for this {{position.positionName}} position -- please add below</strong></h2>
+            <h3 class="mb-3"><strong>No <u>Responsibilites and Duties</u> yet for this {{position.positionName}} position -- please add below</strong></h3>
         </div>
 
         <div  *ngIf="dutyBullets?.length > 0" class="mb-3">
             
-        <h2 class="mb-3"><strong>Current <u>Responsibilites and Duties</u> bullet points for this {{position?.positionName}} position</strong></h2>
+        <h3 class="mb-3"><strong>Current <u>Responsibilites and Duties</u> bullet points for this {{position?.positionName}} position</strong></h3>
        
         <table class="table table-striped col-sm-4 col-lg-8 col-md-6 m-auto">
             <thead>
@@ -39,6 +39,7 @@
     </div>
 
     <div class="container">
+        <h4 class="text-center"><strong>Add Responsibilities and Duties Bullet Point</strong></h4>
         <form #dutyBulletForm="ngForm" (ngSubmit)="addDutyBullet()" autocomplete="off">
             <div class="input-group" >
                 <input name="dutyBulletText" required [(ngModel)]="dutyBulletText" type="text" 

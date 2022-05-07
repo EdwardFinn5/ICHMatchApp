@@ -20,8 +20,15 @@ export class MajorService {
     return this.http.get<Major[]>(this.baseUrl + 'major');
   }
 
+  getCategory(categoryId: number) {
+    console.log('category id inside service get category: ', categoryId);
+    return this.http.get<Category>(
+      this.baseUrl + 'category/getcategorybyid/' + categoryId
+    );
+  }
+
   addCategory(model: any) {
-    return this.http.post(this.baseUrl + 'category/', model);
+    return this.http.post<Category>(this.baseUrl + 'category/', model);
   }
 
   deleteCategory(id: number) {
