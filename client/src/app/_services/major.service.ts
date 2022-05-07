@@ -20,6 +20,10 @@ export class MajorService {
     return this.http.get<Major[]>(this.baseUrl + 'major');
   }
 
+  getMajorsByCategoryId(categoryId: number) {
+    return this.http.get<Major[]>(this.baseUrl + 'major/getbyid/' + categoryId);
+  }
+
   getCategory(categoryId: number) {
     console.log('category id inside service get category: ', categoryId);
     return this.http.get<Category>(
@@ -43,7 +47,7 @@ export class MajorService {
   }
 
   addMajor(model: any, id: number) {
-    return this.http.post(this.baseUrl + 'major/' + id, model);
+    return this.http.post<Major>(this.baseUrl + 'major/' + id, model);
   }
 
   deleteMajor(id: number) {

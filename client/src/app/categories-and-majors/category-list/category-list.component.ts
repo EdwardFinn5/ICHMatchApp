@@ -12,10 +12,8 @@ import { MajorService } from 'src/app/_services/major.service';
 })
 export class CategoryListComponent implements OnInit {
   @Input() categories: Category[];
-  categoryId: Number;
+  categoryId: number;
   @ViewChild('categoryForm') categoryForm: NgForm;
-  loading = false;
-  category: string;
 
   constructor(
     private majorService: MajorService,
@@ -34,7 +32,6 @@ export class CategoryListComponent implements OnInit {
   }
 
   addCategory() {
-    // this.loading = true;
     this.majorService
       .addCategory(this.categoryForm.value)
       .subscribe((category) => {

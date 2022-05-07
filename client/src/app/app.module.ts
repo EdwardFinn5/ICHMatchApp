@@ -76,11 +76,12 @@ import { PhotoEditorHrComponent } from './photo-editor-hr/photo-editor-hr.compon
 import { EditNewPositionComponent } from './positions/edit-new-position.component';
 import { EditNew2PositionComponent } from './positions/edit-new2-position.component';
 import { MemberListSearchComponent } from './members/member-list-search/member-list-search.component';
-import { AddMajorsComponent } from './members/add-majors/add-majors.component';
+import { AddMajorsComponent } from './categories-and-majors/add-majors/add-majors.component';
 import { YesNoPipe } from './yes-no.pipe';
 import { CategoryListComponent } from './categories-and-majors/category-list/category-list.component';
 import { CategoryAddComponent } from './categories-and-majors/category-add/category-add.component';
 import { CategoryEditComponent } from './categories-and-majors/category-edit/category-edit.component';
+import { MajorEditComponent } from './categories-and-majors/major-edit/major-edit.component';
 
 @NgModule({
   declarations: [
@@ -154,6 +155,7 @@ import { CategoryEditComponent } from './categories-and-majors/category-edit/cat
     CategoryListComponent,
     CategoryAddComponent,
     CategoryEditComponent,
+    MajorEditComponent,
   ],
   imports: [
     BrowserModule,
