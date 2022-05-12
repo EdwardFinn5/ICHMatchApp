@@ -47,7 +47,9 @@
             <div class="dropdown-divider"></div>
             <a *ngIf="accountService.currentUser$ | async" class="dropdown-item" routerLink='/messages'>See Messages</a>
             <div class="dropdown-divider"></div>
-            <a *ngIf="accountService.currentUser$ | async" class="dropdown-item" routerLink='/categorylist'>See Categories</a>
+            <a *ngIf="accountService.currentUser$ | async" class="dropdown-item" routerLink='/categorylist'>See Major-Categories</a>
+            <div class="dropdown-divider"></div>
+            <a *ngIf="accountService.currentUser$ | async" class="dropdown-item" routerLink='/poscategorylist'>See Position-Categories</a>  
           </div>
         </li>
         

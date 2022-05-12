@@ -31,13 +31,13 @@ namespace API.Controllers
         {
             if (await UserExists(registerStudDto.Username)) return BadRequest("Username is taken");
 
-            if (registerStudDto.RegisterCode == "studentconnect")
-            {
-                registerStudDto.RegisterCode = registerStudDto.RegisterCode;
-            }
+            // if (registerStudDto.RegisterCode == "studentconnect")
+            // {
+            //     registerStudDto.RegisterCode = registerStudDto.RegisterCode;
+            // }
 
-            else
-                return BadRequest("Re-enter Register Code");
+            // else
+            //     return BadRequest("Re-enter Register Code");
 
             var user = _mapper.Map<AppUser>(registerStudDto);
 
@@ -47,7 +47,7 @@ namespace API.Controllers
             user.PasswordHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(registerStudDto.Password));
             user.PasswordSalt = hmac.Key;
             user.AppUserType = "ColStudent";
-            user.RegisterCode = registerStudDto.RegisterCode;
+            // user.RegisterCode = registerStudDto.RegisterCode;
 
             _context.Users.Add(user);
             await _context.SaveChangesAsync();
@@ -83,19 +83,19 @@ namespace API.Controllers
             // private NewRegisterCode == "";
             if (await UserExists(registerEmpDto.Username)) return BadRequest("Username is taken");
 
-            if (registerEmpDto.RegisterCode == "auivd"
-                || registerEmpDto.RegisterCode == "bynxf"
-                || registerEmpDto.RegisterCode == "cnsjf"
-                || registerEmpDto.RegisterCode == "dyrba"
-                || registerEmpDto.RegisterCode == "edkmg"
-                || registerEmpDto.RegisterCode == "fthkz"
-                || registerEmpDto.RegisterCode == "21533")
-            {
-                registerEmpDto.RegisterCode = registerEmpDto.RegisterCode;
-            }
+            // if (registerEmpDto.RegisterCode == "auivd"
+            //     || registerEmpDto.RegisterCode == "bynxf"
+            //     || registerEmpDto.RegisterCode == "cnsjf"
+            //     || registerEmpDto.RegisterCode == "dyrba"
+            //     || registerEmpDto.RegisterCode == "edkmg"
+            //     || registerEmpDto.RegisterCode == "fthkz"
+            //     || registerEmpDto.RegisterCode == "21533")
+            // {
+            //     registerEmpDto.RegisterCode = registerEmpDto.RegisterCode;
+            // }
 
-            else
-                return BadRequest("Re-enter Register Code");
+            // else
+            //     return BadRequest("Re-enter Register Code");
 
             var user = _mapper.Map<AppUser>(registerEmpDto);
 
@@ -105,7 +105,7 @@ namespace API.Controllers
             user.PasswordHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(registerEmpDto.Password));
             user.PasswordSalt = hmac.Key;
             user.AppUserType = "EmpHr";
-            user.RegisterCode = registerEmpDto.RegisterCode;
+            // user.RegisterCode = registerEmpDto.RegisterCode;
 
             _context.Users.Add(user);
             await _context.SaveChangesAsync();
@@ -183,7 +183,8 @@ namespace API.Controllers
                 CiLocation = user.CiLocation,
                 StudentUrl = user.Photos.FirstOrDefault(x => x.IsMain)?.StudentUrl,
                 LogoUrl = user.Photos.FirstOrDefault(x => x.IsMainLogo)?.LogoUrl,
-                HrUrl = user.PhotoHrs.FirstOrDefault(x => x.IsMainHr)?.HrUrl
+                HrUrl = user.PhotoHrs.FirstOrDefault(x => x.IsMainHr)?.HrUrl,
+
             };
         }
         private async Task<bool> UserExists(string username)

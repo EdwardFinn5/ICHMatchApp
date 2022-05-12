@@ -72,7 +72,7 @@ namespace API.Controllers
             var position = new Position
             {
                 PositionId = addPositionDto.PositionId,
-                RegisterCode = addPositionDto.RegisterCode,
+                // RegisterCode = addPositionDto.RegisterCode,
                 PosName = addPositionDto.PosName,
                 PosCategory = addPositionDto.PosCategory,
                 IsActive = addPositionDto.IsActive,
@@ -99,7 +99,7 @@ namespace API.Controllers
             {
                 PositionId = position.PositionId,
                 IsActive = position.IsActive,
-                RegisterCode = position.RegisterCode,
+                // RegisterCode = position.RegisterCode,
                 PosCategory = position.PosCategory,
                 PosName = position.PosName,
                 LookingFor = position.LookingFor,

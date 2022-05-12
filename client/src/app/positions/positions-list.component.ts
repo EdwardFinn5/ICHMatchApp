@@ -9,6 +9,7 @@ import { PositName } from '../_models/positName';
 import { UserParams } from '../_models/userParams';
 import { Position2Service } from '../_services/position2.service';
 import { PositNameService } from '../_services/positname.service';
+import { SearchMembersService } from '../_services/search-members.service';
 
 @Component({
   selector: 'app-positions-list',
@@ -19,6 +20,7 @@ export class PositionsListComponent implements OnInit {
   @Output() value: string = '';
   form: NgForm;
   positions: Position[];
+  members: Member[];
   pagination: Pagination;
   userParams: UserParams;
   posCategories: PosCategory[];
@@ -40,7 +42,8 @@ export class PositionsListComponent implements OnInit {
 
   constructor(
     private position2Service: Position2Service,
-    private positNameService: PositNameService
+    private positNameService: PositNameService,
+    private searchMemberService: SearchMembersService
   ) {
     this.userParams = this.position2Service.getUserParams();
   }
@@ -48,6 +51,16 @@ export class PositionsListComponent implements OnInit {
   ngOnInit(): void {
     this.loadPositions();
     this.loadPosCategories();
+  }
+
+  loadMembers() {
+    this.searchMemberService.setUserParams(this.userParams);
+    this.searchMemberService
+      .getSearchEmpMembers(this.userParams)
+      .subscribe((response) => {
+        this.members = response.result;
+        this.pagination = response.pagination;
+      });
   }
 
   loadPosCategories() {

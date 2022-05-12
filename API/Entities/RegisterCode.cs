@@ -8,7 +8,7 @@ namespace API.Entities
 {
     public class RegisterCode
     {
-        public int Id { get; set; }
+        public int RegisterCodeId { get; set; }
 
         [Column(TypeName = "varchar(5)")]
         public string RegisterCodeName { get; set; }

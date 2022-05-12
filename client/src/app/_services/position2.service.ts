@@ -62,6 +62,10 @@ export class Position2Service {
     params = params.append('positionLocation', userParams.positionLocation);
     params = params.append('orderByPosName', userParams.orderByPosName);
     params = params.append(
+      'orderByRegisterCode',
+      userParams.orderByRegisterCode
+    );
+    params = params.append(
       'orderByPositionLocation',
       userParams.orderByPositionLocation
     );

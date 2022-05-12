@@ -61,10 +61,13 @@ import { EditNewPositionComponent } from './positions/edit-new-position.componen
 import { EditNew2PositionComponent } from './positions/edit-new2-position.component';
 import { MemberListSearchComponent } from './members/member-list-search/member-list-search.component';
 import { CategoryListComponent } from './categories-and-majors/category-list/category-list.component';
-import { CategoryAddComponent } from './categories-and-majors/category-add/category-add.component';
 import { CategoryEditComponent } from './categories-and-majors/category-edit/category-edit.component';
 import { MajorEditComponent } from './categories-and-majors/major-edit/major-edit.component';
 import { AddMajorsComponent } from './categories-and-majors/add-majors/add-majors.component';
+import { PoscategoryEditComponent } from './poscategories-and-positnames/poscategory-edit/poscategory-edit.component';
+import { AddPositnameComponent } from './poscategories-and-positnames/add-positname/add-positname.component';
+import { PositnameEditComponent } from './poscategories-and-positnames/positname-edit/positname-edit.component';
+import { PoscategoryListComponent } from './poscategories-and-positnames/poscategory-list/poscategory-list.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -78,6 +81,11 @@ const routes: Routes = [
   {
     path: 'addmajors/:categoryId',
     component: AddMajorsComponent,
+    pathMatch: 'full',
+  },
+  {
+    path: 'addpositnames/:posCategoryId',
+    component: AddPositnameComponent,
     pathMatch: 'full',
   },
 
@@ -121,8 +129,23 @@ const routes: Routes = [
         pathMatch: 'full',
       },
       {
+        path: 'poscategoryedit/:posCategoryId',
+        component: PoscategoryEditComponent,
+        pathMatch: 'full',
+      },
+      {
+        path: 'poscategoryedit/:posCategoryId',
+        component: PoscategoryEditComponent,
+        pathMatch: 'full',
+      },
+      {
         path: 'majoredit/:majorId',
         component: MajorEditComponent,
+        pathMatch: 'full',
+      },
+      {
+        path: 'positnameedit/:majorId',
+        component: PositnameEditComponent,
         pathMatch: 'full',
       },
       {
@@ -281,7 +304,11 @@ const routes: Routes = [
   { path: 'server-error', component: ServerErrorComponent },
   { path: 'company/edit', component: EmpmemberEditEmpinfoComponent },
   { path: 'categorylist', component: CategoryListComponent, pathMatch: 'full' },
-  { path: 'categoryadd', component: CategoryAddComponent, pathMatch: 'full' },
+  {
+    path: 'poscategorylist',
+    component: PoscategoryListComponent,
+    pathMatch: 'full',
+  },
   // {
   //   path: 'categoryedit/:categoryId',
   //   component: CategoryEditComponent,

@@ -79,9 +79,12 @@ import { MemberListSearchComponent } from './members/member-list-search/member-l
 import { AddMajorsComponent } from './categories-and-majors/add-majors/add-majors.component';
 import { YesNoPipe } from './yes-no.pipe';
 import { CategoryListComponent } from './categories-and-majors/category-list/category-list.component';
-import { CategoryAddComponent } from './categories-and-majors/category-add/category-add.component';
 import { CategoryEditComponent } from './categories-and-majors/category-edit/category-edit.component';
 import { MajorEditComponent } from './categories-and-majors/major-edit/major-edit.component';
+import { AddPositnameComponent } from './poscategories-and-positnames/add-positname/add-positname.component';
+import { PoscategoryEditComponent } from './poscategories-and-positnames/poscategory-edit/poscategory-edit.component';
+import { PoscategoryListComponent } from './poscategories-and-positnames/poscategory-list/poscategory-list.component';
+import { PositnameEditComponent } from './poscategories-and-positnames/positname-edit/positname-edit.component';
 
 @NgModule({
   declarations: [
@@ -153,9 +156,12 @@ import { MajorEditComponent } from './categories-and-majors/major-edit/major-edi
     AddMajorsComponent,
     YesNoPipe,
     CategoryListComponent,
-    CategoryAddComponent,
     CategoryEditComponent,
     MajorEditComponent,
+    AddPositnameComponent,
+    PoscategoryEditComponent,
+    PoscategoryListComponent,
+    PositnameEditComponent,
   ],
   imports: [
     BrowserModule,

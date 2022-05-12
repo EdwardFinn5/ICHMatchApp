@@ -29,6 +29,7 @@ export class RegisterStudComponent implements OnInit {
   categories: Category[];
   majors: Major[];
   colleges: College[];
+  registerCode8: string = 'studentconnect';
 
   constructor(
     private router: Router,

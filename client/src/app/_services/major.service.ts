@@ -31,6 +31,11 @@ export class MajorService {
     );
   }
 
+  getMajor(majorId: number) {
+    console.log('major id inside service get major: ', majorId);
+    return this.http.get<Major>(this.baseUrl + 'major/getmajorbyid/' + majorId);
+  }
+
   addCategory(model: any) {
     return this.http.post<Category>(this.baseUrl + 'category/', model);
   }

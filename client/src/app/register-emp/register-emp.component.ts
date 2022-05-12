@@ -19,6 +19,13 @@ import { AccountService } from '../_services/account.service';
 export class RegisterEmpComponent implements OnInit {
   registerEmpForm: FormGroup;
   validationErrors: string[] = [];
+  registerCode1: string = 'a';
+  registerCode2: string = 'b';
+  registerCode3: string = 'c';
+  registerCode4: string = 'd';
+  registerCode5: string = 'e';
+  registerCode6: string = 'f';
+  registerCode7: string = 'g';
 
   constructor(
     private router: Router,
@@ -49,7 +56,7 @@ export class RegisterEmpComponent implements OnInit {
       registerCode: ['', Validators.required],
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
-      location: ['', Validators.required],
+      ciLocation: ['', Validators.required],
       empName: ['', Validators.required],
       empIndustry: ['', Validators.required],
       employeeNum: ['', Validators.required],

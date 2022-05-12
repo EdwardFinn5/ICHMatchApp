@@ -42,7 +42,7 @@
           formControlName='registerCode' 
           class="form-control shadow-sm" 
           type="text"
-          pattern="(auivd)|(bynxf)|(cnsjf)|(dyrba)|(edkmg)|(fthkz)|(21533)"
+          pattern="({{registerCode1}})|{{registerCode2}}|{{registerCode3}}|{{registerCode4}}|{{registerCode5}}|{{registerCode6}}|{{registerCode7}}"
           placeholder="Register Code">
           <div *ngIf="registerEmpForm.get('registerCode').hasError('required')"
             class="invalid-feedback">Please enter a register code</div> 
@@ -62,7 +62,7 @@
         [label]='"Name of Company"'>
       </app-text-input>
       
-      <app-text-input [formControl]='registerEmpForm.controls["location"]'
+      <app-text-input [formControl]='registerEmpForm.controls["ciLocation"]'
         [label]='"Company Headquarters"'>
       </app-text-input>
 

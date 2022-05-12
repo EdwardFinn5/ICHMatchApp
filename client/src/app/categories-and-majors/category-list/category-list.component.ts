@@ -58,12 +58,4 @@ export class CategoryListComponent implements OnInit {
       this.toastr.success('Category Deleted');
     });
   }
-
-  // editCategory(id: number) {
-  //   console.log('the next number is id');
-  //   console.log(id);
-
-  //   // this.router.navigate(['/positions/GetPositionById/' + id]);
-  //   this.router.navigate(['/positions/GetPositionById/', id]);
-  // }
 }

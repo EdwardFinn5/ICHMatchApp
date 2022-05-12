@@ -41,10 +41,11 @@
         <ng-container class="card-text text-muted text-center">
             <p class="text-center">
                 
+      
                 {{position.positionType}} {{position.posName}} position
                 <br>in {{position.positionLocation}} 
                 <br>Start date: {{position.startDate | date: "MM/dd/yyyy"}}
-                <br>Application deadline: {{position.appDeadline | date: "MM/dd/yyyy"}}
+                <br>New Application deadline: {{position.appDeadline | date: "MM/dd/yyyy"}}
             </p>
             <button class="btn btn-info button btn-block shadow-sm mr-2 mb-2" routerLink='/newpositiondetail/{{position.positionId}}'>
                 Click to see position details

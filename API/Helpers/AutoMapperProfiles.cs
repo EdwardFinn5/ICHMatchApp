@@ -85,6 +85,7 @@ namespace API.Helpers
             .ForMember(dest => dest.ApplyLink, opt => opt
                 .MapFrom(src => src.Positions.FirstOrDefault(x => x.IsActive).ApplyLink));
 
+
             CreateMap<Position, PositionDto>()
                .ForMember(d => d.EmpIndustry, o => o.MapFrom(s => s.AppUser.EmpIndustry))
                .ForMember(d => d.EmpName, o => o.MapFrom(s => s.AppUser.EmpName))

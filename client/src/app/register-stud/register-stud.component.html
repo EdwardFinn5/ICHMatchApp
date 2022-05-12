@@ -38,7 +38,7 @@
           formControlName='registerCode' 
           class="form-control shadow-sm" 
           type="text"
-          pattern="(studentconnect)"
+          pattern="({{registerCode8}})"
           placeholder="Register Code">
           <div *ngIf="registerStudForm.get('registerCode').hasError('required')"
             class="invalid-feedback">Please enter a register code</div> 
@@ -52,6 +52,18 @@
 
       <app-text-input [formControl]='registerStudForm.controls["lastName"]'
         [label]='"Last Name"'>
+      </app-text-input>
+
+      <app-text-input [formControl]='registerStudForm.controls["coLocation"]'
+        [label]='"Country"'>
+      </app-text-input>
+
+      <app-text-input [formControl]='registerStudForm.controls["stLocation"]'
+        [label]='"State"'>
+      </app-text-input>
+
+      <app-text-input [formControl]='registerStudForm.controls["ciLocation"]'
+        [label]='"City"'>
       </app-text-input>
       
       <!-- <app-text-input [formControl]='registerStudForm.controls["ciLocation"]'

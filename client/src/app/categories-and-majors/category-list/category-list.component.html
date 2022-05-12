@@ -9,8 +9,8 @@
         <table class="table table-striped col-sm-4 col-lg-8 col-md-6 m-auto">
             <thead>
                 <tr>
-                    <th>Category Id</th>
-                    <th>Category Name</th>
+                    <th>Major Category Id</th>
+                    <th>Major Category Name</th>
                     <th>Options</th>
                 </tr>
             </thead>
@@ -31,7 +31,7 @@
     </div>
 
     <div class="container mt-3">
-        <h4 class="text-center"><strong>Add Category</strong></h4>
+        <h4 class="text-center"><strong>Add Major Category</strong></h4>
         <form #categoryForm="ngForm" (ngSubmit)="addCategory()" autocomplete="off">
             <div class="input-group" >
                 <input name="categoryName" required [(ngModel)]="categoryName" type="text" 
