@@ -52,7 +52,7 @@ namespace API.Data
                 EmpName = user.EmpName,
                 EmpIndustry = user.EmpIndustry,
                 EmployeeNum = user.EmployeeNum,
-                PosName = user.PosName,
+                // PosName = user.PosName,
                 CoLocation = user.CoLocation,
                 CiLocation = user.CiLocation,
                 StLocation = user.StLocation,

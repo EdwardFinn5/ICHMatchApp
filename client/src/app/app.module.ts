@@ -85,6 +85,8 @@ import { AddPositnameComponent } from './poscategories-and-positnames/add-positn
 import { PoscategoryEditComponent } from './poscategories-and-positnames/poscategory-edit/poscategory-edit.component';
 import { PoscategoryListComponent } from './poscategories-and-positnames/poscategory-list/poscategory-list.component';
 import { PositnameEditComponent } from './poscategories-and-positnames/positname-edit/positname-edit.component';
+import { ProfileadviceListComponent } from './profileAdvices/profileadvice-list/profileadvice-list.component';
+import { ProfileadviceEditComponent } from './profileAdvices/profileadvice-edit/profileadvice-edit.component';
 
 @NgModule({
   declarations: [
@@ -162,6 +164,8 @@ import { PositnameEditComponent } from './poscategories-and-positnames/positname
     PoscategoryEditComponent,
     PoscategoryListComponent,
     PositnameEditComponent,
+    ProfileadviceListComponent,
+    ProfileadviceEditComponent,
   ],
   imports: [
     BrowserModule,

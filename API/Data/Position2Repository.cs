@@ -75,9 +75,9 @@ namespace API.Data
             {
                 query = query.Where(p => p.PositionType == userParams.PositionType);
             }
-            if (userParams.PositionLocation != null)
+            if (userParams.CiLocation != null)
             {
-                query = query.Where(p => p.PositionLocation == userParams.PositionLocation);
+                query = query.Where(p => p.CiLocation == userParams.CiLocation);
             }
 
             if (userParams.OrderByPosName != null)
@@ -87,8 +87,9 @@ namespace API.Data
             }
             else if (userParams.OrderByPositionLocation != null)
             {
-                query = query.OrderBy(p => p.PositionLocation)
-                .ThenBy(p => p.PositionLocation);
+                query = query.OrderBy(p => p.CiLocation)
+                .ThenBy(p => p.RegisterCode)
+                .ThenBy(p => p.PosName);
             }
             else
             {
@@ -111,6 +112,7 @@ namespace API.Data
                   .Include(a => a.AppUser)
                   .Include(b => b.DutyBullets)
                   .Include(b => b.SkillsBullets)
+                  .Include(b => b.PhotoLogos)
                   .ToListAsync();
         }
 

@@ -1,0 +1,59 @@
+<div class="row shadow mt-3 " *ngIf="profileAdvices">
+    <div class="positions p-0" style="text-align: center;">
+        <!-- <h3>Id: {{member.appUserId}}</h3>
+        <h3>Username: {{member.username}}</h3> -->
+
+        <div>
+        <h3><strong>Current Profile Advice</strong></h3>
+       
+        <table class="table table-striped col-sm-4 col-lg-8 col-md-6 m-auto">
+            <thead>
+                <tr>
+                    <th>Profile Advice Title</th>
+                    <th>Profile Advice Content</th>
+                    <th>Order</th>
+                    <th>Options</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let profileAdvice of profileAdvises">
+                    <!-- <td> <img src="{{position.logoUrl || '../../assets/images/logo.PNG' }}" alt="{{position.empName}}"></td> -->
+                    <td>{{profileAdvice.profileAdviceTitle}}</td>
+                    <td>{{profileAdvice.profileAdviceContent}}</td>
+                    <td>{{profileAdvice.order}}</td>
+                    <td>
+                        <button class="btn btn-info btn-sm shadow-sm mr-2 mb-2" routerLink='/profileAdviceedit/{{profileAdvice.profileAdviceId}}'>Edit Profile Advice</button>
+                        <button type="button-del" (click)="deleteProfileAdvice(profileAdvice.profileAdviceId)"  class="btn btn-danger btn-sm shadow-sm mb-2">Delete</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="container mt-3">
+        <h4 class="text-center"><strong>Add Profile Advice</strong></h4>
+        <form #profileAdviceForm="ngForm" (ngSubmit)="addProfileAdvice()" autocomplete="off">
+            <div class="input-group" >
+                <input name="profileAdviceTitle" required [(ngModel)]="profileAdviceTitle" type="text" 
+                    class="form-control input-sm long-input" placeholder="Add Profile Advice Title">
+                <textarea> name="profileAdviceContent" required [(ngModel)]="profileAdviceContent"  
+                    class="form-control input-sm long-input" placeholder="Add Profile Advice Content"></textarea>
+                <input name="order" required [(ngModel)]="order" type="number" 
+                    class="form-control input-sm short-input ml-2 mb-3" placeholder="Order # (1.0,2.0,...)">
+                    <div class="input-group-append">
+                <button [disabled]="!profileAdviceForm.valid || loading" class="btn btn-info ml-2 mb-3 shadow-sm" style="width:auto" >Add Profile Advice
+                        <i *ngIf="loading" class="fa fa-spinner fa-spin"></i>
+                </button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+        <div class="text-center col-12">
+            <button class="btn btn-success btn-sm shadow-sm mt-3 mb-3" routerLink="/positionslist">Back to Positions</button>
+        </div>
+    </div>
+    </div>
+
+
+

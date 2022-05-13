@@ -5,9 +5,10 @@ using System.Threading.Tasks;
 
 namespace API.DTOs
 {
-    public class SkillsBulletUpdateDto
+    public class ProfileAdviceUpdateDto
     {
-        public string SkillsBulletText { get; set; }
+        public string ProfileAdviceTitle { get; set; }
+        public string ProfileAdviceContent { get; set; }
         public float Order { get; set; }
         public bool IsActive { get; set; }
     }

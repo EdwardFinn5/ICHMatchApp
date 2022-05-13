@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace API.DTOs
 {
-    public class EmpInfoUpdateDto
+    public class AddEmpInfoDto
     {
         public int EmpInfoId { get; set; }
         public string EmpWebsite { get; set; }
@@ -13,6 +13,6 @@ namespace API.DTOs
         public string WhyWork { get; set; }
         public string UniqueTitle { get; set; }
         public string UniqueContent { get; set; }
-        // public int AppUserId { get; set; }
+        public int AppUserId { get; set; }
     }
 }

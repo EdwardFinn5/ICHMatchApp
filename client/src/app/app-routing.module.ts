@@ -68,6 +68,8 @@ import { PoscategoryEditComponent } from './poscategories-and-positnames/poscate
 import { AddPositnameComponent } from './poscategories-and-positnames/add-positname/add-positname.component';
 import { PositnameEditComponent } from './poscategories-and-positnames/positname-edit/positname-edit.component';
 import { PoscategoryListComponent } from './poscategories-and-positnames/poscategory-list/poscategory-list.component';
+import { ProfileadviceListComponent } from './profileAdvices/profileadvice-list/profileadvice-list.component';
+import { ProfileadviceEditComponent } from './profileAdvices/profileadvice-edit/profileadvice-edit.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -126,6 +128,16 @@ const routes: Routes = [
       {
         path: 'categoryedit/:categoryId',
         component: CategoryEditComponent,
+        pathMatch: 'full',
+      },
+      {
+        path: 'profileadvicelist',
+        component: ProfileadviceListComponent,
+        pathMatch: 'full',
+      },
+      {
+        path: 'profileadviceedit/:profileAdviceId',
+        component: ProfileadviceEditComponent,
         pathMatch: 'full',
       },
       {

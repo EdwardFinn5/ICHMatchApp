@@ -10,7 +10,7 @@ namespace API.Entities
         public string Description { get; set; }
         public DateTime DateAdded { get; set; }
         public bool IsMain { get; set; } = false;
-        public bool IsMainLogo { get; set; } = false;
+        public bool IsMainLogo { get; set; } = true;
         public string PublicId { get; set; }
         public virtual AppUser AppUser { get; set; }
         public int AppUserId { get; set; }

@@ -9,7 +9,7 @@ namespace API.DTOs
     {
         public string DutyBulletText { get; set; }
         public float Order { get; set; }
-        // public bool IsActive { get; set; }
+        public bool IsActive { get; set; }
         // public int PositionId { get; set; }
         // public int AppUserId { get; set; }
     }

@@ -21,9 +21,11 @@ namespace API.Data
         public DbSet<PosCategory> PosCategories { get; set; }
         public DbSet<PhotoHr> PhotoHrs { get; set; }
         public DbSet<Photo> Photos { get; set; }
+        public DbSet<PhotoLogo> PhotoLogos { get; set; }
         public DbSet<Position> Positions { get; set; }
         public DbSet<DutyBullet> DutyBullets { get; set; }
         public DbSet<SkillsBullet> SkillsBullets { get; set; }
+        public DbSet<ProfileAdvice> ProfileAdvices { get; set; }
         public DbSet<StudInfo> StudInfos { get; set; }
         public DbSet<UserLike> Likes { get; set; }
         public DbSet<Message> Messages { get; set; }

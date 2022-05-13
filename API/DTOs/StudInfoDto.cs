@@ -17,6 +17,8 @@ namespace API.DTOs
         public string AcademicPlus { get; set; }
         public string WorkPlus { get; set; }
         public string DreamJob { get; set; }
+        public string UniqueTitle { get; set; }
+        public string UniqueContent { get; set; }
         public int AppUserId { get; set; }
     }
 }

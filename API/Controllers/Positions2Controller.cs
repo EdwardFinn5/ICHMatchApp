@@ -77,10 +77,12 @@ namespace API.Controllers
                 PosCategory = addPositionDto.PosCategory,
                 IsActive = addPositionDto.IsActive,
                 PositionDescription = addPositionDto.PositionDescription,
-                LookingFor = addPositionDto.LookingFor,
+                // LookingFor = addPositionDto.LookingFor,
                 PositionBenefits = addPositionDto.PositionBenefits,
+                UniqueTitle = addPositionDto.UniqueTitle,
+                UniqueContent = addPositionDto.UniqueContent,
                 PositionType = addPositionDto.PositionType,
-                PositionLocation = addPositionDto.PositionLocation,
+                CiLocation = addPositionDto.CiLocation,
                 DateAdded = addPositionDto.DateAdded,
                 StartDate = addPositionDto.StartDate,
                 AppDeadline = addPositionDto.AppDeadline,
@@ -102,8 +104,10 @@ namespace API.Controllers
                 // RegisterCode = position.RegisterCode,
                 PosCategory = position.PosCategory,
                 PosName = position.PosName,
-                LookingFor = position.LookingFor,
-                PositionLocation = position.PositionLocation,
+                // LookingFor = position.LookingFor,
+                CiLocation = position.CiLocation,
+                UniqueTitle = position.UniqueTitle,
+                UniqueContent = position.UniqueContent,
                 AppUserId = id
             };
         }

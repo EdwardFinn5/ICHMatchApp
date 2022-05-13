@@ -29,7 +29,7 @@ namespace API.Controllers
         public async Task<ActionResult<StudInfoDto>> AddStudInfo(AddStudInfoDto addStudInfoDto, int id)
         {
 
-            if (await StudInfoExists(addStudInfoDto.StudInfoName)) return BadRequest("Student Info name is taken");
+            // if (await StudInfoExists(addStudInfoDto.StudInfoName)) return BadRequest("Student Info name is taken");
 
             var studInfo = new StudInfo
             {
@@ -66,9 +66,13 @@ namespace API.Controllers
             {
                 StudInfoId = studInfo.StudInfoId,
                 AcademicPlus = studInfo.AcademicPlus,
-                StudInfoName = studInfo.StudInfoName,
+                WorkPlus = studInfo.WorkPlus,
+                // StudInfoName = studInfo.StudInfoName,
                 Athletics = studInfo.Athletics,
                 Arts = studInfo.Arts,
+                ExtraCurricular = studInfo.ExtraCurricular,
+                UniqueTitle = studInfo.UniqueTitle,
+                UniqueContent = studInfo.UniqueContent,
                 AppUserId = id
 
             };
@@ -123,9 +127,9 @@ namespace API.Controllers
             return BadRequest("Failed to update user");
         }
 
-        private async Task<bool> StudInfoExists(string studinfoname)
-        {
-            return await _context.StudInfos.AnyAsync(x => x.StudInfoName == studinfoname.ToLower());
-        }
+        // private async Task<bool> StudInfoExists(string studinfoname)
+        // {
+        //     return await _context.StudInfos.AnyAsync(x => x.StudInfoName == studinfoname.ToLower());
+        // }
     }
 }

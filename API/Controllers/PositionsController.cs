@@ -56,12 +56,13 @@ namespace API.Controllers
             var position = new Position
             {
                 PositionId = addPositionDto.PositionId,
+                PosCategory = addPositionDto.PosCategory,
                 PosName = addPositionDto.PosName,
                 PositionDescription = addPositionDto.PositionDescription,
-                LookingFor = addPositionDto.LookingFor,
+                // LookingFor = addPositionDto.LookingFor,
                 PositionBenefits = addPositionDto.PositionBenefits,
                 PositionType = addPositionDto.PositionType,
-                PositionLocation = addPositionDto.PositionLocation,
+                CiLocation = addPositionDto.CiLocation,
                 DateAdded = addPositionDto.DateAdded,
                 StartDate = addPositionDto.StartDate,
                 AppDeadline = addPositionDto.AppDeadline,
@@ -80,8 +81,8 @@ namespace API.Controllers
             {
                 PositionId = position.PositionId,
                 RegisterCode = position.RegisterCode,
+                PosCategory = position.PosCategory,
                 PosName = position.PosName,
-                LookingFor = position.LookingFor,
                 AppUserId = id
             };
         }

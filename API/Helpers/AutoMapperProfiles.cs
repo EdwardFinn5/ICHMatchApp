@@ -65,7 +65,7 @@ namespace API.Helpers
             // .ForMember(dest => dest.PositionType, opt => opt
             //     .MapFrom(src => src.Positions.FirstOrDefault(x => x.IsActive).PositionType))
             .ForMember(dest => dest.PositionLocation, opt => opt
-                .MapFrom(src => src.Positions.FirstOrDefault(x => x.IsActive).PositionLocation))
+                .MapFrom(src => src.Positions.FirstOrDefault(x => x.IsActive).CiLocation))
             .ForMember(dest => dest.PosCategory, opt => opt
                 .MapFrom(src => src.Positions.FirstOrDefault(x => x.IsActive).PosCategory))
             .ForMember(dest => dest.PosName, opt => opt
@@ -91,9 +91,9 @@ namespace API.Helpers
                .ForMember(d => d.EmpName, o => o.MapFrom(s => s.AppUser.EmpName))
                .ForMember(d => d.RegisterCode, o => o.MapFrom(s => s.AppUser.RegisterCode))
                .ForMember(d => d.EmployeeNum, o => o.MapFrom(s => s.AppUser.EmployeeNum))
-               .ForMember(d => d.LogoUrl, o => o.MapFrom(s => s.AppUser.LogoUrl))
-               .ForMember(dest => dest.DutyBulletText, opt => opt
-                    .MapFrom(src => src.DutyBullets.FirstOrDefault(x => x.IsActive).DutyBulletText));
+               .ForMember(d => d.LogoUrl, o => o.MapFrom(s => s.AppUser.LogoUrl));
+            //    .ForMember(dest => dest.DutyBulletText, opt => opt
+            //         .MapFrom(src => src.DutyBullets.FirstOrDefault(x => x.IsActive).DutyBulletText));
             // .ForMember(d => d.LogoUrl, o => o.MapFrom(s => s.AppUser.HrUrl))   
 
             CreateMap<AppUser, CardMemberDto>()
@@ -136,6 +136,8 @@ namespace API.Helpers
             CreateMap<Major, MajorDto>();
             CreateMap<CiLocationUpdateDto, CiLocation>();
             CreateMap<CiLocation, CiLocationDto>();
+            CreateMap<ProfileAdviceUpdateDto, ProfileAdvice>();
+            CreateMap<ProfileAdvice, ProfileAdviceDto>();
             CreateMap<StLocationUpdateDto, StLocation>();
             CreateMap<StLocation, StLocationDto>();
             CreateMap<CoLocationUpdateDto, CoLocation>();

@@ -9,17 +9,12 @@ namespace API.Entities
         [Key]
         public int StudInfoId { get; set; }
 
-        [Column(TypeName = "nvarchar(255)")]
-        public string StudInfoName { get; set; }
-
         [Column(TypeName = "varchar(10)")]
         public string GPA { get; set; }
 
         public Nullable<DateTime> GradDate { get; set; }
 
-        // public DateTime GradDate { get; set; } = DateTime.Now;
-
-        [Column(TypeName = "nvarchar(255)")]
+        [Column(TypeName = "nvarchar(100)")]
         public string BestEmail { get; set; }
 
         [Column(TypeName = "varchar(30)")]
@@ -34,6 +29,10 @@ namespace API.Entities
 
         [Column(TypeName = "nvarchar(256)")]
         public string DreamJob { get; set; }
+
+        [Column(TypeName = "nvarchar(100)")]
+        public string UniqueTitle { get; set; }
+        public string UniqueContent { get; set; }
         public virtual AppUser AppUser { get; set; }
         public int AppUserId { get; set; }
     }

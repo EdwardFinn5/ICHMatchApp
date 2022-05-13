@@ -5,13 +5,11 @@ using System.Threading.Tasks;
 
 namespace API.DTOs
 {
-    public class AddDutyBulletDto
+    public class AddProfileAdviceDto
     {
-        public int DutyBulletId { get; set; }
-        public string DutyBulletText { get; set; }
+        public string ProfileAdviceTitle { get; set; }
+        public string ProfileAdviceContent { get; set; }
         public float Order { get; set; }
         public bool IsActive { get; set; } = true;
-        public int PositionId { get; set; }
-        // public int AppUserId { get; set; }
     }
 }
