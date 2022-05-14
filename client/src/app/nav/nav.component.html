@@ -51,7 +51,9 @@
             <div class="dropdown-divider"></div>
             <a *ngIf="accountService.currentUser$ | async" class="dropdown-item" routerLink='/poscategorylist'>See Position-Categories</a>  
             <div class="dropdown-divider"></div>
-            <a *ngIf="accountService.currentUser$ | async" class="dropdown-item" routerLink='/profileadvicelist'>See Profile Advice</a>  
+            <a *ngIf="accountService.currentUser$ | async" class="dropdown-item" routerLink='/profileadvicelist'>Ed Profile Advice</a>  
+            <div class="dropdown-divider"></div>
+            <a *ngIf="accountService.currentUser$ | async" class="dropdown-item" routerLink='/profileadvicenewlist'>Student Profile Advice</a>  
           </div>
         </li>
         

@@ -50,6 +50,7 @@ namespace API.Data
         {
             return await _context.ProfileAdvices
             .ProjectTo<ProfileAdviceDto>(_mapper.ConfigurationProvider)
+            .OrderBy(a => a.Order)
             .ToListAsync();
         }
 

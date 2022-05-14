@@ -66,8 +66,6 @@ namespace API.Controllers
                 DateAdded = addPositionDto.DateAdded,
                 StartDate = addPositionDto.StartDate,
                 AppDeadline = addPositionDto.AppDeadline,
-                HrContact = addPositionDto.HrContact,
-                HrContactTitle = addPositionDto.HrContactTitle,
                 HowToApply = addPositionDto.HowToApply,
                 ApplyEmail = addPositionDto.ApplyEmail,
                 ApplyLink = addPositionDto.ApplyLink,

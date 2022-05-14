@@ -70,6 +70,7 @@ import { PositnameEditComponent } from './poscategories-and-positnames/positname
 import { PoscategoryListComponent } from './poscategories-and-positnames/poscategory-list/poscategory-list.component';
 import { ProfileadviceListComponent } from './profileAdvices/profileadvice-list/profileadvice-list.component';
 import { ProfileadviceEditComponent } from './profileAdvices/profileadvice-edit/profileadvice-edit.component';
+import { ProfileadviceNewListComponent } from './profileAdvices/profileadvice-new-list/profileadvice-new-list.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -133,6 +134,11 @@ const routes: Routes = [
       {
         path: 'profileadvicelist',
         component: ProfileadviceListComponent,
+        pathMatch: 'full',
+      },
+      {
+        path: 'profileadvicenewlist',
+        component: ProfileadviceNewListComponent,
         pathMatch: 'full',
       },
       {

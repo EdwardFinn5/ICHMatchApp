@@ -4,33 +4,30 @@
         <h3>Username: {{member.username}}</h3> -->
 
         <div>
-        <h3 style="text-align: center"><strong>Current Profile Advice</strong></h3>
+        <h3 style="text-align: center"><strong>Profile advice for a variety of positions</strong></h3>
        
-        <table class="table table-striped col-sm-4 col-lg-8 col-md-6 m-auto">
+        <table class="table-bordered col-sm-4 col-lg-8 col-md-6 m-auto">
+            <div class="scroll">
             <thead>
                 <tr>
-                    <th>Title</th>
-                    <th>Profile Advice</th>
-                    <th>Order</th>
-                    <th>Options</th>
+                    <th class="p-2"><h5><strong>Position</strong></h5></th>
+                    <th class="p-2"><h5><strong>Profile advice</strong></h5></th>
                 </tr>
+
             </thead>
+            
             <tbody>
                 <tr *ngFor="let profileAdvice of profileAdvices">
                     <!-- <td> <img src="{{position.logoUrl || '../../assets/images/logo.PNG' }}" alt="{{position.empName}}"></td> -->
-                    <td>{{profileAdvice.profileAdviceTitle}}</td>
-                    <td>{{profileAdvice.profileAdviceContent}}</td>
-                    <td>{{profileAdvice.order}}</td>
-                    <td>
-                        <button class="btn btn-info btn-sm shadow-sm mr-2 mb-2" routerLink='/profileadviceedit/{{profileAdvice.profileAdviceId}}'>Edit Profile Advice</button>
-                        <button type="button-del" (click)="deleteProfileAdvice(profileAdvice.profileAdviceId)"  class="btn btn-danger btn-sm shadow-sm mb-2">Delete</button>
-                    </td>
+                    <td class="p-2"><strong>{{profileAdvice.profileAdviceTitle}}</strong></td>
+                    <td class="p-2">{{profileAdvice.profileAdviceContent}}</td>
                 </tr>
             </tbody>
+        </div>
         </table>
     </div>
 
-    <div class="container mt-3">
+    <!-- <div class="container mt-3">
         <h4 class="text-center"><strong>Add Profile Advice</strong></h4>
         <form #profileAdviceForm="ngForm" (ngSubmit)="addProfileAdvice()" autocomplete="off">
             <div class="input-group">
@@ -47,13 +44,14 @@
                 </div>
             </div>
         </form>
-    </div>
+    </div> -->
 
         <div class="text-center col-12">
-            <button class="btn btn-success btn-sm shadow-sm mt-3 mb-3" routerLink="/profileadvicenewlist">See Advice</button>
+            <button class="btn btn-success btn-sm shadow-sm mt-3 mb-3" routerLink="/positionslist">Back to positions</button>
         </div>
     </div>
     </div>
+
 
 
 

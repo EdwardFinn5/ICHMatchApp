@@ -1,0 +1,23 @@
+.positions {
+    width: 100%;
+  }
+  
+  .button-del {
+    color: red;
+  }
+  
+  .button-edit {
+    color: mediumblue;
+  }
+
+  div.scroll {
+    margin:4px, 4px;
+    padding:4px;
+    /* background-color: green; */
+    width: auto;
+    height: 500px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    text-align:justify;
+}
+  

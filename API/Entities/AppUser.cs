@@ -69,7 +69,7 @@ namespace API.Entities
         public DateTime Created { get; set; } = DateTime.Now;
         public DateTime LastActive { get; set; } = DateTime.Now;
         public ICollection<Photo> Photos { get; set; }
-        public ICollection<PhotoHr> PhotoHrs { get; set; }
+        // public ICollection<PhotoHr> PhotoHrs { get; set; }
         public ICollection<StudInfo> StudInfos { get; set; }
         public ICollection<EmpInfo> EmpInfos { get; set; }
         public ICollection<Position> Positions { get; set; }

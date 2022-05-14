@@ -148,7 +148,6 @@ namespace API.Controllers
         {
             var user = await _context.Users
                 .Include(p => p.Photos)
-                .Include(h => h.PhotoHrs)
                 .SingleOrDefaultAsync(x => x.UserName == loginDto.Username.ToLower());
 
             if (user == null)
@@ -183,8 +182,6 @@ namespace API.Controllers
                 CiLocation = user.CiLocation,
                 StudentUrl = user.Photos.FirstOrDefault(x => x.IsMain)?.StudentUrl,
                 LogoUrl = user.Photos.FirstOrDefault(x => x.IsMainLogo)?.LogoUrl,
-                HrUrl = user.PhotoHrs.FirstOrDefault(x => x.IsMainHr)?.HrUrl,
-
             };
         }
         private async Task<bool> UserExists(string username)

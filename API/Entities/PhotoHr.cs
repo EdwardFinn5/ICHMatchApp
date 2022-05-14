@@ -13,8 +13,8 @@ namespace API.Entities
         public DateTime DateAdded { get; set; }
         public bool IsMainHr { get; set; } = false;
         public string PublicId { get; set; }
-        public virtual AppUser AppUser { get; set; }
-        public int AppUserId { get; set; }
+        public virtual EmpInfo EmpInfo { get; set; }
+        public int EmpInfoId { get; set; }
 
     }
 }

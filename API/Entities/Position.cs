@@ -29,12 +29,6 @@ namespace API.Entities
         public Nullable<DateTime> AppDeadline { get; set; }
         public bool IsActive { get; set; } = true;
 
-        [Column(TypeName = "nvarchar(100)")]
-        public string HrContact { get; set; }
-
-        [Column(TypeName = "nvarchar(100)")]
-        public string HrContactTitle { get; set; }
-
         [Column(TypeName = "nvarchar(256)")]
         public string HowToApply { get; set; }
 

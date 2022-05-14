@@ -73,8 +73,8 @@
                 <p *ngIf="position.applyEmail"><strong>Here is the link: </strong> <u>{{position.applyEmail}}</u></p>
                 <p>Application deadline: {{position.appDeadline | date: "MMM dd yyyy" }}</p>
                 <h4 class="mt-2"><strong>Contact Person</strong></h4> 
-                <ng-container *ngIf="position.hrUrl">
-                <img src="{{position.hrUrl}}" alt="{{position.hrContact}}"
+                <ng-container *ngIf="member.hrUrl">
+                <img src="{{member.hrUrl}}" alt="{{position.hrContact}}"
                     class="img-hrthumbnail">
                 </ng-container>    
                 <p>{{position.hrContact}}
