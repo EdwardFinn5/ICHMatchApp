@@ -11,6 +11,8 @@ namespace API.DTOs
         public string EmpWebsite { get; set; }
         public string CompanyDescription { get; set; }
         public string WhyWork { get; set; }
+        public string HrContact { get; set; }
+        public string HrContactTitle { get; set; }
         public string UniqueTitle { get; set; }
         public string UniqueContent { get; set; }
         // public int AppUserId { get; set; }
