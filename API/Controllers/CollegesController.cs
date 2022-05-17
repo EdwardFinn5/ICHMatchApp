@@ -42,7 +42,9 @@ namespace API.Controllers
             return new CollegeDto
             {
                 CollegeId = college.CollegeId,
-                CollegeName = college.CollegeName
+                CollegeName = college.CollegeName,
+                CollegeNickname = college.CollegeNickname
+
             };
         }
 

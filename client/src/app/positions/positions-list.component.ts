@@ -50,6 +50,7 @@ export class PositionsListComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadPositions();
+    this.loadMembers();
     this.loadPosCategories();
   }
 

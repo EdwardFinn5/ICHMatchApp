@@ -60,8 +60,6 @@ namespace API.Controllers
             _context.StudInfos.Add(studInfo);
             await _context.SaveChangesAsync();
 
-
-
             return new StudInfoDto
             {
                 StudInfoId = studInfo.StudInfoId,
@@ -74,7 +72,6 @@ namespace API.Controllers
                 UniqueTitle = studInfo.UniqueTitle,
                 UniqueContent = studInfo.UniqueContent,
                 AppUserId = id
-
             };
         }
 

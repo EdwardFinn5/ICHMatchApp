@@ -21,6 +21,9 @@ namespace API.Entities
         [Column(TypeName = "nvarchar(40)")]
         public string LastName { get; set; }
 
+        [Column(TypeName = "nvarchar(60)")]
+        public string HrContactTitle { get; set; }
+
         [Column(TypeName = "varchar(12)")]
         public string AppUserType { get; set; }
 
@@ -64,12 +67,12 @@ namespace API.Entities
 
         [Column(TypeName = "varchar(30)")]
         public string RegisterCode { get; set; }
-        public string LogoUrl { get; set; }
-        public bool IsMainLogo { get; set; } = true;
+        // public string LogoUrl { get; set; }
+        // public bool IsMainLogo { get; set; } = true;
         public DateTime Created { get; set; } = DateTime.Now;
         public DateTime LastActive { get; set; } = DateTime.Now;
         public ICollection<Photo> Photos { get; set; }
-        // public ICollection<PhotoHr> PhotoHrs { get; set; }
+        public ICollection<PhotoHr> PhotoHrs { get; set; }
         public ICollection<StudInfo> StudInfos { get; set; }
         public ICollection<EmpInfo> EmpInfos { get; set; }
         public ICollection<Position> Positions { get; set; }

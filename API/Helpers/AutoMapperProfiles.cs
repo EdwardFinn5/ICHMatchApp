@@ -74,10 +74,10 @@ namespace API.Helpers
                 .MapFrom(src => src.Positions.FirstOrDefault(x => x.IsActive).DateAdded))
             .ForMember(dest => dest.AppDeadline, opt => opt
                 .MapFrom(src => src.Positions.FirstOrDefault(x => x.IsActive).AppDeadline))
-            .ForMember(dest => dest.HrContact, opt => opt
-                .MapFrom(src => src.Positions.FirstOrDefault(x => x.IsActive).HrContact))
-            .ForMember(dest => dest.HrContactTitle, opt => opt
-                .MapFrom(src => src.Positions.FirstOrDefault(x => x.IsActive).HrContactTitle))
+            // .ForMember(dest => dest.HrContact, opt => opt
+            //     .MapFrom(src => src.Positions.FirstOrDefault(x => x.IsActive).HrContact))
+            // .ForMember(dest => dest.HrContactTitle, opt => opt
+            //     .MapFrom(src => src.Positions.FirstOrDefault(x => x.IsActive).HrContactTitle))
             .ForMember(dest => dest.HowToApply, opt => opt
                 .MapFrom(src => src.Positions.FirstOrDefault(x => x.IsActive).HowToApply))
             .ForMember(dest => dest.ApplyEmail, opt => opt
@@ -91,10 +91,15 @@ namespace API.Helpers
                .ForMember(d => d.EmpName, o => o.MapFrom(s => s.AppUser.EmpName))
                .ForMember(d => d.RegisterCode, o => o.MapFrom(s => s.AppUser.RegisterCode))
                .ForMember(d => d.EmployeeNum, o => o.MapFrom(s => s.AppUser.EmployeeNum))
-               .ForMember(d => d.LogoUrl, o => o.MapFrom(s => s.AppUser.LogoUrl));
+               .ForMember(d => d.HrContactTitle, o => o.MapFrom(s => s.AppUser.HrContactTitle))
+               .ForMember(d => d.LogoUrl, o => o.MapFrom(s => s.AppUser.Photos.FirstOrDefault(x => x.IsMainLogo).LogoUrl));
             //    .ForMember(dest => dest.DutyBulletText, opt => opt
             //         .MapFrom(src => src.DutyBullets.FirstOrDefault(x => x.IsActive).DutyBulletText));
             // .ForMember(d => d.LogoUrl, o => o.MapFrom(s => s.AppUser.HrUrl))   
+
+            // CreateMap<AppUser, PositionDto>()
+            //      .ForMember(dest => dest.LogoUrl, opt => opt
+            //         .MapFrom(src => src.Photos.FirstOrDefault(x => x.IsMainLogo).LogoUrl));
 
             CreateMap<AppUser, CardMemberDto>()
                 .ForMember(dest => dest.StudentUrl, opt => opt
@@ -108,7 +113,11 @@ namespace API.Helpers
                 .ForMember(dest => dest.CompanyDescription, opt => opt
                     .MapFrom(src => src.EmpInfos.FirstOrDefault(x => x.IsActive).CompanyDescription))
                 .ForMember(dest => dest.WhyWork, opt => opt
-                    .MapFrom(src => src.EmpInfos.FirstOrDefault(x => x.IsActive).WhyWork));
+                    .MapFrom(src => src.EmpInfos.FirstOrDefault(x => x.IsActive).WhyWork))
+                .ForMember(dest => dest.UniqueTitle, opt => opt
+                    .MapFrom(src => src.EmpInfos.FirstOrDefault(x => x.IsActive).UniqueTitle))
+                .ForMember(dest => dest.UniqueContent, opt => opt
+                    .MapFrom(src => src.EmpInfos.FirstOrDefault(x => x.IsActive).UniqueContent));
 
             CreateMap<Photo, PhotoDto>();
             CreateMap<PhotoHr, PhotoHrDto>();

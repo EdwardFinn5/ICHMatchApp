@@ -1,17 +1,17 @@
 export interface Position {
   positionId: number;
-  positionIdentifier: string;
+  // positionIdentifier: string;
   empName: string;
   empIndustry: string;
   posName: string;
   posCategory: string;
-  givingLevel: string;
-  giftAmt: number;
+  // givingLevel: string;
+  // giftAmt: number;
   positionDescription: string;
   positionBenefits: string;
-  lookingFor: string;
+  // lookingFor: string;
   positionType: string;
-  positionLocation: string;
+  ciLocation: string;
   dateAdded: Date;
   startDate: Date;
   appDeadline: Date;
@@ -27,5 +27,7 @@ export interface Position {
   empWebsite: string;
   companyDescription: string;
   whyWork: string;
+  uniqueTitle: string;
+  uniqueContent: string;
   appUserId: number;
 }

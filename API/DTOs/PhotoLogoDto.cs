@@ -3,18 +3,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace API.Entities
+namespace API.DTOs
 {
-    public class PhotoHr
+    public class PhotoLogoDto
     {
         public int Id { get; set; }
-        public string HrUrl { get; set; }
+        public string LogoHrUrl { get; set; }
         public string Description { get; set; }
         public DateTime DateAdded { get; set; }
-        public bool IsMainHr { get; set; } = false;
+        public bool IsMainLogoHr { get; set; } = false;
         public string PublicId { get; set; }
-        public virtual AppUser AppUser { get; set; }
-        public int AppUserId { get; set; }
-
+        // public virtual Position Position { get; set; }
+        // public int PositionId { get; set; }
     }
 }

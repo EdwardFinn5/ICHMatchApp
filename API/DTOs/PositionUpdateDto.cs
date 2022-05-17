@@ -19,10 +19,12 @@ namespace API.DTOs
         public Nullable<DateTime> DateAdded { get; set; }
         public Nullable<DateTime> StartDate { get; set; }
         public Nullable<DateTime> AppDeadline { get; set; }
-        public string HrContact { get; set; }
-        public string HrContactTitle { get; set; }
+        // public string HrContact { get; set; }
+        // public string HrContactTitle { get; set; }
         public string HowToApply { get; set; }
         public string ApplyEmail { get; set; }
         public string ApplyLink { get; set; }
+        public string UniqueTitle { get; set; }
+        public string UniqueContent { get; set; }
     }
 }

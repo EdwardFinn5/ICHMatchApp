@@ -51,7 +51,7 @@
     "StLocation": "IA",
     "CiLocation": "Sioux City (area)",
     "AppUserType": "ColStudent",
-    "Active": true,
+    "IsActive": true,
     "Created": "2021-10-16",
     "LastActive": "2021-10-16",
     "StudInfos": [
@@ -90,7 +90,7 @@
     "StLocation": "IL",
     "CiLocation": "Chicago (area)",
     "AppUserType": "ColStudent",
-    "Active": true,
+    "IsActive": true,
     "Created": "2021-10-16",
     "LastActive": "2021-10-16",
     "StudInfos": [
@@ -129,7 +129,7 @@
     "StLocation": "Canada",
     "CiLocation": "Quebec",
     "AppUserType": "ColStudent",
-    "Active": true,
+    "IsActive": true,
     "Created": "2021-10-16",
     "LastActive": "2021-10-16",
     "StudInfos": [
@@ -157,11 +157,11 @@
 
   {
     "UserName": "Sue@firm.com",
-    "LogoUrl": "https://secureservercdn.net/198.71.233.41/v5v.bff.myftpupload.com/wp-content/uploads/2019/09/Encova-1024x1024.jpg",
-    "IsMainLogo": true,
+
     "RegisterCode": "cnsjf",
     "FirstName": "Sue",
     "LastName": "Haack",
+    "HrContactTitle": "HR Director",
     "EmpName": "Encova",
     "EmpIndustry": "Insurance",
     "EmployeeNum": "850",
@@ -190,8 +190,6 @@
         "AppDeadline": "2022-03-30",
         "CiLocation": "Dubuque (loc)",
         "IsActive": true,
-        "HrContact": "Joe Cameron",
-        "HrContactTitle": "HR Director",
         "HowToApply": "Applicants should click on the link below.",
         "ApplyEmail": "ed@iowacollegefoundation.org",
         "ApplyLink": "https://www.iowacollegefoundation.org/"
@@ -212,11 +210,11 @@
   },
   {
     "UserName": "Kent@firm.com",
-    "LogoUrl": "https://res.cloudinary.com/icf/image/upload/v1617376962/l3yhiyi4zrc1en4ljp8z.jpg",
-    "IsMainLogo": true,
+
     "RegisterCode": "auivd",
     "FirstName": "Kent",
     "LastName": "Hall",
+    "HrContactTitle": "HR Director",
     "EmpName": "Musco",
     "EmpIndustry": "Manufacturing",
     "EmployeeNum": "850",
@@ -245,8 +243,6 @@
         "AppDeadline": "2022-03-30",
         "CiLocation": "Oskaloosa (loc)",
         "IsActive": true,
-        "HrContact": "Joe Cameron",
-        "HrContactTitle": "HR Director",
         "HowToApply": "Applicants should click on the link below.",
         "ApplyEmail": "ed@iowacollegefoundation.org",
         "ApplyLink": "https://www.iowacollegefoundation.org/"
@@ -267,11 +263,10 @@
   },
   {
     "UserName": "Nick@firm.com",
-    "LogoUrl": "https://strictlybusinessomaha.com/wp-content/uploads/2015/09/Logo-Holmes-Murphy-and-Associates-Omaha-Nebraska.jpg",
-    "IsMainLogo": true,
     "RegisterCode": "cnsjf",
     "FirstName": "Nick",
     "LastName": "Henderson",
+    "HrContactTitle": "HR Director",
     "EmpName": "Holmes Murphy",
     "EmpIndustry": "Insurance",
     "EmployeeNum": "600",
@@ -300,8 +295,6 @@
         "AppDeadline": "2022-03-30",
         "CiLocation": "Des Moines (area) loc",
         "IsActive": true,
-        "HrContact": "Joe Cameron",
-        "HrContactTitle": "HR Director",
         "HowToApply": "Applicants should click on the link below.",
         "ApplyEmail": "ed@iowacollegefoundation.org",
         "ApplyLink": "https://www.iowacollegefoundation.org/"
@@ -323,11 +316,10 @@
 
   {
     "UserName": "Sean@firm.com",
-    "LogoUrl": "https://cdn.shortpixel.ai/client/q_glossy,ret_img,w_300,h_200/https://wdmchamber.org/wp-content/uploads/2019/05/IMT-Group-300x200.jpg",
-    "IsMainLogo": true,
     "RegisterCode": "cnsjf",
     "FirstName": "Sean",
     "LastName": "Kennedy",
+    "HrContactTitle": "HR Director",
     "EmpName": "The IMT Group",
     "EmpIndustry": "Insurance",
     "EmployeeNum": "850",
@@ -354,10 +346,8 @@
         "PositionBenefits": "There is a special $1,000 signing bonus for this position plus the company will match 5% of your salary your first year to put into your retirment account.",
         "StartDate": "2022-07-01",
         "AppDeadline": "2022-03-30",
-        "PositionLocation": "Des Moines (area) loc",
+        "CiLocation": "Des Moines (area) loc",
         "IsActive": true,
-        "HrContact": "Joe Cameron",
-        "HrContactTitle": "HR Director",
         "HowToApply": "Applicants should click on the link below.",
         "ApplyEmail": "ed@iowacollegefoundation.org",
         "ApplyLink": "https://www.iowacollegefoundation.org/"

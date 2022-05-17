@@ -13,19 +13,18 @@ namespace API.Controllers
 {
     public class EmpInfosController : BaseApiController
     {
-        private readonly IPhotoService _photoService;
-        private readonly IUserRepository _userRepository;
+        // private readonly IPhotoService _photoService;
+        // private readonly IUserRepository _userRepository;
         private readonly IEmpInfoRepository _empInfoRepository;
         private readonly IMapper _mapper;
         private readonly DataContext _context;
-        public EmpInfosController(IEmpInfoRepository empInfoRepository, IMapper mapper, DataContext context,
-                IPhotoService photoService, IUserRepository userRepository)
+        public EmpInfosController(IEmpInfoRepository empInfoRepository, IMapper mapper, DataContext context)
         {
             _context = context;
             _mapper = mapper;
             _empInfoRepository = empInfoRepository;
-            _photoService = photoService;
-            _userRepository = userRepository;
+            // _photoService = photoService;
+            // _userRepository = userRepository;
         }
 
         [HttpPost("{id}")]
@@ -116,36 +115,36 @@ namespace API.Controllers
 
     }
 
-    [HttpPost("add-hr-photo")]
-    public async Task<ActionResult<PhotoHrDto>> AddHrPhoto(IFormFile file)
-    {
-        var user = await _userRepository.GetUserByUsernameAsync(User.GetUsername());
+    // [HttpPost("add-hr-photo")]
+    // public async Task<ActionResult<PhotoHrDto>> AddHrPhoto(IFormFile file)
+    // {
+    //     var user = await _userRepository.GetUserByUsernameAsync(User.GetUsername());
 
-        var result = await _photoService.AddPhotoAsync(file);
+    //     var result = await _photoService.AddPhotoAsync(file);
 
-        if (result.Error != null) return BadRequest(result.Error.Message);
+    //     if (result.Error != null) return BadRequest(result.Error.Message);
 
-        var photoHr = new PhotoHr
-        {
-            HrUrl = null
+    //     var photoHr = new PhotoHr
+    //     {
+    //         HrUrl = null
 
-        };
+    //     };
 
-        photoHr.HrUrl = result.SecureUrl.AbsoluteUri;
-        photoHr.PublicId = result.PublicId;
+    //     photoHr.HrUrl = result.SecureUrl.AbsoluteUri;
+    //     photoHr.PublicId = result.PublicId;
 
-        if (user.PhotoHrs.Count == 0)
-        {
-            photoHr.IsMainHr = true;
-        }
+    //     if (user.PhotoHrs.Count == 0)
+    //     {
+    //         photoHr.IsMainHr = true;
+    //     }
 
-        user.PhotoHrs.Add(photoHr);
+    //     user.PhotoHrs.Add(photoHr);
 
-        if (await _userRepository.SaveAllAsync())
-            // return _mapper.Map<PhotoDto>(photo);
-            // return CreatedAtRoute("GetUser", _mapper.Map<PhotoDto>(photo));
-            return CreatedAtRoute("GetUser", new { username = user.UserName }, _mapper.Map<PhotoHrDto>(photoHr)); // used 3rd overload which 
-                                                                                                                  // has the following parameters: string routename, object routeValues, object value
-        return BadRequest("Problem adding photo");
-    }
+    //     if (await _userRepository.SaveAllAsync())
+    //         // return _mapper.Map<PhotoDto>(photo);
+    //         // return CreatedAtRoute("GetUser", _mapper.Map<PhotoDto>(photo));
+    //         return CreatedAtRoute("GetUser", new { username = user.UserName }, _mapper.Map<PhotoHrDto>(photoHr)); // used 3rd overload which 
+    //                                                                                                               // has the following parameters: string routename, object routeValues, object value
+    //     return BadRequest("Problem adding photo");
+    // }
 }

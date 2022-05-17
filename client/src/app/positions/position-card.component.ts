@@ -12,6 +12,7 @@ import { Position2Service } from '../_services/position2.service';
 export class PositionCardComponent implements OnInit {
   @Input() position: Position;
   @Input() member: Member;
+  // recipient: string = 'info@iowacollegefoundation.org';
 
   constructor(
     private position2Service: Position2Service,

@@ -5,6 +5,8 @@ namespace API.DTOs
         public int AppUserId { get; set; }
         public string Username { get; set; }
         public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public string HrContactTitle { get; set; }
         public string Major { get; set; }
         public string Category { get; set; }
         public string CoLocation { get; set; }

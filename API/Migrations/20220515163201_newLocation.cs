@@ -101,6 +101,7 @@ namespace API.Migrations
                     PasswordSalt = table.Column<byte[]>(type: "varbinary(max)", nullable: true),
                     FirstName = table.Column<string>(type: "nvarchar(30)", nullable: true),
                     LastName = table.Column<string>(type: "nvarchar(40)", nullable: true),
+                    HrContactTitle = table.Column<string>(type: "nvarchar(60)", nullable: true),
                     AppUserType = table.Column<string>(type: "varchar(12)", nullable: true),
                     IsActive = table.Column<bool>(type: "bit", nullable: false),
                     CoLocation = table.Column<string>(type: "nvarchar(60)", nullable: true),
@@ -114,8 +115,6 @@ namespace API.Migrations
                     EmpIndustry = table.Column<string>(type: "varchar(60)", nullable: true),
                     EmployeeNum = table.Column<string>(type: "varchar(30)", nullable: true),
                     RegisterCode = table.Column<string>(type: "varchar(30)", nullable: true),
-                    LogoUrl = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    IsMainLogo = table.Column<bool>(type: "bit", nullable: false),
                     Created = table.Column<DateTime>(type: "datetime2", nullable: false),
                     LastActive = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
@@ -340,8 +339,6 @@ namespace API.Migrations
                     StartDate = table.Column<DateTime>(type: "datetime2", nullable: true),
                     AppDeadline = table.Column<DateTime>(type: "datetime2", nullable: true),
                     IsActive = table.Column<bool>(type: "bit", nullable: false),
-                    HrContact = table.Column<string>(type: "nvarchar(100)", nullable: true),
-                    HrContactTitle = table.Column<string>(type: "nvarchar(100)", nullable: true),
                     HowToApply = table.Column<string>(type: "nvarchar(256)", nullable: true),
                     ApplyEmail = table.Column<string>(type: "nvarchar(255)", nullable: true),
                     ApplyLink = table.Column<string>(type: "nvarchar(100)", nullable: true),
@@ -441,10 +438,10 @@ namespace API.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    LogoHr = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    LogoHrUrl = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     DateAdded = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    IsMainLogo = table.Column<bool>(type: "bit", nullable: false),
+                    IsMainLogoHr = table.Column<bool>(type: "bit", nullable: false),
                     PublicId = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     PositionId = table.Column<int>(type: "int", nullable: false)
                 },

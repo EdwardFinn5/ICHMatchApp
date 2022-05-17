@@ -18,7 +18,7 @@ namespace API.DTOs
         public DateTime StartDate { get; set; }
         public DateTime AppDeadline { get; set; }
         public bool IsActive { get; set; }
-        public string HrContact { get; set; }
+        // public string HrContact { get; set; }
         public string HrContactTitle { get; set; }
         public string HowToApply { get; set; }
         public string ApplyEmail { get; set; }
@@ -35,6 +35,6 @@ namespace API.DTOs
         public string UniqueContent { get; set; }
         // public string DutyBulletText { get; set; }
         public int AppUserId { get; set; }
-        public ICollection<DutyBulletDto> DutyBulletDtos { get; set; }
+        // public ICollection<DutyBulletDto> DutyBulletDtos { get; set; }
     }
 }

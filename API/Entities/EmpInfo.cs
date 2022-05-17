@@ -15,17 +15,11 @@ namespace API.Entities
         public string WhyWork { get; set; }
 
         [Column(TypeName = "nvarchar(100)")]
-        public string HrContact { get; set; }
-
-        [Column(TypeName = "nvarchar(100)")]
-        public string HrContactTitle { get; set; }
-
-        [Column(TypeName = "nvarchar(100)")]
         public string UniqueTitle { get; set; }
         public string UniqueContent { get; set; }
         public bool IsActive { get; set; } = true;
         public virtual AppUser AppUser { get; set; }
         public int AppUserId { get; set; }
-        public ICollection<PhotoHr> PhotoHrs { get; set; }
+        // public ICollection<PhotoHr> PhotoHrs { get; set; }
     }
 }

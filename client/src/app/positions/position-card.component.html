@@ -40,10 +40,9 @@
         </h6>
         <ng-container class="card-text text-muted text-center">
             <p class="text-center">
-                
-      
+                <!-- <a href="mailto:{{recipient}}">Send Email</a> -->
                 {{position.positionType}} {{position.posName}} position
-                <br>in {{position.positionLocation}} 
+                <br>in {{position.ciLocation}} 
                 <br>Start date: {{position.startDate | date: "MM/dd/yyyy"}}
                 <br>New Application deadline: {{position.appDeadline | date: "MM/dd/yyyy"}}
             </p>

@@ -19,13 +19,12 @@ namespace API.DTOs
         public DateTime StartDate { get; set; }
         public DateTime AppDeadline { get; set; }
         public bool IsActive { get; set; } = true;
-        public string HrContact { get; set; }
-        public string HrContactTitle { get; set; }
         public string HowToApply { get; set; }
         public string ApplyEmail { get; set; }
         public string ApplyLink { get; set; }
         public string UniqueTitle { get; set; }
         public string UniqueContent { get; set; }
         public int AppUserId { get; set; }
+        public ICollection<PhotoLogoDto> PhotoLogos { get; set; }
     }
 }

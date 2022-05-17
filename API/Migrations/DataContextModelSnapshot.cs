@@ -59,10 +59,10 @@ namespace API.Migrations
                     b.Property<string>("FirstName")
                         .HasColumnType("nvarchar(30)");
 
-                    b.Property<bool>("IsActive")
-                        .HasColumnType("bit");
+                    b.Property<string>("HrContactTitle")
+                        .HasColumnType("nvarchar(60)");
 
-                    b.Property<bool>("IsMainLogo")
+                    b.Property<bool>("IsActive")
                         .HasColumnType("bit");
 
                     b.Property<DateTime>("LastActive")
@@ -70,9 +70,6 @@ namespace API.Migrations
 
                     b.Property<string>("LastName")
                         .HasColumnType("nvarchar(40)");
-
-                    b.Property<string>("LogoUrl")
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Major")
                         .HasColumnType("nvarchar(60)");
@@ -417,10 +414,10 @@ namespace API.Migrations
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<bool>("IsMainLogo")
+                    b.Property<bool>("IsMainLogoHr")
                         .HasColumnType("bit");
 
-                    b.Property<string>("LogoHr")
+                    b.Property<string>("LogoHrUrl")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("PositionId")
@@ -498,12 +495,6 @@ namespace API.Migrations
 
                     b.Property<string>("HowToApply")
                         .HasColumnType("nvarchar(256)");
-
-                    b.Property<string>("HrContact")
-                        .HasColumnType("nvarchar(100)");
-
-                    b.Property<string>("HrContactTitle")
-                        .HasColumnType("nvarchar(100)");
 
                     b.Property<bool>("IsActive")
                         .HasColumnType("bit");
