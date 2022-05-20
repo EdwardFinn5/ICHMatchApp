@@ -89,6 +89,7 @@ import { ProfileadviceListComponent } from './profileAdvices/profileadvice-list/
 import { ProfileadviceEditComponent } from './profileAdvices/profileadvice-edit/profileadvice-edit.component';
 import { ProfileadviceNewListComponent } from './profileAdvices/profileadvice-new-list/profileadvice-new-list.component';
 import { PhotoEditorLogoComponent } from './photo-editor-logo/photo-editor-logo.component';
+import { PreregisterStudComponent } from './register-stud/preregister-stud.component';
 
 @NgModule({
   declarations: [
@@ -170,6 +171,7 @@ import { PhotoEditorLogoComponent } from './photo-editor-logo/photo-editor-logo.
     ProfileadviceEditComponent,
     ProfileadviceNewListComponent,
     PhotoEditorLogoComponent,
+    PreregisterStudComponent,
   ],
   imports: [
     BrowserModule,

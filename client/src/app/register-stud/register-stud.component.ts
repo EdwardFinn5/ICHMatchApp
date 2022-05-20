@@ -72,7 +72,7 @@ export class RegisterStudComponent implements OnInit {
       category: ['', Validators.required],
       major: ['', Validators.required],
       college: ['', Validators.required],
-      gradDate: ['', Validators.required],
+      // gradDate: ['', Validators.required],
     });
     this.registerStudForm.controls.password.valueChanges.subscribe(() => {
       this.registerStudForm.controls.confirmPassword.updateValueAndValidity();

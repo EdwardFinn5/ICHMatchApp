@@ -22,7 +22,7 @@
       </div>
 
       <app-text-input [formControl]='registerStudForm.controls["password"]'
-        [label]='"Password"'
+        [label]='"Password (must be 4-8 characters)"'
         [type]='"password"'>
       </app-text-input>
 
@@ -53,6 +53,8 @@
       <app-text-input [formControl]='registerStudForm.controls["lastName"]'
         [label]='"Last Name"'>
       </app-text-input>
+
+      <h6 class="filter m-auto mb-2"><strong>For your hometown, please enter the following 3 fields (all required):</strong></h6>
 
       <app-text-input [formControl]='registerStudForm.controls["coLocation"]'
         [label]='"Country"'>
@@ -86,9 +88,9 @@
         </label>
       </ng-container>
 
-      <h6 class="filter m-auto"><strong>First select major-category (required):</strong></h6>
+      <h6 class="filter m-auto mb-2"><strong>First select major-category (required):</strong></h6>
         
-      <select class="mr-2 mt-1 mb-1 form-control" 
+      <select class="mr-2 mb-1 form-control" 
       formControlName="category"
  
         style="width: auto">
@@ -99,7 +101,7 @@
         </option>
     </select>
       
-      <h6 class="filter m-auto mt-1 mb-1"><strong>Then re-select major-category & specific major<br>(both required):</strong></h6>
+      <h6 class="filter m-auto mt-1 mb-2"><strong>Then re-select major-category & specific major (both required):</strong></h6>
       
         <div class=" form-group form-inline"> 
          <select (change)="onSelect($event)" 
@@ -125,7 +127,7 @@
           </option>
       </select>
 
-      <button class="btn btn-success mt-2 shadow-sm" routerLink='/addmajors'>Click here if you don't see your major</button>
+      <button class="btn btn-success mt-2 shadow-sm" routerLink='/categorylist'>Click here if you don't see your major</button>
       
           
         <!-- <select class="mr-2 mt-1 mb-1 form-control" 
@@ -188,9 +190,9 @@
         [label]='"College/University"'>
       </app-text-input> -->
 
-      <app-date-input [formControl]='registerStudForm.controls["gradDate"]'
+      <!-- <app-date-input [formControl]='registerStudForm.controls["gradDate"]'
       [label]='"Graduation Date (approx)"'>
-    </app-date-input>
+    </app-date-input> -->
 
     <div class="row" *ngIf="validationErrors.length > 0" >
       <ul class="text-danger">

@@ -71,13 +71,15 @@ import { PoscategoryListComponent } from './poscategories-and-positnames/poscate
 import { ProfileadviceListComponent } from './profileAdvices/profileadvice-list/profileadvice-list.component';
 import { ProfileadviceEditComponent } from './profileAdvices/profileadvice-edit/profileadvice-edit.component';
 import { ProfileadviceNewListComponent } from './profileAdvices/profileadvice-new-list/profileadvice-new-list.component';
+import { PreregisterStudComponent } from './register-stud/preregister-stud.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
 
   { path: 'registerhome', component: RegisterHomeComponent },
   { path: 'registeremp', component: RegisterEmpComponent },
-  { path: 'registerstud', component: RegisterStudComponent },
+  { path: 'registerstud', component: RegisterStudComponent, pathMatch: 'full' },
+  { path: 'preregisterstud', component: PreregisterStudComponent },
   { path: 'memberslist', component: MemberListComponent },
   { path: 'empmemberslist', component: EmpmemberListComponent },
   { path: 'empmemberslistsuper', component: EmpmemberListSuperComponent },

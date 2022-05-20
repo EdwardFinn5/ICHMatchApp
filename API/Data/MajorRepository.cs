@@ -50,6 +50,7 @@ namespace API.Data
         {
             return await _context.Majors
                   .Where(x => x.CategoryId == id)
+                  .OrderBy(x => x.MajorName)
                   .ProjectTo<MajorDto>(_mapper.ConfigurationProvider)
                   .ToListAsync();
         }

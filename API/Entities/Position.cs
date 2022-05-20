@@ -24,6 +24,8 @@ namespace API.Entities
 
         [Column(TypeName = "varchar(25)")]
         public string PositionType { get; set; }
+        [Column(TypeName = "varchar(80)")]
+        public string SalaryRange { get; set; }
         public Nullable<DateTime> DateAdded { get; set; }
         public Nullable<DateTime> StartDate { get; set; }
         public Nullable<DateTime> AppDeadline { get; set; }

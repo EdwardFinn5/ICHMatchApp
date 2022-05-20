@@ -16,7 +16,7 @@ export class RegisterHomeComponent implements OnInit {
   }
 
   onRegisterStud() {
-    this.router.navigate(['/registerstud']);
+    this.router.navigate(['/preregisterstud']);
   }
 
   cancel() {

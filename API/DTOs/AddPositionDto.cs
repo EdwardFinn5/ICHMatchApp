@@ -14,6 +14,7 @@ namespace API.DTOs
         public string PositionDescription { get; set; }
         public string PositionBenefits { get; set; }
         public string PositionType { get; set; }
+        public string SalaryRange { get; set; }
         public string CiLocation { get; set; }
         public DateTime DateAdded { get; set; } = DateTime.Now;
         public DateTime StartDate { get; set; }

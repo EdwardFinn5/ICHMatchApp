@@ -66,5 +66,6 @@ namespace API.DTOs
         public ICollection<StudInfoDto> StudInfos { get; set; }
         public ICollection<EmpInfoDto> EmpInfos { get; set; }
         public ICollection<PositionDto> Positions { get; set; }
+        public ICollection<RegisterCodeDto> RegisterCodes { get; set; }
     }
 }

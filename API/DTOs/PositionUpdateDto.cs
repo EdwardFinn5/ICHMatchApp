@@ -14,6 +14,7 @@ namespace API.DTOs
         // public string LookingFor { get; set; }
         public string PositionBenefits { get; set; }
         public string PositionType { get; set; }
+        public string SalaryRange { get; set; }
         public string CiLocation { get; set; }
         public bool IsActive { get; set; }
         public Nullable<DateTime> DateAdded { get; set; }

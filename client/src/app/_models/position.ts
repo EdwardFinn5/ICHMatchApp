@@ -11,6 +11,7 @@ export interface Position {
   positionBenefits: string;
   // lookingFor: string;
   positionType: string;
+  salaryRange: string;
   ciLocation: string;
   dateAdded: Date;
   startDate: Date;

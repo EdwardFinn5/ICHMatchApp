@@ -16,6 +16,7 @@ namespace API.Data
         public DbSet<StLocation> StLocations { get; set; }
         public DbSet<CiLocation> CiLocations { get; set; }
         public DbSet<PositName> PositNames { get; set; }
+        public DbSet<RegisterCode> RegisterCodes { get; set; }
         public DbSet<Major> Majors { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<PosCategory> PosCategories { get; set; }

@@ -82,6 +82,7 @@ namespace API.Controllers
                 UniqueTitle = addPositionDto.UniqueTitle,
                 UniqueContent = addPositionDto.UniqueContent,
                 PositionType = addPositionDto.PositionType,
+                SalaryRange = addPositionDto.SalaryRange,
                 CiLocation = addPositionDto.CiLocation,
                 DateAdded = addPositionDto.DateAdded,
                 StartDate = addPositionDto.StartDate,
