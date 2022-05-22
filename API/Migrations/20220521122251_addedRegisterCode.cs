@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace API.Migrations
 {
-    public partial class newLocation : Migration
+    public partial class addedRegisterCode : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -88,6 +88,26 @@ namespace API.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_ProfileAdvices", x => x.ProfileAdviceId);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "RegisterCodes",
+                columns: table => new
+                {
+                    RegisterCodeId = table.Column<int>(type: "int", nullable: false),
+                    RegisterCodeName1 = table.Column<string>(type: "varchar(10)", nullable: true),
+                    RegisterCodeName2 = table.Column<string>(type: "varchar(10)", nullable: true),
+                    RegisterCodeName3 = table.Column<string>(type: "varchar(10)", nullable: true),
+                    RegisterCodeName4 = table.Column<string>(type: "varchar(10)", nullable: true),
+                    RegisterCodeName5 = table.Column<string>(type: "varchar(10)", nullable: true),
+                    RegisterCodeName6 = table.Column<string>(type: "varchar(10)", nullable: true),
+                    RegisterCodeName7 = table.Column<string>(type: "varchar(10)", nullable: true),
+                    RegisterCodeName8 = table.Column<string>(type: "varchar(10)", nullable: true),
+                    IsActive = table.Column<bool>(type: "bit", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_RegisterCodes", x => x.RegisterCodeId);
                 });
 
             migrationBuilder.CreateTable(
@@ -335,6 +355,7 @@ namespace API.Migrations
                     PositionBenefits = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     CiLocation = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     PositionType = table.Column<string>(type: "varchar(25)", nullable: true),
+                    SalaryRange = table.Column<string>(type: "varchar(80)", nullable: true),
                     DateAdded = table.Column<DateTime>(type: "datetime2", nullable: true),
                     StartDate = table.Column<DateTime>(type: "datetime2", nullable: true),
                     AppDeadline = table.Column<DateTime>(type: "datetime2", nullable: true),
@@ -594,6 +615,9 @@ namespace API.Migrations
 
             migrationBuilder.DropTable(
                 name: "ProfileAdvices");
+
+            migrationBuilder.DropTable(
+                name: "RegisterCodes");
 
             migrationBuilder.DropTable(
                 name: "SkillsBullets");

@@ -1,12 +1,75 @@
-.positions {
+/* .positions {
     width: 100%;
   }
-  
-  .button-del {
-    color: red;
+   */
+   textarea {
+    margin-block-end: 1em;
   }
   
-  .button-edit {
-    color: mediumblue;
+  /* input {
+    width: 90%;
+  }
+   */
+  .signup {
+    background-color: #eff6ff;
+    padding: 60px;
+  }
+  
+  .login {
+    background-color: #ffffff;
+    padding: 20px 30px;
+  }
+  
+  @media screen and (max-width: 600px) {
+    .signup {
+      background-color: #eff6ff;
+      padding: 30px;
+    }
+  }
+  
+  .card-header > h1,
+  .card-header > h2,
+  .card-header > h3 {
+    color: white;
+  }
+  
+  .card-header {
+    height: 42;
+    padding: 4px 10px !important;
+    background-color: #416796 !important;
+  }
+  
+  .padding {
+    padding-top: 0;
+  }
+  
+  .details {
+    margin-right: 2em;
+    margin-left: 1em;
+  }
+  
+  .tab-heading {
+    font-weight: bold;
+  }
+  
+  .img-hrthumbnail {
+    margin: 0px;
+    width: 15%;
+    height: 15%;
+  }
+  
+  .card-body {
+    text-align: center;
+  }
+  .img-studthumbnail {
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 15px;
+    width: 60%;
+    height: 60%;
+  }
+  
+  p {
+    font-weight: bold;
   }
   

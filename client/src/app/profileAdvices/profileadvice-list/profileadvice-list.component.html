@@ -22,9 +22,9 @@
                     <td>{{profileAdvice.profileAdviceContent}}</td>
                     <td>{{profileAdvice.order}}</td>
                     <td>
-                        <button class="btn btn-info btn-sm shadow-sm mr-2 mb-2" routerLink='/profileadviceedit/{{profileAdvice.profileAdviceId}}'>Edit Profile Advice</button>
-                        <button type="button-del" (click)="deleteProfileAdvice(profileAdvice.profileAdviceId)"  class="btn btn-danger btn-sm shadow-sm mb-2">Delete</button>
-                    </td>
+                        <button class="btn btn-info btn-sm shadow-sm mr-2 mb-2" routerLink='/profileadviceedit/{{profileAdvice.profileAdviceId}}'>Edit</button>
+                        <button (click)="deleteProfileAdvice(profileAdvice.profileAdviceId)"  class="btn btn-danger btn-sm shadow-sm mb-2">Delete</button>
+                     </td>   
                 </tr>
             </tbody>
         </table>
@@ -35,9 +35,9 @@
         <form #profileAdviceForm="ngForm" (ngSubmit)="addProfileAdvice()" autocomplete="off">
             <div class="input-group">
                 <input name="profileAdviceTitle" required [(ngModel)]="profileAdviceTitle" type="text" 
-                    class="form-control input-sm long-input mr-1" placeholder="Add Profile Advice Title">
-                <textarea name="profileAdviceContent" required [(ngModel)]="profileAdviceContent"  
-                    class="form-control input-sm long-input mr-1 ml-1" placeholder="Add Profile Advice Content"></textarea>
+                    class="form-control input-sm short-input mr-1" placeholder="Add Profile Advice Title">
+                <textarea name="profileAdviceContent" required [(ngModel)]="profileAdviceContent" type="text"
+                    class="form-control input-sm short-input mr-1 ml-1" placeholder="Add Profile Advice Content"></textarea>
                 <input name="order" required [(ngModel)]="order" type="number" 
                     class="form-control input-sm short-input ml-1 mb-3" placeholder="Order # (1.0,2.0,...)">
                     <div class="input-group-append">

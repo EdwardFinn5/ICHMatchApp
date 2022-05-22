@@ -90,6 +90,12 @@ import { ProfileadviceEditComponent } from './profileAdvices/profileadvice-edit/
 import { ProfileadviceNewListComponent } from './profileAdvices/profileadvice-new-list/profileadvice-new-list.component';
 import { PhotoEditorLogoComponent } from './photo-editor-logo/photo-editor-logo.component';
 import { PreregisterStudComponent } from './register-stud/preregister-stud.component';
+import { RegisterCodeListComponent } from './registerCodes/register-code-list/register-code-list.component';
+import { RegisterCodeEditComponent } from './registerCodes/register-code-edit/register-code-edit.component';
+import { Step1RegisterStudComponent } from './register-stud/step1-register-stud.component';
+import { CategoryListStudentsComponent } from './categories-and-majors/category-list/category-list-students.component';
+import { AddMajorsStudentsComponent } from './categories-and-majors/add-majors/add-majors-students.component';
+import { LocationListComponent } from './location/location-list.component';
 
 @NgModule({
   declarations: [
@@ -172,6 +178,12 @@ import { PreregisterStudComponent } from './register-stud/preregister-stud.compo
     ProfileadviceNewListComponent,
     PhotoEditorLogoComponent,
     PreregisterStudComponent,
+    RegisterCodeListComponent,
+    RegisterCodeEditComponent,
+    Step1RegisterStudComponent,
+    CategoryListStudentsComponent,
+    AddMajorsStudentsComponent,
+    LocationListComponent,
   ],
   imports: [
     BrowserModule,

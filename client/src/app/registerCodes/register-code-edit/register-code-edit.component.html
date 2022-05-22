@@ -1,0 +1,69 @@
+<section class="signup" *ngIf="registerCode">
+
+    <div class="text-center col-sm-4 col-lg-8 col-md-6 p-x m-auto">
+        <div class="alert alert-info" *ngIf="editForm.dirty">
+            <strong>Alert: </strong>You have made changes. Any unsaved changes will be lost
+        </div>
+    </div>
+
+    <div class="card-header col-sm-4 col-lg-8 col-md-6 p-x m-auto">
+        <h3 style="text-align: center;">Register Codes</h3>
+    </div>
+
+    <div class="login col-sm-4 col-lg-8 col-md-6 mx-auto shadow-lg">
+
+        <form #editForm="ngForm" id="editForm" (ngSubmit)="updateRegisterCode()" autocomplete="off">
+            <div class="form-group">
+                <label class="registerCodeName1"><strong>Code 1</strong> </label>
+                <input name="registerCodeName1" [(ngModel)]="registerCode.registerCodeName1"
+                    class="form-control shadow-sm">
+            </div>
+            <div class="form-group">
+                <label class="registerCodeName2"><strong>Code 2</strong> </label>
+                <input name="registerCodeName2" [(ngModel)]="registerCode.registerCodeName2"
+                    class="form-control shadow-sm">
+            </div>
+            <div class="form-group">
+                <label class="registerCodeName3"><strong>Code 3</strong> </label>
+                <input name="registerCodeName3" [(ngModel)]="registerCode.registerCodeName3"
+                    class="form-control shadow-sm">
+            </div>
+            <div class="form-group">
+                <label class="registerCodeName4"><strong>Code 4</strong> </label>
+                <input name="registerCodeName4" [(ngModel)]="registerCode.registerCodeName4"
+                    class="form-control shadow-sm">
+            </div>
+            <div class="form-group">
+                <label class="registerCodeName5"><strong>Code 5</strong> </label>
+                <input name="registerCodeName5" [(ngModel)]="registerCode.registerCodeName5"
+                    class="form-control shadow-sm">
+            </div>
+            <div class="form-group">
+                <label class="registerCodeName6"><strong>Code 6</strong> </label>
+                <input name="registerCodeName6" [(ngModel)]="registerCode.registerCodeName6"
+                    class="form-control shadow-sm">
+            </div>
+            <div class="form-group">
+                <label class="registerCodeName7"><strong>Code 7</strong> </label>
+                <input name="registerCodeName7" [(ngModel)]="registerCode.registerCodeName7"
+                    class="form-control shadow-sm">
+            </div>
+            <div class="form-group">
+                <label class="registerCodeName8"><strong>Code 8</strong> </label>
+                <input name="registerCodeName8" [(ngModel)]="registerCode.registerCodeName8"
+                    class="form-control shadow-sm">
+            </div>
+        </form>
+
+    <div class="btn-group d-flex">
+        <button [disabled]="!editForm.dirty" form="editForm" type="submit" class="btn btn-info shadow-sm mr-1">Save Changes</button>
+        <!-- <button class="btn btn-info shadow-sm mr-1" routerLink='/positiondutybullets/{{position.positionId}}'>Cancel</button> -->
+        <input type="button" class="btn btn-success shadow-sm ml-1" (click)="cancel()" value="Cancel" />
+    </div>
+
+    </div>
+</section>
+      
+
+
+

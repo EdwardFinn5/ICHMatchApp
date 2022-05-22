@@ -560,6 +560,43 @@ namespace API.Migrations
                     b.ToTable("ProfileAdvices");
                 });
 
+            modelBuilder.Entity("API.Entities.RegisterCode", b =>
+                {
+                    b.Property<int>("RegisterCodeId")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("RegisterCodeName1")
+                        .HasColumnType("varchar(10)");
+
+                    b.Property<string>("RegisterCodeName2")
+                        .HasColumnType("varchar(10)");
+
+                    b.Property<string>("RegisterCodeName3")
+                        .HasColumnType("varchar(10)");
+
+                    b.Property<string>("RegisterCodeName4")
+                        .HasColumnType("varchar(10)");
+
+                    b.Property<string>("RegisterCodeName5")
+                        .HasColumnType("varchar(10)");
+
+                    b.Property<string>("RegisterCodeName6")
+                        .HasColumnType("varchar(10)");
+
+                    b.Property<string>("RegisterCodeName7")
+                        .HasColumnType("varchar(10)");
+
+                    b.Property<string>("RegisterCodeName8")
+                        .HasColumnType("varchar(10)");
+
+                    b.HasKey("RegisterCodeId");
+
+                    b.ToTable("RegisterCodes");
+                });
+
             modelBuilder.Entity("API.Entities.SkillsBullet", b =>
                 {
                     b.Property<int>("SkillsBulletId")

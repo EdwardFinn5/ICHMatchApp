@@ -53,7 +53,11 @@
             <div class="dropdown-divider"></div>
             <a *ngIf="accountService.currentUser$ | async" class="dropdown-item" routerLink='/profileadvicelist'>Ed Profile Advice</a>  
             <div class="dropdown-divider"></div>
-            <a *ngIf="accountService.currentUser$ | async" class="dropdown-item" routerLink='/profileadvicenewlist'>Student Profile Advice</a>  
+            <a *ngIf="accountService.currentUser$ | async" class="dropdown-item" routerLink='/profileadvicenewlist'>Student Profile Advice</a>
+            <div class="dropdown-divider"></div>
+            <a *ngIf="accountService.currentUser$ | async" class="dropdown-item" routerLink='/registercodelist'>Ed Register Code</a>  
+            <div class="dropdown-divider"></div>
+            <a *ngIf="accountService.currentUser$ | async" class="dropdown-item" routerLink='/locationlist'>Ed Location List</a>  
           </div>
         </li>
         

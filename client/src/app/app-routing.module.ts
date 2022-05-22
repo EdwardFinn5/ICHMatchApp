@@ -72,6 +72,12 @@ import { ProfileadviceListComponent } from './profileAdvices/profileadvice-list/
 import { ProfileadviceEditComponent } from './profileAdvices/profileadvice-edit/profileadvice-edit.component';
 import { ProfileadviceNewListComponent } from './profileAdvices/profileadvice-new-list/profileadvice-new-list.component';
 import { PreregisterStudComponent } from './register-stud/preregister-stud.component';
+import { RegisterCodeListComponent } from './registerCodes/register-code-list/register-code-list.component';
+import { RegisterCodeEditComponent } from './registerCodes/register-code-edit/register-code-edit.component';
+import { Step1RegisterStudComponent } from './register-stud/step1-register-stud.component';
+import { CategoryListStudentsComponent } from './categories-and-majors/category-list/category-list-students.component';
+import { AddMajorsStudentsComponent } from './categories-and-majors/add-majors/add-majors-students.component';
+import { LocationListComponent } from './location/location-list.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -79,6 +85,11 @@ const routes: Routes = [
   { path: 'registerhome', component: RegisterHomeComponent },
   { path: 'registeremp', component: RegisterEmpComponent },
   { path: 'registerstud', component: RegisterStudComponent, pathMatch: 'full' },
+  {
+    path: 'step1registerstud',
+    component: Step1RegisterStudComponent,
+    pathMatch: 'full',
+  },
   { path: 'preregisterstud', component: PreregisterStudComponent },
   { path: 'memberslist', component: MemberListComponent },
   { path: 'empmemberslist', component: EmpmemberListComponent },
@@ -86,6 +97,16 @@ const routes: Routes = [
   {
     path: 'addmajors/:categoryId',
     component: AddMajorsComponent,
+    pathMatch: 'full',
+  },
+  {
+    path: 'locationlist',
+    component: LocationListComponent,
+    pathMatch: 'full',
+  },
+  {
+    path: 'addmajorsstudents/:categoryId',
+    component: AddMajorsStudentsComponent,
     pathMatch: 'full',
   },
   {
@@ -146,6 +167,16 @@ const routes: Routes = [
       {
         path: 'profileadviceedit/:profileAdviceId',
         component: ProfileadviceEditComponent,
+        pathMatch: 'full',
+      },
+      {
+        path: 'registercodelist',
+        component: RegisterCodeListComponent,
+        pathMatch: 'full',
+      },
+      {
+        path: 'registercodeedit/:registerCodeId',
+        component: RegisterCodeEditComponent,
         pathMatch: 'full',
       },
       {
@@ -324,6 +355,11 @@ const routes: Routes = [
   { path: 'server-error', component: ServerErrorComponent },
   { path: 'company/edit', component: EmpmemberEditEmpinfoComponent },
   { path: 'categorylist', component: CategoryListComponent, pathMatch: 'full' },
+  {
+    path: 'categoryliststudents',
+    component: CategoryListStudentsComponent,
+    pathMatch: 'full',
+  },
   {
     path: 'poscategorylist',
     component: PoscategoryListComponent,

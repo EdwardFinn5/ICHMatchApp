@@ -49,9 +49,8 @@ namespace API.Data
 
         public async Task<IEnumerable<RegisterCodeDto>> GetRegisterCodesAsync()
         {
-            return await _context.ProfileAdvices
+            return await _context.RegisterCodes
            .ProjectTo<RegisterCodeDto>(_mapper.ConfigurationProvider)
-           .OrderBy(a => a.RegisterCodeName)
            .ToListAsync();
         }
 

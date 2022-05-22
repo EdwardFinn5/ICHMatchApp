@@ -27,11 +27,16 @@ namespace API.Controllers
         [HttpPost]
         public async Task<ActionResult<RegisterCodeDto>> AddRegisterCode(RegisterCodeDto registerCodeDto)
         {
-            if (await RegisterCodeExists(registerCodeDto.RegisterCodeName)) return BadRequest("Register code is already in place");
-
             var registerCode = new RegisterCode
             {
-                RegisterCodeName = registerCodeDto.RegisterCodeName
+                RegisterCodeName1 = registerCodeDto.RegisterCodeName1,
+                RegisterCodeName2 = registerCodeDto.RegisterCodeName2,
+                RegisterCodeName3 = registerCodeDto.RegisterCodeName3,
+                RegisterCodeName4 = registerCodeDto.RegisterCodeName4,
+                RegisterCodeName5 = registerCodeDto.RegisterCodeName5,
+                RegisterCodeName6 = registerCodeDto.RegisterCodeName6,
+                RegisterCodeName7 = registerCodeDto.RegisterCodeName7,
+                RegisterCodeName8 = registerCodeDto.RegisterCodeName8
             };
 
             _context.RegisterCodes.Add(registerCode);
@@ -40,7 +45,14 @@ namespace API.Controllers
             return new RegisterCodeDto
             {
                 RegisterCodeId = registerCode.RegisterCodeId,
-                RegisterCodeName = registerCode.RegisterCodeName,
+                RegisterCodeName1 = registerCode.RegisterCodeName1,
+                RegisterCodeName2 = registerCode.RegisterCodeName2,
+                RegisterCodeName3 = registerCode.RegisterCodeName3,
+                RegisterCodeName4 = registerCode.RegisterCodeName4,
+                RegisterCodeName5 = registerCode.RegisterCodeName5,
+                RegisterCodeName6 = registerCode.RegisterCodeName6,
+                RegisterCodeName7 = registerCode.RegisterCodeName7,
+                RegisterCodeName8 = registerCode.RegisterCodeName8,
                 IsActive = registerCode.IsActive
             };
         }
@@ -91,9 +103,9 @@ namespace API.Controllers
             return BadRequest("Problem deleting the register code");
 
         }
-        private async Task<bool> RegisterCodeExists(string registerCodeName)
-        {
-            return await _context.RegisterCodes.AnyAsync(x => x.RegisterCodeName == registerCodeName.ToLower());
-        }
+        // private async Task<bool> RegisterCodeExists(string registerCodeName)
+        // {
+        //     return await _context.RegisterCodes.AnyAsync(x => x.RegisterCodeName == registerCodeName.ToLower());
+        // }
     }
 }

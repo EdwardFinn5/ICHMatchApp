@@ -58,6 +58,7 @@ namespace API.Data
         public async Task<IEnumerable<MajorDto>> GetMajorDtosAsync()
         {
             return await _context.Majors
+            .OrderBy(x => x.MajorName)
             .ProjectTo<MajorDto>(_mapper.ConfigurationProvider)
             .ToListAsync();
         }

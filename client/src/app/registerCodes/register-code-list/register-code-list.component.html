@@ -1,0 +1,81 @@
+<div class="row shadow mt-3 " *ngIf="registerCodes">
+    <div class="positions p-0" style="text-align: left;">
+        <!-- <h3>Id: {{member.appUserId}}</h3>
+        <h3>Username: {{member.username}}</h3> -->
+
+        <div>
+        <h3 style="text-align: center"><strong>Current Registration Codes</strong></h3>
+       
+        <table class="table table-striped col-sm-4 col-lg-8 col-md-6 m-auto">
+            <thead>
+                <tr>
+                    <th>Code 1</th>
+                    <th>Code 2</th>
+                    <th>Code 3</th>
+                    <th>Code 4</th>
+                    <th>Code 5</th>
+                    <th>Code 6</th>
+                    <th>Code 7</th>
+                    <th>Code 8</th>
+                    <th>Options</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let registerCode of registerCodes">
+                    <!-- <td> <img src="{{position.logoUrl || '../../assets/images/logo.PNG' }}" alt="{{position.empName}}"></td> -->
+                    <td>{{registerCode.registerCodeName1}}</td>
+                    <td>{{registerCode.registerCodeName2}}</td>
+                    <td>{{registerCode.registerCodeName3}}</td>
+                    <td>{{registerCode.registerCodeName4}}</td>
+                    <td>{{registerCode.registerCodeName5}}</td>
+                    <td>{{registerCode.registerCodeName6}}</td>
+                    <td>{{registerCode.registerCodeName7}}</td>
+                    <td>{{registerCode.registerCodeName8}}</td>
+                    <td>
+                        <button class="btn btn-info btn-sm shadow-sm mr-2 mb-2" routerLink='/registercodeedit/{{registerCode.registerCodeId}}'>Edit</button>
+                        <button type="button-del" (click)="deleteRegisterCode(registerCode.registerCodeId)"  class="btn btn-danger btn-sm shadow-sm mb-2">Delete</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="container mt-3">
+        <h4 class="text-center"><strong>Add RegisterCodes</strong></h4>
+        <form #registerCodeForm="ngForm" (ngSubmit)="addRegisterCode()" autocomplete="off">
+            <div class="input-group">
+                <input name="registerCodeName1" [(ngModel)]="registerCodeName1" type="text" 
+                    class="form-control input-sm short-input mr-1" placeholder="Add Register Code 1">
+                <input name="registerCodeName2" [(ngModel)]="registerCodeName2" type="text" 
+                    class="form-control input-sm short-input mr-1" placeholder="Add Register Code 2">
+                <input name="registerCodeName3" [(ngModel)]="registerCodeName3" type="text" 
+                    class="form-control input-sm short-input mr-1" placeholder="Add Register Code 3">
+                <input name="registerCodeName4" [(ngModel)]="registerCodeName4" type="text" 
+                    class="form-control input-sm short-input mr-1" placeholder="Add Register Code 4">
+                <input name="registerCodeName5" [(ngModel)]="registerCodeName5" type="text" 
+                    class="form-control input-sm short-input mr-1" placeholder="Add Register Code 5">
+                <input name="registerCodename6" [(ngModel)]="registerCodeName6" type="text" 
+                    class="form-control input-sm short-input mr-1" placeholder="Add Register Code 6">
+                <input name="registerCodeName7" [(ngModel)]="registerCodeName7" type="text" 
+                    class="form-control input-sm short-input mr-1" placeholder="Add Register Code 7">
+                <input name="registerCodeName8" [(ngModel)]="registerCodeName8" type="text" 
+                    class="form-control input-sm short-input mr-1" placeholder="Add Register Code 8">
+                <div class="input-group-append">
+                
+                    <button [disabled]="!registerCodeForm.valid || loading" class="btn btn-info ml-2 mb-3 shadow-sm" style="width:auto" >Add Codes
+                        <i *ngIf="loading" class="fa fa-spinner fa-spin"></i>
+                </button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+        <div class="text-center col-12">
+            <button class="btn btn-success btn-sm shadow-sm mt-3 mb-3" routerLink="/">Go to home page</button>
+        </div>
+    </div>
+    </div>
+
+
+
+

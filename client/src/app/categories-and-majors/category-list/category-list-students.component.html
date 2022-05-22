@@ -1,0 +1,40 @@
+<div class="row shadow mt-3 " *ngIf="categories">
+    <div class="positions p-0" style="text-align: center;">
+        <!-- <h3>Id: {{member.appUserId}}</h3>
+        <h3>Username: {{member.username}}</h3> -->
+
+        <div>
+        <h3 style="text-align: center"><strong>Current Major-Categories</strong></h3>
+       
+        <table class="table col-4" style="text-align: center;">
+          
+            <thead>
+                <tr>
+                    <th class="p-2"><h5><strong>Major-Category</strong></h5></th>
+                    <th class="p-2"><h5><strong>Click button to see majors</strong></h5></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let category of categories">
+                    <!-- <td> <img src="{{position.logoUrl || '../../assets/images/logo.PNG' }}" alt="{{position.empName}}"></td> -->
+                    <!-- <td>{{category.categoryId}}</td> -->
+                    <td>{{category.categoryName}}</td>
+                    <td>
+                        <button class="btn btn-primary btn-sm shadow-sm mr-2 mb-2" routerLink='/addmajorsstudents/{{category.categoryId}}'>See Majors</button>
+                        <!-- <button class="btn btn-info btn-sm shadow-sm mr-2 mb-2" routerLink='/categoryedit/{{category.categoryId}}'>Edit Category</button>
+                        <button type="button-del" (click)="deleteCategory(category.categoryId)"  class="btn btn-danger btn-sm shadow-sm mb-2">Delete</button> -->
+                    </td>
+                </tr>
+            </tbody>
+       
+        </table>
+    </div>
+
+
+        <div class="text-center col-12">
+            <button class="btn btn-info btn-sm shadow-sm mt-4 mb-3" routerLink="/step1registerstud">Back to Step 1</button>
+        </div>
+    </div>
+    </div>
+
+

@@ -147,6 +147,8 @@ namespace API.Helpers
             CreateMap<CiLocation, CiLocationDto>();
             CreateMap<ProfileAdviceUpdateDto, ProfileAdvice>();
             CreateMap<ProfileAdvice, ProfileAdviceDto>();
+            CreateMap<RegisterCodeUpdateDto, RegisterCode>();
+            CreateMap<RegisterCode, RegisterCodeDto>();
             CreateMap<StLocationUpdateDto, StLocation>();
             CreateMap<StLocation, StLocationDto>();
             CreateMap<CoLocationUpdateDto, CoLocation>();

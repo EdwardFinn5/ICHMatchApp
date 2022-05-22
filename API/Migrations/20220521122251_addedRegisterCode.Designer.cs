@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace API.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20220515163201_newLocation")]
-    partial class newLocation
+    [Migration("20220521122251_addedRegisterCode")]
+    partial class addedRegisterCode
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -519,6 +519,9 @@ namespace API.Migrations
                     b.Property<string>("RegisterCode")
                         .HasColumnType("nvarchar(10)");
 
+                    b.Property<string>("SalaryRange")
+                        .HasColumnType("varchar(80)");
+
                     b.Property<DateTime?>("StartDate")
                         .HasColumnType("datetime2");
 
@@ -557,6 +560,43 @@ namespace API.Migrations
                     b.HasKey("ProfileAdviceId");
 
                     b.ToTable("ProfileAdvices");
+                });
+
+            modelBuilder.Entity("API.Entities.RegisterCode", b =>
+                {
+                    b.Property<int>("RegisterCodeId")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("RegisterCodeName1")
+                        .HasColumnType("varchar(10)");
+
+                    b.Property<string>("RegisterCodeName2")
+                        .HasColumnType("varchar(10)");
+
+                    b.Property<string>("RegisterCodeName3")
+                        .HasColumnType("varchar(10)");
+
+                    b.Property<string>("RegisterCodeName4")
+                        .HasColumnType("varchar(10)");
+
+                    b.Property<string>("RegisterCodeName5")
+                        .HasColumnType("varchar(10)");
+
+                    b.Property<string>("RegisterCodeName6")
+                        .HasColumnType("varchar(10)");
+
+                    b.Property<string>("RegisterCodeName7")
+                        .HasColumnType("varchar(10)");
+
+                    b.Property<string>("RegisterCodeName8")
+                        .HasColumnType("varchar(10)");
+
+                    b.HasKey("RegisterCodeId");
+
+                    b.ToTable("RegisterCodes");
                 });
 
             modelBuilder.Entity("API.Entities.SkillsBullet", b =>
