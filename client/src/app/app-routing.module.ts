@@ -77,7 +77,12 @@ import { RegisterCodeEditComponent } from './registerCodes/register-code-edit/re
 import { Step1RegisterStudComponent } from './register-stud/step1-register-stud.component';
 import { CategoryListStudentsComponent } from './categories-and-majors/category-list/category-list-students.component';
 import { AddMajorsStudentsComponent } from './categories-and-majors/add-majors/add-majors-students.component';
-import { LocationListComponent } from './location/location-list.component';
+import { LocationListComponent } from './locations/location-list.component';
+import { AddStlocationsComponent } from './locations/add-stlocations.component';
+import { AddCilocationsComponent } from './locations/add-cilocations.component';
+import { ColocationEditComponent } from './locations/colocation-edit.component';
+import { StlocationEditComponent } from './locations/stlocation-edit.component';
+import { CilocationEditComponent } from './locations/cilocation-edit.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -97,6 +102,16 @@ const routes: Routes = [
   {
     path: 'addmajors/:categoryId',
     component: AddMajorsComponent,
+    pathMatch: 'full',
+  },
+  {
+    path: 'addstlocations/:coLocationId',
+    component: AddStlocationsComponent,
+    pathMatch: 'full',
+  },
+  {
+    path: 'addcilocations/:stLocationId',
+    component: AddCilocationsComponent,
     pathMatch: 'full',
   },
   {
@@ -152,6 +167,21 @@ const routes: Routes = [
       {
         path: 'categoryedit/:categoryId',
         component: CategoryEditComponent,
+        pathMatch: 'full',
+      },
+      {
+        path: 'colocationedit/:coLocationId',
+        component: ColocationEditComponent,
+        pathMatch: 'full',
+      },
+      {
+        path: 'stlocationedit/:stLocationId',
+        component: StlocationEditComponent,
+        pathMatch: 'full',
+      },
+      {
+        path: 'cilocationedit/:ciLocationId',
+        component: CilocationEditComponent,
         pathMatch: 'full',
       },
       {

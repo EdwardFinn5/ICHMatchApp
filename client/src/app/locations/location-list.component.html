@@ -1,0 +1,59 @@
+<div class="row shadow mt-3 " *ngIf="coLocations">
+    <div class="positions p-0" style="text-align: center;">
+        <!-- <h3>Id: {{member.appUserId}}</h3>
+        <h3>Username: {{member.username}}</h3> -->
+
+        <div>
+        <h3><strong>Current Country Options</strong></h3>
+       
+        <table class="table table-striped col-sm-4 col-lg-8 col-md-6 m-auto">
+            <thead>
+                <tr>
+                    <th>CoLocation Id</th>
+                    <th>CoLocation Name</th>
+                    <th>CoLocation Sort Name</th>
+                    <th>Options</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let coLocation of coLocations">
+                    <!-- <td> <img src="{{position.logoUrl || '../../assets/images/logo.PNG' }}" alt="{{position.empName}}"></td> -->
+                    <td>{{coLocation.coLocationId}}</td>
+                    <td>{{coLocation.coLocationName}}</td>
+                    <td>{{coLocation.coLocationSortName}}</td>
+                    <td>
+                        <button class="btn btn-primary btn-sm shadow-sm mr-2 mb-2" routerLink='/addstlocations/{{coLocation.coLocationId}}'>See StLocations</button>
+                        <button class="btn btn-info btn-sm shadow-sm mr-2 mb-2" routerLink='/colocationedit/{{coLocation.coLocationId}}'>Edit CoLocation</button>
+                        <button type="button-del" (click)="deleteCoLocation(coLocation.coLocationId)"  class="btn btn-danger btn-sm shadow-sm mb-2">Delete</button>
+
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="container mt-3">
+        <h4 class="text-center"><strong>Add CoLocation</strong></h4>
+        <form #coLocationForm="ngForm" (ngSubmit)="addCoLocation()" autocomplete="off">
+            <div class="input-group" >
+                <input name="coLocationName" required [(ngModel)]="coLocationName" type="text" 
+                    class="form-control input-sm short-input mr-2" placeholder="Add coLocation name">
+                <input name="coLocationSortName" [(ngModel)]="coLocationSortName" type="text" 
+                    class="form-control input-sm short-input" placeholder="Add coLocation sort name">
+            <div class="input-group-append">
+                    <button [disabled]="!coLocationForm.valid || loading" class="btn btn-info ml-2 mb-3 shadow-sm" style="width:auto" >Add CoLocation
+                        <i *ngIf="loading" class="fa fa-spinner fa-spin"></i>
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+        <div class="text-center col-12">
+            <button class="btn btn-success btn-sm shadow-sm mt-3 mb-3" routerLink="/positionslist">Back to Positions</button>
+        </div>
+    </div>
+    </div>
+
+
+

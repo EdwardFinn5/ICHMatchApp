@@ -1,0 +1,84 @@
+<div class="row shadow mt-3" *ngIf="coLocation">
+    <div class="positions p-0" style="text-align: center;">
+        <!-- <h3>Id: {{member.appUserId}}</h3>
+        <h3>Username: {{member.username}}</h3> -->
+
+        <div>
+        <h3><strong>Current StLocations for the {{coLocation.coLocationName}} CoLocation</strong></h3>
+       
+        <table class="table table-striped col-sm-4 col-lg-8 col-md-6 m-auto">
+            <thead>
+                <tr>
+                    <th>StLocation Id</th>
+                    <th>StLocation Name</th>
+                    <th>StLocation Sort Name</th>
+                    <th>Options</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let stLocation of stLocations">
+                    <!-- <td> <img src="{{position.logoUrl || '../../assets/images/logo.PNG' }}" alt="{{position.empName}}"></td> -->
+                    <td>{{stLocation.stLocationId}}</td>
+                    <td>{{stLocation.stLocationName}}</td>
+                    <td>{{stLocation.stLocationSortName}}</td>
+                    <td>
+                        <button class="btn btn-primary btn-sm shadow-sm mr-2 mb-2" routerLink='/addcilocations/{{stLocation.stLocationId}}'>See CiLocations</button>
+                        <button class="btn btn-info btn-sm shadow-sm mr-2 mb-2" routerLink='/stLocationedit/{{stLocation.stLocationId}}'>Edit StLocation</button>
+                        <button type="button-del" (click)="deleteStLocation(stLocation.stLocationId)"  class="btn btn-danger btn-sm shadow-sm mb-2">Delete</button>
+
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="container mt-3">
+        <div *ngIf="coLocation.coLocationName == 'USA'">
+            <h4 class="text-center"><strong>Add State</strong></h4>
+        </div>
+        <div *ngIf="coLocation.coLocationName == 'Other'">
+            <h4 class="text-center"><strong>Add Country</strong></h4>
+        </div>
+       
+        <form #stLocationForm="ngForm" (ngSubmit)="addStLocation()" autocomplete="off">
+            
+            <div class="input-group" *ngIf="coLocation.coLocationName == 'USA'">
+                <input name="stLocationName" required [(ngModel)]="stLocationName" type="text" 
+                    class="form-control input-sm short-input mr-2" placeholder="Add state (2-digit abbreviation)">
+                <input name="stLocationSortName" [(ngModel)]="stLocationSortName" type="text" 
+                    class="form-control input-sm short-input" placeholder="Add state sort name">
+                <div class="input-group-append">
+                    <button [disabled]="!stLocationForm.valid || loading" class="btn btn-info ml-2 mb-3 shadow-sm" style="width:auto" >Add State
+                        <i *ngIf="loading" class="fa fa-spinner fa-spin"></i>
+                    </button>
+                </div>
+            </div>
+
+                <div class="input-group" *ngIf="coLocation.coLocationName == 'Other'">
+                    <input name="stLocationName" required [(ngModel)]="stLocationName" type="text" 
+                        class="form-control input-sm short-input mr-2" placeholder="Add country">
+                    <input name="stLocationSortName" [(ngModel)]="stLocationSortName" type="text" 
+                        class="form-control input-sm short-input" placeholder="Add country sort name">
+                    <div class="input-group-append">
+                        <button [disabled]="!stLocationForm.valid || loading" class="btn btn-info ml-2 mb-3 shadow-sm" style="width:auto" >Add Country
+                            <i *ngIf="loading" class="fa fa-spinner fa-spin"></i>
+                        </button>
+                    </div>
+                </div>
+        </form>
+    </div>
+
+        <div class="btn-group d-flex col-lg-4 m-auto">
+            <button class="btn btn-success btn-sm shadow-sm mt-2 mr-1 mb-3" routerLink="/positionslist">See all Positions</button>
+            <button class="btn btn-secondary btn-sm shadow-sm mt-2 ml-1 mb-3" routerLink="/locationlist">Back to CoLocations</button>
+        </div>
+
+        
+        <!-- <div class="text-center col-12">
+            <button class="btn btn-success btn-sm shadow-sm mt-3 mb-3" routerLink="/positionslist">Back to Positions</button>
+        </div> -->
+    </div>
+    </div>
+
+
+

@@ -95,7 +95,12 @@ import { RegisterCodeEditComponent } from './registerCodes/register-code-edit/re
 import { Step1RegisterStudComponent } from './register-stud/step1-register-stud.component';
 import { CategoryListStudentsComponent } from './categories-and-majors/category-list/category-list-students.component';
 import { AddMajorsStudentsComponent } from './categories-and-majors/add-majors/add-majors-students.component';
-import { LocationListComponent } from './location/location-list.component';
+import { LocationListComponent } from './locations/location-list.component';
+import { AddStlocationsComponent } from './locations/add-stlocations.component';
+import { AddCilocationsComponent } from './locations/add-cilocations.component';
+import { ColocationEditComponent } from './locations/colocation-edit.component';
+import { StlocationEditComponent } from './locations/stlocation-edit.component';
+import { CilocationEditComponent } from './locations/cilocation-edit.component';
 
 @NgModule({
   declarations: [
@@ -184,6 +189,11 @@ import { LocationListComponent } from './location/location-list.component';
     CategoryListStudentsComponent,
     AddMajorsStudentsComponent,
     LocationListComponent,
+    AddStlocationsComponent,
+    AddCilocationsComponent,
+    ColocationEditComponent,
+    StlocationEditComponent,
+    CilocationEditComponent,
   ],
   imports: [
     BrowserModule,
