@@ -1,1 +1,61 @@
-<p>add-cilocations works!</p>
+<div class="row shadow mt-3" *ngIf="stLocation">
+    <div class="positions p-0" style="text-align: center;">
+
+        <div>
+        <h3><strong>Current cites for {{stLocation.stLocationName}}</strong></h3>
+       
+        <table class="table table-striped col-sm-4 col-lg-8 col-md-6 m-auto">
+            <thead>
+                <tr>
+                    <th>CiLocation Id</th>
+                    <th>CiLocation Name</th>
+                    <th>CiLocation Sort Name</th>
+                    <th>Options</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let ciLocation of ciLocations">
+                    <!-- <td> <img src="{{position.logoUrl || '../../assets/images/logo.PNG' }}" alt="{{position.empName}}"></td> -->
+                    <td>{{ciLocation.ciLocationId}}</td>
+                    <td>{{ciLocation.ciLocationName}}</td>
+                    <td>{{ciLocation.ciLocationSortName}}</td>
+                    <td>
+                        <!-- <button class="btn btn-primary btn-sm shadow-sm mr-2 mb-2" routerLink='/addcilocations/{{stLocation.stLocationId}}'>See CiLocations</button> -->
+                        <button class="btn btn-info btn-sm shadow-sm mr-2 mb-2" routerLink='/cilocationedit/{{stLocation.stLocationId}}'>Edit CiLocation</button>
+                        <button type="button-del" (click)="deleteCiLocation(ciLocation.ciLocationId)"  class="btn btn-danger btn-sm shadow-sm mb-2">Delete</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="container mt-3">
+        <h4 class="text-center"><strong>Add Country</strong></h4>
+        <form #ciLocationForm="ngForm" (ngSubmit)="addCiLocation()" autocomplete="off">
+            <div class="input-group">
+                <input name="ciLocationName" required [(ngModel)]="ciLocationName" type="text"
+                    class="form-control input-sm short-input mr-2" placeholder="Add city">
+                <input name="ciLocationSortName" [(ngModel)]="ciLocationSortName" type="text"
+                    class="form-control input-sm short-input" placeholder="Add city sort name">
+                <div class="input-group-append">
+                    <button [disabled]="!ciLocationForm.valid || loading" class="btn btn-info ml-2 mb-3 shadow-sm"
+                        style="width:auto">Add State
+                        <i *ngIf="loading" class="fa fa-spinner fa-spin"></i>
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+    
+    <div class="btn-group d-flex col-lg-4 m-auto">
+        <button class="btn btn-success btn-sm shadow-sm mt-2 mr-1 mb-3" routerLink="/positionslist">See all Positions</button>
+        <button class="btn btn-secondary btn-sm shadow-sm mt-2 ml-1 mb-3" routerLink="/addstlocations/{{stLocation.stLocationId}}">Back to StLocations</button>
+    </div>
+    
+    
+    <!-- <div class="text-center col-12">
+                <button class="btn btn-success btn-sm shadow-sm mt-3 mb-3" routerLink="/positionslist">Back to Positions</button>
+            </div> -->
+    </div>
+    </div>
+

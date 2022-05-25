@@ -1,7 +1,5 @@
 <div class="row shadow mt-3" *ngIf="category">
     <div class="positions p-0" style="text-align: center;">
-        <!-- <h3>Id: {{member.appUserId}}</h3>
-        <h3>Username: {{member.username}}</h3> -->
 
         <div>
         <h3><strong>Current Majors for the {{category.categoryName}} Category</strong></h3>
@@ -22,7 +20,6 @@
                     <td>
                         <button class="btn btn-info btn-sm shadow-sm mr-2 mb-2" routerLink='/majoredit/{{major.majorId}}'>Edit Major</button>
                         <button type="button-del" (click)="deleteMajor(major.majorId)"  class="btn btn-danger btn-sm shadow-sm mb-2">Delete</button>
-
                     </td>
                 </tr>
             </tbody>

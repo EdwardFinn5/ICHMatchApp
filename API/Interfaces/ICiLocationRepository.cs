@@ -11,7 +11,7 @@ namespace API.Interfaces
     {
         void Update(CiLocation ciLocation);
         Task<bool> SaveAllAsync();
-        Task<IEnumerable<CiLocationDto>> GetCiLocationStLocationIdDtosAsync(int id);
+        Task<IEnumerable<CiLocationDto>> GetCiLocationDtosAsync(int id);
         // Task<IEnumerable<CiLocationDto>> GetCiLocationOtherCCIdDtosAsync(int id);
         Task<IEnumerable<CiLocationDto>> GetCiLocationDtosAsync();
         Task<CiLocationDto> GetCiLocationDtoByIdAsync(int id);

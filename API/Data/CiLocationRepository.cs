@@ -46,7 +46,9 @@ namespace API.Data
              .SingleOrDefaultAsync();
         }
 
-        public async Task<IEnumerable<CiLocationDto>> GetCiLocationStLocationIdDtosAsync(int id)
+
+
+        public async Task<IEnumerable<CiLocationDto>> GetCiLocationDtosAsync(int id)
         {
             return await _context.CiLocations
                    .Where(x => x.StLocationId == id)

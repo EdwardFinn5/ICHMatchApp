@@ -36,14 +36,23 @@ namespace API.Controllers
             // could also combine the above into: return Ok(await _userRepository.GetMembersAsync());
         }
 
-        [HttpGet("GetByStLocationId/{id}")]
-        public async Task<ActionResult<IEnumerable<CiLocationDto>>> GetByStLocationId(int id)
+        [HttpGet("GetById/{id}")]
+        public async Task<ActionResult<IEnumerable<CiLocationDto>>> GetById(int id)
         {
-            var ciLocations = await _ciLocationRepository.GetCiLocationStLocationIdDtosAsync(id);
+            var ciLocations = await _ciLocationRepository.GetCiLocationDtosAsync(id);
 
             return Ok(ciLocations);
 
         }
+
+        // [HttpGet("GetByStLocationId/{id}")]
+        // public async Task<ActionResult<IEnumerable<CiLocationDto>>> GetByStLocationId(int id)
+        // {
+        //     var ciLocations = await _ciLocationRepository.GetCiLocationIdDtosAsync(id);
+
+        //     return Ok(ciLocations);
+
+        // }
 
         // [HttpGet("GetByOtherCCId/{id}")]
         // public async Task<ActionResult<IEnumerable<CiLocationDto>>> GetByOtherCCId(int id)
