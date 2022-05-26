@@ -48,5 +48,6 @@ export class CilocationEditComponent implements OnInit {
 
   cancel() {
     this.router.navigateByUrl('/locationlist');
+    console.log('test');
   }
 }
