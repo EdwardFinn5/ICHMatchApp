@@ -1,0 +1,28 @@
+/* .positions {
+    width: 100%;
+  }
+   */
+   .button-del {
+    color: red;
+  }
+  
+  .button-edit {
+    color: mediumblue;
+  }
+
+  div.scroll {
+    margin:auto;
+    padding:4px; 
+  
+    width: 40% !important;
+    height: 200px;
+    overflow-x: scroll;
+ 
+  
+}
+
+.table {
+    margin: auto;
+    width: 50% !important; 
+ }
+  

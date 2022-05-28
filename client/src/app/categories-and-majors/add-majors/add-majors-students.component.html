@@ -1,7 +1,5 @@
 <div class="row shadow mt-3" *ngIf="category">
     <div class="positions p-0" style="text-align: center;">
-        <!-- <h3>Id: {{member.appUserId}}</h3>
-        <h3>Username: {{member.username}}</h3> -->
 
         <div>
         <h3 style="text-align: center" class="mb-3"><strong>Current majors for {{category.categoryName}} category:</strong></h3>
@@ -9,14 +7,8 @@
         <div class="scroll text-center col-12">
         <table class="table col-2-lg col-3-md col-12-sm" style="text-align: center;">
           
-            <!-- <thead>
-                <tr>
-                    <th class="p-2"><h5><strong>Major</strong></h5></th>
-                </tr>
-            </thead> -->
             <tbody>
                 <tr *ngFor="let major of majors">
-                    <!-- <td> <img src="{{position.logoUrl || '../../assets/images/logo.PNG' }}" alt="{{position.empName}}"></td> -->
                     <td><h5>{{major.majorName}}</h5></td>
                 </tr>
             </tbody>

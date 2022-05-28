@@ -1,0 +1,56 @@
+<div class="row shadow mt-3" *ngIf="stLocation">
+    <div class="positions p-0" style="text-align: center;">
+
+        <div>
+        <h3 style="text-align: center" class="mb-3"><strong>Current cities for {{stLocation.stLocationName}}:</strong></h3>
+ 
+                
+
+        <div class="scroll text-center col-12">
+        <table class="table col-2-lg col-3-md col-12-sm" style="text-align: center;">
+            
+            <tbody>
+                
+                <tr *ngFor="let ciLocation of ciLocations">
+                    <!-- <div *ngIf="ciLocation === null">
+                        <h4><strong>No messages yet...initiate a conversation using message box below</strong></h4>
+                    </div>  -->
+                   
+                    <td><h5>{{ciLocation.ciLocationName}}</h5></td>
+                    
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    </div>
+
+    <div class="container mt-3 col-4">
+        <h3 class="text-center"><strong>Add City</strong></h3>
+        <form #ciLocationForm="ngForm" (ngSubmit)="addCiLocation()" autocomplete="off">
+            <div class="input-group" >
+                <input name="ciLocationName" required [(ngModel)]="ciLocationName" type="text" 
+                        class="form-control input-sm long-input mr-2 text-center" placeholder="Add city">
+                    <input name="ciLocationSortName" required [(ngModel)]="ciLocationSortName" type="text" 
+                        class="form-control input-sm long-input text-center" placeholder="Add same here">
+                    <div class="input-group-append">
+                    <button [disabled]="!ciLocationForm.valid || loading" class="btn btn-info ml-2 mb-3 shadow-sm" style="width:auto" >Add City
+                        <i *ngIf="loading" class="fa fa-spinner fa-spin"></i>
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <div class="text-center col-12">
+        <button class="btn btn-info btn-sm shadow-sm mt-4 mb-3" routerLink="/step1registerstud">Back to Step 1</button>
+    </div>
+
+        
+        <!-- <div class="text-center col-12">
+            <button class="btn btn-success btn-sm shadow-sm mt-3 mb-3" routerLink="/positionslist">Back to Positions</button>
+        </div> -->
+    </div>
+    </div>
+
+
+

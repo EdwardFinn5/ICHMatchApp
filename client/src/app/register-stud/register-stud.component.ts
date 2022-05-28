@@ -10,9 +10,13 @@ import {
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Category } from '../_models/category';
+import { CiLocation } from '../_models/ciLocation';
 import { College } from '../_models/college';
+import { CoLocation } from '../_models/coLocation';
 import { Major } from '../_models/major';
+import { StLocation } from '../_models/stLocation';
 import { AccountService } from '../_services/account.service';
+import { CilocationService } from '../_services/cilocation.service';
 import { CollegeService } from '../_services/college.service';
 import { MajorService } from '../_services/major.service';
 import { MembersService } from '../_services/members.service';
@@ -28,6 +32,9 @@ export class RegisterStudComponent implements OnInit {
   validationErrors: string[] = [];
   categories: Category[];
   majors: Major[];
+  coLocations: CoLocation[];
+  stLocations: StLocation[];
+  ciLocations: CiLocation[];
   colleges: College[];
   registerCode8: string = 'studentconnect';
 
@@ -36,6 +43,7 @@ export class RegisterStudComponent implements OnInit {
     private accountService: AccountService,
     private majorService: MajorService,
     private collegeService: CollegeService,
+    private ciLocationService: CilocationService,
     private toastr: ToastrService,
     private fb: FormBuilder
   ) {}
@@ -44,6 +52,9 @@ export class RegisterStudComponent implements OnInit {
     this.initializeForm();
     this.loadCategories();
     this.loadMajors();
+    this.loadCoLocations();
+    this.loadStLocations();
+    this.loadCiLocations();
     this.loadColleges();
   }
 
@@ -121,6 +132,24 @@ export class RegisterStudComponent implements OnInit {
     this.collegeService.getColleges().subscribe((colleges) => {
       this.colleges = colleges;
       // console.log(this.categories);
+    });
+  }
+
+  loadCoLocations() {
+    this.ciLocationService.getCoLocations().subscribe((coLocations) => {
+      this.coLocations = coLocations;
+    });
+  }
+
+  loadStLocations() {
+    this.ciLocationService.getStLocations().subscribe((stLocations) => {
+      this.stLocations = stLocations;
+    });
+  }
+
+  loadCiLocations() {
+    this.ciLocationService.getCiLocations().subscribe((ciLocations) => {
+      this.ciLocations = ciLocations;
     });
   }
 

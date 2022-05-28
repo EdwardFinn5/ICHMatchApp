@@ -101,6 +101,9 @@ import { AddCilocationsComponent } from './locations/add-cilocations.component';
 import { ColocationEditComponent } from './locations/colocation-edit.component';
 import { StlocationEditComponent } from './locations/stlocation-edit.component';
 import { CilocationEditComponent } from './locations/cilocation-edit.component';
+import { LocationListStudentsComponent } from './locations/location-list-students.component';
+import { AddStlocationsStudentsComponent } from './locations/add-stlocations-students.component';
+import { AddCilocationsStudentsComponent } from './locations/add-cilocations-students.component';
 
 @NgModule({
   declarations: [
@@ -194,6 +197,9 @@ import { CilocationEditComponent } from './locations/cilocation-edit.component';
     ColocationEditComponent,
     StlocationEditComponent,
     CilocationEditComponent,
+    LocationListStudentsComponent,
+    AddStlocationsStudentsComponent,
+    AddCilocationsStudentsComponent,
   ],
   imports: [
     BrowserModule,
