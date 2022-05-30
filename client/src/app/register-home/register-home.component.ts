@@ -12,7 +12,7 @@ export class RegisterHomeComponent implements OnInit {
   ngOnInit(): void {}
 
   onRegisterEmp() {
-    this.router.navigate(['/registeremp']);
+    this.router.navigate(['/preregisteremp']);
   }
 
   onRegisterStud() {

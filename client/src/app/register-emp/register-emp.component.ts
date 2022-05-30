@@ -9,7 +9,9 @@ import {
 } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { RegisterCode } from '../_models/registerCode';
 import { AccountService } from '../_services/account.service';
+import { RegisterCodeService } from '../_services/register-code.service';
 
 @Component({
   selector: 'app-register-emp',
@@ -19,23 +21,28 @@ import { AccountService } from '../_services/account.service';
 export class RegisterEmpComponent implements OnInit {
   registerEmpForm: FormGroup;
   validationErrors: string[] = [];
-  registerCode1: string = 'a';
-  registerCode2: string = 'b';
-  registerCode3: string = 'c';
-  registerCode4: string = 'd';
-  registerCode5: string = 'e';
-  registerCode6: string = 'f';
-  registerCode7: string = 'g';
+  registerCode: RegisterCode;
+  // registerCodeName8: string;
+  registerCodeId: number = 1;
+  // registerCode1: string = 'a';
+  // registerCode2: string = 'b';
+  // registerCode3: string = 'c';
+  // registerCode4: string = 'd';
+  // registerCode5: string = 'e';
+  // registerCode6: string = 'f';
+  // registerCode7: string = 'g';
 
   constructor(
     private router: Router,
     private accountService: AccountService,
     private toastr: ToastrService,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private registerCodeService: RegisterCodeService
   ) {}
 
   ngOnInit(): void {
     this.initializeForm();
+    this.loadRegisterCode();
   }
 
   initializeForm() {
@@ -58,6 +65,7 @@ export class RegisterEmpComponent implements OnInit {
       lastName: ['', Validators.required],
       ciLocation: ['', Validators.required],
       empName: ['', Validators.required],
+      hrContactTitle: ['', Validators.required],
       empIndustry: ['', Validators.required],
       employeeNum: ['', Validators.required],
     });
@@ -74,11 +82,22 @@ export class RegisterEmpComponent implements OnInit {
     };
   }
 
+  loadRegisterCode() {
+    this.registerCodeService
+      .getRegisterCode(this.registerCodeId)
+      .subscribe((registerCode: RegisterCode) => {
+        this.registerCode = registerCode;
+        console.log(registerCode.registerCodeId);
+      });
+  }
+
   registerEmp() {
+    console.log('inside registerEmp');
+    console.log('values: ', this.registerEmpForm.value);
     this.accountService.registerEmp(this.registerEmpForm.value).subscribe(
       (response) => {
-        console.log(response);
-        this.cancel();
+        // this.cancel();
+        this.toastr.success('Registration was successful');
         this.router.navigateByUrl('empmember/edit');
       },
       (error) => {

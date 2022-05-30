@@ -104,6 +104,8 @@ import { CilocationEditComponent } from './locations/cilocation-edit.component';
 import { LocationListStudentsComponent } from './locations/location-list-students.component';
 import { AddStlocationsStudentsComponent } from './locations/add-stlocations-students.component';
 import { AddCilocationsStudentsComponent } from './locations/add-cilocations-students.component';
+import { PreregisterEmpComponent } from './register-emp/preregister-emp.component';
+import { Step1RegisterEmpComponent } from './register-emp/step1-register-emp.component';
 
 @NgModule({
   declarations: [
@@ -200,6 +202,8 @@ import { AddCilocationsStudentsComponent } from './locations/add-cilocations-stu
     LocationListStudentsComponent,
     AddStlocationsStudentsComponent,
     AddCilocationsStudentsComponent,
+    PreregisterEmpComponent,
+    Step1RegisterEmpComponent,
   ],
   imports: [
     BrowserModule,

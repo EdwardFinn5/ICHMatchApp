@@ -14,12 +14,14 @@ import { CiLocation } from '../_models/ciLocation';
 import { College } from '../_models/college';
 import { CoLocation } from '../_models/coLocation';
 import { Major } from '../_models/major';
+import { RegisterCode } from '../_models/registerCode';
 import { StLocation } from '../_models/stLocation';
 import { AccountService } from '../_services/account.service';
 import { CilocationService } from '../_services/cilocation.service';
 import { CollegeService } from '../_services/college.service';
 import { MajorService } from '../_services/major.service';
 import { MembersService } from '../_services/members.service';
+import { RegisterCodeService } from '../_services/register-code.service';
 
 @Component({
   selector: 'app-register-stud',
@@ -36,7 +38,9 @@ export class RegisterStudComponent implements OnInit {
   stLocations: StLocation[];
   ciLocations: CiLocation[];
   colleges: College[];
-  registerCode8: string = 'studentconnect';
+  registerCode: RegisterCode;
+  // registerCodeName8: string;
+  registerCodeId: number = 1;
 
   constructor(
     private router: Router,
@@ -45,7 +49,8 @@ export class RegisterStudComponent implements OnInit {
     private collegeService: CollegeService,
     private ciLocationService: CilocationService,
     private toastr: ToastrService,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private registerCodeService: RegisterCodeService
   ) {}
 
   ngOnInit(): void {
@@ -56,6 +61,7 @@ export class RegisterStudComponent implements OnInit {
     this.loadStLocations();
     this.loadCiLocations();
     this.loadColleges();
+    this.loadRegisterCode();
   }
 
   initializeForm() {
@@ -98,10 +104,21 @@ export class RegisterStudComponent implements OnInit {
     };
   }
 
+  loadRegisterCode() {
+    this.registerCodeService
+      .getRegisterCode(this.registerCodeId)
+      .subscribe((registerCode: RegisterCode) => {
+        this.registerCode = registerCode;
+        console.log(registerCode.registerCodeId);
+      });
+  }
+
   registerStud() {
+    console.log('Inside registerStud');
+    console.log('values: ', this.registerStudForm.value);
     this.accountService.registerStud(this.registerStudForm.value).subscribe(
       (response) => {
-        console.log('response: ', response);
+        // console.log('response: ', response);
         // this.cancel();
         this.toastr.success('Registration was successful');
         this.router.navigateByUrl('/member/edit');
@@ -154,14 +171,29 @@ export class RegisterStudComponent implements OnInit {
   }
 
   onSelect(categories) {
-    // console.log(categories.target.value);
     this.majorService.getMajors().subscribe((majors) => {
       this.majors = majors;
-      // console.log('all majors', majors);
       this.majors = majors.filter(
         (e) => e.categoryId == categories.target.value
       );
-      console.log('category id: ', categories.target.value);
+    });
+  }
+
+  onSelectCountry(coLocations) {
+    this.ciLocationService.getStLocations().subscribe((stLocations) => {
+      this.stLocations = stLocations;
+      this.stLocations = stLocations.filter(
+        (e) => e.coLocationId == coLocations.target.value
+      );
+    });
+  }
+
+  onSelectState(stLocations) {
+    this.ciLocationService.getCiLocations().subscribe((ciLocations) => {
+      this.ciLocations = ciLocations;
+      this.ciLocations = ciLocations.filter(
+        (e) => e.stLocationId == stLocations.target.value
+      );
     });
   }
 

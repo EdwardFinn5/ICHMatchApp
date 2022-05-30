@@ -1,4 +1,4 @@
-<section class="signup">
+<section class="signup" *ngIf="registerCode">
   <div class="card-header col-lg-4 m-auto">
     <h3 style="text-align: center;">Student Sign Up</h3>
   </div>
@@ -27,7 +27,7 @@
       <div class="form-group">
         <input [class.is-invalid]='registerStudForm.get("registerCode").errors 
             && registerStudForm.get("registerCode").touched' formControlName='registerCode'
-          class="form-control shadow-sm" type="text" pattern="({{registerCode8}})"
+          class="form-control shadow-sm" type="text" pattern="({{registerCode.registerCodeName8}})"
           placeholder="Register Code (Re-enter)">
         <div *ngIf="registerStudForm.get('registerCode').hasError('required')" class="invalid-feedback">Please enter a
           register code</div>
@@ -36,7 +36,7 @@
       </div>
 
       <ng-container class="form-group">
-        <label class="control-label" style="margin-right: 10px"><u>Class Year: </u></label>
+        <label class="control-label" style="margin-right: 10px"><strong><u>Class Year: </u></strong></label>
         <label class="radio-inline">
           <input type="radio" value='Freshman' formControlName="classYear"> Freshman
         </label>
@@ -57,93 +57,103 @@
       <app-text-input [formControl]='registerStudForm.controls["lastName"]' [label]='"Last Name"'>
       </app-text-input>
 
-      <h6 class="filter m-auto"><strong>Please select college/univerity (required):</strong></h6>
+      <h6 class="filter m-auto"><strong>Select your college/univerity (required):</strong></h6>
 
       <select #scrolMe style="overflow: scroll; height: 300px; width: 450px;" [scrollTop]="scrolMe.scrollHeight"
         class="mr-2 mt-1 mb-2 form-control" formControlName="college" style="width: auto">
-        <option class="text-center" value="">--Select College--</option>
+        <option class="text-center" value="">-- Select College --</option>
         <option *ngFor="let college of colleges" [value]="college.collegeName | titlecase">
           {{college.collegeName | titlecase}}
         </option>
       </select>
 
-      <h6 class="filter m-auto mb-2"><strong>To select major, first select major-category (required):</strong></h6>
+      <h6 class="filter m-auto mb-2"><strong>Select your major: 1st select your major's category (required):</strong></h6>
 
       <select class="mr-2 mb-1 form-control" formControlName="category" style="width: auto">
-        <option class="text-center" value="">--select major-category--</option>
+        <option class="text-center" value="">-- Select Major-Category --</option>
         <option *ngFor="let category of categories" [value]="category.categoryName | titlecase">
           {{category.categoryName | titlecase}}
         </option>
       </select>
 
-      <h6 class="filter m-auto mt-1 mb-2"><strong>Then re-select major-category & specific major (both
+      <h6 class="filter m-auto mt-1 mb-2"><strong>Then re-select your major's category then specific major (both
           required):</strong></h6>
 
       <div class=" form-group form-inline">
         <select (change)="onSelect($event)" class=" form-control form-inline mr-2" name="category" style="width: auto">
           <br>
-          <option class="text-center mb-2" #value="">--1st select category--</option>
+          <option class="text-center" #value="">-- 1st Select Major-Category --</option>
           <option *ngFor="let category of categories" value="{{category.categoryId}}">
-            {{category.categoryName | titlecase}}
+            {{category.categoryName}}
           </option>
         </select>
 
-        <select class="mr-2 mt-1 mb-1 form-control" formControlName="major" style="width: auto">
-          <option class="text-center" value="">--2nd select major--</option>
+        <select class="mr-2 mt-1 form-control" formControlName="major" style="width: auto">
+          <option class="text-center" value="">-- 2nd Select Major --</option>
           <option *ngFor="let major of majors" [value]="major.majorName | titlecase">
             {{major.majorName | titlecase}}
           </option>
         </select>
-
-          <div class="text-center col-12">
-            <button class="btn btn-info mt-2 shadow-sm" routerLink='/categorylist'>Click here if you don't see your major</button>
-        </div>
-      
       </div>
 
+          <div class="text-center col-12">
+            <button class="btn btn-info mb-3 shadow-sm" routerLink='/categoryliststudents'>Click if you don't see your Major</button>
+          </div>
+      
+      <!-- </div> -->
 
-      <h6 class="filter m-auto mb-2"><strong>For your hometown, please enter the following 3 fields (all
-          required):</strong></h6>
+      <h6 class="filter m-auto mb-2"><strong>Select your hometown: 1st select USA or "Other" country (required):</strong></h6>
 
-      <app-text-input [formControl]='registerStudForm.controls["coLocation"]' [label]='"Country"'>
-      </app-text-input>
-
-      <app-text-input [formControl]='registerStudForm.controls["stLocation"]' [label]='"State"'>
-      </app-text-input>
-
-      <app-text-input [formControl]='registerStudForm.controls["ciLocation"]' [label]='"City"'>
-      </app-text-input>
-
-      <h6 class="filter m-auto mb-2"><strong>First select major-category (required):</strong></h6>
-
-      <select class="mr-2 mb-1 form-control" formControlName="category" style="width: auto">
-        <option class="text-center" value="">--select major-category--</option>
-        <option *ngFor="let category of categories" [value]="category.categoryName | titlecase">
-          {{category.categoryName | titlecase}}
+      
+      <select class="mr-2 mb-1 form-control" formControlName="coLocation" style="width: auto">
+        <option class="text-center" value="">-- select USA or Other --</option>
+        <option *ngFor="let coLocation of coLocations" [value]="coLocation.coLocationName">
+          {{coLocation.coLocationName}}
         </option>
       </select>
 
-      <h6 class="filter m-auto mt-1 mb-2"><strong>Then re-select major-category & specific major (both
-          required):</strong></h6>
+      <h6 class="filter m-auto mt-1 mb-2"><strong>Then re-select country then state/other country (both
+        required):</strong></h6>
 
-      <div class=" form-group form-inline">
-        <select (change)="onSelect($event)" class=" form-control form-inline mr-2" name="category" style="width: auto">
-          <br>
-          <option class="text-center mb-2" #value="">--1st select category--</option>
-          <option *ngFor="let category of categories" value="{{category.categoryId}}">
-            {{category.categoryName | titlecase}}
-          </option>
-        </select>
+    <div class=" form-group form-inline">
+      <select (change)="onSelectCountry($event)" class=" form-control form-inline mr-2" name="coLocation" style="width: auto">
+        <br>
+        <option class="text-center mb-2" #value="">--1st select USA/Other--</option>
+        <option class="text-center" *ngFor="let coLocation of coLocations" value="{{coLocation.coLocationId}}">
+          {{coLocation.coLocationName}}
+        </option>
+      </select>
 
-        <select class="mr-2 mt-1 mb-1 form-control" formControlName="major" style="width: auto">
-          <option class="text-center" value="">--2nd select major--</option>
-          <option *ngFor="let major of majors" [value]="major.majorName | titlecase">
-            {{major.majorName | titlecase}}
-          </option>
-        </select>
+      <select class="mr-2 mt-1 mb-1 form-control" formControlName="stLocation" style="width: auto">
+        <option class="text-center" value="">--2nd State/Country--</option>
+        <option class="text-center" *ngFor="let stLocation of stLocations" [value]="stLocation.stLocationName | titlecase">
+          {{stLocation.stLocationName}}
+        </option>
+      </select>
+      </div>
 
-        <button class="btn btn-success mt-2 shadow-sm" routerLink='/categorylist'>Click here if you don't see your
-          major</button>
+      <h6 class="filter m-auto mt-1 mb-2"><strong>Then re-select state/other country then city (both
+        required):</strong></h6>
+
+        <div class=" form-group form-inline">
+          <select (change)="onSelectState($event)" class=" form-control form-inline mr-2" name="stLocation" style="width: auto">
+            <br>
+            <option class="text-center mb-2" #value="">--1st State/Other Country--</option>
+            <option class="text-center" *ngFor="let stLocation of stLocations" value="{{stLocation.stLocationId}}">
+              {{stLocation.stLocationName}}
+            </option>
+          </select>
+    
+          <select class="mr-2 mt-1 mb-1 form-control" formControlName="ciLocation" style="width: auto">
+            <option class="text-center" value="">--2nd Select City--</option>
+            <option class="text-center" *ngFor="let ciLocation of ciLocations" [value]="ciLocation.ciLocationName | titlecase">
+              {{ciLocation.ciLocationName}}
+            </option>
+          </select>
+          </div>
+
+      <div class="text-center col-12">
+        <button class="btn btn-info shadow-sm mb-2" routerLink='/categorylist'>Click if you don't see your Country/State/City</button>
       </div>
 
       <div class="row" *ngIf="validationErrors.length > 0">
@@ -155,11 +165,16 @@
       </div>
 
       <div class="btn-group d-flex">
-        <button [disabled]="!registerStudForm.valid" type="submit" class="btn btn-info mr-1 shadow-sm">Sign Up</button>
-        <input type="button" class="btn btn-secondary shadow-sm ml-1" (click)="cancel()" value="Cancel" />
+        <button [disabled]="!registerStudForm.valid" type="submit" class="btn btn-success mt-3 mr-1 shadow-sm">Sign Up</button>
+        <input type="button" class="btn btn-secondary mt-3 shadow-sm ml-1" (click)="cancel()" value="Cancel">
       </div>
 
     </form>
+
+    <!-- <div class="btn-group d-flex">
+      <button [disabled]="registerStudForm.valid" type="submit" class="btn btn-success mt-3 mr-1 shadow-sm">Sign Up</button>
+      <input type="button" class="btn btn-secondary mt-3 shadow-sm ml-1" (click)="cancel()" value="Cancel">
+    </div> -->
 
   </div>
 </section>

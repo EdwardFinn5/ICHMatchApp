@@ -1,4 +1,5 @@
 export interface College {
   collegeId: number;
-  collegeName;
+  collegeName: string;
+  collegeNickname: string;
 }

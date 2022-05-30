@@ -86,6 +86,8 @@ import { CilocationEditComponent } from './locations/cilocation-edit.component';
 import { LocationListStudentsComponent } from './locations/location-list-students.component';
 import { AddStlocationsStudentsComponent } from './locations/add-stlocations-students.component';
 import { AddCilocationsStudentsComponent } from './locations/add-cilocations-students.component';
+import { PreregisterEmpComponent } from './register-emp/preregister-emp.component';
+import { Step1RegisterEmpComponent } from './register-emp/step1-register-emp.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -98,7 +100,21 @@ const routes: Routes = [
     component: Step1RegisterStudComponent,
     pathMatch: 'full',
   },
-  { path: 'preregisterstud', component: PreregisterStudComponent },
+  {
+    path: 'step1registeremp',
+    component: Step1RegisterEmpComponent,
+    pathMatch: 'full',
+  },
+  {
+    path: 'preregisterstud',
+    component: PreregisterStudComponent,
+    pathMatch: 'full',
+  },
+  {
+    path: 'preregisteremp',
+    component: PreregisterEmpComponent,
+    pathMatch: 'full',
+  },
   { path: 'memberslist', component: MemberListComponent },
   { path: 'empmemberslist', component: EmpmemberListComponent },
   { path: 'empmemberslistsuper', component: EmpmemberListSuperComponent },

@@ -13,7 +13,7 @@ import { MajorService } from '../_services/major.service';
   styleUrls: ['./step1-register-stud.component.css'],
 })
 export class Step1RegisterStudComponent implements OnInit {
-  @Output() value: string = '';
+  // @Output() value: string = '';
   categories: Category[];
   majors: Major[];
   coLocations: CoLocation[];

@@ -1,4 +1,4 @@
-<section class="signup">
+<section class="signup" *ngIf="registerCode">
   <div class="card-header col-lg-4 m-auto">
     <h3 style="text-align: center;">Employer Sign Up</h3>
   </div>
@@ -42,8 +42,8 @@
           formControlName='registerCode' 
           class="form-control shadow-sm" 
           type="text"
-          pattern="({{registerCode1}})|{{registerCode2}}|{{registerCode3}}|{{registerCode4}}|{{registerCode5}}|{{registerCode6}}|{{registerCode7}}"
-          placeholder="Register Code">
+          pattern="({{registerCode.registerCodeName1}})|{{registerCode.registerCodeName2}}|{{registerCode.registerCodeName3}}|{{registerCode.registerCodeName4}}|{{registerCode.registerCodeName5}}|{{registerCode.registerCodeName6}}|{{registerCode.registerCodeName7}}"
+          placeholder="Register Code (Re-enter)">
           <div *ngIf="registerEmpForm.get('registerCode').hasError('required')"
             class="invalid-feedback">Please enter a register code</div> 
           <div *ngIf="registerEmpForm.get('registerCode').hasError('pattern')"
@@ -57,6 +57,10 @@
       <app-text-input [formControl]='registerEmpForm.controls["lastName"]'
         [label]='"Last Name"'>
       </app-text-input>
+
+      <app-text-input [formControl]='registerEmpForm.controls["hrContactTitle"]'
+      [label]='"Hr Contact Title"'>
+    </app-text-input>
   
       <app-text-input [formControl]='registerEmpForm.controls["empName"]'
         [label]='"Name of Company"'>

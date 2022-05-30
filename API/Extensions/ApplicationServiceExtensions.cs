@@ -30,6 +30,7 @@ namespace API.Extensions
             services.AddScoped<IPosition2Repository, Position2Repository>();
             services.AddScoped<ICategoryRepository, CategoryRepository>();
             services.AddScoped<ICollegeRepository, CollegeRepository>();
+            services.AddScoped<IEmpIndustryRepository, EmpIndustryRepository>();
             services.AddScoped<IMajorRepository, MajorRepository>();
             services.AddScoped<IRegisterCodeRepository, RegisterCodeRepository>();
             services.AddScoped<ICoLocationRepository, CoLocationRepository>();
