@@ -106,6 +106,9 @@ import { AddStlocationsStudentsComponent } from './locations/add-stlocations-stu
 import { AddCilocationsStudentsComponent } from './locations/add-cilocations-students.component';
 import { PreregisterEmpComponent } from './register-emp/preregister-emp.component';
 import { Step1RegisterEmpComponent } from './register-emp/step1-register-emp.component';
+import { EmpindustryListComponent } from './empindustries/empindustry-list.component';
+import { EmpindustryEditComponent } from './empindustries/empindustry-edit.component';
+import { EmpindustryListEmpsComponent } from './empindustries/empindustry-list-emps.component';
 
 @NgModule({
   declarations: [
@@ -204,6 +207,9 @@ import { Step1RegisterEmpComponent } from './register-emp/step1-register-emp.com
     AddCilocationsStudentsComponent,
     PreregisterEmpComponent,
     Step1RegisterEmpComponent,
+    EmpindustryListComponent,
+    EmpindustryEditComponent,
+    EmpindustryListEmpsComponent,
   ],
   imports: [
     BrowserModule,

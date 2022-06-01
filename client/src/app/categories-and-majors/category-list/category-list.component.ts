@@ -44,8 +44,6 @@ export class CategoryListComponent implements OnInit {
 
   deleteCategory(id: number) {
     this.categoryId = id;
-    console.log('The next item is categoryId');
-    console.log(this.categoryId);
     // this.confirmService
     //   .confirm('Confirm delete message', 'This cannot be undone')
     //   .subscribe((result) => {

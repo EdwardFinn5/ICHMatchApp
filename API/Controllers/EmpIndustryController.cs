@@ -52,6 +52,12 @@ namespace API.Controllers
             return Ok(empIndustries);
         }
 
+        [HttpGet("GetEmpIndustryById/{id}")] //this is the one I just added
+        public async Task<ActionResult<EmpIndustry>> GetEmpIndustryByIdAsync(int id)
+        {
+            return await _empIndustryRepository.GetEmpIndustryByIdAsync(id);
+        }
+
         [HttpGet("{id}")]
         public async Task<ActionResult<EmpIndustryDto>> GetEmpIndustryDtoById(int id)
         {

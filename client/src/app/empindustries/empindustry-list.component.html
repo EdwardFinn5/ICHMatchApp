@@ -1,0 +1,52 @@
+<div class="row shadow mt-3 " *ngIf="empIndustries">
+    <div class="positions p-0" style="text-align: center;">
+        <!-- <h3>Id: {{member.appUserId}}</h3>
+        <h3>Username: {{member.username}}</h3> -->
+
+        <div>
+        <h3><strong>Current Industries</strong></h3>
+       
+        <table class="table table-striped col-sm-4 col-lg-8 col-md-6 m-auto">
+            <thead>
+                <tr>
+                    <th>Industry Id</th>
+                    <th>Industry Name</th>
+                    <th>Options</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let empIndustry of empIndustries">
+                    <td>{{empIndustry.empIndustryId}}</td>
+                    <td>{{empIndustry.empIndustryName | titlecase}}</td>
+                    <td>
+                        <button class="btn btn-info btn-sm shadow-sm mr-2 mb-2" routerLink='/empindustryedit/{{empIndustry.empIndustryId}}'>Edit Industry</button>
+                        <button type="button-del" (click)="deleteEmpIndustry(empIndustry.empIndustryId)"  class="btn btn-danger btn-sm shadow-sm mb-2">Delete</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="container mt-3">
+        <h4 class="text-center"><strong>Add Industry</strong></h4>
+        <form #empIndustryForm="ngForm" (ngSubmit)="addEmpIndustry()" autocomplete="off">
+            <div class="input-group" >
+                <input name="empIndustryName" required [(ngModel)]="empIndustryName" type="text" 
+                    class="form-control input-sm long-input" placeholder="Add industry name">
+                    <div class="input-group-append">
+                    <button [disabled]="!empIndustryForm.valid || loading" class="btn btn-info ml-2 mb-3 shadow-sm" style="width:auto" >Add Industry
+                        <i *ngIf="loading" class="fa fa-spinner fa-spin"></i>
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+        <div class="text-center col-12">
+            <button class="btn btn-success btn-sm shadow-sm mt-3 mb-3" routerLink="/positionslist">Back to Positions</button>
+        </div>
+    </div>
+    </div>
+
+
+

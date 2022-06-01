@@ -1,1 +1,88 @@
-<p>step1-register-emp works!</p>
+<section class="signup">
+    <div class="card-header col-lg-4 m-auto">
+        <h5 style="text-align: center;"><u>Step 1 before you register</u></h5>
+        <h5 style="text-align: center;">Make sure your organization's "industry" is included</h5>
+    </div>
+    <div class="login col-lg-4 m-auto shadow-lg">
+
+        <h6 class="text-center mb-2"><strong>First select a major-category</strong></h6>
+
+        <!-- <div class="text-center col-12">
+            <select (change)="onSelect($event)" class=" form-control form-inline mr-2" name="category">
+                <br>
+                <option class="text-center mb-2 label" #value="">-- 1st select category --</option>
+                <option *ngFor="let category of categories" value="{{category.categoryId}}" class="text-center">
+                    {{category.categoryName | titlecase}}
+                </option>
+            </select> -->
+
+            <h6 class="text-center mt-2 mb-2"><strong>Then see if your major is included:</strong></h6>
+
+            <select class="mr-2 mt-1 mb-1 form-control" name="empIndustry">
+                <option class="text-center" value="test">-- 2nd select major --</option>
+                <option *ngFor="let empIndustry of empIndustries" [value]="empIndustry.empIndustryName | titlecase" class="text-center">
+                    {{empIndustry.empIndustryName | titlecase}}
+                </option>
+            </select>
+
+            <h6 class="filter m-auto mt-1 mb-2"><strong>If you don't see your major, click this button:</strong></h6>
+
+            <div class="text-center col-12">
+                <button class="btn btn-info mt-2 shadow-sm" routerLink='/empindustrylistemps'>Add Major</button>
+            </div>
+        </div>    
+    <!-- </div> -->
+
+    <div class="card-header col-lg-4 m-auto">
+        <h5 style="text-align: center;"><u>Step 2 before you register</u></h5>
+        <h5 style="text-align: center;">Make sure your hometown is included</h5>
+    </div>
+    <div class="login col-lg-4 m-auto shadow-lg">
+    
+        <!-- <h6 class="text-center mb-2"><strong>First select USA or "Other" country:</strong></h6>
+    
+        <div class="text-center col-12">
+            <select (change)="onCoSelect($event)" class=" form-control form-inline mr-2" name="coLocation">
+                <br>
+                <option class="text-center mb-2 label" #value="">-- 1st select USA/Other country --</option>
+                <option *ngFor="let coLocation of coLocations" value="{{coLocation.coLocationId}}" class="text-center">
+                    {{coLocation.coLocationName}}
+                </option>
+            </select> -->
+    
+            <h6 class="text-center mt-2 mb-2"><strong>Then select your state or country:</strong></h6>
+    
+            <select (change)="onSelect($event)" class="mr-2 mt-1 mb-1 form-group form-control" name="stLocation">
+            <option class="text-center" value="">-- 2nd select State/Country --</option>
+            <option *ngFor="let stLocation of stLocations" value="{{stLocation.stLocationId}}" class="text-center">
+                {{stLocation.stLocationName}}
+            </option>
+            </select>
+            
+            <h6 class="text-center mt-2 mb-2"><strong>Then select your city:</strong></h6>
+            
+            <select class="mr-2 mt-1 mb-1 form-group form-control" name="ciLocation">
+                <option class="text-center" value="">-- 3rd select city --</option>
+                <option *ngFor="let ciLocation of ciLocations" [value]="ciLocation.ciLocationName" class="text-center">
+                    {{ciLocation.ciLocationName | titlecase}}
+                </option>
+            </select>
+
+            <h6 class="filter m-auto mt-1 mb-2"><strong>If you don't see your country and/or state and/or hometown, click this button:</strong></h6>
+
+            <div class="text-center col-12">
+                <button class="btn btn-info mt-2 shadow-sm" routerLink='/locationliststudents'>Add Country/State/Hometown</button>
+            </div>
+            
+        </div>
+
+       
+    
+    <!-- </div> -->
+
+    <div class="btn-group d-flex col-lg-4 mt-2 m-auto">
+        <button class="btn btn-success btn-sm shadow-sm mt-2 mr-1 mb-3" routerLink="/registeremp">Register</button>
+        <button class="btn btn-secondary btn-sm shadow-sm mt-2 ml-1 mb-3" routerLink="/">Cancel</button>
+    </div>
+    
+    </section>

@@ -143,7 +143,7 @@ namespace API.Helpers
             CreateMap<CollegeUpdateDto, College>();
             CreateMap<MajorUpdateDto, Major>();
             CreateMap<Major, MajorDto>();
-            CreateMap<EmpIndustryDto, EmpIndustry>();
+            CreateMap<EmpIndustryUpdateDto, EmpIndustry>();
             CreateMap<EmpIndustry, EmpIndustryDto>();
             CreateMap<CiLocationUpdateDto, CiLocation>();
             CreateMap<CiLocation, CiLocationDto>();

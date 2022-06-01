@@ -23,7 +23,7 @@ export class Step1RegisterEmpComponent implements OnInit {
   ngOnInit(): void {
     this.loadEmpIndustries();
     this.loadStLocations();
-    this.loadCiLocations();
+    // this.loadCiLocations();
     // this.loadCiLocations();
   }
 
@@ -38,11 +38,11 @@ export class Step1RegisterEmpComponent implements OnInit {
     });
   }
 
-  loadCiLocations() {
-    this.ciLocationService.getCiLocations().subscribe((ciLocations) => {
-      this.ciLocations = ciLocations;
-    });
-  }
+  // loadCiLocations() {
+  //   this.ciLocationService.getCiLocations().subscribe((ciLocations) => {
+  //     this.ciLocations = ciLocations;
+  //   });
+  // }
 
   onSelect(stLocations) {
     this.ciLocationService.getCiLocations().subscribe((ciLocations) => {
