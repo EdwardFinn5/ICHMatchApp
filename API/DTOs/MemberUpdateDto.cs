@@ -9,7 +9,9 @@ namespace API.DTOs
     {
 
         public string CiLocation { get; set; }
+        public string CiempLocation { get; set; }
         public string StLocation { get; set; }
+        public string StempLocation { get; set; }
         public string CoLocation { get; set; }
         public string ClassYear { get; set; }
         public string Category { get; set; }

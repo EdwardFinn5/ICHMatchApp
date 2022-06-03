@@ -14,6 +14,6 @@ namespace API.Entities
         [Column(TypeName = "nvarchar(10)")]
         public string StempLocationName { get; set; }
         public string StempLocationSortName { get; set; }
-        public ICollection<CiLocation> CiempLocations { get; set; }
+        public ICollection<CiempLocation> CiempLocations { get; set; }
     }
 }

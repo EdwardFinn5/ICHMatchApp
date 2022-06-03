@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace API.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20220521122251_addedRegisterCode")]
-    partial class addedRegisterCode
+    [Migration("20220603141428_addedEmplocation")]
+    partial class addedEmplocation
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -35,6 +35,9 @@ namespace API.Migrations
                         .HasColumnType("nvarchar(60)");
 
                     b.Property<string>("CiLocation")
+                        .HasColumnType("nvarchar(60)");
+
+                    b.Property<string>("CiempLocation")
                         .HasColumnType("nvarchar(60)");
 
                     b.Property<string>("ClassYear")
@@ -88,6 +91,9 @@ namespace API.Migrations
                     b.Property<string>("StLocation")
                         .HasColumnType("nvarchar(60)");
 
+                    b.Property<string>("StempLocation")
+                        .HasColumnType("nvarchar(10)");
+
                     b.Property<string>("UserName")
                         .HasColumnType("nvarchar(256)");
 
@@ -132,6 +138,29 @@ namespace API.Migrations
                     b.HasIndex("StLocationId");
 
                     b.ToTable("CiLocations");
+                });
+
+            modelBuilder.Entity("API.Entities.CiempLocation", b =>
+                {
+                    b.Property<int>("CiempLocationId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("CiempLocationName")
+                        .HasColumnType("nvarchar(60)");
+
+                    b.Property<string>("CiempLocationSortName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("StempLocationId")
+                        .HasColumnType("int");
+
+                    b.HasKey("CiempLocationId");
+
+                    b.HasIndex("StempLocationId");
+
+                    b.ToTable("CiempLocations");
                 });
 
             modelBuilder.Entity("API.Entities.CoLocation", b =>
@@ -489,8 +518,8 @@ namespace API.Migrations
                     b.Property<string>("ApplyLink")
                         .HasColumnType("nvarchar(100)");
 
-                    b.Property<string>("CiLocation")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<string>("CiempLocation")
+                        .HasColumnType("varchar(60)");
 
                     b.Property<DateTime?>("DateAdded")
                         .HasColumnType("datetime2");
@@ -524,6 +553,9 @@ namespace API.Migrations
 
                     b.Property<DateTime?>("StartDate")
                         .HasColumnType("datetime2");
+
+                    b.Property<string>("StempLocation")
+                        .HasColumnType("varchar(10)");
 
                     b.Property<string>("UniqueContent")
                         .HasColumnType("nvarchar(max)");
@@ -648,6 +680,24 @@ namespace API.Migrations
                     b.ToTable("StLocations");
                 });
 
+            modelBuilder.Entity("API.Entities.StempLocation", b =>
+                {
+                    b.Property<int>("StempLocationId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("StempLocationName")
+                        .HasColumnType("nvarchar(10)");
+
+                    b.Property<string>("StempLocationSortName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("StempLocationId");
+
+                    b.ToTable("StempLocations");
+                });
+
             modelBuilder.Entity("API.Entities.StudInfo", b =>
                 {
                     b.Property<int>("StudInfoId")
@@ -728,6 +778,17 @@ namespace API.Migrations
                         .IsRequired();
 
                     b.Navigation("stLocation");
+                });
+
+            modelBuilder.Entity("API.Entities.CiempLocation", b =>
+                {
+                    b.HasOne("API.Entities.StempLocation", "stempLocation")
+                        .WithMany("CiempLocations")
+                        .HasForeignKey("StempLocationId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("stempLocation");
                 });
 
             modelBuilder.Entity("API.Entities.DutyBullet", b =>
@@ -937,6 +998,11 @@ namespace API.Migrations
             modelBuilder.Entity("API.Entities.StLocation", b =>
                 {
                     b.Navigation("CiLocations");
+                });
+
+            modelBuilder.Entity("API.Entities.StempLocation", b =>
+                {
+                    b.Navigation("CiempLocations");
                 });
 #pragma warning restore 612, 618
         }

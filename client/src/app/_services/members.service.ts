@@ -92,7 +92,7 @@ export class MembersService {
     // params = params.append('major', userParams.major);
     // params = params.append('classYear', userParams.classYear);
     // params = params.append('college', userParams.college);
-    params = params.append('location', userParams.ciLocation);
+    params = params.append('ciempLocation', userParams.ciempLocation);
     params = params.append('empIndustry', userParams.empIndustry);
     // params = params.append('orderByMajor', userParams.orderByMajor);
     // params = params.append('orderByCollege', userParams.orderByCollege);

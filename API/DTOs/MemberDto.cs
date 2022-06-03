@@ -18,8 +18,10 @@ namespace API.DTOs
         public string AppUserType { get; set; }
         public bool IsActive { get; set; } = true;
         public string CiLocation { get; set; }
+        public string CiempLocation { get; set; }
         public string CoLocation { get; set; }
         public string StLocation { get; set; }
+        public string StempLocation { get; set; }
         public string ClassYear { get; set; }
         public string Category { get; set; }
         public string PosCategory { get; set; }

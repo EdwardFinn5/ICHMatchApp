@@ -15,8 +15,10 @@ export interface Member {
   appUserType: string;
   active: boolean;
   ciLocation: string;
+  ciempLocation: string;
   coLocation: string;
   stLocation: string;
+  stempLocation: string;
   classYear: string;
   major: string;
   category: string;
@@ -42,7 +44,7 @@ export interface Member {
   positionName: string;
   positionIdentifier: string;
   positionDescription: string;
-  lookingFor: string;
+  // lookingFor: string;
   positionBenefits: string;
   positionType: string;
   positionLocation: string;

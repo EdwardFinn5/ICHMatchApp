@@ -137,11 +137,8 @@ namespace API.Controllers
                 LastName = user.LastName,
                 HrContactTitle = user.HrContactTitle,
                 EmpName = user.EmpName,
-                // PosCategory = user.PosCategory,
-                // PosName = user.PosName,
-                CiLocation = user.CiLocation,
-                StLocation = user.StLocation,
-                CoLocation = user.CoLocation,
+                CiempLocation = user.CiempLocation,
+                StempLocation = user.StempLocation,
                 RegisterCode = user.RegisterCode
             };
         }
@@ -183,6 +180,8 @@ namespace API.Controllers
                 CoLocation = user.CoLocation,
                 StLocation = user.StLocation,
                 CiLocation = user.CiLocation,
+                CiempLocation = user.CiempLocation,
+                StempLocation = user.StempLocation,
                 StudentUrl = user.Photos.FirstOrDefault(x => x.IsMain)?.StudentUrl,
                 LogoUrl = user.Photos.FirstOrDefault(x => x.IsMainLogo)?.LogoUrl,
             };

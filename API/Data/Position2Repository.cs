@@ -75,9 +75,9 @@ namespace API.Data
             {
                 query = query.Where(p => p.PositionType == userParams.PositionType);
             }
-            if (userParams.CiLocation != null)
+            if (userParams.CiempLocation != null)
             {
-                query = query.Where(p => p.CiLocation == userParams.CiLocation);
+                query = query.Where(p => p.CiempLocation == userParams.CiempLocation);
             }
 
             if (userParams.OrderByPosName != null)
@@ -85,9 +85,9 @@ namespace API.Data
                 query = query.OrderBy(p => p.PosName)
                 .ThenBy(p => p.RegisterCode);
             }
-            else if (userParams.OrderByPositionLocation != null)
+            else if (userParams.OrderByCiempLocation != null)
             {
-                query = query.OrderBy(p => p.CiLocation)
+                query = query.OrderBy(p => p.CiempLocation)
                 .ThenBy(p => p.RegisterCode)
                 .ThenBy(p => p.PosName);
             }

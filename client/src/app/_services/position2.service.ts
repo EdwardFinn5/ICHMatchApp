@@ -59,15 +59,15 @@ export class Position2Service {
     params = params.append('posCategory', userParams.posCategory);
     params = params.append('posName', userParams.posName);
     params = params.append('positionType', userParams.positionType);
-    params = params.append('positionLocation', userParams.positionLocation);
+    params = params.append('ciempLocation', userParams.ciempLocation);
     params = params.append('orderByPosName', userParams.orderByPosName);
     params = params.append(
       'orderByRegisterCode',
       userParams.orderByRegisterCode
     );
     params = params.append(
-      'orderByPositionLocation',
-      userParams.orderByPositionLocation
+      'orderByCiempLocation',
+      userParams.orderByCiempLocation
     );
 
     return this.getPaginatedResult<Position[]>(

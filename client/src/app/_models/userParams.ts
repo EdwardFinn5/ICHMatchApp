@@ -16,7 +16,9 @@ export class UserParams {
   positionLocation = '';
   coLocation = '';
   ciLocation = '';
+  ciempLocation = '';
   stLocation = '';
+  stempLocation = '';
   orderByLastActive = '';
   orderByPosName = '';
   orderByPositionLocation = '';
@@ -27,6 +29,7 @@ export class UserParams {
   orderByFirstName = '';
   orderByEmpName = '';
   orderByCiLocation = '';
+  orderByCiempLocation = '';
   orderByCollege = '';
   orderByEmpIndustry = '';
   orderByRegisterCode = '';

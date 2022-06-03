@@ -12,7 +12,8 @@ export interface Position {
   // lookingFor: string;
   positionType: string;
   salaryRange: string;
-  ciLocation: string;
+  ciempLocation: string;
+  stempLocation: string;
   dateAdded: Date;
   startDate: Date;
   appDeadline: Date;

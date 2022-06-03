@@ -38,6 +38,12 @@ namespace API.Entities
         [Column(TypeName = "nvarchar(60)")]
         public string CiLocation { get; set; }
 
+        [Column(TypeName = "nvarchar(60)")]
+        public string CiempLocation { get; set; }
+
+        [Column(TypeName = "nvarchar(10)")]
+        public string StempLocation { get; set; }
+
         [Column(TypeName = "varchar(12)")]
         public string ClassYear { get; set; }
 
@@ -46,12 +52,6 @@ namespace API.Entities
 
         [Column(TypeName = "nvarchar(60)")]
         public string Major { get; set; }
-
-        // [Column(TypeName = "nvarchar(60)")]
-        // public string PosCategory { get; set; }
-
-        // [Column(TypeName = "nvarchar(60)")]
-        // public string PosName { get; set; }
 
         [Column(TypeName = "varchar(30)")]
         public string College { get; set; }
@@ -76,6 +76,7 @@ namespace API.Entities
         public ICollection<StudInfo> StudInfos { get; set; }
         public ICollection<EmpInfo> EmpInfos { get; set; }
         public ICollection<Position> Positions { get; set; }
+
         // public ICollection<DutyBullet> DutyBullets { get; set; }
         public ICollection<UserLike> LikedByUsers { get; set; }
         public ICollection<UserLike> LikedUsers { get; set; }

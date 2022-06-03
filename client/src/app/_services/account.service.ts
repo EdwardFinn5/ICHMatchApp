@@ -29,7 +29,7 @@ export class AccountService {
         console.log(user);
         if (user) {
           this.appUserType = user.appUserType;
-          this.givingLevel = user.givingLevel;
+          // this.givingLevel = user.givingLevel;
           this.setCurrentUser(user);
         }
         return user;
@@ -62,7 +62,7 @@ export class AccountService {
           this.setCurrentUser(user);
           this.currentUserSource.next(user);
           this.appUserType = user.appUserType;
-          this.givingLevel = user.givingLevel;
+          // this.givingLevel = user.givingLevel;
           this.router.navigateByUrl('/membersearch');
         }
       })

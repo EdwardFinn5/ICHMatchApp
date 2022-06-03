@@ -95,9 +95,9 @@ namespace API.Data
             {
                 query = query.Where(u => u.EmpIndustry == userParams.EmpIndustry);
             }
-            if (userParams.CiLocation != null)
+            if (userParams.CiempLocation != null)
             {
-                query = query.Where(u => u.CiLocation == userParams.CiLocation);
+                query = query.Where(u => u.CiempLocation == userParams.CiempLocation);
             }
 
             if (userParams.OrderByEmpName != null)

@@ -15,7 +15,10 @@ export interface CardMember {
   lastName: string;
   appUserType: string;
   active: boolean;
-  location: string;
+  ciempLocation: string;
+  stempLocation: string;
+  stLocation: string;
+  ciLocation: string;
   classYear: string;
   major: string;
   category: string;

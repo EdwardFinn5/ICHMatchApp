@@ -33,7 +33,6 @@ namespace API.Controllers
             var ciLocations = await _ciLocationRepository.GetCiLocationDtosAsync();
 
             return Ok(ciLocations);
-            // could also combine the above into: return Ok(await _userRepository.GetMembersAsync());
         }
 
         [HttpGet("GetById/{id}")]
@@ -44,24 +43,6 @@ namespace API.Controllers
             return Ok(ciLocations);
 
         }
-
-        // [HttpGet("GetByStLocationId/{id}")]
-        // public async Task<ActionResult<IEnumerable<CiLocationDto>>> GetByStLocationId(int id)
-        // {
-        //     var ciLocations = await _ciLocationRepository.GetCiLocationIdDtosAsync(id);
-
-        //     return Ok(ciLocations);
-
-        // }
-
-        // [HttpGet("GetByOtherCCId/{id}")]
-        // public async Task<ActionResult<IEnumerable<CiLocationDto>>> GetByOtherCCId(int id)
-        // {
-        //     var ciLocations = await _ciLocationRepository.GetCiLocationOtherCCIdDtosAsync(id);
-
-        //     return Ok(ciLocations);
-
-        // }
 
         [HttpGet("GetCiLocationById/{id}")] //this is the one I just added
         public async Task<ActionResult<CiLocation>> GetCiLocationById(int id)
@@ -82,7 +63,6 @@ namespace API.Controllers
 
             var ciLocation = new CiLocation
             {
-                // CategoryId = categoryDto.CategoryId,
                 CiLocationName = addCiLocationDto.CiLocationName,
                 CiLocationSortName = addCiLocationDto.CiLocationSortName,
                 StLocationId = id

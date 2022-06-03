@@ -12,5 +12,8 @@ export interface User {
   major: string;
   category: string;
   classYear: string;
-  location: string;
+  ciLocation: string;
+  ciempLocation: string;
+  stLocation: string;
+  stempLocation: string;
 }

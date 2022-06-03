@@ -64,8 +64,10 @@ namespace API.Helpers
             //     .MapFrom(src => src.Positions.FirstOrDefault(x => x.IsActive).PositionBenefits))
             // .ForMember(dest => dest.PositionType, opt => opt
             //     .MapFrom(src => src.Positions.FirstOrDefault(x => x.IsActive).PositionType))
-            .ForMember(dest => dest.PositionLocation, opt => opt
-                .MapFrom(src => src.Positions.FirstOrDefault(x => x.IsActive).CiLocation))
+            .ForMember(dest => dest.CiempLocation, opt => opt
+                .MapFrom(src => src.Positions.FirstOrDefault(x => x.IsActive).CiempLocation))
+            .ForMember(dest => dest.StempLocation, opt => opt
+                .MapFrom(src => src.Positions.FirstOrDefault(x => x.IsActive).StempLocation))
             .ForMember(dest => dest.PosCategory, opt => opt
                 .MapFrom(src => src.Positions.FirstOrDefault(x => x.IsActive).PosCategory))
             .ForMember(dest => dest.PosName, opt => opt
@@ -147,12 +149,16 @@ namespace API.Helpers
             CreateMap<EmpIndustry, EmpIndustryDto>();
             CreateMap<CiLocationUpdateDto, CiLocation>();
             CreateMap<CiLocation, CiLocationDto>();
+            CreateMap<CiempLocationUpdateDto, CiempLocation>();
+            CreateMap<CiempLocation, CiempLocationDto>();
             CreateMap<ProfileAdviceUpdateDto, ProfileAdvice>();
             CreateMap<ProfileAdvice, ProfileAdviceDto>();
             CreateMap<RegisterCodeUpdateDto, RegisterCode>();
             CreateMap<RegisterCode, RegisterCodeDto>();
             CreateMap<StLocationUpdateDto, StLocation>();
             CreateMap<StLocation, StLocationDto>();
+            CreateMap<StempLocationUpdateDto, StempLocation>();
+            CreateMap<StempLocation, StempLocationDto>();
             CreateMap<CoLocationUpdateDto, CoLocation>();
             CreateMap<CoLocation, CoLocationDto>();
             CreateMap<DutyBulletUpdateDto, DutyBullet>();

@@ -20,7 +20,8 @@ namespace API.DTOs
         [Required] public string FirstName { get; set; }
         [Required] public string LastName { get; set; }
         [Required] public string HrContactTitle { get; set; }
-        [Required] public string ciLocation { get; set; }
+        [Required] public string CiempLocation { get; set; }
+        [Required] public string StempLocation { get; set; }
         [Required] public string EmpName { get; set; }
         [Required] public string EmpIndustry { get; set; }
         [Required] public string EmployeeNum { get; set; }

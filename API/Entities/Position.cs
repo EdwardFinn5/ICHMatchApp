@@ -20,8 +20,10 @@ namespace API.Entities
         public string PosCategory { get; set; }
         public string PositionDescription { get; set; }
         public string PositionBenefits { get; set; }
-        public string CiLocation { get; set; }
-
+        [Column(TypeName = "varchar(60)")]
+        public string CiempLocation { get; set; }
+        [Column(TypeName = "varchar(10)")]
+        public string StempLocation { get; set; }
         [Column(TypeName = "varchar(25)")]
         public string PositionType { get; set; }
         [Column(TypeName = "varchar(80)")]

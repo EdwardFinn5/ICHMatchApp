@@ -16,16 +16,17 @@ namespace API.Helpers
         public string PosCategory { get; set; }
         public string PosName { get; set; }
         public string Major { get; set; }
-        public string PositionLocation { get; set; }
         public string CoLocation { get; set; }
         public string StLocation { get; set; }
+        public string StempLocation { get; set; }
         public string CiLocation { get; set; }
+        public string CiempLocation { get; set; }
         public string ClassYear { get; set; }
         public string College { get; set; }
         public string PositionType { get; set; }
         public string OrderByMajor { get; set; }
         public string OrderByCategory { get; set; }
-        public string OrderByPositionLocation { get; set; }
+        public string OrderByCiempLocation { get; set; }
         public string OrderByCollege { get; set; }
         public string OrderByEmpIndustry { get; set; }
         public string OrderByRegisterCode { get; set; }

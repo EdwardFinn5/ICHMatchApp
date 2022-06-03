@@ -34,8 +34,10 @@ namespace API.Extensions
             services.AddScoped<IMajorRepository, MajorRepository>();
             services.AddScoped<IRegisterCodeRepository, RegisterCodeRepository>();
             services.AddScoped<ICoLocationRepository, CoLocationRepository>();
+            services.AddScoped<IStempLocationRepository, StempLocationRepository>();
             services.AddScoped<IStLocationRepository, StLocationRepository>();
             services.AddScoped<ICiLocationRepository, CiLocationRepository>();
+            services.AddScoped<ICiempLocationRepository, CiempLocationRepository>();
             services.AddScoped<IPositNameRepository, PositNameRepository>();
             services.AddScoped<IProfileAdviceRepository, ProfileAdviceRepository>();
             services.AddScoped<IPosCategoryRepository, PosCategoryRepository>();

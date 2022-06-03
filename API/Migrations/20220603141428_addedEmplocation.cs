@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace API.Migrations
 {
-    public partial class addedRegisterCode : Migration
+    public partial class addedEmplocation : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -111,6 +111,20 @@ namespace API.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "StempLocations",
+                columns: table => new
+                {
+                    StempLocationId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    StempLocationName = table.Column<string>(type: "nvarchar(10)", nullable: true),
+                    StempLocationSortName = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_StempLocations", x => x.StempLocationId);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Users",
                 columns: table => new
                 {
@@ -127,6 +141,8 @@ namespace API.Migrations
                     CoLocation = table.Column<string>(type: "nvarchar(60)", nullable: true),
                     StLocation = table.Column<string>(type: "nvarchar(60)", nullable: true),
                     CiLocation = table.Column<string>(type: "nvarchar(60)", nullable: true),
+                    CiempLocation = table.Column<string>(type: "nvarchar(60)", nullable: true),
+                    StempLocation = table.Column<string>(type: "nvarchar(10)", nullable: true),
                     ClassYear = table.Column<string>(type: "varchar(12)", nullable: true),
                     Category = table.Column<string>(type: "nvarchar(60)", nullable: true),
                     Major = table.Column<string>(type: "nvarchar(60)", nullable: true),
@@ -201,6 +217,27 @@ namespace API.Migrations
                         column: x => x.PosCategoryId,
                         principalTable: "PosCategories",
                         principalColumn: "PosCategoryId",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "CiempLocations",
+                columns: table => new
+                {
+                    CiempLocationId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    CiempLocationName = table.Column<string>(type: "nvarchar(60)", nullable: true),
+                    CiempLocationSortName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    StempLocationId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_CiempLocations", x => x.CiempLocationId);
+                    table.ForeignKey(
+                        name: "FK_CiempLocations_StempLocations_StempLocationId",
+                        column: x => x.StempLocationId,
+                        principalTable: "StempLocations",
+                        principalColumn: "StempLocationId",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -353,7 +390,8 @@ namespace API.Migrations
                     PosCategory = table.Column<string>(type: "nvarchar(75)", nullable: true),
                     PositionDescription = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     PositionBenefits = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    CiLocation = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    CiempLocation = table.Column<string>(type: "varchar(60)", nullable: true),
+                    StempLocation = table.Column<string>(type: "varchar(10)", nullable: true),
                     PositionType = table.Column<string>(type: "varchar(25)", nullable: true),
                     SalaryRange = table.Column<string>(type: "varchar(80)", nullable: true),
                     DateAdded = table.Column<DateTime>(type: "datetime2", nullable: true),
@@ -500,6 +538,11 @@ namespace API.Migrations
                 });
 
             migrationBuilder.CreateIndex(
+                name: "IX_CiempLocations_StempLocationId",
+                table: "CiempLocations",
+                column: "StempLocationId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_CiLocations_StLocationId",
                 table: "CiLocations",
                 column: "StLocationId");
@@ -578,6 +621,9 @@ namespace API.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
+                name: "CiempLocations");
+
+            migrationBuilder.DropTable(
                 name: "CiLocations");
 
             migrationBuilder.DropTable(
@@ -624,6 +670,9 @@ namespace API.Migrations
 
             migrationBuilder.DropTable(
                 name: "StudInfos");
+
+            migrationBuilder.DropTable(
+                name: "StempLocations");
 
             migrationBuilder.DropTable(
                 name: "StLocations");
