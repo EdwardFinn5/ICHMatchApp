@@ -43,7 +43,7 @@
           class="form-control shadow-sm" 
           type="text"
           pattern="({{registerCode.registerCodeName1}})|{{registerCode.registerCodeName2}}|{{registerCode.registerCodeName3}}|{{registerCode.registerCodeName4}}|{{registerCode.registerCodeName5}}|{{registerCode.registerCodeName6}}|{{registerCode.registerCodeName7}}"
-          placeholder="Register Code (Re-enter)">
+          placeholder="Register Code (re-enter employer code)">
           <div *ngIf="registerEmpForm.get('registerCode').hasError('required')"
             class="invalid-feedback">Please enter a register code</div> 
           <div *ngIf="registerEmpForm.get('registerCode').hasError('pattern')"
@@ -51,15 +51,15 @@
       </div>
 
       <app-text-input [formControl]='registerEmpForm.controls["firstName"]'
-        [label]='"First Name"'>
+        [label]='"First name of HR contact"'>
       </app-text-input> 
 
       <app-text-input [formControl]='registerEmpForm.controls["lastName"]'
-        [label]='"Last Name"'>
+        [label]='"Last name of HR contact"'>
       </app-text-input>
 
       <app-text-input [formControl]='registerEmpForm.controls["hrContactTitle"]'
-      [label]='"Hr Contact Title"'>
+      [label]='"Title of HR contact"'>
     </app-text-input>
   
       <app-text-input [formControl]='registerEmpForm.controls["empName"]'

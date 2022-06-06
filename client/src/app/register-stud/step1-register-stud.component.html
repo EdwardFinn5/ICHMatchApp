@@ -44,7 +44,7 @@
         <div class="text-center col-12">
             <select (change)="onCoSelect($event)" class=" form-control form-inline mr-2" name="coLocation">
                 <br>
-                <option class="text-center mb-2 label" #value="">-- 1st select USA/Other country --</option>
+                <option class="text-center mb-2 label" #value="">-- 1st select USA or Other --</option>
                 <option *ngFor="let coLocation of coLocations" value="{{coLocation.coLocationId}}" class="text-center">
                     {{coLocation.coLocationName}}
                 </option>
@@ -53,7 +53,7 @@
             <h6 class="text-center mt-2 mb-2"><strong>Then select your state or country:</strong></h6>
     
             <select (change)="onStSelect($event)" class="mr-2 mt-1 mb-1 form-group form-control" name="stLocation">
-            <option class="text-center" value="">-- 2nd select State/Country --</option>
+            <option class="text-center" value="">-- 2nd select state/country --</option>
             <option *ngFor="let stLocation of stLocations" value="{{stLocation.stLocationId}}" class="text-center">
                 {{stLocation.stLocationName}}
             </option>
@@ -71,7 +71,7 @@
             <h6 class="filter m-auto mt-1 mb-2"><strong>If you don't see your country and/or state and/or hometown, click this button:</strong></h6>
 
             <div class="text-center col-12">
-                <button class="btn btn-info mt-2 shadow-sm" routerLink='/locationliststudents'>Add Country/State/Hometown</button>
+                <button class="btn btn-info mt-2 shadow-sm" routerLink='/locationliststudents'>Add Location</button>
             </div>
             
         </div>

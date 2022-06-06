@@ -60,6 +60,11 @@ namespace API.Controllers
         {
             if (await CiempLocationExists(addCiempLocationDto.CiempLocationName)) return BadRequest("City has already been added");
 
+            if (addCiempLocationDto.CiempLocationSortName == null)
+            {
+                addCiempLocationDto.CiempLocationSortName = addCiempLocationDto.CiempLocationName;
+            }
+
             var ciempLocation = new CiempLocation
             {
                 CiempLocationName = addCiempLocationDto.CiempLocationName,

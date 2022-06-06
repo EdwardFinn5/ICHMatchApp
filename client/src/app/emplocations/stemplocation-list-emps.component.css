@@ -10,16 +10,16 @@
     color: mediumblue;
   }
 
-  div.scroll {
-    margin:auto;
-    padding:4px; 
+  /* div.scroll {
+    margin:4px, 4px;
+    padding:4px;
   
-    width: 40% !important;
-    height: 200px;
-    overflow-x: scroll;
- 
-  
-}
+    width: auto;
+    height: 500px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    text-align:justify;
+} */
 
 .table {
     margin: auto;

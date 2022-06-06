@@ -91,6 +91,12 @@ import { Step1RegisterEmpComponent } from './register-emp/step1-register-emp.com
 import { EmpindustryEditComponent } from './empindustries/empindustry-edit.component';
 import { EmpindustryListComponent } from './empindustries/empindustry-list.component';
 import { EmpindustryListEmpsComponent } from './empindustries/empindustry-list-emps.component';
+import { StemplocationListComponent } from './emplocations/stemplocation-list.component';
+import { AddCiemplocationsComponent } from './emplocations/add-ciemplocations.component';
+import { StemplocationEditComponent } from './emplocations/stemplocation-edit.component';
+import { CiemplocationEditComponent } from './emplocations/ciemplocation-edit.component';
+import { AddCiemplocationsEmpsComponent } from './emplocations/add-ciemplocations-emps.component';
+import { StemplocationListEmpsComponent } from './emplocations/stemplocation-list-emps.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -132,6 +138,11 @@ const routes: Routes = [
     pathMatch: 'full',
   },
   {
+    path: 'addciemplocations/:stempLocationId',
+    component: AddCiemplocationsComponent,
+    pathMatch: 'full',
+  },
+  {
     path: 'addcilocations/:stLocationId',
     component: AddCilocationsComponent,
     pathMatch: 'full',
@@ -139,6 +150,16 @@ const routes: Routes = [
   {
     path: 'locationlist',
     component: LocationListComponent,
+    pathMatch: 'full',
+  },
+  {
+    path: 'emplocationlist',
+    component: StemplocationListComponent,
+    pathMatch: 'full',
+  },
+  {
+    path: 'emplocationlistemps',
+    component: StemplocationListEmpsComponent,
     pathMatch: 'full',
   },
   {
@@ -154,6 +175,11 @@ const routes: Routes = [
   {
     path: 'addcilocationsstudents/:stLocationId',
     component: AddCilocationsStudentsComponent,
+    pathMatch: 'full',
+  },
+  {
+    path: 'addciemplocationsemps/:stempLocationId',
+    component: AddCiemplocationsEmpsComponent,
     pathMatch: 'full',
   },
   {
@@ -187,6 +213,11 @@ const routes: Routes = [
     component: MemberMessageDetailComponent,
   },
   {
+    path: 'empindustrylistemps',
+    component: EmpindustryListEmpsComponent,
+    pathMatch: 'full',
+  },
+  {
     path: '',
     runGuardsAndResolvers: 'always',
     canActivate: [AuthGuard],
@@ -211,11 +242,7 @@ const routes: Routes = [
         component: EmpindustryListComponent,
         pathMatch: 'full',
       },
-      {
-        path: 'empindustrylistemps',
-        component: EmpindustryListEmpsComponent,
-        pathMatch: 'full',
-      },
+
       {
         path: 'colocationedit/:coLocationId',
         component: ColocationEditComponent,
@@ -227,8 +254,18 @@ const routes: Routes = [
         pathMatch: 'full',
       },
       {
+        path: 'stemplocationedit/:stempLocationId',
+        component: StemplocationEditComponent,
+        pathMatch: 'full',
+      },
+      {
         path: 'cilocationedit/:ciLocationId',
         component: CilocationEditComponent,
+        pathMatch: 'full',
+      },
+      {
+        path: 'ciemplocationedit/:ciempLocationId',
+        component: CiemplocationEditComponent,
         pathMatch: 'full',
       },
       {

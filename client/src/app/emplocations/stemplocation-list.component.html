@@ -1,0 +1,60 @@
+<div class="row shadow mt-3 " *ngIf="stempLocations">
+    <div class="positions p-0" style="text-align: center;">
+        <!-- <h3>Id: {{member.appUserId}}</h3>
+        <h3>Username: {{member.username}}</h3> -->
+
+        <div>
+        <h3><strong>Current Emp States</strong></h3>
+       
+        <table class="table table-striped col-sm-4 col-lg-8 col-md-6 m-auto">
+            <thead>
+                <tr>
+                    <th>Emp State Id</th>
+                    <th>Emp State Name</th>
+                    <th>Efmp State Sort Name</th>
+                    <th>Options</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let stempLocation of stempLocations">
+                    <!-- <td> <img src="{{position.logoUrl || '../../assets/images/logo.PNG' }}" alt="{{position.empName}}"></td> -->
+                    <td>{{stempLocation.stempLocationId}}</td>
+                    <td>{{stempLocation.stempLocationName}}</td>
+                    <td>{{stempLocation.stempLocationSortName}}</td>
+                    <td>
+                        <button class="btn btn-primary btn-sm shadow-sm mr-2 mb-2" routerLink='/addciemplocations/{{stempLocation.stempLocationId}}'>See/Add Cities</button>
+                        <button class="btn btn-info btn-sm shadow-sm mr-2 mb-2" routerLink='/stemplocationedit/{{stempLocation.stempLocationId}}'>Edit State</button>
+                        <button type="button-del" (click)="deleteStempLocation(stempLocation.stempLocationId)"  class="btn btn-danger btn-sm shadow-sm mb-2">Delete</button>
+
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="container mt-3">
+        <h4 class="text-center"><strong>Add Emp State</strong></h4>
+        <form #stempLocationForm="ngForm" (ngSubmit)="addStempLocation()" autocomplete="off">
+            <div class="input-group" >
+                <input name="stempLocationName" required [(ngModel)]="stempLocationName" type="text" 
+                    class="form-control input-sm short-input mr-2" placeholder="Add emp state name">
+                <input name="stempLocationSortName" required [(ngModel)]="stempLocationSortName" type="text" 
+                    class="form-control input-sm short-input" placeholder="Add emp state sort name">
+            <div class="input-group-append">
+                    <button [disabled]="!stempLocationForm.valid || loading" class="btn btn-info ml-2 mb-3 shadow-sm" style="width:auto" >Add Emp State
+                        <i *ngIf="loading" class="fa fa-spinner fa-spin"></i>
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+        <div class="text-center col-12">
+            <button class="btn btn-success btn-sm shadow-sm mt-3 mb-3" routerLink="/positionslist">Back to Positions</button>
+        </div>
+    </div>
+    </div>
+
+
+
+

@@ -30,8 +30,8 @@
             <div class="input-group" >
                 <input name="ciLocationName" required [(ngModel)]="ciLocationName" type="text" 
                         class="form-control input-sm long-input mr-2 text-center" placeholder="Add city">
-                    <input name="ciLocationSortName" required [(ngModel)]="ciLocationSortName" type="text" 
-                        class="form-control input-sm long-input text-center" placeholder="Add same here">
+                    <!-- <input name="ciLocationSortName" required [(ngModel)]="ciLocationSortName" type="text" 
+                        class="form-control input-sm long-input text-center" placeholder="Add same here"> -->
                     <div class="input-group-append">
                     <button [disabled]="!ciLocationForm.valid || loading" class="btn btn-info ml-2 mb-3 shadow-sm" style="width:auto" >Add City
                         <i *ngIf="loading" class="fa fa-spinner fa-spin"></i>

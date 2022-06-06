@@ -1,4 +1,5 @@
 import { Component, OnInit, Output } from '@angular/core';
+import { Router } from '@angular/router';
 import { Category } from '../_models/category';
 import { CiLocation } from '../_models/ciLocation';
 import { CoLocation } from '../_models/coLocation';
@@ -22,7 +23,8 @@ export class Step1RegisterStudComponent implements OnInit {
 
   constructor(
     private majorService: MajorService,
-    private ciLocationService: CilocationService
+    private ciLocationService: CilocationService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -98,4 +100,8 @@ export class Step1RegisterStudComponent implements OnInit {
       console.log('stLocations id: ', stLocations.target.value);
     });
   }
+
+  // goToLocation() {
+  //   this.router.navigateByUrl('/locationliststudents');
+  // }
 }

@@ -1,4 +1,4 @@
-<section class="signup" *ngIf="coLocation">
+<section class="signup" *ngIf="ciempLocation">
 
     <div class="text-center col-sm-4 col-lg-8 col-md-6 p-x m-auto">
         <div class="alert alert-info" *ngIf="editForm.dirty">
@@ -7,21 +7,21 @@
     </div>
 
     <div class="card-header col-sm-4 col-lg-8 col-md-6 p-x m-auto">
-        <h3 style="text-align: center;"><strong>Country</strong></h3>
+        <h3 style="text-align: center;">Emp City</h3>
     </div>
 
     <div class="login col-sm-4 col-lg-8 col-md-6 mx-auto shadow-lg">
 
-        <form #editForm="ngForm" id="editForm" (ngSubmit)="updateCoLocation()" autocomplete="off">
+        <form #editForm="ngForm" id="editForm" (ngSubmit)="updateCiempLocation()" autocomplete="off">
             <div class="form-group">
-                <label class="coLocationName"><strong>CoLocation Name</strong> </label>
-                <input required name="coLocationName" [(ngModel)]="coLocation.coLocationName"
+                <label class="ciempLocationName"><strong>Emp City Name</strong> </label>
+                <input name="ciempLocationName" [(ngModel)]="ciempLocation.ciempLocationName"
                     class="form-control shadow-sm">
             </div>
 
             <div class="form-group ml-2">
-                <label class="coLocationSortName"><strong>CoLocation Sort Name</strong> </label>
-                <input required name="coLocationSortName" [(ngModel)]="coLocation.coLocationSortName"
+                <label class="ciempLocationSortName"><strong>Emp City Sort Name</strong> </label>
+                <input name="ciempLocationSortName" [(ngModel)]="ciempLocation.ciempLocationSortName"
                     class="form-control shadow-sm">
             </div>
         </form>
@@ -36,5 +36,7 @@
     </div>
 </section>
       
+
+
 
 

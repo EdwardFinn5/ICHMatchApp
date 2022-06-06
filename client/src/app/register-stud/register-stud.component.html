@@ -1,6 +1,7 @@
 <section class="signup" *ngIf="registerCode">
   <div class="card-header col-lg-4 m-auto">
-    <h3 style="text-align: center;">Student Sign Up</h3>
+    <h3 style="text-align: center;">Student Sign Up
+    <br>(Tab to each field, not return)</h3>
   </div>
   <div class="login col-lg-4 m-auto shadow-lg">
 
@@ -17,7 +18,7 @@
       </div>
 
       <app-text-input [formControl]='registerStudForm.controls["password"]'
-        [label]='"Password (must be 4-8 characters)"' [type]='"password"'>
+        [label]='"Password (must be 4-8 of any characters)"' [type]='"password"'>
       </app-text-input>
 
       <app-text-input [formControl]='registerStudForm.controls["confirmPassword"]' [label]='"Confirm Password"'
@@ -28,7 +29,7 @@
         <input [class.is-invalid]='registerStudForm.get("registerCode").errors 
             && registerStudForm.get("registerCode").touched' formControlName='registerCode'
           class="form-control shadow-sm" type="text" pattern="({{registerCode.registerCodeName8}})"
-          placeholder="Register Code (Re-enter)">
+          placeholder="Register Code (re-enter student code)">
         <div *ngIf="registerStudForm.get('registerCode').hasError('required')" class="invalid-feedback">Please enter a
           register code</div>
         <div *ngIf="registerStudForm.get('registerCode').hasError('pattern')" class="invalid-feedback">If you do not
@@ -153,7 +154,7 @@
           </div>
 
       <div class="text-center col-12">
-        <button class="btn btn-info shadow-sm mb-2" routerLink='/categorylist'>Click if you don't see your Country/State/City</button>
+        <button class="btn btn-info shadow-sm mb-2" routerLink='/locationliststudents'>Click if you don't see your Country/State/City</button>
       </div>
 
       <div class="row" *ngIf="validationErrors.length > 0">

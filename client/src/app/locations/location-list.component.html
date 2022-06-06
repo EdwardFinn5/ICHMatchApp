@@ -38,7 +38,7 @@
             <div class="input-group" >
                 <input name="coLocationName" required [(ngModel)]="coLocationName" type="text" 
                     class="form-control input-sm short-input mr-2" placeholder="Add coLocation name">
-                <input name="coLocationSortName" [(ngModel)]="coLocationSortName" type="text" 
+                <input name="coLocationSortName" required [(ngModel)]="coLocationSortName" type="text" 
                     class="form-control input-sm short-input" placeholder="Add coLocation sort name">
             <div class="input-group-append">
                     <button [disabled]="!coLocationForm.valid || loading" class="btn btn-info ml-2 mb-3 shadow-sm" style="width:auto" >Add CoLocation

@@ -62,6 +62,11 @@ namespace API.Controllers
         {
             if (await StLocationExists(addStLocationDto.StLocationName)) return BadRequest("State has already been added");
 
+            if (addStLocationDto.StLocationSortName == null)
+            {
+                addStLocationDto.StLocationSortName = addStLocationDto.StLocationName;
+            }
+
             var stLocation = new StLocation
             {
                 // CategoryId = categoryDto.CategoryId,

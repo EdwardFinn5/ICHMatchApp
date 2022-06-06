@@ -109,6 +109,12 @@ import { Step1RegisterEmpComponent } from './register-emp/step1-register-emp.com
 import { EmpindustryListComponent } from './empindustries/empindustry-list.component';
 import { EmpindustryEditComponent } from './empindustries/empindustry-edit.component';
 import { EmpindustryListEmpsComponent } from './empindustries/empindustry-list-emps.component';
+import { StemplocationListComponent } from './emplocations/stemplocation-list.component';
+import { AddCiemplocationsComponent } from './emplocations/add-ciemplocations.component';
+import { StemplocationEditComponent } from './emplocations/stemplocation-edit.component';
+import { CiemplocationEditComponent } from './emplocations/ciemplocation-edit.component';
+import { AddCiemplocationsEmpsComponent } from './emplocations/add-ciemplocations-emps.component';
+import { StemplocationListEmpsComponent } from './emplocations/stemplocation-list-emps.component';
 
 @NgModule({
   declarations: [
@@ -210,6 +216,12 @@ import { EmpindustryListEmpsComponent } from './empindustries/empindustry-list-e
     EmpindustryListComponent,
     EmpindustryEditComponent,
     EmpindustryListEmpsComponent,
+    StemplocationListComponent,
+    AddCiemplocationsComponent,
+    StemplocationEditComponent,
+    CiemplocationEditComponent,
+    AddCiemplocationsEmpsComponent,
+    StemplocationListEmpsComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,55 @@
+<div class="row shadow mt-3 " *ngIf="stempLocations">
+    <div class="positions p-0" style="text-align: center;">
+
+        <div>
+        <h3 style="text-align: center"><strong>States</strong></h3>
+
+        <table class="table col-4" style="text-align: center;">
+          
+            <thead>
+                <tr>
+                    <th class="p-2"><h5><strong>State</strong></h5></th>
+                    <th class="p-2"><h5><strong>Click button to see cities</strong></h5></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let stempLocation of stempLocations">
+                        <td>{{stempLocation.stempLocationName}}</td>
+                        <td>
+                            <button class="btn btn-primary btn-sm shadow-sm mr-2 mb-2" routerLink='/addciemplocationsemps/{{stempLocation.stempLocationId}}'>See Cities</button>
+                        </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="container mt-3 col-4">
+
+        <h3 class="text-center"><strong>Add State</strong></h3>
+
+        <form #stempLocationForm="ngForm" (ngSubmit)="addStempLocation()" autocomplete="off">
+            <div class="input-group">
+
+            <input name="stempLocationName" required [(ngModel)]="stempLocationName" type="text" 
+                class="form-control input-sm long-input mr-2 text-center" placeholder="Add 2-letter abbrev.">
+            <!-- <input name="stempLocationSortName" required [(ngModel)]="stempLocationSortName" type="text" 
+                class="form-control input-sm long-input text-center" placeholder="Add same here"> -->
+                <div class="input-group-append">
+                    <button [disabled]="!stempLocationForm.valid || loading" class="btn btn-info ml-2 mb-3 shadow-sm" style="width:auto" >Add State
+                        <i *ngIf="loading" class="fa fa-spinner fa-spin"></i>
+                    </button>
+                </div>
+            </div>  
+        </form>    
+
+
+        <div class="text-center col-12">
+            <button class="btn btn-info btn-sm shadow-sm mt-4 mb-3" routerLink="/step1registerstud">Back to Step 1</button>
+        </div>
+
+    </div>
+    </div>
+
+
+
+

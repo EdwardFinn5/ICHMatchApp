@@ -56,10 +56,15 @@ namespace API.Controllers
             return await _stempLocationRepository.GetStempLocationDtoByIdAsync(id);
         }
 
-        [HttpPost("{id}")]
+        [HttpPost]
         public async Task<ActionResult<StempLocationDto>> AddStempLocation(AddStempLocationDto addStempLocationDto, int id)
         {
             if (await StempLocationExists(addStempLocationDto.StempLocationName)) return BadRequest("State has already been added");
+
+            if (addStempLocationDto.StempLocationSortName == null)
+            {
+                addStempLocationDto.StempLocationSortName = addStempLocationDto.StempLocationName;
+            }
 
             var stempLocation = new StempLocation
             {

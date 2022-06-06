@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { CiempLocation } from '../_models/ciempLocation';
 import { CiLocation } from '../_models/ciLocation';
 import { EmpIndustry } from '../_models/empIndustry';
+import { StempLocation } from '../_models/stempLocation';
 import { StLocation } from '../_models/stLocation';
+import { CiemplocationService } from '../_services/ciemplocation.service';
 import { CilocationService } from '../_services/cilocation.service';
 import { EmpindustryService } from '../_services/empindustry.service';
 
@@ -12,17 +15,17 @@ import { EmpindustryService } from '../_services/empindustry.service';
 })
 export class Step1RegisterEmpComponent implements OnInit {
   empIndustries: EmpIndustry[];
-  stLocations: StLocation[];
-  ciLocations: CiLocation[];
+  stempLocations: StempLocation[];
+  ciempLocations: CiempLocation[];
 
   constructor(
     private empIndustryService: EmpindustryService,
-    private ciLocationService: CilocationService
+    private ciempLocationService: CiemplocationService
   ) {}
 
   ngOnInit(): void {
     this.loadEmpIndustries();
-    this.loadStLocations();
+    this.loadStempLocations();
     // this.loadCiLocations();
     // this.loadCiLocations();
   }
@@ -32,10 +35,12 @@ export class Step1RegisterEmpComponent implements OnInit {
       this.empIndustries = empIndustries;
     });
   }
-  loadStLocations() {
-    this.ciLocationService.getStLocations().subscribe((stLocations) => {
-      this.stLocations = stLocations;
-    });
+  loadStempLocations() {
+    this.ciempLocationService
+      .getStempLocations()
+      .subscribe((stempLocations) => {
+        this.stempLocations = stempLocations;
+      });
   }
 
   // loadCiLocations() {
@@ -44,12 +49,14 @@ export class Step1RegisterEmpComponent implements OnInit {
   //   });
   // }
 
-  onSelect(stLocations) {
-    this.ciLocationService.getCiLocations().subscribe((ciLocations) => {
-      this.ciLocations = ciLocations;
-      this.ciLocations = ciLocations.filter(
-        (s) => s.stLocationId == stLocations.target.value
-      );
-    });
+  onSelect(stempLocations) {
+    this.ciempLocationService
+      .getCiempLocations()
+      .subscribe((ciempLocations) => {
+        this.ciempLocations = ciempLocations;
+        this.ciempLocations = ciempLocations.filter(
+          (s) => s.stempLocationId == stempLocations.target.value
+        );
+      });
   }
 }

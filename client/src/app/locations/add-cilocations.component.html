@@ -21,7 +21,7 @@
                     <td>{{ciLocation.ciLocationSortName}}</td>
                     <td>
                         <!-- <button class="btn btn-primary btn-sm shadow-sm mr-2 mb-2" routerLink='/addcilocations/{{stLocation.stLocationId}}'>See CiLocations</button> -->
-                        <button class="btn btn-info btn-sm shadow-sm mr-2 mb-2" routerLink='/cilocationedit/{{ciLocation.ciLocationId}}'>Edit CiLocation</button>
+                        <button class="btn btn-info btn-sm shadow-sm mr-2 mb-2" routerLink='/cilocationedit/{{ciLocation.ciLocationId}}'>Edit City</button>
                         <button type="button-del" (click)="deleteCiLocation(ciLocation.ciLocationId)"  class="btn btn-danger btn-sm shadow-sm mb-2">Delete</button>
                     </td>
                 </tr>
@@ -30,7 +30,7 @@
     </div>
 
     <div class="container mt-3">
-        <h4 class="text-center"><strong>Add Country</strong></h4>
+        <h4 class="text-center"><strong>Add City</strong></h4>
         <form #ciLocationForm="ngForm" (ngSubmit)="addCiLocation()" autocomplete="off">
             <div class="input-group">
                 <input name="ciLocationName" required [(ngModel)]="ciLocationName" type="text"

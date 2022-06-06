@@ -1,0 +1,62 @@
+<div class="row shadow mt-3" *ngIf="stempLocation">
+    <div class="positions p-0" style="text-align: center;">
+
+        <div>
+        <h3><strong>Current emp cites for {{stempLocation.stempLocationName}}</strong></h3>
+       
+        <table class="table table-striped col-sm-4 col-lg-8 col-md-6 m-auto">
+            <thead>
+                <tr>
+                    <th>Emp City Id</th>
+                    <th>Emp City Name</th>
+                    <th>Emp City Sort Name</th>
+                    <th>Options</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let ciempLocation of ciempLocations">
+                    <!-- <td> <img src="{{position.logoUrl || '../../assets/images/logo.PNG' }}" alt="{{position.empName}}"></td> -->
+                    <td>{{ciempLocation.ciempLocationId}}</td>
+                    <td>{{ciempLocation.ciempLocationName}}</td>
+                    <td>{{ciempLocation.ciempLocationSortName}}</td>
+                    <td>
+                        <!-- <button class="btn btn-primary btn-sm shadow-sm mr-2 mb-2" routerLink='/addcilocations/{{stLocation.stLocationId}}'>See CiLocations</button> -->
+                        <button class="btn btn-info btn-sm shadow-sm mr-2 mb-2" routerLink='/ciemplocationedit/{{ciempLocation.ciempLocationId}}'>Edit Emp City</button>
+                        <button type="button-del" (click)="deleteCiempLocation(ciempLocation.ciempLocationId)"  class="btn btn-danger btn-sm shadow-sm mb-2">Delete</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="container mt-3">
+        <h4 class="text-center"><strong>Add Emp City</strong></h4>
+        <form #ciempLocationForm="ngForm" (ngSubmit)="addCiempLocation()" autocomplete="off">
+            <div class="input-group">
+                <input name="ciempLocationName" required [(ngModel)]="ciempLocationName" type="text"
+                    class="form-control input-sm short-input mr-2" placeholder="Add emp city">
+                <input name="ciempLocationSortName" [(ngModel)]="ciempLocationSortName" type="text"
+                    class="form-control input-sm short-input" placeholder="Add emp city sort name">
+                <div class="input-group-append">
+                    <button [disabled]="!ciempLocationForm.valid || loading" class="btn btn-info ml-2 mb-3 shadow-sm"
+                        style="width:auto">Add City
+                        <i *ngIf="loading" class="fa fa-spinner fa-spin"></i>
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+    
+    <div class="btn-group d-flex col-lg-4 m-auto">
+        <button class="btn btn-success btn-sm shadow-sm mt-2 mr-1 mb-3" routerLink="/positionslist">See all Positions</button>
+        <button class="btn btn-secondary btn-sm shadow-sm mt-2 ml-1 mb-3" routerLink="/stemplocation/{{stempLocation.stempLocationId}}">Back to emp states</button>
+    </div>
+    
+    
+    <!-- <div class="text-center col-12">
+                <button class="btn btn-success btn-sm shadow-sm mt-3 mb-3" routerLink="/positionslist">Back to Positions</button>
+            </div> -->
+    </div>
+    </div>
+
+

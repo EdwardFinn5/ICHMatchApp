@@ -5,7 +5,7 @@
     </div>
     <div class="login col-lg-4 m-auto shadow-lg">
 
-        <h6 class="text-center mb-2"><strong>First select a major-category</strong></h6>
+        <!-- <h6 class="text-center mb-2"><strong>First select a majo</strong></h6> -->
 
         <!-- <div class="text-center col-12">
             <select (change)="onSelect($event)" class=" form-control form-inline mr-2" name="category">
@@ -16,26 +16,26 @@
                 </option>
             </select> -->
 
-            <h6 class="text-center mt-2 mb-2"><strong>Then see if your major is included:</strong></h6>
+            <h6 class="text-center mb-2"><strong>Check to see if your industry is included:</strong></h6>
 
             <select class="mr-2 mt-1 mb-1 form-control" name="empIndustry">
-                <option class="text-center" value="test">-- 2nd select major --</option>
+                <option class="text-center" value="test">-- Check Industries --</option>
                 <option *ngFor="let empIndustry of empIndustries" [value]="empIndustry.empIndustryName | titlecase" class="text-center">
                     {{empIndustry.empIndustryName | titlecase}}
                 </option>
             </select>
 
-            <h6 class="filter m-auto mt-1 mb-2"><strong>If you don't see your major, click this button:</strong></h6>
+            <h6 class="filter m-auto mt-3 mb-2 text-center"><strong>If you don't see your industry, click this button:</strong></h6>
 
             <div class="text-center col-12">
-                <button class="btn btn-info mt-2 shadow-sm" routerLink='/empindustrylistemps'>Add Major</button>
+                <button class="btn btn-info mt-2 shadow-sm" routerLink='/empindustrylistemps'>Add Industry</button>
             </div>
         </div>    
     <!-- </div> -->
 
     <div class="card-header col-lg-4 m-auto">
         <h5 style="text-align: center;"><u>Step 2 before you register</u></h5>
-        <h5 style="text-align: center;">Make sure your hometown is included</h5>
+        <h5 style="text-align: center;">Make sure your organization's headquarters is included (Iowa headquarters preferred):</h5>
     </div>
     <div class="login col-lg-4 m-auto shadow-lg">
     
@@ -50,28 +50,28 @@
                 </option>
             </select> -->
     
-            <h6 class="text-center mt-2 mb-2"><strong>Then select your state or country:</strong></h6>
+            <h6 class="text-center mb-2"><strong>First check for state:</strong></h6>
     
             <select (change)="onSelect($event)" class="mr-2 mt-1 mb-1 form-group form-control" name="stLocation">
-            <option class="text-center" value="">-- 2nd select State/Country --</option>
-            <option *ngFor="let stLocation of stLocations" value="{{stLocation.stLocationId}}" class="text-center">
-                {{stLocation.stLocationName}}
+            <option class="text-center" value="">-- States --</option>
+            <option *ngFor="let stempLocation of stempLocations" value="{{stempLocation.stempLocationId}}" class="text-center">
+                {{stempLocation.stempLocationName}}
             </option>
             </select>
             
-            <h6 class="text-center mt-2 mb-2"><strong>Then select your city:</strong></h6>
+            <h6 class="text-center mt-2 mb-2"><strong>Then check for city:</strong></h6>
             
             <select class="mr-2 mt-1 mb-1 form-group form-control" name="ciLocation">
-                <option class="text-center" value="">-- 3rd select city --</option>
-                <option *ngFor="let ciLocation of ciLocations" [value]="ciLocation.ciLocationName" class="text-center">
-                    {{ciLocation.ciLocationName | titlecase}}
+                <option class="text-center" value="">-- Cities --</option>
+                <option *ngFor="let ciempLocation of ciempLocations" [value]="ciempLocation.ciempLocationName" class="text-center">
+                    {{ciempLocation.ciempLocationName | titlecase}}
                 </option>
             </select>
 
-            <h6 class="filter m-auto mt-1 mb-2"><strong>If you don't see your country and/or state and/or hometown, click this button:</strong></h6>
+            <h6 class="filter m-auto mt-3 mb-2 text-center"><strong>If you don't see your state and/or city, click this button:</strong></h6>
 
             <div class="text-center col-12">
-                <button class="btn btn-info mt-2 shadow-sm" routerLink='/locationliststudents'>Add Country/State/Hometown</button>
+                <button class="btn btn-info mt-2 shadow-sm" routerLink='/emplocationlistemps'>Add State and/or City</button>
             </div>
             
         </div>

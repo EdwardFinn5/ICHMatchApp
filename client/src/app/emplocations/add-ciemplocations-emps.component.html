@@ -1,8 +1,8 @@
-<div class="row shadow mt-3" *ngIf="empIndustries">
+<div class="row shadow mt-3" *ngIf="stempLocation">
     <div class="positions p-0" style="text-align: center;">
 
         <div>
-        <h3 style="text-align: center" class="mb-3"><strong>Industries:</strong></h3>
+        <h3 style="text-align: center" class="mb-3"><strong>Current cities for {{stempLocation.stempLocationName}}:</strong></h3>
  
                 
 
@@ -11,8 +11,8 @@
             
             <tbody>
                 
-                <tr *ngFor="let empIndustry of empIndustries">
-                    <td><h5>{{empIndustry.empIndustryName}}</h5></td>
+                <tr *ngFor="let ciempLocation of ciempLocations">
+                    <td><h5>{{ciempLocation.ciempLocationName}}</h5></td>
                 </tr>
             </tbody>
         </table>
@@ -20,13 +20,15 @@
     </div>
 
     <div class="container mt-3 col-4">
-        <h3 class="text-center"><strong>Add Industry</strong></h3>
-        <form #empIndustryForm="ngForm" (ngSubmit)="addEmpIndustry()" autocomplete="off">
+        <h3 class="text-center"><strong>Add City</strong></h3>
+        <form #ciempLocationForm="ngForm" (ngSubmit)="addCiempLocation()" autocomplete="off">
             <div class="input-group" >
-                <input name="empIndustryName" required [(ngModel)]="empIndustryName" type="text" 
-                        class="form-control input-sm long-input mr-2 text-center" placeholder="Add Industry">
+                <input name="ciempLocationName" required [(ngModel)]="ciempLocationName" type="text" 
+                        class="form-control input-sm long-input mr-2 text-center" placeholder="Add city">
+                    <!-- <input name="ciempLocationSortName" [(ngModel)]="ciempLocationSortName" type="text" 
+                        class="form-control input-sm long-input text-center" placeholder="Add same here"> -->
                     <div class="input-group-append">
-                    <button [disabled]="!empIndustryForm.valid || loading" class="btn btn-info ml-2 mb-3 shadow-sm" style="width:auto" >Add City
+                    <button [disabled]="!ciempLocationForm.valid || loading" class="btn btn-info ml-2 mb-3 shadow-sm" style="width:auto" >Add City
                         <i *ngIf="loading" class="fa fa-spinner fa-spin"></i>
                     </button>
                 </div>

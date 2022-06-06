@@ -63,8 +63,8 @@
                 <ng-container *ngIf="coLocation.coLocationName == 'USA'">
                     <input name="stLocationName" required [(ngModel)]="stLocationName" type="text" 
                         class="form-control input-sm long-input mr-2 text-center" placeholder="Add 2-letter abbrev.">
-                    <input name="stLocationSortName" required [(ngModel)]="stLocationSortName" type="text" 
-                        class="form-control input-sm long-input text-center" placeholder="Add same here">
+                    <!-- <input name="stLocationSortName" required [(ngModel)]="stLocationSortName" type="text" 
+                        class="form-control input-sm long-input text-center" placeholder="Add same here"> -->
                         <div class="input-group-append">
                             <button [disabled]="!stLocationForm.valid || loading" class="btn btn-info ml-2 mb-3 shadow-sm" style="width:auto" >Add State
                                 <i *ngIf="loading" class="fa fa-spinner fa-spin"></i>
@@ -97,11 +97,7 @@
     <div class="text-center col-12">
         <button class="btn btn-info btn-sm shadow-sm mt-4 mb-3" routerLink="/step1registerstud">Back to Step 1</button>
     </div>
-
-        
-        <!-- <div class="text-center col-12">
-            <button class="btn btn-success btn-sm shadow-sm mt-3 mb-3" routerLink="/positionslist">Back to Positions</button>
-        </div> -->
+     
     </div>
     </div>
 

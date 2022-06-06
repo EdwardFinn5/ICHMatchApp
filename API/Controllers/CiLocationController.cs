@@ -61,6 +61,11 @@ namespace API.Controllers
         {
             if (await CiLocationExists(addCiLocationDto.CiLocationName)) return BadRequest("City has already been added");
 
+            if (addCiLocationDto.CiLocationSortName == null)
+            {
+                addCiLocationDto.CiLocationSortName = addCiLocationDto.CiLocationName;
+            }
+
             var ciLocation = new CiLocation
             {
                 CiLocationName = addCiLocationDto.CiLocationName,
