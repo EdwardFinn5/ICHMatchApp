@@ -87,6 +87,10 @@ export class SearchMembersService {
     );
   }
 
+  getByIdSearchMember(id: number) {
+    return this.http.get<Member>(this.baseUrl + 'searchusers/GetById/' + id);
+  }
+
   getSearchEmpMembers(userParams: UserParams) {
     console.log(Object.values(userParams).join('-'));
     var response = this.searchEmpMemberCache.get(

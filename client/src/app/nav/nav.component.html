@@ -99,7 +99,9 @@
           <img src="{{user.studentUrl || '../../assets/images/person.png'}}" alt="{{user.username}}">
           <a class="dropdown-toggle text-light mt-2 ml-2" dropdownToggle>Welcome {{user.firstName | titlecase}}</a>
           <div class="dropdown-menu mt-2" *dropdownMenu>
-            <a routerLink="/member/edit" class="dropdown-item">Add/Edit Card & Photo Info</a>
+            <a routerLink="/membereditnewcard/{{user.appUserId}}" class="dropdown-item">New Card Edit</a>
+            <div class="dropdown-divider"></div>
+            <a routerLink="/member/edit" class="dropdown-item">Edit Card Info & Add/Edit Photo</a>
             <div class="dropdown-divider"></div>
 
             <a routerLink="/studinfo/edit" class="dropdown-item">Add/Edit Student Info</a>

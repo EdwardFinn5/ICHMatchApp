@@ -1,11 +1,21 @@
-import { Component, HostListener, OnInit, ViewChild } from '@angular/core';
+import { createOutput } from '@angular/compiler/src/core';
+import {
+  Component,
+  HostListener,
+  Input,
+  OnInit,
+  Output,
+  ViewChild,
+} from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { take } from 'rxjs/operators';
+import { College } from 'src/app/_models/college';
 import { Member } from 'src/app/_models/member';
 import { User } from 'src/app/_models/user';
 import { AccountService } from 'src/app/_services/account.service';
+import { CollegeService } from 'src/app/_services/college.service';
 import { MembersService } from 'src/app/_services/members.service';
 import { SearchMembersService } from 'src/app/_services/search-members.service';
 
@@ -15,9 +25,11 @@ import { SearchMembersService } from 'src/app/_services/search-members.service';
   styleUrls: ['./member-edit-cardnphoto.component.css'],
 })
 export class MemberEditCardnphotoComponent implements OnInit {
+  @Output() value: string = '';
   @ViewChild('editForm') editForm: NgForm;
   member: Member;
   user: User;
+  colleges: College[];
   @HostListener('window:beforeunload', ['$event']) unloadNotification(
     $event: any
   ) {
@@ -30,6 +42,7 @@ export class MemberEditCardnphotoComponent implements OnInit {
     private accountService: AccountService,
     private searchMembersService: SearchMembersService,
     private toastr: ToastrService,
+    private collegeService: CollegeService,
     private router: Router
   ) {
     this.accountService.currentUser$
@@ -39,6 +52,7 @@ export class MemberEditCardnphotoComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadMember();
+    this.loadColleges();
   }
 
   loadMember() {
@@ -48,6 +62,13 @@ export class MemberEditCardnphotoComponent implements OnInit {
         this.member = member;
         console.log(member.username);
       });
+  }
+
+  loadColleges() {
+    this.collegeService.getColleges().subscribe((colleges) => {
+      this.colleges = colleges;
+      // console.log(this.categories);
+    });
   }
 
   updateMemberCard() {
