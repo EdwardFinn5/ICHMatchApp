@@ -12,11 +12,15 @@ import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { take } from 'rxjs/operators';
 import { Category } from 'src/app/_models/category';
+import { CiLocation } from 'src/app/_models/ciLocation';
 import { College } from 'src/app/_models/college';
+import { CoLocation } from 'src/app/_models/coLocation';
 import { Major } from 'src/app/_models/major';
 import { Member } from 'src/app/_models/member';
+import { StLocation } from 'src/app/_models/stLocation';
 import { User } from 'src/app/_models/user';
 import { AccountService } from 'src/app/_services/account.service';
+import { CilocationService } from 'src/app/_services/cilocation.service';
 import { CollegeService } from 'src/app/_services/college.service';
 import { MajorService } from 'src/app/_services/major.service';
 import { MembersService } from 'src/app/_services/members.service';
@@ -35,6 +39,10 @@ export class MemberEditCardnphotoComponent implements OnInit {
   colleges: College[];
   categories: Category[];
   majors: Major[];
+  coLocations: CoLocation[];
+  stLocations: StLocation[];
+  ciLocations: CiLocation[];
+
   @HostListener('window:beforeunload', ['$event']) unloadNotification(
     $event: any
   ) {
@@ -49,6 +57,7 @@ export class MemberEditCardnphotoComponent implements OnInit {
     private toastr: ToastrService,
     private collegeService: CollegeService,
     private majorService: MajorService,
+    private ciLocationService: CilocationService,
     private router: Router
   ) {
     this.accountService.currentUser$
@@ -60,7 +69,8 @@ export class MemberEditCardnphotoComponent implements OnInit {
     this.loadMember();
     this.loadColleges();
     this.loadCategories();
-    // this.loadMajors();
+    this.loadCoLocations();
+    this.loadStLocations();
   }
 
   loadMember() {
@@ -86,18 +96,41 @@ export class MemberEditCardnphotoComponent implements OnInit {
     });
   }
 
-  // loadMajors() {
-  //   this.majorService.getMajors().subscribe((majors) => {
-  //     this.majors = majors;
-  //     // console.log(this.categories);
-  //   });
-  // }
+  loadCoLocations() {
+    this.ciLocationService.getCoLocations().subscribe((coLocations) => {
+      this.coLocations = coLocations;
+    });
+  }
+
+  loadStLocations() {
+    this.ciLocationService.getStLocations().subscribe((stLocations) => {
+      this.stLocations = stLocations;
+    });
+  }
 
   onSelect(categories) {
     this.majorService.getMajors().subscribe((majors) => {
       this.majors = majors;
       this.majors = majors.filter(
         (e) => e.categoryId == categories.target.value
+      );
+    });
+  }
+
+  onSelectCountry(coLocations) {
+    this.ciLocationService.getStLocations().subscribe((stLocations) => {
+      this.stLocations = stLocations;
+      this.stLocations = stLocations.filter(
+        (e) => e.coLocationId == coLocations.target.value
+      );
+    });
+  }
+
+  onSelectState(stLocations) {
+    this.ciLocationService.getCiLocations().subscribe((ciLocations) => {
+      this.ciLocations = ciLocations;
+      this.ciLocations = ciLocations.filter(
+        (e) => e.stLocationId == stLocations.target.value
       );
     });
   }

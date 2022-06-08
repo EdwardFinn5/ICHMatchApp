@@ -31,21 +31,13 @@ export class MemberListComponent implements OnInit {
   categories: Category[];
   majors: Major[];
   colleges: College[];
-  // appUserType = 'ColStudent';
-  // majorList = [
-  //   { value: 'Accounting', display: 'Accounting' },
-  //   { value: 'IT', display: 'IT' },
-  //   { value: 'Business Analytics', display: 'Business Analytics' },
-  // ];
-  // collegeList = [
-  //   { value: 'St. Ambrose University', display: 'St. Ambrose' },
-  //   { value: 'Grand View University', display: 'Grand View' },
-  // ];
+
   classYearList = [
     { value: 'Freshman', display: 'Freshmen' },
     { value: 'Sophomore', display: 'Sophomores' },
     { value: 'Junior', display: 'Juniors' },
     { value: 'Senior', display: 'Seniors' },
+    { value: 'Post-Undergrad', display: 'Post-Undergrads' },
   ];
 
   constructor(

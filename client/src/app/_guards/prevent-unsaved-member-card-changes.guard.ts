@@ -18,7 +18,7 @@ export class PreventUnsavedMemberCardChangesGuard
   canDeactivate(component: MemberEditCardnphotoComponent): boolean {
     if (component.editForm.dirty) {
       return confirm(
-        'Are you sure you want to continue? Any unsaved changes will be lost'
+        'If you are adding a major and/or location, first hit cancel button on this card to save your changes'
       );
     }
     return true;
