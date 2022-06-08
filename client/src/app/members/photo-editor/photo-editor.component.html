@@ -43,7 +43,8 @@
  
     <div class="col-md-3 col-lg-3 col-sm-4 center-text">
 
-        <h3 class="mt-2 ml-3"><strong>Add/Edit Logo</strong></h3>
+        <!-- <h3 class="mt-2 ml-3"><strong>Add/Edit {{photolabel}}</strong></h3> -->
+        <h3 class="mt-2 ml-3"><strong>Add/Edit {{user.appUserType == 'EmpHr' ? 'Logo' : 'Photo'}}</strong></h3>
 
         <div ng2FileDrop
              [ngClass]="{'nv-file-over': hasBaseDropzoneOver}"

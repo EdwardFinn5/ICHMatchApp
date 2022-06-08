@@ -18,12 +18,15 @@
                 <p>
                     <u><strong>-- {{member.firstName}} {{member.lastName}} --</strong></u>
                     <br><strong>{{member.classYear}} {{member.major}} Major</strong>
+                    <br><strong>({{member.category}} Major)</strong>
                     <br> from <br>
                     <strong>{{member.ciLocation}}</strong>
                     <br> attending <br>
                     <strong>{{member.college}}</strong>
                     <br> Profile Created: <br>
                     <strong>{{member.created | date: "MMM dd yyyy" }}</strong>
+                    <br> Last Active: <br>
+                    <strong>{{member.lastActive | date: "MMM dd yyyy" }}</strong>
                 </p>
 
                 <div class="btn-group d-flex">
@@ -40,12 +43,17 @@
 
     <div class="col-sm-8 p-2">
         <tabset class="member-tabset" #memberTabs>
+            <tab heading='Add/Edit Photo'>
+                <app-photo-editor [member]="member"></app-photo-editor>
+            </tab>
+            
+            
             <tab heading='Edit Card Info' class="tab-heading">
                 <form #editForm="ngForm" id="editForm" (ngSubmit)="updateMemberCard()">
                     <div class="details mb-3">
                         
                         <div class="form-group">
-                            <label>Class Year:</label>
+                            <label>Class Year (click button to update class year)</label>
                             <div class="form-control">
                                 <label class="radio-inline mr-2">
                                     <input type="radio" [(ngModel)]="member.classYear" name="classYear" value="Freshman">
@@ -66,16 +74,16 @@
                             </div>
                         </div>
 
-                        <label for="category"><strong>Major-Category: </strong></label>
+                        <!-- <label for="category"><strong>Major-Category: </strong></label>
                         <input [(ngModel)]="member.category" type="text" name="category" class="form-control mb-2">
                         <label for="major"><strong>Major: </strong></label>
                         <input [(ngModel)]="member.major" type="text" name="major" class="form-control mb-2">
                         <label for="ciLocation"><strong>Hometown: </strong></label>
-                        <input [(ngModel)]="member.ciLocation" type="text" name="ciLocation" class="form-control mb-2">
+                        <input [(ngModel)]="member.ciLocation" type="text" name="ciLocation" class="form-control mb-2"> -->
                         
                         <div class="form-group">
                             <label for="college">
-                                College/University (click box to see other options)
+                                College/University (click box to update college/university)
                             </label>
                             <select name="college" id="college" 
                                     [(ngModel)]="member.college" class="form-control">
@@ -86,44 +94,56 @@
                                 </option>
                             </select>
                         </div>
-                        
-                        
-                        <!-- <label for="college"><strong>College: </strong></label>
-                        <input [(ngModel)]="member.college" type="text" name="college" class="form-control mb-2"> -->
+
+                        <div class="form-group">
+                            <label for="category">
+                                Major-Category (click box to update major-category)
+                            </label>
+                            <select name="category" id="category" 
+                                    [(ngModel)]="member.category" class="form-control">
+                                <!-- <option class="text-center" value="">-- select college --</option> -->
+                                <option *ngFor="let category of categories" 
+                                    [value]="category.categoryName">
+                                    {{category.categoryName}}
+                                </option>
+                            </select>
+                        </div>
+
+                        <label>Major (1st re-select major-category then click box to update major</label>
+                  
+                        <div class=" form-group form-inline">
+                          <select (change)="onSelect($event)" class=" form-control form-inline mr-2" name="category" style="width: auto">
+                            <br>
+                            <option class="text-center" #value="">-- 1st Select Major-Category --</option>
+                            <option *ngFor="let category of categories" value="{{category.categoryId}}">
+                              {{category.categoryName}}
+                            </option>
+                          </select>
+                  
+                          <select class="mr-2 mt-1 form-control" name="major" id="major"
+                                [(ngModel)]="member.major">
+                            <option class="text-center" value="">-- 2nd Select Major --</option>
+                            <option *ngFor="let major of majors" [value]="major.majorName | titlecase">
+                              {{major.majorName | titlecase}}
+                            </option>
+                          </select>
+                        </div>
+
                         <!-- <div class="form-group">
-                        <label for="college"><strong>College: </strong></label>
-                        <select #scrolMe style="overflow: scroll; height: 300px; width: 450px;" [scrollTop]="scrolMe.scrollHeight"
-                        class="mr-2 mt-1 mb-2 form-control" name="college" style="width: auto">
-                        <option class="text-center" value="">-- Select College --</option>
-                        <option *ngFor="let college of colleges" [(ngModel)]="member.college">
-                          {{college.collegeName}}
-                        </option>
-                      </select>
-                    </div> -->
-                    <!-- <label for="college"><strong>College: </strong></label>      
-             <select formControlName="college" class="form-control">
-                 <option value="{{member.college}}" disabled>Choose college</option>
-                 <option *ngFor="let college of colleges" [value]="college">
-                     {{college.collegeName}}
-                 </option>
-             </select>    -->
-             <!-- <label for="college"><strong>College: </strong></label>      
-             <select #scrolMe style="overflow: scroll; height: 300px; width: 450px;" [scrollTop]="scrolMe.scrollHeight"
-             class="mr-2 mt-1 mb-2 form-control" formControlName="college" style="width: auto">
-             <option class="text-center" value="">-- Select College --</option>
-             <option *ngFor="let college of colleges" [value]="college.collegeName | titlecase">
-               {{college.collegeName | titlecase}}
-             </option>
-           </select> -->
-     
-
-
+                            <label for="major">
+                                Major (click box to see other options)
+                            </label>
+                            <select name="major" id="major" 
+                                    [(ngModel)]="member.major" class="form-control">
+                                    <option *ngFor="let major of majors" 
+                                    [value]="major.majorName">
+                                    {{major.majorName}}
+                                </option>
+                            </select>
+                        </div> -->
+                        
                     </div>
                 </form>
-            </tab>
-
-            <tab heading='Add/Edit Photo'>
-                <app-photo-editor [member]="member"></app-photo-editor>
             </tab>
     
         </tabset>

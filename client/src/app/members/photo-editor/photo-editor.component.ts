@@ -19,6 +19,7 @@ export class PhotoEditorComponent implements OnInit {
   uploader: FileUploader;
   hasBaseDropzoneOver = false;
   baseUrl = environment.apiUrl;
+  photolabel: string;
 
   constructor(
     private accountService: AccountService,
@@ -76,6 +77,12 @@ export class PhotoEditorComponent implements OnInit {
   }
 
   initializeUploader() {
+    // if (this.user.appUserType === 'EmpHr') {
+    //   this.photolabel = 'Logo';
+    // }
+    // if (this.user.appUserType === 'ColStudent') {
+    //   this.photolabel = 'Photo';
+    // }
     this.uploader = new FileUploader({
       url: this.baseUrl + 'searchusers/add-photo',
       authToken: 'Bearer ' + this.user.token,

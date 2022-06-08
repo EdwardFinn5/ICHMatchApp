@@ -11,11 +11,14 @@ import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { take } from 'rxjs/operators';
+import { Category } from 'src/app/_models/category';
 import { College } from 'src/app/_models/college';
+import { Major } from 'src/app/_models/major';
 import { Member } from 'src/app/_models/member';
 import { User } from 'src/app/_models/user';
 import { AccountService } from 'src/app/_services/account.service';
 import { CollegeService } from 'src/app/_services/college.service';
+import { MajorService } from 'src/app/_services/major.service';
 import { MembersService } from 'src/app/_services/members.service';
 import { SearchMembersService } from 'src/app/_services/search-members.service';
 
@@ -30,6 +33,8 @@ export class MemberEditCardnphotoComponent implements OnInit {
   member: Member;
   user: User;
   colleges: College[];
+  categories: Category[];
+  majors: Major[];
   @HostListener('window:beforeunload', ['$event']) unloadNotification(
     $event: any
   ) {
@@ -43,6 +48,7 @@ export class MemberEditCardnphotoComponent implements OnInit {
     private searchMembersService: SearchMembersService,
     private toastr: ToastrService,
     private collegeService: CollegeService,
+    private majorService: MajorService,
     private router: Router
   ) {
     this.accountService.currentUser$
@@ -53,6 +59,8 @@ export class MemberEditCardnphotoComponent implements OnInit {
   ngOnInit(): void {
     this.loadMember();
     this.loadColleges();
+    this.loadCategories();
+    // this.loadMajors();
   }
 
   loadMember() {
@@ -68,6 +76,29 @@ export class MemberEditCardnphotoComponent implements OnInit {
     this.collegeService.getColleges().subscribe((colleges) => {
       this.colleges = colleges;
       // console.log(this.categories);
+    });
+  }
+
+  loadCategories() {
+    this.majorService.getCategories().subscribe((categories) => {
+      this.categories = categories;
+      // console.log(this.categories);
+    });
+  }
+
+  // loadMajors() {
+  //   this.majorService.getMajors().subscribe((majors) => {
+  //     this.majors = majors;
+  //     // console.log(this.categories);
+  //   });
+  // }
+
+  onSelect(categories) {
+    this.majorService.getMajors().subscribe((majors) => {
+      this.majors = majors;
+      this.majors = majors.filter(
+        (e) => e.categoryId == categories.target.value
+      );
     });
   }
 
