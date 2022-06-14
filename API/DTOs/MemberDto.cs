@@ -38,6 +38,8 @@ namespace API.DTOs
         public String GPA { get; set; }
         public DateTime GradDate { get; set; }
         public String BestEmail { get; set; }
+        public String UniqueTitle { get; set; }
+        public String UniqueContent { get; set; }
         public String BestPhone { get; set; }
         public String Athletics { get; set; }
         public String Arts { get; set; }

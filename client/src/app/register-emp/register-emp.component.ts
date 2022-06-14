@@ -9,8 +9,13 @@ import {
 } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { CiempLocation } from '../_models/ciempLocation';
+import { EmpIndustry } from '../_models/empIndustry';
 import { RegisterCode } from '../_models/registerCode';
+import { StempLocation } from '../_models/stempLocation';
 import { AccountService } from '../_services/account.service';
+import { CiemplocationService } from '../_services/ciemplocation.service';
+import { EmpindustryService } from '../_services/empindustry.service';
 import { RegisterCodeService } from '../_services/register-code.service';
 
 @Component({
@@ -22,19 +27,16 @@ export class RegisterEmpComponent implements OnInit {
   registerEmpForm: FormGroup;
   validationErrors: string[] = [];
   registerCode: RegisterCode;
-  // registerCodeName8: string;
   registerCodeId: number = 1;
-  // registerCode1: string = 'a';
-  // registerCode2: string = 'b';
-  // registerCode3: string = 'c';
-  // registerCode4: string = 'd';
-  // registerCode5: string = 'e';
-  // registerCode6: string = 'f';
-  // registerCode7: string = 'g';
+  empIndustries: EmpIndustry[];
+  ciempLocations: CiempLocation[];
+  stempLocations: StempLocation[];
 
   constructor(
     private router: Router,
     private accountService: AccountService,
+    private empIndustryService: EmpindustryService,
+    private ciempLocationService: CiemplocationService,
     private toastr: ToastrService,
     private fb: FormBuilder,
     private registerCodeService: RegisterCodeService
@@ -43,6 +45,9 @@ export class RegisterEmpComponent implements OnInit {
   ngOnInit(): void {
     this.initializeForm();
     this.loadRegisterCode();
+    this.loadEmpIndustries();
+    this.loadStempLocations();
+    this.loadCiempLocations();
   }
 
   initializeForm() {
@@ -63,7 +68,8 @@ export class RegisterEmpComponent implements OnInit {
       registerCode: ['', Validators.required],
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
-      ciLocation: ['', Validators.required],
+      ciempLocation: ['', Validators.required],
+      stempLocation: ['', Validators.required],
       empName: ['', Validators.required],
       hrContactTitle: ['', Validators.required],
       empIndustry: ['', Validators.required],
@@ -105,6 +111,39 @@ export class RegisterEmpComponent implements OnInit {
         this.validationErrors = error;
       }
     );
+  }
+
+  loadEmpIndustries() {
+    this.empIndustryService.getEmpIndustries().subscribe((empIndustries) => {
+      this.empIndustries = empIndustries;
+    });
+  }
+
+  loadCiempLocations() {
+    this.ciempLocationService
+      .getCiempLocations()
+      .subscribe((ciempLocations) => {
+        this.ciempLocations = ciempLocations;
+      });
+  }
+
+  loadStempLocations() {
+    this.ciempLocationService
+      .getStempLocations()
+      .subscribe((stempLocations) => {
+        this.stempLocations = stempLocations;
+      });
+  }
+
+  onSelect(stempLocations) {
+    this.ciempLocationService
+      .getCiempLocations()
+      .subscribe((ciempLocations) => {
+        this.ciempLocations = ciempLocations;
+        this.ciempLocations = ciempLocations.filter(
+          (e) => e.stempLocationId == stempLocations.target.value
+        );
+      });
   }
 
   cancel() {

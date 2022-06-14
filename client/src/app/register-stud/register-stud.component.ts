@@ -134,7 +134,6 @@ export class RegisterStudComponent implements OnInit {
   loadCategories() {
     this.majorService.getCategories().subscribe((categories) => {
       this.categories = categories;
-      // console.log(this.categories);
     });
   }
 

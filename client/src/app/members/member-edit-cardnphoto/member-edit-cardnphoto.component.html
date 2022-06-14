@@ -176,9 +176,9 @@
                                 </option>
                             </select>
 
-                            <select class="form-control" name="ciLocation" id="ciLocation"
+                            <select class="form-control ml-2" name="ciLocation" id="ciLocation"
                                 [(ngModel)]="member.ciLocation">
-                                <option class="text-center" value="">--2nd Select City--</option>
+                                <option class="text-center ml-2" value="">--2nd Select City--</option>
                                 <option *ngFor="let ciLocation of ciLocations"
                                     [value]="ciLocation.ciLocationName | titlecase">
                                     {{ciLocation.ciLocationName}}

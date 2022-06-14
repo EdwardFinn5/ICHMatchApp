@@ -19,6 +19,8 @@ export interface Member {
   coLocation: string;
   stLocation: string;
   stempLocation: string;
+  uniqueTitle: string;
+  uniqueContent: string;
   classYear: string;
   major: string;
   category: string;

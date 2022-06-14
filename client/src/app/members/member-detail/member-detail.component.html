@@ -34,28 +34,39 @@
                 <div class="details">
                 <h4><strong>Academic Highlights</strong></h4>
                 {{member.academicPlus}}<br>
-                <h5 class="mt-2 mb-2"><u>GPA:</u> {{member.gpa}}</h5>
-                <h5 class="mt-2 mb-2"><u>Grad Date:</u> {{member.gradDate}}</h5>  
-                <h4 class="mt-2"><strong>Work Experiences</strong></h4>
-                {{member.workPlus}}<br>
-                <h4 class="mt-md-2"><strong>Dream Job</strong></h4>
+                <h5 *ngIf="member.gpa" class="mt-2 mb-2"><strong>GPA: </strong>{{member.gpa}}</h5>
+                <h5 *ngIf="member.gradDate" class="mt-2 mb-2"><strong>Grad Date:</strong> {{member.gradDate | date: "MMM dd yyyy"}}</h5>  
+                <h4 *ngIf="member.workPlus" class="mt-2"><strong>Work Experiences</strong></h4>
+                    {{member.workPlus}}<br>
+                <h4 *ngIf="member.dreamJob" class="mt-2"><strong>Dream Job</strong></h4>
                 {{member.dreamJob}}<br>
-                <h4 class="mt-2"><strong>Best way to contact {{member.firstName}}:</strong></h4>
-                <p *ngIf="member.bestEmail">Email: 
-                    {{member.bestEmail}}</p> 
-                <p *ngIf="member.bestPhone">Phone:
-                        {{member.bestPhone}}</p>
+                
+                <div *ngIf="member.uniqueTitle">
+                <h4 class="mt-2"><strong>{{member.uniqueTitle}}</strong></h4>
+                {{member.uniqueContent}}<br>
+                </div>
+
+                <!-- <div *ngIf="member.uniqueTitle">
+                    <h4><strong>{{member.uniqueTitle}}</strong></h4>
+                    <h6 class="mt-2">{{member.uniqueContent}}</h6>
+                </div> -->
+
+                <h4 class="mt-2"><strong>Best way to contact {{member.firstName}}</strong></h4>
+                <div *ngIf="member.bestEmail">Email: 
+                    {{member.bestEmail}}</div>
+                <div *ngIf="member.bestPhone">Phone:
+                    {{member.bestPhone}}</div>
             </div>            
             </tab>
             <tab heading='Extra-Curricular' 
             class="tab-heading" 
             (selectTab)="onTabActivated($event)">
                 <div class="details">
-                <h4><strong>Athletics Experiences</strong></h4>
+                <h4 *ngIf="member.athletics"><strong>Athletic Experiences</strong></h4>
                 {{member.athletics}}<br>    
-                <h4 class="mt-2"><strong>Involvement in the Arts</strong></h4>
+                <h4 *ngIf="member.arts" class="mt-2"><strong>Involvement in the Arts</strong></h4>
                 {{member.arts}}<br>
-                <h4 class="mt-2"><strong>Clubs and Organizations</strong></h4>
+                <h4 *ngIf="member.extraCurricular"class="mt-2"><strong>Clubs and Organizations</strong></h4>
                 {{member.extraCurricular}}<br>
                 </div>
             </tab>

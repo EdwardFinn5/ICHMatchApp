@@ -12,7 +12,7 @@
             <tbody>
                 
                 <tr *ngFor="let empIndustry of empIndustries">
-                    <td><h5>{{empIndustry.empIndustryName}}</h5></td>
+                    <td><h5>{{empIndustry.empIndustryName | titlecase}}</h5></td>
                 </tr>
             </tbody>
         </table>
@@ -24,9 +24,9 @@
         <form #empIndustryForm="ngForm" (ngSubmit)="addEmpIndustry()" autocomplete="off">
             <div class="input-group" >
                 <input name="empIndustryName" required [(ngModel)]="empIndustryName" type="text" 
-                        class="form-control input-sm long-input mr-2 text-center" placeholder="Add Industry">
+                        class="form-control input-sm long-input mr-2" placeholder="Add Industry">
                     <div class="input-group-append">
-                    <button [disabled]="!empIndustryForm.valid || loading" class="btn btn-info ml-2 mb-3 shadow-sm" style="width:auto" >Add City
+                    <button [disabled]="!empIndustryForm.valid || loading" class="btn btn-info ml-2 mb-3 shadow-sm" style="width:auto" >Add Industry
                         <i *ngIf="loading" class="fa fa-spinner fa-spin"></i>
                     </button>
                 </div>

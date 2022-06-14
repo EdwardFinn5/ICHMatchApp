@@ -1,104 +1,118 @@
 <section class="signup" *ngIf="registerCode">
   <div class="card-header col-lg-4 m-auto">
-    <h3 style="text-align: center;">Employer Sign Up</h3>
+    <h3 style="text-align: center;">Employer Sign Up
+      <br>(Tab to each field, not Enter)
+    </h3>
   </div>
   <div class="login col-lg-4 m-auto shadow-lg">
 
     <form [formGroup]='registerEmpForm' (ngSubmit)="registerEmpForm.valid && registerEmp()" autocomplete="off">
 
       <div class="form-group">
-        <input 
-          [class.is-invalid]='registerEmpForm.get("username").errors 
-            && registerEmpForm.get("username").touched'
-          formControlName='username' 
-          class="form-control shadow-sm" 
-          type="email"
-          pattern="^[a-zA-Z0-9_.+-]+@[A-zA-Z0-9-]+\.com$" 
-          placeholder="Username (work email)">
-          <div *ngIf="registerEmpForm.get('username').hasError('required')"
-            class="invalid-feedback">Please enter a username</div> 
-          <div *ngIf="registerEmpForm.get('username').hasError('pattern')"
-            class="invalid-feedback">Username must be your work email</div> 
+        <input [class.is-invalid]='registerEmpForm.get("username").errors 
+            && registerEmpForm.get("username").touched' formControlName='username' class="form-control shadow-sm"
+          type="email" pattern="^[a-zA-Z0-9_.+-]+@[A-zA-Z0-9-]+\.com$" placeholder="Username (work email)">
+        <div *ngIf="registerEmpForm.get('username').hasError('required')" class="invalid-feedback">Please enter a
+          username</div>
+        <div *ngIf="registerEmpForm.get('username').hasError('pattern')" class="invalid-feedback">Username must be your
+          work email</div>
       </div>
 
-      <app-text-input [formControl]='registerEmpForm.controls["password"]'
-        [label]='"Password"'
-        [type]='"password"'>
+      <app-text-input [formControl]='registerEmpForm.controls["password"]' [label]='"Password"' [type]='"password"'>
       </app-text-input>
 
-      <app-text-input [formControl]='registerEmpForm.controls["confirmPassword"]'
-        [label]='"Confirm Password"'
+      <app-text-input [formControl]='registerEmpForm.controls["confirmPassword"]' [label]='"Confirm Password"'
         [type]='"password"'>
       </app-text-input>
-
-      <!-- <app-text-input [formControl]='registerEmpForm.controls["registerCode"]'
-        [label]='"Register Code"'>
-      </app-text-input> -->
 
       <div class="form-group">
-        <input 
-          [class.is-invalid]='registerEmpForm.get("registerCode").errors 
-            && registerEmpForm.get("registerCode").touched'
-          formControlName='registerCode' 
-          class="form-control shadow-sm" 
-          type="text"
+        <input [class.is-invalid]='registerEmpForm.get("registerCode").errors 
+            && registerEmpForm.get("registerCode").touched' formControlName='registerCode'
+          class="form-control shadow-sm" type="text"
           pattern="({{registerCode.registerCodeName1}})|{{registerCode.registerCodeName2}}|{{registerCode.registerCodeName3}}|{{registerCode.registerCodeName4}}|{{registerCode.registerCodeName5}}|{{registerCode.registerCodeName6}}|{{registerCode.registerCodeName7}}"
           placeholder="Register Code (re-enter employer code)">
-          <div *ngIf="registerEmpForm.get('registerCode').hasError('required')"
-            class="invalid-feedback">Please enter a register code</div> 
-          <div *ngIf="registerEmpForm.get('registerCode').hasError('pattern')"
-            class="invalid-feedback">If you do not have a register code please email: info@iowacollegefoundation.org</div> 
+        <div *ngIf="registerEmpForm.get('registerCode').hasError('required')" class="invalid-feedback">Please enter a
+          register code</div>
+        <div *ngIf="registerEmpForm.get('registerCode').hasError('pattern')" class="invalid-feedback">If you do not have
+          a register code please email: info@iowacollegefoundation.org</div>
       </div>
 
-      <app-text-input [formControl]='registerEmpForm.controls["firstName"]'
-        [label]='"First name of HR contact"'>
-      </app-text-input> 
-
-      <app-text-input [formControl]='registerEmpForm.controls["lastName"]'
-        [label]='"Last name of HR contact"'>
+      <app-text-input [formControl]='registerEmpForm.controls["firstName"]' [label]='"First name of HR contact"'>
       </app-text-input>
 
-      <app-text-input [formControl]='registerEmpForm.controls["hrContactTitle"]'
-      [label]='"Title of HR contact"'>
-    </app-text-input>
-  
-      <app-text-input [formControl]='registerEmpForm.controls["empName"]'
-        [label]='"Name of Company"'>
-      </app-text-input>
-      
-      <app-text-input [formControl]='registerEmpForm.controls["ciLocation"]'
-        [label]='"Company Headquarters"'>
+      <app-text-input [formControl]='registerEmpForm.controls["lastName"]' [label]='"Last name of HR contact"'>
       </app-text-input>
 
-      <app-text-input [formControl]='registerEmpForm.controls["empIndustry"]'
-        [label]='"Industry Name"'>
+      <app-text-input [formControl]='registerEmpForm.controls["hrContactTitle"]' [label]='"Title of HR contact"'>
       </app-text-input>
 
-      <app-text-input [formControl]='registerEmpForm.controls["employeeNum"]'
-        [label]='"Number of Employees"'>
+      <app-text-input [formControl]='registerEmpForm.controls["empName"]' [label]='"Name of company/organization"'>
       </app-text-input>
 
+      <app-text-input [formControl]='registerEmpForm.controls["employeeNum"]' [label]='"Number of Employees"'>
+      </app-text-input>
 
-      <div class="row" *ngIf="validationErrors.length > 0" >
-        <ul class="text-danger">
-            <li  *ngFor="let error of validationErrors">
-                {{error}}
-            </li>
-        </ul>
-    </div>
-      
-      <div class="form-group">
-        <!-- <button [disabled]="!loginForm.valid" type="submit" class="btn btn-primary">Login</button> -->
-        <button [disabled]="!registerEmpForm.valid" type="submit" class="btn btn-primary shadow-sm">Sign Up</button>
-        <input type="button" class="btn btn-secondary shadow-sm ml-2" (click)="cancel()" value="Cancel" />
+      <select #scrolMe style="overflow: scroll; height: 300px; width: 450px;" [scrollTop]="scrolMe.scrollHeight"
+        class="mr-2 mt-1 mb-2 form-control" formControlName="empIndustry" style="width: auto">
+        <option class="text-center" required value="">-- Select Industry --</option>
+        <option *ngFor="let empIndustry of empIndustries" [value]="empIndustry.empIndustryName | titlecase">
+          {{empIndustry.empIndustryName | titlecase}}
+        </option>
+      </select>
+
+      <h6 class="filter m-auto mt-2 mb-2 text-center"><strong>If you don't see your industry, click this
+          button:</strong></h6>
+
+      <div class="text-center col-12">
+        <button class="btn btn-info mb-2 shadow-sm" routerLink='/empindustrylistemps'>Add Industry</button>
       </div>
 
-      <!-- <div class="footer mx-3">
-                    <a href="#">Forget password?</a>
-                    <p>Don't have an account? <a routerLink="/registerhome">Register here</a></p>
-                  </div>
-   -->
+      <h6 class="filter m-auto mb-2"><strong>Select your organization's headquarters (IA preferred)
+        </strong></h6>
+
+
+      <select class="mr-2 mb-1 form-control" formControlName="stempLocation" style="width: auto">
+        <option class="text-center" value="">-- Select State --</option>
+        <option *ngFor="let stempLocation of stempLocations" [value]="stempLocation.stempLocationName">
+          {{stempLocation.stempLocationName}}
+        </option>
+      </select>
+
+      <h6 class="filter m-auto mt-1 mb-2"><strong>Then re-select state and then city (both required):</strong></h6>
+
+      <div class=" form-group form-inline">
+        <select (change)="onSelect($event)" class=" form-control form-inline mr-2" name="coLocation"
+          style="width: auto">
+          <br>
+          <option class="text-center mb-2" #value="">-- 1st Select State --</option>
+          <option class="text-center" *ngFor="let stempLocation of stempLocations"
+            value="{{stempLocation.stempLocationId}}">
+            {{stempLocation.stempLocationName}}
+          </option>
+        </select>
+
+        <select class="mr-2 mt-1 mb-1 form-control" formControlName="ciempLocation" style="width: auto">
+          <option class="text-center" value="">-- 2nd Select City --</option>
+          <option class="text-center" *ngFor="let ciempLocation of ciempLocations"
+            [value]="ciempLocation.ciempLocationName">
+            {{ciempLocation.ciempLocationName}}
+          </option>
+        </select>
+      </div>
+
+      <h6 class="filter m-auto mt-2 mb-2 text-center"><strong>If you don't see your headquarters' location, click this
+          button:</strong></h6>
+
+      <div class="text-center col-12">
+        <button class="btn btn-info mb-3 shadow-sm" routerLink='//emplocationlistemps'>Add Location</button>
+      </div>
+
+      <div class="btn-group d-flex">
+        <button [disabled]="!registerEmpForm.valid" type="submit" class="btn btn-success shadow-sm mr-1">Sign
+          Up</button>
+        <input type="button" class="btn btn-secondary shadow-sm ml-1" (click)="cancel()" value="Cancel" />
+      </div>
+
     </form>
-   
   </div>
 </section>

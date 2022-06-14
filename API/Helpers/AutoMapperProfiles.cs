@@ -34,6 +34,10 @@ namespace API.Helpers
                 .MapFrom(src => src.StudInfos.FirstOrDefault(x => x.IsActive).BestPhone))
             .ForMember(dest => dest.Athletics, opt => opt
                 .MapFrom(src => src.StudInfos.FirstOrDefault(x => x.IsActive).Athletics))
+            .ForMember(dest => dest.UniqueTitle, opt => opt
+                .MapFrom(src => src.StudInfos.FirstOrDefault(x => x.IsActive).UniqueTitle))
+            .ForMember(dest => dest.UniqueContent, opt => opt
+                .MapFrom(src => src.StudInfos.FirstOrDefault(x => x.IsActive).UniqueContent))
             .ForMember(dest => dest.Arts, opt => opt
                 .MapFrom(src => src.StudInfos.FirstOrDefault(x => x.IsActive).Arts))
             .ForMember(dest => dest.ExtraCurricular, opt => opt

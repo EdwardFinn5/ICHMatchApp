@@ -29,7 +29,7 @@ export class MemberEditStudinfoComponent implements OnInit {
 
   constructor(
     private accountservice: AccountService,
-    // private searchMembersService: SearchMembersService,
+    private searchMembersService: SearchMembersService,
     private toastr: ToastrService,
     private studInfoService: StudinfoService
   ) {
@@ -39,7 +39,17 @@ export class MemberEditStudinfoComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.loadMember();
     this.loadStudInfo();
+  }
+
+  loadMember() {
+    this.searchMembersService
+      .getSearchMember(this.user.username)
+      .subscribe((member) => {
+        this.member = member;
+        console.log(member.username);
+      });
   }
 
   loadStudInfo() {
