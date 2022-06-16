@@ -7,6 +7,7 @@ import { User } from 'src/app/_models/user';
 import { AccountService } from 'src/app/_services/account.service';
 import { EmpinfoService } from 'src/app/_services/empinfo.service';
 import { SearchMembersService } from 'src/app/_services/search-members.service';
+import { Member } from '../_models/member';
 @Component({
   selector: 'app-empmember2-edit-empinfo',
   templateUrl: './empmember2-edit-empinfo.component.html',
@@ -15,6 +16,7 @@ import { SearchMembersService } from 'src/app/_services/search-members.service';
 export class Empmember2EditEmpinfoComponent implements OnInit {
   @ViewChild('editForm') editForm: NgForm;
   empInfo: EmpInfo;
+  member: Member;
   user: User;
   @HostListener('window:beforeunload', ['$event']) unloadNotification(
     $event: any
@@ -36,7 +38,17 @@ export class Empmember2EditEmpinfoComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.loadMember();
     this.loadEmpInfo();
+  }
+
+  loadMember() {
+    this.searchMembersService
+      .getSearchMember(this.user.username)
+      .subscribe((member) => {
+        this.member = member;
+        console.log(member.username);
+      });
   }
 
   loadEmpInfo() {

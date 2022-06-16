@@ -1,28 +1,41 @@
-.signup {
-  background-color: #eff6ff;
-  padding: 60px;
+textarea {
+  width: 90%;
 }
 
-.login {
-  background-color: #ffffff;
-  padding: 20px 30px;
+input {
+  width: 90%;
 }
 
-@media screen and (max-width: 600px) {
-  .signup {
-    background-color: #eff6ff;
-    padding: 30px;
-  }
+.padding {
+  padding-top: 0;
 }
 
-.card-header > h1,
-.card-header > h2,
-.card-header > h3 {
-  color: white;
+.details {
+  margin-right: 2em;
+  margin-left: 1em;
 }
 
-.card-header {
-  height: 42;
-  padding: 4px 10px !important;
-  background-color: #416796 !important;
+.tab-heading {
+  font-weight: bold;
+}
+
+.img-hrthumbnail {
+  margin: 0px;
+  width: 15%;
+  height: 15%;
+}
+
+.card-body {
+  text-align: center;
+}
+.img-studthumbnail {
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-top: 15px;
+  width: 60%;
+  height: 60%;
+}
+
+p {
+  font-weight: bold;
 }

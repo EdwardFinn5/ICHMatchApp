@@ -11,11 +11,12 @@
       <div class="form-group">
         <input [class.is-invalid]='registerEmpForm.get("username").errors 
             && registerEmpForm.get("username").touched' formControlName='username' class="form-control shadow-sm"
-          type="email" pattern="^[a-zA-Z0-9_.+-]+@[A-zA-Z0-9-]+\.com$" placeholder="Username (work email)">
-        <div *ngIf="registerEmpForm.get('username').hasError('required')" class="invalid-feedback">Please enter a
+          type="email" pattern="^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$" placeholder="Username (work email)">
+          <!-- type="email" pattern="^[a-zA-Z0-9_.+-]+@[A-zA-Z0-9-]+\.com$" placeholder="Username (work email)">-->
+          <div *ngIf="registerEmpForm.get('username').hasError('required')" class="invalid-feedback">Please enter a
           username</div>
-        <div *ngIf="registerEmpForm.get('username').hasError('pattern')" class="invalid-feedback">Username must be your
-          work email</div>
+        <div *ngIf="registerEmpForm.get('username').hasError('pattern')" class="invalid-feedback">Username must be a legitimate email address
+        </div>
       </div>
 
       <app-text-input [formControl]='registerEmpForm.controls["password"]' [label]='"Password"' [type]='"password"'>

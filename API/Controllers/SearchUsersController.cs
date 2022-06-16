@@ -236,7 +236,7 @@ namespace API.Controllers
 
             if (user.AppUserType == "EmpHr")
             {
-                if (photo.IsMain) return BadRequest("This is already your main logo");
+                if (photo.IsMainLogo) return BadRequest("This is already your main logo");
 
                 var currentMain = user.Photos.FirstOrDefault(x => x.IsMainLogo);
 
