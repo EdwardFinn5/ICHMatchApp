@@ -97,6 +97,9 @@ import { StemplocationEditComponent } from './emplocations/stemplocation-edit.co
 import { CiemplocationEditComponent } from './emplocations/ciemplocation-edit.component';
 import { AddCiemplocationsEmpsComponent } from './emplocations/add-ciemplocations-emps.component';
 import { StemplocationListEmpsComponent } from './emplocations/stemplocation-list-emps.component';
+import { PoscategoriesListEmpsComponent } from './poscategories-and-positnames/poscategories-list-emps.component';
+import { AddPositnamesEmpsComponent } from './poscategories-and-positnames/add-positnames-emps.component';
+import { EditNew2PrepositionComponent } from './positions/edit-new2-preposition/edit-new2-preposition.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -185,6 +188,11 @@ const routes: Routes = [
   {
     path: 'addpositnames/:posCategoryId',
     component: AddPositnameComponent,
+    pathMatch: 'full',
+  },
+  {
+    path: 'addpositnamesemps/:posCategoryId',
+    component: AddPositnamesEmpsComponent,
     pathMatch: 'full',
   },
 
@@ -309,7 +317,7 @@ const routes: Routes = [
         pathMatch: 'full',
       },
       {
-        path: 'positnameedit/:majorId',
+        path: 'positnameedit/:positNameId',
         component: PositnameEditComponent,
         pathMatch: 'full',
       },
@@ -360,7 +368,12 @@ const routes: Routes = [
       {
         path: 'new2/position/add',
         component: EditNew2PositionComponent,
-        canDeactivate: [PreventUnsavedAddPositionChangesGuard],
+        // canDeactivate: [PreventUnsavedAddPositionChangesGuard],
+        pathMatch: 'full',
+      },
+      {
+        path: 'new2/preposition/add',
+        component: EditNew2PrepositionComponent,
         pathMatch: 'full',
       },
 
@@ -482,6 +495,11 @@ const routes: Routes = [
   {
     path: 'poscategorylist',
     component: PoscategoryListComponent,
+    pathMatch: 'full',
+  },
+  {
+    path: 'poscategorieslistemps',
+    component: PoscategoriesListEmpsComponent,
     pathMatch: 'full',
   },
   // {

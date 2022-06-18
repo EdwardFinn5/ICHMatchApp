@@ -21,7 +21,7 @@ export class UserParams {
   stempLocation = '';
   orderByLastActive = '';
   orderByPosName = '';
-  orderByPositionLocation = '';
+  orderByCiempLocation = '';
   orderByMajor = '';
   orderByCategory = '';
   orderByPosCategory = '';
@@ -29,7 +29,6 @@ export class UserParams {
   orderByFirstName = '';
   orderByEmpName = '';
   orderByCiLocation = '';
-  orderByCiempLocation = '';
   orderByCollege = '';
   orderByEmpIndustry = '';
   orderByRegisterCode = '';

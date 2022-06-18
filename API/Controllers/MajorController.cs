@@ -59,7 +59,7 @@ namespace API.Controllers
         [HttpPost("{id}")]
         public async Task<ActionResult<MajorDto>> AddMajor(AddMajorDto addMajorDto, int id)
         {
-            if (await MajorExists(addMajorDto.MajorName)) return BadRequest("Major is already included in this category");
+            if (await MajorExists(addMajorDto.MajorName)) return BadRequest("Major is already included -- perhaps in another major-category");
 
             var major = new Major
             {

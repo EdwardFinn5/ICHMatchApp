@@ -43,12 +43,6 @@ export class Step1RegisterEmpComponent implements OnInit {
       });
   }
 
-  // loadCiLocations() {
-  //   this.ciLocationService.getCiLocations().subscribe((ciLocations) => {
-  //     this.ciLocations = ciLocations;
-  //   });
-  // }
-
   onSelect(stempLocations) {
     this.ciempLocationService
       .getCiempLocations()

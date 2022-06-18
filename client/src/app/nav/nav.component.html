@@ -62,6 +62,8 @@
             <a *ngIf="accountService.currentUser$ | async" class="dropdown-item" routerLink='/empindustrylist'>Ed EmpIndustry List</a>  
             <div class="dropdown-divider"></div>
             <a *ngIf="accountService.currentUser$ | async" class="dropdown-item" routerLink='/emplocationlist'>Ed Emp Location List</a>  
+            <div class="dropdown-divider"></div>
+            <a *ngIf="accountService.currentUser$ | async" class="dropdown-item" routerLink='/poscategorieslistemps'>Ed Emp Position List</a>  
             
           </div>
         </li>
@@ -120,7 +122,7 @@
             <div class="dropdown-divider"></div>
             <a routerLink="/company2/edit" class="dropdown-item">Add/Edit company info</a>
             <div class="dropdown-divider"></div>
-            <a routerLink="/new2/position/add" class="dropdown-item">Add a position</a>
+            <a routerLink="/new2/preposition/add" class="dropdown-item">Add a position</a>
             <div class="dropdown-divider"></div>
             <a routerLink="/empmember/positions" class="dropdown-item">View positions</a>
             <div class="dropdown-divider"></div>

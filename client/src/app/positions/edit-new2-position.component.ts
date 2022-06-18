@@ -3,11 +3,17 @@ import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { take } from 'rxjs/operators';
+import { CiempLocation } from '../_models/ciempLocation';
 import { Member } from '../_models/member';
+import { PosCategory } from '../_models/posCategory';
 import { Position } from '../_models/position';
+import { PositName } from '../_models/positName';
+import { StempLocation } from '../_models/stempLocation';
 import { User } from '../_models/user';
 import { AccountService } from '../_services/account.service';
+import { CiemplocationService } from '../_services/ciemplocation.service';
 import { Position2Service } from '../_services/position2.service';
+import { PositNameService } from '../_services/positname.service';
 import { SearchMembersService } from '../_services/search-members.service';
 
 @Component({
@@ -18,31 +24,37 @@ import { SearchMembersService } from '../_services/search-members.service';
 export class EditNew2PositionComponent implements OnInit {
   addPositionForm: FormGroup;
   validationErrors: string[] = [];
+  stempLocations: StempLocation[];
+  ciempLocations: CiempLocation[];
+  posCategories: PosCategory[];
+  positNames: PositName[];
 
-  model: any = {};
+  // model: any = {};
   // @ViewChild('addPositionForm') addPositionForm: NgForm;
-  position: Position;
-  hrUrl?: string = '';
-  member: Member;
+  // position: Position;
+  // hrUrl?: string = '';
+  // member: Member;
   user: User;
   positionTypeList = [
     { value: 'Internship', display: 'Internship' },
     { value: 'Full-Time', display: 'Full-Time' },
     { value: 'Part-Time', display: 'Part-Time' },
   ];
-  @HostListener('window:beforeunload', ['$event']) unloadNotification(
-    $event: any
-  ) {
-    if (this.addPositionForm.dirty) {
-      $event.returnValue = true;
-    }
-  }
+  // @HostListener('window:beforeunload', ['$event']) unloadNotification(
+  //   $event: any
+  // ) {
+  //   if (this.addPositionForm.dirty) {
+  //     $event.returnValue = true;
+  //   }
+  // }
   constructor(
     private router: Router,
     private position2Service: Position2Service,
     private route: ActivatedRoute,
     private accountService: AccountService,
-    private searchMembersService: SearchMembersService,
+    private ciempLocationService: CiemplocationService,
+    private positNameService: PositNameService,
+    // private searchMembersService: SearchMembersService,
     private toastr: ToastrService,
     private fb: FormBuilder
   ) {
@@ -52,41 +64,95 @@ export class EditNew2PositionComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.loadMember();
+    // this.loadMember();
+    console.log('User Id: ', this.user.appUserId);
     this.initializeForm();
+    this.loadStempLocations();
+    this.loadCiempLocations();
+    this.loadPosCategories();
   }
 
   initializeForm() {
     this.addPositionForm = this.fb.group({
+      posCategory: ['', Validators.required],
       posName: ['', Validators.required],
-      positionType: [''],
-      positionLocation: ['', Validators.required],
-      positionDescription: ['', Validators.required],
-      positionBenefits: [''],
+      positionType: ['', Validators.required],
+      ciempLocation: ['', Validators.required],
+      stempLocation: ['', Validators.required],
+      startDate: ['', Validators.required],
+      appDeadline: ['', Validators.required],
     });
   }
 
-  loadMember() {
-    this.searchMembersService
-      .getSearchMember(this.user.username)
-      .subscribe((member) => {
-        this.member = member;
-        console.log('username after loading member: ', member.username);
-      });
-  }
+  // loadMember() {
+  //   this.searchMembersService
+  //     .getSearchMember(this.user.username)
+  //     .subscribe((member) => {
+  //       this.member = member;
+  //       console.log('username after loading member: ', member.username);
+  //     });
+  // }
 
   addPosition() {
     console.log('form: ', this.addPositionForm.value);
     console.log('id: ', this.user.appUserId);
     this.position2Service
       .addPosition(this.addPositionForm.value, this.user.appUserId)
-      .subscribe(() => {
-        this.toastr.success('Position info added');
+      .subscribe(
+        (response) => {
+          this.toastr.success('Required position info added');
 
-        this.addPositionForm.reset(this.model);
-        // this.router.navigateByUrl('empmember/positions');
-        this.router.navigateByUrl('/empmember/positions');
+          // this.addPositionForm.reset(this.model);
+          // this.router.navigateByUrl('empmember/positions');
+          this.router.navigateByUrl('/empmember/positions');
+        },
+        (error) => {
+          console.log(error);
+          this.validationErrors = error;
+        }
+      );
+  }
+
+  loadStempLocations() {
+    this.ciempLocationService
+      .getStempLocations()
+      .subscribe((stempLocations) => {
+        this.stempLocations = stempLocations;
       });
+  }
+
+  loadCiempLocations() {
+    this.ciempLocationService
+      .getCiempLocations()
+      .subscribe((ciempLocations) => {
+        this.ciempLocations = ciempLocations;
+      });
+  }
+
+  onSelect(stempLocations) {
+    this.ciempLocationService
+      .getCiempLocations()
+      .subscribe((ciempLocations) => {
+        this.ciempLocations = ciempLocations;
+        this.ciempLocations = ciempLocations.filter(
+          (e) => e.stempLocationId == stempLocations.target.value
+        );
+      });
+  }
+
+  loadPosCategories() {
+    this.positNameService.getPosCategories().subscribe((posCategories) => {
+      this.posCategories = posCategories;
+    });
+  }
+
+  onPosSelect(posCategories) {
+    this.positNameService.getPositNames().subscribe((positNames) => {
+      this.positNames = positNames;
+      this.positNames = positNames.filter(
+        (s) => s.posCategoryId == posCategories.target.value
+      );
+    });
   }
 
   cancel() {

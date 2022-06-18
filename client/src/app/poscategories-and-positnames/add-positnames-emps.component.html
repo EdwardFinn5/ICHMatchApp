@@ -1,0 +1,50 @@
+<div class="row shadow mt-3" *ngIf="posCategory">
+    <div class="positions p-0" style="text-align: center;">
+
+        <div>
+        <h3 style="text-align: center" class="mb-3"><strong>Current positions for the {{posCategory.posCategoryName}} category:</strong></h3>
+ 
+        <div class="scroll text-center col-12">
+        <table class="table col-2-lg col-3-md col-12-sm" style="text-align: center;">
+          
+            <tbody>
+                <tr *ngFor="let positName of positNames">
+                    <td><h5>{{positName.posName}}</h5></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    </div>
+
+    <div class="container mt-3 col-4">
+        <h3 class="text-center"><strong>Add Position</strong></h3>
+        <form #positNameForm="ngForm" (ngSubmit)="addPositName()" autocomplete="off">
+            <div class="input-group" >
+                <input name="posName" required [(ngModel)]="posName" type="text" 
+                    class="form-control input-sm long-input" placeholder="Add Position">
+                    <!-- <input name="order" required [(ngModel)]="order" type="number" 
+                    class="form-control input-sm short-input ml-2 mb-3" placeholder="Order # (1.0,2.0,...)"> -->
+                    <div class="input-group-append">
+                    <button [disabled]="!positNameForm.valid || loading" class="btn btn-info ml-2 mb-3 shadow-sm" style="width:auto" >Add Position
+                        <i *ngIf="loading" class="fa fa-spinner fa-spin"></i>
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <div class="text-center col-12">
+        <button class="btn btn-info btn-sm shadow-sm mt-4 mb-3 mr-2" routerLink="/step1registerstud">If signing up, click here to go back to step 1</button>
+        <button class="btn btn-success btn-sm shadow-sm mt-4 mb-3" >Otherwise, click back arrow</button>
+    </div>
+
+        
+        <!-- <div class="text-center col-12">
+            <button class="btn btn-success btn-sm shadow-sm mt-3 mb-3" routerLink="/positionslist">Back to Positions</button>
+        </div> -->
+    </div>
+    </div>
+
+
+
+

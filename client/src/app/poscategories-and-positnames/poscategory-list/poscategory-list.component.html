@@ -4,13 +4,13 @@
         <h3>Username: {{member.username}}</h3> -->
 
         <div>
-        <h3><strong>Current Position Categories</strong></h3>
+        <h3><strong>Current Position-Categories</strong></h3>
        
         <table class="table table-striped col-sm-4 col-lg-8 col-md-6 m-auto">
             <thead>
                 <tr>
-                    <th>Position Category Id</th>
-                    <th>Position Category Name</th>
+                    <th>Position-Category Id</th>
+                    <th>Position-Category Name</th>
                     <th>Options</th>
                 </tr>
             </thead>
@@ -20,9 +20,9 @@
                     <td>{{posCategory.posCategoryId}}</td>
                     <td>{{posCategory.posCategoryName}}</td>
                     <td>
-                        <button class="btn btn-primary btn-sm shadow-sm mr-2 mb-2" routerLink='/addpositname/{{posCategory.posCategoryId}}'>See Positions</button>
+                        <button class="btn btn-primary btn-sm shadow-sm mr-2 mb-2" routerLink='/addpositnames/{{posCategory.posCategoryId}}'>See Positions</button>
                         <button class="btn btn-info btn-sm shadow-sm mr-2 mb-2" routerLink='/poscategoryedit/{{posCategory.posCategoryId}}'>Edit Position Category</button>
-                        <button type="button-del" (click)="deleteCategory(category.categoryId)"  class="btn btn-danger btn-sm shadow-sm mb-2">Delete</button>
+                        <button type="button-del" (click)="deletePosCategory(posCategory.posCategoryId)"  class="btn btn-danger btn-sm shadow-sm mb-2">Delete</button>
 
                     </td>
                 </tr>
@@ -31,13 +31,11 @@
     </div>
 
     <div class="container mt-3">
-        <h4 class="text-center"><strong>Add Position Category</strong></h4>
+        <h4 class="text-center"><strong>Add Position-Category</strong></h4>
         <form #posCategoryForm="ngForm" (ngSubmit)="addPosCategory()" autocomplete="off">
             <div class="input-group" >
                 <input name="posCategoryName" required [(ngModel)]="posCategoryName" type="text" 
                     class="form-control input-sm long-input" placeholder="Add position category name">
-                    <!-- <input name="order" required [(ngModel)]="order" type="number" 
-                    class="form-control input-sm short-input ml-2 mb-3" placeholder="Order # (1.0,2.0,...)"> -->
                     <div class="input-group-append">
                     <button [disabled]="!posCategoryForm.valid || loading" class="btn btn-info ml-2 mb-3 shadow-sm" style="width:auto" >Add Category
                         <i *ngIf="loading" class="fa fa-spinner fa-spin"></i>

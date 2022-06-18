@@ -50,7 +50,8 @@ namespace API.Data
         public async Task<IEnumerable<PositNameDto>> GetPositNameDtosAsync(int id)
         {
             return await _context.PositNames
-            .OrderBy(p => p.PosCategoryId == id)
+            .Where(p => p.PosCategoryId == id)
+            .OrderBy(x => x.PosName)
             .ProjectTo<PositNameDto>(_mapper.ConfigurationProvider)
             .ToListAsync();
         }

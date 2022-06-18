@@ -1,34 +1,44 @@
-<section class="signup">
+<section class="signup" *ngIf="posCategories">
     <div class="card-header col-lg-4 m-auto">
-        <h5 style="text-align: center;"><u>Step 1 before you register</u></h5>
-        <h5 style="text-align: center;">Make sure your organization's "industry" is included</h5>
+        <h5 style="text-align: center;"><u>Step 1 before adding a position</u></h5>
+        <h5 style="text-align: center;">Check to make sure the position-category and position are included</h5>
     </div>
     <div class="login col-lg-4 m-auto shadow-lg">
 
-        <h6 class="text-center mb-2"><strong>Check to see if your industry is included:</strong></h6>
+        <h6 class="text-center mb-2"><strong>First check for the position-category:</strong></h6>
 
-        <select class="mr-2 mt-1 mb-1 form-control" name="empIndustry">
-            <option class="text-center" value="test">-- Check Industries --</option>
-            <option *ngFor="let empIndustry of empIndustries" [value]="empIndustry.empIndustryName | titlecase"
-                class="text-center">
-                {{empIndustry.empIndustryName | titlecase}}
+        <select (change)="onPosSelect($event)" class="mr-2 mt-1 mb-1 form-group form-control" name="posCategory">
+            <option class="text-center" value="">-- Position Categories --</option>
+            <option *ngFor="let posCategory of posCategories" value="{{posCategory.posCategoryId}}" class="text-center">
+                {{posCategory.posCategoryName}}
             </option>
         </select>
 
-        <h6 class="filter m-auto mt-3 mb-2 text-center"><strong>If you don't see your industry, click this
-                button:</strong></h6>
+        <h6 class="text-center mt-2 mb-2"><strong>Then check for the position:</strong></h6>
+
+        <select class="mr-2 mt-1 mb-1 form-group form-control" name="posName">
+            <option class="text-center" value="">-- Positions --</option>
+            <option *ngFor="let positName of positNames" [value]="positName.posName" class="text-center">
+                {{positName.posName | titlecase}}
+            </option>
+        </select>
+
+        <h6 class="filter m-auto mt-3 mb-2 text-center"><strong>If you don't see your position-category and/or position,
+                click this button:</strong></h6>
 
         <div class="text-center col-12">
-            <button class="btn btn-info mt-2 shadow-sm" routerLink='/empindustrylistemps'>Add Industry</button>
+            <button class="btn btn-info mt-2 shadow-sm" routerLink='/poscategorieslistemps'>Add Position-Category and/or
+                Position</button>
         </div>
+
     </div>
 
 
     <div class="card-header col-lg-4 m-auto">
-        <h5 style="text-align: center;"><u>Step 2 before you register</u></h5>
-        <h5 style="text-align: center;">Make sure your organization's headquarters is included (Iowa headquarters
-            preferred):</h5>
+        <h5 style="text-align: center;"><u>Step 2 before adding a position</u></h5>
+        <h5 style="text-align: center;">Check to make sure the position location is included</h5>
     </div>
+
     <div class="login col-lg-4 m-auto shadow-lg">
 
         <h6 class="text-center mb-2"><strong>First check for state:</strong></h6>
@@ -60,8 +70,11 @@
 
     </div>
 
+
+
     <div class="btn-group d-flex col-lg-4 mt-2 m-auto">
-        <button class="btn btn-success btn-sm shadow-sm mt-2 mr-1 mb-3" routerLink="/registeremp">Register</button>
+        <button class="btn btn-success btn-sm shadow-sm mt-2 mr-1 mb-3" routerLink="/new2/position/add">Back to adding
+            position</button>
         <button class="btn btn-secondary btn-sm shadow-sm mt-2 ml-1 mb-3" routerLink="/">Cancel</button>
     </div>
 

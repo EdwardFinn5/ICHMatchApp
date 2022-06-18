@@ -2,16 +2,16 @@ import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { PosCategory } from 'src/app/_models/posCategory';
-import { PositName } from 'src/app/_models/positName';
-import { PositNameService } from 'src/app/_services/positname.service';
+import { PosCategory } from '../_models/posCategory';
+import { PositName } from '../_models/positName';
+import { PositNameService } from '../_services/positname.service';
 
 @Component({
-  selector: 'app-add-positname',
-  templateUrl: './add-positname.component.html',
-  styleUrls: ['./add-positname.component.css'],
+  selector: 'app-add-positnames-emps',
+  templateUrl: './add-positnames-emps.component.html',
+  styleUrls: ['./add-positnames-emps.component.css'],
 })
-export class AddPositnameComponent implements OnInit {
+export class AddPositnamesEmpsComponent implements OnInit {
   @Input() positNames: PositName[];
   positNameId: number;
   posCategoryId: number;
@@ -26,6 +26,8 @@ export class AddPositnameComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.posCategoryId = +this.route.snapshot.paramMap.get('posCategoryId');
+    console.log('posCategoryId', this.posCategoryId);
     this.loadPosCategory();
     this.loadPositNames();
   }
@@ -56,22 +58,5 @@ export class AddPositnameComponent implements OnInit {
         this.positNameForm.reset();
         this.loadPositNames();
       });
-  }
-
-  deletePositName(id: number) {
-    this.positNameId = id;
-    console.log('The next item is positNameId');
-    console.log(this.positNameId);
-    // this.confirmService
-    //   .confirm('Confirm delete message', 'This cannot be undone')
-    //   .subscribe((result) => {
-    //     if (result) {
-    this.positNameService.deletePositName(id).subscribe(() => {
-      this.positNames.splice(
-        this.positNames.findIndex((m) => m.positNameId === id),
-        1
-      );
-      this.toastr.success('Position Deleted');
-    });
   }
 }

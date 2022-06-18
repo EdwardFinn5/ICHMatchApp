@@ -60,7 +60,7 @@ namespace API.Controllers
         [HttpPost("{id}")]
         public async Task<ActionResult<PositNameDto>> AddPositName(AddPositNameDto addPositNameDto, int id)
         {
-            if (await PosNameExists(addPositNameDto.PosName)) return BadRequest("Position name is already included in this category");
+            if (await PosNameExists(addPositNameDto.PosName)) return BadRequest("Position is already included -- perhaps in another position-category");
 
             var positName = new PositName
             {

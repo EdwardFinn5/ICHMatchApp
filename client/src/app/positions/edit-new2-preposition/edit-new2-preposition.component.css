@@ -1,6 +1,6 @@
 .signup {
     background-color: #eff6ff;
-    padding: 60px;
+    padding: 40px;
   }
   
   .login {
@@ -17,13 +17,21 @@
   
   .card-header > h1,
   .card-header > h2,
-  .card-header > h3 {
+  .card-header > h3,
+  .card-header > h4,
+  .card-header > h5
+  {
     color: white;
   }
   
   .card-header {
-    height: 42;
-    padding: 4px 10px !important;
+    height: 38;
+    padding: 4px 5px !important;
     background-color: #416796 !important;
   }
+  
+  .footer {
+    text-align: center;
+  }
+  
   

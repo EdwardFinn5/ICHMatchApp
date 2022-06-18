@@ -1,0 +1,36 @@
+<div class="row shadow mt-3 " *ngIf="posCategories">
+    <div class="positions p-0" style="text-align: center;">
+
+        <div>
+        <h3 style="text-align: center"><strong>Current Position-Categories</strong></h3>
+       
+        <table class="table col-4" style="text-align: center;">
+          
+            <thead>
+                <tr>
+                    <th class="p-2"><h5><strong>Position-Category</strong></h5></th>
+                    <th class="p-2"><h5><strong>Click button to see positions</strong></h5></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let posCategory of posCategories">
+                    <td>{{posCategory.posCategoryName}}</td>
+                    <td>
+                        <button class="btn btn-primary btn-sm shadow-sm mr-2 mb-2" routerLink='/addpositnamesemps/{{posCategory.posCategoryId}}'>See Positionss</button>
+                    </td>
+                </tr>
+            </tbody>
+       
+        </table>
+    </div>
+
+
+        <div class="text-center col-12">
+            <button class="btn btn-info btn-sm shadow-sm mt-4 mb-3 mr-2" routerLink="/step1registerstud">If signing up, click here to go back to step 1</button>
+            <button class="btn btn-success btn-sm shadow-sm mt-4 mb-3" >Otherwise, click back arrow</button>
+        </div>
+    </div>
+    </div>
+
+
+

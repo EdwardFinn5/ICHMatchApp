@@ -38,6 +38,9 @@
           a register code please email: info@iowacollegefoundation.org</div>
       </div>
 
+      <app-text-input [formControl]='registerEmpForm.controls["empName"]' [label]='"Name of company/organization"'>
+      </app-text-input>
+
       <app-text-input [formControl]='registerEmpForm.controls["firstName"]' [label]='"First name of HR contact"'>
       </app-text-input>
 
@@ -45,9 +48,6 @@
       </app-text-input>
 
       <app-text-input [formControl]='registerEmpForm.controls["hrContactTitle"]' [label]='"Title of HR contact"'>
-      </app-text-input>
-
-      <app-text-input [formControl]='registerEmpForm.controls["empName"]' [label]='"Name of company/organization"'>
       </app-text-input>
 
       <app-text-input [formControl]='registerEmpForm.controls["employeeNum"]' [label]='"Number of Employees"'>
@@ -82,7 +82,7 @@
       <h6 class="filter m-auto mt-1 mb-2"><strong>Then re-select state and then city (both required):</strong></h6>
 
       <div class=" form-group form-inline">
-        <select (change)="onSelect($event)" class=" form-control form-inline mr-2" name="coLocation"
+        <select (change)="onSelect($event)" class=" form-control form-inline mr-2" name="stempLocation"
           style="width: auto">
           <br>
           <option class="text-center mb-2" #value="">-- 1st Select State --</option>

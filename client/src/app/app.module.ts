@@ -115,6 +115,9 @@ import { StemplocationEditComponent } from './emplocations/stemplocation-edit.co
 import { CiemplocationEditComponent } from './emplocations/ciemplocation-edit.component';
 import { AddCiemplocationsEmpsComponent } from './emplocations/add-ciemplocations-emps.component';
 import { StemplocationListEmpsComponent } from './emplocations/stemplocation-list-emps.component';
+import { PoscategoriesListEmpsComponent } from './poscategories-and-positnames/poscategories-list-emps.component';
+import { AddPositnamesEmpsComponent } from './poscategories-and-positnames/add-positnames-emps.component';
+import { EditNew2PrepositionComponent } from './positions/edit-new2-preposition/edit-new2-preposition.component';
 
 @NgModule({
   declarations: [
@@ -222,6 +225,9 @@ import { StemplocationListEmpsComponent } from './emplocations/stemplocation-lis
     CiemplocationEditComponent,
     AddCiemplocationsEmpsComponent,
     StemplocationListEmpsComponent,
+    PoscategoriesListEmpsComponent,
+    AddPositnamesEmpsComponent,
+    EditNew2PrepositionComponent,
   ],
   imports: [
     BrowserModule,
