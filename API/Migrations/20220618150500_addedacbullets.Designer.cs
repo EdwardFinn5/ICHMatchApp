@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace API.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20220608183049_changeddates")]
-    partial class changeddates
+    [Migration("20220618150500_addedacbullets")]
+    partial class addedacbullets
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -20,6 +20,32 @@ namespace API.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("ProductVersion", "5.0.9")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+            modelBuilder.Entity("API.Entities.AcBullet", b =>
+                {
+                    b.Property<int>("AcBulletId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("AcBulletText")
+                        .HasColumnType("nvarchar(250)");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
+                    b.Property<float>("Order")
+                        .HasColumnType("real");
+
+                    b.Property<int>("StudInfoId")
+                        .HasColumnType("int");
+
+                    b.HasKey("AcBulletId");
+
+                    b.HasIndex("StudInfoId");
+
+                    b.ToTable("AcBullets");
+                });
 
             modelBuilder.Entity("API.Entities.AppUser", b =>
                 {
@@ -207,7 +233,7 @@ namespace API.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("DutyBulletText")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(250)");
 
                     b.Property<bool>("IsActive")
                         .HasColumnType("bit");
@@ -648,7 +674,7 @@ namespace API.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("SkillsBulletText")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(250)");
 
                     b.HasKey("SkillsBulletId");
 
@@ -767,6 +793,43 @@ namespace API.Migrations
                     b.HasIndex("LikedUserId");
 
                     b.ToTable("Likes");
+                });
+
+            modelBuilder.Entity("API.Entities.WorkBullet", b =>
+                {
+                    b.Property<int>("WorkBulletId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
+                    b.Property<float>("Order")
+                        .HasColumnType("real");
+
+                    b.Property<int>("StudInfoId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("WorkBulletText")
+                        .HasColumnType("nvarchar(250)");
+
+                    b.HasKey("WorkBulletId");
+
+                    b.HasIndex("StudInfoId");
+
+                    b.ToTable("WorkBullets");
+                });
+
+            modelBuilder.Entity("API.Entities.AcBullet", b =>
+                {
+                    b.HasOne("API.Entities.StudInfo", "StudInfo")
+                        .WithMany("AcBullets")
+                        .HasForeignKey("StudInfoId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("StudInfo");
                 });
 
             modelBuilder.Entity("API.Entities.CiLocation", b =>
@@ -950,6 +1013,17 @@ namespace API.Migrations
                     b.Navigation("SourceUser");
                 });
 
+            modelBuilder.Entity("API.Entities.WorkBullet", b =>
+                {
+                    b.HasOne("API.Entities.StudInfo", "StudInfo")
+                        .WithMany("WorkBullets")
+                        .HasForeignKey("StudInfoId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("StudInfo");
+                });
+
             modelBuilder.Entity("API.Entities.AppUser", b =>
                 {
                     b.Navigation("EmpInfos");
@@ -1003,6 +1077,13 @@ namespace API.Migrations
             modelBuilder.Entity("API.Entities.StempLocation", b =>
                 {
                     b.Navigation("CiempLocations");
+                });
+
+            modelBuilder.Entity("API.Entities.StudInfo", b =>
+                {
+                    b.Navigation("AcBullets");
+
+                    b.Navigation("WorkBullets");
                 });
 #pragma warning restore 612, 618
         }

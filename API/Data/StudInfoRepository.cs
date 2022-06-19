@@ -47,6 +47,14 @@ namespace API.Data
                  .SingleOrDefaultAsync();
         }
 
+        public async Task<StudInfoDto> GetStudInfoDtoByIdAsync(int id)
+        {
+            return await _context.StudInfos
+               .Where(x => x.StudInfoId == id)
+               .ProjectTo<StudInfoDto>(_mapper.ConfigurationProvider)
+               .SingleOrDefaultAsync();
+        }
+
         public async Task<IEnumerable<StudInfoDto>> GetStudInfoDtosAsync()
         {
             return await _context.StudInfos

@@ -68,10 +68,10 @@ namespace API.Helpers
             //     .MapFrom(src => src.Positions.FirstOrDefault(x => x.IsActive).PositionBenefits))
             // .ForMember(dest => dest.PositionType, opt => opt
             //     .MapFrom(src => src.Positions.FirstOrDefault(x => x.IsActive).PositionType))
-            .ForMember(dest => dest.CiempLocation, opt => opt
-                .MapFrom(src => src.Positions.FirstOrDefault(x => x.IsActive).CiempLocation))
-            .ForMember(dest => dest.StempLocation, opt => opt
-                .MapFrom(src => src.Positions.FirstOrDefault(x => x.IsActive).StempLocation))
+            // .ForMember(dest => dest.CiempLocation, opt => opt
+            //     .MapFrom(src => src.Positions.FirstOrDefault(x => x.IsActive).CiempLocation))
+            // .ForMember(dest => dest.StempLocation, opt => opt
+            //     .MapFrom(src => src.Positions.FirstOrDefault(x => x.IsActive).StempLocation))
             .ForMember(dest => dest.PosCategory, opt => opt
                 .MapFrom(src => src.Positions.FirstOrDefault(x => x.IsActive).PosCategory))
             .ForMember(dest => dest.PosName, opt => opt
@@ -167,6 +167,10 @@ namespace API.Helpers
             CreateMap<CoLocation, CoLocationDto>();
             CreateMap<DutyBulletUpdateDto, DutyBullet>();
             CreateMap<DutyBullet, DutyBulletDto>();
+            CreateMap<AcBulletUpdateDto, AcBullet>();
+            CreateMap<AcBullet, AcBulletDto>();
+            CreateMap<WorkBulletUpdateDto, WorkBullet>();
+            CreateMap<WorkBullet, WorkBulletDto>();
             CreateMap<SkillsBulletUpdateDto, SkillsBullet>();
             CreateMap<SkillsBullet, SkillsBulletDto>();
             CreateMap<RegisterEmpDto, AppUser>();

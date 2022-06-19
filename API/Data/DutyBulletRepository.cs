@@ -46,14 +46,6 @@ namespace API.Data
               .SingleOrDefaultAsync();
         }
 
-        // public async Task<IEnumerable<DutyBulletDto>> GetDutyBulletDtosByAppUserIdAsync(int id)
-        // {
-        //     return await _context.DutyBullets
-        //           .Where(x => x.AppUserId == id)
-        //           .ProjectTo<DutyBulletDto>(_mapper.ConfigurationProvider)
-        //           .ToListAsync();
-        // }
-
         public async Task<IEnumerable<DutyBulletDto>> GetDutyBulletDtosByPositionIdAsync(int id)
         {
             return await _context.DutyBullets

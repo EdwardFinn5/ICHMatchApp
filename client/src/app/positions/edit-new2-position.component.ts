@@ -40,13 +40,13 @@ export class EditNew2PositionComponent implements OnInit {
     { value: 'Full-Time', display: 'Full-Time' },
     { value: 'Part-Time', display: 'Part-Time' },
   ];
-  // @HostListener('window:beforeunload', ['$event']) unloadNotification(
-  //   $event: any
-  // ) {
-  //   if (this.addPositionForm.dirty) {
-  //     $event.returnValue = true;
-  //   }
-  // }
+  @HostListener('window:beforeunload', ['$event']) unloadNotification(
+    $event: any
+  ) {
+    if (this.addPositionForm.dirty) {
+      $event.returnValue = true;
+    }
+  }
   constructor(
     private router: Router,
     private position2Service: Position2Service,

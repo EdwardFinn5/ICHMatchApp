@@ -118,6 +118,13 @@ import { StemplocationListEmpsComponent } from './emplocations/stemplocation-lis
 import { PoscategoriesListEmpsComponent } from './poscategories-and-positnames/poscategories-list-emps.component';
 import { AddPositnamesEmpsComponent } from './poscategories-and-positnames/add-positnames-emps.component';
 import { EditNew2PrepositionComponent } from './positions/edit-new2-preposition/edit-new2-preposition.component';
+import { PositionaBulletsHomeComponent } from './positiona-ac-bullets/positiona-bullets-home.component';
+import { PositionaAcBulletsComponent } from './positiona-ac-bullets/positiona-ac-bullets.component';
+import { PositionaEditAcBulletsComponent } from './positiona-ac-bullets/positiona-edit-ac-bullets.component';
+import { PositionaViewAcBulletsComponent } from './positiona-ac-bullets/positiona-view-ac-bullets.component';
+import { PositionaWorkBulletsComponent } from './positiona-work-bullets/positiona-work-bullets.component';
+import { PositionaEditWorkBulletsComponent } from './positiona-work-bullets/positiona-edit-work-bullets.component';
+import { PositionaViewWorkBulletsComponent } from './positiona-work-bullets/positiona-view-work-bullets.component';
 
 @NgModule({
   declarations: [
@@ -228,6 +235,13 @@ import { EditNew2PrepositionComponent } from './positions/edit-new2-preposition/
     PoscategoriesListEmpsComponent,
     AddPositnamesEmpsComponent,
     EditNew2PrepositionComponent,
+    PositionaBulletsHomeComponent,
+    PositionaAcBulletsComponent,
+    PositionaEditAcBulletsComponent,
+    PositionaViewAcBulletsComponent,
+    PositionaWorkBulletsComponent,
+    PositionaEditWorkBulletsComponent,
+    PositionaViewWorkBulletsComponent,
   ],
   imports: [
     BrowserModule,

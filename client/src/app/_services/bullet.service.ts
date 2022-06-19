@@ -2,9 +2,11 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { AcBullet } from '../_models/acBullet';
 import { DutyBullet } from '../_models/dutyBullet';
 import { Position } from '../_models/position';
 import { SkillsBullet } from '../_models/skillsBullet';
+import { WorkBullet } from '../_models/workBullet';
 import { BusyService } from './busy.service';
 
 @Injectable({
@@ -31,6 +33,16 @@ export class BulletService {
     );
   }
 
+  getAcBullets(studInfoId: number) {
+    return this.http.get<AcBullet[]>(this.baseUrl + 'acbullets/' + studInfoId);
+  }
+
+  getWorkBullets(studInfoId: number) {
+    return this.http.get<WorkBullet[]>(
+      this.baseUrl + 'workBullets/' + studInfoId
+    );
+  }
+
   getDutyBullet(dutyBulletId: number) {
     console.log('duty id inside service get duty bullet: ', dutyBulletId);
     return this.http.get<DutyBullet>(
@@ -45,6 +57,20 @@ export class BulletService {
     );
   }
 
+  getAcBullet(acBulletId: number) {
+    console.log('ac id inside service get ac bullet: ', acBulletId);
+    return this.http.get<AcBullet>(
+      this.baseUrl + 'acbullets/getacbulletbyid/' + acBulletId
+    );
+  }
+
+  getWorkBullet(workBulletId: number) {
+    console.log('work id inside service get work bullet: ', workBulletId);
+    return this.http.get<WorkBullet>(
+      this.baseUrl + 'workbullets/getworkbulletbyid/' + workBulletId
+    );
+  }
+
   addDutyBullet(positionId: number, model: any) {
     return this.http.post<DutyBullet>(
       this.baseUrl + 'dutybullets/' + positionId,
@@ -55,6 +81,20 @@ export class BulletService {
   addSkillsBullet(positionId: number, model: any) {
     return this.http.post<SkillsBullet>(
       this.baseUrl + 'skillsbullets/' + positionId,
+      model
+    );
+  }
+
+  addAcBullet(studInfoId: number, model: any) {
+    return this.http.post<AcBullet>(
+      this.baseUrl + 'acbullets/' + studInfoId,
+      model
+    );
+  }
+
+  addWorkBullet(studInfoId: number, model: any) {
+    return this.http.post<WorkBullet>(
+      this.baseUrl + 'workbullets/' + studInfoId,
       model
     );
   }
@@ -75,11 +115,32 @@ export class BulletService {
     );
   }
 
+  updateAcBullet(acBullet: AcBullet, acBulletId: number) {
+    console.log('2nd acbulletid: ', acBulletId);
+    return this.http.put(this.baseUrl + 'acbullets/' + acBulletId, acBullet);
+  }
+
+  updateWorkBullet(workBullet: WorkBullet, workBulletId: number) {
+    console.log('2nd workbulletid: ', workBulletId);
+    return this.http.put(
+      this.baseUrl + 'workbullets/' + workBulletId,
+      workBullet
+    );
+  }
+
   deleteDutyBullet(id: number) {
     return this.http.delete(this.baseUrl + 'dutybullets/' + id);
   }
 
   deleteSkillsBullet(id: number) {
     return this.http.delete(this.baseUrl + 'skillsbullets/' + id);
+  }
+
+  deleteAcBullet(id: number) {
+    return this.http.delete(this.baseUrl + 'acbullets/' + id);
+  }
+
+  deleteWorkBullet(id: number) {
+    return this.http.delete(this.baseUrl + 'workbullets/' + id);
   }
 }

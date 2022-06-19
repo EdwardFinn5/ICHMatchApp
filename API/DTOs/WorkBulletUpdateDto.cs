@@ -5,9 +5,9 @@ using System.Threading.Tasks;
 
 namespace API.DTOs
 {
-    public class DutyBulletUpdateDto
+    public class WorkBulletUpdateDto
     {
-        public string DutyBulletText { get; set; }
+        public string WorkBulletText { get; set; }
         public float Order { get; set; }
         public bool IsActive { get; set; }
     }

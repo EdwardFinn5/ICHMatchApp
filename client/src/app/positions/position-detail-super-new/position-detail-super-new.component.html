@@ -15,7 +15,7 @@
                         <br> Position: <strong>{{position.positionName}}</strong>
                         <br> Type of Position: <strong>{{position.positionType}}</strong>
                         <br> Position Location: <strong>{{position.positionLocation}}</strong>
-                        <br>Date Position was Posted: <strong>{{position.dateAdded | date: "MMM dd yyyy" }}</strong>
+                        <!-- <br>Date Position was Posted: <strong>{{position.dateAdded | date: "MMM dd yyyy" }}</strong> -->
                         <br>Start Date: <strong>{{position.startDate | date: "MMM dd yyyy" }}</strong>
                         <br>Application Deadline: <strong>{{position.appDeadline | date: "MMM dd yyyy" }}</strong>
             </div>
@@ -77,7 +77,7 @@
                 </div>            
             </tab>
             <tab heading='Messages' >
-                <div class="p-3 font" style="font-size:large"><strong>Remember to specify which position at {{member.empName}} you are messaging about:</strong></div>
+                <div class="p-3 font" style="font-size:large"><strong>Remember to specify about which position at {{member.empName}} you are messaging</strong></div>
                 <app-member-messages [username]="member.username"></app-member-messages>
             </tab>
 

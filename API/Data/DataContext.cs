@@ -32,6 +32,8 @@ namespace API.Data
         public DbSet<StudInfo> StudInfos { get; set; }
         public DbSet<UserLike> Likes { get; set; }
         public DbSet<Message> Messages { get; set; }
+        public DbSet<AcBullet> AcBullets { get; set; }
+        public DbSet<WorkBullet> WorkBullets { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

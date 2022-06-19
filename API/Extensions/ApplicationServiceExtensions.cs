@@ -43,6 +43,8 @@ namespace API.Extensions
             services.AddScoped<IPosCategoryRepository, PosCategoryRepository>();
             services.AddScoped<IDutyBulletRepository, DutyBulletRepository>();
             services.AddScoped<ISkillsBulletRepository, SkillsBulletRepository>();
+            services.AddScoped<IAcBulletRepository, AcBulletRepository>();
+            services.AddScoped<IWorkBulletRepository, WorkBulletRepository>();
             services.AddAutoMapper(typeof(AutoMapperProfiles).Assembly);
             services.AddDbContext<DataContext>(options =>
             {

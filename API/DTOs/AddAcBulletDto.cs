@@ -5,10 +5,12 @@ using System.Threading.Tasks;
 
 namespace API.DTOs
 {
-    public class DutyBulletUpdateDto
+    public class AddAcBulletDto
     {
-        public string DutyBulletText { get; set; }
+        public int AcBulletId { get; set; }
+        public string AcBulletText { get; set; }
         public float Order { get; set; }
         public bool IsActive { get; set; }
+        public int StudInfoId { get; set; }
     }
 }

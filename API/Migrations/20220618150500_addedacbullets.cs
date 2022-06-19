@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace API.Migrations
 {
-    public partial class changeddates : Migration
+    public partial class addedacbullets : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -475,7 +475,7 @@ namespace API.Migrations
                 {
                     DutyBulletId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    DutyBulletText = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    DutyBulletText = table.Column<string>(type: "nvarchar(250)", nullable: true),
                     Order = table.Column<float>(type: "real", nullable: false),
                     IsActive = table.Column<bool>(type: "bit", nullable: false),
                     PositionId = table.Column<int>(type: "int", nullable: false)
@@ -521,7 +521,7 @@ namespace API.Migrations
                 {
                     SkillsBulletId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    SkillsBulletText = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    SkillsBulletText = table.Column<string>(type: "nvarchar(250)", nullable: true),
                     Order = table.Column<float>(type: "real", nullable: false),
                     IsActive = table.Column<bool>(type: "bit", nullable: false),
                     PositionId = table.Column<int>(type: "int", nullable: false)
@@ -536,6 +536,55 @@ namespace API.Migrations
                         principalColumn: "PositionId",
                         onDelete: ReferentialAction.Cascade);
                 });
+
+            migrationBuilder.CreateTable(
+                name: "AcBullets",
+                columns: table => new
+                {
+                    AcBulletId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    AcBulletText = table.Column<string>(type: "nvarchar(250)", nullable: true),
+                    Order = table.Column<float>(type: "real", nullable: false),
+                    IsActive = table.Column<bool>(type: "bit", nullable: false),
+                    StudInfoId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_AcBullets", x => x.AcBulletId);
+                    table.ForeignKey(
+                        name: "FK_AcBullets_StudInfos_StudInfoId",
+                        column: x => x.StudInfoId,
+                        principalTable: "StudInfos",
+                        principalColumn: "StudInfoId",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "WorkBullets",
+                columns: table => new
+                {
+                    WorkBulletId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    WorkBulletText = table.Column<string>(type: "nvarchar(250)", nullable: true),
+                    Order = table.Column<float>(type: "real", nullable: false),
+                    IsActive = table.Column<bool>(type: "bit", nullable: false),
+                    StudInfoId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_WorkBullets", x => x.WorkBulletId);
+                    table.ForeignKey(
+                        name: "FK_WorkBullets_StudInfos_StudInfoId",
+                        column: x => x.StudInfoId,
+                        principalTable: "StudInfos",
+                        principalColumn: "StudInfoId",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_AcBullets_StudInfoId",
+                table: "AcBullets",
+                column: "StudInfoId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_CiempLocations_StempLocationId",
@@ -616,10 +665,18 @@ namespace API.Migrations
                 name: "IX_StudInfos_AppUserId",
                 table: "StudInfos",
                 column: "AppUserId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_WorkBullets_StudInfoId",
+                table: "WorkBullets",
+                column: "StudInfoId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropTable(
+                name: "AcBullets");
+
             migrationBuilder.DropTable(
                 name: "CiempLocations");
 
@@ -669,7 +726,7 @@ namespace API.Migrations
                 name: "SkillsBullets");
 
             migrationBuilder.DropTable(
-                name: "StudInfos");
+                name: "WorkBullets");
 
             migrationBuilder.DropTable(
                 name: "StempLocations");
@@ -685,6 +742,9 @@ namespace API.Migrations
 
             migrationBuilder.DropTable(
                 name: "Positions");
+
+            migrationBuilder.DropTable(
+                name: "StudInfos");
 
             migrationBuilder.DropTable(
                 name: "CoLocations");

@@ -12,6 +12,5 @@ namespace API.DTOs
         public float Order { get; set; }
         public bool IsActive { get; set; } = true;
         public int PositionId { get; set; }
-        // public int AppUserId { get; set; }
     }
 }

@@ -28,6 +28,12 @@ export class StudinfoService {
     return this.http.put(this.baseUrl + 'studinfos/' + appUserId, studInfo);
   }
 
+  getStudInfoById(studInfoId: number) {
+    return this.http.get<StudInfo>(
+      this.baseUrl + 'studInfo/GetStudInfoDtoById/' + studInfoId
+    );
+  }
+
   getStudInfo(appUserId: number) {
     console.log('getting stud info');
     console.log(appUserId);

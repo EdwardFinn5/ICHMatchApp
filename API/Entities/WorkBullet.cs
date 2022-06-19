@@ -7,15 +7,15 @@ using System.Threading.Tasks;
 
 namespace API.Entities
 {
-    public class SkillsBullet
+    public class WorkBullet
     {
         [Key]
-        public int SkillsBulletId { get; set; }
+        public int WorkBulletId { get; set; }
         [Column(TypeName = "nvarchar(250)")]
-        public string SkillsBulletText { get; set; }
+        public string WorkBulletText { get; set; }
         public float Order { get; set; }
         public bool IsActive { get; set; } = true;
-        public int PositionId { get; set; }
-        public Position Position { get; set; }
+        public int StudInfoId { get; set; }
+        public StudInfo StudInfo { get; set; }
     }
 }
