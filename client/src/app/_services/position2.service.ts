@@ -41,7 +41,7 @@ export class Position2Service {
   }
 
   addPosition(model: any, id: number) {
-    return this.http.post(this.baseUrl + 'positions/' + id, model);
+    return this.http.post(this.baseUrl + 'positions2/' + id, model);
   }
 
   getPositions(userParams: UserParams) {

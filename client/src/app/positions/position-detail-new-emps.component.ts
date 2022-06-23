@@ -1,27 +1,22 @@
 import { DOCUMENT } from '@angular/common';
 import { Component, Inject, Input, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { TabDirective, TabsetComponent } from 'ngx-bootstrap/tabs';
 import { DutyBullet } from '../_models/dutyBullet';
 import { EmpInfo } from '../_models/empInfo';
 import { Member } from '../_models/member';
-import { Message } from '../_models/message';
 import { Position } from '../_models/position';
 import { SkillsBullet } from '../_models/skillsBullet';
 import { BulletService } from '../_services/bullet.service';
 import { EmpinfoService } from '../_services/empinfo.service';
-import { MembersService } from '../_services/members.service';
-import { MessageService } from '../_services/message.service';
 import { Position2Service } from '../_services/position2.service';
 import { SearchMembersService } from '../_services/search-members.service';
 
 @Component({
-  selector: 'app-position-detail-new',
-  templateUrl: './position-detail-new.component.html',
-  styleUrls: ['./position-detail-new.component.css'],
+  selector: 'app-position-detail-new-emps',
+  templateUrl: './position-detail-new-emps.component.html',
+  styleUrls: ['./position-detail-new-emps.component.css'],
 })
-export class PositionDetailNewComponent implements OnInit {
-  @ViewChild('memberTabs') memberTabs: TabsetComponent;
+export class PositionDetailNewEmpsComponent implements OnInit {
   position: Position;
   positionId: number;
   @Input() dutyBullets: DutyBullet[];
@@ -29,25 +24,18 @@ export class PositionDetailNewComponent implements OnInit {
   id: number;
   member: Member;
   empInfo: EmpInfo;
-  activeTab: TabDirective;
-  messages: Message[] = [];
 
   constructor(
     private bulletService: BulletService,
     private position2Service: Position2Service,
     private searchMembersService: SearchMembersService,
     private route: ActivatedRoute,
-    private messageService: MessageService,
     private empInfoService: EmpinfoService,
     @Inject(DOCUMENT) private document: Document
   ) {}
 
   ngOnInit(): void {
     this.loadPosition();
-
-    // this.route.queryParams.subscribe((params) => {
-    //   params.tab ? this.selectTab(params.tab) : this.selectTab(0);
-    // });
   }
 
   loadPosition() {
@@ -65,7 +53,6 @@ export class PositionDetailNewComponent implements OnInit {
         this.loadMember(this.id);
       });
   }
-
   loadMember(id: number) {
     this.searchMembersService.getSearchMemberById(id).subscribe((member) => {
       this.member = member;
@@ -99,24 +86,5 @@ export class PositionDetailNewComponent implements OnInit {
 
   goToNewLink() {
     this.document.location.href = this.position.applyLink;
-  }
-
-  loadMessages() {
-    this.messageService
-      .getMessageThread(this.member.username)
-      .subscribe((messages) => {
-        this.messages = messages;
-      });
-  }
-
-  selectTab(tabId: number) {
-    this.memberTabs.tabs[tabId].active = true;
-  }
-
-  onTabActivated(data: TabDirective) {
-    this.activeTab = data;
-    if (this.activeTab.heading === 'Messages' && this.messages.length === 0) {
-      this.loadMessages();
-    }
   }
 }

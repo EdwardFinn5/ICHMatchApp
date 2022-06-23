@@ -100,6 +100,8 @@ import { StemplocationListEmpsComponent } from './emplocations/stemplocation-lis
 import { PoscategoriesListEmpsComponent } from './poscategories-and-positnames/poscategories-list-emps.component';
 import { AddPositnamesEmpsComponent } from './poscategories-and-positnames/add-positnames-emps.component';
 import { EditNew2PrepositionComponent } from './positions/edit-new2-preposition/edit-new2-preposition.component';
+import { Edit2PositionComponent } from './positions/edit2-position.component';
+import { PositionDetailNewEmpsComponent } from './positions/position-detail-new-emps.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -445,6 +447,11 @@ const routes: Routes = [
     pathMatch: 'full',
   },
   {
+    path: 'newpositiondetailemps/:positionId',
+    component: PositionDetailNewEmpsComponent,
+    pathMatch: 'full',
+  },
+  {
     path: 'employerpositiondetail/:positionId',
     component: PositionDetailEmployerComponent,
     pathMatch: 'full',
@@ -462,6 +469,11 @@ const routes: Routes = [
   {
     path: 'editposition/:positionId',
     component: EditPositionComponent,
+    pathMatch: 'full',
+  },
+  {
+    path: 'edit2position',
+    component: Edit2PositionComponent,
     pathMatch: 'full',
   },
   {

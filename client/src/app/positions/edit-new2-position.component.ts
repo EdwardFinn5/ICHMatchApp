@@ -8,12 +8,14 @@ import { Member } from '../_models/member';
 import { PosCategory } from '../_models/posCategory';
 import { Position } from '../_models/position';
 import { PositName } from '../_models/positName';
+import { RegisterCode } from '../_models/registerCode';
 import { StempLocation } from '../_models/stempLocation';
 import { User } from '../_models/user';
 import { AccountService } from '../_services/account.service';
 import { CiemplocationService } from '../_services/ciemplocation.service';
 import { Position2Service } from '../_services/position2.service';
 import { PositNameService } from '../_services/positname.service';
+import { RegisterCodeService } from '../_services/register-code.service';
 import { SearchMembersService } from '../_services/search-members.service';
 
 @Component({
@@ -28,6 +30,9 @@ export class EditNew2PositionComponent implements OnInit {
   ciempLocations: CiempLocation[];
   posCategories: PosCategory[];
   positNames: PositName[];
+  position: Position[];
+  registerCode: RegisterCode;
+  registerCodeId: number = 1;
 
   // model: any = {};
   // @ViewChild('addPositionForm') addPositionForm: NgForm;
@@ -54,7 +59,7 @@ export class EditNew2PositionComponent implements OnInit {
     private accountService: AccountService,
     private ciempLocationService: CiemplocationService,
     private positNameService: PositNameService,
-    // private searchMembersService: SearchMembersService,
+    private registerCodeService: RegisterCodeService,
     private toastr: ToastrService,
     private fb: FormBuilder
   ) {
@@ -67,6 +72,7 @@ export class EditNew2PositionComponent implements OnInit {
     // this.loadMember();
     console.log('User Id: ', this.user.appUserId);
     this.initializeForm();
+    this.loadRegisterCode();
     this.loadStempLocations();
     this.loadCiempLocations();
     this.loadPosCategories();
@@ -75,6 +81,7 @@ export class EditNew2PositionComponent implements OnInit {
   initializeForm() {
     this.addPositionForm = this.fb.group({
       posCategory: ['', Validators.required],
+      registerCode: ['', Validators.required],
       posName: ['', Validators.required],
       positionType: ['', Validators.required],
       ciempLocation: ['', Validators.required],
@@ -93,18 +100,29 @@ export class EditNew2PositionComponent implements OnInit {
   //     });
   // }
 
+  loadRegisterCode() {
+    this.registerCodeService
+      .getRegisterCode(this.registerCodeId)
+      .subscribe((registerCode: RegisterCode) => {
+        this.registerCode = registerCode;
+        console.log(registerCode.registerCodeId);
+      });
+  }
+
   addPosition() {
     console.log('form: ', this.addPositionForm.value);
     console.log('id: ', this.user.appUserId);
     this.position2Service
       .addPosition(this.addPositionForm.value, this.user.appUserId)
       .subscribe(
-        (response) => {
+        (response: Position) => {
           this.toastr.success('Required position info added');
+          console.log('position ID: ', response.positionId);
+          console.log('response: ', response);
 
           // this.addPositionForm.reset(this.model);
           // this.router.navigateByUrl('empmember/positions');
-          this.router.navigateByUrl('/empmember/positions');
+          this.router.navigateByUrl('/editposition/' + response.positionId);
         },
         (error) => {
           console.log(error);

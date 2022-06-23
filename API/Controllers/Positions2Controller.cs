@@ -67,12 +67,12 @@ namespace API.Controllers
         [HttpPost("{id}")]
         public async Task<ActionResult<PositionDto>> AddPosition(AddPositionDto addPositionDto, int id)
         {
-            if (await PositionExists(addPositionDto.PosName)) return BadRequest("Position is already in place");
+            // if (await PositionExists(addPositionDto.PosName)) return BadRequest("Position is already in place");
 
             var position = new Position
             {
                 PositionId = addPositionDto.PositionId,
-                // RegisterCode = addPositionDto.RegisterCode,
+                RegisterCode = addPositionDto.RegisterCode,
                 PosName = addPositionDto.PosName,
                 PosCategory = addPositionDto.PosCategory,
                 IsActive = addPositionDto.IsActive,
@@ -101,7 +101,7 @@ namespace API.Controllers
             {
                 PositionId = position.PositionId,
                 IsActive = position.IsActive,
-                // RegisterCode = position.RegisterCode,
+                RegisterCode = position.RegisterCode,
                 PosCategory = position.PosCategory,
                 PosName = position.PosName,
                 // LookingFor = position.LookingFor,
@@ -141,10 +141,10 @@ namespace API.Controllers
         }
 
 
-        private async Task<bool> PositionExists(string posName)
-        {
-            return await _context.Positions.AnyAsync(x => x.PosName == posName.ToLower());
-        }
+        // private async Task<bool> PositionExists(string posName)
+        // {
+        //     return await _context.Positions.AnyAsync(x => x.PosName == posName.ToLower());
+        // }
 
     }
 }

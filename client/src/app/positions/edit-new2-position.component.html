@@ -1,4 +1,4 @@
-<section class="signup" *ngIf="posCategories">
+<section class="signup" *ngIf="registerCode">
     <div class="card-header col-lg-4 m-auto">
       <h3 style="text-align: center;">Add Required Position Info</h3>
         <h4 style="text-align: center;">(hit Tab to next field, not Enter)</h4>
@@ -6,6 +6,18 @@
     <div class="login col-lg-4 m-auto shadow-lg">
 
         <form [formGroup]='addPositionForm' (ngSubmit)="addPositionForm.valid && addPosition()" autocomplete="off">
+
+          <div class="form-group">
+            <input [class.is-invalid]='addPositionForm.get("registerCode").errors 
+                && addPositionForm.get("registerCode").touched' formControlName='registerCode'
+              class="form-control shadow-sm" type="text"
+              pattern="({{registerCode.registerCodeName1}})|{{registerCode.registerCodeName2}}|{{registerCode.registerCodeName3}}|{{registerCode.registerCodeName4}}|{{registerCode.registerCodeName5}}|{{registerCode.registerCodeName6}}|{{registerCode.registerCodeName7}}"
+              placeholder="Register Code (re-enter employer code)">
+            <div *ngIf="addPositionForm.get('registerCode').hasError('required')" class="invalid-feedback">Please enter a
+              register code</div>
+            <div *ngIf="addPositionForm.get('registerCode').hasError('pattern')" class="invalid-feedback">If you do not have
+              a register code please email: info@iowacollegefoundation.org</div>
+          </div>
 
             <label class="filter m-auto mb-2"><strong>Select the category for your position (required):</strong></label>
     

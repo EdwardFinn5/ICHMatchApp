@@ -104,17 +104,10 @@ export class SearchMembersService {
       userParams.pageSize
     );
 
-    // params = params.append('major', userParams.major);
-    // params = params.append('classYear', userParams.classYear);
-    // params = params.append('college', userParams.college);
     params = params.append('ciempLocation', userParams.ciempLocation);
     params = params.append('stempLocation', userParams.stempLocation);
     params = params.append('empIndustry', userParams.empIndustry);
-    // params = params.append('orderByMajor', userParams.orderByMajor);
-    // params = params.append('orderByCollege', userParams.orderByCollege);
-    // params = params.append('orderByLocation', userParams.orderByLocation);
     params = params.append('orderByEmpName', userParams.orderByEmpName);
-    // params = params.append('orderByEmpIndustry', userParams.orderByEmpIndustry);
 
     return this.getPaginatedResult<Member[]>(
       this.baseUrl + 'searchusers/GetByEmpMemberType',

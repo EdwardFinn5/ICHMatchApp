@@ -1,0 +1,30 @@
+<div class="row shadow" *ngIf="position"  style="margin-left: 0px">
+    <div class="col-sm-4 p-0">
+        
+        <!-- <div class="card" *ngIf="member.appUserType == 'ColStudent'"> -->
+
+            <div class="card" style="align-items: center">
+
+            <img src="{{position.logoUrl || '../../assets/images/new_logo.png' }}" alt="{{position.empName}}"
+                class="card-img-top img-studthumbnail">
+            <div class="card-body text-center">
+                <!-- <div class="mb-1" *ngIf="(presence.onlineUsers$ | async).includes(member.username)">
+                    <i class="fa fa-user-circle text-success"></i> Online now
+                </div> -->
+                    <p class="text-center">
+                        <u><strong>{{position.empName}}</strong></u>
+                        <br> Position: <strong>{{position.positionName}}</strong>
+                        <br> Type of Position: <strong>{{position.positionType}}</strong>
+                        <br> Position Location: <strong>{{position.positionLocation}}</strong>
+                        <!-- <br>Date Position was Posted: <strong>{{position.dateAdded | date: "MMM dd yyyy" }}</strong> -->
+                        <br>Start Date: <strong>{{position.startDate | date: "MMM dd yyyy" }}</strong>
+                        <br>Application Deadline: <strong>{{position.appDeadline | date: "MMM dd yyyy" }}</strong>
+                    </p>
+                <div class="btn-group d-flex">
+                    <button class="btn btn-info shadow-sm mr-1" routerLink='/positionslist'>Back to positions</button>
+                    <button (click)="selectTab(3)" class="btn btn-success shadow-sm ml-1">Send message</button>
+                </div>
+           
+        </div>
+    </div>
+    </div>

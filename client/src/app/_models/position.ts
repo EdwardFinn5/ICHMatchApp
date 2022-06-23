@@ -5,6 +5,7 @@ export interface Position {
   empIndustry: string;
   posName: string;
   posCategory: string;
+  registerCode: string;
   // givingLevel: string;
   // giftAmt: number;
   positionDescription: string;

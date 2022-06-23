@@ -1,6 +1,6 @@
 <div class="row shadow" *ngIf="position && member && empInfo"  style="margin-left: 0px">
     <div class="col-sm-4 p-0">
-        
+     
             <div class="card" style="align-items: center">
 
             <img src="{{position.logoUrl || '../../assets/images/new_logo.png' }}" alt="{{position.empName}}"
@@ -19,8 +19,8 @@
                         <br>Application Deadline: <strong>{{position.appDeadline | date: "MMM dd yyyy" }}</strong>
                     </p>
                 <div class="btn-group d-flex">
-                    <button class="btn btn-info shadow-sm mr-1" routerLink='/positionslist'>Back to positions</button>
-                    <button (click)="selectTab(3)" class="btn btn-success shadow-sm ml-1">Send message</button>
+                    <button class="btn btn-info mr-1 shadow-sm mr-1" routerLink="/empmember/positions">All Positions</button>
+                    <button class="btn btn-success shadow-sm ml-1" routerLink='/editposition/{{position.positionId}}'>Back to Edit</button>
                 </div>
            
         </div>
@@ -33,44 +33,43 @@
         <tabset class="member-tabset" #memberTabs>
             <tab heading='Position Details' class="tab-heading">
                 <div class="details">
-                    <h3><u><strong>{{position.posName}} Position </strong></u></h3>
+                <h3><u><strong>{{position.posName}} Position </strong></u></h3>
                
-                    <div *ngIf="position.positionBenefits">
-                    <h4 class="mt-1 mb-2"><strong>Position summary</strong></h4>
-                    {{position.positionDescription}}<br>
-                    </div>
-                    
-                    <div  *ngIf="dutyBullets?.length > 0">
-                        <h4 class="mt-1"><strong>Responsibilities and Duties</strong></h4>
-                        <ul>
-                            <li *ngFor="let dutyBullet of dutyBullets">{{dutyBullet.dutyBulletText}}</li>
-                        </ul>
-                    </div>
-    
-                    <div  *ngIf="skillsBullets?.length > 0">
-                        <h4><strong>Requirements and Skills</strong></h4>
-                        <ul>
-                            <li *ngFor="let skillsBullet of skillsBullets">{{skillsBullet.skillsBulletText}}</li>
-                        </ul>
-                    </div>
-                    
-                   
-                    <div *ngIf="position.positionBenefits">
-                        <h4><strong>Benefits of this position</strong></h4>
-                        {{position.positionBenefits}}<br>
-                    </div>
-    
-                    <div *ngIf="position.uniqueTitle">
-                        <h4 class="mt-1"><strong>{{position.uniqueTitle}}</strong></h4>
-                        {{position.uniqueContent}}<br>
-                    </div>
-                    
-                </div>            
+                <div *ngIf="position.positionBenefits">
+                <h4 class="mt-1 mb-2"><strong>Position summary</strong></h4>
+                {{position.positionDescription}}<br>
+                </div>
                 
-            </tab>
+                <div  *ngIf="dutyBullets?.length > 0">
+                    <h4 class="mt-1"><strong>Responsibilities and Duties</strong></h4>
+                    <ul>
+                        <li *ngFor="let dutyBullet of dutyBullets">{{dutyBullet.dutyBulletText}}</li>
+                    </ul>
+                </div>
+
+                <div  *ngIf="skillsBullets?.length > 0">
+                    <h4><strong>Requirements and Skills</strong></h4>
+                    <ul>
+                        <li *ngFor="let skillsBullet of skillsBullets">{{skillsBullet.skillsBulletText}}</li>
+                    </ul>
+                </div>
+               
+                <div *ngIf="position.positionBenefits">
+                    <h4><strong>Benefits of this position</strong></h4>
+                    {{position.positionBenefits}}<br>
+                </div>
+
+                <div *ngIf="position.uniqueTitle">
+                    <h4 class="mt-1"><strong>{{position.uniqueTitle}}</strong></h4>
+                    {{position.uniqueContent}}<br>
+                </div>
+                
+            </div>            
+            
+        </tab>
             <tab heading='Application Details' class="tab-heading">
                 <div class="details">
-
+                
                     <div *ngIf="position.howToApply">
                         <h4 class="mt-2"><strong>How to apply</strong></h4>
                         {{position.howToApply}}<br>
@@ -115,22 +114,16 @@
                         <h4 class="mt-1"><strong>Why work for us</strong></h4>
                         {{empInfo.whyWork}}<br>
                     </div>
+                
               
                 <h4 class="mt-2"><strong>Website</strong></h4> 
+
                 <button type="button"class="btn btn-success mt-2" (click)="goToLink()">Go to Company Website</button>
             
-            </div>             
+            </div>            
             </tab>
-            <tab heading='Messages'>
-                <div class="p-3 font" style="font-size:large">
-                    <h4><strong>Remember to specify about which position at {{member.empName}} you are messaging!</strong></h4>
-                </div>
-                <!-- <app-member-messages [username]="member.username"></app-member-messages> -->
-                <app-member-messages [messages]="messages" [username]="member.username"></app-member-messages>
-                
-            </tab>
-
         </tabset>
     </div>
+
 
 

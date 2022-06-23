@@ -125,6 +125,9 @@ import { PositionaViewAcBulletsComponent } from './positiona-ac-bullets/position
 import { PositionaWorkBulletsComponent } from './positiona-work-bullets/positiona-work-bullets.component';
 import { PositionaEditWorkBulletsComponent } from './positiona-work-bullets/positiona-edit-work-bullets.component';
 import { PositionaViewWorkBulletsComponent } from './positiona-work-bullets/positiona-view-work-bullets.component';
+import { EditPositionCardComponent } from './positions/edit-position-card.component';
+import { Edit2PositionComponent } from './positions/edit2-position.component';
+import { PositionDetailNewEmpsComponent } from './positions/position-detail-new-emps.component';
 
 @NgModule({
   declarations: [
@@ -242,6 +245,9 @@ import { PositionaViewWorkBulletsComponent } from './positiona-work-bullets/posi
     PositionaWorkBulletsComponent,
     PositionaEditWorkBulletsComponent,
     PositionaViewWorkBulletsComponent,
+    EditPositionCardComponent,
+    Edit2PositionComponent,
+    PositionDetailNewEmpsComponent,
   ],
   imports: [
     BrowserModule,

@@ -49,20 +49,21 @@ export class PositionsListComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.resetFilters();
     this.loadPositions();
-    this.loadMembers();
+    // this.loadMembers();
     this.loadPosCategories();
   }
 
-  loadMembers() {
-    this.searchMemberService.setUserParams(this.userParams);
-    this.searchMemberService
-      .getSearchEmpMembers(this.userParams)
-      .subscribe((response) => {
-        this.members = response.result;
-        this.pagination = response.pagination;
-      });
-  }
+  // loadMembers() {
+  //   this.searchMemberService.setUserParams(this.userParams);
+  //   this.searchMemberService
+  //     .getSearchEmpMembers(this.userParams)
+  //     .subscribe((response) => {
+  //       this.members = response.result;
+  //       this.pagination = response.pagination;
+  //     });
+  // }
 
   loadPosCategories() {
     this.positNameService.getPosCategories().subscribe((posCategories) => {
