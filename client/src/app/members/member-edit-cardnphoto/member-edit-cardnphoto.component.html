@@ -14,13 +14,13 @@
                 class="card-img-top img-studthumbnail">
             <div class="card-body text-center">
                 <p>
-                    <u><strong>-- {{member.firstName}} {{member.lastName}} --</strong></u>
+                    <u><strong>-- {{member.firstName | titlecase}} {{member.lastName | titlecase}} --</strong></u>
                     <br><strong>{{member.classYear}} {{member.major}} Major</strong>
                     <br><strong>({{member.category}} Category)</strong>
                     <br> from <br>
-                    <strong>{{member.ciLocation}}, {{member.stLocation}}</strong>
+                    <strong>{{member.ciLocation | titlecase}}, {{member.stLocation}}</strong>
                     <br> attending <br>
-                    <strong><u>{{member.college}}</u></strong>
+                    <strong><u>{{member.college | titlecase}}</u></strong>
                     <br>
                     <strong>Last active: {{member.lastActive | date: "MMM dd yyyy"}}</strong>
                 </p>

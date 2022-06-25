@@ -29,7 +29,7 @@
                             Card Changes</button>
                         <button class="btn btn-success shadow-sm ml-1" routerLink='/newpositiondetailemps/{{position.positionId}}'>View Position</button>
                     </div>
-                    <button class="btn btn-primary btn-block shadow-sm mt-2" routerLink='/membersearch'>See talent</button>
+                    <button class="btn btn-primary btn-block shadow-sm mt-2" routerLink='/empmember/positions'>Back to positions</button>
                 </div>
             </div>
         </div>
@@ -40,9 +40,11 @@
                     <form #editForm="ngForm" id="editForm" (ngSubmit)="updatePosition()" autocomplete="off">
                         <div class="details mb-3">
 
-          <h5><strong>Fields with an asterisk (*) are optional. If you do not type anything in these fields, they will not be included when students view this position.</strong></h5>                  
+          <h5><strong>Fields with an asterisk (*) are optional. If you do not type anything in these fields, they will not be included when students view this position.
+              Also, take action with green and blue buttons first before updating any fields that will need to be saved.
+          </strong></h5>                  
 
-                <h4><strong><u>Position Information</u></strong></h4>            
+                <h4><strong><u>Position Details</u></strong></h4>            
                 <div class="form-group">
                 <label><strong>Position Status</strong></label>
                 <div class="form-control">
@@ -160,7 +162,9 @@
             </ul>
 
             <div>
-                <button class="btn btn-success btn-sm shadow-sm mb-3 m-auto" routerLink='/positiondutybullets/{{position.positionId}}'>Add/Edit Bullet Points</button>
+                <!-- <button class="btn btn-success btn-sm shadow-sm mb-3 m-auto" routerLink='/positiondutybullets/{{position.positionId}}'>Add/Edit Bullet Points</button> -->
+                <button type="Button" (click)="addDutyBullets()"  class="btn btn-success btn-sm shadow-sm mb-3 m-auto" >Add/Edit Bullet Points</button>
+                <!-- <button class="btn btn-info btn-sm mt-2 mb-2 shadow-sm" routerLink='/positiondutybullets/{{position.positionId}}'>Add Location</button> -->
             </div>
 
             <label><strong>Requirements and Preferred Skills for this {{position?.positionName}} position: *</strong></label>
@@ -169,7 +173,8 @@
             </ul>
 
             <div>
-                <button class="btn btn-success btn-sm mb-3 shadow-sm m-auto" routerLink='/positionskillsbullets/{{position.positionId}}'>Add/Edit Bullet Points</button>
+                <button type="button" (click)="addSkillsBullets()"  class="btn btn-success btn-sm shadow-sm mb-3 m-auto" >Add/Edit Bullet Points</button>
+                <!-- <button class="btn btn-success btn-sm mb-3 shadow-sm m-auto" routerLink='/positionskillsbullets/{{position.positionId}}'>Add/Edit Bullet Points</button> -->
             </div>
 
             <div class="form-group">
@@ -198,7 +203,7 @@
                 </textarea>
             </div>
 
-            <h4><strong><u>Application Information</u></strong></h4>
+            <h4><strong><u>Application Details</u></strong></h4>
 
             <div class="form-group">
                 <label class="label"><strong>How to apply *</strong> </label>

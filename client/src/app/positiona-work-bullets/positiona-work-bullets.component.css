@@ -1,0 +1,19 @@
+.dutybullets {
+    width: 100%;
+  }
+  
+  .button-del {
+    color: red;
+  }
+  
+  .button-edit {
+    color: mediumblue;
+  }
+  
+  .long-input {
+    width: 55%;
+  }
+  
+  .short-input {
+    width: 10%;
+  }

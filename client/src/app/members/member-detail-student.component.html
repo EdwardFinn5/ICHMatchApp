@@ -10,15 +10,15 @@
                         {{member.classYear}} {{member.major | titlecase}} Major
                         <br>({{member.category}} category)
                         <br>from {{member.ciLocation}} 
-                        <br>attending {{member.college | titlecase}}
+                        <br><u>attending {{member.college | titlecase}}</u>
                      
                         <br>Last Active: {{member.lastActive | date: "MMM dd yyyy" }}
                     </p>
             
 
             <div class="btn-group d-flex">
-                <button class="btn btn-info shadow-sm mr-1" routerLink='/membersearch'>Back to talent</button>
-                <button (click)="selectTab(2)" class="btn btn-success shadow-sm ml-1">Send message</button>
+                <button class="btn btn-info mr-1 shadow-sm mr-1" routerLink="/positionslist">See all Positions</button>
+                <button class="btn btn-success shadow-sm ml-1" routerLink='/studinfo/edit'>Back to Edit</button>
             </div>
             
             </div>
@@ -29,9 +29,7 @@
         <div class="col-sm-8 p-2">
 
         <tabset class="member-tabset" #memberTabs>
-            <tab heading='Academic & Work' 
-            class="tab-heading"
-            (selectTab)="onTabActivated($event)">
+            <tab heading='Academic & Work'>
                 <div class="details">
                     <!-- <h3><u><strong>Academic & Work Highlights</strong></u></h3>   -->
                 
@@ -88,3 +86,4 @@
 
         </tabset>
     </div>
+

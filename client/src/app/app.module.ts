@@ -128,6 +128,7 @@ import { PositionaViewWorkBulletsComponent } from './positiona-work-bullets/posi
 import { EditPositionCardComponent } from './positions/edit-position-card.component';
 import { Edit2PositionComponent } from './positions/edit2-position.component';
 import { PositionDetailNewEmpsComponent } from './positions/position-detail-new-emps.component';
+import { MemberDetailStudentComponent } from './members/member-detail-student.component';
 
 @NgModule({
   declarations: [
@@ -248,6 +249,7 @@ import { PositionDetailNewEmpsComponent } from './positions/position-detail-new-
     EditPositionCardComponent,
     Edit2PositionComponent,
     PositionDetailNewEmpsComponent,
+    MemberDetailStudentComponent,
   ],
   imports: [
     BrowserModule,

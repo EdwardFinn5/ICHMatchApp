@@ -93,10 +93,6 @@ export class EditPositionComponent implements OnInit {
       });
   }
 
-  // onDateChange(newDate: Date) {
-  //   this.previousDate = new Date(newDate);
-  // }
-
   loadSkillsBullets() {
     this.bulletService
       .getSkillsBullets(this.positionId)
@@ -130,8 +126,20 @@ export class EditPositionComponent implements OnInit {
       .subscribe(() => {
         this.toastr.success('Position info updated');
         this.editForm.reset(this.position);
-        this.router.navigateByUrl('/empmember/positions');
+        // this.router.navigateByUrl('/empmember/positions');
       });
+  }
+
+  addDutyBullets() {
+    this.router.navigateByUrl(
+      '/positiondutybullets/' + this.position.positionId
+    );
+  }
+
+  addSkillsBullets() {
+    this.router.navigateByUrl(
+      '/positionskillsbullets/' + this.position.positionId
+    );
   }
 
   loadPosCategories() {

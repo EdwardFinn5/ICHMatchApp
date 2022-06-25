@@ -9,7 +9,7 @@
                        <u><strong>{{member.empName}}</strong></u><br>
                         Number of employees: {{member.employeeNum}} 
                         <br>Industry: {{member.empIndustry}} 
-                        <br> super detail Headquarters: {{member.location}}
+                        <br>Headquarters: {{member.ciempLocation}}, {{member.stempLocation}}
                     </p>   
                        
                             <div class="btn-group d-flex">
@@ -61,7 +61,7 @@
                             </thead>
                             <tbody>
                                 <tr *ngFor="let position of positions">
-                                    <td>{{position.positionName}}</td>
+                                    <td>{{position.posName}}</td>
                                     <td>{{position.positionType}}</td>
                                     <td>
                                         <button class="btn btn-success btn-sm shadow-sm mr-2 mb-2" routerLink='/employerpositiondetail/{{position.positionId}}'>Details</button>

@@ -31,6 +31,7 @@ export class MemberListSearchComponent implements OnInit {
     { value: 'Sophomore', display: 'Sophomores' },
     { value: 'Junior', display: 'Juniors' },
     { value: 'Senior', display: 'Seniors' },
+    { value: 'Post-Graduate', display: 'Post-Graduate' },
   ];
 
   constructor(

@@ -102,6 +102,10 @@ import { AddPositnamesEmpsComponent } from './poscategories-and-positnames/add-p
 import { EditNew2PrepositionComponent } from './positions/edit-new2-preposition/edit-new2-preposition.component';
 import { Edit2PositionComponent } from './positions/edit2-position.component';
 import { PositionDetailNewEmpsComponent } from './positions/position-detail-new-emps.component';
+import { PositionaAcBulletsComponent } from './positiona-ac-bullets/positiona-ac-bullets.component';
+import { PositionaWorkBulletsComponent } from './positiona-work-bullets/positiona-work-bullets.component';
+import { PositionaEditAcBulletsComponent } from './positiona-ac-bullets/positiona-edit-ac-bullets.component';
+import { MemberDetailStudentComponent } from './members/member-detail-student.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -343,6 +347,11 @@ const routes: Routes = [
         component: MemberDetailComponent,
         resolve: { member: MemberDetailResolver },
       },
+      {
+        path: 'memberdetailstudent/:username',
+        component: MemberDetailStudentComponent,
+        resolve: { member: MemberDetailResolver },
+      },
       { path: 'members/:id', component: MemberDetailComponent },
       {
         path: 'member/edit',
@@ -402,6 +411,16 @@ const routes: Routes = [
         component: PositionDutyBulletsComponent,
         pathMatch: 'full',
         resolve: { position: PositionBulletResolver },
+      },
+      {
+        path: 'positionaacbullets/:appUserId',
+        component: PositionaAcBulletsComponent,
+        pathMatch: 'full',
+      },
+      {
+        path: 'positionaworkbullets/:appUserId',
+        component: PositionaWorkBulletsComponent,
+        pathMatch: 'full',
       },
       {
         path: 'positionskillsbullets/:positionId',
@@ -479,6 +498,11 @@ const routes: Routes = [
   {
     path: 'positioneditdutybullet/:dutyBulletId',
     component: PositionEditDutyBulletsComponent,
+    pathMatch: 'full',
+  },
+  {
+    path: 'positionaeditacbullet/:acBulletId',
+    component: PositionaEditAcBulletsComponent,
     pathMatch: 'full',
   },
   {

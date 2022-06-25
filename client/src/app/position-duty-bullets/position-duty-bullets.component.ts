@@ -14,8 +14,6 @@ import { Position2Service } from '../_services/position2.service';
   styleUrls: ['./position-duty-bullets.component.css'],
 })
 export class PositionDutyBulletsComponent implements OnInit {
-  // @ViewChild('bulletsE1') message: ElementRef;
-  // scrollTop: number = null;
   position: Position;
   positionName?: string = '';
   positionId: number;
