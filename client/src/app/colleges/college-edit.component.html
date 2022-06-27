@@ -1,4 +1,4 @@
-<section class="signup" *ngIf="acBullet">
+<section class="signup" *ngIf="college">
 
     <div class="text-center col-sm-4 col-lg-8 col-md-6 p-x m-auto">
         <div class="alert alert-info" *ngIf="editForm.dirty">
@@ -7,26 +7,22 @@
     </div>
 
     <div class="card-header col-sm-4 col-lg-8 col-md-6 p-x m-auto">
-        <h3 style="text-align: center;">Edit academic highlights and achievements bullet point</h3>
+        <h3 style="text-align: center;">College</h3>
     </div>
 
     <div class="login col-sm-4 col-lg-8 col-md-6 mx-auto shadow-lg">
 
-        <form #editForm="ngForm" id="editForm" (ngSubmit)="updateAcBullet()" autocomplete="off">
-
+        <form #editForm="ngForm" id="editForm" (ngSubmit)="updateCollege()" autocomplete="off">
             <div class="form-group">
-                <label class="acBulletText"><strong>Academic highlights and achievements bullet point text</strong> </label>
-                <textarea name="acBulletText" [(ngModel)]="acBullet.acBulletText"
+                <label class="collegeName"><strong>College Name</strong> </label>
+                <input name="collegeName" [(ngModel)]="college.collegeName"
+                    class="form-control shadow-sm mr-2">
+            </div>
+            <div class="form-group">
+                <label class="collegeNickname"><strong>College Nickname</strong> </label>
+                <input name="collegeNickname" [(ngModel)]="college.collegeNickname"
                     class="form-control shadow-sm">
-                </textarea>
             </div>
-
-            <div class="form-group">
-                <label for="order"><strong>Order # (1,2,...)</strong></label>
-                <input name="order" [(ngModel)]="acBullet.order" class="form-control shadow-sm"
-                    type="number">
-            </div>
-           
         </form>
 
     <div class="btn-group d-flex">
@@ -39,4 +35,5 @@
     </div>
 </section>
       
+
 

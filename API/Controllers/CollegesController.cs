@@ -62,6 +62,13 @@ namespace API.Controllers
             return await _collegeRepository.GetCollegeDtoByIdAsync(id);
         }
 
+        [HttpGet("GetCollegeById/{id}")] //this is the one I just added
+        public async Task<ActionResult<College>> GetCollegeByIdAsync(int id)
+        {
+            return await _collegeRepository.GetCollegeByIdAsync(id);
+        }
+
+
         [HttpPut("{id}")]
         public async Task<ActionResult> UpdateCollege(CollegeUpdateDto collegeUpdateDto, int id)
         {

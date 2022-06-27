@@ -106,6 +106,9 @@ import { PositionaAcBulletsComponent } from './positiona-ac-bullets/positiona-ac
 import { PositionaWorkBulletsComponent } from './positiona-work-bullets/positiona-work-bullets.component';
 import { PositionaEditAcBulletsComponent } from './positiona-ac-bullets/positiona-edit-ac-bullets.component';
 import { MemberDetailStudentComponent } from './members/member-detail-student.component';
+import { PositionaEditWorkBulletsComponent } from './positiona-work-bullets/positiona-edit-work-bullets.component';
+import { CollegeListComponent } from './colleges/college-list.component';
+import { CollegeEditComponent } from './colleges/college-edit.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -496,6 +499,16 @@ const routes: Routes = [
     pathMatch: 'full',
   },
   {
+    path: 'collegelist',
+    component: CollegeListComponent,
+    pathMatch: 'full',
+  },
+  {
+    path: 'collegeedit/:collegeId',
+    component: CollegeEditComponent,
+    pathMatch: 'full',
+  },
+  {
     path: 'positioneditdutybullet/:dutyBulletId',
     component: PositionEditDutyBulletsComponent,
     pathMatch: 'full',
@@ -508,6 +521,11 @@ const routes: Routes = [
   {
     path: 'positioneditskillsbullet/:skillsBulletId',
     component: PositionEditSkillsBulletsComponent,
+    pathMatch: 'full',
+  },
+  {
+    path: 'positionaeditworkbullet/:workBulletId',
+    component: PositionaEditWorkBulletsComponent,
     pathMatch: 'full',
   },
   { path: 'about', component: AboutComponent },

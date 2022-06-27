@@ -129,6 +129,8 @@ import { EditPositionCardComponent } from './positions/edit-position-card.compon
 import { Edit2PositionComponent } from './positions/edit2-position.component';
 import { PositionDetailNewEmpsComponent } from './positions/position-detail-new-emps.component';
 import { MemberDetailStudentComponent } from './members/member-detail-student.component';
+import { CollegeListComponent } from './colleges/college-list.component';
+import { CollegeEditComponent } from './colleges/college-edit.component';
 
 @NgModule({
   declarations: [
@@ -250,6 +252,8 @@ import { MemberDetailStudentComponent } from './members/member-detail-student.co
     Edit2PositionComponent,
     PositionDetailNewEmpsComponent,
     MemberDetailStudentComponent,
+    CollegeListComponent,
+    CollegeEditComponent,
   ],
   imports: [
     BrowserModule,

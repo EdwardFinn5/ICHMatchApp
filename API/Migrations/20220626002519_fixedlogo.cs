@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace API.Migrations
 {
-    public partial class addedacbullets : Migration
+    public partial class fixedlogo : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
