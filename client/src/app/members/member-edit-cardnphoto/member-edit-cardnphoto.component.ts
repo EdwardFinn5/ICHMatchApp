@@ -1,8 +1,6 @@
-import { createOutput } from '@angular/compiler/src/core';
 import {
   Component,
   HostListener,
-  Input,
   OnInit,
   Output,
   ViewChild,
@@ -23,7 +21,6 @@ import { AccountService } from 'src/app/_services/account.service';
 import { CilocationService } from 'src/app/_services/cilocation.service';
 import { CollegeService } from 'src/app/_services/college.service';
 import { MajorService } from 'src/app/_services/major.service';
-import { MembersService } from 'src/app/_services/members.service';
 import { SearchMembersService } from 'src/app/_services/search-members.service';
 
 @Component({

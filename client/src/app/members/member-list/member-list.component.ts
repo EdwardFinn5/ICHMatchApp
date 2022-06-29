@@ -1,20 +1,14 @@
-import { Component, Input, OnInit, Output, ViewChild } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { stringify } from 'querystring';
-import { Observable } from 'rxjs';
-import { DateInputComponent } from 'src/app/_forms/date-input/date-input.component';
-import { TextInputComponent } from 'src/app/_forms/text-input/text-input.component';
 import { CardMember } from 'src/app/_models/cardMember';
 import { Category } from 'src/app/_models/category';
 import { College } from 'src/app/_models/college';
 import { Major } from 'src/app/_models/major';
-import { Member } from 'src/app/_models/member';
 import { Pagination } from 'src/app/_models/pagination';
 import { UserParams } from 'src/app/_models/userParams';
 import { CollegeService } from 'src/app/_services/college.service';
 import { MajorService } from 'src/app/_services/major.service';
 import { MembersService } from 'src/app/_services/members.service';
-import { MemberSearchCardComponent } from '../member-search-card/member-search-card.component';
 
 @Component({
   selector: 'app-member-list',

@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {
   AbstractControl,
-  FormBuilder,
+  UntypedFormBuilder,
   FormControl,
-  FormGroup,
+  UntypedFormGroup,
   ValidatorFn,
   Validators,
 } from '@angular/forms';
@@ -24,7 +24,7 @@ import { RegisterCodeService } from '../_services/register-code.service';
   styleUrls: ['./register-emp.component.css'],
 })
 export class RegisterEmpComponent implements OnInit {
-  registerEmpForm: FormGroup;
+  registerEmpForm: UntypedFormGroup;
   validationErrors: string[] = [];
   registerCode: RegisterCode;
   registerCodeId: number = 1;
@@ -38,7 +38,7 @@ export class RegisterEmpComponent implements OnInit {
     private empIndustryService: EmpindustryService,
     private ciempLocationService: CiemplocationService,
     private toastr: ToastrService,
-    private fb: FormBuilder,
+    private fb: UntypedFormBuilder,
     private registerCodeService: RegisterCodeService
   ) {}
 

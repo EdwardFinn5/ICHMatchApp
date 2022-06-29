@@ -1,9 +1,9 @@
 import { Component, OnInit, Output } from '@angular/core';
 import {
   AbstractControl,
-  FormBuilder,
+  UntypedFormBuilder,
   FormControl,
-  FormGroup,
+  UntypedFormGroup,
   ValidatorFn,
   Validators,
 } from '@angular/forms';
@@ -30,7 +30,7 @@ import { RegisterCodeService } from '../_services/register-code.service';
 })
 export class RegisterStudComponent implements OnInit {
   @Output() value: string = '';
-  registerStudForm: FormGroup;
+  registerStudForm: UntypedFormGroup;
   validationErrors: string[] = [];
   categories: Category[];
   majors: Major[];
@@ -49,7 +49,7 @@ export class RegisterStudComponent implements OnInit {
     private collegeService: CollegeService,
     private ciLocationService: CilocationService,
     private toastr: ToastrService,
-    private fb: FormBuilder,
+    private fb: UntypedFormBuilder,
     private registerCodeService: RegisterCodeService
   ) {}
 

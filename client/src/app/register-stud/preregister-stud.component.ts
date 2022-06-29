@@ -1,5 +1,5 @@
 import { Component, OnInit, Output } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { RegisterCode } from '../_models/registerCode';
@@ -11,7 +11,7 @@ import { RegisterCodeService } from '../_services/register-code.service';
   styleUrls: ['./preregister-stud.component.css'],
 })
 export class PreregisterStudComponent implements OnInit {
-  preregisterStudForm: FormGroup;
+  preregisterStudForm: UntypedFormGroup;
   validationErrors: string[] = [];
   registerCode: RegisterCode;
   registerCodeId: number = 1;
@@ -19,7 +19,7 @@ export class PreregisterStudComponent implements OnInit {
   constructor(
     private router: Router,
     private toastr: ToastrService,
-    private fb: FormBuilder,
+    private fb: UntypedFormBuilder,
     private registerCodeService: RegisterCodeService
   ) {}
 

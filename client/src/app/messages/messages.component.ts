@@ -1,4 +1,3 @@
-import { Position } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { take } from 'rxjs/operators';
 import { Message } from '../_models/message';
@@ -14,7 +13,6 @@ import { MessageService } from '../_services/message.service';
 })
 export class MessagesComponent implements OnInit {
   messages: Message[] = [];
-  position: Position;
   pagination: Pagination;
   container = 'Unread';
   pageNumber = 1;

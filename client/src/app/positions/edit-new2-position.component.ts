@@ -1,5 +1,5 @@
 import { Component, HostListener, OnInit, ViewChild } from '@angular/core';
-import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, NgForm, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { take } from 'rxjs/operators';
@@ -24,7 +24,7 @@ import { SearchMembersService } from '../_services/search-members.service';
   styleUrls: ['./edit-new2-position.component.css'],
 })
 export class EditNew2PositionComponent implements OnInit {
-  addPositionForm: FormGroup;
+  addPositionForm: UntypedFormGroup;
   validationErrors: string[] = [];
   stempLocations: StempLocation[];
   ciempLocations: CiempLocation[];
@@ -61,7 +61,7 @@ export class EditNew2PositionComponent implements OnInit {
     private positNameService: PositNameService,
     private registerCodeService: RegisterCodeService,
     private toastr: ToastrService,
-    private fb: FormBuilder
+    private fb: UntypedFormBuilder
   ) {
     this.accountService.currentUser$
       .pipe(take(1))

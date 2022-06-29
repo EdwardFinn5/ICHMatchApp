@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Identifiers } from '@angular/compiler';
+import { R3Identifiers } from '@angular/compiler';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { ReplaySubject } from 'rxjs';

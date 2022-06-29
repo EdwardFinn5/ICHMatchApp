@@ -1,4 +1,3 @@
-import { LEADING_TRIVIA_CHARS } from '@angular/compiler/src/render3/view/template';
 import { Component, OnInit, Output } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Member } from '../_models/member';
