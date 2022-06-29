@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace API.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20220626002519_fixedlogo")]
-    partial class fixedlogo
+    [Migration("20220627161131_addedPhotoNews")]
+    partial class addedPhotoNews
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -388,6 +388,30 @@ namespace API.Migrations
                     b.ToTable("Messages");
                 });
 
+            modelBuilder.Entity("API.Entities.News", b =>
+                {
+                    b.Property<int>("NewsId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("NewsContent")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("NewsTitle")
+                        .HasColumnType("nvarchar(80)");
+
+                    b.Property<float>("Order")
+                        .HasColumnType("real");
+
+                    b.HasKey("NewsId");
+
+                    b.ToTable("Newses");
+                });
+
             modelBuilder.Entity("API.Entities.Photo", b =>
                 {
                     b.Property<int>("Id")
@@ -488,6 +512,38 @@ namespace API.Migrations
                     b.HasIndex("PositionId");
 
                     b.ToTable("PhotoLogos");
+                });
+
+            modelBuilder.Entity("API.Entities.PhotoNews", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("DateAdded")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsMainNews")
+                        .HasColumnType("bit");
+
+                    b.Property<int>("NewsId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("NewsUrl")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PublicId")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("NewsId");
+
+                    b.ToTable("PhotoNewses");
                 });
 
             modelBuilder.Entity("API.Entities.PosCategory", b =>
@@ -939,6 +995,17 @@ namespace API.Migrations
                     b.Navigation("Position");
                 });
 
+            modelBuilder.Entity("API.Entities.PhotoNews", b =>
+                {
+                    b.HasOne("API.Entities.News", "News")
+                        .WithMany("PhotoNewes")
+                        .HasForeignKey("NewsId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("News");
+                });
+
             modelBuilder.Entity("API.Entities.PositName", b =>
                 {
                     b.HasOne("API.Entities.PosCategory", "PosCategory")
@@ -1053,6 +1120,11 @@ namespace API.Migrations
             modelBuilder.Entity("API.Entities.CoLocation", b =>
                 {
                     b.Navigation("StLocations");
+                });
+
+            modelBuilder.Entity("API.Entities.News", b =>
+                {
+                    b.Navigation("PhotoNewes");
                 });
 
             modelBuilder.Entity("API.Entities.PosCategory", b =>

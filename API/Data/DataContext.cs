@@ -34,6 +34,8 @@ namespace API.Data
         public DbSet<Message> Messages { get; set; }
         public DbSet<AcBullet> AcBullets { get; set; }
         public DbSet<WorkBullet> WorkBullets { get; set; }
+        public DbSet<News> Newses { get; set; }
+        public DbSet<PhotoNews> PhotoNewses { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

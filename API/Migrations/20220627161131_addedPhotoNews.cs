@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace API.Migrations
 {
-    public partial class fixedlogo : Migration
+    public partial class addedPhotoNews : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -59,6 +59,22 @@ namespace API.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_EmpIndustries", x => x.EmpIndustryId);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Newses",
+                columns: table => new
+                {
+                    NewsId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    NewsTitle = table.Column<string>(type: "nvarchar(80)", nullable: true),
+                    NewsContent = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Order = table.Column<float>(type: "real", nullable: false),
+                    IsActive = table.Column<bool>(type: "bit", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Newses", x => x.NewsId);
                 });
 
             migrationBuilder.CreateTable(
@@ -197,6 +213,30 @@ namespace API.Migrations
                         column: x => x.CoLocationId,
                         principalTable: "CoLocations",
                         principalColumn: "CoLocationId",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "PhotoNewses",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    NewsUrl = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    DateAdded = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    IsMainNews = table.Column<bool>(type: "bit", nullable: false),
+                    PublicId = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    NewsId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_PhotoNewses", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_PhotoNewses_Newses_NewsId",
+                        column: x => x.NewsId,
+                        principalTable: "Newses",
+                        principalColumn: "NewsId",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -637,6 +677,11 @@ namespace API.Migrations
                 column: "PositionId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_PhotoNewses_NewsId",
+                table: "PhotoNewses",
+                column: "NewsId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Photos_AppUserId",
                 table: "Photos",
                 column: "AppUserId");
@@ -711,6 +756,9 @@ namespace API.Migrations
                 name: "PhotoLogos");
 
             migrationBuilder.DropTable(
+                name: "PhotoNewses");
+
+            migrationBuilder.DropTable(
                 name: "Photos");
 
             migrationBuilder.DropTable(
@@ -736,6 +784,9 @@ namespace API.Migrations
 
             migrationBuilder.DropTable(
                 name: "Categories");
+
+            migrationBuilder.DropTable(
+                name: "Newses");
 
             migrationBuilder.DropTable(
                 name: "PosCategories");

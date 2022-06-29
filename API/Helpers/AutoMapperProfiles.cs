@@ -167,6 +167,8 @@ namespace API.Helpers
             CreateMap<CoLocation, CoLocationDto>();
             CreateMap<DutyBulletUpdateDto, DutyBullet>();
             CreateMap<DutyBullet, DutyBulletDto>();
+            CreateMap<NewsUpdateDto, News>();
+            CreateMap<News, NewsDto>();
             CreateMap<AcBulletUpdateDto, AcBullet>();
             CreateMap<AcBullet, AcBulletDto>();
             CreateMap<WorkBulletUpdateDto, WorkBullet>();
