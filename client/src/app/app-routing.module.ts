@@ -109,6 +109,10 @@ import { MemberDetailStudentComponent } from './members/member-detail-student.co
 import { PositionaEditWorkBulletsComponent } from './positiona-work-bullets/positiona-edit-work-bullets.component';
 import { CollegeListComponent } from './colleges/college-list.component';
 import { CollegeEditComponent } from './colleges/college-edit.component';
+import { AddNewsComponent } from './news/add-news.component';
+import { ListNewsComponent } from './news/list-news.component';
+import { EditNewsComponent } from './news/edit-news.component';
+import { DetailNewsComponent } from './news/detail-news.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -335,7 +339,11 @@ const routes: Routes = [
         component: MemberListSearchComponent,
         pathMatch: 'full',
       },
-      { path: 'empmember/positions', component: EmpmemberPositionsComponent },
+      {
+        path: 'empmember/positions',
+        component: EmpmemberPositionsComponent,
+        pathMatch: 'full',
+      },
       {
         path: 'position/dutybullets',
         component: PositionDutyBulletsComponent,
@@ -494,6 +502,16 @@ const routes: Routes = [
     pathMatch: 'full',
   },
   {
+    path: 'editnews/:newsId',
+    component: EditNewsComponent,
+    pathMatch: 'full',
+  },
+  {
+    path: 'detailnews/:newsId',
+    component: DetailNewsComponent,
+    pathMatch: 'full',
+  },
+  {
     path: 'edit2position',
     component: Edit2PositionComponent,
     pathMatch: 'full',
@@ -501,6 +519,16 @@ const routes: Routes = [
   {
     path: 'collegelist',
     component: CollegeListComponent,
+    pathMatch: 'full',
+  },
+  {
+    path: 'addnews',
+    component: AddNewsComponent,
+    pathMatch: 'full',
+  },
+  {
+    path: 'listnews',
+    component: ListNewsComponent,
     pathMatch: 'full',
   },
   {

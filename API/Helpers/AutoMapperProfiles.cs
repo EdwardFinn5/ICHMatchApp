@@ -17,6 +17,10 @@ namespace API.Helpers
             //      .ForMember(dest => dest.EmpName, opt => opt
             //         .MapFrom(src => src.Users.FirstOrDefault(x => x.Active).EmpName))
 
+            CreateMap<News, NewsDto>()
+                .ForMember(dest => dest.NewsUrl, opt => opt
+                    .MapFrom(src => src.PhotoNewes.FirstOrDefault(x => x.IsMainNews).NewsUrl));
+
             CreateMap<AppUser, MemberDto>()
                 .ForMember(dest => dest.StudentUrl, opt => opt
                     .MapFrom(src => src.Photos.FirstOrDefault(x => x.IsMain).StudentUrl))
@@ -90,6 +94,9 @@ namespace API.Helpers
                 .MapFrom(src => src.Positions.FirstOrDefault(x => x.IsActive).ApplyEmail))
             .ForMember(dest => dest.ApplyLink, opt => opt
                 .MapFrom(src => src.Positions.FirstOrDefault(x => x.IsActive).ApplyLink));
+
+
+
 
 
             CreateMap<Position, PositionDto>()
@@ -168,7 +175,7 @@ namespace API.Helpers
             CreateMap<DutyBulletUpdateDto, DutyBullet>();
             CreateMap<DutyBullet, DutyBulletDto>();
             CreateMap<NewsUpdateDto, News>();
-            CreateMap<News, NewsDto>();
+            // CreateMap<News, NewsDto>();
             CreateMap<AcBulletUpdateDto, AcBullet>();
             CreateMap<AcBullet, AcBulletDto>();
             CreateMap<WorkBulletUpdateDto, WorkBullet>();

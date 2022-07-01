@@ -54,10 +54,6 @@
              <strong>Click "Choose File" then drop photo here</strong>
         </div>
 
-        <!-- Multiple
-        <input type="file" ng2FileSelect [uploader]="uploader" multiple  /><br/> -->
-
-        <!-- <p class="ml-3 mb-2">Single</p>    -->
         <div class="ml-3">
             <input type="file" ng2FileSelect [uploader]="uploader" />
         </div>
@@ -65,9 +61,7 @@
 
     <div class="col-md-9" style="margin-bottom: 50px" *ngIf="uploader?.queue?.length" >
 
-        <!-- <h3><strong>Upload Queue</strong></h3> -->
         <h3 class="mt-2 ml-3"><strong>Upload Queue</strong></h3>
-        <!-- <p>Queue length: {{ uploader?.queue?.length }}</p> -->
 
         <table class="table">
             <thead>

@@ -1,9 +1,11 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
+#nullable disable
+
 namespace API.Migrations
 {
-    public partial class addedPhotoNews : Migration
+    public partial class upgradeddotnetNangular : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -159,7 +161,7 @@ namespace API.Migrations
                     CiLocation = table.Column<string>(type: "nvarchar(60)", nullable: true),
                     CiempLocation = table.Column<string>(type: "nvarchar(60)", nullable: true),
                     StempLocation = table.Column<string>(type: "nvarchar(10)", nullable: true),
-                    ClassYear = table.Column<string>(type: "varchar(12)", nullable: true),
+                    ClassYear = table.Column<string>(type: "varchar(25)", nullable: true),
                     Category = table.Column<string>(type: "nvarchar(60)", nullable: true),
                     Major = table.Column<string>(type: "nvarchar(60)", nullable: true),
                     College = table.Column<string>(type: "varchar(30)", nullable: true),

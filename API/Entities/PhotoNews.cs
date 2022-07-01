@@ -11,9 +11,14 @@ namespace API.Entities
         public string NewsUrl { get; set; }
         public string Description { get; set; }
         public DateTime DateAdded { get; set; }
-        public bool IsMainNews { get; set; } = false;
+        public bool IsMainNews { get; set; } = true;
         public string PublicId { get; set; }
         public virtual News News { get; set; }
         public int NewsId { get; set; }
+
+        internal static object FirstOrDefault(Func<object, bool> value)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

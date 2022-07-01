@@ -44,7 +44,7 @@ namespace API.Entities
         [Column(TypeName = "nvarchar(10)")]
         public string StempLocation { get; set; }
 
-        [Column(TypeName = "varchar(12)")]
+        [Column(TypeName = "varchar(25)")]
         public string ClassYear { get; set; }
 
         [Column(TypeName = "nvarchar(60)")]

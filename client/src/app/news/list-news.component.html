@@ -1,0 +1,46 @@
+<div class="row shadow mt-3 " *ngIf="newes">
+    <div class="positions p-0" style="text-align: center;">
+        <!-- <h3>Id: {{member.appUserId}}</h3>
+        <h3>Username: {{member.username}}</h3> -->
+
+        <h2><strong>Current newsContent</strong></h2>
+       
+        <table class="table table-striped col-sm-4 col-lg-8 col-md-6 m-auto">
+            <thead>
+                <tr>
+                    <th>News Id</th>
+                    <th>News Title</th>
+                    <th>Order</th>
+                    <th>Options</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let news of newes">
+                    <!-- <td> <img src="{{position.logoUrl || '../../assets/images/logo.PNG' }}" alt="{{position.empName}}"></td> -->
+                    <td>{{news.newsId}}</td>
+                    <td>{{news.newsTitle}}</td>
+                    <td>{{news.order}}</td>
+                    <td>
+                         <!-- <button class="btn btn-info btn-sm shadow-sm mr-2 mb-2" routerLink='/positionbulletshome/{{position.positionId}}'>Add Bullet Points</button> -->
+                         <!-- <button class="btn btn-primary btn-sm shadow-sm mr-2 mb-2" routerLink='/positionskillsbullets/{{position.positionId}}'>Add Skills Bullets</button> -->
+                        <button class="btn btn-success btn-sm shadow-sm mr-2 mb-2" routerLink='/detailnews/{{news.newsId}}'>View News Details</button>
+                        <button class="btn btn-primary btn-sm shadow-sm mr-2 mb-2" routerLink='/editnews/{{news.newsId}}'>Edit/Pause News</button>
+                        <!-- <button class="btn btn-primary btn-sm shadow-sm mr-2 mb-2" routerLink='/new/position/add/{{position.positionId}}'>New Edit/Pause Position</button>
+                        <button class="btn btn-primary btn-sm shadow-sm mr-2 mb-2" routerLink='/new2/position/add/{{position.positionId}}'>new2 Edit/Pause Position</button> -->
+                           
+                      
+                        <button type="button-del" (click)="deleteNews(news.newsId)"  class="btn btn-danger btn-sm shadow-sm mb-2">
+                            Delete
+                        </button>
+
+                    </td>
+                </tr>
+            </tbody>
+           
+        </table>
+        <div class="text-center col-12">
+            <button class="btn btn-success btn-sm shadow-sm mt-3 mb-3" routerLink="/addnews">Add a news item</button>
+        </div>
+
+    </div>
+</div>

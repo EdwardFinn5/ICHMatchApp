@@ -9,8 +9,10 @@ namespace API.DTOs
     {
         public int NewsId { get; set; }
         public string NewsTitle { get; set; }
+        public string NewsUrl { get; set; }
         public string NewsContent { get; set; }
         public float Order { get; set; }
-        public bool IsActive { get; set; } 
+        public bool IsActive { get; set; }
+        public ICollection<PhotoNews> PhotoNewes { get; set; }
     }
 }

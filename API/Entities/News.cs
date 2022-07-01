@@ -16,7 +16,7 @@ namespace API.Entities
         public string NewsContent { get; set; }
         public float Order { get; set; }
         public bool IsActive { get; set; } = true;
-         public ICollection<PhotoNews> PhotoNewes { get; set; }
+        public ICollection<PhotoNews> PhotoNewes { get; set; }
 
     }
 }

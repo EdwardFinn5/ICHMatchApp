@@ -7,7 +7,6 @@ import { Member } from 'src/app/_models/member';
 import { Position } from 'src/app/_models/position';
 import { User } from 'src/app/_models/user';
 import { AccountService } from 'src/app/_services/account.service';
-import { PositionService } from 'src/app/_services/position.service';
 import { Position2Service } from 'src/app/_services/position2.service';
 
 @Component({

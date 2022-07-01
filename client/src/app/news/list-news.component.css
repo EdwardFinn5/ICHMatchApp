@@ -1,0 +1,19 @@
+.positions {
+    width: 100%;
+  }
+  
+  .button-del {
+    color: red;
+  }
+  
+  .button-edit {
+    color: mediumblue;
+  }
+  
+  img {
+    max-height: 40px;
+    margin-left: 100px;
+    /* border: 2px solid #fff;
+    display: inline; */
+  }
+  

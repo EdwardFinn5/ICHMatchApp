@@ -1,0 +1,54 @@
+<section class="signup">
+
+    <div class="text-center col-sm-4 col-lg-8 col-md-6 p-x m-auto">
+        <div class="alert alert-info" *ngIf="addNewsForm.dirty">
+            <strong>Alert: </strong>You have made changes. Any unsaved changes will be lost
+        </div>
+    </div>
+
+    <div class="card-header col-sm-4 col-lg-8 col-md-6 p-x m-auto">
+        <h3 style="text-align: center;">Add a news item</h3>
+    </div>
+
+    <div class="login col-sm-4 col-lg-8 col-md-6 mx-auto shadow-lg">
+
+        <form #addNewsForm='ngForm' id="addNewsForm" (ngSubmit)="addNews()" autocomplete="off">
+
+            <!-- <div class="form-group">
+                <label><strong>News Status</strong></label>
+                <div class="form-control">
+                    <label class="checkbox-inline">
+                        <input type="checkbox" name="isActive" [(ngModel)]="news.isActive"> Keep box checked to stay active 
+                    </label>
+                </div>
+            </div> -->
+            
+            <div class="form-group">
+                <label for="newsTitle"><strong>News Title</strong></label>
+                <input name="newsTitle" [(ngModel)]="model.newsTitle" class="form-control shadow-sm"
+                    type="text">
+            </div>
+
+            <div class="form-group">
+                <label class="label"><strong>News Content</strong> </label>
+                <textarea name="newsContent" [(ngModel)]="model.newsContent" class="form-control shadow-sm">
+                </textarea>
+            </div>
+
+            <div class="form-group">
+                <label class="label"><strong>Order</strong> </label>
+                <input name="order" required [(ngModel)]="model.order" type="number" 
+            class="form-control input-sm short-input ml-2 mb-3" placeholder="Order # (1.0,2.0,...)">
+            </div>
+            
+        </form>
+
+        <div class="btn-group d-flex">
+            <button [disabled]="!addNewsForm.dirty" form="addNewsForm" type="submit"
+                class="btn btn-success shadow-sm">Save Changes</button>
+                <input type="button" class="btn btn-secondary shadow-sm ml-2" (click)="cancel()" value="Cancel" />
+        </div>
+
+    </div>
+
+</section>

@@ -1,0 +1,35 @@
+textarea {
+    width: 90%;
+  }
+  
+  /* input {
+    width: 90%;
+  } */
+  
+  .padding {
+    padding-top: 0;
+  }
+  
+  .details {
+    margin-right: 2em;
+    margin-left: 1em;
+  }
+  
+  .tab-heading {
+    font-weight: bold;
+  }
+  .card-body {
+    text-align: center;
+  }
+  .img-studthumbnail {
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 15px;
+    width: 60%;
+    height: 60%;
+  }
+  
+  p {
+    font-weight: bold;
+  }
+  

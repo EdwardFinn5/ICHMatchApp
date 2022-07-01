@@ -39,6 +39,7 @@ namespace API.Extensions
             services.AddScoped<ICiLocationRepository, CiLocationRepository>();
             services.AddScoped<ICiempLocationRepository, CiempLocationRepository>();
             services.AddScoped<IPositNameRepository, PositNameRepository>();
+            services.AddScoped<INewsRepository, NewsRepository>();
             services.AddScoped<IProfileAdviceRepository, ProfileAdviceRepository>();
             services.AddScoped<IPosCategoryRepository, PosCategoryRepository>();
             services.AddScoped<IDutyBulletRepository, DutyBulletRepository>();

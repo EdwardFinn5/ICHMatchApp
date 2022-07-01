@@ -131,6 +131,10 @@ import { PositionDetailNewEmpsComponent } from './positions/position-detail-new-
 import { MemberDetailStudentComponent } from './members/member-detail-student.component';
 import { CollegeListComponent } from './colleges/college-list.component';
 import { CollegeEditComponent } from './colleges/college-edit.component';
+import { AddNewsComponent } from './news/add-news.component';
+import { ListNewsComponent } from './news/list-news.component';
+import { EditNewsComponent } from './news/edit-news.component';
+import { DetailNewsComponent } from './news/detail-news.component';
 
 @NgModule({
   declarations: [
@@ -254,6 +258,10 @@ import { CollegeEditComponent } from './colleges/college-edit.component';
     MemberDetailStudentComponent,
     CollegeListComponent,
     CollegeEditComponent,
+    AddNewsComponent,
+    ListNewsComponent,
+    EditNewsComponent,
+    DetailNewsComponent,
   ],
   imports: [
     BrowserModule,

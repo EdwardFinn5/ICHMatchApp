@@ -18,7 +18,6 @@ export class EmpmemberPositionsComponent implements OnInit {
   member: Member;
   user: User;
   positions: Position[];
-  positionIdentifier: string;
   positionId: number;
 
   constructor(

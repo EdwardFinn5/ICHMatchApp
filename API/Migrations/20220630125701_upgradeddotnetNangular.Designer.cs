@@ -7,26 +7,30 @@ using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
+#nullable disable
+
 namespace API.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20220627161131_addedPhotoNews")]
-    partial class addedPhotoNews
+    [Migration("20220630125701_upgradeddotnetNangular")]
+    partial class upgradeddotnetNangular
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("Relational:MaxIdentifierLength", 128)
-                .HasAnnotation("ProductVersion", "5.0.9")
-                .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                .HasAnnotation("ProductVersion", "6.0.6")
+                .HasAnnotation("Relational:MaxIdentifierLength", 128);
+
+            SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
             modelBuilder.Entity("API.Entities.AcBullet", b =>
                 {
                     b.Property<int>("AcBulletId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("AcBulletId"), 1L, 1);
 
                     b.Property<string>("AcBulletText")
                         .HasColumnType("nvarchar(250)");
@@ -51,8 +55,9 @@ namespace API.Migrations
                 {
                     b.Property<int>("AppUserId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("AppUserId"), 1L, 1);
 
                     b.Property<string>("AppUserType")
                         .HasColumnType("varchar(12)");
@@ -67,7 +72,7 @@ namespace API.Migrations
                         .HasColumnType("nvarchar(60)");
 
                     b.Property<string>("ClassYear")
-                        .HasColumnType("varchar(12)");
+                        .HasColumnType("varchar(25)");
 
                     b.Property<string>("CoLocation")
                         .HasColumnType("nvarchar(60)");
@@ -132,8 +137,9 @@ namespace API.Migrations
                 {
                     b.Property<int>("CategoryId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("CategoryId"), 1L, 1);
 
                     b.Property<string>("CategoryName")
                         .HasColumnType("nvarchar(100)");
@@ -143,35 +149,13 @@ namespace API.Migrations
                     b.ToTable("Categories");
                 });
 
-            modelBuilder.Entity("API.Entities.CiLocation", b =>
-                {
-                    b.Property<int>("CiLocationId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("CiLocationName")
-                        .HasColumnType("nvarchar(60)");
-
-                    b.Property<string>("CiLocationSortName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("StLocationId")
-                        .HasColumnType("int");
-
-                    b.HasKey("CiLocationId");
-
-                    b.HasIndex("StLocationId");
-
-                    b.ToTable("CiLocations");
-                });
-
             modelBuilder.Entity("API.Entities.CiempLocation", b =>
                 {
                     b.Property<int>("CiempLocationId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("CiempLocationId"), 1L, 1);
 
                     b.Property<string>("CiempLocationName")
                         .HasColumnType("nvarchar(60)");
@@ -189,30 +173,37 @@ namespace API.Migrations
                     b.ToTable("CiempLocations");
                 });
 
-            modelBuilder.Entity("API.Entities.CoLocation", b =>
+            modelBuilder.Entity("API.Entities.CiLocation", b =>
                 {
-                    b.Property<int>("CoLocationId")
+                    b.Property<int>("CiLocationId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("int");
 
-                    b.Property<string>("CoLocationName")
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("CiLocationId"), 1L, 1);
+
+                    b.Property<string>("CiLocationName")
                         .HasColumnType("nvarchar(60)");
 
-                    b.Property<string>("CoLocationSortName")
+                    b.Property<string>("CiLocationSortName")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("CoLocationId");
+                    b.Property<int>("StLocationId")
+                        .HasColumnType("int");
 
-                    b.ToTable("CoLocations");
+                    b.HasKey("CiLocationId");
+
+                    b.HasIndex("StLocationId");
+
+                    b.ToTable("CiLocations");
                 });
 
             modelBuilder.Entity("API.Entities.College", b =>
                 {
                     b.Property<int>("CollegeId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("CollegeId"), 1L, 1);
 
                     b.Property<string>("CollegeName")
                         .HasColumnType("nvarchar(60)");
@@ -225,12 +216,32 @@ namespace API.Migrations
                     b.ToTable("Colleges");
                 });
 
+            modelBuilder.Entity("API.Entities.CoLocation", b =>
+                {
+                    b.Property<int>("CoLocationId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("CoLocationId"), 1L, 1);
+
+                    b.Property<string>("CoLocationName")
+                        .HasColumnType("nvarchar(60)");
+
+                    b.Property<string>("CoLocationSortName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("CoLocationId");
+
+                    b.ToTable("CoLocations");
+                });
+
             modelBuilder.Entity("API.Entities.DutyBullet", b =>
                 {
                     b.Property<int>("DutyBulletId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("DutyBulletId"), 1L, 1);
 
                     b.Property<string>("DutyBulletText")
                         .HasColumnType("nvarchar(250)");
@@ -255,8 +266,9 @@ namespace API.Migrations
                 {
                     b.Property<int>("EmpIndustryId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("EmpIndustryId"), 1L, 1);
 
                     b.Property<string>("EmpIndustryName")
                         .HasColumnType("nvarchar(60)");
@@ -270,8 +282,9 @@ namespace API.Migrations
                 {
                     b.Property<int>("EmpInfoId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("EmpInfoId"), 1L, 1);
 
                     b.Property<int>("AppUserId")
                         .HasColumnType("int");
@@ -305,8 +318,9 @@ namespace API.Migrations
                 {
                     b.Property<int>("MajorId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("MajorId"), 1L, 1);
 
                     b.Property<int>("CategoryId")
                         .HasColumnType("int");
@@ -325,8 +339,9 @@ namespace API.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
                     b.Property<string>("Content")
                         .HasColumnType("nvarchar(max)");
@@ -392,8 +407,9 @@ namespace API.Migrations
                 {
                     b.Property<int>("NewsId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("NewsId"), 1L, 1);
 
                     b.Property<bool>("IsActive")
                         .HasColumnType("bit");
@@ -416,8 +432,9 @@ namespace API.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
                     b.Property<int>("AppUserId")
                         .HasColumnType("int");
@@ -454,8 +471,9 @@ namespace API.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
                     b.Property<int>("AppUserId")
                         .HasColumnType("int");
@@ -486,8 +504,9 @@ namespace API.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
                     b.Property<DateTime>("DateAdded")
                         .HasColumnType("datetime2");
@@ -518,8 +537,9 @@ namespace API.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
                     b.Property<DateTime>("DateAdded")
                         .HasColumnType("datetime2");
@@ -550,8 +570,9 @@ namespace API.Migrations
                 {
                     b.Property<int>("PosCategoryId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("PosCategoryId"), 1L, 1);
 
                     b.Property<string>("PosCategoryName")
                         .HasColumnType("nvarchar(100)");
@@ -561,32 +582,13 @@ namespace API.Migrations
                     b.ToTable("PosCategories");
                 });
 
-            modelBuilder.Entity("API.Entities.PositName", b =>
-                {
-                    b.Property<int>("PositNameId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("PosCategoryId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("PosName")
-                        .HasColumnType("nvarchar(100)");
-
-                    b.HasKey("PositNameId");
-
-                    b.HasIndex("PosCategoryId");
-
-                    b.ToTable("PositNames");
-                });
-
             modelBuilder.Entity("API.Entities.Position", b =>
                 {
                     b.Property<int>("PositionId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("PositionId"), 1L, 1);
 
                     b.Property<DateTime?>("AppDeadline")
                         .HasColumnType("datetime2");
@@ -652,12 +654,34 @@ namespace API.Migrations
                     b.ToTable("Positions");
                 });
 
+            modelBuilder.Entity("API.Entities.PositName", b =>
+                {
+                    b.Property<int>("PositNameId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("PositNameId"), 1L, 1);
+
+                    b.Property<int>("PosCategoryId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("PosName")
+                        .HasColumnType("nvarchar(100)");
+
+                    b.HasKey("PositNameId");
+
+                    b.HasIndex("PosCategoryId");
+
+                    b.ToTable("PositNames");
+                });
+
             modelBuilder.Entity("API.Entities.ProfileAdvice", b =>
                 {
                     b.Property<int>("ProfileAdviceId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ProfileAdviceId"), 1L, 1);
 
                     b.Property<bool>("IsActive")
                         .HasColumnType("bit");
@@ -717,8 +741,9 @@ namespace API.Migrations
                 {
                     b.Property<int>("SkillsBulletId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("SkillsBulletId"), 1L, 1);
 
                     b.Property<bool>("IsActive")
                         .HasColumnType("bit");
@@ -739,12 +764,32 @@ namespace API.Migrations
                     b.ToTable("SkillsBullets");
                 });
 
+            modelBuilder.Entity("API.Entities.StempLocation", b =>
+                {
+                    b.Property<int>("StempLocationId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("StempLocationId"), 1L, 1);
+
+                    b.Property<string>("StempLocationName")
+                        .HasColumnType("nvarchar(10)");
+
+                    b.Property<string>("StempLocationSortName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("StempLocationId");
+
+                    b.ToTable("StempLocations");
+                });
+
             modelBuilder.Entity("API.Entities.StLocation", b =>
                 {
                     b.Property<int>("StLocationId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("StLocationId"), 1L, 1);
 
                     b.Property<int>("CoLocationId")
                         .HasColumnType("int");
@@ -762,30 +807,13 @@ namespace API.Migrations
                     b.ToTable("StLocations");
                 });
 
-            modelBuilder.Entity("API.Entities.StempLocation", b =>
-                {
-                    b.Property<int>("StempLocationId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("StempLocationName")
-                        .HasColumnType("nvarchar(10)");
-
-                    b.Property<string>("StempLocationSortName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("StempLocationId");
-
-                    b.ToTable("StempLocations");
-                });
-
             modelBuilder.Entity("API.Entities.StudInfo", b =>
                 {
                     b.Property<int>("StudInfoId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("StudInfoId"), 1L, 1);
 
                     b.Property<string>("AcademicPlus")
                         .HasColumnType("nvarchar(max)");
@@ -855,8 +883,9 @@ namespace API.Migrations
                 {
                     b.Property<int>("WorkBulletId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("WorkBulletId"), 1L, 1);
 
                     b.Property<bool>("IsActive")
                         .HasColumnType("bit");
@@ -888,17 +917,6 @@ namespace API.Migrations
                     b.Navigation("StudInfo");
                 });
 
-            modelBuilder.Entity("API.Entities.CiLocation", b =>
-                {
-                    b.HasOne("API.Entities.StLocation", "stLocation")
-                        .WithMany("CiLocations")
-                        .HasForeignKey("StLocationId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("stLocation");
-                });
-
             modelBuilder.Entity("API.Entities.CiempLocation", b =>
                 {
                     b.HasOne("API.Entities.StempLocation", "stempLocation")
@@ -908,6 +926,17 @@ namespace API.Migrations
                         .IsRequired();
 
                     b.Navigation("stempLocation");
+                });
+
+            modelBuilder.Entity("API.Entities.CiLocation", b =>
+                {
+                    b.HasOne("API.Entities.StLocation", "stLocation")
+                        .WithMany("CiLocations")
+                        .HasForeignKey("StLocationId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("stLocation");
                 });
 
             modelBuilder.Entity("API.Entities.DutyBullet", b =>
@@ -1006,17 +1035,6 @@ namespace API.Migrations
                     b.Navigation("News");
                 });
 
-            modelBuilder.Entity("API.Entities.PositName", b =>
-                {
-                    b.HasOne("API.Entities.PosCategory", "PosCategory")
-                        .WithMany("PositNames")
-                        .HasForeignKey("PosCategoryId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("PosCategory");
-                });
-
             modelBuilder.Entity("API.Entities.Position", b =>
                 {
                     b.HasOne("API.Entities.AppUser", "AppUser")
@@ -1026,6 +1044,17 @@ namespace API.Migrations
                         .IsRequired();
 
                     b.Navigation("AppUser");
+                });
+
+            modelBuilder.Entity("API.Entities.PositName", b =>
+                {
+                    b.HasOne("API.Entities.PosCategory", "PosCategory")
+                        .WithMany("PositNames")
+                        .HasForeignKey("PosCategoryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("PosCategory");
                 });
 
             modelBuilder.Entity("API.Entities.SkillsBullet", b =>
@@ -1141,14 +1170,14 @@ namespace API.Migrations
                     b.Navigation("SkillsBullets");
                 });
 
-            modelBuilder.Entity("API.Entities.StLocation", b =>
-                {
-                    b.Navigation("CiLocations");
-                });
-
             modelBuilder.Entity("API.Entities.StempLocation", b =>
                 {
                     b.Navigation("CiempLocations");
+                });
+
+            modelBuilder.Entity("API.Entities.StLocation", b =>
+                {
+                    b.Navigation("CiLocations");
                 });
 
             modelBuilder.Entity("API.Entities.StudInfo", b =>
