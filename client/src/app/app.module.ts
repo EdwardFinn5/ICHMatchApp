@@ -135,6 +135,15 @@ import { AddNewsComponent } from './news/add-news.component';
 import { ListNewsComponent } from './news/list-news.component';
 import { EditNewsComponent } from './news/edit-news.component';
 import { DetailNewsComponent } from './news/detail-news.component';
+import { CardNewsComponent } from './news/card-news.component';
+import { ListNewsCardComponent } from './news/list-news-card.component';
+import { ListNewsTitlesComponent } from './news/list-news-titles.component';
+import { EdsStudentMembersComponent } from './eds/eds-student-members.component';
+import { EdsEmpMembersComponent } from './eds/eds-emp-members.component';
+import { EdsPositionsComponent } from './eds/eds-positions.component';
+import { EmpQuestionsComponent } from './questions/emp-questions.component';
+import { StudentQuestionsComponent } from './questions/student-questions.component';
+import { StudentCardnphotoEditComponent } from './eds/student-cardnphoto-edit.component';
 
 @NgModule({
   declarations: [
@@ -262,6 +271,15 @@ import { DetailNewsComponent } from './news/detail-news.component';
     ListNewsComponent,
     EditNewsComponent,
     DetailNewsComponent,
+    CardNewsComponent,
+    ListNewsCardComponent,
+    ListNewsTitlesComponent,
+    EdsStudentMembersComponent,
+    EdsEmpMembersComponent,
+    EdsPositionsComponent,
+    EmpQuestionsComponent,
+    StudentQuestionsComponent,
+    StudentCardnphotoEditComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,40 @@
+/* .positions {
+    width: 100%;
+  }
+   */
+   .button-del {
+    color: red;
+  }
+  
+  .button-edit {
+    color: mediumblue;
+  }
+
+  /* div.scroll {
+    margin:4px, 4px;
+    padding:4px;
+  
+    width: auto;
+    height: 500px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    text-align:justify;
+} */
+
+.table {
+    margin: auto;
+    width: 70% !important; 
+ }
+
+ h1 {
+    color: rgb(42, 129, 227);
+}
+
+div.scroll {
+    margin:auto;
+    padding: 0px; 
+  
+    width: 75% !important;
+    height: 400px;
+    overflow-x: scroll;
+}

@@ -38,11 +38,11 @@ export class EditNewsComponent implements OnInit {
     this.newsService.updateNews(this.news, this.newsId).subscribe(() => {
       this.toastr.success('News Updated');
       this.editForm.reset(this.news);
-      this.router.navigateByUrl('/newslist');
+      this.router.navigateByUrl('/listnews');
     });
   }
 
   cancel() {
-    this.router.navigateByUrl('/newslist');
+    this.router.navigateByUrl('/listnews');
   }
 }

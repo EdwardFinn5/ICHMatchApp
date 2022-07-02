@@ -1,0 +1,37 @@
+<div class="row shadow mt-3 " *ngIf="newes">
+    <div class="positions p-0" style="text-align: center;">
+
+        <div>
+            <h1 class="mb-4"><strong><u>News & Announcements</u></strong></h1>
+       
+            <div class="scroll text-center col-12">
+            <table class="table col-6" style="text-align: center;">
+          
+            <thead>
+                <tr>
+                    <th class="p-2"><h5><strong>Title</strong></h5></th>
+                    <th class="p-2"><h5><strong>Click button to see content</strong></h5></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let news of newes">
+                    <td class="text-left"><strong>{{news.newsTitle}}</strong></td>
+                    <td>
+                        <button class="btn btn-info btn-sm shadow-sm mr-2 mb-2" routerLink='/detailnews/{{news.newsId}}'>See Content</button>
+                    </td>
+                </tr>
+            </tbody>
+       
+        </table>
+            </div>
+    </div>
+
+
+        <div class="text-center col-12">
+            <input type="button" class="btn btn-success btn-sm shadow-sm mt-3 mb-3" (click)="cancel()" value="Back to home page" />
+        </div>
+    </div>
+    </div>
+
+
+

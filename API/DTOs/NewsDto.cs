@@ -12,7 +12,6 @@ namespace API.DTOs
         public string NewsUrl { get; set; }
         public string NewsContent { get; set; }
         public float Order { get; set; }
-        public bool IsActive { get; set; }
-        public ICollection<PhotoNews> PhotoNewes { get; set; }
+        public bool IsActive { get; set; } = true;
     }
 }

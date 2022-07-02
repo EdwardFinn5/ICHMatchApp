@@ -14,6 +14,7 @@ namespace API.DTOs
         public string StempLocation { get; set; }
         public string CoLocation { get; set; }
         public string ClassYear { get; set; }
+        public bool IsActive { get; set; }
         public string Category { get; set; }
         public string Major { get; set; }
         public string PosCategory { get; set; }

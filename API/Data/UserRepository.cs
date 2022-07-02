@@ -119,11 +119,22 @@ namespace API.Data
             );
         }
 
-        public async Task<IEnumerable<MemberDto>> GetStudentMembersAsync()
+        public async Task<IEnumerable<MemberDto>> GetEdsStudentMembersAsync()
         {
             return await _context.Users
                 .Where(x => x.AppUserType == "ColStudent")
                 .ProjectTo<MemberDto>(_mapper.ConfigurationProvider)
+                .OrderBy(u => u.College)
+                    .ThenBy(u => u.Username)
+                .ToListAsync();
+        }
+
+        public async Task<IEnumerable<MemberDto>> GetEdsEmpMembersAsync()
+        {
+            return await _context.Users
+                .Where(x => x.AppUserType == "EmpHr")
+                .ProjectTo<MemberDto>(_mapper.ConfigurationProvider)
+                .OrderBy(u => u.EmpName)
                 .ToListAsync();
         }
 
@@ -161,13 +172,13 @@ namespace API.Data
         }
 
 
-        public async Task<IEnumerable<MemberDto>> GetEmployeeMembersAsync()
-        {
-            return await _context.Users
-                .Where(x => x.AppUserType == "EmpHr")
-                .ProjectTo<MemberDto>(_mapper.ConfigurationProvider)
-                .ToListAsync();
-        }
+        // public async Task<IEnumerable<MemberDto>> GetEmployeeMembersAsync()
+        // {
+        //     return await _context.Users
+        //         .Where(x => x.AppUserType == "EmpHr")
+        //         .ProjectTo<MemberDto>(_mapper.ConfigurationProvider)
+        //         .ToListAsync();
+        // }
 
 
         public async Task<AppUser> GetUserByIdAsync(int id)
@@ -229,6 +240,16 @@ namespace API.Data
                  .Where(x => x.UserName == username)
                  .ProjectTo<MemberDto>(_mapper.ConfigurationProvider)
                  .SingleOrDefaultAsync();
+        }
+
+        public void DeleteMember(AppUser appUser)
+        {
+            _context.Users.Remove(appUser);
+        }
+
+        public async Task<bool> Complete()
+        {
+            return await _context.SaveChangesAsync() > 0;
         }
     }
 }

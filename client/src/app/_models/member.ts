@@ -13,7 +13,7 @@ export interface Member {
   firstName: string;
   lastName: string;
   appUserType: string;
-  active: boolean;
+  isActive: boolean;
   ciLocation: string;
   ciempLocation: string;
   coLocation: string;

@@ -1,0 +1,39 @@
+<div class="row shadow mt-3 " *ngIf="members">
+    <div class="positions p-0" style="text-align: center;">
+        <!-- <h3>Id: {{member.appUserId}}</h3>
+        <h3>Username: {{member.username}}</h3> -->
+
+        <h2><strong>Current Student Members</strong></h2>
+       
+        <table class="table table-striped col-sm-4 col-lg-8 col-md-6 m-auto">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>College</th>
+                    <th>Username</th>
+                    <th>Options</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let member of members">
+                    <td>{{member.appUserId}}</td>
+                    <td>{{member.college}}</td>
+                    <td>{{member.username}}</td>
+                    <td>
+                        <button class="btn btn-success btn-sm shadow-sm mr-2 mb-2" routerLink='/'>View</button>
+                        <button class="btn btn-primary btn-sm shadow-sm mr-2 mb-2" routerLink='/studentcardnphotoedit'>Edit</button>
+                        <button type="button-del" (click)="deleteSearchMember(member.appUserId)"  class="btn btn-danger btn-sm shadow-sm mb-2">
+                            Delete
+                        </button>
+
+                    </td>
+                </tr>
+            </tbody>
+           
+        </table>
+        <div class="text-center col-12">
+            <button class="btn btn-success btn-sm shadow-sm mt-3 mb-3" routerLink="/">Back to Home</button>
+        </div>
+
+    </div>
+</div>

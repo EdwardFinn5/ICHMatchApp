@@ -1,59 +1,17 @@
-<div class="row shadow" *ngIf="news" style="margin-left: 0px">
-    <div class="text-center">
-        <h2><strong>Edit News & Add Photo</strong></h2>
-    </div>
-    <div class="text-center">
+<section class="signup">
+
+    <div class="text-center col-sm-4 col-lg-8 col-md-6 p-x m-auto">
         <div class="alert alert-info" *ngIf="editForm.dirty">
-            <strong>Alert: </strong>You have made changes to the card. Any unsaved changes will be lost
+            <strong>Alert: </strong>You have made changes. Any unsaved changes will be lost
         </div>
     </div>
 
-    <!-- <div class="col-sm-4 p-0"> -->
-        <!-- <div class="card" style="align-items: center">
-            <img src="{{member.studentUrl || '../../assets/images/person.png'}}" alt="{{member.firstName}}"
-                class="card-img-top img-studthumbnail">
-            <div class="card-body text-center">
-                <p>
-                    <u><strong>-- {{member.firstName | titlecase}} {{member.lastName | titlecase}} --</strong></u>
-                    <br><strong>{{member.classYear}} {{member.major}} Major</strong>
-                    <br><strong>({{member.category}} Category)</strong>
-                    <br> from <br>
-                    <strong>{{member.ciLocation | titlecase}}, {{member.stLocation}}</strong>
-                    <br> attending <br>
-                    <strong><u>{{member.college | titlecase}}</u></strong>
-                    <br>
-                    <strong>Last active: {{member.lastActive | date: "MMM dd yyyy"}}</strong>
-                </p> -->
-<!-- 
-                <div class="btn-group d-flex">
-                    <!-- <button class="btn btn-primary mr-2">Possible Fit</button> -->
-                    <!-- <button [disabled]="!editForm.dirty" form="editForm" type="submit"
-                        class="btn btn-info shadow-sm mr-1">Save Changes</button>
-                    <button class="btn btn-success shadow-sm ml-1" routerLink='/studinfo/edit'>Add/Edit Student
-                        Info</button>
-                </div>
-                <button class="btn btn-primary btn-block shadow-sm mt-2" routerLink='/positionslist'>See
-                    positions</button>
-            </div>
-        </div> -->
-    
+    <div class="card-header col-sm-4 col-lg-8 col-md-6 p-x m-auto">
+        <h3 style="text-align: center;">Add a news item</h3>
+    </div>
 
-    <div class="col-sm-8 p-2">
-        <tabset class="member-tabset" #newsTabs>
-            <tab heading='Add/Edit Photo'>
-             
-                <!-- <ngx-dropzone (change)="onSelect($event)">
-                    <ngx-dropzone-label>Drop it, baby!</ngx-dropzone-label>
-                    <ngx-dropzone-preview *ngFor="let f of files" [removable]="true" (removed)="onRemove(f)">
-                        <ngx-dropzone-label>{{ f.name }} ({{ f.type }})</ngx-dropzone-label>
-                    </ngx-dropzone-preview>
-                </ngx-dropzone> -->
-             
-                <!-- <app-photo-editor-news [news]="news"></app-photo-editor-news> -->
-            </tab>
+    <div class="login col-sm-4 col-lg-8 col-md-6 mx-auto shadow-lg">
 
-
-            <tab heading='Edit Card Info' class="tab-heading">
                 <form #editForm="ngForm" id="editForm" (ngSubmit)="updateNews()">
                     <div class="details mb-3">
 
@@ -86,7 +44,11 @@
                     
                         </div>
                 </form>
-            </tab>
-
-        </tabset>
+                
+        <div class="btn-group d-flex">
+            <button [disabled]="!editForm.dirty" form="editForm" type="submit"
+                class="btn btn-success shadow-sm">Save Changes</button>
+                <input type="button" class="btn btn-secondary shadow-sm ml-2" (click)="cancel()" value="Cancel" />
+        </div>
     </div>
+</section>

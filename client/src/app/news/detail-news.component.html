@@ -1,1 +1,18 @@
-<p>detail-news works!</p>
+<div class="container mt-2">
+    <div style='text-align: center;'>
+        <h1 class="mb-4"><strong><u>News/Announcement Details</u></strong></h1>
+
+        <div class="container-fluid lists" *ngIf="news">
+            <div class="padding 0">
+                <h2><strong>{{news.newsTitle}}</strong></h2>
+                <h5 class="text-left"><strong>{{news.newsContent}}</strong></h5>
+               
+            </div>
+        </div>
+
+        <div class="text-center col-12">
+            <button class="btn btn-success btn-sm shadow-sm mt-3" routerLink="/listnewstitles">Back to all news/annoucnements</button>
+        </div>
+
+    </div>
+</div>

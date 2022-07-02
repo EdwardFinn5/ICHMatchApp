@@ -113,6 +113,14 @@ import { AddNewsComponent } from './news/add-news.component';
 import { ListNewsComponent } from './news/list-news.component';
 import { EditNewsComponent } from './news/edit-news.component';
 import { DetailNewsComponent } from './news/detail-news.component';
+import { ListNewsCardComponent } from './news/list-news-card.component';
+import { ListNewsTitlesComponent } from './news/list-news-titles.component';
+import { EdsStudentMembersComponent } from './eds/eds-student-members.component';
+import { EdsEmpMembersComponent } from './eds/eds-emp-members.component';
+import { EdsPositionsComponent } from './eds/eds-positions.component';
+import { EmpQuestionsComponent } from './questions/emp-questions.component';
+import { StudentQuestionsComponent } from './questions/student-questions.component';
+import { StudentCardnphotoEditComponent } from './eds/student-cardnphoto-edit.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -218,6 +226,21 @@ const routes: Routes = [
     component: EmpmemberSuperDetailComponent,
   },
   {
+    path: 'edsstudentmembers',
+    component: EdsStudentMembersComponent,
+    pathMatch: 'full',
+  },
+  {
+    path: 'edsempmembers',
+    component: EdsEmpMembersComponent,
+    pathMatch: 'full',
+  },
+  {
+    path: 'edspositions',
+    component: EdsPositionsComponent,
+    pathMatch: 'full',
+  },
+  {
     path: 'empmembermessagedetail/:appUserId',
     component: EmpmemberMessageDetailComponent,
   },
@@ -238,6 +261,17 @@ const routes: Routes = [
     component: EmpindustryListEmpsComponent,
     pathMatch: 'full',
   },
+  {
+    path: 'empquestions',
+    component: EmpQuestionsComponent,
+    pathMatch: 'full',
+  },
+  {
+    path: 'studentquestions',
+    component: StudentQuestionsComponent,
+    pathMatch: 'full',
+  },
+
   {
     path: '',
     runGuardsAndResolvers: 'always',
@@ -367,6 +401,11 @@ const routes: Routes = [
       {
         path: 'member/edit',
         component: MemberEditCardnphotoComponent,
+        canDeactivate: [PreventUnsavedMemberCardChangesGuard],
+      },
+      {
+        path: 'studentcardnphotoedit',
+        component: StudentCardnphotoEditComponent,
         canDeactivate: [PreventUnsavedMemberCardChangesGuard],
       },
       {
@@ -529,6 +568,16 @@ const routes: Routes = [
   {
     path: 'listnews',
     component: ListNewsComponent,
+    pathMatch: 'full',
+  },
+  {
+    path: 'listnewscard',
+    component: ListNewsCardComponent,
+    pathMatch: 'full',
+  },
+  {
+    path: 'listnewstitles',
+    component: ListNewsTitlesComponent,
     pathMatch: 'full',
   },
   {

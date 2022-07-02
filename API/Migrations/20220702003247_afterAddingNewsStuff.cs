@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace API.Migrations
 {
-    public partial class upgradeddotnetNangular : Migration
+    public partial class afterAddingNewsStuff : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

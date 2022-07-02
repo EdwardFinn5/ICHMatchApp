@@ -98,6 +98,24 @@ namespace API.Controllers
             return Ok(users);
         }
 
+        [HttpGet("GetEmps")]
+        public async Task<ActionResult<IEnumerable<MemberDto>>> GetEmps()
+        {
+
+            var users = await _userRepository.GetEdsEmpMembersAsync();
+
+            return Ok(users);
+        }
+
+        [HttpGet("GetStudents")]
+        public async Task<ActionResult<IEnumerable<MemberDto>>> GetStudents()
+        {
+
+            var users = await _userRepository.GetEdsStudentMembersAsync();
+
+            return Ok(users);
+        }
+
         [HttpGet("GetByName/{username}", Name = "GetUser")]
         public async Task<ActionResult<MemberDto>> GetByName(string username)
         {
@@ -263,6 +281,19 @@ namespace API.Controllers
             if (await _userRepository.SaveAllAsync()) return NoContent();
 
             return BadRequest("Failed to set main image");
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<ActionResult> DeleteMember(int id)
+        {
+            var user = await _userRepository.GetUserByIdAsync(id);
+
+            _userRepository.DeleteMember(user);
+
+            if (await _userRepository.Complete()) return Ok();
+
+            return BadRequest("Problem deleting the member");
+
         }
 
 

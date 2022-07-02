@@ -1,5 +1,44 @@
 [
   {
+    "UserName": "ed@sau.edu",
+    "FirstName": "Ed",
+    "LastName": "Finn",
+    "RegisterCode": "Studadmin",
+    "ClassYear": "Senior",
+    "College": "St. Ambrose University",
+    "Major": "Computer Science",
+    "Category": "IT",
+    "CoLocation": "USA",
+    "StLocation": "IA",
+    "CiLocation": "Des Moines (area)",
+    "AppUserType": "ColStudent",
+    "IsActive": true,
+    "Created": "2021-10-16",
+    "LastActive": "2021-10-16",
+    "StudInfos": [
+      {
+        "IsActive": true,
+        "GradDate": "2022-05-01",
+        "BestEmail": "Jill@sau.edu",
+        "BestPhone": "515-555-1212",
+        "AcademicPlus": "Jill has been on the Dean's List each semester while at St. Admbrose. \r\n",
+        "Athletics": "I played on the women's soccer team my first two years. I was also involved with the Student Government Association. \r\n",
+        "ExtraCurricular": "I have been involved in the accounting club at St. Ambrose and am the President of the club this year. \r\n",
+        "WorkPlus": "I had an internship with a local IT firm last year and worked in the firm's cyber-security area. I also have worked in retail on a part-time basis since high school. \r\n",
+        "GPA": "3.5",
+        "Arts": "I have been in Show Choir and have also perfomed in my school's theatre program.",
+        "DreamJob": "CIO for a non-profit"
+      }
+    ],
+    "Photos": [
+      {
+        "StudentUrl": "https://srkheadshotday.com/wp-content/uploads/Danielle_Lussier_Q4332_Crop32.jpg",
+        "IsMain": true
+      }
+    ]
+  },
+
+  {
     "UserName": "Jill@sau.edu",
     "FirstName": "Jill",
     "LastName": "Martin",
@@ -156,6 +195,61 @@
   },
 
   {
+    "UserName": "Ed@firm.com",
+    "RegisterCode": "Empadmin",
+    "FirstName": "Sue",
+    "LastName": "Haack",
+    "HrContactTitle": "HR Director",
+    "EmpName": "Encova",
+    "EmpIndustry": "Insurance",
+    "EmployeeNum": "850",
+    "StempLocation": "IA",
+    "CiempLocation": "DeWitt",
+    "AppUserType": "EmpHr",
+    "IsActive": true,
+    "Created": "2021-10-16",
+    "LastActive": "2021-10-16",
+    "EmpInfos": [
+      {
+        "IsActive": true,
+        "EmpWebsite": "https://www.homesteaderslife.com/",
+        "CompanyDescription": "Homesteaders Life Company provides products and services to promote and support the funding of advance funeral planning and end-of-life expenses.",
+        "WhyWork": "Apply for a position at Homesteaders if you want to work for a company that treats its employees like family and where there is much opportuntiy for advancement."
+      }
+    ],
+    "Positions": [
+      {
+        "PosCategory": "Business",
+        "PosName": "Marketing",
+        "RegisterCode": "cnsjf",
+        "PositionDescription": "This marketing position is an internship opportunity for a student exploring the insurance industry and working with some of the finest marketing professionals in Des Moines.",
+        "PositionType": "Full-Time",
+        "SalaryRange": "$50,000 to $60,000",
+        "PositionBenefits": "There is a special $1,000 signing bonus for this position plus the company will match 5% of your salary your first year to put into your retirment account.",
+        "StartDate": "2022-07-01",
+        "AppDeadline": "2022-03-30",
+        "StempLocation": "IA",
+        "CiempLocation": "Des Moines",
+        "IsActive": true,
+        "HowToApply": "Applicants should click on the link below.",
+        "ApplyEmail": "ed@iowacollegefoundation.org",
+        "ApplyLink": "https://www.iowacollegefoundation.org/"
+      }
+    ],
+    "Photos": [
+      {
+        "LogoUrl": "https://secureservercdn.net/198.71.233.41/v5v.bff.myftpupload.com/wp-content/uploads/2019/09/Encova-1024x1024.jpg",
+        "IsMainLogo": true
+      }
+    ],
+    "PhotoHrs": [
+      {
+        "HrUrl": "https://res.cloudinary.com/icf/image/upload/v1617235510/rtqnanswab1ed5ipdaet.jpg",
+        "IsMainHr": true
+      }
+    ]
+  },
+  {
     "UserName": "Sue@firm.com",
 
     "RegisterCode": "cnsjf",
@@ -211,9 +305,9 @@
       }
     ]
   },
+
   {
     "UserName": "Kent@firm.com",
-
     "RegisterCode": "auivd",
     "FirstName": "Kent",
     "LastName": "Hall",

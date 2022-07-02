@@ -67,7 +67,15 @@
             <div class="dropdown-divider"></div>
             <a *ngIf="accountService.currentUser$ | async" class="dropdown-item" routerLink='/collegelist'>Ed College List</a> 
             <div class="dropdown-divider"></div>
-            <a *ngIf="accountService.currentUser$ | async" class="dropdown-item" routerLink='/addnews'>Ed Add News</a>   
+            <a *ngIf="accountService.currentUser$ | async" class="dropdown-item" routerLink='/addnews'>Ed Add News</a>  
+            <div class="dropdown-divider"></div>
+            <a *ngIf="accountService.currentUser$ | async" class="dropdown-item" routerLink='/listnewscard'>Ed List News</a> 
+            <div class="dropdown-divider"></div>
+            <a *ngIf="accountService.currentUser$ | async" class="dropdown-item" routerLink='/edsstudentmembers'>Ed Student Members</a>    
+            <div class="dropdown-divider"></div>
+            <a *ngIf="accountService.currentUser$ | async" class="dropdown-item" routerLink='/edsempmembers'>Ed Emp Members</a>    
+            <div class="dropdown-divider"></div>
+            <a *ngIf="accountService.currentUser$ | async" class="dropdown-item" routerLink='/edspositions'>Ed Positions</a>       
             
           </div>
         </li>
@@ -91,7 +99,7 @@
           <a class="nav-link" routerLink="/about" routerLinkActive='active'>About</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="/about" routerLinkActive='active'>News</a>
+          <a class="nav-link" routerLink="/listnewstitles" routerLinkActive='active'>News</a>
         </li>
         <!-- <li class="nav-item">
           <a class="nav-link" routerLink="/positionslist" routerLinkActive='active'>List Pos</a>
@@ -114,6 +122,8 @@
             <a routerLink="/studinfo/edit" class="dropdown-item">Add/Edit Student Info</a>
 
             <div class="dropdown-divider"></div>
+            <a routerLink="/studentquestions" class="dropdown-item">If questions and/or to delete profile</a>
+            <div class="dropdown-divider"></div>
 
             <a class="dropdown-item" (click)="logout()">Logout</a>
           </div>
@@ -132,6 +142,8 @@
             <a routerLink="/new2/preposition/add" class="dropdown-item">Add a position</a>
             <div class="dropdown-divider"></div>
             <a routerLink="/empmember/positions" class="dropdown-item">See all positions</a>
+            <div class="dropdown-divider"></div>
+            <a routerLink="/empquestions" class="dropdown-item">If questions and/or to delete profile</a>
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" (click)="logout()">Logout</a>
           </div>

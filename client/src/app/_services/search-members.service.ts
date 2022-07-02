@@ -38,6 +38,14 @@ export class SearchMembersService {
     return this.userParams;
   }
 
+  getEdsStudentSearchMembers() {
+    return this.http.get<Member[]>(this.baseUrl + 'searchusers/getstudents');
+  }
+
+  getEdsEmpSearchMembers() {
+    return this.http.get<Member[]>(this.baseUrl + 'searchusers/getemps');
+  }
+
   getSearchMembers(userParams: UserParams) {
     console.log(Object.values(userParams).join('-'));
     var response = this.memberCache.get(Object.values(userParams).join('-'));
@@ -222,5 +230,9 @@ export class SearchMembersService {
     params = params.append('pageSize', pageSize.toString());
 
     return params;
+  }
+
+  deleteSearchMember(id: number) {
+    return this.http.delete(this.baseUrl + 'searchusers/' + id);
   }
 }
