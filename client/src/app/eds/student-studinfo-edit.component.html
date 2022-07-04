@@ -1,0 +1,141 @@
+<div class="row shadow" *ngIf="member" style="margin-left: 0px">
+    <div class="text-center">
+        <h2><strong>Add/Edit Student Info</strong></h2>
+    </div>
+    <div class="text-center">
+        <div class="alert alert-info" *ngIf="editForm.dirty">
+            <strong>Alert: </strong> You have made changes to the card. Any unsaved changes will be lost
+        </div>
+    </div>
+
+        <div class="col-sm-4 p-0">
+            <div class="card" style="align-items: center">
+            <img src="{{member.studentUrl || '../../assets/images/person.png'}}" alt="{{member.firstName}}"
+                class="card-img-top img-studthumbnail">
+            <div class="card-body text-center">
+                <p>
+                    <u><strong>{{member.firstName}} {{member.lastName}}</strong></u>
+                    <br><strong>{{member.classYear}} {{member.major}} Major</strong>
+                    <br><strong>({{member.category}} Category)</strong>
+                    <br> from <br>
+                    <strong>{{member.ciLocation}}, {{member.stLocation}}</strong>
+                    <br> attending <br>
+                    <strong><u>{{member.college | titlecase}}</u></strong>
+                    <br>
+                    <strong>Last active: {{member.lastActive | date: "MMM dd yyyy" }}</strong>
+                </p>
+
+                <div class="btn-group d-flex">
+                    <!-- <button class="btn btn-primary mr-2">Possible Fit</button> -->
+                    <button [disabled]="!editForm.dirty" form="editForm" type="submit"
+                        class="btn btn-info shadow-sm mr-1">Save Student Info Changes</button>
+                    <button class="btn btn-success shadow-sm ml-1" routerLink='/edsstudentview/{{member.appUserId}}'>View profile</button>
+                </div>
+                <button class="btn btn-primary btn-block shadow-sm mt-2" routerLink='/positionslist'>See
+                    positions</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-8 p-2">
+        <tabset class="member-tabset" #memberTabs>
+            <tab heading='Edit Card Info' class="tab-heading">
+                <form #editForm="ngForm" id="editForm" (ngSubmit)="updateStudInfo()" autocomplete="off">
+                    <div class="details mb-3">
+
+                        <h5><strong>Fields with an asterisk (*) are optional. If you do not type anything in these fields, they will not be included when employers view your profile.
+                            Also, take action with green buttons (bullet points) first before updating any fields that will need to be saved.
+                        </strong></h5>    
+                        
+                        <h4 class="mt-3"><strong><u>Academic & Work</u></strong></h4>            
+
+                        <label><strong>Academic Highlights & Achievements: </strong></label>
+                        <ul>
+                            <li *ngFor="let acBullet of acBullets">{{acBullet.acBulletText}}</li>
+                        </ul>
+            
+                        <div>
+                            <button type="button" (click)="addAcBullets()"  class="btn btn-success btn-sm shadow-sm mb-3 m-auto" >Add/Edit Bullet Points</button>
+                        </div>
+            
+                        <label><strong>Work Highlights & Achievements: *</strong></label>
+                        <ul>
+                            <li *ngFor="let workBullet of workBullets">{{workBullet.workBulletText}}</li>
+                        </ul>
+            
+                        <div>
+                            <button type="button" (click)="addWorkBullets()"  class="btn btn-success btn-sm shadow-sm mb-3 m-auto" >Add/Edit Bullet Points</button>
+                        </div>
+
+                        <div class="form-inline">
+                            <label for="gpa"><strong>GPA: *</strong></label>
+                            <input [(ngModel)]=" studInfo.gpa" type="text" name="gpa" class="form-control mb-2 ml-2">
+                        </div>
+                        
+                        <div class="form-inline">
+                            <label for="gradDate"><strong>Grad Date (approx): </strong></label>
+                            <input [(ngModel)]=" studInfo.gradDate" type="date" name="gradDate"
+                                class="form-control mb-2 ml-2">
+                        </div>
+                        
+                        <div class="form-group">    
+                            <label for="dreamJob"><strong>Dream Job: *</strong></label>
+                            <textarea [(ngModel)]="studInfo.dreamJob" name="dreamJob" rows="2"
+                                class="form-control mb-2"></textarea>
+                        </div>
+
+                        <div class="form-group">    
+                            <label for="uniqueTitle"><strong>Unique Title: *</strong></label>
+                            <input [(ngModel)]="studInfo.uniqueTitle" name="uniqueTitle" rows="2"
+                                class="form-control mb-2">
+                        </div>
+
+                        <div class="form-group">    
+                            <label for="uniqueContent"><strong>Unique Content: *</strong></label>
+                            <textarea [(ngModel)]="studInfo.uniqueContent" name="uniqueContent" rows="2"
+                                class="form-control mb-2"></textarea>
+                        </div>
+    
+                        <h4><strong><u>Extra-Curricular</u></strong></h4>          
+                        
+                        <div class="form-group">    
+                            <label for="athletics"><strong>Athletic Experiences:</strong></label>
+                            <textarea [(ngModel)]="studInfo.athletics" name="athletics" rows="2"
+                                class="form-control mb-2"></textarea>
+                        </div>
+                        
+                        <div class="form-group">   
+                            <label for="arts"><strong>Involvement in the Arts:</strong></label>
+                            <textarea [(ngModel)]="studInfo.arts" name="arts" rows="2"
+                                class="form-control mb-2"></textarea>
+                        </div>
+                        
+                        <div class="form-group">   
+                        <label for="extraCurricular"><strong>Clubs & Organizations:</strong></label>
+                        <textarea [(ngModel)]="studInfo.extraCurricular" name="extraCurricular" rows="2"
+                            class="form-control mb-2"></textarea>
+                        </div>
+
+                        <h4><strong><u>Contact Info</u></strong></h4>
+    
+                        <div class="form-group">
+                            <label for="bestEmail"><strong>Best email to contact you: *</strong></label>
+                            <input [(ngModel)]="studInfo.bestEmail" type="email" name="bestEmail"
+                                class="form-control mb-2">
+                        </div>
+
+                        <div class="form-group">       
+                            <label for="bestPhone"><strong>Best phone to contact you: *</strong></label>
+                            <input [(ngModel)]=" studInfo.bestPhone" type="phone" name="bestPhone"
+                                class="form-control mb-2">
+                        </div> 
+
+                    </div>
+                </form>
+            </tab>
+        </tabset>
+    </div>
+
+
+    
+

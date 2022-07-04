@@ -116,11 +116,17 @@ import { DetailNewsComponent } from './news/detail-news.component';
 import { ListNewsCardComponent } from './news/list-news-card.component';
 import { ListNewsTitlesComponent } from './news/list-news-titles.component';
 import { EdsStudentMembersComponent } from './eds/eds-student-members.component';
-import { EdsEmpMembersComponent } from './eds/eds-emp-members.component';
-import { EdsPositionsComponent } from './eds/eds-positions.component';
 import { EmpQuestionsComponent } from './questions/emp-questions.component';
 import { StudentQuestionsComponent } from './questions/student-questions.component';
 import { StudentCardnphotoEditComponent } from './eds/student-cardnphoto-edit.component';
+import { StudentStudinfoEditComponent } from './eds/student-studinfo-edit.component';
+import { EdsPositionaAcBulletsComponent } from './eds/eds-positiona-ac-bullets.component';
+import { EdsPositionaWorkBulletsComponent } from './eds/eds-positiona-work-bullets.component';
+import { EdsStudentViewComponent } from './eds/eds-student-view.component';
+import { EdsEmpMembersComponent } from './edsemps/eds-emp-members.component';
+import { EmpCardnlogoEditComponent } from './edsemps/emp-cardnlogo-edit.component';
+import { EmpEmpinfoEditComponent } from './edsemps/emp-empinfo-edit.component';
+import { EdsEmpViewComponent } from './edsemps/eds-emp-view.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -231,15 +237,30 @@ const routes: Routes = [
     pathMatch: 'full',
   },
   {
+    path: 'edspositionaacbullets/:appUserId',
+    component: EdsPositionaAcBulletsComponent,
+    pathMatch: 'full',
+  },
+  {
+    path: 'edspositionaworkbullets/:appUserId',
+    component: EdsPositionaWorkBulletsComponent,
+    pathMatch: 'full',
+  },
+  {
+    path: 'studentstudinfoedit/:appUserId',
+    component: StudentStudinfoEditComponent,
+    pathMatch: 'full',
+  },
+  {
     path: 'edsempmembers',
     component: EdsEmpMembersComponent,
     pathMatch: 'full',
   },
-  {
-    path: 'edspositions',
-    component: EdsPositionsComponent,
-    pathMatch: 'full',
-  },
+  // {
+  //   path: 'edspositions',
+  //   component: EdsPositionsComponent,
+  //   pathMatch: 'full',
+  // },
   {
     path: 'empmembermessagedetail/:appUserId',
     component: EmpmemberMessageDetailComponent,
@@ -397,6 +418,18 @@ const routes: Routes = [
         component: MemberDetailStudentComponent,
         resolve: { member: MemberDetailResolver },
       },
+      {
+        path: 'edsstudentview/:appUserId',
+        component: EdsStudentViewComponent,
+        pathMatch: 'full',
+        resolve: { member: MemberDetailResolver },
+      },
+      {
+        path: 'edsempview/:appUserId',
+        component: EdsEmpViewComponent,
+        pathMatch: 'full',
+        resolve: { member: MemberDetailResolver },
+      },
       { path: 'members/:id', component: MemberDetailComponent },
       {
         path: 'member/edit',
@@ -404,8 +437,15 @@ const routes: Routes = [
         canDeactivate: [PreventUnsavedMemberCardChangesGuard],
       },
       {
-        path: 'studentcardnphotoedit',
+        path: 'studentcardnphotoedit/:appUserId',
         component: StudentCardnphotoEditComponent,
+        pathMatch: 'full',
+        canDeactivate: [PreventUnsavedMemberCardChangesGuard],
+      },
+      {
+        path: 'empcardnlogoedit/:appUserId',
+        component: EmpCardnlogoEditComponent,
+        pathMatch: 'full',
         canDeactivate: [PreventUnsavedMemberCardChangesGuard],
       },
       {
@@ -447,6 +487,12 @@ const routes: Routes = [
       {
         path: 'company2/edit',
         component: Empmember2EditEmpinfoComponent,
+        pathMatch: 'full',
+        canDeactivate: [PreventUnsavedEmpmemberCardEmpInfoChangesGuard],
+      },
+      {
+        path: 'empempinfoedit/:appUserId',
+        component: EmpEmpinfoEditComponent,
         pathMatch: 'full',
         canDeactivate: [PreventUnsavedEmpmemberCardEmpInfoChangesGuard],
       },

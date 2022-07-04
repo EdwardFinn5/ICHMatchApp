@@ -143,6 +143,20 @@ namespace API.Controllers
             return BadRequest("Failed to update user");
         }
 
+        [HttpPut("{id}")]
+        public async Task<ActionResult> UpdateStudentUser(MemberUpdateDto memberUpdateDto, int id)
+        {
+            var user = await _userRepository.GetUserByIdAsync(id);
+
+            _mapper.Map(memberUpdateDto, user);
+
+            _userRepository.Update(user);
+
+            if (await _userRepository.SaveAllAsync()) return NoContent();
+
+            return BadRequest("Failed to update user");
+        }
+
         [HttpPost("add-photo")]
         public async Task<ActionResult<PhotoDto>> AddPhoto(IFormFile file)
         {

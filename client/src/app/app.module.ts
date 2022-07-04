@@ -139,11 +139,17 @@ import { CardNewsComponent } from './news/card-news.component';
 import { ListNewsCardComponent } from './news/list-news-card.component';
 import { ListNewsTitlesComponent } from './news/list-news-titles.component';
 import { EdsStudentMembersComponent } from './eds/eds-student-members.component';
-import { EdsEmpMembersComponent } from './eds/eds-emp-members.component';
-import { EdsPositionsComponent } from './eds/eds-positions.component';
 import { EmpQuestionsComponent } from './questions/emp-questions.component';
 import { StudentQuestionsComponent } from './questions/student-questions.component';
 import { StudentCardnphotoEditComponent } from './eds/student-cardnphoto-edit.component';
+import { StudentStudinfoEditComponent } from './eds/student-studinfo-edit.component';
+import { EdsPositionaAcBulletsComponent } from './eds/eds-positiona-ac-bullets.component';
+import { EdsPositionaWorkBulletsComponent } from './eds/eds-positiona-work-bullets.component';
+import { EdsStudentViewComponent } from './eds/eds-student-view.component';
+import { EdsEmpMembersComponent } from './edsemps/eds-emp-members.component';
+import { EmpCardnlogoEditComponent } from './edsemps/emp-cardnlogo-edit.component';
+import { EmpEmpinfoEditComponent } from './edsemps/emp-empinfo-edit.component';
+import { EdsEmpViewComponent } from './edsemps/eds-emp-view.component';
 
 @NgModule({
   declarations: [
@@ -275,11 +281,17 @@ import { StudentCardnphotoEditComponent } from './eds/student-cardnphoto-edit.co
     ListNewsCardComponent,
     ListNewsTitlesComponent,
     EdsStudentMembersComponent,
-    EdsEmpMembersComponent,
-    EdsPositionsComponent,
     EmpQuestionsComponent,
     StudentQuestionsComponent,
     StudentCardnphotoEditComponent,
+    StudentStudinfoEditComponent,
+    EdsPositionaAcBulletsComponent,
+    EdsPositionaWorkBulletsComponent,
+    EdsStudentViewComponent,
+    EdsEmpMembersComponent,
+    EmpCardnlogoEditComponent,
+    EmpEmpinfoEditComponent,
+    EdsEmpViewComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,182 @@
+<div class="row shadow"  *ngIf="member" style="margin-left: 0px">
+    <div class="text-center">
+        <h2><strong>Add/Edit Logo & Edit Card Info/HR Contact Person</strong></h2>
+    </div>
+    <div class="text-center">
+        <div class="alert alert-info" *ngIf="editForm.dirty">
+            <p><strong>Alert: </strong>You have made changes. Any unsaved changes will be lost</p>
+        </div>
+    </div>
+
+    <div class="col-sm-4 p-0">
+            <div class="card" style="align-items: center">
+                <img src="{{member.logoUrl || '../../assets/images/new_logo.png' }}" alt="{{member.empName}}" 
+                class="card-img-top img-studthumbnail">
+            <div class="card-body text-center">
+                <p>                  
+                <u><strong>{{member.empName}}</strong></u>
+                <br>
+                Industry: {{member.empIndustry | titlecase}} 
+                <br> 
+                Number of employees: {{member.employeeNum}}
+                <br>
+                Located in {{member.ciempLocation | titlecase}}, {{member.stempLocation}}
+            </p>
+            
+                <div class="btn-group d-flex">
+                    <!-- <button class="btn btn-primary mr-2">Possible Fit</button> -->
+                    <button [disabled]="!editForm.dirty" form="editForm" type="submit" class="btn btn-info mr-1">Save Card Changes</button>
+                    <button class="btn btn-success shadow-sm ml-1" routerLink='/empempinfoedit/{{member.appUserId}}'>Add/Edit Company Info</button>
+                </div>
+                <button class="btn btn-primary btn-block shadow-sm mt-2" routerLink='/membersearch'>See talent</button>
+        </div>
+    </div>
+</div>
+     
+<div class="col-sm-8 p-2">
+    <tabset class="member-tabset" #memberTabs>
+        <!-- <tab heading='Add/Edit Logo' >
+            <app-photo-editor [member]="member"></app-photo-editor>
+         </tab> -->
+
+        <tab heading='Edit Card Info/HR Contact Person' class="tab-heading">
+            <form #editForm="ngForm" id="editForm" (ngSubmit)="updateMemberCard()">
+                <div class="details mb-3">
+
+                    <div class="form-group">
+                        <label for="empIndustry">
+                            Industry (click box to update industry):
+                        </label>
+                        <select name="empIndustry" id="empIndustry" [(ngModel)]="member.empIndustry" class="form-control">
+                            <option required value="">-- Select Industry --</option>
+                            <option *ngFor="let empIndustry of empIndustries" [value]="empIndustry.empIndustryName">
+                                {{empIndustry.empIndustryName | titlecase}}
+                            </option>
+                        </select>
+                    </div>
+
+                    <label class="filter m-auto mb-2"><strong>If you don't see your industry, click this
+                        button:</strong></label>
+              
+                    <div>
+                      <button class="btn btn-info mb-2 shadow-sm" routerLink='/empindustrylistemps'>Add Industry</button>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="stempLocation">
+                            To update your organization's "Iowa" headquarters, first enter state:
+                        </label>
+                        <select class="form-control" name="stempLocation" id="stempLocation" [(ngModel)]="member.stempLocation"style="width: auto">
+                            <option class="text-center" value="">-- Select State --</option>
+                            <option *ngFor="let stempLocation of stempLocations" [value]="stempLocation.stempLocationName">
+                                {{stempLocation.stempLocationName}}
+                            </option>
+                        </select>
+                    </div>
+            
+                  <label class="filter m-auto"><strong>Then re-select state and then city (both required):</strong></label>
+            
+                  <div class=" form-group form-inline">
+                    <select (change)="onSelect($event)" class=" form-control form-inline mr-2" name="stempLocation"
+                      style="width: auto">
+                      <br>
+                      <option class="text-center mb-2" #value="">-- 1st Select State --</option>
+                      <option class="text-center" *ngFor="let stempLocation of stempLocations"
+                        value="{{stempLocation.stempLocationId}}">
+                        {{stempLocation.stempLocationName}}
+                      </option>
+                    </select>
+            
+                    <select class="mr-2 mt-1 form-control" name="ciempLocation" [(ngModel)]="member.ciempLocation">
+                      <option class="text-center" value="">-- 2nd Select City --</option>
+                      <option class="text-center" *ngFor="let ciempLocation of ciempLocations"
+                        [value]="ciempLocation.ciempLocationName | titlecase">
+                        {{ciempLocation.ciempLocationName | titlecase}}
+                      </option>
+                    </select>
+                  </div>
+
+                  <label class="filter m-auto mb-2"><strong>If you don't see your headquarters' location, click this
+                    button:</strong></label>
+          
+                <div>
+                  <button class="btn btn-info mb-3 shadow-sm" routerLink='/emplocationlistemps'>Add Location</button>
+                </div>
+            
+                
+                   
+                    <label for="empName"><strong>Organization name: </strong></label>
+                    <input [(ngModel)]="member.empName" type="text" name="empName" class="form-control mb-2">
+
+                    <label for="employeeNum"><strong>Number of employees: </strong></label>
+                    <input [(ngModel)]="member.employeeNum" type="text" name="employeeNum" class="form-control mb-2">
+
+                    <label for="firstName"><strong>HR contact first name: </strong></label>
+                    <input [(ngModel)]="member.firstName" type="text" name="firstName" class="form-control mb-2">
+
+                    <label for="lastName"><strong>HR contact last name: </strong></label>
+                    <input [(ngModel)]="member.lastName" type="text" name="lastName" class="form-control mb-2">
+
+                    <label for="hrContactTitle"><strong>HR contact title: </strong></label>
+                    <input [(ngModel)]="member.hrContactTitle" type="text" name="hrContactTitle" class="form-control mb-2">
+                    
+                    <!-- <h6 class="filter m-auto mb-2"><strong>To update your organization's (IA preferred) headquarters, first enter state:
+                    </strong></h6> -->
+            
+                    <!-- <div class="form-group">
+                        <label for="stempLocation">
+                            To update your organization's "Iowa" headquarters, first enter state:
+                        </label>
+                        <select class="form-control" name="stempLocation" id="stempLocation" [(ngModel)]="member.stempLocation"style="width: auto">
+                            <option class="text-center" value="">-- Select State --</option>
+                            <option *ngFor="let stempLocation of stempLocations" [value]="stempLocation.stempLocationName">
+                                {{stempLocation.stempLocationName}}
+                            </option>
+                        </select>
+                    </div>
+            
+                  <label class="filter m-auto"><strong>Then re-select state and then city (both required):</strong></label>
+            
+                  <div class=" form-group form-inline">
+                    <select (change)="onSelect($event)" class=" form-control form-inline mr-2" name="coLocation"
+                      style="width: auto">
+                      <br>
+                      <option class="text-center mb-2" #value="">-- 1st Select State --</option>
+                      <option class="text-center" *ngFor="let stempLocation of stempLocations"
+                        value="{{stempLocation.stempLocationId}}">
+                        {{stempLocation.stempLocationName}}
+                      </option>
+                    </select>
+            
+                    <select class="mr-2 mt-1 form-control" name="ciempLocation" [(ngModel)]="member.ciempLocation">
+                      <option class="text-center" value="">-- 2nd Select City --</option>
+                      <option class="text-center" *ngFor="let ciempLocation of ciempLocations"
+                        [value]="ciempLocation.ciempLocationName | titlecase">
+                        {{ciempLocation.ciempLocationName | titlecase}}
+                      </option>
+                    </select>
+                  </div>
+
+                  <label class="filter m-auto mb-2"><strong>If you don't see your headquarters' location, click this
+                    button:</strong></label>
+          
+                <div>
+                  <button class="btn btn-info mb-3 shadow-sm" routerLink='//emplocationlistemps'>Add Location</button>
+                </div>
+             -->
+
+                </div>   
+            </form>         
+        </tab>
+        <!-- <tab heading='HR Contact Photo'>
+            <h4><strong>If you want to edit the existing HR Contact Photo you must first add another photo and then mark it as "Main."</strong></h4>
+            <app-photo-editor-hr [member]="member"></app-photo-editor-hr>
+        </tab> -->
+
+        </tabset>
+    </div>
+
+
+
+
+

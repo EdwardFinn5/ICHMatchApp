@@ -6,7 +6,7 @@ import {
   ViewChild,
 } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Category } from '../_models/category';
 import { CiLocation } from '../_models/ciLocation';
@@ -32,7 +32,7 @@ export class StudentCardnphotoEditComponent implements OnInit {
   @Output() value: string = '';
   @ViewChild('editForm') editForm: NgForm;
   member: Member;
-  user: User;
+  appUserId: number;
   colleges: College[];
   categories: Category[];
   majors: Major[];
@@ -52,14 +52,15 @@ export class StudentCardnphotoEditComponent implements OnInit {
     private accountService: AccountService,
     private searchMembersService: SearchMembersService,
     private toastr: ToastrService,
+    private route: ActivatedRoute,
     private collegeService: CollegeService,
     private majorService: MajorService,
     private ciLocationService: CilocationService,
     private router: Router
   ) {
-    this.accountService.currentUser$
-      .pipe(take(1))
-      .subscribe((user) => (this.user = user));
+    // this.accountService.currentUser$
+    //   .pipe(take(1))
+    //   .subscribe((user) => (this.user = user));
   }
 
   ngOnInit(): void {
@@ -71,11 +72,11 @@ export class StudentCardnphotoEditComponent implements OnInit {
   }
 
   loadMember() {
+    this.appUserId = +this.route.snapshot.paramMap.get('appUserId');
     this.searchMembersService
-      .getSearchMember(this.user.username)
+      .getByIdSearchMember(this.appUserId)
       .subscribe((member) => {
         this.member = member;
-        console.log(member.username);
       });
   }
 
@@ -132,12 +133,14 @@ export class StudentCardnphotoEditComponent implements OnInit {
     });
   }
 
-  updateMemberCard() {
-    this.searchMembersService.updateMemberCard(this.member).subscribe(() => {
-      console.log(this.member);
-      this.toastr.success('Card info updated');
-      this.editForm.reset(this.member);
-      // this.router.navigateByUrl('/member/edit');
-    });
+  updateStudentMemberCard() {
+    this.searchMembersService
+      .updateStudentMemberCard(this.member, this.appUserId)
+      .subscribe(() => {
+        console.log(this.member);
+        this.toastr.success('Card info updated');
+        this.editForm.reset(this.member);
+        // this.router.navigateByUrl('/member/edit');
+      });
   }
 }

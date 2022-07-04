@@ -1,0 +1,90 @@
+<div class="row shadow" *ngIf="member"  style="margin-left: 0px">
+    <div class="col-sm-4 p-0">
+            <div class="card" style="align-items: center">
+            <img src="{{member.studentUrl || '../../assets/images/person.png'}}" alt="{{member.firstName}}"
+                class="card-img-top img-studthumbnail">
+            <div class="card-body text-center">
+              
+                    <p>
+                    <u><strong>{{member.firstName | titlecase}} {{member.lastName | titlecase}}</strong></u><br>
+                        {{member.classYear}} {{member.major | titlecase}} Major
+                        <br>({{member.category}} category)
+                        <br>from {{member.ciLocation}} 
+                        <br><u>attending {{member.college | titlecase}}</u>
+                     
+                        <br>Last Active: {{member.lastActive | date: "MMM dd yyyy" }}
+                    </p>
+            
+
+            <div class="btn-group d-flex">
+                <button class="btn btn-info mr-1 shadow-sm mr-1" routerLink="/positionslist">See all Positions</button>
+                <button class="btn btn-success shadow-sm ml-1" routerLink='/studentcardnphotoedit/{{member.appUserId}}'>Back to Edit</button>
+            </div>
+            
+            </div>
+        </div>
+    </div>
+    
+     
+        <div class="col-sm-8 p-2">
+
+        <tabset class="member-tabset" #memberTabs>
+            <tab heading='Academic & Work'>
+                <div class="details">
+                    <!-- <h3><u><strong>Academic & Work Highlights</strong></u></h3>   -->
+                
+                    <div  *ngIf="acBullets?.length > 0">
+                        <h4 class="mt-1"><strong>Academic highlights and achievements</strong></h4>
+                        <ul>
+                            <li *ngFor="let acBullet of acBullets">{{acBullet.acBulletText}}</li>
+                        </ul>
+                    </div>
+
+               
+                
+                <div  *ngIf="workBullets?.length > 0">
+                    <h4 class="mt-1"><strong>Work highlights and achievements</strong></h4>
+                    <ul>
+                        <li *ngFor="let workBullet of workBullets">{{workBullet.workBulletText}}</li>
+                    </ul>
+                </div>
+
+                <h4 *ngIf="member.gpa" class="mt-2 mb-2"><strong>GPA: </strong>{{member.gpa}}</h4>
+                <h4 *ngIf="member.gradDate" class="mt-2 mb-2"><strong>Grad Date:</strong> {{member.gradDate | date: "MMM dd yyyy"}}</h4>  
+                
+                <h4 *ngIf="member.dreamJob" class="mt-2"><strong>Dream Job</strong></h4>
+                {{member.dreamJob}}<br>
+                
+                <div *ngIf="member.uniqueTitle">
+                <h4 class="mt-2"><strong>{{member.uniqueTitle}}</strong></h4>
+                {{member.uniqueContent}}<br>
+                </div>
+
+                <h4 class="mt-2"><strong>Best way to contact {{member.firstName}}</strong></h4>
+                <div *ngIf="member.bestEmail">Email: 
+                    {{member.bestEmail}}</div>
+                <div *ngIf="member.bestPhone">Phone:
+                    {{member.bestPhone}}</div>
+            </div>            
+            </tab>
+            
+            <tab heading='Extra-Curricular' 
+            class="tab-heading" 
+            (selectTab)="onTabActivated($event)">
+                <div class="details">
+                <h4 *ngIf="member.athletics"><strong>Athletics experience</strong></h4>
+                {{member.athletics}}<br>    
+                <h4 *ngIf="member.arts" class="mt-2"><strong>Involvement in the arts</strong></h4>
+                {{member.arts}}<br>
+                <h4 *ngIf="member.extraCurricular"class="mt-2"><strong>Clubs and organizations</strong></h4>
+                {{member.extraCurricular}}<br>
+                </div>
+            </tab>
+            <tab heading='Messages' (selectTab)="onTabActivated($event)">
+               <app-member-messages [username]="member.username" [messages]="messages"></app-member-messages>
+            </tab>
+
+        </tabset>
+    </div>
+
+

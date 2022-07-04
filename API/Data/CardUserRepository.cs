@@ -54,7 +54,7 @@ namespace API.Data
         {
             var query = _context.Users.AsQueryable();
 
-            query = query.Where(u => u.AppUserType == "ColStudent");
+            query = query.Where(u => u.AppUserType == "ColStudent" && u.IsActive);
 
             if (userParams.Major != null)
             {
@@ -89,7 +89,7 @@ namespace API.Data
         {
             var query = _context.Users.AsQueryable();
 
-            query = query.Where(u => u.AppUserType == "EmpHr");
+            query = query.Where(u => u.AppUserType == "EmpHr" && u.IsActive);
 
             if (userParams.EmpIndustry != null)
             {

@@ -2,6 +2,7 @@ import { DOCUMENT } from '@angular/common';
 import { Component, Inject, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TabDirective, TabsetComponent } from 'ngx-bootstrap/tabs';
+import { EmpInfo } from 'src/app/_models/empInfo';
 import { Member } from 'src/app/_models/member';
 import { Message } from 'src/app/_models/message';
 import { Position } from 'src/app/_models/position';
@@ -19,6 +20,7 @@ export class EmpmemberSuperDetailComponent implements OnInit {
   id: number;
   member: Member;
   link: string;
+  empInfo: EmpInfo;
   positions: Position[];
   activeTab: TabDirective;
   messages: Message[] = [];
@@ -47,6 +49,7 @@ export class EmpmemberSuperDetailComponent implements OnInit {
       .subscribe((member) => {
         this.member = member;
         console.log('member Id: ', this.member.appUserId);
+        this.loadEmpInfo(this.id);
         // console.log('link: ', this.cardMember.empWebsite);
         // this.link = this.cardMember.empWebsite;
       });
@@ -58,8 +61,14 @@ export class EmpmemberSuperDetailComponent implements OnInit {
     });
   }
 
+  loadEmpInfo(id: number) {
+    this.searchMembersService.getEmpInfo(id).subscribe((empInfo) => {
+      this.empInfo = empInfo;
+    });
+  }
+
   goToLink() {
-    this.document.location.href = this.member.empWebsite;
+    this.document.location.href = this.empInfo.empWebsite;
   }
 
   loadMessages() {

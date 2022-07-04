@@ -160,6 +160,10 @@ export class SearchMembersService {
     );
   }
 
+  updateStudentMemberCard(member: Member, appUserId: number) {
+    return this.http.put(this.baseUrl + 'searchusers/' + appUserId, member);
+  }
+
   setMainPhoto(photoId: number) {
     return this.http.put(
       this.baseUrl + 'searchusers/set-main-photo/' + photoId,
