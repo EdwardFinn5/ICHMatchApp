@@ -13,6 +13,7 @@ namespace API.Interfaces
         void Update(Position position);
         Task<bool> SaveAllAsync();
         Task<IEnumerable<PositionDto>> GetPositionDtosAsync(int id);
+        Task<IEnumerable<PositionDto>> GetEdsPositionDtosAsync();
         Task<PagedList<PositionDto>> GetPositionDtosAsync(UserParams userParams);
         Task<PositionDto> GetPositionDtoByIdAsync(int id);
         Task<Position> GetPositionByIdAsync(int id);

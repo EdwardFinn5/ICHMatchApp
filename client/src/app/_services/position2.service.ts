@@ -81,6 +81,12 @@ export class Position2Service {
     );
   }
 
+  getEdsPositions() {
+    return this.http.get<Position[]>(
+      this.baseUrl + 'positions2/getallpositions'
+    );
+  }
+
   getPositionById(positionId: number) {
     const position = [...this.positionCache.values()]
       .reduce((arr, elem) => arr.concat(elem.result), [])

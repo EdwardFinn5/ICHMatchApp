@@ -1,0 +1,257 @@
+<div class="row shadow" *ngIf="position"  style="margin-left: 0px">
+    <div class="text-center">
+        <h2><strong>Add/Edit All Position Fields</strong></h2>
+    </div>
+    <div class="text-center">
+        <div class="alert alert-info" *ngIf="editForm.dirty">
+            <p><strong>Alert: </strong>You have made changes. Any unsaved changes will be lost</p>
+        </div>
+    </div>
+        
+    <div class="col-sm-4 p-0">
+            <div class="card" style="align-items: center">
+            <img src="{{position.logoUrl || '../../assets/images/new_logo.png' }}" alt="{{position.empName}}"
+                class="card-img-top img-studthumbnail">
+            <div class="card-body text-center">
+                  <p>
+                        <u><strong>{{position.empName}}</strong></u>
+                        <br>Position: <strong>{{position.posName}}</strong>
+                        <br><strong>({{position.posCategory}}-Category)</strong>
+                        <br>Type of Position: <strong>{{position.positionType}}</strong>
+                        <br>Position Location: <strong>{{position.ciempLocation}}, {{position.stempLocation}}</strong>
+                        <br>Start Date: <strong>{{position.startDate | date: "MMM dd yyyy" }}</strong>
+                        <br>Application Deadline: <strong>{{position.appDeadline | date: "MMM dd yyyy" }}</strong>
+                    </p>
+                
+                    <div class="btn-group d-flex">
+                        <!-- <button class="btn btn-primary mr-2">Possible Fit</button> -->
+                        <button [disabled]="!editForm.dirty" form="editForm" type="submit" class="btn btn-info mr-1">Save
+                            Card Changes</button>
+                        <button class="btn btn-success shadow-sm ml-1" routerLink='/edspositionview/{{position.positionId}}'>View Position</button>
+                    </div>
+                    <button class="btn btn-primary btn-block shadow-sm mt-2" routerLink='/empmember/positions'>Back to positions</button>
+                </div>
+            </div>
+        </div>
+       
+        <div class="col-sm-8 p-2">
+            <tabset class="member-tabset" #memberTabs>
+                <tab heading='Add/Edit Position Info' class="tab-heading">
+                    <form #editForm="ngForm" id="editForm" (ngSubmit)="updatePosition()" autocomplete="off">
+                        <div class="details mb-3">
+
+          <h5><strong>Fields with an asterisk (*) are optional. If you do not type anything in these fields, they will not be included when students view this position.
+              Also, take action with green and blue buttons first before updating any fields that will need to be saved.
+          </strong></h5>                  
+
+                <h4><strong><u>Position Details</u></strong></h4>            
+                <div class="form-group">
+                <label><strong>Position Status</strong></label>
+                <div class="form-control">
+                    <label class="checkbox-inline">
+                        <input type="checkbox" name="isActive" [(ngModel)]="position.isActive"> Keep box checked to stay active 
+                    </label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="posCategory">
+                    To update your position's name, first enter position-category:
+                </label>
+                <select class="form-control" name="posCategory" id="posCategory" [(ngModel)]="position.posCategory" style="width: auto">
+                    <option class="text-center" value="">-- Select Position-Category --</option>
+                    <option *ngFor="let posCategory of posCategories" [value]="posCategory.posCategoryName">
+                        {{posCategory.posCategoryName}}
+                    </option>
+                </select>
+            </div>
+
+            <label class="filter m-auto"><strong>Then re-select position-category and then position (both required):</strong></label>
+
+            <div class=" form-group form-inline">
+                <select (change)="onPosSelect($event)" class=" form-control form-inline mr-2" name="posCategory"
+                  style="width: auto">
+                  <br>
+                  <option class="text-center mb-2" #value="">-- 1st Position-Category --</option>
+                  <option *ngFor="let posCategory of posCategories"
+                    value="{{posCategory.posCategoryId}}">
+                    {{posCategory.posCategoryName}}
+                  </option>
+                </select>
+        
+                <select class="mr-2 mt-1 form-control" name="posName" [(ngModel)]="position.posName">
+                  <option class="text-center" value="">-- 2nd Select Position --</option>
+                  <option *ngFor="let positName of positNames"
+                    [value]="positName.posName | titlecase">
+                    {{positName.posName | titlecase}}
+                  </option>
+                </select>
+              </div>
+
+              <label class="filter m-auto"><strong>If you don't see your position included,
+                click this button:</strong></label>
+    
+        <div>
+            <button class="btn btn-info btn-sm mt-2 mb-2 shadow-sm" routerLink='/poscategorieslistemps'>Add Position</button>
+        </div>
+
+        <div class="form-group">
+            <label for="posCategory">
+                To update your position's location, first enter state:
+            </label>
+            <select class="form-control" name="stempLocation" id="stempLocation" [(ngModel)]="position.stempLocation" style="width: auto">
+                <option class="text-center" value="">-- Select State --</option>
+                <option *ngFor="let stempLocation of stempLocations" [value]="stempLocation.stempLocationName">
+                    {{stempLocation.stempLocationName}}
+                </option>
+            </select>
+        </div>
+
+        <label class="filter m-auto"><strong>Then re-select state and then city (both required):</strong></label>
+
+        <div class=" form-group form-inline">
+            <select (change)="onSelect($event)" class=" form-control form-inline mr-2" name="stempLocation"
+              style="width: auto">
+              <br>
+              <option class="text-center mb-2" #value="">-- 1st Select State --</option>
+              <option *ngFor="let stempLocation of stempLocations"
+                value="{{stempLocation.stempLocationId}}">
+                {{stempLocation.stempLocationName}}
+              </option>
+            </select>
+    
+            <select class="mr-2 mt-1 form-control" name="ciempLocation" [(ngModel)]="position.ciempLocation">
+              <option class="text-center" value="">-- 2nd Select City --</option>
+              <option *ngFor="let ciempLocation of ciempLocations"
+                [value]="ciempLocation.ciempLocationName | titlecase">
+                {{ciempLocation.ciempLocationName | titlecase}}
+              </option>
+            </select>
+          </div>
+
+          <label class="filter m-auto"><strong>If you don't see your position location,
+            click this button:</strong></label>
+
+    <div>
+        <button class="btn btn-info btn-sm mt-2 mb-2 shadow-sm" routerLink='/emplocationlistemps'>Add Location</button>
+    </div>
+
+
+            <div class="form-group">
+                <label><strong>Update type of position by clicking on box:</strong></label>
+                <select name='positionType' style="width: auto" [(ngModel)]="position.positionType" required class="form-control mr-2">
+                    <option required value="">-- Select Position Type --</option>
+                    <option *ngFor="let positionType of positionTypeList" [value]="positionType.value">
+                        {{positionType.display}}
+                    </option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label class="label"><strong>Position Summary *</strong> </label>
+                <textarea name="positionDescription" [(ngModel)]="position.positionDescription"
+                    class="form-control shadow-sm">
+                </textarea>
+            </div>
+
+           
+
+            <label><strong>Responsibilities and Duties for this {{position?.positionName}} position: *</strong></label>
+            <ul>
+                <li *ngFor="let dutyBullet of dutyBullets">{{dutyBullet.dutyBulletText}}</li>
+            </ul>
+
+            <div>
+                <!-- <button class="btn btn-success btn-sm shadow-sm mb-3 m-auto" routerLink='/positiondutybullets/{{position.positionId}}'>Add/Edit Bullet Points</button> -->
+                <button type="Button" (click)="addDutyBullets()"  class="btn btn-success btn-sm shadow-sm mb-3 m-auto" >Add/Edit Bullet Points</button>
+                <!-- <button class="btn btn-info btn-sm mt-2 mb-2 shadow-sm" routerLink='/positiondutybullets/{{position.positionId}}'>Add Location</button> -->
+            </div>
+
+            <label><strong>Requirements and Preferred Skills for this {{position?.positionName}} position: *</strong></label>
+            <ul>
+                <li *ngFor="let skillsBullet of skillsBullets">{{skillsBullet.skillsBulletText}}</li>
+            </ul>
+
+            <div>
+                <button type="button" (click)="addSkillsBullets()"  class="btn btn-success btn-sm shadow-sm mb-3 m-auto" >Add/Edit Bullet Points</button>
+                <!-- <button class="btn btn-success btn-sm mb-3 shadow-sm m-auto" routerLink='/positionskillsbullets/{{position.positionId}}'>Add/Edit Bullet Points</button> -->
+            </div>
+
+            <div class="form-group">
+                <label class="label"><strong>Salary level/Range *</strong> </label>
+                <input name="salaryRange" [(ngModel)]="position.salaryRange"
+                    class="form-control shadow-sm">
+            </div>
+
+            <div class="form-group">
+                <label class="label"><strong>Position Benefits *</strong> </label>
+                <textarea name="positionBenefits" [(ngModel)]="position.positionBenefits"
+                    class="form-control shadow-sm">
+                </textarea>
+            </div>
+
+            <div class="form-group">
+                <label class="label"><strong>Enter unique title *</strong> </label>
+                <input name="uniqueTitle" [(ngModel)]="position.uniqueTitle"
+                    class="form-control shadow-sm">
+            </div>
+
+            <div class="form-group">
+                <label class="label"><strong>Enter unique content *</strong> </label>
+                <textarea name="uniqueContent" [(ngModel)]="position.uniqueContent"
+                    class="form-control shadow-sm">
+                </textarea>
+            </div>
+
+            <h4><strong><u>Application Details</u></strong></h4>
+
+            <div class="form-group">
+                <label class="label"><strong>How to apply *</strong> </label>
+                <textarea name="howToApply" [(ngModel)]="position.howToApply"
+                    class="form-control shadow-sm">
+                </textarea>
+            </div>
+
+            <div
+                class="form-group">
+                <label>Click on "mm/dd/yyyy" to update this position start date: {{position.startDate | date: "MMM dd yyyy" }}</label>
+                <input type="date"
+                placeholder="MMM dd yyyy"
+                [(ngModel)]="position.startDate"
+                class="form-control"
+                name="startDate"
+                bsDatepicker
+                [bsConfig]="{containerClass: 'theme-blue'}">
+              </div>
+
+              <div
+                class="form-group">
+                <label>Click on "mm/dd/yyyy" to update this application deadline: {{position.appDeadline | date: "MMM dd yyyy" }}</label>
+                <input type="date"
+               
+                [(ngModel)]="position.appDeadline"
+                class="form-control"
+                name="startDate"
+                bsDatepicker
+                [bsConfig]="{containerClass: 'theme-blue'}">
+              </div>
+
+              <div class="form-group">
+                <label class="label"><strong>Enter an email interested applicants can use if any questions *</strong> </label>
+                <input type="email"  name="applyEmail" [(ngModel)]="position.applyEmail"
+                    class="form-control shadow-sm">
+                </div>
+
+                <div class="form-group">
+                    <label class="label"><strong>Enter application link *</strong> </label>
+                    <input placeholder="Ex: https://jobs.jobvite.com/acme/job" name="applyLink" [(ngModel)]="position.applyLink"
+                        class="form-control shadow-sm">
+                </div>
+
+               </div>
+        </form>
+        </tab>
+        </tabset>
+        </div>
+
+       

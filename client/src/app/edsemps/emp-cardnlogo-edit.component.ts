@@ -61,11 +61,13 @@ export class EmpCardnlogoEditComponent implements OnInit {
   }
 
   updateMemberCard() {
-    this.searchMembersService.updateMemberCard(this.member).subscribe(() => {
-      console.log(this.member);
-      this.toastr.success('Card info updated');
-      this.editForm.reset(this.member);
-    });
+    this.searchMembersService
+      .updateStudentMemberCard(this.member, this.appUserId)
+      .subscribe(() => {
+        console.log(this.member);
+        this.toastr.success('Card info updated');
+        this.editForm.reset(this.member);
+      });
   }
 
   loadEmpIndustries() {

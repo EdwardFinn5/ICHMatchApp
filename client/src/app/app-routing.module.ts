@@ -127,6 +127,9 @@ import { EdsEmpMembersComponent } from './edsemps/eds-emp-members.component';
 import { EmpCardnlogoEditComponent } from './edsemps/emp-cardnlogo-edit.component';
 import { EmpEmpinfoEditComponent } from './edsemps/emp-empinfo-edit.component';
 import { EdsEmpViewComponent } from './edsemps/eds-emp-view.component';
+import { EdsPositionListComponent } from './edspositions/eds-position-list.component';
+import { EdsPositionViewComponent } from './edspositions/eds-position-view.component';
+import { EdsPositionEditComponent } from './edspositions/eds-position-edit.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -298,6 +301,21 @@ const routes: Routes = [
     runGuardsAndResolvers: 'always',
     canActivate: [AuthGuard],
     children: [
+      {
+        path: 'edspositionlist',
+        component: EdsPositionListComponent,
+        pathMatch: 'full',
+      },
+      {
+        path: 'edspositionview/:positionId',
+        component: EdsPositionViewComponent,
+        pathMatch: 'full',
+      },
+      {
+        path: 'edspositionedit/:positionId',
+        component: EdsPositionEditComponent,
+        pathMatch: 'full',
+      },
       {
         path: 'membersearch',
         component: MemberSearchComponent,

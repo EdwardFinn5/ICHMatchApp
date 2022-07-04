@@ -43,6 +43,15 @@ namespace API.Controllers
             // could also combine the above into: return Ok(await _userRepository.GetMembersAsync());
         }
 
+        [HttpGet("GetAllPositions")]
+        public async Task<ActionResult<IEnumerable<PositionDto>>> GetAllPositions()
+        {
+            var positions = await _position2Repository.GetEdsPositionDtosAsync();
+
+            return Ok(positions);
+
+        }
+
         [HttpGet("GetById/{id}")]
         public async Task<ActionResult<IEnumerable<PositionDto>>> GetById(int id)
         {

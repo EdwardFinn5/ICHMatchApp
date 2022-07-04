@@ -28,7 +28,7 @@ namespace API.Entities
         public string PositionType { get; set; }
         [Column(TypeName = "varchar(80)")]
         public string SalaryRange { get; set; }
-        public Nullable<DateTime> DateAdded { get; set; }
+        public Nullable<DateTime> DateAdded { get; set; } = DateTime.Now.Date;
         public Nullable<DateTime> StartDate { get; set; }
         public Nullable<DateTime> AppDeadline { get; set; }
         public bool IsActive { get; set; } = true;

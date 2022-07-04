@@ -1,0 +1,49 @@
+<div class="row shadow mt-3 " *ngIf="positions">
+    <div class="positions p-0" style="text-align: center;">
+        <!-- <h3>Id: {{member.appUserId}}</h3>
+        <h3>Username: {{member.username}}</h3> -->
+
+        <h2><strong>Current Positions</strong></h2>
+       
+        <table class="table table-striped col-sm-4 col-lg-8 col-md-6 m-auto">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Employer</th>
+                    <th>Type</th>
+                    <th>Position</th>
+                    <th>Added</th>
+                    <th>Starting</th>
+                    <th>Code</th>
+                    <th>Options</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let position of positions">
+                    <td>{{position.positionId}}</td>
+                    <td>{{position.empName}}</td>
+                    <td>{{position.positionType}}</td>
+                    <td>{{position.posName}}</td>
+                    <td>{{position.dateAdded | date: "MMM dd yyyy"}}</td>
+                    <td>{{position.startDate | date: "MMM dd yyyy"}}</td>
+                    <td>{{position.registerCode}}</td>
+                    <td>
+                        <button class="btn btn-success btn-sm shadow-sm mr-2 mb-2" routerLink='/edspositionview/{{position.positionId}}'>View</button>
+                        <button class="btn btn-primary btn-sm shadow-sm mr-2 mb-2" routerLink='/edspositionedit/{{position.positionId}}'>Edit</button>
+                        <button type="button-del" (click)="deleteSearchMember(member.appUserId)"  class="btn btn-danger btn-sm shadow-sm mb-2">
+                            Delete
+                        </button>
+
+                    </td>
+                </tr>
+            </tbody>
+           
+        </table>
+        <div class="text-center col-12">
+            <button class="btn btn-success btn-sm shadow-sm mt-3 mb-3" routerLink="/">Back to Home</button>
+        </div>
+
+    </div>
+</div>
+
+

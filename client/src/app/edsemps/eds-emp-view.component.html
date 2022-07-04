@@ -1,1 +1,93 @@
-<p>eds-emp-view works!</p>
+<div class="row shadow" *ngIf="member"  style="margin-left: 0px">
+    <div class="col-sm-4 p-0">
+            <div class="card" style="align-items: center">
+            <img src="{{member.logoUrl || '../../assets/images/new_logo.png' }}" alt="{{member.empName}}"
+                class="card-img-top img-studthumbnail">
+            <div class="card-body text-center">
+                
+                    <p>
+                       <u><strong>{{member.empName}}</strong></u><br>
+                        Number of employees: {{member.employeeNum}} 
+                        <br>Industry: {{member.empIndustry}} 
+                        <br>Headquarters: {{member.ciempLocation}}, {{member.stempLocation}}
+                        <br>Last Active: {{member.lastActive | date: "MMM dd yyyy" }}
+                        <br>Is Active: {{member.isActive}} 
+                        <br>Register Code: {{member.registerCode}} 
+                    </p>   
+                       
+                            <div class="btn-group d-flex">
+                                <button class="btn btn-info shadow-sm mr-1" routerLink='/empmemberslistsuper'>Back to employers</button>
+                                <button class="btn btn-success shadow-sm ml-1" routerLink='/empcardnlogoedit/{{member.appUserId}}'>Back to Edit</button>
+                            </div>
+                            <button class="btn btn-primary btn-block shadow-sm mt-2" routerLink='/edsempmembers'>Back to employer members</button>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-sm-8 p-2">
+        <tabset class="member-tabset" #memberTabs>
+            
+            <tab heading='Company Info' 
+                class="tab-heading"
+                (selectTab)="onTabActivated($event)">
+                <div class="details">
+                <h4 class="mt-2"><strong>About {{member.empName}}</strong></h4> 
+                <p>{{empInfo.companyDescription}}</p>
+                <h4 class="mt-2"><strong>Why work for our company?</strong></h4> 
+                <p>{{empInfo.whyWork}}</p>
+                <h4 class="mt-2"><strong>Website</strong></h4> 
+
+                <button type="button"class="btn btn-success mt-2" (click)="goToLink()">Go to Company Website</button>
+               
+            </div>            
+            </tab>
+
+            <tab heading='Current Positions' (selectTab)="onTabActivated($event)">
+                
+                <div class="row shadow mt-3 " *ngIf="positions">
+                    <div class="positions p-0" style="text-align: center;">
+                
+                        <h2><strong>Current positions for {{member.empName}}</strong></h2>
+
+                        <div *ngIf="positions?.length === 0" class="mt-4">
+                            <h3><strong>No positions at this time -- please check back!</strong></h3>
+                        </div>
+                       
+                        <div *ngIf="positions?.length > 0" class="mt-4"> 
+                        <table class="table table-striped col-sm-4 col-lg-8 col-md-6 m-auto">
+                            <thead>
+                                <tr>
+                                    <th>Position</th>
+                                    <th>Position Type</th>
+                                    <th>See Details</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let position of positions">
+                                    <td>{{position.posName}}</td>
+                                    <td>{{position.positionType}}</td>
+                                    <td>
+                                        <button class="btn btn-success btn-sm shadow-sm mr-2 mb-2" routerLink='/employerpositiondetail/{{position.positionId}}'>Details</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    
+                    </div>
+                </div>
+            </tab>
+            <tab heading='Messages' (selectTab)="onTabActivated($event)">
+                <div class="p-3 font" style="font-size:large">
+                    <h4><strong>Remember to specify which position at {{member.empName}} you are messaging about:</strong></h4>
+                </div>
+                <app-member-messages [username]="member.username" [messages]="messages" ></app-member-messages>
+            </tab>
+
+        </tabset>
+    </div>
+
+
+
+

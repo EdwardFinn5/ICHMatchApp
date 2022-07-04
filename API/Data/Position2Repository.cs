@@ -56,6 +56,15 @@ namespace API.Data
                   .ToListAsync();
         }
 
+        public async Task<IEnumerable<PositionDto>> GetEdsPositionDtosAsync()
+        {
+            return await _context.Positions
+                  // .Include(u => u.DutyBullets)
+                  .ProjectTo<PositionDto>(_mapper.ConfigurationProvider)
+                  .OrderBy(u => u.EmpName)
+                  .ToListAsync();
+        }
+
         public async Task<PagedList<PositionDto>> GetPositionDtosAsync(UserParams userParams)
         {
             var query = _context.Positions.AsQueryable();

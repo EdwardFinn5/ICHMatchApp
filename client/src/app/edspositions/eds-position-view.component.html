@@ -1,0 +1,137 @@
+<div class="row shadow" *ngIf="position && member && empInfo"  style="margin-left: 0px">
+    <div class="col-sm-4 p-0">
+        
+            <div class="card" style="align-items: center">
+
+            <img src="{{position.logoUrl || '../../assets/images/new_logo.png' }}" alt="{{position.empName}}"
+                class="card-img-top img-studthumbnail">
+            <div class="card-body text-center">
+                <!-- <div class="mb-1" *ngIf="(presence.onlineUsers$ | async).includes(member.username)">
+                    <i class="fa fa-user-circle text-success"></i> Online now
+                </div> -->
+                    <p class="text-center">
+                        <u><strong>{{position.empName | titlecase}}</strong></u>
+                        <br> Position: <strong>{{position.posName}}</strong>
+                        <br><strong>({{position.posCategory}}-Category)</strong>
+                        <br> Type of Position: <strong>{{position.positionType}}</strong>
+                        <br> Position Location: <strong>{{position.ciempLocation | titlecase}}, {{position.stempLocation}}</strong>
+                        <br>Start Date: <strong>{{position.startDate | date: "MMM dd yyyy" }}</strong>
+                        <br>Application Deadline: <strong>{{position.appDeadline | date: "MMM dd yyyy" }}</strong>
+                    </p>
+                <div class="btn-group d-flex">
+                    <button class="btn btn-info shadow-sm mr-1" routerLink='/edspositionlist'>Back to Eds positions</button>
+                    <button (click)="selectTab(3)" class="btn btn-success shadow-sm ml-1">Send message</button>
+                </div>
+           
+        </div>
+    </div>
+    </div>
+    
+     
+        <div class="col-sm-8 p-2">
+
+        <tabset class="member-tabset" #memberTabs>
+            <tab heading='Position Details' class="tab-heading">
+                <div class="details">
+                    <h3><u><strong>{{position.posName}} Position </strong></u></h3>
+               
+                    <div *ngIf="position.positionBenefits">
+                    <h4 class="mt-1 mb-2"><strong>Position summary</strong></h4>
+                    {{position.positionDescription}}<br>
+                    </div>
+                    
+                    <div  *ngIf="dutyBullets?.length > 0">
+                        <h4 class="mt-1"><strong>Responsibilities and Duties</strong></h4>
+                        <ul>
+                            <li *ngFor="let dutyBullet of dutyBullets">{{dutyBullet.dutyBulletText}}</li>
+                        </ul>
+                    </div>
+    
+                    <div  *ngIf="skillsBullets?.length > 0">
+                        <h4><strong>Requirements and Skills</strong></h4>
+                        <ul>
+                            <li *ngFor="let skillsBullet of skillsBullets">{{skillsBullet.skillsBulletText}}</li>
+                        </ul>
+                    </div>
+                    
+                   
+                    <div *ngIf="position.positionBenefits">
+                        <h4><strong>Benefits of this position</strong></h4>
+                        {{position.positionBenefits}}<br>
+                    </div>
+    
+                    <div *ngIf="position.uniqueTitle">
+                        <h4 class="mt-1"><strong>{{position.uniqueTitle}}</strong></h4>
+                        {{position.uniqueContent}}<br>
+                    </div>
+                    
+                </div>            
+                
+            </tab>
+            <tab heading='Application Details' class="tab-heading">
+                <div class="details">
+
+                    <div *ngIf="position.howToApply">
+                        <h4 class="mt-2"><strong>How to apply</strong></h4>
+                        {{position.howToApply}}<br>
+                    </div>
+
+                    <div *ngIf="position.applyLink">
+                        <h4 class="mt-2"><strong>Application link</strong></h4> 
+                        <button type="button"class="btn btn-success mt-2" (click)="goToNewLink()">Go to application link</button>
+                    </div>
+
+                    <div *ngIf="position.appDeadline">
+                        <h4 class="mt-2"><strong>Application deadline</strong></h4>
+                        {{position.appDeadline | date: "MMM dd yyyy"}}<br>
+                    </div>
+
+                    <h4 class="mt-2"><strong>Hr contact </strong></h4>
+
+                    <div *ngIf="member.hrUrl">
+                        <img src="{{member.hrUrl}}" alt="{{position.firstName}} {{position.lastName}}"
+                    class="img-hrthumbnail">
+                    </div>
+
+                    <div>
+                        {{member.firstName}} {{member.lastName}}<br>
+                    </div>
+
+                    <div *ngIf="position.hrContactTitle">
+                        {{position.hrContactTitle}}<br>
+                    </div>
+                  
+                </div>
+            </tab>
+            <tab heading='Employer Details' class="tab-heading">
+                <div class="details">
+
+                    <div *ngIf="empInfo.companyDescription">
+                        <h4 class="mt-1"><strong>About {{member.empName}}</strong></h4>
+                        {{empInfo.companyDescription}}<br>
+                    </div>
+
+                    <div *ngIf="empInfo.whyWork">
+                        <h4 class="mt-1"><strong>Why work for us</strong></h4>
+                        {{empInfo.whyWork}}<br>
+                    </div>
+              
+                <h4 class="mt-2"><strong>Website</strong></h4> 
+                <button type="button"class="btn btn-success mt-2" (click)="goToLink()">Go to Company Website</button>
+            
+            </div>             
+            </tab>
+            <tab heading='Messages'>
+                <div class="p-3 font" style="font-size:large">
+                    <h4><strong>Remember to specify about which position at {{member.empName}} you are messaging!</strong></h4>
+                </div>
+                <!-- <app-member-messages [username]="member.username"></app-member-messages> -->
+                <app-member-messages [messages]="messages" [username]="member.username"></app-member-messages>
+                
+            </tab>
+
+        </tabset>
+    </div>
+
+
+

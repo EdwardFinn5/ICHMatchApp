@@ -150,6 +150,9 @@ import { EdsEmpMembersComponent } from './edsemps/eds-emp-members.component';
 import { EmpCardnlogoEditComponent } from './edsemps/emp-cardnlogo-edit.component';
 import { EmpEmpinfoEditComponent } from './edsemps/emp-empinfo-edit.component';
 import { EdsEmpViewComponent } from './edsemps/eds-emp-view.component';
+import { EdsPositionListComponent } from './edspositions/eds-position-list.component';
+import { EdsPositionViewComponent } from './edspositions/eds-position-view.component';
+import { EdsPositionEditComponent } from './edspositions/eds-position-edit.component';
 
 @NgModule({
   declarations: [
@@ -292,6 +295,9 @@ import { EdsEmpViewComponent } from './edsemps/eds-emp-view.component';
     EmpCardnlogoEditComponent,
     EmpEmpinfoEditComponent,
     EdsEmpViewComponent,
+    EdsPositionListComponent,
+    EdsPositionViewComponent,
+    EdsPositionEditComponent,
   ],
   imports: [
     BrowserModule,
