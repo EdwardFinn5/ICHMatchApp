@@ -153,6 +153,7 @@ import { EdsEmpViewComponent } from './edsemps/eds-emp-view.component';
 import { EdsPositionListComponent } from './edspositions/eds-position-list.component';
 import { EdsPositionViewComponent } from './edspositions/eds-position-view.component';
 import { EdsPositionEditComponent } from './edspositions/eds-position-edit.component';
+import { UserSettingsComponent } from './password/user-settings.component';
 
 @NgModule({
   declarations: [
@@ -298,6 +299,7 @@ import { EdsPositionEditComponent } from './edspositions/eds-position-edit.compo
     EdsPositionListComponent,
     EdsPositionViewComponent,
     EdsPositionEditComponent,
+    UserSettingsComponent,
   ],
   imports: [
     BrowserModule,

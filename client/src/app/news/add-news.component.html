@@ -25,13 +25,12 @@
             
             <div class="form-group">
                 <label for="newsTitle"><strong>News Title</strong></label>
-                <input name="newsTitle" [(ngModel)]="model.newsTitle" class="form-control shadow-sm"
-                    type="text">
+                <input name="newsTitle" required [(ngModel)]="model.newsTitle" class="form-control shadow-sm" type="text">
             </div>
 
             <div class="form-group">
                 <label class="label"><strong>News Content</strong> </label>
-                <textarea name="newsContent" [(ngModel)]="model.newsContent" class="form-control shadow-sm">
+                <textarea name="newsContent" required [(ngModel)]="model.newsContent" class="form-control shadow-sm">
                 </textarea>
             </div>
 
@@ -44,7 +43,7 @@
         </form>
 
         <div class="btn-group d-flex">
-            <button [disabled]="!addNewsForm.dirty" form="addNewsForm" type="submit"
+            <button [disabled]="!addNewsForm.valid" form="addNewsForm" type="submit"
                 class="btn btn-success shadow-sm">Save Changes</button>
                 <input type="button" class="btn btn-secondary shadow-sm ml-2" (click)="cancel()" value="Cancel" />
         </div>
