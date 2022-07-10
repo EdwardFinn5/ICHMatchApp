@@ -75,7 +75,11 @@ namespace API.Controllers
             };
         }
 
-
+        [HttpGet("GetStudInfoDtoById/{id}")] //this is the one I just added
+        public async Task<ActionResult<StudInfoDto>> GetStudInfoDtoById(int id)
+        {
+            return await _studInfoRepository.GetStudInfoDtoByIdAsync(id);
+        }
 
 
         [HttpGet]

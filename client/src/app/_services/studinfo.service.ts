@@ -30,7 +30,7 @@ export class StudinfoService {
 
   getStudInfoById(studInfoId: number) {
     return this.http.get<StudInfo>(
-      this.baseUrl + 'studInfo/GetStudInfoDtoById/' + studInfoId
+      this.baseUrl + 'studInfos/GetStudInfoDtoById/' + studInfoId
     );
   }
 

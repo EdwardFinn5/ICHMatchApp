@@ -5,10 +5,12 @@ import { ToastrService } from 'ngx-toastr';
 import { take } from 'rxjs/operators';
 import { AcBullet } from '../_models/acBullet';
 import { Member } from '../_models/member';
+import { StudInfo } from '../_models/studinfo';
 import { User } from '../_models/user';
 import { AccountService } from '../_services/account.service';
 import { BulletService } from '../_services/bullet.service';
 import { SearchMembersService } from '../_services/search-members.service';
+import { StudinfoService } from '../_services/studinfo.service';
 
 @Component({
   selector: 'app-positiona-edit-ac-bullets',
@@ -18,8 +20,10 @@ import { SearchMembersService } from '../_services/search-members.service';
 export class PositionaEditAcBulletsComponent implements OnInit {
   @ViewChild('editForm') editForm: NgForm;
   user: User;
+  studInfo: StudInfo;
   acBullet: AcBullet;
   acBulletId: number;
+  studInfoId: number;
 
   @HostListener('window:beforeunload', ['$event']) unloadNotification(
     $event: any
@@ -32,17 +36,15 @@ export class PositionaEditAcBulletsComponent implements OnInit {
   constructor(
     private router: Router,
     private accountService: AccountService,
+    private studInfoService: StudinfoService,
     private route: ActivatedRoute,
     private toastr: ToastrService,
     private bulletService: BulletService
-  ) {
-    this.accountService.currentUser$
-      .pipe(take(1))
-      .subscribe((user) => (this.user = user));
-  }
+  ) {}
 
   ngOnInit(): void {
     this.loadAcBullet();
+    console.log(this.studInfo);
   }
 
   loadAcBullet() {
@@ -62,11 +64,15 @@ export class PositionaEditAcBulletsComponent implements OnInit {
       .subscribe(() => {
         this.toastr.success('Bullet point updated');
         this.editForm.reset(this.acBullet);
-        this.router.navigateByUrl('/positionaacbullets/' + this.user.appUserId);
+        this.router.navigateByUrl(
+          '/positionaacbullets/' + this.acBullet.studInfoId
+        );
       });
   }
 
   cancel() {
-    this.router.navigateByUrl('/positionaacbullets/' + this.user.appUserId);
+    this.router.navigateByUrl(
+      '/positionaacbullets/' + this.acBullet.studInfoId
+    );
   }
 }

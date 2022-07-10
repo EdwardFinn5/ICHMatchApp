@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace API.Migrations
 {
-    public partial class afterAddingNewsStuff : Migration
+    public partial class BrandNewMigration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

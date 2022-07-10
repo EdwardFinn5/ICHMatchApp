@@ -27,6 +27,7 @@ import { StudinfoService } from 'src/app/_services/studinfo.service';
 export class MemberEditStudinfoComponent implements OnInit {
   @ViewChild('editForm') editForm: NgForm;
   studInfo: StudInfo;
+  studInfoId: number;
   member: Member;
   user: User;
   @Input() acBullets: AcBullet[];
@@ -66,7 +67,7 @@ export class MemberEditStudinfoComponent implements OnInit {
       .getSearchMember(this.user.username)
       .subscribe((member) => {
         this.member = member;
-        console.log(member.username);
+        console.log('inside loadmember', member.appUserId);
       });
   }
 
@@ -75,34 +76,33 @@ export class MemberEditStudinfoComponent implements OnInit {
       .getStudInfo(this.user.appUserId)
       .subscribe((studInfo: StudInfo) => {
         this.studInfo = studInfo;
-        console.log(studInfo.appUserId);
+        this.studInfoId = studInfo.studInfoId;
+        console.log('inside loadstudinfo', this.studInfoId);
         this.loadAcBullets();
         this.loadWorkBullets();
       });
   }
 
   loadAcBullets() {
-    this.bulletService
-      .getAcBullets(this.user.appUserId)
-      .subscribe((acBullets) => {
-        this.acBullets = acBullets;
-      });
+    this.bulletService.getAcBullets(this.studInfoId).subscribe((acBullets) => {
+      this.acBullets = acBullets;
+    });
   }
 
   loadWorkBullets() {
     this.bulletService
-      .getWorkBullets(this.user.appUserId)
+      .getWorkBullets(this.studInfoId)
       .subscribe((workBullets) => {
         this.workBullets = workBullets;
       });
   }
 
   addAcBullets() {
-    this.router.navigateByUrl('/positionaacbullets/' + this.user.appUserId);
+    this.router.navigateByUrl('/positionaacbullets/' + this.studInfoId);
   }
 
   addWorkBullets() {
-    this.router.navigateByUrl('/positionaworkbullets/' + this.user.appUserId);
+    this.router.navigateByUrl('/positionaworkbullets/' + this.studInfoId);
   }
 
   updateStudInfo() {

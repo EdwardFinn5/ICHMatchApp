@@ -16,6 +16,8 @@ namespace API.Interfaces
         Task<StudInfo> GetStudInfoByIdAsync(int id);
         Task<StudInfo> GetStudInfoByUsernameAsync(string username);
 
+        Task<StudInfoDto> GetStudInfoDtoByIdAsync(int id);
+
         // added the following two methods during video 97 on automapper queryable
 
         Task<IEnumerable<StudInfoDto>> GetStudInfoDtosAsync();

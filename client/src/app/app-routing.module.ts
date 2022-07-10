@@ -527,7 +527,7 @@ const routes: Routes = [
         resolve: { position: PositionBulletResolver },
       },
       {
-        path: 'positionaacbullets/:appUserId',
+        path: 'positionaacbullets/:studInfoId',
         component: PositionaAcBulletsComponent,
         pathMatch: 'full',
       },

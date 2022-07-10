@@ -3,12 +3,11 @@
         <div class="dutybullets p-0" style="text-align: center;">
     
             <div *ngIf="acBullets?.length === 0" class="mb-3">
-                <h3 class="mb-3"><strong>No <u>Academic highlights and achievements</u> yet for {{member.firstName}} -- please add below</strong></h3>
-            </div>
+                <h3 class="mb-3"><strong>No <u>Academic highlights and achievements</u> yet -- please add below:</strong></h3>            </div>
     
             <div  *ngIf="acBullets?.length > 0" class="mb-3">
                 
-            <h3 class="mb-3"><strong>Current <u>academic highlights and achievements</u> bullet points for {{member?.firstName}}</strong></h3>
+            <h3 class="mb-3"><strong>Current <u>academic highlights and achievements</u> bullet points:</strong></h3>
            
             <table class="table table-striped col-sm-4 col-lg-8 col-md-6 m-auto">
                 <thead>
