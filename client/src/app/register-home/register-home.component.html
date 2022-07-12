@@ -25,9 +25,18 @@
             <img src="../../assets/college.png" height="60" class="mt-1 mb-2" alt="">
             <div class="form-group">
                 <!-- <button [disabled]="!loginForm.valid" type="submit" class="btn btn-primary">Login</button> -->
-                <input type="button" class="btn btn-primary shadow-sm ml-2" (click)="onRegisterEmp()" value="College Admin Sign Up"/>
+                <input type="button" class="btn btn-primary shadow-sm ml-2" (click)="onRegisterCollegeAdmin()" value="College Admin Sign Up"/>
                 <input type="button" class="btn btn-secondary shadow-sm ml-2" (click)="cancel()" value="Cancel"/>
               </div>
+
+              <h3 class="mt-4 mb-1" >Portal admins sign-up here</h3>
+          
+              <img src="../../assets/computers.png" height="60" class="mt-1 mb-2" alt="">
+              <div class="form-group">
+                  <!-- <button [disabled]="!loginForm.valid" type="submit" class="btn btn-primary">Login</button> -->
+                  <input type="button" class="btn btn-primary shadow-sm ml-2" (click)="onRegisterPortalAdmin()" value="Portal Admin Sign Up"/>
+                  <input type="button" class="btn btn-secondary shadow-sm ml-2" (click)="cancel()" value="Cancel"/>
+                </div>
               
     </div>
 </div>

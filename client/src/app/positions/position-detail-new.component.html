@@ -54,6 +54,15 @@
                         </ul>
                     </div>
                     
+                    <div *ngIf="position.startDate">
+                        <h4 class="mt-2"><strong>Start date</strong></h4>
+                        {{position.startDate | date: "MMM dd yyyy"}}<br>
+                    </div>
+
+                    <div *ngIf="position.salaryRange">
+                        <h4 class="mt-2"><strong>Salary range</strong></h4>
+                        {{position.salaryRange}}<br>
+                    </div>
                    
                     <div *ngIf="position.positionBenefits">
                         <h4><strong>Benefits of this position</strong></h4>
@@ -78,12 +87,17 @@
 
                     <div *ngIf="position.applyLink">
                         <h4 class="mt-2"><strong>Application link</strong></h4> 
-                        <button type="button"class="btn btn-success mt-2" (click)="goToNewLink()">Go to application link</button>
+                        <button type="button"class="btn btn-sm btn-success mt-2" (click)="goToNewLink()">Go to application link</button>
                     </div>
 
                     <div *ngIf="position.appDeadline">
                         <h4 class="mt-2"><strong>Application deadline</strong></h4>
                         {{position.appDeadline | date: "MMM dd yyyy"}}<br>
+                    </div>
+
+                    <div *ngIf="position.applyEmail">
+                        <h4 class="mt-2"><strong>Email if you have questions</strong></h4> 
+                        {{position.applyEmail}}<br>
                     </div>
 
                     <h4 class="mt-2"><strong>Hr contact </strong></h4>
@@ -117,7 +131,7 @@
                     </div>
               
                 <h4 class="mt-2"><strong>Website</strong></h4> 
-                <button type="button"class="btn btn-success mt-2" (click)="goToLink()">Go to Company Website</button>
+                <button type="button"class="btn btn-sm btn-success mt-2" (click)="goToLink()">Go to employer website</button>
             
             </div>             
             </tab>

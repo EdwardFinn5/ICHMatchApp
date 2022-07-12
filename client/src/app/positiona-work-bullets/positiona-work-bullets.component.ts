@@ -2,9 +2,11 @@ import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Member } from '../_models/member';
+import { StudInfo } from '../_models/studinfo';
 import { WorkBullet } from '../_models/workBullet';
 import { BulletService } from '../_services/bullet.service';
 import { SearchMembersService } from '../_services/search-members.service';
+import { StudinfoService } from '../_services/studinfo.service';
 
 @Component({
   selector: 'app-positiona-work-bullets',
@@ -13,40 +15,55 @@ import { SearchMembersService } from '../_services/search-members.service';
 })
 export class PositionaWorkBulletsComponent implements OnInit {
   member: Member;
-  firstName?: string = '';
   appUserId: number;
   @Input() workBullets: WorkBullet[];
   @ViewChild('workBulletForm') workBulletForm: NgForm;
   workBullet: string;
   loading = false;
   workBulletId: number;
+  studInfo: StudInfo;
+  studInfoId: number;
 
   constructor(
     private bulletService: BulletService,
     private route: ActivatedRoute,
+    private studInfoService: StudinfoService,
     private searchMemberService: SearchMembersService
   ) {}
 
   ngOnInit(): void {
-    this.loadSearchMember();
+    this.loadStudInfo();
   }
 
-  loadSearchMember() {
-    this.appUserId = +this.route.snapshot.paramMap.get('appUserId');
-    console.log('1st appUserId: ', this.appUserId);
-    this.searchMemberService
-      .getSearchMemberById(+this.route.snapshot.paramMap.get('appUserId'))
-      .subscribe((member) => {
-        this.member = member;
-        this.firstName = member.firstName;
-        console.log('appUserId: ', member.appUserId);
+  // loadSearchMember() {
+  //   this.appUserId = +this.route.snapshot.paramMap.get('appUserId');
+  //   console.log('1st appUserId: ', this.appUserId);
+  //   this.searchMemberService
+  //     .getSearchMemberById(+this.route.snapshot.paramMap.get('appUserId'))
+  //     .subscribe((member) => {
+  //       this.member = member;
+  //       this.firstName = member.firstName;
+  //       console.log('appUserId: ', member.appUserId);
+  //       this.loadWorkBullets();
+  //     });
+  // }
+
+  loadStudInfo() {
+    this.studInfoId = +this.route.snapshot.paramMap.get('studInfoId');
+    console.log('1st studInfoId: ', this.studInfoId);
+    this.studInfoService
+      .getStudInfoById(+this.route.snapshot.paramMap.get('studInfoId'))
+      .subscribe((studInfo) => {
+        this.studInfo = studInfo;
+        console.log('studInfoId: ', studInfo.studInfoId);
         this.loadWorkBullets();
       });
   }
 
   loadWorkBullets() {
+    this.studInfoId = +this.route.snapshot.paramMap.get('studInfoId');
     this.bulletService
-      .getWorkBullets(this.appUserId)
+      .getWorkBullets(this.studInfoId)
       .subscribe((workBullets) => {
         this.workBullets = workBullets;
       });
@@ -54,7 +71,7 @@ export class PositionaWorkBulletsComponent implements OnInit {
 
   addWorkBullet() {
     this.bulletService
-      .addWorkBullet(this.appUserId, this.workBulletForm.value)
+      .addWorkBullet(this.studInfoId, this.workBulletForm.value)
       .subscribe((workBullet) => {
         this.workBullets.push(workBullet);
         this.workBulletForm.reset();

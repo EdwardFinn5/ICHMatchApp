@@ -3,6 +3,7 @@ import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { take } from 'rxjs/operators';
+import { StudInfo } from '../_models/studinfo';
 import { User } from '../_models/user';
 import { WorkBullet } from '../_models/workBullet';
 import { AccountService } from '../_services/account.service';
@@ -15,7 +16,8 @@ import { BulletService } from '../_services/bullet.service';
 })
 export class PositionaEditWorkBulletsComponent implements OnInit {
   @ViewChild('editForm') editForm: NgForm;
-  user: User;
+  studInfo: StudInfo;
+  studInfoId: number;
   workBullet: WorkBullet;
   workBulletId: number;
 
@@ -33,11 +35,7 @@ export class PositionaEditWorkBulletsComponent implements OnInit {
     private route: ActivatedRoute,
     private toastr: ToastrService,
     private bulletService: BulletService
-  ) {
-    this.accountService.currentUser$
-      .pipe(take(1))
-      .subscribe((user) => (this.user = user));
-  }
+  ) {}
 
   ngOnInit(): void {
     this.loadWorkBullet();
@@ -63,12 +61,14 @@ export class PositionaEditWorkBulletsComponent implements OnInit {
         this.toastr.success('Bullet point updated');
         this.editForm.reset(this.workBullet);
         this.router.navigateByUrl(
-          '/positionaworkbullets/' + this.user.appUserId
+          '/positionaworkbullets/' + this.workBullet.studInfoId
         );
       });
   }
 
   cancel() {
-    this.router.navigateByUrl('/positionaworkbullets/' + this.user.appUserId);
+    this.router.navigateByUrl(
+      '/positionaworkbullets/' + this.workBullet.studInfoId
+    );
   }
 }

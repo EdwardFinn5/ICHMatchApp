@@ -15,7 +15,9 @@ namespace API.DTOs
         public string RegisterCodeName5 { get; set; }
         public string RegisterCodeName6 { get; set; }
         public string RegisterCodeName7 { get; set; }
-        public string RegisterCodeName8 { get; set; }
+        public string RegisterCodeNameStud { get; set; }
+        public string RegisterCodeNameAdmin { get; set; }
+        public string RegisterCodeNameOwner { get; set; }
         public bool IsActive { get; set; } = true;
     }
 }

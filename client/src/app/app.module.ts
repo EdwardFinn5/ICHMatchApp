@@ -154,6 +154,10 @@ import { EdsPositionListComponent } from './edspositions/eds-position-list.compo
 import { EdsPositionViewComponent } from './edspositions/eds-position-view.component';
 import { EdsPositionEditComponent } from './edspositions/eds-position-edit.component';
 import { UserSettingsComponent } from './password/user-settings.component';
+import { PreregisterCollegeAdminComponent } from './register-college-admin/preregister-college-admin.component';
+import { RegisterCollegeAdminComponent } from './register-college-admin/register-college-admin.component';
+import { PreregisterPortalAdminComponent } from './register-portal-admin/preregister-portal-admin.component';
+import { RegisterPortalAdminComponent } from './register-portal-admin/register-portal-admin.component';
 
 @NgModule({
   declarations: [
@@ -300,6 +304,10 @@ import { UserSettingsComponent } from './password/user-settings.component';
     EdsPositionViewComponent,
     EdsPositionEditComponent,
     UserSettingsComponent,
+    PreregisterCollegeAdminComponent,
+    RegisterCollegeAdminComponent,
+    PreregisterPortalAdminComponent,
+    RegisterPortalAdminComponent,
   ],
   imports: [
     BrowserModule,

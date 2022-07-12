@@ -19,7 +19,6 @@ import { StudinfoService } from '../_services/studinfo.service';
 })
 export class PositionaEditAcBulletsComponent implements OnInit {
   @ViewChild('editForm') editForm: NgForm;
-  user: User;
   studInfo: StudInfo;
   acBullet: AcBullet;
   acBulletId: number;
@@ -44,7 +43,6 @@ export class PositionaEditAcBulletsComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadAcBullet();
-    console.log(this.studInfo);
   }
 
   loadAcBullet() {

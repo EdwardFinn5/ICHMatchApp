@@ -19,6 +19,14 @@ export class RegisterHomeComponent implements OnInit {
     this.router.navigate(['/preregisterstud']);
   }
 
+  onRegisterCollegeAdmin() {
+    this.router.navigate(['/preregistercollegeadmin']);
+  }
+
+  onRegisterPortalAdmin() {
+    this.router.navigate(['/preregisterportaladmin']);
+  }
+
   cancel() {
     console.log('cancelled');
     this.router.navigateByUrl('/');

@@ -118,13 +118,13 @@
           <img src="{{user.studentUrl || '../../assets/images/person.png'}}" alt="{{user.username}}">
           <a class="dropdown-toggle text-light mt-2 ml-2" dropdownToggle>Welcome {{user.firstName | titlecase}}</a>
           <div class="dropdown-menu mt-2" *dropdownMenu>
-            <a routerLink="/member/edit" class="dropdown-item">Add/Edit Photo & Edit Card Info</a>
+            <a routerLink="/member/edit" class="dropdown-item">Add/Edit Photo & Card Info</a>
             <div class="dropdown-divider"></div>
 
             <a routerLink="/studinfo/edit" class="dropdown-item">Add/Edit Student Info</a>
 
             <div class="dropdown-divider"></div>
-            <a routerLink="/studentquestions" class="dropdown-item">If questions and/or to delete profile</a>
+            <a routerLink="/studentquestions" class="dropdown-item">Questions and/or Delete Profile</a>
             <div class="dropdown-divider"></div>
 
             <a class="dropdown-item" (click)="logout()">Logout</a>
@@ -137,15 +137,15 @@
           <img src="{{user.logoUrl || '../../assets/images/new_logo.png' }}" alt="{{user.username}}" class="logo">
           <a class="dropdown-toggle text-light mt-5 ml-2" dropdownToggle>Welcome {{user.firstName | titlecase}}</a>
           <div class="dropdown-menu mt-2" *dropdownMenu>
-            <a routerLink="/empmember/edit" class="dropdown-item">Add/Edit card & logo info</a>
+            <a routerLink="/empmember/edit" class="dropdown-item">Add/Edit Card/Logo/HR Info</a>
             <div class="dropdown-divider"></div>
-            <a routerLink="/company2/edit" class="dropdown-item">Add/Edit company info</a>
+            <a routerLink="/company2/edit" class="dropdown-item">Add/Edit Employer Info</a>
             <div class="dropdown-divider"></div>
-            <a routerLink="/new2/preposition/add" class="dropdown-item">Add a position</a>
+            <a routerLink="/new2/preposition/add" class="dropdown-item">Add a Position</a>
             <div class="dropdown-divider"></div>
-            <a routerLink="/empmember/positions" class="dropdown-item">See all positions</a>
+            <a routerLink="/empmember/positions" class="dropdown-item">See All Positions</a>
             <div class="dropdown-divider"></div>
-            <a routerLink="/empquestions" class="dropdown-item">If questions and/or to delete profile</a>
+            <a routerLink="/empquestions" class="dropdown-item">Questions and/or Delete Profile</a>
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" (click)="logout()">Logout</a>
           </div>

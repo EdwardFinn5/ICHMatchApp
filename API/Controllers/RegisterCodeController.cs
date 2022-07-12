@@ -36,7 +36,9 @@ namespace API.Controllers
                 RegisterCodeName5 = registerCodeDto.RegisterCodeName5,
                 RegisterCodeName6 = registerCodeDto.RegisterCodeName6,
                 RegisterCodeName7 = registerCodeDto.RegisterCodeName7,
-                RegisterCodeName8 = registerCodeDto.RegisterCodeName8
+                RegisterCodeNameStud = registerCodeDto.RegisterCodeNameStud,
+                RegisterCodeNameAdmin = registerCodeDto.RegisterCodeNameAdmin,
+                RegisterCodeNameOwner = registerCodeDto.RegisterCodeNameOwner,
             };
 
             _context.RegisterCodes.Add(registerCode);
@@ -52,7 +54,9 @@ namespace API.Controllers
                 RegisterCodeName5 = registerCode.RegisterCodeName5,
                 RegisterCodeName6 = registerCode.RegisterCodeName6,
                 RegisterCodeName7 = registerCode.RegisterCodeName7,
-                RegisterCodeName8 = registerCode.RegisterCodeName8,
+                RegisterCodeNameStud = registerCode.RegisterCodeNameStud,
+                RegisterCodeNameAdmin = registerCode.RegisterCodeNameAdmin,
+                RegisterCodeNameOwner = registerCode.RegisterCodeNameOwner,
                 IsActive = registerCode.IsActive
             };
         }

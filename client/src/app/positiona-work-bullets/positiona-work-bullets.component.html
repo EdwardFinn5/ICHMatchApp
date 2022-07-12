@@ -1,5 +1,5 @@
 <!-- <div class="container"> -->
-    <div class="row shadow mt-3" *ngIf="member">
+    <div class="row shadow mt-3" *ngIf="workBullets">
         <div class="dutybullets p-0" style="text-align: center;">
     
             <div *ngIf="workBullets?.length === 0" class="mb-3">
@@ -27,7 +27,7 @@
                             <!-- <button class="btn btn-primary btn-sm shadow-sm mr-2 mb-2" routerLink='/positiondutybullets/{{position.positionId}}'>Add Bullets</button> -->
     
                             <button class="btn btn-primary btn-sm shadow-sm mr-2 mb-2" routerLink='/positionaeditworkbullet/{{workBullet.workBulletId}}'>Edit</button>
-                            <button type="button-del" (click)="deleteWorkBullet(acBullet.acBulletId)"  class="btn btn-danger btn-sm shadow-sm mb-2">
+                            <button type="button-del" (click)="deleteWorkBullet(workBullet.workBulletId)"  class="btn btn-danger btn-sm shadow-sm mb-2">
                                 Delete
                             </button> 
     

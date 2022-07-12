@@ -130,13 +130,37 @@ import { EdsEmpViewComponent } from './edsemps/eds-emp-view.component';
 import { EdsPositionListComponent } from './edspositions/eds-position-list.component';
 import { EdsPositionViewComponent } from './edspositions/eds-position-view.component';
 import { EdsPositionEditComponent } from './edspositions/eds-position-edit.component';
+import { RegisterCollegeAdminComponent } from './register-college-admin/register-college-admin.component';
+import { RegisterPortalAdminComponent } from './register-portal-admin/register-portal-admin.component';
+import { PreregisterCollegeAdminComponent } from './register-college-admin/preregister-college-admin.component';
+import { PreregisterPortalAdminComponent } from './register-portal-admin/preregister-portal-admin.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
 
-  { path: 'registerhome', component: RegisterHomeComponent },
-  { path: 'registeremp', component: RegisterEmpComponent },
+  { path: 'registerhome', component: RegisterHomeComponent, pathMatch: 'full' },
+  { path: 'registeremp', component: RegisterEmpComponent, pathMatch: 'full' },
   { path: 'registerstud', component: RegisterStudComponent, pathMatch: 'full' },
+  {
+    path: 'registercollegeadmin',
+    component: RegisterCollegeAdminComponent,
+    pathMatch: 'full',
+  },
+  {
+    path: 'preregistercollegeadmin',
+    component: PreregisterCollegeAdminComponent,
+    pathMatch: 'full',
+  },
+  {
+    path: 'registerportaladmin',
+    component: RegisterPortalAdminComponent,
+    pathMatch: 'full',
+  },
+  {
+    path: 'preregisterportaladmin',
+    component: PreregisterPortalAdminComponent,
+    pathMatch: 'full',
+  },
   {
     path: 'step1registerstud',
     component: Step1RegisterStudComponent,
@@ -532,7 +556,7 @@ const routes: Routes = [
         pathMatch: 'full',
       },
       {
-        path: 'positionaworkbullets/:appUserId',
+        path: 'positionaworkbullets/:studInfoId',
         component: PositionaWorkBulletsComponent,
         pathMatch: 'full',
       },

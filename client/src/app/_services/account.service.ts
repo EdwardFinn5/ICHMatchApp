@@ -69,6 +69,19 @@ export class AccountService {
     );
   }
 
+  registerCollegeAdmin(model: any) {
+    return this.http.post(this.baseUrl + 'account/registeremp', model).pipe(
+      map((user: User) => {
+        if (user) {
+          this.setCurrentUser(user);
+          this.currentUserSource.next(user);
+          this.appUserType = user.appUserType;
+          this.router.navigateByUrl('/membersearch');
+        }
+      })
+    );
+  }
+
   setCurrentUser(user: User) {
     localStorage.setItem('user', JSON.stringify(user));
     this.currentUserSource.next(user);

@@ -25,7 +25,12 @@ namespace API.Entities
         [Column(TypeName = "varchar(10)")]
         public string RegisterCodeName7 { get; set; }
         [Column(TypeName = "varchar(10)")]
-        public string RegisterCodeName8 { get; set; }
+        public string RegisterCodeNameStud { get; set; }
+        [Column(TypeName = "varchar(10)")]
+        public string RegisterCodeNameAdmin { get; set; }
+        [Column(TypeName = "varchar(10)")]
+        public string RegisterCodeNameOwner { get; set; }
+
         public bool IsActive { get; set; } = true;
     }
 }

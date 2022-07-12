@@ -15,7 +15,6 @@ import { StudinfoService } from '../_services/studinfo.service';
 })
 export class PositionaAcBulletsComponent implements OnInit {
   member: Member;
-  firstName?: string = '';
   appUserId: number;
   @Input() acBullets: AcBullet[];
   @ViewChild('acBulletForm') acBulletForm: NgForm;

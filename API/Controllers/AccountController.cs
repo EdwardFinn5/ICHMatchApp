@@ -74,22 +74,7 @@ namespace API.Controllers
         [HttpPost("RegisterEmp")]
         public async Task<ActionResult<UserDto>> RegisterEmp(RegisterEmpDto registerEmpDto)
         {
-            // private NewRegisterCode == "";
             if (await UserExists(registerEmpDto.Username)) return BadRequest("Username is taken");
-
-            // if (registerEmpDto.RegisterCode == "auivd"
-            //     || registerEmpDto.RegisterCode == "bynxf"
-            //     || registerEmpDto.RegisterCode == "cnsjf"
-            //     || registerEmpDto.RegisterCode == "dyrba"
-            //     || registerEmpDto.RegisterCode == "edkmg"
-            //     || registerEmpDto.RegisterCode == "fthkz"
-            //     || registerEmpDto.RegisterCode == "21533")
-            // {
-            //     registerEmpDto.RegisterCode = registerEmpDto.RegisterCode;
-            // }
-
-            // else
-            //     return BadRequest("Re-enter Register Code");
 
             var user = _mapper.Map<AppUser>(registerEmpDto);
 
@@ -99,7 +84,6 @@ namespace API.Controllers
             user.PasswordHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(registerEmpDto.Password));
             user.PasswordSalt = hmac.Key;
             user.AppUserType = "EmpHr";
-            // user.RegisterCode = registerEmpDto.RegisterCode;
 
             _context.Users.Add(user);
             await _context.SaveChangesAsync();
@@ -112,13 +96,46 @@ namespace API.Controllers
             _context.EmpInfos.Add(empInfo);
             await _context.SaveChangesAsync();
 
-            // var position = new Position
-            // {
-            //     AppUserId = user.AppUserId
-            // };
+            return new UserDto
+            {
+                AppUserId = user.AppUserId,
+                Username = user.UserName,
+                Token = _tokenService.CreateToken(user),
+                AppUserType = "EmpHr",
+                FirstName = user.FirstName,
+                LastName = user.LastName,
+                HrContactTitle = user.HrContactTitle,
+                EmpName = user.EmpName,
+                CiempLocation = user.CiempLocation,
+                StempLocation = user.StempLocation,
+                RegisterCode = user.RegisterCode
+            };
+        }
 
-            // _context.Positions.Add(position);
-            // await _context.SaveChangesAsync();
+        [HttpPost("RegisterCollegeAdmin")]
+        public async Task<ActionResult<UserDto>> RegisterCollegeAdmin(RegisterEmpDto registerEmpDto)
+        {
+            if (await UserExists(registerEmpDto.Username)) return BadRequest("Username is taken");
+
+            var user = _mapper.Map<AppUser>(registerEmpDto);
+
+            using var hmac = new HMACSHA512();
+
+            user.UserName = registerEmpDto.Username.ToLower();
+            user.PasswordHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(registerEmpDto.Password));
+            user.PasswordSalt = hmac.Key;
+            user.AppUserType = "EmpHr";
+
+            _context.Users.Add(user);
+            await _context.SaveChangesAsync();
+
+            var empInfo = new EmpInfo
+            {
+                AppUserId = user.AppUserId
+            };
+
+            _context.EmpInfos.Add(empInfo);
+            await _context.SaveChangesAsync();
 
             return new UserDto
             {
