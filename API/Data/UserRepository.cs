@@ -119,6 +119,66 @@ namespace API.Data
             );
         }
 
+        public async Task<PagedList<MemberDto>> GetAdminStudentsAsync(UserParams userParams, string college)
+        {
+            var query = _context.Users.AsQueryable();
+
+            query = query.Where(u => u.AppUserType == "ColStudent" && u.IsActive && u.College == college);
+
+            if (userParams.Major != null)
+            {
+                query = query.Where(u => u.Major == userParams.Major);
+            }
+            if (userParams.Category != null)
+            {
+                query = query.Where(u => u.Category == userParams.Category);
+            }
+            if (userParams.CoLocation != null)
+            {
+                query = query.Where(u => u.CoLocation == userParams.CoLocation);
+            }
+            if (userParams.StLocation != null)
+            {
+                query = query.Where(u => u.StLocation == userParams.StLocation);
+            }
+            if (userParams.CiLocation != null)
+            {
+                query = query.Where(u => u.CiLocation == userParams.CiLocation);
+            }
+            if (userParams.ClassYear != null)
+            {
+                query = query.Where(u => u.ClassYear == userParams.ClassYear);
+            }
+
+            // if (userParams.OrderByLastActive != null)
+            // {
+            //     query = query.OrderByDescending(u => u.LastActive);
+            // }
+
+            if (userParams.OrderByMajor != null)
+            {
+                query = query.OrderBy(u => u.Major)
+                .ThenBy(u => u.LastName);
+            }
+
+            else if (userParams.OrderByCiempLocation != null)
+            {
+                query = query.OrderBy(u => u.CiLocation)
+                .ThenBy(u => u.LastName);
+            }
+            else
+            {
+                query = query.OrderBy(u => u.LastName);
+            }
+
+            return await PagedList<MemberDto>.CreateAsync(
+                query.ProjectTo<MemberDto>(_mapper
+                .ConfigurationProvider).AsNoTracking(),
+                    userParams.PageNumber,
+                    userParams.PageSize
+            );
+        }
+
         public async Task<IEnumerable<MemberDto>> GetEdsStudentMembersAsync()
         {
             return await _context.Users

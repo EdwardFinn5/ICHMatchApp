@@ -116,6 +116,22 @@ namespace API.Controllers
             return Ok(users);
         }
 
+        [HttpGet("GetCollegeAdminStudents/{college}")]
+        public async Task<ActionResult<IEnumerable<MemberDto>>> GetCollegeAdminStudents([FromQuery] UserParams userParams, string college)
+        {
+
+            var users = await _userRepository.GetAdminStudentsAsync(userParams, college);
+
+            Response.AddPaginationHeader(
+                        users.CurrentPage,
+                        users.PageSize,
+                        users.TotalCount,
+                        users.TotalPages
+                        );
+
+            return Ok(users);
+        }
+
         [HttpGet("GetByName/{username}", Name = "GetUser")]
         public async Task<ActionResult<MemberDto>> GetByName(string username)
         {
@@ -178,6 +194,12 @@ namespace API.Controllers
                 photo.PublicId = result.PublicId;
             };
 
+            if (user.AppUserType == "CollegeAdmin")
+            {
+                photo.StudentUrl = result.SecureUrl.AbsoluteUri;
+                photo.PublicId = result.PublicId;
+            };
+
             if (user.AppUserType == "EmpHr")
             {
                 photo.LogoUrl = result.SecureUrl.AbsoluteUri;
@@ -185,6 +207,11 @@ namespace API.Controllers
             };
 
             if (user.Photos.Count == 0 && user.AppUserType == "ColStudent")
+            {
+                photo.IsMain = true;
+            }
+
+            if (user.Photos.Count == 0 && user.AppUserType == "CollegeAdmin")
             {
                 photo.IsMain = true;
             }
@@ -256,6 +283,20 @@ namespace API.Controllers
                     photo.IsMain = true;
                 }
             }
+
+            if (user.AppUserType == "CollegeAdmin")
+            {
+                if (photo.IsMain) return BadRequest("This is already your main photo");
+
+                var currentMain = user.Photos.FirstOrDefault(x => x.IsMain);
+
+                if (currentMain != null)
+                {
+                    currentMain.IsMain = false;
+                    photo.IsMain = true;
+                }
+            }
+
 
             if (user.AppUserType == "EmpHr")
             {

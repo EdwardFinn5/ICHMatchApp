@@ -2,6 +2,7 @@ export interface User {
   appUserId: number;
   username: string;
   firstName: string;
+  college: string;
   token: string;
   appUserType: string;
   studentUrl: string;

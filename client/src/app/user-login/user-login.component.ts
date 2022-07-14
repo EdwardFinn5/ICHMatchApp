@@ -37,6 +37,9 @@ export class UserLoginComponent implements OnInit {
       } else if (this.appUserType == 'ColStudent') {
         console.log('this is navigate user type: ', this.appUserType);
         this.router.navigateByUrl('/positionslist');
+      } else if (this.appUserType == 'CollegeAdmin') {
+        console.log('this is navigate user type: ', this.appUserType);
+        this.router.navigateByUrl('/membersearchadmin');
       }
 
       // if ((this.appUserType = 'EmpHr')) {

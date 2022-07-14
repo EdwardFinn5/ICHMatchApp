@@ -9,6 +9,7 @@ namespace API.DTOs
         public string HrContactTitle { get; set; }
         public string Major { get; set; }
         public string Category { get; set; }
+        public string College { get; set; }
         public string CoLocation { get; set; }
         public string StLocation { get; set; }
         public string StempLocation { get; set; }

@@ -70,16 +70,34 @@ export class AccountService {
   }
 
   registerCollegeAdmin(model: any) {
-    return this.http.post(this.baseUrl + 'account/registeremp', model).pipe(
-      map((user: User) => {
-        if (user) {
-          this.setCurrentUser(user);
-          this.currentUserSource.next(user);
-          this.appUserType = user.appUserType;
-          this.router.navigateByUrl('/membersearch');
-        }
-      })
-    );
+    return this.http
+      .post(this.baseUrl + 'account/registercollegeadmin', model)
+      .pipe(
+        map((user: User) => {
+          if (user) {
+            this.setCurrentUser(user);
+            this.currentUserSource.next(user);
+            this.appUserType = user.appUserType;
+            this.router.navigateByUrl('/membersearch');
+          }
+          return user;
+        })
+      );
+  }
+
+  registerPortalAdmin(model: any) {
+    return this.http
+      .post(this.baseUrl + 'account/registerportaladmin', model)
+      .pipe(
+        map((user: User) => {
+          if (user) {
+            this.setCurrentUser(user);
+            this.currentUserSource.next(user);
+            this.appUserType = user.appUserType;
+            this.router.navigateByUrl('/membersearch');
+          }
+        })
+      );
   }
 
   setCurrentUser(user: User) {

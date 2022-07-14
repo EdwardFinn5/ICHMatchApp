@@ -1,1 +1,79 @@
-<p>register-college-admin works!</p>
+<section class="signup" *ngIf="registerCode">
+    <div class="card-header col-lg-4 m-auto">
+      <h3 style="text-align: center;">College Admin Sign Up
+      <br>(Tab to each field, not Return)</h3>
+    </div>
+    <div class="login col-lg-4 m-auto shadow-lg">
+  
+      <form [formGroup]='registerCollegeAdminForm' (ngSubmit)="registerCollegeAdminForm.valid && registerCollegeAdmin()" autocomplete="off">
+  
+        <div class="form-group">
+          <input [class.is-invalid]='registerCollegeAdminForm.get("username").errors 
+              && registerCollegeAdminForm.get("username").touched' formControlName='username' class="form-control shadow-sm"
+            type="email" pattern="^[a-zA-Z0-9_.+-]+@[A-zA-Z0-9-]+\.edu$" placeholder="Username (college/work email)">
+          <div *ngIf="registerCollegeAdminForm.get('username').hasError('required')" class="invalid-feedback">Please enter a
+            username</div>
+          <div *ngIf="registerCollegeAdminForm.get('username').hasError('pattern')" class="invalid-feedback">Username must be your
+            college/work email</div>
+        </div>
+  
+        <app-text-input [formControl]='registerCollegeAdminForm.controls["password"]'
+          [label]='"Password (must be 4-8 of any characters)"' [type]='"password"'>
+        </app-text-input>
+  
+        <app-text-input [formControl]='registerCollegeAdminForm.controls["confirmPassword"]' [label]='"Confirm Password"'
+          [type]='"password"'>
+        </app-text-input>
+  
+        <div class="form-group">
+          <input [class.is-invalid]='registerCollegeAdminForm.get("registerCode").errors 
+              && registerCollegeAdminForm.get("registerCode").touched' formControlName='registerCode'
+            class="form-control shadow-sm" type="text" pattern="({{registerCode.registerCodeNameAdmin}})"
+            placeholder="Register Code (re-enter  college admin code)">
+          <div *ngIf="registerCollegeAdminForm.get('registerCode').hasError('required')" class="invalid-feedback">Please enter college admin
+            register code</div>
+          <div *ngIf="registerCollegeAdminForm.get('registerCode').hasError('pattern')" class="invalid-feedback">If you do not
+            have a college admin register code please email: info@iowacollegefoundation.org</div>
+        </div>
+  
+        <app-text-input [formControl]='registerCollegeAdminForm.controls["firstName"]' [label]='"First Name"'>
+        </app-text-input>
+  
+        <app-text-input [formControl]='registerCollegeAdminForm.controls["lastName"]' [label]='"Last Name"'>
+        </app-text-input>
+        
+        <app-text-input [formControl]='registerCollegeAdminForm.controls["hrContactTitle"]' [label]='"Your title"'>
+        </app-text-input>
+  
+        <h6 class="filter m-auto"><strong>Select your college/univerity (required):</strong></h6>
+  
+        <select #scrolMe style="overflow: scroll; height: 300px; width: 450px;" [scrollTop]="scrolMe.scrollHeight"
+          class="mr-2 mt-1 mb-2 form-control" formControlName="college" style="width: auto">
+          <option class="text-center" value="">-- Select College --</option>
+          <option *ngFor="let college of colleges" [value]="college.collegeName | titlecase">
+            {{college.collegeName | titlecase}}
+          </option>
+        </select>
+  
+        <div class="row" *ngIf="validationErrors.length > 0">
+          <ul class="text-danger">
+            <li *ngFor="let error of validationErrors">
+              {{error}}
+            </li>
+          </ul>
+        </div>
+  
+        <div class="btn-group d-flex">
+          <button [disabled]="!registerCollegeAdminForm.valid" type="submit" class="btn btn-success mt-3 mr-1 shadow-sm">Sign Up</button>
+          <input type="button" class="btn btn-secondary mt-3 shadow-sm ml-1" (click)="cancel()" value="Cancel">
+        </div>
+  
+      </form>
+  
+      <!-- <div class="btn-group d-flex">
+        <button [disabled]="registerStudForm.valid" type="submit" class="btn btn-success mt-3 mr-1 shadow-sm">Sign Up</button>
+        <input type="button" class="btn btn-secondary mt-3 shadow-sm ml-1" (click)="cancel()" value="Cancel">
+      </div> -->
+  
+    </div>
+  </section>

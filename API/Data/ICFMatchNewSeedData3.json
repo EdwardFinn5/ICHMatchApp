@@ -3,14 +3,14 @@
     "UserName": "ed@sau.edu",
     "FirstName": "Ed",
     "LastName": "Finn",
-    "RegisterCode": "Studadmin",
-    "ClassYear": "Senior",
+    "RegisterCode": "Owner",
+    "ClassYear": "Junior",
     "College": "St. Ambrose University",
     "Major": "Computer Science",
     "Category": "IT",
     "CoLocation": "USA",
     "StLocation": "IA",
-    "CiLocation": "Des Moines (area)",
+    "CiLocation": "Des Moines",
     "AppUserType": "ColStudent",
     "IsActive": true,
     "Created": "2021-10-16",
@@ -19,7 +19,7 @@
       {
         "IsActive": true,
         "GradDate": "2022-05-01",
-        "BestEmail": "Jill@sau.edu",
+        "BestEmail": "Ed@sau.edu",
         "BestPhone": "515-555-1212",
         "AcademicPlus": "Jill has been on the Dean's List each semester while at St. Admbrose. \r\n",
         "Athletics": "I played on the women's soccer team my first two years. I was also involved with the Student Government Association. \r\n",
@@ -32,7 +32,7 @@
     ],
     "Photos": [
       {
-        "StudentUrl": "https://srkheadshotday.com/wp-content/uploads/Danielle_Lussier_Q4332_Crop32.jpg",
+        "StudentUrl": "https://res.cloudinary.com/icf/image/upload/v1657308686/Ed_headshot_l0q7jh.jpg",
         "IsMain": true
       }
     ]
@@ -45,11 +45,11 @@
     "RegisterCode": "studentconnect",
     "ClassYear": "Senior",
     "College": "St. Ambrose University",
-    "Major": "Computer Science",
-    "Category": "IT",
+    "Major": "Marketing",
+    "Category": "Business",
     "CoLocation": "USA",
     "StLocation": "IA",
-    "CiLocation": "Des Moines (area)",
+    "CiLocation": "Cedar Rapids",
     "AppUserType": "ColStudent",
     "IsActive": true,
     "Created": "2021-10-16",
@@ -88,7 +88,7 @@
     "Category": "Business",
     "CoLocation": "USA",
     "StLocation": "IA",
-    "CiLocation": "Sioux City (area)",
+    "CiLocation": "Sioux City",
     "AppUserType": "ColStudent",
     "IsActive": true,
     "Created": "2021-10-16",
@@ -127,7 +127,7 @@
     "Category": "Business",
     "CoLocation": "USA",
     "StLocation": "IL",
-    "CiLocation": "Chicago (area)",
+    "CiLocation": "Chicago",
     "AppUserType": "ColStudent",
     "IsActive": true,
     "Created": "2021-10-16",
@@ -196,15 +196,15 @@
 
   {
     "UserName": "Ed@firm.com",
-    "RegisterCode": "Empadmin",
-    "FirstName": "Sue",
-    "LastName": "Haack",
+    "RegisterCode": "Owner",
+    "FirstName": "Ed",
+    "LastName": "Finn",
     "HrContactTitle": "HR Director",
-    "EmpName": "Encova",
-    "EmpIndustry": "Insurance",
+    "EmpName": "Iowa College Foundation",
+    "EmpIndustry": "Fundraising",
     "EmployeeNum": "850",
     "StempLocation": "IA",
-    "CiempLocation": "DeWitt",
+    "CiempLocation": "Des Moines",
     "AppUserType": "EmpHr",
     "IsActive": true,
     "Created": "2021-10-16",
@@ -238,13 +238,13 @@
     ],
     "Photos": [
       {
-        "LogoUrl": "https://secureservercdn.net/198.71.233.41/v5v.bff.myftpupload.com/wp-content/uploads/2019/09/Encova-1024x1024.jpg",
+        "LogoUrl": "https://res.cloudinary.com/icf/image/upload/v1656774062/ICF_Logo_rem0to.jpg",
         "IsMainLogo": true
       }
     ],
     "PhotoHrs": [
       {
-        "HrUrl": "https://res.cloudinary.com/icf/image/upload/v1617235510/rtqnanswab1ed5ipdaet.jpg",
+        "HrUrl": "https://res.cloudinary.com/icf/image/upload/v1655743080/kb5j3f69xardpgxscenb.jpg",
         "IsMainHr": true
       }
     ]

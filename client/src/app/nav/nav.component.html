@@ -81,6 +81,21 @@
             
           </div>
         </li>
+
+        <li class="nav-item dropdown" *ngIf="user.appUserType == 'CollegeAdmin'">
+          <a class="nav-link active dropdown-toggle" href="http://example.com" id="dropdown01" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">Talent</a>
+          <div class="dropdown-menu mt-2" aria-labelledby="dropdown01">
+            <!-- <a class="dropdown-item" routerLink='/membersearch'>Talent</a> -->
+            <a *ngIf="accountService.currentUser$ | async" class="dropdown-item" routerLink='/membersearchadmin'>Search Talent by Major</a>
+            <div class="dropdown-divider"></div>
+            <a *ngIf="accountService.currentUser$ | async" class="dropdown-item" routerLink='/memberlistsearch'>Search Talent by Hometown</a>
+            <div class="dropdown-divider"></div>
+            <a *ngIf="accountService.currentUser$ | async" class="dropdown-item" routerLink='/lists'>See Thumbs-up</a>
+            <div class="dropdown-divider"></div>
+            <a *ngIf="accountService.currentUser$ | async" class="dropdown-item" routerLink='/messages'>See Messages</a>
+          </div>
+        </li>
         
         
         <!-- <li class="nav-item" *ngIf="user.appUserType == 'ColStudent'">
@@ -133,6 +148,48 @@
       </div>
 
       <div *ngIf="accountService.appUserType == 'EmpHr'">
+        <div class="dropdown" style="font-size: 1.3em" *ngIf="(accountService.currentUser$ | async) as user" dropdown>
+          <img src="{{user.logoUrl || '../../assets/images/new_logo.png' }}" alt="{{user.username}}" class="logo">
+          <a class="dropdown-toggle text-light mt-5 ml-2" dropdownToggle>Welcome {{user.firstName | titlecase}}</a>
+          <div class="dropdown-menu mt-2" *dropdownMenu>
+            <a routerLink="/empmember/edit" class="dropdown-item">Add/Edit Card/Logo/HR Info</a>
+            <div class="dropdown-divider"></div>
+            <a routerLink="/company2/edit" class="dropdown-item">Add/Edit Employer Info</a>
+            <div class="dropdown-divider"></div>
+            <a routerLink="/new2/preposition/add" class="dropdown-item">Add a Position</a>
+            <div class="dropdown-divider"></div>
+            <a routerLink="/empmember/positions" class="dropdown-item">See All Positions</a>
+            <div class="dropdown-divider"></div>
+            <a routerLink="/empquestions" class="dropdown-item">Questions and/or Delete Profile</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" (click)="logout()">Logout</a>
+          </div>
+        </div>
+      </div>
+
+      <div *ngIf="accountService.appUserType == 'CollegeAdmin'">
+        <div class="dropdown" style="font-size: 1.3em" *ngIf="(accountService.currentUser$ | async) as user" dropdown>
+          <img src="{{user.studentUrl || '../../assets/images/person.png'}}" alt="{{user.username}}">
+          <a class="dropdown-toggle text-light mt-2 ml-2" dropdownToggle>Welcome {{user.firstName | titlecase}}</a>
+          <div class="dropdown-menu mt-2" *dropdownMenu>
+            <a routerLink="/member/edit/admin" class="dropdown-item">Add/Edit Photo & Card Info</a>
+            <div class="dropdown-divider"></div>
+
+            <div class="dropdown-divider"></div>
+            <a routerLink="/company2/edit" class="dropdown-item">Add/Edit Employer Info</a>
+            <div class="dropdown-divider"></div>
+            <a routerLink="/new2/preposition/add" class="dropdown-item">Add a Position</a>
+            <div class="dropdown-divider"></div>
+            <a routerLink="/empmember/positions" class="dropdown-item">See All Positions</a>
+            <div class="dropdown-divider"></div>
+            <a routerLink="/empquestions" class="dropdown-item">Questions and/or Delete Profile</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" (click)="logout()">Logout</a>
+          </div>
+        </div>
+      </div>
+
+      <div *ngIf="accountService.appUserType == 'PortalAdmin'">
         <div class="dropdown" style="font-size: 1.3em" *ngIf="(accountService.currentUser$ | async) as user" dropdown>
           <img src="{{user.logoUrl || '../../assets/images/new_logo.png' }}" alt="{{user.username}}" class="logo">
           <a class="dropdown-toggle text-light mt-5 ml-2" dropdownToggle>Welcome {{user.firstName | titlecase}}</a>

@@ -80,6 +80,40 @@ export class SearchMembersService {
     );
   }
 
+  getAdminSearchMembers(userParams: UserParams, college: string) {
+    console.log(Object.values(userParams).join('-'));
+    var response = this.memberCache.get(Object.values(userParams).join('-'));
+    if (response) {
+      return of(response);
+    }
+    let params = getPaginationHeaders(
+      userParams.pageNumber,
+      userParams.pageSize
+    );
+
+    params = params.append('major', userParams.major);
+    params = params.append('category', userParams.category);
+    params = params.append('classYear', userParams.classYear);
+    params = params.append('coLocation', userParams.coLocation);
+    params = params.append('stLocation', userParams.stLocation);
+    params = params.append('ciLocation', userParams.ciLocation);
+    // params = params.append('appUserType', userParams.appUserType);
+    params = params.append('orderByMajor', userParams.orderByMajor);
+    params = params.append('orderByCategory', userParams.orderByCategory);
+    params = params.append('orderByCiLocation', userParams.orderByCiLocation);
+
+    return getPaginatedResult<Member[]>(
+      this.baseUrl + 'searchusers/GetCollegeAdminStudents/' + college,
+      params,
+      this.http
+    ).pipe(
+      map((response) => {
+        this.memberCache.set(Object.values(userParams).join('-'), response);
+        return response;
+      })
+    );
+  }
+
   getSearchMember(username: string) {
     // console.log(this.memberCache);
     const member = [...this.memberCache.values()]
@@ -170,6 +204,13 @@ export class SearchMembersService {
       {}
     );
   }
+
+  // setMainAdminPhoto(photoId: number) {
+  //   return this.http.put(
+  //     this.baseUrl + 'searchusers/set-main-admin-photo/' + photoId,
+  //     {}
+  //   );
+  // }
 
   setMainHrPhoto(photoId: number) {
     return this.http.put(

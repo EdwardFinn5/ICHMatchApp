@@ -158,6 +158,8 @@ import { PreregisterCollegeAdminComponent } from './register-college-admin/prere
 import { RegisterCollegeAdminComponent } from './register-college-admin/register-college-admin.component';
 import { PreregisterPortalAdminComponent } from './register-portal-admin/preregister-portal-admin.component';
 import { RegisterPortalAdminComponent } from './register-portal-admin/register-portal-admin.component';
+import { MemberSearchAdminComponent } from './members/member-search-admin/member-search-admin.component';
+import { MemberEditAdminCardnphotoComponent } from './members/member-edit-admin-cardnphoto/member-edit-admin-cardnphoto.component';
 
 @NgModule({
   declarations: [
@@ -308,6 +310,8 @@ import { RegisterPortalAdminComponent } from './register-portal-admin/register-p
     RegisterCollegeAdminComponent,
     PreregisterPortalAdminComponent,
     RegisterPortalAdminComponent,
+    MemberSearchAdminComponent,
+    MemberEditAdminCardnphotoComponent,
   ],
   imports: [
     BrowserModule,

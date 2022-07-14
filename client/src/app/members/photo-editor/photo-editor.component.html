@@ -17,6 +17,25 @@
     </div>
 </div>
 
+<div *ngIf="user.appUserType == 'CollegeAdmin' && member">
+    <div class="row">
+        <div *ngFor="let photo of member.photos"  class="col-lg-2 col-md-4 col-sm-6 text-center">
+            <img src="{{photo.studentUrl || '../../assets/images/person.png'}}" alt="{{photo.studentUrl}}" class="img-thumbnail p-1">
+            
+            <div class="inline-text-center mb-2">
+                <button 
+                    [disabled]="photo.isMain" 
+                    (click)="setMainAdminPhoto(photo)"
+                    [ngClass]='photo.isMain ? "btn-success active" : "btn-outline-success"'
+                    class="btn btn-sm mr-2">Main
+                </button>
+                <button [disabled]="photo.isMain" (click)="deletePhoto(photo.id)" class="btn btn-sm btn-danger"><i
+                    class="fa fa-trash"></i></button>
+            </div> 
+        </div>
+    </div>
+</div>
+
 <div *ngIf="user.appUserType == 'EmpHr' && member">
     <div class="row mt-2">
         <div *ngFor="let photo of member.photos" class="col-lg-2 col-md-4 col-sm-6 text-center" >

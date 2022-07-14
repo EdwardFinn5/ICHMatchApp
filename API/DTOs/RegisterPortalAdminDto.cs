@@ -2,7 +2,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace API.DTOs
 {
-    public class RegisterCollegeAdminDto
+    public class RegisterPortalAdminDto
     {
         public int AppUserId { get; set; }
         [Required]
@@ -15,7 +15,5 @@ namespace API.DTOs
         public string RegisterCode { get; set; }
         [Required] public string FirstName { get; set; }
         [Required] public string LastName { get; set; }
-        [Required] public string HrContactTitle { get; set; }
-        [Required] public string College { get; set; }
     }
 }

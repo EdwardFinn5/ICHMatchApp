@@ -24,14 +24,6 @@ namespace API.Controllers
         {
             if (await UserExists(registerStudDto.Username)) return BadRequest("Username is taken");
 
-            // if (registerStudDto.RegisterCode == "studentconnect")
-            // {
-            //     registerStudDto.RegisterCode = registerStudDto.RegisterCode;
-            // }
-
-            // else
-            //     return BadRequest("Re-enter Register Code");
-
             var user = _mapper.Map<AppUser>(registerStudDto);
 
             using var hmac = new HMACSHA512();
@@ -113,28 +105,20 @@ namespace API.Controllers
         }
 
         [HttpPost("RegisterCollegeAdmin")]
-        public async Task<ActionResult<UserDto>> RegisterCollegeAdmin(RegisterEmpDto registerEmpDto)
+        public async Task<ActionResult<UserDto>> RegisterCollegeAdmin(RegisterCollegeAdminDto registerCollegeAdminDto)
         {
-            if (await UserExists(registerEmpDto.Username)) return BadRequest("Username is taken");
+            if (await UserExists(registerCollegeAdminDto.Username)) return BadRequest("Username is taken");
 
-            var user = _mapper.Map<AppUser>(registerEmpDto);
+            var user = _mapper.Map<AppUser>(registerCollegeAdminDto);
 
             using var hmac = new HMACSHA512();
 
-            user.UserName = registerEmpDto.Username.ToLower();
-            user.PasswordHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(registerEmpDto.Password));
+            user.UserName = registerCollegeAdminDto.Username.ToLower();
+            user.PasswordHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(registerCollegeAdminDto.Password));
             user.PasswordSalt = hmac.Key;
-            user.AppUserType = "EmpHr";
+            user.AppUserType = "CollegeAdmin";
 
             _context.Users.Add(user);
-            await _context.SaveChangesAsync();
-
-            var empInfo = new EmpInfo
-            {
-                AppUserId = user.AppUserId
-            };
-
-            _context.EmpInfos.Add(empInfo);
             await _context.SaveChangesAsync();
 
             return new UserDto
@@ -142,16 +126,46 @@ namespace API.Controllers
                 AppUserId = user.AppUserId,
                 Username = user.UserName,
                 Token = _tokenService.CreateToken(user),
-                AppUserType = "EmpHr",
+                AppUserType = "CollegeAdmin",
                 FirstName = user.FirstName,
                 LastName = user.LastName,
                 HrContactTitle = user.HrContactTitle,
-                EmpName = user.EmpName,
-                CiempLocation = user.CiempLocation,
-                StempLocation = user.StempLocation,
+                College = user.College,
                 RegisterCode = user.RegisterCode
             };
         }
+
+        [HttpPost("RegisterPortalAdmin")]
+        public async Task<ActionResult<UserDto>> RegisterPortalAdmin(RegisterPortalAdminDto registerPortalAdminDto)
+        {
+            if (await UserExists(registerPortalAdminDto.Username)) return BadRequest("Username is taken");
+
+            var user = _mapper.Map<AppUser>(registerPortalAdminDto);
+
+            using var hmac = new HMACSHA512();
+
+            user.UserName = registerPortalAdminDto.Username.ToLower();
+            user.PasswordHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(registerPortalAdminDto.Password));
+            user.PasswordSalt = hmac.Key;
+            user.AppUserType = "PortalAdmin";
+
+            _context.Users.Add(user);
+            await _context.SaveChangesAsync();
+
+            return new UserDto
+            {
+                AppUserId = user.AppUserId,
+                Username = user.UserName,
+                Token = _tokenService.CreateToken(user),
+                AppUserType = "PortalAdmin",
+                FirstName = user.FirstName,
+                LastName = user.LastName,
+                HrContactTitle = user.HrContactTitle,
+                College = user.College,
+                RegisterCode = user.RegisterCode
+            };
+        }
+
 
         [HttpPost("login")]
         public async Task<ActionResult<UserDto>> Login(LoginDto loginDto)
@@ -184,6 +198,7 @@ namespace API.Controllers
                 EmpName = user.EmpName,
                 Major = user.Major,
                 Category = user.Category,
+                College = user.College,
                 // PosCategory = user.PosCategory,
                 // PosName = user.PosName,
                 ClassYear = user.ClassYear,

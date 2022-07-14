@@ -184,6 +184,8 @@ namespace API.Helpers
             CreateMap<SkillsBullet, SkillsBulletDto>();
             CreateMap<RegisterEmpDto, AppUser>();
             CreateMap<RegisterStudDto, AppUser>();
+            CreateMap<RegisterCollegeAdminDto, AppUser>();
+            CreateMap<RegisterPortalAdminDto, AppUser>();
             CreateMap<Message, MessageDto>()
                 .ForMember(dest => dest.StudentSenderUrl, opt => opt
                     .MapFrom(src => src.Sender.Photos.FirstOrDefault(x => x.IsMain).StudentUrl))

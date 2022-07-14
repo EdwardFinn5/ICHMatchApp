@@ -50,6 +50,22 @@ export class PhotoEditorComponent implements OnInit {
     });
   }
 
+  setMainAdminPhoto(photo: Photo) {
+    this.searchMemberService.setMainPhoto(photo.id).subscribe(() => {
+      this.user.studentUrl = photo.studentUrl;
+      this.accountService.setCurrentUser(this.user);
+      this.member.studentUrl = photo.studentUrl;
+      this.member.photos.forEach((p) => {
+        if (p.isMain) {
+          p.isMain = false;
+        }
+        if (p.id === photo.id) {
+          p.isMain = true;
+        }
+      });
+    });
+  }
+
   setMainCompanyPhoto(photo: Photo) {
     this.searchMemberService.setMainPhoto(photo.id).subscribe(() => {
       this.user.logoUrl = photo.logoUrl;

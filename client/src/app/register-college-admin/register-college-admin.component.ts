@@ -87,8 +87,8 @@ export class RegisterCollegeAdminComponent implements OnInit {
       });
   }
 
-  registerStud() {
-    console.log('Inside registerStud');
+  registerCollegeAdmin() {
+    console.log('Inside registerCollegeAdmin');
     console.log('values: ', this.registerCollegeAdminForm.value);
     this.accountService
       .registerCollegeAdmin(this.registerCollegeAdminForm.value)
@@ -97,7 +97,7 @@ export class RegisterCollegeAdminComponent implements OnInit {
           // console.log('response: ', response);
           // this.cancel();
           this.toastr.success('Registration was successful');
-          this.router.navigateByUrl('/member/edit');
+          this.router.navigateByUrl('/member/edit/admin');
           // this.toastr.success('Registration was successful');
         },
         (error) => {
@@ -112,5 +112,10 @@ export class RegisterCollegeAdminComponent implements OnInit {
       this.colleges = colleges;
       // console.log(this.categories);
     });
+  }
+
+  cancel() {
+    console.log('cancelled');
+    this.router.navigateByUrl('/');
   }
 }

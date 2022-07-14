@@ -16,7 +16,9 @@
                     <th>Code 5</th>
                     <th>Code 6</th>
                     <th>Code 7</th>
-                    <th>Code 8</th>
+                    <th>Code Stud</th>
+                    <th>Code Admin</th>
+                    <th>Code Owner</th>
                     <th>Options</th>
                 </tr>
             </thead>
@@ -30,7 +32,9 @@
                     <td>{{registerCode.registerCodeName5}}</td>
                     <td>{{registerCode.registerCodeName6}}</td>
                     <td>{{registerCode.registerCodeName7}}</td>
-                    <td>{{registerCode.registerCodeName8}}</td>
+                    <td>{{registerCode.registerCodeNameStud}}</td>
+                    <td>{{registerCode.registerCodeNameAdmin}}</td>
+                    <td>{{registerCode.registerCodeNameOwner}}</td>
                     <td>
                         <button class="btn btn-info btn-sm shadow-sm mr-2 mb-2" routerLink='/registercodeedit/{{registerCode.registerCodeId}}'>Edit</button>
                         <button type="button-del" (click)="deleteRegisterCode(registerCode.registerCodeId)"  class="btn btn-danger btn-sm shadow-sm mb-2">Delete</button>
@@ -45,21 +49,25 @@
         <form #registerCodeForm="ngForm" (ngSubmit)="addRegisterCode()" autocomplete="off">
             <div class="input-group">
                 <input name="registerCodeName1" [(ngModel)]="registerCodeName1" type="text" 
-                    class="form-control input-sm short-input mr-1" placeholder="Add Register Code 1">
+                    class="form-control input-sm short-input mr-1" placeholder="Add Code 1">
                 <input name="registerCodeName2" [(ngModel)]="registerCodeName2" type="text" 
-                    class="form-control input-sm short-input mr-1" placeholder="Add Register Code 2">
+                    class="form-control input-sm short-input mr-1" placeholder="Add Code 2">
                 <input name="registerCodeName3" [(ngModel)]="registerCodeName3" type="text" 
-                    class="form-control input-sm short-input mr-1" placeholder="Add Register Code 3">
+                    class="form-control input-sm short-input mr-1" placeholder="Add Code 3">
                 <input name="registerCodeName4" [(ngModel)]="registerCodeName4" type="text" 
-                    class="form-control input-sm short-input mr-1" placeholder="Add Register Code 4">
+                    class="form-control input-sm short-input mr-1" placeholder="Add Code 4">
                 <input name="registerCodeName5" [(ngModel)]="registerCodeName5" type="text" 
-                    class="form-control input-sm short-input mr-1" placeholder="Add Register Code 5">
+                    class="form-control input-sm short-input mr-1" placeholder="Add Code 5">
                 <input name="registerCodename6" [(ngModel)]="registerCodeName6" type="text" 
-                    class="form-control input-sm short-input mr-1" placeholder="Add Register Code 6">
+                    class="form-control input-sm short-input mr-1" placeholder="Add Code 6">
                 <input name="registerCodeName7" [(ngModel)]="registerCodeName7" type="text" 
-                    class="form-control input-sm short-input mr-1" placeholder="Add Register Code 7">
-                <input name="registerCodeName8" [(ngModel)]="registerCodeName8" type="text" 
-                    class="form-control input-sm short-input mr-1" placeholder="Add Register Code 8">
+                    class="form-control input-sm short-input mr-1" placeholder="Add Code 7">
+                <input name="registerCodeNameStud" [(ngModel)]="registerCodeNameStud" type="text" 
+                    class="form-control input-sm short-input mr-1" placeholder="Add Stud Code">
+                <input name="registerCodeNameAdmin" [(ngModel)]="registerCodeNameAdmin" type="text" 
+                    class="form-control input-sm short-input mr-1" placeholder="Add Admin Code">
+                <input name="registerCodeNameOwner" [(ngModel)]="registerCodeNameOwner" type="text" 
+                    class="form-control input-sm short-input mr-1" placeholder="Add Owner Code"> 
                 <div class="input-group-append">
                 
                     <button [disabled]="!registerCodeForm.valid || loading" class="btn btn-info ml-2 mb-3 shadow-sm" style="width:auto" >Add Codes

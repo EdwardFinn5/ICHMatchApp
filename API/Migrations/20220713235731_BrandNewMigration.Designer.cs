@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace API.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20220708192939_BrandNewMigration")]
+    [Migration("20220713235731_BrandNewMigration")]
     partial class BrandNewMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -729,7 +729,13 @@ namespace API.Migrations
                     b.Property<string>("RegisterCodeName7")
                         .HasColumnType("varchar(10)");
 
-                    b.Property<string>("RegisterCodeName8")
+                    b.Property<string>("RegisterCodeNameAdmin")
+                        .HasColumnType("varchar(10)");
+
+                    b.Property<string>("RegisterCodeNameOwner")
+                        .HasColumnType("varchar(10)");
+
+                    b.Property<string>("RegisterCodeNameStud")
                         .HasColumnType("varchar(10)");
 
                     b.HasKey("RegisterCodeId");

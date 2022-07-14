@@ -54,8 +54,7 @@ export class MemberEditCardnphotoComponent implements OnInit {
     private toastr: ToastrService,
     private collegeService: CollegeService,
     private majorService: MajorService,
-    private ciLocationService: CilocationService,
-    private router: Router
+    private ciLocationService: CilocationService
   ) {
     this.accountService.currentUser$
       .pipe(take(1))

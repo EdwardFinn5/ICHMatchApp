@@ -134,6 +134,8 @@ import { RegisterCollegeAdminComponent } from './register-college-admin/register
 import { RegisterPortalAdminComponent } from './register-portal-admin/register-portal-admin.component';
 import { PreregisterCollegeAdminComponent } from './register-college-admin/preregister-college-admin.component';
 import { PreregisterPortalAdminComponent } from './register-portal-admin/preregister-portal-admin.component';
+import { MemberSearchAdminComponent } from './members/member-search-admin/member-search-admin.component';
+import { MemberEditAdminCardnphotoComponent } from './members/member-edit-admin-cardnphoto/member-edit-admin-cardnphoto.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -346,6 +348,11 @@ const routes: Routes = [
         pathMatch: 'full',
       },
       {
+        path: 'membersearchadmin',
+        component: MemberSearchAdminComponent,
+        pathMatch: 'full',
+      },
+      {
         path: 'categoryedit/:categoryId',
         component: CategoryEditComponent,
         pathMatch: 'full',
@@ -524,6 +531,11 @@ const routes: Routes = [
       {
         path: 'empmember/edit',
         component: EmpmemberEditCardnlogoComponent,
+        canDeactivate: [PreventUnsavedEmpmemberCardChangesGuard],
+      },
+      {
+        path: 'member/edit/admin',
+        component: MemberEditAdminCardnphotoComponent,
         canDeactivate: [PreventUnsavedEmpmemberCardChangesGuard],
       },
       {

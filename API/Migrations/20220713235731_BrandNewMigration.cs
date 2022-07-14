@@ -120,7 +120,9 @@ namespace API.Migrations
                     RegisterCodeName5 = table.Column<string>(type: "varchar(10)", nullable: true),
                     RegisterCodeName6 = table.Column<string>(type: "varchar(10)", nullable: true),
                     RegisterCodeName7 = table.Column<string>(type: "varchar(10)", nullable: true),
-                    RegisterCodeName8 = table.Column<string>(type: "varchar(10)", nullable: true),
+                    RegisterCodeNameStud = table.Column<string>(type: "varchar(10)", nullable: true),
+                    RegisterCodeNameAdmin = table.Column<string>(type: "varchar(10)", nullable: true),
+                    RegisterCodeNameOwner = table.Column<string>(type: "varchar(10)", nullable: true),
                     IsActive = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>

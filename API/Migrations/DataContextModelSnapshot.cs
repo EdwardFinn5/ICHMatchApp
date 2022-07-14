@@ -727,7 +727,13 @@ namespace API.Migrations
                     b.Property<string>("RegisterCodeName7")
                         .HasColumnType("varchar(10)");
 
-                    b.Property<string>("RegisterCodeName8")
+                    b.Property<string>("RegisterCodeNameAdmin")
+                        .HasColumnType("varchar(10)");
+
+                    b.Property<string>("RegisterCodeNameOwner")
+                        .HasColumnType("varchar(10)");
+
+                    b.Property<string>("RegisterCodeNameStud")
                         .HasColumnType("varchar(10)");
 
                     b.HasKey("RegisterCodeId");

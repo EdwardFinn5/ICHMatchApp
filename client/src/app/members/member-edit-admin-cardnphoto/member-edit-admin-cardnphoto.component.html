@@ -1,0 +1,67 @@
+<div class="row shadow" *ngIf="member" style="margin-left: 0px">
+    <div class="text-center">
+        <h2><strong>Add/Edit Photo & Card Info</strong></h2>
+    </div>
+    <div class="text-center">
+        <div class="alert alert-info" *ngIf="editForm.dirty">
+            <strong>Alert: </strong>You have made changes to the card. Any unsaved changes will be lost
+        </div>
+    </div>
+
+    <div class="col-sm-4 p-0">
+        <div class="card" style="align-items: center">
+            <img src="{{member.studentUrl || '../../assets/images/person.png'}}" alt="{{member.firstName}}"
+                class="card-img-top img-studthumbnail">
+            <div class="card-body text-center">
+                <p>
+                    <u><strong>{{member.firstName | titlecase}} {{member.lastName | titlecase}}</strong></u>
+                    <br><strong>{{member.hrContactTitle | titlecase}}</strong>
+                    <br><strong>at</strong>
+                    <br><strong><u>{{member.college | titlecase}}</u></strong>
+                    <br>
+                    <strong>Last active: {{member.lastActive | date: "MMM dd yyyy"}}</strong>
+                </p>
+
+                <div class="btn-group d-flex">
+                    <!-- <button class="btn btn-primary mr-2">Possible Fit</button> -->
+                    <button [disabled]="!editForm.dirty" form="editForm" type="submit"
+                        class="btn btn-info shadow-sm mr-1">Save Card Changes</button>
+                </div>
+                <button class="btn btn-primary btn-block shadow-sm mt-2" routerLink='/membersearchadmin'>
+                    See students signed up at {{member.college}}</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-8 p-2">
+        <tabset class="member-tabset" #memberTabs>
+            <tab heading='Add/Edit Photo'>
+                <app-photo-editor [member]="member"></app-photo-editor>
+            </tab>
+
+
+            <tab heading='Edit Card Info' class="tab-heading">
+                <form #editForm="ngForm" id="editForm" (ngSubmit)="updateMemberCard()">
+                    <div class="details mb-3">
+
+                        <div class="form-group">
+                            <label for="firstName"><strong>First name:</strong></label>
+                            <input [(ngModel)]=" member.firstName" type="text" name="firstName" class="form-control mb-2 ml-2">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="lastName"><strong>Last name (max length: 40 chars)</strong></label>
+                            <input [(ngModel)]=" member.lastName" type="text" name="lastName" maxlength="40" class="form-control mb-2 ml-2">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="hrContactTitle"><strong>Your title:</strong></label>
+                            <input [(ngModel)]=" member.hrContactTitle" type="text" name="hrContactTitle" class="form-control mb-2 ml-2">
+                        </div>
+
+                    </div>
+                </form>
+            </tab>
+
+        </tabset>
+    </div>
