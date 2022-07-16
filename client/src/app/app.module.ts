@@ -160,6 +160,7 @@ import { PreregisterPortalAdminComponent } from './register-portal-admin/preregi
 import { RegisterPortalAdminComponent } from './register-portal-admin/register-portal-admin.component';
 import { MemberSearchAdminComponent } from './members/member-search-admin/member-search-admin.component';
 import { MemberEditAdminCardnphotoComponent } from './members/member-edit-admin-cardnphoto/member-edit-admin-cardnphoto.component';
+import { MemberEditPortalCardnphotoComponent } from './members/member-edit-portal-cardnphoto/member-edit-portal-cardnphoto.component';
 
 @NgModule({
   declarations: [
@@ -312,6 +313,7 @@ import { MemberEditAdminCardnphotoComponent } from './members/member-edit-admin-
     RegisterPortalAdminComponent,
     MemberSearchAdminComponent,
     MemberEditAdminCardnphotoComponent,
+    MemberEditPortalCardnphotoComponent,
   ],
   imports: [
     BrowserModule,

@@ -15,5 +15,6 @@ namespace API.DTOs
         public string RegisterCode { get; set; }
         [Required] public string FirstName { get; set; }
         [Required] public string LastName { get; set; }
+        [Required] public string HrContactTitle { get; set; }
     }
 }

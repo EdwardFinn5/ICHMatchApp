@@ -200,6 +200,12 @@ namespace API.Controllers
                 photo.PublicId = result.PublicId;
             };
 
+            if (user.AppUserType == "PortalAdmin")
+            {
+                photo.StudentUrl = result.SecureUrl.AbsoluteUri;
+                photo.PublicId = result.PublicId;
+            };
+
             if (user.AppUserType == "EmpHr")
             {
                 photo.LogoUrl = result.SecureUrl.AbsoluteUri;
@@ -212,6 +218,11 @@ namespace API.Controllers
             }
 
             if (user.Photos.Count == 0 && user.AppUserType == "CollegeAdmin")
+            {
+                photo.IsMain = true;
+            }
+
+            if (user.Photos.Count == 0 && user.AppUserType == "PortalAdmin")
             {
                 photo.IsMain = true;
             }
@@ -285,6 +296,19 @@ namespace API.Controllers
             }
 
             if (user.AppUserType == "CollegeAdmin")
+            {
+                if (photo.IsMain) return BadRequest("This is already your main photo");
+
+                var currentMain = user.Photos.FirstOrDefault(x => x.IsMain);
+
+                if (currentMain != null)
+                {
+                    currentMain.IsMain = false;
+                    photo.IsMain = true;
+                }
+            }
+
+            if (user.AppUserType == "PortalAdmin")
             {
                 if (photo.IsMain) return BadRequest("This is already your main photo");
 

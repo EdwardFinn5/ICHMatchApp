@@ -1,1 +1,69 @@
-<p>register-portal-admin works!</p>
+<section class="signup" *ngIf="registerCode">
+    <div class="card-header col-lg-4 m-auto">
+      <h3 style="text-align: center;">Portal Admin Sign Up
+      <br>(Tab to each field, not Return)</h3>
+    </div>
+    <div class="login col-lg-4 m-auto shadow-lg">
+  
+      <form [formGroup]='registerPortalAdminForm' (ngSubmit)="registerPortalAdminForm.valid && registerPortalAdmin()" autocomplete="off">
+  
+        <div class="form-group">
+          <input [class.is-invalid]='registerPortalAdminForm.get("username").errors 
+              && registerPortalAdminForm.get("username").touched' formControlName='username' class="form-control shadow-sm"
+            type="email" pattern="^[a-zA-Z0-9_.+-]+@[A-zA-Z0-9-]+\.org$" placeholder="Username (ICF email)">
+          <div *ngIf="registerPortalAdminForm.get('username').hasError('required')" class="invalid-feedback">Please enter a
+            username</div>
+          <div *ngIf="registerPortalAdminForm.get('username').hasError('pattern')" class="invalid-feedback">Username must be your ICF email</div>
+        </div>
+  
+        <app-text-input [formControl]='registerPortalAdminForm.controls["password"]'
+          [label]='"Password (must be 4-8 of any characters)"' [type]='"password"'>
+        </app-text-input>
+  
+        <app-text-input [formControl]='registerPortalAdminForm.controls["confirmPassword"]' [label]='"Confirm Password"'
+          [type]='"password"'>
+        </app-text-input>
+  
+        <div class="form-group">
+          <input [class.is-invalid]='registerPortalAdminForm.get("registerCode").errors 
+              && registerPortalAdminForm.get("registerCode").touched' formControlName='registerCode'
+            class="form-control shadow-sm" type="text" pattern="({{registerCode.registerCodeNameOwner}})"
+            placeholder="Register Code (re-enter  college admin code)">
+          <div *ngIf="registerPortalAdminForm.get('registerCode').hasError('required')" class="invalid-feedback">Please enter portal admin
+            register code</div>
+          <div *ngIf="registerPortalAdminForm.get('registerCode').hasError('pattern')" class="invalid-feedback">If you do not
+            have a portal admin register code please email: info@iowacollegefoundation.org</div>
+        </div>
+  
+        <app-text-input [formControl]='registerPortalAdminForm.controls["firstName"]' [label]='"First Name"'>
+        </app-text-input>
+  
+        <app-text-input [formControl]='registerPortalAdminForm.controls["lastName"]' [label]='"Last Name"'>
+        </app-text-input>
+        
+        <app-text-input [formControl]='registerPortalAdminForm.controls["hrContactTitle"]' [label]='"Your title"'>
+        </app-text-input>
+  
+        <div class="row" *ngIf="validationErrors.length > 0">
+          <ul class="text-danger">
+            <li *ngFor="let error of validationErrors">
+              {{error}}
+            </li>
+          </ul>
+        </div>
+  
+        <div class="btn-group d-flex">
+          <button [disabled]="!registerPortalAdminForm.valid" type="submit" class="btn btn-success mt-3 mr-1 shadow-sm">Sign Up</button>
+          <input type="button" class="btn btn-secondary mt-3 shadow-sm ml-1" (click)="cancel()" value="Cancel">
+        </div>
+  
+      </form>
+  
+      <!-- <div class="btn-group d-flex">
+        <button [disabled]="registerStudForm.valid" type="submit" class="btn btn-success mt-3 mr-1 shadow-sm">Sign Up</button>
+        <input type="button" class="btn btn-secondary mt-3 shadow-sm ml-1" (click)="cancel()" value="Cancel">
+      </div> -->
+  
+    </div>
+  </section>
+

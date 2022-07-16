@@ -84,23 +84,56 @@
 
         <li class="nav-item dropdown" *ngIf="user.appUserType == 'CollegeAdmin'">
           <a class="nav-link active dropdown-toggle" href="http://example.com" id="dropdown01" data-toggle="dropdown"
-            aria-haspopup="true" aria-expanded="false">Talent</a>
+            aria-haspopup="true" aria-expanded="false">Talent & Positions</a>
           <div class="dropdown-menu mt-2" aria-labelledby="dropdown01">
-            <!-- <a class="dropdown-item" routerLink='/membersearch'>Talent</a> -->
             <a *ngIf="accountService.currentUser$ | async" class="dropdown-item" routerLink='/membersearchadmin'>Search Talent by Major</a>
             <div class="dropdown-divider"></div>
             <a *ngIf="accountService.currentUser$ | async" class="dropdown-item" routerLink='/memberlistsearch'>Search Talent by Hometown</a>
             <div class="dropdown-divider"></div>
-            <a *ngIf="accountService.currentUser$ | async" class="dropdown-item" routerLink='/lists'>See Thumbs-up</a>
-            <div class="dropdown-divider"></div>
-            <a *ngIf="accountService.currentUser$ | async" class="dropdown-item" routerLink='/messages'>See Messages</a>
+            <a *ngIf="accountService.currentUser$ | async" class="dropdown-item" routerLink='/positionslist'>See Positions</a>
           </div>
         </li>
         
-        
-        <!-- <li class="nav-item" *ngIf="user.appUserType == 'ColStudent'">
-          <a class="nav-link text-white" routerLink="/positionslist" routerLinkActive='active'>Search Internships/Jobs</a>
-        </li> -->
+        <li class="nav-item dropdown" *ngIf="user.appUserType == 'PortalAdmin'">
+          <a class="nav-link active dropdown-toggle" href="http://example.com" id="dropdown01" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">Talent & Positions</a>
+          <div class="dropdown-menu mt-2" aria-labelledby="dropdown01">
+            <a *ngIf="accountService.currentUser$ | async" class="dropdown-item" routerLink='/categorylist'>ICF Major-Categories</a>
+            <div class="dropdown-divider"></div>
+            <a *ngIf="accountService.currentUser$ | async" class="dropdown-item" routerLink='/edsempmembers'>ICF Emp Members</a>    
+            <div class="dropdown-divider"></div>
+            <a *ngIf="accountService.currentUser$ | async" class="dropdown-item" routerLink='/edspositionlist'>ICF Positions List</a>    
+            <div class="dropdown-divider"></div>
+            <a *ngIf="accountService.currentUser$ | async" class="dropdown-item" routerLink='/poscategorylist'>ICF Position-Categories</a>  
+            <div class="dropdown-divider"></div>
+            <a *ngIf="accountService.currentUser$ | async" class="dropdown-item" routerLink='/profileadvicelist'>ICF Profile Advice</a>  
+            <div class="dropdown-divider"></div>
+            <a *ngIf="accountService.currentUser$ | async" class="dropdown-item" routerLink='/profileadvicenewlist'>ICF Student Profile Advice</a>
+            <div class="dropdown-divider"></div>
+            <a *ngIf="accountService.currentUser$ | async" class="dropdown-item" routerLink='/registercodelist'>ICF Register Codes</a>  
+            <div class="dropdown-divider"></div>
+            <a *ngIf="accountService.currentUser$ | async" class="dropdown-item" routerLink='/locationlist'>ICF Location List</a>  
+            <div class="dropdown-divider"></div>
+            <a *ngIf="accountService.currentUser$ | async" class="dropdown-item" routerLink='/empindustrylist'>ICF EmpIndustry List</a>  
+            <div class="dropdown-divider"></div>
+            <a *ngIf="accountService.currentUser$ | async" class="dropdown-item" routerLink='/emplocationlist'>ICF Emp Location List</a>  
+            <div class="dropdown-divider"></div>
+            <a *ngIf="accountService.currentUser$ | async" class="dropdown-item" routerLink='/poscategorieslistemps'>ICF Ed Emp Position List</a>  
+            <div class="dropdown-divider"></div>
+            <a *ngIf="accountService.currentUser$ | async" class="dropdown-item" routerLink='/collegelist'>ICF College List</a> 
+            <div class="dropdown-divider"></div>
+            <a *ngIf="accountService.currentUser$ | async" class="dropdown-item" routerLink='/addnews'>ICF Add News</a>  
+            <div class="dropdown-divider"></div>
+            <a *ngIf="accountService.currentUser$ | async" class="dropdown-item" routerLink='/listnewscard'>ICF List News</a> 
+            <div class="dropdown-divider"></div>
+            <a *ngIf="accountService.currentUser$ | async" class="dropdown-item" routerLink='/edsstudentmembers'>ICF Student Members</a> 
+            <div class="dropdown-divider"></div>
+            <a *ngIf="accountService.currentUser$ | async" class="dropdown-item" routerLink='/edsempmembers'>ICF Emp Members</a>    
+            <div class="dropdown-divider"></div>
+            <a *ngIf="accountService.currentUser$ | async" class="dropdown-item" routerLink='/edspositions'>ICF Positions</a>       
+            
+          </div>
+        </li>
       
       </ul>
       
@@ -174,14 +207,6 @@
           <div class="dropdown-menu mt-2" *dropdownMenu>
             <a routerLink="/member/edit/admin" class="dropdown-item">Add/Edit Photo & Card Info</a>
             <div class="dropdown-divider"></div>
-
-            <div class="dropdown-divider"></div>
-            <a routerLink="/company2/edit" class="dropdown-item">Add/Edit Employer Info</a>
-            <div class="dropdown-divider"></div>
-            <a routerLink="/new2/preposition/add" class="dropdown-item">Add a Position</a>
-            <div class="dropdown-divider"></div>
-            <a routerLink="/empmember/positions" class="dropdown-item">See All Positions</a>
-            <div class="dropdown-divider"></div>
             <a routerLink="/empquestions" class="dropdown-item">Questions and/or Delete Profile</a>
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" (click)="logout()">Logout</a>
@@ -191,16 +216,12 @@
 
       <div *ngIf="accountService.appUserType == 'PortalAdmin'">
         <div class="dropdown" style="font-size: 1.3em" *ngIf="(accountService.currentUser$ | async) as user" dropdown>
-          <img src="{{user.logoUrl || '../../assets/images/new_logo.png' }}" alt="{{user.username}}" class="logo">
+          <img src="{{user.studentUrl || '../../assets/images/person.png' }}" alt="{{user.username}}" class="logo">
           <a class="dropdown-toggle text-light mt-5 ml-2" dropdownToggle>Welcome {{user.firstName | titlecase}}</a>
           <div class="dropdown-menu mt-2" *dropdownMenu>
-            <a routerLink="/empmember/edit" class="dropdown-item">Add/Edit Card/Logo/HR Info</a>
+            <a routerLink="/member/edit/portal" class="dropdown-item">Add/Edit Photo & Card Info</a>
             <div class="dropdown-divider"></div>
-            <a routerLink="/company2/edit" class="dropdown-item">Add/Edit Employer Info</a>
-            <div class="dropdown-divider"></div>
-            <a routerLink="/new2/preposition/add" class="dropdown-item">Add a Position</a>
-            <div class="dropdown-divider"></div>
-            <a routerLink="/empmember/positions" class="dropdown-item">See All Positions</a>
+            <a *ngIf="accountService.currentUser$ | async" class="dropdown-item" routerLink='/edsstudentmembers'>Ed Student Members</a>    
             <div class="dropdown-divider"></div>
             <a routerLink="/empquestions" class="dropdown-item">Questions and/or Delete Profile</a>
             <div class="dropdown-divider"></div>

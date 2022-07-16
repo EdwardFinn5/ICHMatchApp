@@ -136,6 +136,7 @@ import { PreregisterCollegeAdminComponent } from './register-college-admin/prere
 import { PreregisterPortalAdminComponent } from './register-portal-admin/preregister-portal-admin.component';
 import { MemberSearchAdminComponent } from './members/member-search-admin/member-search-admin.component';
 import { MemberEditAdminCardnphotoComponent } from './members/member-edit-admin-cardnphoto/member-edit-admin-cardnphoto.component';
+import { MemberEditPortalCardnphotoComponent } from './members/member-edit-portal-cardnphoto/member-edit-portal-cardnphoto.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -536,6 +537,11 @@ const routes: Routes = [
       {
         path: 'member/edit/admin',
         component: MemberEditAdminCardnphotoComponent,
+        canDeactivate: [PreventUnsavedEmpmemberCardChangesGuard],
+      },
+      {
+        path: 'member/edit/portal',
+        component: MemberEditPortalCardnphotoComponent,
         canDeactivate: [PreventUnsavedEmpmemberCardChangesGuard],
       },
       {

@@ -161,7 +161,6 @@ namespace API.Controllers
                 FirstName = user.FirstName,
                 LastName = user.LastName,
                 HrContactTitle = user.HrContactTitle,
-                College = user.College,
                 RegisterCode = user.RegisterCode
             };
         }
@@ -199,6 +198,7 @@ namespace API.Controllers
                 Major = user.Major,
                 Category = user.Category,
                 College = user.College,
+                HrContactTitle = user.HrContactTitle,
                 // PosCategory = user.PosCategory,
                 // PosName = user.PosName,
                 ClassYear = user.ClassYear,

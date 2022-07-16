@@ -9,6 +9,7 @@ export interface User {
   logoUrl: string;
   hrUrl: string;
   empName: string;
+  hrContactTitle: string;
   givingLevel: string;
   major: string;
   category: string;
