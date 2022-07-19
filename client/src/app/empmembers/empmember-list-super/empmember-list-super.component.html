@@ -10,39 +10,50 @@
     <form #form="ngForm" class="form-inline mb-3" 
         (ngSubmit)="loadMembers()" autocomplete="off">
         
-                        <div class="form-group align-content-center">
-                            <label class="mr-2 filter" style="font-size: 1.5em"><strong> Filter by: </strong></label>
+                        <div class="form-group form-inline">
+                            <label class="mr-2 filter" style="font-size: 1.5em"><strong> Filter by industry: </strong></label>
                             <select name="empIndustry" 
                                 [(ngModel)]="userParams.empIndustry" 
                                 style="width: auto"
                                 class="form-control mr-2">
                                 <option class="text-center" value="">--Select Industry--</option>
-                                <option *ngFor="let empIndustry of empIndustryList" 
-                                    [value]="empIndustry.value">
-                                    {{empIndustry.display}}
+                                <option *ngFor="let empIndustry of empIndustries" 
+                                    [value]="empIndustry.empIndustryName">
+                                    {{empIndustry.empIndustryName | titlecase}}
+                                </option>
+                            </select>
+                        
+                            <label class="mr-2 filter" style="font-size: 1.5em"><strong> Filter by headquarter's location: </strong></label>
+                            
+                            <select (change)="onSelect($event)" 
+                                class=" form-control mr-2"
+                                name="stempLocation"
+                                style="width: auto">
+                                <option class="text-center mb-2" #value="">--1st Select State--</option>
+                                <option *ngFor="let stempLocation of stempLocations"
+                                    value="{{stempLocation.stempLocationId}}">
+                                    {{stempLocation.stempLocationName}}
+                                </option>
+                            </select>
+                        
+                            <select class="mr-2 mt-1 ml-1 mb-1 form-group form-control" name="ciempLocation"
+                                [(ngModel)]="userParams.ciempLocation"
+                                style="width: auto">
+                                <option class="text-center" value="">--2nd Select City--</option>
+                                <option *ngFor="let ciempLocation of ciempLocations"
+                                    [value]="ciempLocation.ciempLocationName">
+                                    {{ciempLocation.ciempLocationName | titlecase}}
                                 </option>
                             </select>
                         </div>
         
-                        <div class="form-group">
-                            <select name="location" 
-                                [(ngModel)]="userParams.ciLocation" 
-                                style="width: auto"
-                                class="form-control mr-2">
-                                <option value="">--Select Headquarters--</option>
-                                <option *ngFor="let ciLocation of ciLocationList" 
-                                    [value]="ciLocation.value">
-                                    {{ciLocation.display}}
-                                </option>
-                            </select>
-                        </div>
-                  
-                        <button class="btn btn-success ml-2 mr-2" type="submit">Apply Filters</button>
-                        <button (click)="resetFilters()" class="btn btn-info ml-1 mr-2" type="submit">Reset Filters</button>
+                        <div class="form-group form-inline">
+                        <button class="btn btn-success mr-2" type="submit">Apply Filters</button>
+                        <button (click)="resetFilters()" class="btn btn-info ml-1 mr-1" type="submit">Reset Filters</button>
     
-        <div class="text-center">
-            <label class="mr-2 filter" style="font-size: 1.5em"><strong> Sort by: </strong></label>
-        </div>
+                        <div class="text-center">
+                            <label class="mr-2 ml-3 filter" style="font-size: 1.5em"><strong> Order by: </strong></label>
+                        </div>
 
                         <button 
                             type="button"
@@ -51,9 +62,19 @@
                             (click)="loadMembers()"
                             btnRadio='empName'
                             [(ngModel)]="userParams.orderByEmpName">
-                            Employer
+                            Employer Name
                         </button>
-                       
+
+                        <button 
+                            type="button"
+                            class="btn btn-primary ml-1"
+                            name='orderByCiempLocation'
+                            (click)="loadMembers()"
+                            btnRadio='ciempLocation'
+                            [(ngModel)]="userParams.orderByCiempLocation">
+                            City Location
+                        </button>
+                      </div> 
     </form>
 </div>
 

@@ -11,9 +11,11 @@
                     <p class="text-center">
                         Number of employees: <strong>{{member.employeeNum}}</strong>
                         <br>Industry: <strong>{{member.empIndustry}}</strong>
-                        <br>thumbsup detail Headquarters: <strong>{{member.location}}</strong>
-                        <!-- <br class="mt-3">Website: <a href="https://www.iowacollegefoundation.org/"> Link</a> -->
+                        <br>Headquarters: <strong>{{member.location}}</strong>
                     </p>
+                    <div *ngIf="member.icfNote" class="a-level text-center p-1">
+                        <strong>{{member.icfNote}}</strong>
+                     </div>
                         <div class="btn-group d-flex">
                             <button class="btn btn-info shadow-sm mr-1" routerLink='/lists'>Back to thumbs-up</button>
                     <button (click)="selectTab(2)" class="btn btn-success shadow-sm ml-1">Send message</button>

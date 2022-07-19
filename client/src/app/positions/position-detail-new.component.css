@@ -17,6 +17,12 @@
   height: 15%;
 }
 
+.a-level {
+  background-color: yellow;
+  width: auto;
+}
+
+
 .card-body {
   text-align: center;
 }

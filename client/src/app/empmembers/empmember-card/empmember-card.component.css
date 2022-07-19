@@ -124,13 +124,18 @@ p {
   height: 1.5em;
 }
 
-.e-level {
-  background-color: lightyellow;
+
+.a-level {
+  background-color: yellow;
   width: auto;
-  height: 1.5em;
-} */
+}
 
 /* .header {
   background-color: lightblue;
   width: auto;
 } */
+
+.a-level {
+  background-color: yellow;
+  width: auto;
+}

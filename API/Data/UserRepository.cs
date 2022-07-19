@@ -69,6 +69,10 @@ namespace API.Data
             {
                 query = query.Where(u => u.Major == userParams.Major);
             }
+            if (userParams.College != null)
+            {
+                query = query.Where(u => u.College == userParams.College);
+            }
             if (userParams.Category != null)
             {
                 query = query.Where(u => u.Category == userParams.Category);
@@ -101,7 +105,7 @@ namespace API.Data
                 .ThenBy(u => u.LastName);
             }
 
-            else if (userParams.OrderByCiempLocation != null)
+            else if (userParams.OrderByCiLocation != null)
             {
                 query = query.OrderBy(u => u.CiLocation)
                 .ThenBy(u => u.LastName);
@@ -210,12 +214,17 @@ namespace API.Data
             }
             if (userParams.CiempLocation != null)
             {
-                query = query.Where(u => u.CiLocation == userParams.CiempLocation);
+                query = query.Where(u => u.CiempLocation == userParams.CiempLocation);
             }
 
             if (userParams.OrderByEmpName != null)
             {
                 query = query.OrderBy(u => u.EmpName);
+            }
+
+            else if (userParams.OrderByCiempLocation != null)
+            {
+                query = query.OrderBy(u => u.CiempLocation);
             }
             else
             {

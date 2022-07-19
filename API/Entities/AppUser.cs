@@ -21,11 +21,13 @@ namespace API.Entities
         [Column(TypeName = "nvarchar(40)")]
         public string LastName { get; set; }
 
-        [Column(TypeName = "nvarchar(60)")]
+        [Column(TypeName = "nvarchar(75)")]
         public string HrContactTitle { get; set; }
 
-        [Column(TypeName = "varchar(12)")]
+        [Column(TypeName = "varchar(15)")]
         public string AppUserType { get; set; }
+        [Column(TypeName = "varchar(55)")]
+        public string IcfNote { get; set; }
 
         public bool IsActive { get; set; } = true;
 

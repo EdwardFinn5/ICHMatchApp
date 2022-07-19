@@ -21,7 +21,6 @@ import { EmpmemberListComponent } from './empmembers/empmember-list/empmember-li
 import { EmpmemberDetailComponent } from './empmembers/empmember-detail/empmember-detail.component';
 import { AboutComponent } from './about/about.component';
 import { MemberSearchComponent } from './members/member-search/member-search.component';
-import { EmpmemberSearchComponent } from './empmembers/empmember-search/empmember-search.component';
 import { SharedModule } from './_modules/shared.module';
 import { TestErrorsComponent } from './errors/test-errors/test-errors.component';
 import { ErrorInterceptor } from './_interceptors/error.interceptor';
@@ -179,7 +178,6 @@ import { MemberEditPortalCardnphotoComponent } from './members/member-edit-porta
     EmpmemberDetailComponent,
     AboutComponent,
     MemberSearchComponent,
-    EmpmemberSearchComponent,
     TestErrorsComponent,
     NotFoundComponent,
     ServerErrorComponent,

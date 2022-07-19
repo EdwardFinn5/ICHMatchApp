@@ -1,9 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
+import { Category } from 'src/app/_models/category';
+import { College } from 'src/app/_models/college';
+import { Major } from 'src/app/_models/major';
 import { Member } from 'src/app/_models/member';
 import { Pagination } from 'src/app/_models/pagination';
 import { Position } from 'src/app/_models/position';
 import { UserParams } from 'src/app/_models/userParams';
+import { CollegeService } from 'src/app/_services/college.service';
+import { MajorService } from 'src/app/_services/major.service';
 import { SearchMembersService } from 'src/app/_services/search-members.service';
 
 @Component({
@@ -15,27 +20,30 @@ export class MemberSearchComponent implements OnInit {
   members: Member[];
   pagination: Pagination;
   userParams: UserParams;
-  // appUserType = 'ColStudent';
-  majorList = [
-    { value: 'Accounting', display: 'Accounting' },
-    { value: 'IT', display: 'IT' },
-    { value: 'Business Analytics', display: 'Business Analytics' },
-  ];
-  ciLocationList = [
-    { value: 'Des Moines, IA', display: 'Des Moines, IA' },
-    { value: 'Cedar Rapids, IA', display: 'Cedar Rapids, IA' },
-  ];
+  categories: Category[];
+  majors: Major[];
+  colleges: College[];
+
   classYearList = [
+    { value: 'Freshman', display: 'Freshmen' },
+    { value: 'Sophomore', display: 'Sophomores' },
     { value: 'Junior', display: 'Juniors' },
     { value: 'Senior', display: 'Seniors' },
+    { value: 'Post-Undergrad', display: 'Post-Undergrads' },
   ];
 
-  constructor(private searchMemberService: SearchMembersService) {
+  constructor(
+    private searchMemberService: SearchMembersService,
+    private majorService: MajorService,
+    private collegeService: CollegeService
+  ) {
     this.userParams = this.searchMemberService.getUserParams();
   }
 
   ngOnInit(): void {
     this.loadMembers();
+    this.loadCategories();
+    this.loadColleges();
   }
 
   loadMembers() {
@@ -48,9 +56,36 @@ export class MemberSearchComponent implements OnInit {
       });
   }
 
+  loadCategories() {
+    this.majorService.getCategories().subscribe((categories) => {
+      this.categories = categories;
+      // console.log(this.categories);
+    });
+  }
+
+  loadColleges() {
+    this.collegeService.getColleges().subscribe((colleges) => {
+      this.colleges = colleges;
+      // console.log(this.categories);
+    });
+  }
+
+  onSelect(categories) {
+    // console.log(categories.target.value);
+    this.majorService.getMajors().subscribe((majors) => {
+      this.majors = majors;
+      // console.log('all majors', majors);
+      this.majors = majors.filter(
+        (e) => e.categoryId == categories.target.value
+      );
+      console.log('category id: ', categories.target.value);
+    });
+  }
+
   resetFilters() {
     this.userParams = this.searchMemberService.resetUserParams();
     this.loadMembers();
+    this.loadCategories();
   }
 
   pageChanged(event: any) {

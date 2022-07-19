@@ -11,7 +11,7 @@
         (ngSubmit)="loadPositions()" autocomplete="off">
 
         <div class="form-group form-inline">
-            <label class="mr-2 filter" style="font-size: 1.5em"><strong> Filter on position-category: </strong></label>
+            <label class="mr-2 filter" style="font-size: 1.5em"><strong> Filter by Position-Category: </strong></label>
             <div class="form-group">
                 <select name="posCategory" 
                 [(ngModel)]="userParams.posCategory"
@@ -25,9 +25,9 @@
                 </select>
             </div>
             
-        <label class="mr-2 filter" style="font-size: 1.5em"><strong> Filter on specific position: </strong></label>  
+        <label class="mr-2 filter" style="font-size: 1.5em"><strong> Filter by Position: </strong></label>  
             
-            <select (change)="onSelect($event)" 
+            <select (change)="onPosSelect($event)" 
                 class=" form-control mr-2"
                 name="posCategory"
                 style="width: auto">
@@ -38,7 +38,7 @@
                 </option>
             </select>
         
-            <select class="mr-2 mt-1 mb-1 form-group form-control" name="major"
+            <select class="mr-2 mt-1 mb-1 form-group form-control" name="posName"
                 [(ngModel)]="userParams.posName"
                 style="width: auto">
                 <option class="text-center" value="">--2nd Select Position--</option>
@@ -65,24 +65,53 @@
                         </select>
                     </div> -->
 
-                     <div class="form-group">
+                    <div class="form-group form-inline">
+                        
+                        <label class="mr-2 filter" style="font-size: 1.5em"><strong> Filter by Position Type: </strong></label>  
+                        
                         <select name="positionType" 
                             [(ngModel)]="userParams.positionType" 
                             style="width: auto"
                             class="form-control mr-2">
-                            <option value="">--Select Position Type--</option>
-                            <option *ngFor="let positionType of positionTypeList" class="text-center"
+                            <option class="text-center" value="">--Select Position Type--</option>
+                            <option *ngFor="let positionType of positionTypeList"
                                 [value]="positionType.value">
                                 {{positionType.display}}
                             </option>
                         </select>
-                    </div>
+                    
+
+                    <label class="mr-2 filter" style="font-size: 1.5em"><strong> Filter by Position Location: </strong></label>
+                            
+                    <select (change)="onSelect($event)" 
+                        class=" form-control mr-2"
+                        name="stempLocation"
+                        style="width: auto">
+                        <option class="text-center mb-2" #value="">--1st Select State--</option>
+                        <option *ngFor="let stempLocation of stempLocations"
+                            value="{{stempLocation.stempLocationId}}">
+                            {{stempLocation.stempLocationName}}
+                        </option>
+                    </select>
+                
+                    <select class="mr-2 mt-1 ml-1 mb-1 form-group form-control" name="ciempLocation"
+                        [(ngModel)]="userParams.ciempLocation"
+                        style="width: auto">
+                        <option class="text-center" value="">--2nd Select City--</option>
+                        <option *ngFor="let ciempLocation of ciempLocations"
+                            [value]="ciempLocation.ciempLocationName">
+                            {{ciempLocation.ciempLocationName | titlecase}}
+                        </option>
+                    </select>
+                </div>
+
 
                     <!-- <div class="container">
                         <div class="row">
                             <div class="col-xs-12">
                                 <div class="text-center mt-2"> -->
-                                    <button class="btn btn-success mr-1" type="submit">Apply Filters</button>
+                                    <div class="form-group form-inline mt-1">
+                                    <button class="btn btn-success mr-2" type="submit">Apply Filters</button>
                                     <button (click)="resetFilters()" class="btn btn-info ml-1 mr-2" type="submit">Reset Filters</button>
                                 <!-- </div>
                             </div>
@@ -90,7 +119,7 @@
                     </div>      -->
                     
                     <div class="text-center">
-                        <label class="mr-2 filter" style="font-size: 1.5em"><strong> Sort by: </strong></label>
+                        <label class="mr-2 ml-2 filter" style="font-size: 1.5em"><strong> Sorts: </strong></label>
                     </div>
 
                     <!-- <div class="container row">
@@ -104,17 +133,18 @@
                                         (click)="loadPositions()"
                                         btnRadio='orderByPosName'
                                         [(ngModel)]="userParams.orderByPosName">
-                                        Position
+                                        By Position
                                     </button>
                                     <button 
                                         type="button"
-                                        class="btn btn-info mr-2"
+                                        class="btn btn-info ml-1 mr-2"
                                         name='orderByCiempLocation'
                                         (click)="loadPositions()"
                                         btnRadio='orderByCiempLocation'
                                         [(ngModel)]="userParams.orderByCiempLocation">
-                                        Location
+                                        By Location
                                     </button>
+                                    </div>
     </form>
 </div>
 

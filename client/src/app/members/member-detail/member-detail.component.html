@@ -11,10 +11,11 @@
                         <br>({{member.category}} category)
                         <br>from {{member.ciLocation}} 
                         <br>attending {{member.college | titlecase}}
-                     
                         <br>Last Active: {{member.lastActive | date: "MMM dd yyyy" }}
                     </p>
-            
+                    <div *ngIf="member.icfNote" class="a-level text-center p-1">
+                        <strong>{{member.icfNote}}</strong>
+                     </div>
 
             <div class="btn-group d-flex">
                 <button class="btn btn-info shadow-sm mr-1" routerLink='/membersearch'>Back to talent</button>

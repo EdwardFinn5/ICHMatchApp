@@ -22,7 +22,11 @@
             <br>Industry: {{cardMember.empIndustry}} 
             <br>Headquarters: {{cardMember.ciempLocation}}, {{cardMember.stempLocation}}
             <br>RegisterCode: {{cardMember.registerCode}} 
-            </p><button class="btn btn-info btn-block shadow-sm mr-2 mb-2" routerLink='/empmembercompdetail/{{cardMember.appUserId}}'>View company details</button>
+        </p>
+             <div *ngIf="member.icfNote" class="a-level text-center p-1">
+                <strong>{{member.icfNote}}</strong>
+             </div>     
+        <button class="btn btn-info btn-block shadow-sm mr-2 mb-2" routerLink='/empmembercompdetail/{{cardMember.appUserId}}'>View company details</button>
         
     </ng-container>
         

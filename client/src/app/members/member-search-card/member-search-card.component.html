@@ -84,11 +84,12 @@
             <p class="text-center">
                 {{member.classYear}} {{member.major}} major
                 <br> 
-                from {{member.ciLocation}}
+                ({{member.category}}-Category)<br>
+                from {{member.ciLocation}}, {{member.stLocation}}
                 <br>
                 attending {{member.college}}
             </p>
-            <button class="btn btn-info button btn-block shadow-sm mr-2 mb-2" routerLink='/members/{{member.username}}'>
+            <button class="btn btn-info button btn-block shadow-sm mr-2" routerLink='/members/{{member.username}}'>
                 Click to see student details
             </button>
             </ng-container>
@@ -99,15 +100,15 @@
                 <br>Start date: {{member.startDate | date: "MM/dd/yyyy"}}
                 <br>Application deadline: {{member.appDeadline | date: "MM/dd/yyyy"}}
             </p>
-            <div *ngIf="member.givingLevel == 'a'" class="a-level text-center p-1">
-                {{member.giftAmt}}
+            <div *ngIf="member.icfNote" class="a-level text-center p-1">
+               {{member.empName}} {{member.icfNote}}
             </div>
-            <div *ngIf="member.givingLevel == 'b'" class="b-level text-center p-1">
+            <!-- <div *ngIf="member.givingLevel == 'b'" class="b-level text-center p-1">
                 {{member.giftAmt}}
             </div>
             <div *ngIf="member.givingLevel == 'c'" class="c-level text-center p-1">
                 {{member.giftAmt}}
-            </div>
+            </div> -->
         </ng-container>
        
     </div>

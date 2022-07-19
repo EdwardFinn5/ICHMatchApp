@@ -12,7 +12,7 @@
         (ngSubmit)="loadCardMembers()" autocomplete="off">
 
         <div class="form-group form-inline">
-            <label class="mr-2 filter" style="font-size: 1.5em"><strong> Filter on major-category: </strong></label>
+            <label class="mr-2 filter" style="font-size: 1.5em"><strong> Filter by major-category: </strong></label>
             <div class="form-group">
                 <select name="category" 
                 [(ngModel)]="userParams.category"
@@ -26,7 +26,7 @@
                 </select>
             </div>
             
-        <label class="mr-2 filter" style="font-size: 1.5em"><strong> Filter on specific major: </strong></label>  
+        <label class="mr-2 filter" style="font-size: 1.5em"><strong> Filter by specific major: </strong></label>  
             <select (change)="onSelect($event)" 
                 class=" form-control mr-2"
                 name="category"
@@ -51,7 +51,7 @@
         
 
         <div class="form-group form-inline">
-            <label class="mr-2 filter" style="font-size: 1.5em"><strong> College filter: </strong></label>  
+            <label class="mr-2 filter" style="font-size: 1.5em"><strong> Filter by college: </strong></label>  
             <select name="college" 
                 [(ngModel)]="userParams.college"
                 style="width: auto" 
@@ -59,13 +59,11 @@
                 <option class="text-center" value="">--Select College--</option>
                 <option *ngFor="let college of colleges" 
                     [value]="college.collegeName">
-                    {{college.collegeName}}    
+                    {{college.collegeName | titlecase}}    
                 </option>
             </select>
-        <!-- </div>
-    
-        <div class="form-group"> -->
-        <label class="mr-2 filter" style="font-size: 1.5em"><strong> Class Yr filter: </strong></label>  
+       
+        <label class="mr-2 filter" style="font-size: 1.5em"><strong> Filter by class yr: </strong></label>  
            <select name="classYear" 
                 [(ngModel)]="userParams.classYear"
                 style="width: auto" 

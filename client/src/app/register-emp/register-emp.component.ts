@@ -47,7 +47,7 @@ export class RegisterEmpComponent implements OnInit {
     this.loadRegisterCode();
     this.loadEmpIndustries();
     this.loadStempLocations();
-    this.loadCiempLocations();
+    // this.loadCiempLocations();
   }
 
   initializeForm() {
@@ -119,13 +119,13 @@ export class RegisterEmpComponent implements OnInit {
     });
   }
 
-  loadCiempLocations() {
-    this.ciempLocationService
-      .getCiempLocations()
-      .subscribe((ciempLocations) => {
-        this.ciempLocations = ciempLocations;
-      });
-  }
+  // loadCiempLocations() {
+  //   this.ciempLocationService
+  //     .getCiempLocations()
+  //     .subscribe((ciempLocations) => {
+  //       this.ciempLocations = ciempLocations;
+  //     });
+  // }
 
   loadStempLocations() {
     this.ciempLocationService

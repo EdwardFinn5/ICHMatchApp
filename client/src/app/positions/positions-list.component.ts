@@ -1,11 +1,14 @@
 import { Component, OnInit, Output } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { CiempLocation } from '../_models/ciempLocation';
 import { Member } from '../_models/member';
 import { Pagination } from '../_models/pagination';
 import { PosCategory } from '../_models/posCategory';
 import { Position } from '../_models/position';
 import { PositName } from '../_models/positName';
+import { StempLocation } from '../_models/stempLocation';
 import { UserParams } from '../_models/userParams';
+import { CiemplocationService } from '../_services/ciemplocation.service';
 import { Position2Service } from '../_services/position2.service';
 import { PositNameService } from '../_services/positname.service';
 import { SearchMembersService } from '../_services/search-members.service';
@@ -24,45 +27,29 @@ export class PositionsListComponent implements OnInit {
   userParams: UserParams;
   posCategories: PosCategory[];
   positNames: PositName[];
-  // positionNameList = [
-  //   { value: 'Accounting', display: 'Accounting' },
-  //   { value: 'IT', display: 'IT' },
-  //   { value: 'Marketing', display: 'Marketing' },
-  // ];
+  ciempLocations: CiempLocation[];
+  stempLocations: StempLocation[];
+
   positionTypeList = [
-    { value: 'Internship', display: 'Internships' },
+    { value: 'Internship', display: 'Internship' },
     { value: 'Full-Time', display: 'Full-Time' },
     { value: 'Part-Time', display: 'Part-Time' },
-  ];
-  positionLocationList = [
-    { value: 'Des Moines, IA ', display: 'Des Moines, IA' },
-    { value: 'Cedar Rapids, IA', display: 'Cedar Rapids, IA' },
   ];
 
   constructor(
     private position2Service: Position2Service,
     private positNameService: PositNameService,
-    private searchMemberService: SearchMembersService
+    private searchMemberService: SearchMembersService,
+    private ciempLocationService: CiemplocationService
   ) {
     this.userParams = this.position2Service.getUserParams();
   }
 
   ngOnInit(): void {
-    this.resetFilters();
     this.loadPositions();
-    // this.loadMembers();
     this.loadPosCategories();
+    this.loadStempLocations();
   }
-
-  // loadMembers() {
-  //   this.searchMemberService.setUserParams(this.userParams);
-  //   this.searchMemberService
-  //     .getSearchEmpMembers(this.userParams)
-  //     .subscribe((response) => {
-  //       this.members = response.result;
-  //       this.pagination = response.pagination;
-  //     });
-  // }
 
   loadPosCategories() {
     this.positNameService.getPosCategories().subscribe((posCategories) => {
@@ -71,7 +58,7 @@ export class PositionsListComponent implements OnInit {
     });
   }
 
-  onSelect(posCategories) {
+  onPosSelect(posCategories) {
     // console.log(categories.target.value);
     this.positNameService.getPositNames().subscribe((positNames) => {
       this.positNames = positNames;
@@ -93,10 +80,30 @@ export class PositionsListComponent implements OnInit {
       });
   }
 
+  loadStempLocations() {
+    this.ciempLocationService
+      .getStempLocations()
+      .subscribe((stempLocations) => {
+        this.stempLocations = stempLocations;
+      });
+  }
+
+  onSelect(stempLocations) {
+    this.ciempLocationService
+      .getCiempLocations()
+      .subscribe((ciempLocations) => {
+        this.ciempLocations = ciempLocations;
+        this.ciempLocations = ciempLocations.filter(
+          (e) => e.stempLocationId == stempLocations.target.value
+        );
+      });
+  }
+
   resetFilters() {
-    this.loadPosCategories();
     this.userParams = this.position2Service.resetUserParams();
+    this.loadPosCategories();
     this.loadPositions();
+    this.loadStempLocations();
   }
 
   pageChanged(event: any) {

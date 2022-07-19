@@ -20,6 +20,7 @@ namespace API.DTOs
         public string PosName { get; set; }
         public string PositionType { get; set; }
         public string RegisterCode { get; set; }
+        public string IcfNote { get; set; }
         public string Token { get; set; }
         public string AppUserType { get; set; }
         public string StudentUrl { get; set; }

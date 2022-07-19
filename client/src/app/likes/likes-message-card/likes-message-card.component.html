@@ -18,6 +18,9 @@
                 <br>Industry: <strong>{{member.empIndustry}}</strong>
                 <br>Headquarters: <strong>{{member.location}}</strong>
             </p>
+            <div *ngIf="member.icfNote" class="a-level text-center p-1">
+                <strong>{{member.icfNote}}</strong>
+             </div>
             <button class="btn btn-info button btn-block shadow-sm mr-2 mb-2"
                 routerLink='/empmemberthumbsupdetail/{{member.appUserId}}'>View company details</button>
         </ng-copntainer>
@@ -44,6 +47,9 @@
                 <br>from {{member.location}}
                 <br>attending {{member.college}} 
             </p>
+            <div *ngIf="member.icfNote" class="a-level text-center p-1">
+                <strong>{{member.icfNote}}</strong>
+             </div>
             <button class="btn btn-info button btn-block shadow-sm mr-2 mb-2"
                 routerLink='/membermessagedetail/{{member.appUserId}}'>View student details</button>
     </ng-container>

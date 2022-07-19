@@ -26,11 +26,12 @@ namespace API.Helpers
         public string PositionType { get; set; }
         public string OrderByMajor { get; set; }
         public string OrderByCategory { get; set; }
+        public string OrderByEmpName { get; set; }
         public string OrderByCiempLocation { get; set; }
+        public string OrderByCiLocation { get; set; }
         public string OrderByCollege { get; set; }
         public string OrderByEmpIndustry { get; set; }
         public string OrderByRegisterCode { get; set; }
-        public string OrderByEmpName { get; set; }
         public string OrderByPosName { get; set; }
 
     }

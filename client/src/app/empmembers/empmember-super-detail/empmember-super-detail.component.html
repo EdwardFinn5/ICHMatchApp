@@ -11,7 +11,9 @@
                         <br>Industry: {{member.empIndustry}} 
                         <br>Headquarters: {{member.ciempLocation}}, {{member.stempLocation}}
                     </p>   
-                       
+                    <div *ngIf="member.icfNote" class="a-level text-center p-1">
+                        <strong>{{member.icfNote}}</strong>
+                     </div>
                             <div class="btn-group d-flex">
                                 <button class="btn btn-info shadow-sm mr-1" routerLink='/empmemberslistsuper'>Back to employers</button>
                                 <button (click)="selectTab(2)" class="btn btn-success shadow-sm ml-1">Send message</button>

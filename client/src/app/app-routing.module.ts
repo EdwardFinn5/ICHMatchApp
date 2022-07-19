@@ -6,7 +6,6 @@ import { EmpmemberEditCardnlogoComponent } from './empmembers/empmember-edit-car
 import { EmpmemberEditEmpinfoComponent } from './empmembers/empmember-edit-empinfo/empmember-edit-empinfo.component';
 import { EmpmemberEditPositionComponent } from './empmembers/empmember-edit-position/empmember-edit-position.component';
 import { EmpmemberListComponent } from './empmembers/empmember-list/empmember-list.component';
-import { EmpmemberSearchComponent } from './empmembers/empmember-search/empmember-search.component';
 import { NotFoundComponent } from './errors/not-found/not-found.component';
 import { ServerErrorComponent } from './errors/server-error/server-error.component';
 import { TestErrorsComponent } from './errors/test-errors/test-errors.component';
@@ -452,11 +451,6 @@ const routes: Routes = [
       {
         path: 'position/dutybullets',
         component: PositionDutyBulletsComponent,
-      },
-      {
-        path: 'empmembersearch',
-        component: EmpmemberSearchComponent,
-        pathMatch: 'full',
       },
       {
         path: 'members/:username',

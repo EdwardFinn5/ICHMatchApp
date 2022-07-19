@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace API.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20220713235731_BrandNewMigration")]
+    [Migration("20220719000443_BrandNewMigration")]
     partial class BrandNewMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -60,7 +60,7 @@ namespace API.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("AppUserId"), 1L, 1);
 
                     b.Property<string>("AppUserType")
-                        .HasColumnType("varchar(12)");
+                        .HasColumnType("varchar(15)");
 
                     b.Property<string>("Category")
                         .HasColumnType("nvarchar(60)");
@@ -96,7 +96,10 @@ namespace API.Migrations
                         .HasColumnType("nvarchar(30)");
 
                     b.Property<string>("HrContactTitle")
-                        .HasColumnType("nvarchar(60)");
+                        .HasColumnType("nvarchar(75)");
+
+                    b.Property<string>("IcfNote")
+                        .HasColumnType("varchar(55)");
 
                     b.Property<bool>("IsActive")
                         .HasColumnType("bit");

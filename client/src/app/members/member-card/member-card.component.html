@@ -23,6 +23,9 @@
             <br>
             attending {{cardMember.college}}
         </p>
+        <div *ngIf="member.icfNote" class="a-level text-center p-1">
+            <strong>{{member.icfNote}}</strong>
+         </div>
         <button class="btn btn-info btn-block shadow-sm mr-2 mb-2" routerLink='/userlogin'>
            Employers click here to see student details
         </button>

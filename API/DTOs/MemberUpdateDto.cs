@@ -23,8 +23,8 @@ namespace API.DTOs
         public string LastName { get; set; }
         public string HrContactTitle { get; set; }
         public string College { get; set; }
-        // public int GiftAmt { get; set; }
         public string RegisterCode { get; set; }
+        public string IcfNote { get; set; }
         public string EmpName { get; set; }
         public string EmpIndustry { get; set; }
         public string EmployeeNum { get; set; }

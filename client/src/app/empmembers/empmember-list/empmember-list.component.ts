@@ -1,9 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { CardMember } from 'src/app/_models/cardMember';
+import { CiempLocation } from 'src/app/_models/ciempLocation';
+import { EmpIndustry } from 'src/app/_models/empIndustry';
 import { Member } from 'src/app/_models/member';
 import { Pagination } from 'src/app/_models/pagination';
+import { StempLocation } from 'src/app/_models/stempLocation';
 import { UserParams } from 'src/app/_models/userParams';
+import { CiemplocationService } from 'src/app/_services/ciemplocation.service';
+import { EmpindustryService } from 'src/app/_services/empindustry.service';
 import { MembersService } from 'src/app/_services/members.service';
 
 @Component({
@@ -15,25 +20,22 @@ export class EmpmemberListComponent implements OnInit {
   cardMembers: CardMember[];
   pagination: Pagination;
   userParams: UserParams;
-  // appUserType = 'EmpHr';
-  empIndustryList = [
-    { value: 'Manufacturing', display: 'Manufacturing' },
-    { value: 'Insurance', display: 'Insurance' },
-    { value: 'Banking', display: 'Banking' },
-  ];
-  ciLocationList = [
-    { value: 'Des Moines, IA', display: 'Des Moines, IA' },
-    { value: 'Cedar Rapids, IA', display: 'Cedar Rapids, IA' },
-    { value: 'Muscatine, IA', display: 'Muscatine, IA' },
-  ];
+  empIndustries: EmpIndustry[];
+  ciempLocations: CiempLocation[];
+  stempLocations: StempLocation[];
 
-  constructor(private memberService: MembersService) {
+  constructor(
+    private memberService: MembersService,
+    private empIndustryService: EmpindustryService,
+    private ciempLocationService: CiemplocationService
+  ) {
     this.userParams = this.memberService.getUserParams();
   }
 
   ngOnInit(): void {
-    // this.resetFilters;
     this.loadCardMembers();
+    this.loadEmpIndustries();
+    this.loadStempLocations();
   }
 
   loadCardMembers() {
@@ -42,6 +44,31 @@ export class EmpmemberListComponent implements OnInit {
       this.cardMembers = response.result;
       this.pagination = response.pagination;
     });
+  }
+
+  loadEmpIndustries() {
+    this.empIndustryService.getEmpIndustries().subscribe((empIndustries) => {
+      this.empIndustries = empIndustries;
+    });
+  }
+
+  loadStempLocations() {
+    this.ciempLocationService
+      .getStempLocations()
+      .subscribe((stempLocations) => {
+        this.stempLocations = stempLocations;
+      });
+  }
+
+  onSelect(stempLocations) {
+    this.ciempLocationService
+      .getCiempLocations()
+      .subscribe((ciempLocations) => {
+        this.ciempLocations = ciempLocations;
+        this.ciempLocations = ciempLocations.filter(
+          (e) => e.stempLocationId == stempLocations.target.value
+        );
+      });
   }
 
   resetFilters() {
