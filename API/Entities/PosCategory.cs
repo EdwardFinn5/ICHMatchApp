@@ -11,7 +11,7 @@ namespace API.Entities
     {
         [Key]
         public int PosCategoryId { get; set; }
-        [Column(TypeName = "nvarchar(100)")]
+        [Column(TypeName = "varchar(50)")]
         public string PosCategoryName { get; set; }
         public ICollection<PositName> PositNames { get; set; }
     }

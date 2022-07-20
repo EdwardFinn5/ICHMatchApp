@@ -10,7 +10,7 @@
       <div class="form-group">
         <input [class.is-invalid]='registerStudForm.get("username").errors 
             && registerStudForm.get("username").touched' formControlName='username' class="form-control shadow-sm"
-          type="email" pattern="^[a-zA-Z0-9_.+-]+@[A-zA-Z0-9-]+\.edu$" placeholder="Username (college email)">
+          type="email" maxlength="60" pattern="^[a-zA-Z0-9_.+-]+@[A-zA-Z0-9-]+\.edu$" placeholder="Username (college email)">
         <div *ngIf="registerStudForm.get('username').hasError('required')" class="invalid-feedback">Please enter a
           username</div>
         <div *ngIf="registerStudForm.get('username').hasError('pattern')" class="invalid-feedback">Username must be your
@@ -28,7 +28,7 @@
       <div class="form-group">
         <input [class.is-invalid]='registerStudForm.get("registerCode").errors 
             && registerStudForm.get("registerCode").touched' formControlName='registerCode'
-          class="form-control shadow-sm" type="text" pattern="({{registerCode.registerCodeNameStud}})"
+          class="form-control shadow-sm" type="text" maxlength="15" pattern="({{registerCode.registerCodeNameStud}})"
           placeholder="Register Code (re-enter student code)">
         <div *ngIf="registerStudForm.get('registerCode').hasError('required')" class="invalid-feedback">Please enter a
           register code</div>
@@ -55,10 +55,10 @@
         </label>
       </ng-container>
 
-      <app-text-input [formControl]='registerStudForm.controls["firstName"]' [label]='"First Name"'>
+      <app-text-input [formControl]='registerStudForm.controls["firstName"]' [label]='"First Name"' maxlength="30">
       </app-text-input>
 
-      <app-text-input [formControl]='registerStudForm.controls["lastName"]' [label]='"Last Name"'>
+      <app-text-input [formControl]='registerStudForm.controls["lastName"]' [label]='"Last Name"' maxlength="30">
       </app-text-input>
 
       <h6 class="filter m-auto"><strong>Select your college/univerity (required):</strong></h6>

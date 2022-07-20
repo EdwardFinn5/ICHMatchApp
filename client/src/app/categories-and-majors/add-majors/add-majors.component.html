@@ -30,7 +30,7 @@
         <h4 class="text-center"><strong>Add Major</strong></h4>
         <form #majorForm="ngForm" (ngSubmit)="addMajor()" autocomplete="off">
             <div class="input-group" >
-                <input name="majorName" required [(ngModel)]="majorName" type="text" 
+                <input name="majorName" required [(ngModel)]="majorName" type="text" maxlength="60"
                     class="form-control input-sm long-input" placeholder="Add Major Name">
                     <!-- <input name="order" required [(ngModel)]="order" type="number" 
                     class="form-control input-sm short-input ml-2 mb-3" placeholder="Order # (1.0,2.0,...)"> -->

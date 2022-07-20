@@ -8,9 +8,9 @@ namespace API.Entities
         [Key]
         public int CollegeId { get; set; }
 
-        [Column(TypeName = "nvarchar(60)")]
+        [Column(TypeName = "varchar(30)")]
         public string CollegeName { get; set; }
-        [Column(TypeName = "nvarchar(60)")]
+        [Column(TypeName = "varchar(30)")]
         public string CollegeNickname { get; set; }
     }
 }

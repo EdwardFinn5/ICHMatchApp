@@ -15,7 +15,7 @@
         <form #editForm="ngForm" id="editForm" (ngSubmit)="updateCategory()" autocomplete="off">
             <div class="form-group">
                 <label class="categoryName"><strong>Category</strong> </label>
-                <input name="categoryName" [(ngModel)]="category.categoryName"
+                <input name="categoryName" [(ngModel)]="category.categoryName" maxlength="50"
                     class="form-control shadow-sm">
             </div>
         </form>

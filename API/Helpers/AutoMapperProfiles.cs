@@ -17,9 +17,9 @@ namespace API.Helpers
             //      .ForMember(dest => dest.EmpName, opt => opt
             //         .MapFrom(src => src.Users.FirstOrDefault(x => x.Active).EmpName))
 
-            CreateMap<News, NewsDto>()
-                .ForMember(dest => dest.NewsUrl, opt => opt
-                    .MapFrom(src => src.PhotoNewes.FirstOrDefault(x => x.IsMainNews).NewsUrl));
+            CreateMap<News, NewsDto>();
+            // .ForMember(dest => dest.NewsUrl, opt => opt
+            //     .MapFrom(src => src.PhotoNewes.FirstOrDefault(x => x.IsMainNews).NewsUrl));
 
             CreateMap<AppUser, MemberDto>()
                 .ForMember(dest => dest.StudentUrl, opt => opt
@@ -46,10 +46,10 @@ namespace API.Helpers
                 .MapFrom(src => src.StudInfos.FirstOrDefault(x => x.IsActive).Arts))
             .ForMember(dest => dest.ExtraCurricular, opt => opt
                 .MapFrom(src => src.StudInfos.FirstOrDefault(x => x.IsActive).ExtraCurricular))
-            .ForMember(dest => dest.AcademicPlus, opt => opt
-                .MapFrom(src => src.StudInfos.FirstOrDefault(x => x.IsActive).AcademicPlus))
-            .ForMember(dest => dest.WorkPlus, opt => opt
-                .MapFrom(src => src.StudInfos.FirstOrDefault(x => x.IsActive).WorkPlus))
+            // .ForMember(dest => dest.AcademicPlus, opt => opt
+            //     .MapFrom(src => src.StudInfos.FirstOrDefault(x => x.IsActive).AcademicPlus))
+            // .ForMember(dest => dest.WorkPlus, opt => opt
+            //     .MapFrom(src => src.StudInfos.FirstOrDefault(x => x.IsActive).WorkPlus))
             .ForMember(dest => dest.DreamJob, opt => opt
                 .MapFrom(src => src.StudInfos.FirstOrDefault(x => x.IsActive).DreamJob))
             // .ForMember(dest => dest.EmpWebsite, opt => opt

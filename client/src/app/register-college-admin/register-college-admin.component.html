@@ -10,7 +10,7 @@
         <div class="form-group">
           <input [class.is-invalid]='registerCollegeAdminForm.get("username").errors 
               && registerCollegeAdminForm.get("username").touched' formControlName='username' class="form-control shadow-sm"
-            type="email" pattern="^[a-zA-Z0-9_.+-]+@[A-zA-Z0-9-]+\.edu$" placeholder="Username (college/work email)">
+            type="email" maxlength="60" pattern="^[a-zA-Z0-9_.+-]+@[A-zA-Z0-9-]+\.edu$" placeholder="Username (college/work email)">
           <div *ngIf="registerCollegeAdminForm.get('username').hasError('required')" class="invalid-feedback">Please enter a
             username</div>
           <div *ngIf="registerCollegeAdminForm.get('username').hasError('pattern')" class="invalid-feedback">Username must be your
@@ -28,7 +28,7 @@
         <div class="form-group">
           <input [class.is-invalid]='registerCollegeAdminForm.get("registerCode").errors 
               && registerCollegeAdminForm.get("registerCode").touched' formControlName='registerCode'
-            class="form-control shadow-sm" type="text" pattern="({{registerCode.registerCodeNameAdmin}})"
+            class="form-control shadow-sm" type="text" maxlength="15" pattern="({{registerCode.registerCodeNameAdmin}})"
             placeholder="Register Code (re-enter  college admin code)">
           <div *ngIf="registerCollegeAdminForm.get('registerCode').hasError('required')" class="invalid-feedback">Please enter college admin
             register code</div>
@@ -36,13 +36,13 @@
             have a college admin register code please email: info@iowacollegefoundation.org</div>
         </div>
   
-        <app-text-input [formControl]='registerCollegeAdminForm.controls["firstName"]' [label]='"First Name"'>
+        <app-text-input [formControl]='registerCollegeAdminForm.controls["firstName"]' [label]='"First Name"' maxlength="30">
         </app-text-input>
   
-        <app-text-input [formControl]='registerCollegeAdminForm.controls["lastName"]' [label]='"Last Name"'>
+        <app-text-input [formControl]='registerCollegeAdminForm.controls["lastName"]' [label]='"Last Name"' maxlength="30">
         </app-text-input>
         
-        <app-text-input [formControl]='registerCollegeAdminForm.controls["hrContactTitle"]' [label]='"Your title"'>
+        <app-text-input [formControl]='registerCollegeAdminForm.controls["hrContactTitle"]' [label]='"Your title"' maxlength="75">
         </app-text-input>
   
         <h6 class="filter m-auto"><strong>Select your college/univerity (required):</strong></h6>

@@ -8,7 +8,7 @@ namespace API.Entities
     {
         [Key]
         public int CategoryId { get; set; }
-        [Column(TypeName = "nvarchar(100)")]
+        [Column(TypeName = "varchar(50)")]
         public string CategoryName { get; set; }
         public ICollection<Major> Majors { get; set; }
     }

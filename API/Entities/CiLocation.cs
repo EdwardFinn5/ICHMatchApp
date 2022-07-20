@@ -12,8 +12,9 @@ namespace API.Entities
         [Key]
         public int CiLocationId { get; set; }
 
-        [Column(TypeName = "nvarchar(60)")]
+        [Column(TypeName = "varchar(40)")]
         public string CiLocationName { get; set; }
+        [Column(TypeName = "varchar(40)")]
         public string CiLocationSortName { get; set; }
         public virtual StLocation stLocation { get; set; }
         public int StLocationId { get; set; }

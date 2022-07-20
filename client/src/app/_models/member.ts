@@ -21,6 +21,8 @@ export interface Member {
   stempLocation: string;
   uniqueTitle: string;
   uniqueContent: string;
+  registerCode: string;
+  icfNote: string;
   classYear: string;
   major: string;
   category: string;

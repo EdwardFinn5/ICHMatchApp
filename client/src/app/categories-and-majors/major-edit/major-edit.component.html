@@ -15,7 +15,7 @@
         <form #editForm="ngForm" id="editForm" (ngSubmit)="updateMajor()" autocomplete="off">
             <div class="form-group">
                 <label class="majorName"><strong>Major</strong> </label>
-                <input name="majorName" [(ngModel)]="major.majorName"
+                <input name="majorName" [(ngModel)]="major.majorName" maxlength="60"
                     class="form-control shadow-sm">
             </div>
         </form>

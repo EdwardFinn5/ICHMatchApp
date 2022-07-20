@@ -121,7 +121,7 @@ namespace API.Data
                   .Include(a => a.AppUser)
                   .Include(b => b.DutyBullets)
                   .Include(b => b.SkillsBullets)
-                  .Include(b => b.PhotoLogos)
+                  //   .Include(b => b.PhotoLogos)
                   .ToListAsync();
         }
 

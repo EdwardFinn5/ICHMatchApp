@@ -10,55 +10,55 @@ namespace API.Entities
         [Key]
         public int AppUserId { get; set; }
 
-        [Column(TypeName = "nvarchar(256)")]
+        [Column(TypeName = "varchar(60)")]
         public string UserName { get; set; }
         public byte[] PasswordHash { get; set; }
         public byte[] PasswordSalt { get; set; }
 
-        [Column(TypeName = "nvarchar(30)")]
+        [Column(TypeName = "varchar(30)")]
         public string FirstName { get; set; }
 
-        [Column(TypeName = "nvarchar(40)")]
+        [Column(TypeName = "varchar(30)")]
         public string LastName { get; set; }
 
-        [Column(TypeName = "nvarchar(75)")]
+        [Column(TypeName = "varchar(75)")]
         public string HrContactTitle { get; set; }
 
         [Column(TypeName = "varchar(15)")]
         public string AppUserType { get; set; }
-        [Column(TypeName = "varchar(55)")]
+        [Column(TypeName = "varchar(75)")]
         public string IcfNote { get; set; }
 
         public bool IsActive { get; set; } = true;
 
-        [Column(TypeName = "nvarchar(60)")]
+        [Column(TypeName = "varchar(50)")]
         public string CoLocation { get; set; }
 
-        [Column(TypeName = "nvarchar(60)")]
+        [Column(TypeName = "varchar(50)")]
         public string StLocation { get; set; }
 
-        [Column(TypeName = "nvarchar(60)")]
+        [Column(TypeName = "varchar(50)")]
         public string CiLocation { get; set; }
 
-        [Column(TypeName = "nvarchar(60)")]
+        [Column(TypeName = "varchar(50)")]
         public string CiempLocation { get; set; }
 
-        [Column(TypeName = "nvarchar(10)")]
+        [Column(TypeName = "varchar(20)")]
         public string StempLocation { get; set; }
 
-        [Column(TypeName = "varchar(25)")]
+        [Column(TypeName = "varchar(20)")]
         public string ClassYear { get; set; }
 
-        [Column(TypeName = "nvarchar(60)")]
+        [Column(TypeName = "varchar(50)")]
         public string Category { get; set; }
 
-        [Column(TypeName = "nvarchar(60)")]
+        [Column(TypeName = "varchar(60)")]
         public string Major { get; set; }
 
         [Column(TypeName = "varchar(30)")]
         public string College { get; set; }
 
-        [Column(TypeName = "nvarchar(60)")]
+        [Column(TypeName = "varchar(60)")]
         public string EmpName { get; set; }
 
         [Column(TypeName = "varchar(60)")]
@@ -67,10 +67,9 @@ namespace API.Entities
         [Column(TypeName = "varchar(30)")]
         public string EmployeeNum { get; set; }
 
-        [Column(TypeName = "varchar(30)")]
+        [Column(TypeName = "varchar(15)")]
         public string RegisterCode { get; set; }
-        // public string LogoUrl { get; set; }
-        // public bool IsMainLogo { get; set; } = true;
+
         public DateTime Created { get; set; } = DateTime.Now.Date;
         public DateTime LastActive { get; set; } = DateTime.Now.Date;
         public ICollection<Photo> Photos { get; set; }
@@ -78,8 +77,6 @@ namespace API.Entities
         public ICollection<StudInfo> StudInfos { get; set; }
         public ICollection<EmpInfo> EmpInfos { get; set; }
         public ICollection<Position> Positions { get; set; }
-
-        // public ICollection<DutyBullet> DutyBullets { get; set; }
         public ICollection<UserLike> LikedByUsers { get; set; }
         public ICollection<UserLike> LikedUsers { get; set; }
         public ICollection<Message> MessagesSent { get; set; }

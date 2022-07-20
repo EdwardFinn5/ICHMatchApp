@@ -11,12 +11,12 @@ namespace API.Entities
     {
         [Key]
         public int NewsId { get; set; }
-        [Column(TypeName = "nvarchar(80)")]
+        [Column(TypeName = "varchar(80)")]
         public string NewsTitle { get; set; }
         public string NewsContent { get; set; }
         public float Order { get; set; }
         public bool IsActive { get; set; } = true;
-        public ICollection<PhotoNews> PhotoNewes { get; set; }
+        // public ICollection<PhotoNews> PhotoNewes { get; set; }
 
     }
 }

@@ -11,7 +11,7 @@ namespace API.Entities
     {
         [Key]
         public int ProfileAdviceId { get; set; }
-        [Column(TypeName = "nvarchar(50)")]
+        [Column(TypeName = "varchar(75)")]
         public string ProfileAdviceTitle { get; set; }
         public string ProfileAdviceContent { get; set; }
         public float Order { get; set; }

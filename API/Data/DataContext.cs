@@ -24,7 +24,7 @@ namespace API.Data
         public DbSet<PosCategory> PosCategories { get; set; }
         public DbSet<PhotoHr> PhotoHrs { get; set; }
         public DbSet<Photo> Photos { get; set; }
-        public DbSet<PhotoLogo> PhotoLogos { get; set; }
+        // public DbSet<PhotoLogo> PhotoLogos { get; set; }
         public DbSet<Position> Positions { get; set; }
         public DbSet<DutyBullet> DutyBullets { get; set; }
         public DbSet<SkillsBullet> SkillsBullets { get; set; }
@@ -35,7 +35,7 @@ namespace API.Data
         public DbSet<AcBullet> AcBullets { get; set; }
         public DbSet<WorkBullet> WorkBullets { get; set; }
         public DbSet<News> Newses { get; set; }
-        public DbSet<PhotoNews> PhotoNewses { get; set; }
+        // public DbSet<PhotoNews> PhotoNewses { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

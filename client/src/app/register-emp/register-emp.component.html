@@ -11,7 +11,7 @@
       <div class="form-group">
         <input [class.is-invalid]='registerEmpForm.get("username").errors 
             && registerEmpForm.get("username").touched' formControlName='username' class="form-control shadow-sm"
-          type="email" pattern="^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$" placeholder="Username (work email)">
+          type="email" maxlength="60" pattern="^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$" placeholder="Username (work email)">
           <!-- type="email" pattern="^[a-zA-Z0-9_.+-]+@[A-zA-Z0-9-]+\.com$" placeholder="Username (work email)">-->
           <div *ngIf="registerEmpForm.get('username').hasError('required')" class="invalid-feedback">Please enter a
           username</div>
@@ -29,7 +29,7 @@
       <div class="form-group">
         <input [class.is-invalid]='registerEmpForm.get("registerCode").errors 
             && registerEmpForm.get("registerCode").touched' formControlName='registerCode'
-          class="form-control shadow-sm" type="text"
+          class="form-control shadow-sm" type="text" maxlength="15"
           pattern="({{registerCode.registerCodeName1}})|{{registerCode.registerCodeName2}}|{{registerCode.registerCodeName3}}|{{registerCode.registerCodeName4}}|{{registerCode.registerCodeName5}}|{{registerCode.registerCodeName6}}|{{registerCode.registerCodeName7}}"
           placeholder="Register Code (re-enter employer code)">
         <div *ngIf="registerEmpForm.get('registerCode').hasError('required')" class="invalid-feedback">Please enter a
@@ -38,19 +38,19 @@
           a register code please email: info@iowacollegefoundation.org</div>
       </div>
 
-      <app-text-input [formControl]='registerEmpForm.controls["empName"]' [label]='"Name of company/organization"'>
+      <app-text-input [formControl]='registerEmpForm.controls["empName"]' [label]='"Name of company/organization"' maxlength="60">
       </app-text-input>
 
-      <app-text-input [formControl]='registerEmpForm.controls["firstName"]' [label]='"First name of HR contact"'>
+      <app-text-input [formControl]='registerEmpForm.controls["firstName"]' [label]='"First name of HR contact"' maxlength="30">
       </app-text-input>
 
-      <app-text-input [formControl]='registerEmpForm.controls["lastName"]' [label]='"Last name of HR contact"'>
+      <app-text-input [formControl]='registerEmpForm.controls["lastName"]' [label]='"Last name of HR contact"' maxlength="30">
       </app-text-input>
 
-      <app-text-input [formControl]='registerEmpForm.controls["hrContactTitle"]' [label]='"Title of HR contact"'>
+      <app-text-input [formControl]='registerEmpForm.controls["hrContactTitle"]' [label]='"Title of HR contact"' maxlength="75">
       </app-text-input>
 
-      <app-text-input [formControl]='registerEmpForm.controls["employeeNum"]' [label]='"Number of Employees"'>
+      <app-text-input [formControl]='registerEmpForm.controls["employeeNum"]' [label]='"Number of Employees"' maxlength="30">
       </app-text-input>
 
       <select #scrolMe style="overflow: scroll; height: 300px; width: 450px;" [scrollTop]="scrolMe.scrollHeight"

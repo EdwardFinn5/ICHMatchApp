@@ -10,7 +10,7 @@
        <div class="form-group">
          <input [class.is-invalid]='preregisterEmpForm.get("registerCode").errors 
              && preregisterEmpForm.get("registerCode").touched' formControlName='registerCode'
-           class="form-control shadow-sm" type="text" 
+           class="form-control shadow-sm" type="text" maxlength="15"
            pattern="({{registerCode.registerCodeName1}})|{{registerCode.registerCodeName2}}|{{registerCode.registerCodeName3}}|{{registerCode.registerCodeName4}}|{{registerCode.registerCodeName5}}|{{registerCode.registerCodeName6}}|{{registerCode.registerCodeName7}}"
            placeholder="Register Code">
          <div *ngIf="preregisterEmpForm.get('registerCode').hasError('required')" class="invalid-feedback">Please

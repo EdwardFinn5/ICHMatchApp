@@ -15,7 +15,7 @@ namespace API.Entities
 
         public Nullable<DateTime> GradDate { get; set; }
 
-        [Column(TypeName = "nvarchar(100)")]
+        [Column(TypeName = "varchar(100)")]
         public string BestEmail { get; set; }
 
         [Column(TypeName = "varchar(30)")]
@@ -25,13 +25,13 @@ namespace API.Entities
         public string Arts { get; set; }
         public bool IsActive { get; set; } = true;
         public string ExtraCurricular { get; set; }
-        public string AcademicPlus { get; set; }
-        public string WorkPlus { get; set; }
+        // public string AcademicPlus { get; set; }
+        // public string WorkPlus { get; set; }
 
-        [Column(TypeName = "nvarchar(256)")]
+        [Column(TypeName = "varchar(250)")]
         public string DreamJob { get; set; }
 
-        [Column(TypeName = "nvarchar(100)")]
+        [Column(TypeName = "varchar(100)")]
         public string UniqueTitle { get; set; }
         public string UniqueContent { get; set; }
         public virtual AppUser AppUser { get; set; }

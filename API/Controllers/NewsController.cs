@@ -65,40 +65,40 @@ namespace API.Controllers
             };
         }
 
-        [HttpPost("add-news-photo/{newsId}")]
-        public async Task<ActionResult<PhotoNewsDto>> AddNewsPhoto(IFormFile file, int newsId)
-        {
-            var news = await _newsRepository.GetNewsByIdAsync(newsId);
+        // [HttpPost("add-news-photo/{newsId}")]
+        // public async Task<ActionResult<PhotoNewsDto>> AddNewsPhoto(IFormFile file, int newsId)
+        // {
+        //     var news = await _newsRepository.GetNewsByIdAsync(newsId);
 
-            var result = await _photoService.AddPhotoAsync(file);
+        //     var result = await _photoService.AddPhotoAsync(file);
 
-            if (result.Error != null) return BadRequest(result.Error.Message);
+        //     if (result.Error != null) return BadRequest(result.Error.Message);
 
-            var photoNews = new PhotoNews
-            {
-                NewsUrl = null
+        //     var photoNews = new PhotoNews
+        //     {
+        //         NewsUrl = null
 
-            };
+        //     };
 
-            photoNews.NewsUrl = result.SecureUrl.AbsoluteUri;
-            photoNews.PublicId = result.PublicId;
+        //     photoNews.NewsUrl = result.SecureUrl.AbsoluteUri;
+        //     photoNews.PublicId = result.PublicId;
 
-            if (news.PhotoNewes.Count == 0)
-            {
-                photoNews.IsMainNews = true;
-            }
+        //     if (news.PhotoNewes.Count == 0)
+        //     {
+        //         photoNews.IsMainNews = true;
+        //     }
 
-            news.PhotoNewes.Add(photoNews);
+        //     news.PhotoNewes.Add(photoNews);
 
-            await _context.SaveChangesAsync();
+        //     await _context.SaveChangesAsync();
 
-            if (await _newsRepository.SaveAllAsync())
+        //     if (await _newsRepository.SaveAllAsync())
 
-                return BadRequest("Problem adding photo");
+        //         return BadRequest("Problem adding photo");
 
-            return Ok();
+        //     return Ok();
 
-        }
+        // }
 
         //     [HttpPut("set-main-hr-photo/{photoId}/{newsId}")]
         //     public async Task<ActionResult> SetMainHrPhoto(int photoId)

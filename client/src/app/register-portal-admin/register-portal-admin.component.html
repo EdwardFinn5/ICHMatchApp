@@ -10,7 +10,7 @@
         <div class="form-group">
           <input [class.is-invalid]='registerPortalAdminForm.get("username").errors 
               && registerPortalAdminForm.get("username").touched' formControlName='username' class="form-control shadow-sm"
-            type="email" pattern="^[a-zA-Z0-9_.+-]+@[A-zA-Z0-9-]+\.org$" placeholder="Username (ICF email)">
+            type="email" maxlength="60" pattern="^[a-zA-Z0-9_.+-]+@[A-zA-Z0-9-]+\.org$" placeholder="Username (ICF email)">
           <div *ngIf="registerPortalAdminForm.get('username').hasError('required')" class="invalid-feedback">Please enter a
             username</div>
           <div *ngIf="registerPortalAdminForm.get('username').hasError('pattern')" class="invalid-feedback">Username must be your ICF email</div>
@@ -27,7 +27,7 @@
         <div class="form-group">
           <input [class.is-invalid]='registerPortalAdminForm.get("registerCode").errors 
               && registerPortalAdminForm.get("registerCode").touched' formControlName='registerCode'
-            class="form-control shadow-sm" type="text" pattern="({{registerCode.registerCodeNameOwner}})"
+            class="form-control shadow-sm" type="text" maxlength="15" pattern="({{registerCode.registerCodeNameOwner}})"
             placeholder="Register Code (re-enter  college admin code)">
           <div *ngIf="registerPortalAdminForm.get('registerCode').hasError('required')" class="invalid-feedback">Please enter portal admin
             register code</div>
@@ -35,13 +35,13 @@
             have a portal admin register code please email: info@iowacollegefoundation.org</div>
         </div>
   
-        <app-text-input [formControl]='registerPortalAdminForm.controls["firstName"]' [label]='"First Name"'>
+        <app-text-input [formControl]='registerPortalAdminForm.controls["firstName"]' [label]='"First Name"' maxlength="30">
         </app-text-input>
   
-        <app-text-input [formControl]='registerPortalAdminForm.controls["lastName"]' [label]='"Last Name"'>
+        <app-text-input [formControl]='registerPortalAdminForm.controls["lastName"]' [label]='"Last Name"' maxlength="30">
         </app-text-input>
         
-        <app-text-input [formControl]='registerPortalAdminForm.controls["hrContactTitle"]' [label]='"Your title"'>
+        <app-text-input [formControl]='registerPortalAdminForm.controls["hrContactTitle"]' [label]='"Your title"' maxlength="75">
         </app-text-input>
   
         <div class="row" *ngIf="validationErrors.length > 0">

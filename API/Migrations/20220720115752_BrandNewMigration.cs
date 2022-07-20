@@ -15,7 +15,7 @@ namespace API.Migrations
                 {
                     CategoryId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    CategoryName = table.Column<string>(type: "nvarchar(100)", nullable: true)
+                    CategoryName = table.Column<string>(type: "varchar(50)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -28,8 +28,8 @@ namespace API.Migrations
                 {
                     CollegeId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    CollegeName = table.Column<string>(type: "nvarchar(60)", nullable: true),
-                    CollegeNickname = table.Column<string>(type: "nvarchar(60)", nullable: true)
+                    CollegeName = table.Column<string>(type: "varchar(30)", nullable: true),
+                    CollegeNickname = table.Column<string>(type: "varchar(30)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -42,8 +42,8 @@ namespace API.Migrations
                 {
                     CoLocationId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    CoLocationName = table.Column<string>(type: "nvarchar(60)", nullable: true),
-                    CoLocationSortName = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    CoLocationName = table.Column<string>(type: "varchar(15)", nullable: true),
+                    CoLocationSortName = table.Column<string>(type: "varchar(15)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -56,7 +56,7 @@ namespace API.Migrations
                 {
                     EmpIndustryId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    EmpIndustryName = table.Column<string>(type: "nvarchar(60)", nullable: true)
+                    EmpIndustryName = table.Column<string>(type: "varchar(60)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -69,7 +69,7 @@ namespace API.Migrations
                 {
                     NewsId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    NewsTitle = table.Column<string>(type: "nvarchar(80)", nullable: true),
+                    NewsTitle = table.Column<string>(type: "varchar(80)", nullable: true),
                     NewsContent = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Order = table.Column<float>(type: "real", nullable: false),
                     IsActive = table.Column<bool>(type: "bit", nullable: false)
@@ -85,7 +85,7 @@ namespace API.Migrations
                 {
                     PosCategoryId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    PosCategoryName = table.Column<string>(type: "nvarchar(100)", nullable: true)
+                    PosCategoryName = table.Column<string>(type: "varchar(50)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -98,7 +98,7 @@ namespace API.Migrations
                 {
                     ProfileAdviceId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    ProfileAdviceTitle = table.Column<string>(type: "nvarchar(50)", nullable: true),
+                    ProfileAdviceTitle = table.Column<string>(type: "varchar(75)", nullable: true),
                     ProfileAdviceContent = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Order = table.Column<float>(type: "real", nullable: false),
                     IsActive = table.Column<bool>(type: "bit", nullable: false)
@@ -113,16 +113,16 @@ namespace API.Migrations
                 columns: table => new
                 {
                     RegisterCodeId = table.Column<int>(type: "int", nullable: false),
-                    RegisterCodeName1 = table.Column<string>(type: "varchar(10)", nullable: true),
-                    RegisterCodeName2 = table.Column<string>(type: "varchar(10)", nullable: true),
-                    RegisterCodeName3 = table.Column<string>(type: "varchar(10)", nullable: true),
-                    RegisterCodeName4 = table.Column<string>(type: "varchar(10)", nullable: true),
-                    RegisterCodeName5 = table.Column<string>(type: "varchar(10)", nullable: true),
-                    RegisterCodeName6 = table.Column<string>(type: "varchar(10)", nullable: true),
-                    RegisterCodeName7 = table.Column<string>(type: "varchar(10)", nullable: true),
-                    RegisterCodeNameStud = table.Column<string>(type: "varchar(10)", nullable: true),
-                    RegisterCodeNameAdmin = table.Column<string>(type: "varchar(10)", nullable: true),
-                    RegisterCodeNameOwner = table.Column<string>(type: "varchar(10)", nullable: true),
+                    RegisterCodeName1 = table.Column<string>(type: "varchar(15)", nullable: true),
+                    RegisterCodeName2 = table.Column<string>(type: "varchar(15)", nullable: true),
+                    RegisterCodeName3 = table.Column<string>(type: "varchar(15)", nullable: true),
+                    RegisterCodeName4 = table.Column<string>(type: "varchar(15)", nullable: true),
+                    RegisterCodeName5 = table.Column<string>(type: "varchar(15)", nullable: true),
+                    RegisterCodeName6 = table.Column<string>(type: "varchar(15)", nullable: true),
+                    RegisterCodeName7 = table.Column<string>(type: "varchar(15)", nullable: true),
+                    RegisterCodeNameStud = table.Column<string>(type: "varchar(15)", nullable: true),
+                    RegisterCodeNameAdmin = table.Column<string>(type: "varchar(15)", nullable: true),
+                    RegisterCodeNameOwner = table.Column<string>(type: "varchar(15)", nullable: true),
                     IsActive = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
@@ -136,8 +136,8 @@ namespace API.Migrations
                 {
                     StempLocationId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    StempLocationName = table.Column<string>(type: "nvarchar(10)", nullable: true),
-                    StempLocationSortName = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    StempLocationName = table.Column<string>(type: "varchar(10)", nullable: true),
+                    StempLocationSortName = table.Column<string>(type: "varchar(10)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -150,28 +150,28 @@ namespace API.Migrations
                 {
                     AppUserId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    UserName = table.Column<string>(type: "nvarchar(256)", nullable: true),
+                    UserName = table.Column<string>(type: "varchar(60)", nullable: true),
                     PasswordHash = table.Column<byte[]>(type: "varbinary(max)", nullable: true),
                     PasswordSalt = table.Column<byte[]>(type: "varbinary(max)", nullable: true),
-                    FirstName = table.Column<string>(type: "nvarchar(30)", nullable: true),
-                    LastName = table.Column<string>(type: "nvarchar(40)", nullable: true),
-                    HrContactTitle = table.Column<string>(type: "nvarchar(75)", nullable: true),
+                    FirstName = table.Column<string>(type: "varchar(30)", nullable: true),
+                    LastName = table.Column<string>(type: "varchar(30)", nullable: true),
+                    HrContactTitle = table.Column<string>(type: "varchar(75)", nullable: true),
                     AppUserType = table.Column<string>(type: "varchar(15)", nullable: true),
-                    IcfNote = table.Column<string>(type: "varchar(55)", nullable: true),
+                    IcfNote = table.Column<string>(type: "varchar(75)", nullable: true),
                     IsActive = table.Column<bool>(type: "bit", nullable: false),
-                    CoLocation = table.Column<string>(type: "nvarchar(60)", nullable: true),
-                    StLocation = table.Column<string>(type: "nvarchar(60)", nullable: true),
-                    CiLocation = table.Column<string>(type: "nvarchar(60)", nullable: true),
-                    CiempLocation = table.Column<string>(type: "nvarchar(60)", nullable: true),
-                    StempLocation = table.Column<string>(type: "nvarchar(10)", nullable: true),
-                    ClassYear = table.Column<string>(type: "varchar(25)", nullable: true),
-                    Category = table.Column<string>(type: "nvarchar(60)", nullable: true),
-                    Major = table.Column<string>(type: "nvarchar(60)", nullable: true),
+                    CoLocation = table.Column<string>(type: "varchar(50)", nullable: true),
+                    StLocation = table.Column<string>(type: "varchar(50)", nullable: true),
+                    CiLocation = table.Column<string>(type: "varchar(50)", nullable: true),
+                    CiempLocation = table.Column<string>(type: "varchar(50)", nullable: true),
+                    StempLocation = table.Column<string>(type: "varchar(20)", nullable: true),
+                    ClassYear = table.Column<string>(type: "varchar(20)", nullable: true),
+                    Category = table.Column<string>(type: "varchar(50)", nullable: true),
+                    Major = table.Column<string>(type: "varchar(60)", nullable: true),
                     College = table.Column<string>(type: "varchar(30)", nullable: true),
-                    EmpName = table.Column<string>(type: "nvarchar(60)", nullable: true),
+                    EmpName = table.Column<string>(type: "varchar(60)", nullable: true),
                     EmpIndustry = table.Column<string>(type: "varchar(60)", nullable: true),
                     EmployeeNum = table.Column<string>(type: "varchar(30)", nullable: true),
-                    RegisterCode = table.Column<string>(type: "varchar(30)", nullable: true),
+                    RegisterCode = table.Column<string>(type: "varchar(15)", nullable: true),
                     Created = table.Column<DateTime>(type: "datetime2", nullable: false),
                     LastActive = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
@@ -186,7 +186,7 @@ namespace API.Migrations
                 {
                     MajorId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    MajorName = table.Column<string>(type: "nvarchar(100)", nullable: true),
+                    MajorName = table.Column<string>(type: "varchar(60)", nullable: true),
                     CategoryId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
@@ -206,8 +206,8 @@ namespace API.Migrations
                 {
                     StLocationId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    StLocationName = table.Column<string>(type: "nvarchar(60)", nullable: true),
-                    StLocationSortName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    StLocationName = table.Column<string>(type: "nvarchar(50)", nullable: true),
+                    StLocationSortName = table.Column<string>(type: "nvarchar(50)", nullable: true),
                     CoLocationId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
@@ -222,36 +222,12 @@ namespace API.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "PhotoNewses",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    NewsUrl = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    DateAdded = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    IsMainNews = table.Column<bool>(type: "bit", nullable: false),
-                    PublicId = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    NewsId = table.Column<int>(type: "int", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_PhotoNewses", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_PhotoNewses_Newses_NewsId",
-                        column: x => x.NewsId,
-                        principalTable: "Newses",
-                        principalColumn: "NewsId",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "PositNames",
                 columns: table => new
                 {
                     PositNameId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    PosName = table.Column<string>(type: "nvarchar(100)", nullable: true),
+                    PosName = table.Column<string>(type: "varchar(75)", nullable: true),
                     PosCategoryId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
@@ -271,8 +247,8 @@ namespace API.Migrations
                 {
                     CiempLocationId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    CiempLocationName = table.Column<string>(type: "nvarchar(60)", nullable: true),
-                    CiempLocationSortName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    CiempLocationName = table.Column<string>(type: "varchar(40)", nullable: true),
+                    CiempLocationSortName = table.Column<string>(type: "varchar(40)", nullable: true),
                     StempLocationId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
@@ -292,10 +268,10 @@ namespace API.Migrations
                 {
                     EmpInfoId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    EmpWebsite = table.Column<string>(type: "nvarchar(255)", nullable: true),
+                    EmpWebsite = table.Column<string>(type: "varchar(100)", nullable: true),
                     CompanyDescription = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     WhyWork = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    UniqueTitle = table.Column<string>(type: "nvarchar(100)", nullable: true),
+                    UniqueTitle = table.Column<string>(type: "varchar(100)", nullable: true),
                     UniqueContent = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     IsActive = table.Column<bool>(type: "bit", nullable: false),
                     AppUserId = table.Column<int>(type: "int", nullable: false)
@@ -340,17 +316,17 @@ namespace API.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     SenderId = table.Column<int>(type: "int", nullable: false),
-                    SenderUsername = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    SenderFirstName = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    SenderCompany = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    SenderCollege = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    SenderAppUserType = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    SenderUsername = table.Column<string>(type: "varchar(60)", nullable: true),
+                    SenderFirstName = table.Column<string>(type: "varchar(30)", nullable: true),
+                    SenderCompany = table.Column<string>(type: "varchar(60)", nullable: true),
+                    SenderCollege = table.Column<string>(type: "varchar(30)", nullable: true),
+                    SenderAppUserType = table.Column<string>(type: "varchar(15)", nullable: true),
                     RecipientId = table.Column<int>(type: "int", nullable: false),
-                    RecipientUsername = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    RecipientFirstName = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    RecipientCompany = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    RecipientCollege = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    RecipientAppUserType = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    RecipientUsername = table.Column<string>(type: "varchar(60)", nullable: true),
+                    RecipientFirstName = table.Column<string>(type: "varchar(30)", nullable: true),
+                    RecipientCompany = table.Column<string>(type: "varchar(60)", nullable: true),
+                    RecipientCollege = table.Column<string>(type: "varchar(30)", nullable: true),
+                    RecipientAppUserType = table.Column<string>(type: "varchar(15)", nullable: true),
                     Content = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     DateRead = table.Column<DateTime>(type: "datetime2", nullable: true),
                     MessageSent = table.Column<DateTime>(type: "datetime2", nullable: false),
@@ -380,11 +356,11 @@ namespace API.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    HrUrl = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    HrUrl = table.Column<string>(type: "varchar(250)", nullable: true),
+                    Description = table.Column<string>(type: "varchar(250)", nullable: true),
                     DateAdded = table.Column<DateTime>(type: "datetime2", nullable: false),
                     IsMainHr = table.Column<bool>(type: "bit", nullable: false),
-                    PublicId = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    PublicId = table.Column<string>(type: "varchar(100)", nullable: true),
                     AppUserId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
@@ -404,13 +380,13 @@ namespace API.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    StudentUrl = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    LogoUrl = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    StudentUrl = table.Column<string>(type: "varchar(250)", nullable: true),
+                    LogoUrl = table.Column<string>(type: "varchar(250)", nullable: true),
+                    Description = table.Column<string>(type: "varchar(250)", nullable: true),
                     DateAdded = table.Column<DateTime>(type: "datetime2", nullable: false),
                     IsMain = table.Column<bool>(type: "bit", nullable: false),
                     IsMainLogo = table.Column<bool>(type: "bit", nullable: false),
-                    PublicId = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    PublicId = table.Column<string>(type: "varchar(100)", nullable: true),
                     AppUserId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
@@ -430,23 +406,23 @@ namespace API.Migrations
                 {
                     PositionId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    RegisterCode = table.Column<string>(type: "nvarchar(10)", nullable: true),
-                    PosName = table.Column<string>(type: "nvarchar(75)", nullable: true),
-                    PosCategory = table.Column<string>(type: "nvarchar(75)", nullable: true),
+                    RegisterCode = table.Column<string>(type: "varchar(15)", nullable: true),
+                    PosName = table.Column<string>(type: "varchar(75)", nullable: true),
+                    PosCategory = table.Column<string>(type: "varchar(50)", nullable: true),
                     PositionDescription = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     PositionBenefits = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    CiempLocation = table.Column<string>(type: "varchar(60)", nullable: true),
+                    CiempLocation = table.Column<string>(type: "varchar(40)", nullable: true),
                     StempLocation = table.Column<string>(type: "varchar(10)", nullable: true),
                     PositionType = table.Column<string>(type: "varchar(25)", nullable: true),
-                    SalaryRange = table.Column<string>(type: "varchar(80)", nullable: true),
+                    SalaryRange = table.Column<string>(type: "varchar(75)", nullable: true),
                     DateAdded = table.Column<DateTime>(type: "datetime2", nullable: true),
                     StartDate = table.Column<DateTime>(type: "datetime2", nullable: true),
                     AppDeadline = table.Column<DateTime>(type: "datetime2", nullable: true),
                     IsActive = table.Column<bool>(type: "bit", nullable: false),
-                    HowToApply = table.Column<string>(type: "nvarchar(256)", nullable: true),
-                    ApplyEmail = table.Column<string>(type: "nvarchar(255)", nullable: true),
-                    ApplyLink = table.Column<string>(type: "nvarchar(100)", nullable: true),
-                    UniqueTitle = table.Column<string>(type: "nvarchar(100)", nullable: true),
+                    HowToApply = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ApplyEmail = table.Column<string>(type: "varchar(100)", nullable: true),
+                    ApplyLink = table.Column<string>(type: "varchar(100)", nullable: true),
+                    UniqueTitle = table.Column<string>(type: "varchar(100)", nullable: true),
                     UniqueContent = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     AppUserId = table.Column<int>(type: "int", nullable: false)
                 },
@@ -469,16 +445,14 @@ namespace API.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     GPA = table.Column<string>(type: "varchar(10)", nullable: true),
                     GradDate = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    BestEmail = table.Column<string>(type: "nvarchar(100)", nullable: true),
+                    BestEmail = table.Column<string>(type: "varchar(100)", nullable: true),
                     BestPhone = table.Column<string>(type: "varchar(30)", nullable: true),
                     Athletics = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Arts = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     IsActive = table.Column<bool>(type: "bit", nullable: false),
                     ExtraCurricular = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    AcademicPlus = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    WorkPlus = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    DreamJob = table.Column<string>(type: "nvarchar(256)", nullable: true),
-                    UniqueTitle = table.Column<string>(type: "nvarchar(100)", nullable: true),
+                    DreamJob = table.Column<string>(type: "varchar(250)", nullable: true),
+                    UniqueTitle = table.Column<string>(type: "varchar(100)", nullable: true),
                     UniqueContent = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     AppUserId = table.Column<int>(type: "int", nullable: false)
                 },
@@ -499,8 +473,8 @@ namespace API.Migrations
                 {
                     CiLocationId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    CiLocationName = table.Column<string>(type: "nvarchar(60)", nullable: true),
-                    CiLocationSortName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    CiLocationName = table.Column<string>(type: "varchar(40)", nullable: true),
+                    CiLocationSortName = table.Column<string>(type: "varchar(40)", nullable: true),
                     StLocationId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
@@ -520,7 +494,7 @@ namespace API.Migrations
                 {
                     DutyBulletId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    DutyBulletText = table.Column<string>(type: "nvarchar(250)", nullable: true),
+                    DutyBulletText = table.Column<string>(type: "varchar(250)", nullable: true),
                     Order = table.Column<float>(type: "real", nullable: false),
                     IsActive = table.Column<bool>(type: "bit", nullable: false),
                     PositionId = table.Column<int>(type: "int", nullable: false)
@@ -537,36 +511,12 @@ namespace API.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "PhotoLogos",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    LogoHrUrl = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    DateAdded = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    IsMainLogoHr = table.Column<bool>(type: "bit", nullable: false),
-                    PublicId = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    PositionId = table.Column<int>(type: "int", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_PhotoLogos", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_PhotoLogos_Positions_PositionId",
-                        column: x => x.PositionId,
-                        principalTable: "Positions",
-                        principalColumn: "PositionId",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "SkillsBullets",
                 columns: table => new
                 {
                     SkillsBulletId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    SkillsBulletText = table.Column<string>(type: "nvarchar(250)", nullable: true),
+                    SkillsBulletText = table.Column<string>(type: "varchar(250)", nullable: true),
                     Order = table.Column<float>(type: "real", nullable: false),
                     IsActive = table.Column<bool>(type: "bit", nullable: false),
                     PositionId = table.Column<int>(type: "int", nullable: false)
@@ -588,7 +538,7 @@ namespace API.Migrations
                 {
                     AcBulletId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    AcBulletText = table.Column<string>(type: "nvarchar(250)", nullable: true),
+                    AcBulletText = table.Column<string>(type: "varchar(250)", nullable: true),
                     Order = table.Column<float>(type: "real", nullable: false),
                     IsActive = table.Column<bool>(type: "bit", nullable: false),
                     StudInfoId = table.Column<int>(type: "int", nullable: false)
@@ -610,7 +560,7 @@ namespace API.Migrations
                 {
                     WorkBulletId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    WorkBulletText = table.Column<string>(type: "nvarchar(250)", nullable: true),
+                    WorkBulletText = table.Column<string>(type: "varchar(250)", nullable: true),
                     Order = table.Column<float>(type: "real", nullable: false),
                     IsActive = table.Column<bool>(type: "bit", nullable: false),
                     StudInfoId = table.Column<int>(type: "int", nullable: false)
@@ -675,16 +625,6 @@ namespace API.Migrations
                 name: "IX_PhotoHrs_AppUserId",
                 table: "PhotoHrs",
                 column: "AppUserId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_PhotoLogos_PositionId",
-                table: "PhotoLogos",
-                column: "PositionId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_PhotoNewses_NewsId",
-                table: "PhotoNewses",
-                column: "NewsId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Photos_AppUserId",
@@ -755,13 +695,10 @@ namespace API.Migrations
                 name: "Messages");
 
             migrationBuilder.DropTable(
+                name: "Newses");
+
+            migrationBuilder.DropTable(
                 name: "PhotoHrs");
-
-            migrationBuilder.DropTable(
-                name: "PhotoLogos");
-
-            migrationBuilder.DropTable(
-                name: "PhotoNewses");
 
             migrationBuilder.DropTable(
                 name: "Photos");
@@ -789,9 +726,6 @@ namespace API.Migrations
 
             migrationBuilder.DropTable(
                 name: "Categories");
-
-            migrationBuilder.DropTable(
-                name: "Newses");
 
             migrationBuilder.DropTable(
                 name: "PosCategories");

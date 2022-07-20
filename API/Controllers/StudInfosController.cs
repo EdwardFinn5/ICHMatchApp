@@ -63,8 +63,8 @@ namespace API.Controllers
             return new StudInfoDto
             {
                 StudInfoId = studInfo.StudInfoId,
-                AcademicPlus = studInfo.AcademicPlus,
-                WorkPlus = studInfo.WorkPlus,
+                // AcademicPlus = studInfo.AcademicPlus,
+                // WorkPlus = studInfo.WorkPlus,
                 // StudInfoName = studInfo.StudInfoName,
                 Athletics = studInfo.Athletics,
                 Arts = studInfo.Arts,

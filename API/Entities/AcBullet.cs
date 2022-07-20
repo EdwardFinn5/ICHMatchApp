@@ -11,7 +11,7 @@ namespace API.Entities
     {
         [Key]
         public int AcBulletId { get; set; }
-        [Column(TypeName = "nvarchar(250)")]
+        [Column(TypeName = "varchar(250)")]
         public string AcBulletText { get; set; }
         public float Order { get; set; }
         public bool IsActive { get; set; } = true;

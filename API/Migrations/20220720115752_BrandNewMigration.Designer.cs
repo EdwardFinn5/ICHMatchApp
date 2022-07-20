@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace API.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20220719000443_BrandNewMigration")]
+    [Migration("20220720115752_BrandNewMigration")]
     partial class BrandNewMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -33,7 +33,7 @@ namespace API.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("AcBulletId"), 1L, 1);
 
                     b.Property<string>("AcBulletText")
-                        .HasColumnType("nvarchar(250)");
+                        .HasColumnType("varchar(250)");
 
                     b.Property<bool>("IsActive")
                         .HasColumnType("bit");
@@ -63,19 +63,19 @@ namespace API.Migrations
                         .HasColumnType("varchar(15)");
 
                     b.Property<string>("Category")
-                        .HasColumnType("nvarchar(60)");
+                        .HasColumnType("varchar(50)");
 
                     b.Property<string>("CiLocation")
-                        .HasColumnType("nvarchar(60)");
+                        .HasColumnType("varchar(50)");
 
                     b.Property<string>("CiempLocation")
-                        .HasColumnType("nvarchar(60)");
+                        .HasColumnType("varchar(50)");
 
                     b.Property<string>("ClassYear")
-                        .HasColumnType("varchar(25)");
+                        .HasColumnType("varchar(20)");
 
                     b.Property<string>("CoLocation")
-                        .HasColumnType("nvarchar(60)");
+                        .HasColumnType("varchar(50)");
 
                     b.Property<string>("College")
                         .HasColumnType("varchar(30)");
@@ -87,19 +87,19 @@ namespace API.Migrations
                         .HasColumnType("varchar(60)");
 
                     b.Property<string>("EmpName")
-                        .HasColumnType("nvarchar(60)");
+                        .HasColumnType("varchar(60)");
 
                     b.Property<string>("EmployeeNum")
                         .HasColumnType("varchar(30)");
 
                     b.Property<string>("FirstName")
-                        .HasColumnType("nvarchar(30)");
+                        .HasColumnType("varchar(30)");
 
                     b.Property<string>("HrContactTitle")
-                        .HasColumnType("nvarchar(75)");
+                        .HasColumnType("varchar(75)");
 
                     b.Property<string>("IcfNote")
-                        .HasColumnType("varchar(55)");
+                        .HasColumnType("varchar(75)");
 
                     b.Property<bool>("IsActive")
                         .HasColumnType("bit");
@@ -108,10 +108,10 @@ namespace API.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("LastName")
-                        .HasColumnType("nvarchar(40)");
+                        .HasColumnType("varchar(30)");
 
                     b.Property<string>("Major")
-                        .HasColumnType("nvarchar(60)");
+                        .HasColumnType("varchar(60)");
 
                     b.Property<byte[]>("PasswordHash")
                         .HasColumnType("varbinary(max)");
@@ -120,16 +120,16 @@ namespace API.Migrations
                         .HasColumnType("varbinary(max)");
 
                     b.Property<string>("RegisterCode")
-                        .HasColumnType("varchar(30)");
+                        .HasColumnType("varchar(15)");
 
                     b.Property<string>("StLocation")
-                        .HasColumnType("nvarchar(60)");
+                        .HasColumnType("varchar(50)");
 
                     b.Property<string>("StempLocation")
-                        .HasColumnType("nvarchar(10)");
+                        .HasColumnType("varchar(20)");
 
                     b.Property<string>("UserName")
-                        .HasColumnType("nvarchar(256)");
+                        .HasColumnType("varchar(60)");
 
                     b.HasKey("AppUserId");
 
@@ -145,7 +145,7 @@ namespace API.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("CategoryId"), 1L, 1);
 
                     b.Property<string>("CategoryName")
-                        .HasColumnType("nvarchar(100)");
+                        .HasColumnType("varchar(50)");
 
                     b.HasKey("CategoryId");
 
@@ -161,10 +161,10 @@ namespace API.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("CiempLocationId"), 1L, 1);
 
                     b.Property<string>("CiempLocationName")
-                        .HasColumnType("nvarchar(60)");
+                        .HasColumnType("varchar(40)");
 
                     b.Property<string>("CiempLocationSortName")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("varchar(40)");
 
                     b.Property<int>("StempLocationId")
                         .HasColumnType("int");
@@ -185,10 +185,10 @@ namespace API.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("CiLocationId"), 1L, 1);
 
                     b.Property<string>("CiLocationName")
-                        .HasColumnType("nvarchar(60)");
+                        .HasColumnType("varchar(40)");
 
                     b.Property<string>("CiLocationSortName")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("varchar(40)");
 
                     b.Property<int>("StLocationId")
                         .HasColumnType("int");
@@ -209,10 +209,10 @@ namespace API.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("CollegeId"), 1L, 1);
 
                     b.Property<string>("CollegeName")
-                        .HasColumnType("nvarchar(60)");
+                        .HasColumnType("varchar(30)");
 
                     b.Property<string>("CollegeNickname")
-                        .HasColumnType("nvarchar(60)");
+                        .HasColumnType("varchar(30)");
 
                     b.HasKey("CollegeId");
 
@@ -228,10 +228,10 @@ namespace API.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("CoLocationId"), 1L, 1);
 
                     b.Property<string>("CoLocationName")
-                        .HasColumnType("nvarchar(60)");
+                        .HasColumnType("varchar(15)");
 
                     b.Property<string>("CoLocationSortName")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("varchar(15)");
 
                     b.HasKey("CoLocationId");
 
@@ -247,7 +247,7 @@ namespace API.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("DutyBulletId"), 1L, 1);
 
                     b.Property<string>("DutyBulletText")
-                        .HasColumnType("nvarchar(250)");
+                        .HasColumnType("varchar(250)");
 
                     b.Property<bool>("IsActive")
                         .HasColumnType("bit");
@@ -274,7 +274,7 @@ namespace API.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("EmpIndustryId"), 1L, 1);
 
                     b.Property<string>("EmpIndustryName")
-                        .HasColumnType("nvarchar(60)");
+                        .HasColumnType("varchar(60)");
 
                     b.HasKey("EmpIndustryId");
 
@@ -296,7 +296,7 @@ namespace API.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("EmpWebsite")
-                        .HasColumnType("nvarchar(255)");
+                        .HasColumnType("varchar(100)");
 
                     b.Property<bool>("IsActive")
                         .HasColumnType("bit");
@@ -305,7 +305,7 @@ namespace API.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("UniqueTitle")
-                        .HasColumnType("nvarchar(100)");
+                        .HasColumnType("varchar(100)");
 
                     b.Property<string>("WhyWork")
                         .HasColumnType("nvarchar(max)");
@@ -329,7 +329,7 @@ namespace API.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("MajorName")
-                        .HasColumnType("nvarchar(100)");
+                        .HasColumnType("varchar(60)");
 
                     b.HasKey("MajorId");
 
@@ -356,46 +356,46 @@ namespace API.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("RecipientAppUserType")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("varchar(15)");
 
                     b.Property<string>("RecipientCollege")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("varchar(30)");
 
                     b.Property<string>("RecipientCompany")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("varchar(60)");
 
                     b.Property<bool>("RecipientDeleted")
                         .HasColumnType("bit");
 
                     b.Property<string>("RecipientFirstName")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("varchar(30)");
 
                     b.Property<int>("RecipientId")
                         .HasColumnType("int");
 
                     b.Property<string>("RecipientUsername")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("varchar(60)");
 
                     b.Property<string>("SenderAppUserType")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("varchar(15)");
 
                     b.Property<string>("SenderCollege")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("varchar(30)");
 
                     b.Property<string>("SenderCompany")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("varchar(60)");
 
                     b.Property<bool>("SenderDeleted")
                         .HasColumnType("bit");
 
                     b.Property<string>("SenderFirstName")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("varchar(30)");
 
                     b.Property<int>("SenderId")
                         .HasColumnType("int");
 
                     b.Property<string>("SenderUsername")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("varchar(60)");
 
                     b.HasKey("Id");
 
@@ -421,7 +421,7 @@ namespace API.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("NewsTitle")
-                        .HasColumnType("nvarchar(80)");
+                        .HasColumnType("varchar(80)");
 
                     b.Property<float>("Order")
                         .HasColumnType("real");
@@ -446,7 +446,7 @@ namespace API.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Description")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("varchar(250)");
 
                     b.Property<bool>("IsMain")
                         .HasColumnType("bit");
@@ -455,13 +455,13 @@ namespace API.Migrations
                         .HasColumnType("bit");
 
                     b.Property<string>("LogoUrl")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("varchar(250)");
 
                     b.Property<string>("PublicId")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("varchar(100)");
 
                     b.Property<string>("StudentUrl")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("varchar(250)");
 
                     b.HasKey("Id");
 
@@ -485,88 +485,22 @@ namespace API.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Description")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("varchar(250)");
 
                     b.Property<string>("HrUrl")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("varchar(250)");
 
                     b.Property<bool>("IsMainHr")
                         .HasColumnType("bit");
 
                     b.Property<string>("PublicId")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("varchar(100)");
 
                     b.HasKey("Id");
 
                     b.HasIndex("AppUserId");
 
                     b.ToTable("PhotoHrs");
-                });
-
-            modelBuilder.Entity("API.Entities.PhotoLogo", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<DateTime>("DateAdded")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Description")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("IsMainLogoHr")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("LogoHrUrl")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("PositionId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("PublicId")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("PositionId");
-
-                    b.ToTable("PhotoLogos");
-                });
-
-            modelBuilder.Entity("API.Entities.PhotoNews", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<DateTime>("DateAdded")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Description")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("IsMainNews")
-                        .HasColumnType("bit");
-
-                    b.Property<int>("NewsId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("NewsUrl")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("PublicId")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("NewsId");
-
-                    b.ToTable("PhotoNewses");
                 });
 
             modelBuilder.Entity("API.Entities.PosCategory", b =>
@@ -578,7 +512,7 @@ namespace API.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("PosCategoryId"), 1L, 1);
 
                     b.Property<string>("PosCategoryName")
-                        .HasColumnType("nvarchar(100)");
+                        .HasColumnType("varchar(50)");
 
                     b.HasKey("PosCategoryId");
 
@@ -600,28 +534,28 @@ namespace API.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("ApplyEmail")
-                        .HasColumnType("nvarchar(255)");
+                        .HasColumnType("varchar(100)");
 
                     b.Property<string>("ApplyLink")
-                        .HasColumnType("nvarchar(100)");
+                        .HasColumnType("varchar(100)");
 
                     b.Property<string>("CiempLocation")
-                        .HasColumnType("varchar(60)");
+                        .HasColumnType("varchar(40)");
 
                     b.Property<DateTime?>("DateAdded")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("HowToApply")
-                        .HasColumnType("nvarchar(256)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("IsActive")
                         .HasColumnType("bit");
 
                     b.Property<string>("PosCategory")
-                        .HasColumnType("nvarchar(75)");
+                        .HasColumnType("varchar(50)");
 
                     b.Property<string>("PosName")
-                        .HasColumnType("nvarchar(75)");
+                        .HasColumnType("varchar(75)");
 
                     b.Property<string>("PositionBenefits")
                         .HasColumnType("nvarchar(max)");
@@ -633,10 +567,10 @@ namespace API.Migrations
                         .HasColumnType("varchar(25)");
 
                     b.Property<string>("RegisterCode")
-                        .HasColumnType("nvarchar(10)");
+                        .HasColumnType("varchar(15)");
 
                     b.Property<string>("SalaryRange")
-                        .HasColumnType("varchar(80)");
+                        .HasColumnType("varchar(75)");
 
                     b.Property<DateTime?>("StartDate")
                         .HasColumnType("datetime2");
@@ -648,7 +582,7 @@ namespace API.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("UniqueTitle")
-                        .HasColumnType("nvarchar(100)");
+                        .HasColumnType("varchar(100)");
 
                     b.HasKey("PositionId");
 
@@ -669,7 +603,7 @@ namespace API.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("PosName")
-                        .HasColumnType("nvarchar(100)");
+                        .HasColumnType("varchar(75)");
 
                     b.HasKey("PositNameId");
 
@@ -696,7 +630,7 @@ namespace API.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ProfileAdviceTitle")
-                        .HasColumnType("nvarchar(50)");
+                        .HasColumnType("varchar(75)");
 
                     b.HasKey("ProfileAdviceId");
 
@@ -712,34 +646,34 @@ namespace API.Migrations
                         .HasColumnType("bit");
 
                     b.Property<string>("RegisterCodeName1")
-                        .HasColumnType("varchar(10)");
+                        .HasColumnType("varchar(15)");
 
                     b.Property<string>("RegisterCodeName2")
-                        .HasColumnType("varchar(10)");
+                        .HasColumnType("varchar(15)");
 
                     b.Property<string>("RegisterCodeName3")
-                        .HasColumnType("varchar(10)");
+                        .HasColumnType("varchar(15)");
 
                     b.Property<string>("RegisterCodeName4")
-                        .HasColumnType("varchar(10)");
+                        .HasColumnType("varchar(15)");
 
                     b.Property<string>("RegisterCodeName5")
-                        .HasColumnType("varchar(10)");
+                        .HasColumnType("varchar(15)");
 
                     b.Property<string>("RegisterCodeName6")
-                        .HasColumnType("varchar(10)");
+                        .HasColumnType("varchar(15)");
 
                     b.Property<string>("RegisterCodeName7")
-                        .HasColumnType("varchar(10)");
+                        .HasColumnType("varchar(15)");
 
                     b.Property<string>("RegisterCodeNameAdmin")
-                        .HasColumnType("varchar(10)");
+                        .HasColumnType("varchar(15)");
 
                     b.Property<string>("RegisterCodeNameOwner")
-                        .HasColumnType("varchar(10)");
+                        .HasColumnType("varchar(15)");
 
                     b.Property<string>("RegisterCodeNameStud")
-                        .HasColumnType("varchar(10)");
+                        .HasColumnType("varchar(15)");
 
                     b.HasKey("RegisterCodeId");
 
@@ -764,7 +698,7 @@ namespace API.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("SkillsBulletText")
-                        .HasColumnType("nvarchar(250)");
+                        .HasColumnType("varchar(250)");
 
                     b.HasKey("SkillsBulletId");
 
@@ -782,10 +716,10 @@ namespace API.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("StempLocationId"), 1L, 1);
 
                     b.Property<string>("StempLocationName")
-                        .HasColumnType("nvarchar(10)");
+                        .HasColumnType("varchar(10)");
 
                     b.Property<string>("StempLocationSortName")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("varchar(10)");
 
                     b.HasKey("StempLocationId");
 
@@ -804,10 +738,10 @@ namespace API.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("StLocationName")
-                        .HasColumnType("nvarchar(60)");
+                        .HasColumnType("nvarchar(50)");
 
                     b.Property<string>("StLocationSortName")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(50)");
 
                     b.HasKey("StLocationId");
 
@@ -824,9 +758,6 @@ namespace API.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("StudInfoId"), 1L, 1);
 
-                    b.Property<string>("AcademicPlus")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<int>("AppUserId")
                         .HasColumnType("int");
 
@@ -837,13 +768,13 @@ namespace API.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("BestEmail")
-                        .HasColumnType("nvarchar(100)");
+                        .HasColumnType("varchar(100)");
 
                     b.Property<string>("BestPhone")
                         .HasColumnType("varchar(30)");
 
                     b.Property<string>("DreamJob")
-                        .HasColumnType("nvarchar(256)");
+                        .HasColumnType("varchar(250)");
 
                     b.Property<string>("ExtraCurricular")
                         .HasColumnType("nvarchar(max)");
@@ -861,10 +792,7 @@ namespace API.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("UniqueTitle")
-                        .HasColumnType("nvarchar(100)");
-
-                    b.Property<string>("WorkPlus")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("varchar(100)");
 
                     b.HasKey("StudInfoId");
 
@@ -906,7 +834,7 @@ namespace API.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("WorkBulletText")
-                        .HasColumnType("nvarchar(250)");
+                        .HasColumnType("varchar(250)");
 
                     b.HasKey("WorkBulletId");
 
@@ -1020,28 +948,6 @@ namespace API.Migrations
                         .IsRequired();
 
                     b.Navigation("AppUser");
-                });
-
-            modelBuilder.Entity("API.Entities.PhotoLogo", b =>
-                {
-                    b.HasOne("API.Entities.Position", "Position")
-                        .WithMany("PhotoLogos")
-                        .HasForeignKey("PositionId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Position");
-                });
-
-            modelBuilder.Entity("API.Entities.PhotoNews", b =>
-                {
-                    b.HasOne("API.Entities.News", "News")
-                        .WithMany("PhotoNewes")
-                        .HasForeignKey("NewsId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("News");
                 });
 
             modelBuilder.Entity("API.Entities.Position", b =>
@@ -1160,11 +1066,6 @@ namespace API.Migrations
                     b.Navigation("StLocations");
                 });
 
-            modelBuilder.Entity("API.Entities.News", b =>
-                {
-                    b.Navigation("PhotoNewes");
-                });
-
             modelBuilder.Entity("API.Entities.PosCategory", b =>
                 {
                     b.Navigation("PositNames");
@@ -1173,8 +1074,6 @@ namespace API.Migrations
             modelBuilder.Entity("API.Entities.Position", b =>
                 {
                     b.Navigation("DutyBullets");
-
-                    b.Navigation("PhotoLogos");
 
                     b.Navigation("SkillsBullets");
                 });

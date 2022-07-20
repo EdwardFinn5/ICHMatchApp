@@ -8,7 +8,7 @@ namespace API.Entities
         [Key]
         public int EmpIndustryId { get; set; }
 
-        [Column(TypeName = "nvarchar(60)")]
+        [Column(TypeName = "varchar(60)")]
         public string EmpIndustryName { get; set; }
     }
 }

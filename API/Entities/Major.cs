@@ -8,7 +8,7 @@ namespace API.Entities
         [Key]
         public int MajorId { get; set; }
 
-        [Column(TypeName = "nvarchar(100)")]
+        [Column(TypeName = "varchar(60)")]
         public string MajorName { get; set; }
 
         public virtual Category Category { get; set; }

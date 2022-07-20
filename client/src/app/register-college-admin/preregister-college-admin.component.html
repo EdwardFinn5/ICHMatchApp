@@ -10,7 +10,7 @@
        <div class="form-group">
          <input [class.is-invalid]='preregisterCollegeAdminForm.get("registerCode").errors 
              && preregisterCollegeAdminForm.get("registerCode").touched' formControlName='registerCode'
-           class="form-control shadow-sm" type="text" 
+           class="form-control shadow-sm" type="text" maxlength="15"
            pattern="({{registerCode.registerCodeNameAdmin}})" 
            placeholder="Register Code">
          <div *ngIf="preregisterCollegeAdminForm.get('registerCode').hasError('required')" class="invalid-feedback">Please

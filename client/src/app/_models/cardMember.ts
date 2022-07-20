@@ -32,6 +32,7 @@ export interface CardMember {
   empWebsite: string;
   whyWork: string;
   registerCode: string;
+  icfNote: string;
   created: Date;
   lastActive: Date;
   photos: Photo[];

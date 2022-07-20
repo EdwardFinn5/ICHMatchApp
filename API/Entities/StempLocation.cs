@@ -11,8 +11,9 @@ namespace API.Entities
     {
         [Key]
         public int StempLocationId { get; set; }
-        [Column(TypeName = "nvarchar(10)")]
+        [Column(TypeName = "varchar(10)")]
         public string StempLocationName { get; set; }
+        [Column(TypeName = "varchar(10)")]
         public string StempLocationSortName { get; set; }
         public ICollection<CiempLocation> CiempLocations { get; set; }
     }

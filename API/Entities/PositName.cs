@@ -12,7 +12,7 @@ namespace API.Entities
         [Key]
         public int PositNameId { get; set; }
 
-        [Column(TypeName = "nvarchar(100)")]
+        [Column(TypeName = "varchar(75)")]
 
         public string PosName { get; set; }
 
