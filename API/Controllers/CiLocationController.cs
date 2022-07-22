@@ -14,23 +14,23 @@ namespace API.Controllers
 {
     public class CiLocationController : BaseApiController
     {
-        private readonly ICiLocationRepository _ciLocationRepository;
+        private readonly IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
         private readonly DataContext _context;
 
-        public CiLocationController(ICiLocationRepository ciLocationRepository,
+        public CiLocationController(IUnitOfWork unitOfWork,
                                 IMapper mapper,
                                 DataContext context)
         {
             _context = context;
+            _unitOfWork = unitOfWork;
             _mapper = mapper;
-            _ciLocationRepository = ciLocationRepository;
         }
 
         [HttpGet]
         public async Task<ActionResult<IEnumerable<CiLocationDto>>> GetCiLocations()
         {
-            var ciLocations = await _ciLocationRepository.GetCiLocationDtosAsync();
+            var ciLocations = await _unitOfWork.CiLocationRepository.GetCiLocationDtosAsync();
 
             return Ok(ciLocations);
         }
@@ -38,7 +38,7 @@ namespace API.Controllers
         [HttpGet("GetById/{id}")]
         public async Task<ActionResult<IEnumerable<CiLocationDto>>> GetById(int id)
         {
-            var ciLocations = await _ciLocationRepository.GetCiLocationDtosAsync(id);
+            var ciLocations = await _unitOfWork.CiLocationRepository.GetCiLocationDtosAsync(id);
 
             return Ok(ciLocations);
 
@@ -47,13 +47,13 @@ namespace API.Controllers
         [HttpGet("GetCiLocationById/{id}")] //this is the one I just added
         public async Task<ActionResult<CiLocation>> GetCiLocationById(int id)
         {
-            return await _ciLocationRepository.GetCiLocationByIdAsync(id);
+            return await _unitOfWork.CiLocationRepository.GetCiLocationByIdAsync(id);
         }
 
         [HttpGet("GetCiLocationDtoById/{id}")] //this is the one I just added
         public async Task<ActionResult<CiLocationDto>> GetCiLocationDtoById(int id)
         {
-            return await _ciLocationRepository.GetCiLocationDtoByIdAsync(id);
+            return await _unitOfWork.CiLocationRepository.GetCiLocationDtoByIdAsync(id);
         }
 
         [HttpPost("{id}")]
@@ -88,11 +88,11 @@ namespace API.Controllers
         [HttpDelete("{id}")]
         public async Task<ActionResult> DeleteCiLocation(int id)
         {
-            var ciLocation = await _ciLocationRepository.GetCiLocationByIdAsync(id);
+            var ciLocation = await _unitOfWork.CiLocationRepository.GetCiLocationByIdAsync(id);
 
-            _ciLocationRepository.DeleteCiLocation(ciLocation);
+            _unitOfWork.CiLocationRepository.DeleteCiLocation(ciLocation);
 
-            if (await _ciLocationRepository.Complete()) return Ok();
+            if (await _unitOfWork.CiLocationRepository.Complete()) return Ok();
 
             return BadRequest("Problem deleting city");
 
@@ -101,13 +101,13 @@ namespace API.Controllers
         [HttpPut("{id}")]
         public async Task<ActionResult> UpdateCiLocation(CiLocationUpdateDto ciLocationUpdateDto, int id)
         {
-            var ciLocation = await _ciLocationRepository.GetCiLocationByIdAsync(id);
+            var ciLocation = await _unitOfWork.CiLocationRepository.GetCiLocationByIdAsync(id);
 
             _mapper.Map(ciLocationUpdateDto, ciLocation);
 
-            _ciLocationRepository.Update(ciLocation);
+            _unitOfWork.CiLocationRepository.Update(ciLocation);
 
-            if (await _ciLocationRepository.SaveAllAsync()) return NoContent();
+            if (await _unitOfWork.Complete()) return NoContent();
 
             return BadRequest("Failed to update city");
         }

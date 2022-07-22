@@ -10,7 +10,7 @@ namespace API.Interfaces
     public interface ICollegeRepository
     {
         void Update(College college);
-        Task<bool> SaveAllAsync();
+        // Task<bool> SaveAllAsync();
         Task<IEnumerable<CollegeDto>> GetCollegesAsync();
         Task<College> GetCollegeByIdAsync(int id);
         Task<CollegeDto> GetCollegeDtoByIdAsync(int id);

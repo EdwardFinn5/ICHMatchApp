@@ -10,7 +10,7 @@ namespace API.Interfaces
     public interface IDutyBulletRepository
     {
         void Update(DutyBullet dutyBullet);
-        Task<bool> SaveAllAsync();
+        // Task<bool> SaveAllAsync();
         Task<IEnumerable<DutyBulletDto>> GetDutyBulletDtosByPositionIdAsync(int id);
         Task<DutyBulletDto> GetDutyBulletDtoByIdAsync(int id);
         Task<DutyBullet> GetDutyBulletByIdAsync(int id);

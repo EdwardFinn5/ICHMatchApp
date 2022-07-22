@@ -11,7 +11,7 @@ namespace API.Interfaces
     public interface IPosition2Repository
     {
         void Update(Position position);
-        Task<bool> SaveAllAsync();
+        // Task<bool> SaveAllAsync();
         Task<IEnumerable<PositionDto>> GetPositionDtosAsync(int id);
         Task<IEnumerable<PositionDto>> GetEdsPositionDtosAsync();
         Task<PagedList<PositionDto>> GetPositionDtosAsync(UserParams userParams);

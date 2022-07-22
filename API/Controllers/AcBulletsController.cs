@@ -14,23 +14,22 @@ namespace API.Controllers
 {
     public class AcBulletsController : BaseApiController
     {
-        private readonly IAcBulletRepository _acBulletRepository;
-        private readonly IMapper _mapper;
+        private readonly IUnitOfWork _unitOfWork;
         private readonly DataContext _context;
+        private readonly IMapper _mapper;
 
-        public AcBulletsController(IAcBulletRepository acBulletRepository,
-                                        IMapper mapper,
-                                        DataContext context)
+        public AcBulletsController(DataContext context, IUnitOfWork unitOfWork, IMapper mapper)
         {
-            _acBulletRepository = acBulletRepository;
-            _context = context;
             _mapper = mapper;
+            _context = context;
+            _unitOfWork = unitOfWork;
+
         }
 
         [HttpGet("{id}")]
         public async Task<ActionResult<IEnumerable<AcBulletDto>>> GetAcBullets(int id)
         {
-            var acBullets = await _acBulletRepository.GetAcBulletDtosByStudInfoIdAsync(id);
+            var acBullets = await _unitOfWork.AcBulletRepository.GetAcBulletDtosByStudInfoIdAsync(id);
 
             return Ok(acBullets);
             // could also combine the above into: return Ok(await _userRepository.GetMembersAsync());
@@ -39,13 +38,13 @@ namespace API.Controllers
         [HttpGet("GetAcBulletById/{id}")]
         public async Task<ActionResult<AcBullet>> GetAcBulletByIdAsync(int id)
         {
-            return await _acBulletRepository.GetAcBulletByIdAsync(id);
+            return await _unitOfWork.AcBulletRepository.GetAcBulletByIdAsync(id);
         }
 
         [HttpGet("GetAcBulletDtoById/{id}")]
         public async Task<ActionResult<AcBulletDto>> GetAcBulletDtoById(int id)
         {
-            return await _acBulletRepository.GetAcBulletDtoByIdAsync(id);
+            return await _unitOfWork.AcBulletRepository.GetAcBulletDtoByIdAsync(id);
         }
 
         [HttpPost("{id}")]
@@ -76,11 +75,11 @@ namespace API.Controllers
         [HttpDelete("{id}")]
         public async Task<ActionResult> DeleteAcBullet(int id)
         {
-            var acBullet = await _acBulletRepository.GetAcBulletByIdAsync(id);
+            var acBullet = await _unitOfWork.AcBulletRepository.GetAcBulletByIdAsync(id);
 
-            _acBulletRepository.DeleteAcBullet(acBullet);
+            _unitOfWork.AcBulletRepository.DeleteAcBullet(acBullet);
 
-            if (await _acBulletRepository.Complete()) return Ok();
+            if (await _unitOfWork.AcBulletRepository.Complete()) return Ok();
 
             return BadRequest("Problem deleting this academic achievement bullet point");
 
@@ -89,13 +88,13 @@ namespace API.Controllers
         [HttpPut("{id}")]
         public async Task<ActionResult> UpdateAcBullet(AcBulletUpdateDto acBulletUpdateDto, int id)
         {
-            var acBullet = await _acBulletRepository.GetAcBulletByIdAsync(id);
+            var acBullet = await _unitOfWork.AcBulletRepository.GetAcBulletByIdAsync(id);
 
             _mapper.Map(acBulletUpdateDto, acBullet);
 
-            _acBulletRepository.Update(acBullet);
+            _unitOfWork.AcBulletRepository.Update(acBullet);
 
-            if (await _acBulletRepository.SaveAllAsync()) return NoContent();
+            if (await _unitOfWork.Complete()) return NoContent();
 
             return BadRequest("Failed to update academic achievement bullet point");
         }

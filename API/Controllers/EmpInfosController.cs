@@ -13,18 +13,14 @@ namespace API.Controllers
 {
     public class EmpInfosController : BaseApiController
     {
-        // private readonly IPhotoService _photoService;
-        // private readonly IUserRepository _userRepository;
-        private readonly IEmpInfoRepository _empInfoRepository;
         private readonly IMapper _mapper;
         private readonly DataContext _context;
-        public EmpInfosController(IEmpInfoRepository empInfoRepository, IMapper mapper, DataContext context)
+        private readonly IUnitOfWork _unitOfWork;
+        public EmpInfosController(IUnitOfWork unitOfWork, IMapper mapper, DataContext context)
         {
+            _unitOfWork = unitOfWork;
             _context = context;
             _mapper = mapper;
-            _empInfoRepository = empInfoRepository;
-            // _photoService = photoService;
-            // _userRepository = userRepository;
         }
 
         [HttpPost("{id}")]
@@ -81,7 +77,7 @@ namespace API.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<EmpInfoDto>>> GetEmpInfos()
         {
-            var empInfos = await _empInfoRepository.GetEmpInfoDtosAsync();
+            var empInfos = await _unitOfWork.EmpInfoRepository.GetEmpInfoDtosAsync();
 
             return Ok(empInfos);
             // could also combine the above into: return Ok(await _userRepository.GetMembersAsync());
@@ -90,20 +86,20 @@ namespace API.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<EmpInfoDto>> GetEmpInfo(int id)
         {
-            return await _empInfoRepository.GetEmpInfoDtoAsync(id);
+            return await _unitOfWork.EmpInfoRepository.GetEmpInfoDtoAsync(id);
 
         }
 
         [HttpPut("{id}")]
         public async Task<ActionResult> UpdateEmpInfo(EmpInfoUpdateDto empInfoUpdateDto, int id)
         {
-            var empInfo = await _empInfoRepository.GetEmpInfoByIdAsync(id);
+            var empInfo = await _unitOfWork.EmpInfoRepository.GetEmpInfoByIdAsync(id);
 
             _mapper.Map(empInfoUpdateDto, empInfo);
 
-            _empInfoRepository.Update(empInfo);
+            _unitOfWork.EmpInfoRepository.Update(empInfo);
 
-            if (await _empInfoRepository.SaveAllAsync()) return NoContent();
+            if (await _unitOfWork.Complete()) return NoContent();
 
             return BadRequest("Failed to update user");
         }

@@ -10,7 +10,7 @@ namespace API.Interfaces
     public interface IEmpIndustryRepository
     {
         void Update(EmpIndustry empIndustry);
-        Task<bool> SaveAllAsync();
+        // Task<bool> SaveAllAsync();
         Task<IEnumerable<EmpIndustryDto>> GetEmpIndustriesAsync();
         Task<EmpIndustry> GetEmpIndustryByIdAsync(int id);
         Task<EmpIndustryDto> GetEmpIndustryDtoByIdAsync(int id);

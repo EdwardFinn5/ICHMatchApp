@@ -14,15 +14,13 @@ namespace API.Controllers
 {
     public class PositNameController : BaseApiController
     {
-        private readonly IPositNameRepository _positNameRepository;
         private readonly IMapper _mapper;
         private readonly DataContext _context;
+        private readonly IUnitOfWork _unitOfWork;
 
-        public PositNameController(IPositNameRepository positNameRepository,
-                                IMapper mapper,
-                                DataContext context)
+        public PositNameController(IUnitOfWork unitOfWork, IMapper mapper, DataContext context)
         {
-            _positNameRepository = positNameRepository;
+            _unitOfWork = unitOfWork;
             _mapper = mapper;
             _context = context;
         }
@@ -30,7 +28,7 @@ namespace API.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<PositNameDto>>> GetPositNames()
         {
-            var positNames = await _positNameRepository.GetPositNameDtosAsync();
+            var positNames = await _unitOfWork.PositNameRepository.GetPositNameDtosAsync();
 
             return Ok(positNames);
             // could also combine the above into: return Ok(await _userRepository.GetMembersAsync());
@@ -39,7 +37,7 @@ namespace API.Controllers
         [HttpGet("GetById/{id}")]
         public async Task<ActionResult<IEnumerable<PositNameDto>>> GetById(int id)
         {
-            var positNames = await _positNameRepository.GetPositNameDtosAsync(id);
+            var positNames = await _unitOfWork.PositNameRepository.GetPositNameDtosAsync(id);
 
             return Ok(positNames);
 
@@ -48,13 +46,13 @@ namespace API.Controllers
         [HttpGet("GetPositNameById/{id}")] //this is the one I just added
         public async Task<ActionResult<PositName>> GetPositNameById(int id)
         {
-            return await _positNameRepository.GetPositNameByIdAsync(id);
+            return await _unitOfWork.PositNameRepository.GetPositNameByIdAsync(id);
         }
 
         [HttpGet("GetPositNameDtoById/{id}")] //this is the one I just added
         public async Task<ActionResult<PositNameDto>> GetPositNameDtoById(int id)
         {
-            return await _positNameRepository.GetPositNameDtoByIdAsync(id);
+            return await _unitOfWork.PositNameRepository.GetPositNameDtoByIdAsync(id);
         }
 
         [HttpPost("{id}")]
@@ -83,11 +81,11 @@ namespace API.Controllers
         [HttpDelete("{id}")]
         public async Task<ActionResult> DeletePositName(int id)
         {
-            var positName = await _positNameRepository.GetPositNameByIdAsync(id);
+            var positName = await _unitOfWork.PositNameRepository.GetPositNameByIdAsync(id);
 
-            _positNameRepository.DeletePositName(positName);
+            _unitOfWork.PositNameRepository.DeletePositName(positName);
 
-            if (await _positNameRepository.Complete()) return Ok();
+            if (await _unitOfWork.PositNameRepository.Complete()) return Ok();
 
             return BadRequest("Problem deleting the position name");
 
@@ -96,13 +94,13 @@ namespace API.Controllers
         [HttpPut("{id}")]
         public async Task<ActionResult> UpdatePositName(PositNameUpdateDto positNameUpdateDto, int id)
         {
-            var posName = await _positNameRepository.GetPositNameByIdAsync(id);
+            var posName = await _unitOfWork.PositNameRepository.GetPositNameByIdAsync(id);
 
             _mapper.Map(positNameUpdateDto, posName);
 
-            _positNameRepository.Update(posName);
+            _unitOfWork.PositNameRepository.Update(posName);
 
-            if (await _positNameRepository.SaveAllAsync()) return NoContent();
+            if (await _unitOfWork.Complete()) return NoContent();
 
             return BadRequest("Failed to update position name");
         }

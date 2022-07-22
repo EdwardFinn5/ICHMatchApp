@@ -10,7 +10,7 @@ namespace API.Interfaces
     public interface IPositNameRepository
     {
         void Update(PositName positName);
-        Task<bool> SaveAllAsync();
+        // Task<bool> SaveAllAsync();
         Task<IEnumerable<PositNameDto>> GetPositNameDtosAsync();
         Task<IEnumerable<PositNameDto>> GetPositNameDtosAsync(int id);
         Task<PositName> GetPositNameByIdAsync(int id);

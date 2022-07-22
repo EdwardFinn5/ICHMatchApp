@@ -15,12 +15,12 @@ namespace API.Controllers
     public class CollegesController : BaseApiController
     {
         private readonly DataContext _context;
-        private readonly ICollegeRepository _collegeRepository;
         private readonly IMapper _mapper;
-        public CollegesController(DataContext context, ICollegeRepository collegeRepository, IMapper mapper)
+        private readonly IUnitOfWork _unitOfWork;
+        public CollegesController(DataContext context, IUnitOfWork unitOfWork, IMapper mapper)
         {
+            _unitOfWork = unitOfWork;
             _mapper = mapper;
-            _collegeRepository = collegeRepository;
             _context = context;
         }
 
@@ -31,7 +31,6 @@ namespace API.Controllers
 
             var college = new College
             {
-                // CategoryId = categoryDto.CategoryId,
                 CollegeName = collegeDto.CollegeName.ToLower(),
                 CollegeNickname = collegeDto.CollegeNickname.ToLower(),
             };
@@ -51,7 +50,7 @@ namespace API.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<CollegeDto>>> GetColleges()
         {
-            var colleges = await _collegeRepository.GetCollegesAsync();
+            var colleges = await _unitOfWork.CollegeRepository.GetCollegesAsync();
 
             return Ok(colleges);
         }
@@ -59,26 +58,26 @@ namespace API.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<CollegeDto>> GetCollegeDtoById(int id)
         {
-            return await _collegeRepository.GetCollegeDtoByIdAsync(id);
+            return await _unitOfWork.CollegeRepository.GetCollegeDtoByIdAsync(id);
         }
 
         [HttpGet("GetCollegeById/{id}")] //this is the one I just added
         public async Task<ActionResult<College>> GetCollegeByIdAsync(int id)
         {
-            return await _collegeRepository.GetCollegeByIdAsync(id);
+            return await _unitOfWork.CollegeRepository.GetCollegeByIdAsync(id);
         }
 
 
         [HttpPut("{id}")]
         public async Task<ActionResult> UpdateCollege(CollegeUpdateDto collegeUpdateDto, int id)
         {
-            var college = await _collegeRepository.GetCollegeByIdAsync(id);
+            var college = await _unitOfWork.CollegeRepository.GetCollegeByIdAsync(id);
 
             _mapper.Map(collegeUpdateDto, college);
 
-            _collegeRepository.Update(college);
+            _unitOfWork.CollegeRepository.Update(college);
 
-            if (await _collegeRepository.SaveAllAsync()) return NoContent();
+            if (await _unitOfWork.Complete()) return NoContent();
 
             return BadRequest("Failed to update college");
         }
@@ -86,11 +85,11 @@ namespace API.Controllers
         [HttpDelete("{id}")]
         public async Task<ActionResult> DeleteCollege(int id)
         {
-            var college = await _collegeRepository.GetCollegeByIdAsync(id);
+            var college = await _unitOfWork.CollegeRepository.GetCollegeByIdAsync(id);
 
-            _collegeRepository.DeleteCollege(college);
+            _unitOfWork.CollegeRepository.DeleteCollege(college);
 
-            if (await _collegeRepository.Complete()) return Ok();
+            if (await _unitOfWork.CollegeRepository.Complete()) return Ok();
 
             return BadRequest("Problem deleting the college");
 

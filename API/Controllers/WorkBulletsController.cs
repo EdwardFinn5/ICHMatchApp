@@ -14,15 +14,13 @@ namespace API.Controllers
 {
     public class WorkBulletsController : BaseApiController
     {
-        private readonly IWorkBulletRepository _workBulletRepository;
         private readonly IMapper _mapper;
         private readonly DataContext _context;
+        private readonly IUnitOfWork _unitOfWork;
 
-        public WorkBulletsController(IWorkBulletRepository workBulletRepository,
-                                        IMapper mapper,
-                                        DataContext context)
+        public WorkBulletsController(IUnitOfWork unitOfWork, IMapper mapper, DataContext context)
         {
-            _workBulletRepository = workBulletRepository;
+            _unitOfWork = unitOfWork;
             _context = context;
             _mapper = mapper;
         }
@@ -30,7 +28,7 @@ namespace API.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<IEnumerable<WorkBulletDto>>> GetWorkBullets(int id)
         {
-            var workBullets = await _workBulletRepository.GetWorkBulletDtosByStudInfoIdAsync(id);
+            var workBullets = await _unitOfWork.WorkBulletRepository.GetWorkBulletDtosByStudInfoIdAsync(id);
 
             return Ok(workBullets);
             // could also combine the above into: return Ok(await _userRepository.GetMembersAsync());
@@ -39,13 +37,13 @@ namespace API.Controllers
         [HttpGet("GetWorkBulletById/{id}")]
         public async Task<ActionResult<WorkBullet>> GetWorkBulletByIdAsync(int id)
         {
-            return await _workBulletRepository.GetWorkBulletByIdAsync(id);
+            return await _unitOfWork.WorkBulletRepository.GetWorkBulletByIdAsync(id);
         }
 
         [HttpGet("GetWorkBulletDtoById/{id}")]
         public async Task<ActionResult<WorkBulletDto>> GetWorkBulletDtoById(int id)
         {
-            return await _workBulletRepository.GetWorkBulletDtoByIdAsync(id);
+            return await _unitOfWork.WorkBulletRepository.GetWorkBulletDtoByIdAsync(id);
         }
 
         [HttpPost("{id}")]
@@ -76,11 +74,11 @@ namespace API.Controllers
         [HttpDelete("{id}")]
         public async Task<ActionResult> DeleteWorkBullet(int id)
         {
-            var workBullet = await _workBulletRepository.GetWorkBulletByIdAsync(id);
+            var workBullet = await _unitOfWork.WorkBulletRepository.GetWorkBulletByIdAsync(id);
 
-            _workBulletRepository.DeleteWorkBullet(workBullet);
+            _unitOfWork.WorkBulletRepository.DeleteWorkBullet(workBullet);
 
-            if (await _workBulletRepository.Complete()) return Ok();
+            if (await _unitOfWork.WorkBulletRepository.Complete()) return Ok();
 
             return BadRequest("Problem deleting this work related bullet point");
 
@@ -89,13 +87,13 @@ namespace API.Controllers
         [HttpPut("{id}")]
         public async Task<ActionResult> UpdateWorkBullet(WorkBulletUpdateDto workBulletUpdateDto, int id)
         {
-            var workBullet = await _workBulletRepository.GetWorkBulletByIdAsync(id);
+            var workBullet = await _unitOfWork.WorkBulletRepository.GetWorkBulletByIdAsync(id);
 
             _mapper.Map(workBulletUpdateDto, workBullet);
 
-            _workBulletRepository.Update(workBullet);
+            _unitOfWork.WorkBulletRepository.Update(workBullet);
 
-            if (await _workBulletRepository.SaveAllAsync()) return NoContent();
+            if (await _unitOfWork.Complete()) return NoContent();
 
             return BadRequest("Failed to update work related bullet point");
         }

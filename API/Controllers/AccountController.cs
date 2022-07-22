@@ -59,7 +59,8 @@ namespace API.Controllers
                 CoLocation = user.CoLocation,
                 StLocation = user.StLocation,
                 CiLocation = user.CiLocation,
-                RegisterCode = user.RegisterCode
+                RegisterCode = user.RegisterCode,
+                IcfNote = user.IcfNote
             };
         }
 
@@ -100,7 +101,8 @@ namespace API.Controllers
                 EmpName = user.EmpName,
                 CiempLocation = user.CiempLocation,
                 StempLocation = user.StempLocation,
-                RegisterCode = user.RegisterCode
+                RegisterCode = user.RegisterCode,
+                IcfNote = user.IcfNote
             };
         }
 
@@ -199,12 +201,11 @@ namespace API.Controllers
                 Category = user.Category,
                 College = user.College,
                 HrContactTitle = user.HrContactTitle,
-                // PosCategory = user.PosCategory,
-                // PosName = user.PosName,
                 ClassYear = user.ClassYear,
                 CoLocation = user.CoLocation,
                 StLocation = user.StLocation,
                 CiLocation = user.CiLocation,
+                IcfNote = user.IcfNote,
                 CiempLocation = user.CiempLocation,
                 StempLocation = user.StempLocation,
                 StudentUrl = user.Photos.FirstOrDefault(x => x.IsMain)?.StudentUrl,

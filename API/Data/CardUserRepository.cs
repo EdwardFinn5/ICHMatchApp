@@ -14,11 +14,13 @@ namespace API.Data
 {
     public class CardUserRepository : ICardUserRepository
     {
+        private readonly IUnitOfWork _unitOfWork;
         private readonly DataContext _context;
         private readonly IMapper _mapper;
-        public CardUserRepository(DataContext context, IMapper mapper)
+        public CardUserRepository(IUnitOfWork unitOfWork, DataContext context, IMapper mapper)
         {
             _mapper = mapper;
+            _unitOfWork = unitOfWork;
             _context = context;
         }
 
@@ -145,10 +147,10 @@ namespace API.Data
             .ToListAsync();
         }
 
-        public async Task<bool> SaveAllAsync()
-        {
-            return await _context.SaveChangesAsync() > 0;
-        }
+        // public async Task<bool> SaveAllAsync()
+        // {
+        //     return await _context.SaveChangesAsync() > 0;
+        // }
 
         public void Update(AppUser user)
         {

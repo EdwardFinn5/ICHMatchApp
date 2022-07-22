@@ -10,7 +10,7 @@ namespace API.Interfaces
     public interface IProfileAdviceRepository
     {
         void Update(ProfileAdvice profileAdvice);
-        Task<bool> SaveAllAsync();
+        // Task<bool> SaveAllAsync();
         Task<IEnumerable<ProfileAdviceDto>> GetProfileAdvicesAsync();
         Task<ProfileAdvice> GetProfileAdviceByIdAsync(int id);
         Task<ProfileAdviceDto> GetProfileAdviceDtoByIdAsync(int id);

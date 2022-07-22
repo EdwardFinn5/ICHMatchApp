@@ -10,7 +10,7 @@ namespace API.Interfaces
     public interface IMajorRepository
     {
         void Update(Major major);
-        Task<bool> SaveAllAsync();
+        // Task<bool> SaveAllAsync();
         Task<IEnumerable<MajorDto>> GetMajorDtosAsync(int id);
         Task<IEnumerable<MajorDto>> GetMajorDtosAsync();
         Task<MajorDto> GetMajorDtoByIdAsync(int id);

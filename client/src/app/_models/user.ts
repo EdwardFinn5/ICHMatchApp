@@ -5,6 +5,7 @@ export interface User {
   college: string;
   token: string;
   appUserType: string;
+  icfNote: string;
   studentUrl: string;
   logoUrl: string;
   hrUrl: string;

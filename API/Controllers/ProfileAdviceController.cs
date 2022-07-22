@@ -15,12 +15,12 @@ namespace API.Controllers
     public class ProfileAdviceController : BaseApiController
     {
         private readonly DataContext _context;
-        private readonly IProfileAdviceRepository _profileAdviceRepository;
         private readonly IMapper _mapper;
-        public ProfileAdviceController(DataContext context, IProfileAdviceRepository profileAdviceRepository, IMapper mapper)
+        private readonly IUnitOfWork _unitOfWork;
+        public ProfileAdviceController(DataContext context, IUnitOfWork unitOfWork, IMapper mapper)
         {
+            _unitOfWork = unitOfWork;
             _mapper = mapper;
-            _profileAdviceRepository = profileAdviceRepository;
             _context = context;
         }
 
@@ -53,7 +53,7 @@ namespace API.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<ProfileAdviceDto>>> GetProfileAdvices()
         {
-            var profileAdvices = await _profileAdviceRepository.GetProfileAdvicesAsync();
+            var profileAdvices = await _unitOfWork.ProfileAdviceRepository.GetProfileAdvicesAsync();
 
             return Ok(profileAdvices);
         }
@@ -61,25 +61,25 @@ namespace API.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<ProfileAdviceDto>> GetProfileAdviceById(int id)
         {
-            return await _profileAdviceRepository.GetProfileAdviceDtoByIdAsync(id);
+            return await _unitOfWork.ProfileAdviceRepository.GetProfileAdviceDtoByIdAsync(id);
         }
 
         [HttpGet("GetProfileAdviceById/{id}")] //this is the one I just added
         public async Task<ActionResult<ProfileAdvice>> GetProfileAdvicByIdAsync(int id)
         {
-            return await _profileAdviceRepository.GetProfileAdviceByIdAsync(id);
+            return await _unitOfWork.ProfileAdviceRepository.GetProfileAdviceByIdAsync(id);
         }
 
         [HttpPut("{id}")]
         public async Task<ActionResult> UpdateProfileAdvice(ProfileAdviceUpdateDto profileAdviceUpdateDto, int id)
         {
-            var profileAdvice = await _profileAdviceRepository.GetProfileAdviceByIdAsync(id);
+            var profileAdvice = await _unitOfWork.ProfileAdviceRepository.GetProfileAdviceByIdAsync(id);
 
             _mapper.Map(profileAdviceUpdateDto, profileAdvice);
 
-            _profileAdviceRepository.Update(profileAdvice);
+            _unitOfWork.ProfileAdviceRepository.Update(profileAdvice);
 
-            if (await _profileAdviceRepository.SaveAllAsync()) return NoContent();
+            if (await _unitOfWork.Complete()) return NoContent();
 
             return BadRequest("Failed to update profileAdvice");
         }
@@ -87,11 +87,11 @@ namespace API.Controllers
         [HttpDelete("{id}")]
         public async Task<ActionResult> DeleteProfileAdvice(int id)
         {
-            var profileAdvice = await _profileAdviceRepository.GetProfileAdviceByIdAsync(id);
+            var profileAdvice = await _unitOfWork.ProfileAdviceRepository.GetProfileAdviceByIdAsync(id);
 
-            _profileAdviceRepository.DeleteProfileAdvice(profileAdvice);
+            _unitOfWork.ProfileAdviceRepository.DeleteProfileAdvice(profileAdvice);
 
-            if (await _profileAdviceRepository.Complete()) return Ok();
+            if (await _unitOfWork.ProfileAdviceRepository.Complete()) return Ok();
 
             return BadRequest("Problem deleting the profileAdvice");
 

@@ -10,7 +10,7 @@ namespace API.Interfaces
     public interface IWorkBulletRepository
     {
         void Update(WorkBullet workBullet);
-        Task<bool> SaveAllAsync();
+        // Task<bool> SaveAllAsync();
         Task<IEnumerable<WorkBulletDto>> GetWorkBulletDtosByStudInfoIdAsync(int id);
         Task<WorkBulletDto> GetWorkBulletDtoByIdAsync(int id);
         Task<WorkBullet> GetWorkBulletByIdAsync(int id);

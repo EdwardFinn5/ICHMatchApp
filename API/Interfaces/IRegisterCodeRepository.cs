@@ -10,7 +10,7 @@ namespace API.Interfaces
     public interface IRegisterCodeRepository
     {
         void Update(RegisterCode registercode);
-        Task<bool> SaveAllAsync();
+        // Task<bool> SaveAllAsync();
         Task<IEnumerable<RegisterCodeDto>> GetRegisterCodesAsync();
         Task<RegisterCode> GetRegisterCodeByIdAsync(int id);
         Task<RegisterCodeDto> GetRegisterCodeDtoByIdAsync(int id);

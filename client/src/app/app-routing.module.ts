@@ -148,6 +148,12 @@ const routes: Routes = [
     component: RegisterCollegeAdminComponent,
     pathMatch: 'full',
   },
+  { path: 'categorylist', component: CategoryListComponent, pathMatch: 'full' },
+  {
+    path: 'categoryliststudents',
+    component: CategoryListStudentsComponent,
+    pathMatch: 'full',
+  },
   {
     path: 'preregistercollegeadmin',
     component: PreregisterCollegeAdminComponent,
@@ -183,7 +189,11 @@ const routes: Routes = [
     component: PreregisterEmpComponent,
     pathMatch: 'full',
   },
-  { path: 'memberslist', component: MemberListComponent },
+  {
+    path: 'memberslist',
+    component: MemberListComponent,
+    pathMatch: 'full',
+  },
   { path: 'empmemberslist', component: EmpmemberListComponent },
   { path: 'empmemberslistsuper', component: EmpmemberListSuperComponent },
   {
@@ -712,12 +722,7 @@ const routes: Routes = [
   { path: 'not-found', component: NotFoundComponent },
   { path: 'server-error', component: ServerErrorComponent },
   { path: 'company/edit', component: EmpmemberEditEmpinfoComponent },
-  { path: 'categorylist', component: CategoryListComponent, pathMatch: 'full' },
-  {
-    path: 'categoryliststudents',
-    component: CategoryListStudentsComponent,
-    pathMatch: 'full',
-  },
+
   {
     path: 'locationliststudents',
     component: LocationListStudentsComponent,

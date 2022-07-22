@@ -10,7 +10,7 @@ namespace API.Interfaces
     public interface ICiempLocationRepository
     {
         void Update(CiempLocation ciempLocation);
-        Task<bool> SaveAllAsync();
+        // Task<bool> SaveAllAsync();
         Task<IEnumerable<CiempLocationDto>> GetCiempLocationDtosAsync(int id);
         // Task<IEnumerable<CiLocationDto>> GetCiLocationOtherCCIdDtosAsync(int id);
         Task<IEnumerable<CiempLocationDto>> GetCiempLocationDtosAsync();

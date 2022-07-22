@@ -14,23 +14,21 @@ namespace API.Controllers
 {
     public class StLocationController : BaseApiController
     {
-        private readonly IStLocationRepository _stLocationRepository;
         private readonly IMapper _mapper;
         private readonly DataContext _context;
+        private readonly IUnitOfWork _unitOfWork;
 
-        public StLocationController(IStLocationRepository stLocationRepository,
-                                IMapper mapper,
-                                DataContext context)
+        public StLocationController(IUnitOfWork unitOfWork, IMapper mapper, DataContext context)
         {
+            _unitOfWork = unitOfWork;
             _context = context;
             _mapper = mapper;
-            _stLocationRepository = stLocationRepository;
         }
 
         [HttpGet]
         public async Task<ActionResult<IEnumerable<StLocationDto>>> GetStLocations()
         {
-            var stLocations = await _stLocationRepository.GetStLocationDtosAsync();
+            var stLocations = await _unitOfWork.StLocationRepository.GetStLocationDtosAsync();
 
             return Ok(stLocations);
             // could also combine the above into: return Ok(await _userRepository.GetMembersAsync());
@@ -39,7 +37,7 @@ namespace API.Controllers
         [HttpGet("GetById/{id}")]
         public async Task<ActionResult<IEnumerable<StLocationDto>>> GetById(int id)
         {
-            var stLocations = await _stLocationRepository.GetStLocationDtosAsync(id);
+            var stLocations = await _unitOfWork.StLocationRepository.GetStLocationDtosAsync(id);
 
             return Ok(stLocations);
 
@@ -48,13 +46,13 @@ namespace API.Controllers
         [HttpGet("GetStLocationById/{id}")] //this is the one I just added
         public async Task<ActionResult<StLocation>> GetStLocationById(int id)
         {
-            return await _stLocationRepository.GetStLocationByIdAsync(id);
+            return await _unitOfWork.StLocationRepository.GetStLocationByIdAsync(id);
         }
 
         [HttpGet("GetStLocationDtoById/{id}")] //this is the one I just added
         public async Task<ActionResult<StLocationDto>> GetStLocationDtoById(int id)
         {
-            return await _stLocationRepository.GetStLocationDtoByIdAsync(id);
+            return await _unitOfWork.StLocationRepository.GetStLocationDtoByIdAsync(id);
         }
 
         [HttpPost("{id}")]
@@ -90,11 +88,11 @@ namespace API.Controllers
         [HttpDelete("{id}")]
         public async Task<ActionResult> DeleteStLocation(int id)
         {
-            var stLocation = await _stLocationRepository.GetStLocationByIdAsync(id);
+            var stLocation = await _unitOfWork.StLocationRepository.GetStLocationByIdAsync(id);
 
-            _stLocationRepository.DeleteStLocation(stLocation);
+            _unitOfWork.StLocationRepository.DeleteStLocation(stLocation);
 
-            if (await _stLocationRepository.Complete()) return Ok();
+            if (await _unitOfWork.StLocationRepository.Complete()) return Ok();
 
             return BadRequest("Problem deleting state");
 
@@ -103,13 +101,13 @@ namespace API.Controllers
         [HttpPut("{id}")]
         public async Task<ActionResult> UpdateStLocation(StLocationUpdateDto stLocationUpdateDto, int id)
         {
-            var stLocation = await _stLocationRepository.GetStLocationByIdAsync(id);
+            var stLocation = await _unitOfWork.StLocationRepository.GetStLocationByIdAsync(id);
 
             _mapper.Map(stLocationUpdateDto, stLocation);
 
-            _stLocationRepository.Update(stLocation);
+            _unitOfWork.StLocationRepository.Update(stLocation);
 
-            if (await _stLocationRepository.SaveAllAsync()) return NoContent();
+            if (await _unitOfWork.Complete()) return NoContent();
 
             return BadRequest("Failed to update state");
         }

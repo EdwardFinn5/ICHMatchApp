@@ -10,7 +10,7 @@ namespace API.Interfaces
     public interface IPosCategoryRepository
     {
         void Update(PosCategory posCategory);
-        Task<bool> SaveAllAsync();
+        // Task<bool> SaveAllAsync();
         Task<IEnumerable<PosCategoryDto>> GetPosCategoriesAsync();
         Task<PosCategory> GetPosCategoryByIdAsync(int id);
         Task<PosCategoryDto> GetPosCategoryDtoByIdAsync(int id);

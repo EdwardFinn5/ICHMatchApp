@@ -8,22 +8,20 @@ namespace API.Controllers
 {
     public class NewsController : BaseApiController
     {
-        private readonly INewsRepository _newsRepository;
         private readonly IMapper _mapper;
         private readonly DataContext _context;
-        private readonly IPhotoService _photoService;
-        public NewsController(INewsRepository newsRepository, IMapper mapper, DataContext context, IPhotoService photoService)
+        private readonly IUnitOfWork _unitOfWork;
+        public NewsController(IUnitOfWork unitOfWork, IMapper mapper, DataContext context, IPhotoService photoService)
         {
+            _unitOfWork = unitOfWork;
             _context = context;
             _mapper = mapper;
-            _newsRepository = newsRepository;
-            _photoService = photoService;
         }
 
         [HttpGet]
         public async Task<ActionResult<IEnumerable<NewsDto>>> GetNewes()
         {
-            var newes = await _newsRepository.GetNewsDtosAsync();
+            var newes = await _unitOfWork.NewsRepository.GetNewsDtosAsync();
 
             return Ok(newes);
         }
@@ -31,13 +29,13 @@ namespace API.Controllers
         [HttpGet("GetNewsById/{id}")] //this is the one I just added
         public async Task<ActionResult<News>> GetNewsByIdAsync(int id)
         {
-            return await _newsRepository.GetNewsByIdAsync(id);
+            return await _unitOfWork.NewsRepository.GetNewsByIdAsync(id);
         }
 
         [HttpGet("GetNewsDtoById/{id}")] //this is the one I just added
         public async Task<ActionResult<NewsDto>> GetNewsDtoById(int id)
         {
-            return await _newsRepository.GetNewsDtoByIdAsync(id);
+            return await _unitOfWork.NewsRepository.GetNewsDtoByIdAsync(id);
         }
 
         [HttpPost]
@@ -68,7 +66,7 @@ namespace API.Controllers
         // [HttpPost("add-news-photo/{newsId}")]
         // public async Task<ActionResult<PhotoNewsDto>> AddNewsPhoto(IFormFile file, int newsId)
         // {
-        //     var news = await _newsRepository.GetNewsByIdAsync(newsId);
+        //     var news = await _unitOfWork.NewsRepository.GetNewsByIdAsync(newsId);
 
         //     var result = await _photoService.AddPhotoAsync(file);
 
@@ -92,7 +90,7 @@ namespace API.Controllers
 
         //     await _context.SaveChangesAsync();
 
-        //     if (await _newsRepository.SaveAllAsync())
+        //     if (await _unitOfWork.Complete())
 
         //         return BadRequest("Problem adding photo");
 
@@ -163,11 +161,11 @@ namespace API.Controllers
         [HttpDelete("{id}")]
         public async Task<ActionResult> DeleteNews(int id)
         {
-            var news = await _newsRepository.GetNewsByIdAsync(id);
+            var news = await _unitOfWork.NewsRepository.GetNewsByIdAsync(id);
 
-            _newsRepository.DeleteNews(news);
+            _unitOfWork.NewsRepository.DeleteNews(news);
 
-            if (await _newsRepository.Complete()) return Ok();
+            if (await _unitOfWork.NewsRepository.Complete()) return Ok();
 
             return BadRequest("Problem deleting this news item");
 
@@ -176,13 +174,13 @@ namespace API.Controllers
         [HttpPut("{id}")]
         public async Task<ActionResult> UpdateNews(NewsUpdateDto newsUpdateDto, int id)
         {
-            var news = await _newsRepository.GetNewsByIdAsync(id);
+            var news = await _unitOfWork.NewsRepository.GetNewsByIdAsync(id);
 
             _mapper.Map(newsUpdateDto, news);
 
-            _newsRepository.Update(news);
+            _unitOfWork.NewsRepository.Update(news);
 
-            if (await _newsRepository.SaveAllAsync()) return NoContent();
+            if (await _unitOfWork.Complete()) return NoContent();
 
             return BadRequest("Failed to update news item");
         }

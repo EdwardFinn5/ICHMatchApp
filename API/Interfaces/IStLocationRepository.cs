@@ -10,7 +10,7 @@ namespace API.Interfaces
     public interface IStLocationRepository
     {
         void Update(StLocation stLocation);
-        Task<bool> SaveAllAsync();
+        // Task<bool> SaveAllAsync();
         Task<IEnumerable<StLocationDto>> GetStLocationDtosAsync(int id);
         Task<IEnumerable<StLocationDto>> GetStLocationDtosAsync();
         Task<StLocationDto> GetStLocationDtoByIdAsync(int id);

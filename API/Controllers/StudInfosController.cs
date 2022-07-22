@@ -15,14 +15,14 @@ namespace API.Controllers
 {
     public class StudInfosController : BaseApiController
     {
-        private readonly IStudInfoRepository _studInfoRepository;
         private readonly IMapper _mapper;
         private readonly DataContext _context;
-        public StudInfosController(IStudInfoRepository studInfoRepository, IMapper mapper, DataContext context)
+        private readonly IUnitOfWork _unitOfWork;
+        public StudInfosController(IUnitOfWork unitOfWork, IMapper mapper, DataContext context)
         {
+            _unitOfWork = unitOfWork;
             _context = context;
             _mapper = mapper;
-            _studInfoRepository = studInfoRepository;
         }
 
         [HttpPost("{id}")]
@@ -78,14 +78,14 @@ namespace API.Controllers
         [HttpGet("GetStudInfoDtoById/{id}")] //this is the one I just added
         public async Task<ActionResult<StudInfoDto>> GetStudInfoDtoById(int id)
         {
-            return await _studInfoRepository.GetStudInfoDtoByIdAsync(id);
+            return await _unitOfWork.StudInfoRepository.GetStudInfoDtoByIdAsync(id);
         }
 
 
         [HttpGet]
         public async Task<ActionResult<IEnumerable<StudInfoDto>>> GetStudInfos()
         {
-            var studInfos = await _studInfoRepository.GetStudInfoDtosAsync();
+            var studInfos = await _unitOfWork.StudInfoRepository.GetStudInfoDtosAsync();
 
             return Ok(studInfos);
             // could also combine the above into: return Ok(await _userRepository.GetMembersAsync());
@@ -94,7 +94,7 @@ namespace API.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<StudInfoDto>> GetStudInfo(int id)
         {
-            return await _studInfoRepository.GetStudInfoDtoAsync(id);
+            return await _unitOfWork.StudInfoRepository.GetStudInfoDtoAsync(id);
 
         }
 
@@ -103,13 +103,13 @@ namespace API.Controllers
         // public async Task<ActionResult> UpdateStudInfo(StudInfoUpdateDto studInfoUpdateDto)
         // {
         //     var studinfoname = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
-        //     var studInfo = await _studInfoRepository.GetStudInfoByUsernameAsync(studinfoname);
+        //     var studInfo = await _unitOfWork.StudInfoRepository.GetStudInfoByUsernameAsync(studinfoname);
 
         //     _mapper.Map(studInfoUpdateDto, studInfo);
 
-        //     _studInfoRepository.Update(studInfo);
+        //     _unitOfWork.StudInfoRepository.Update(studInfo);
 
-        //     if (await _studInfoRepository.SaveAllAsync()) return NoContent();
+        //     if (await _unitOfWork.Complete()) return NoContent();
 
         //     return BadRequest("Failed to update user");
         // }
@@ -117,13 +117,13 @@ namespace API.Controllers
         [HttpPut("{id}")]
         public async Task<ActionResult> UpdateStudInfo(StudInfoUpdateDto studInfoUpdateDto, int id)
         {
-            var studInfo = await _studInfoRepository.GetStudInfoByIdAsync(id);
+            var studInfo = await _unitOfWork.StudInfoRepository.GetStudInfoByIdAsync(id);
 
             _mapper.Map(studInfoUpdateDto, studInfo);
 
-            _studInfoRepository.Update(studInfo);
+            _unitOfWork.StudInfoRepository.Update(studInfo);
 
-            if (await _studInfoRepository.SaveAllAsync()) return NoContent();
+            if (await _unitOfWork.Complete()) return NoContent();
 
             return BadRequest("Failed to update user");
         }

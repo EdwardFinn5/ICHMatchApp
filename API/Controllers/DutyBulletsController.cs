@@ -14,15 +14,15 @@ namespace API.Controllers
 {
     public class DutyBulletsController : BaseApiController
     {
-        private readonly IDutyBulletRepository _dutyBulletRepository;
+        private readonly IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
         private readonly DataContext _context;
-        public DutyBulletsController(IDutyBulletRepository dutyBulletRepository,
+        public DutyBulletsController(IUnitOfWork unitOfWork,
                                         IMapper mapper,
                                         DataContext context)
         {
-            _dutyBulletRepository = dutyBulletRepository;
             _context = context;
+            _unitOfWork = unitOfWork;
             _mapper = mapper;
 
         }
@@ -30,7 +30,7 @@ namespace API.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<IEnumerable<DutyBulletDto>>> GetDutyBullets(int id)
         {
-            var dutyBullets = await _dutyBulletRepository.GetDutyBulletDtosByPositionIdAsync(id);
+            var dutyBullets = await _unitOfWork.DutyBulletRepository.GetDutyBulletDtosByPositionIdAsync(id);
 
             return Ok(dutyBullets);
             // could also combine the above into: return Ok(await _userRepository.GetMembersAsync());
@@ -39,13 +39,13 @@ namespace API.Controllers
         [HttpGet("GetDutyBulletById/{id}")] //this is the one I just added
         public async Task<ActionResult<DutyBullet>> GetDutyBulletByIdAsync(int id)
         {
-            return await _dutyBulletRepository.GetDutyBulletByIdAsync(id);
+            return await _unitOfWork.DutyBulletRepository.GetDutyBulletByIdAsync(id);
         }
 
         [HttpGet("GetDutyBulletDtoById/{id}")] //this is the one I just added
         public async Task<ActionResult<DutyBulletDto>> GetDutyBulletDtoById(int id)
         {
-            return await _dutyBulletRepository.GetDutyBulletDtoByIdAsync(id);
+            return await _unitOfWork.DutyBulletRepository.GetDutyBulletDtoByIdAsync(id);
         }
 
         [HttpPost("{id}")]
@@ -77,11 +77,11 @@ namespace API.Controllers
         [HttpDelete("{id}")]
         public async Task<ActionResult> DeleteDutyBullet(int id)
         {
-            var dutyBullet = await _dutyBulletRepository.GetDutyBulletByIdAsync(id);
+            var dutyBullet = await _unitOfWork.DutyBulletRepository.GetDutyBulletByIdAsync(id);
 
-            _dutyBulletRepository.DeleteDutyBullet(dutyBullet);
+            _unitOfWork.DutyBulletRepository.DeleteDutyBullet(dutyBullet);
 
-            if (await _dutyBulletRepository.Complete()) return Ok();
+            if (await _unitOfWork.DutyBulletRepository.Complete()) return Ok();
 
             return BadRequest("Problem deleting the duties/responsibilities bullet point");
 
@@ -90,13 +90,13 @@ namespace API.Controllers
         [HttpPut("{id}")]
         public async Task<ActionResult> UpdateDutyBullet(DutyBulletUpdateDto dutyBulletUpdateDto, int id)
         {
-            var dutyBullet = await _dutyBulletRepository.GetDutyBulletByIdAsync(id);
+            var dutyBullet = await _unitOfWork.DutyBulletRepository.GetDutyBulletByIdAsync(id);
 
             _mapper.Map(dutyBulletUpdateDto, dutyBullet);
 
-            _dutyBulletRepository.Update(dutyBullet);
+            _unitOfWork.DutyBulletRepository.Update(dutyBullet);
 
-            if (await _dutyBulletRepository.SaveAllAsync()) return NoContent();
+            if (await _unitOfWork.Complete()) return NoContent();
 
             return BadRequest("Failed to update duties/responsibilities bullet point");
         }

@@ -15,12 +15,12 @@ namespace API.Controllers
     public class RegisterCodeController : BaseApiController
     {
         private readonly DataContext _context;
-        private readonly IRegisterCodeRepository _registerCodeRepository;
         private readonly IMapper _mapper;
-        public RegisterCodeController(DataContext context, IRegisterCodeRepository registerCodeRepository, IMapper mapper)
+        private readonly IUnitOfWork _unitOfWork;
+        public RegisterCodeController(DataContext context, IUnitOfWork unitOfWork, IMapper mapper)
         {
+            _unitOfWork = unitOfWork;
             _mapper = mapper;
-            _registerCodeRepository = registerCodeRepository;
             _context = context;
         }
 
@@ -64,7 +64,7 @@ namespace API.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<RegisterCodeDto>>> GetRegisterCodes()
         {
-            var registerCodes = await _registerCodeRepository.GetRegisterCodesAsync();
+            var registerCodes = await _unitOfWork.RegisterCodeRepository.GetRegisterCodesAsync();
 
             return Ok(registerCodes);
         }
@@ -72,25 +72,25 @@ namespace API.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<RegisterCodeDto>> GetRegisterCodeById(int id)
         {
-            return await _registerCodeRepository.GetRegisterCodeDtoByIdAsync(id);
+            return await _unitOfWork.RegisterCodeRepository.GetRegisterCodeDtoByIdAsync(id);
         }
 
         [HttpGet("GetRegisterCodeById/{id}")] //this is the one I just added
         public async Task<ActionResult<RegisterCode>> GetRegisterCodeByIdAsync(int id)
         {
-            return await _registerCodeRepository.GetRegisterCodeByIdAsync(id);
+            return await _unitOfWork.RegisterCodeRepository.GetRegisterCodeByIdAsync(id);
         }
 
         [HttpPut("{id}")]
         public async Task<ActionResult> UpdateRegisterCode(RegisterCodeUpdateDto registerCodeUpdateDto, int id)
         {
-            var registerCode = await _registerCodeRepository.GetRegisterCodeByIdAsync(id);
+            var registerCode = await _unitOfWork.RegisterCodeRepository.GetRegisterCodeByIdAsync(id);
 
             _mapper.Map(registerCodeUpdateDto, registerCode);
 
-            _registerCodeRepository.Update(registerCode);
+            _unitOfWork.RegisterCodeRepository.Update(registerCode);
 
-            if (await _registerCodeRepository.SaveAllAsync()) return NoContent();
+            if (await _unitOfWork.Complete()) return NoContent();
 
             return BadRequest("Failed to update register Code");
         }
@@ -98,11 +98,11 @@ namespace API.Controllers
         [HttpDelete("{id}")]
         public async Task<ActionResult> DeleteRegisterCode(int id)
         {
-            var registerCode = await _registerCodeRepository.GetRegisterCodeByIdAsync(id);
+            var registerCode = await _unitOfWork.RegisterCodeRepository.GetRegisterCodeByIdAsync(id);
 
-            _registerCodeRepository.DeleteRegisterCode(registerCode);
+            _unitOfWork.RegisterCodeRepository.DeleteRegisterCode(registerCode);
 
-            if (await _registerCodeRepository.Complete()) return Ok();
+            if (await _unitOfWork.RegisterCodeRepository.Complete()) return Ok();
 
             return BadRequest("Problem deleting the register code");
 

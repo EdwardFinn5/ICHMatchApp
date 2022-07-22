@@ -22,7 +22,7 @@ export interface Member {
   uniqueTitle: string;
   uniqueContent: string;
   registerCode: string;
-  icfNote: string;
+  icfNote?: string;
   classYear: string;
   major: string;
   category: string;

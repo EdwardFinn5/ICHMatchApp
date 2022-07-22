@@ -14,22 +14,20 @@ namespace API.Controllers
 {
     public class StempLocationController : BaseApiController
     {
-        private readonly IStempLocationRepository _stempLocationRepository;
         private readonly IMapper _mapper;
         private readonly DataContext _context;
-        public StempLocationController(IStempLocationRepository stempLocationRepository,
-                                IMapper mapper,
-                                DataContext context)
+        private readonly IUnitOfWork _unitOfWork;
+        public StempLocationController(IUnitOfWork unitOfWork, IMapper mapper, DataContext context)
         {
+            _unitOfWork = unitOfWork;
             _context = context;
             _mapper = mapper;
-            _stempLocationRepository = stempLocationRepository;
         }
 
         [HttpGet]
         public async Task<ActionResult<IEnumerable<StempLocationDto>>> GetStempLocations()
         {
-            var stempLocations = await _stempLocationRepository.GetStempLocationDtosAsync();
+            var stempLocations = await _unitOfWork.StempLocationRepository.GetStempLocationDtosAsync();
 
             return Ok(stempLocations);
             // could also combine the above into: return Ok(await _userRepository.GetMembersAsync());
@@ -47,13 +45,13 @@ namespace API.Controllers
         [HttpGet("GetStempLocationById/{id}")] //this is the one I just added
         public async Task<ActionResult<StempLocation>> GetStempLocationById(int id)
         {
-            return await _stempLocationRepository.GetStempLocationByIdAsync(id);
+            return await _unitOfWork.StempLocationRepository.GetStempLocationByIdAsync(id);
         }
 
         [HttpGet("GetStempLocationDtoById/{id}")] //this is the one I just added
         public async Task<ActionResult<StempLocationDto>> GetStempLocationDtoById(int id)
         {
-            return await _stempLocationRepository.GetStempLocationDtoByIdAsync(id);
+            return await _unitOfWork.StempLocationRepository.GetStempLocationDtoByIdAsync(id);
         }
 
         [HttpPost]
@@ -86,11 +84,11 @@ namespace API.Controllers
         [HttpDelete("{id}")]
         public async Task<ActionResult> DeleteStempLocation(int id)
         {
-            var stempLocation = await _stempLocationRepository.GetStempLocationByIdAsync(id);
+            var stempLocation = await _unitOfWork.StempLocationRepository.GetStempLocationByIdAsync(id);
 
-            _stempLocationRepository.DeleteStempLocation(stempLocation);
+            _unitOfWork.StempLocationRepository.DeleteStempLocation(stempLocation);
 
-            if (await _stempLocationRepository.Complete()) return Ok();
+            if (await _unitOfWork.StempLocationRepository.Complete()) return Ok();
 
             return BadRequest("Problem deleting state");
 
@@ -99,13 +97,13 @@ namespace API.Controllers
         [HttpPut("{id}")]
         public async Task<ActionResult> UpdateStempLocation(StempLocationUpdateDto stempLocationUpdateDto, int id)
         {
-            var stempLocation = await _stempLocationRepository.GetStempLocationByIdAsync(id);
+            var stempLocation = await _unitOfWork.StempLocationRepository.GetStempLocationByIdAsync(id);
 
             _mapper.Map(stempLocationUpdateDto, stempLocation);
 
-            _stempLocationRepository.Update(stempLocation);
+            _unitOfWork.StempLocationRepository.Update(stempLocation);
 
-            if (await _stempLocationRepository.SaveAllAsync()) return NoContent();
+            if (await _unitOfWork.Complete()) return NoContent();
 
             return BadRequest("Failed to update state");
         }

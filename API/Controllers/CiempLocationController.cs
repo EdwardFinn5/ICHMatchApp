@@ -14,22 +14,22 @@ namespace API.Controllers
 {
     public class CiempLocationController : BaseApiController
     {
-        private readonly ICiempLocationRepository _ciempLocationRepository;
+        private readonly IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
         private readonly DataContext _context;
-        public CiempLocationController(ICiempLocationRepository ciempLocationRepository,
+        public CiempLocationController(IUnitOfWork unitOfWork,
                                 IMapper mapper,
                                 DataContext context)
         {
             _context = context;
+            _unitOfWork = unitOfWork;
             _mapper = mapper;
-            _ciempLocationRepository = ciempLocationRepository;
         }
 
         [HttpGet]
         public async Task<ActionResult<IEnumerable<CiempLocationDto>>> GetCiempLocations()
         {
-            var ciempLocations = await _ciempLocationRepository.GetCiempLocationDtosAsync();
+            var ciempLocations = await _unitOfWork.CiempLocationRepository.GetCiempLocationDtosAsync();
 
             return Ok(ciempLocations);
         }
@@ -37,7 +37,7 @@ namespace API.Controllers
         [HttpGet("GetById/{id}")]
         public async Task<ActionResult<IEnumerable<CiempLocationDto>>> GetById(int id)
         {
-            var ciempLocations = await _ciempLocationRepository.GetCiempLocationDtosAsync(id);
+            var ciempLocations = await _unitOfWork.CiempLocationRepository.GetCiempLocationDtosAsync(id);
 
             return Ok(ciempLocations);
 
@@ -46,13 +46,13 @@ namespace API.Controllers
         [HttpGet("GetCiempLocationById/{id}")] //this is the one I just added
         public async Task<ActionResult<CiempLocation>> GetCiempLocationById(int id)
         {
-            return await _ciempLocationRepository.GetCiempLocationByIdAsync(id);
+            return await _unitOfWork.CiempLocationRepository.GetCiempLocationByIdAsync(id);
         }
 
         [HttpGet("GetCiempLocationDtoById/{id}")] //this is the one I just added
         public async Task<ActionResult<CiempLocationDto>> GetCiempLocationDtoById(int id)
         {
-            return await _ciempLocationRepository.GetCiempLocationDtoByIdAsync(id);
+            return await _unitOfWork.CiempLocationRepository.GetCiempLocationDtoByIdAsync(id);
         }
 
         [HttpPost("{id}")]
@@ -87,11 +87,11 @@ namespace API.Controllers
         [HttpDelete("{id}")]
         public async Task<ActionResult> DeleteCiempLocation(int id)
         {
-            var ciempLocation = await _ciempLocationRepository.GetCiempLocationByIdAsync(id);
+            var ciempLocation = await _unitOfWork.CiempLocationRepository.GetCiempLocationByIdAsync(id);
 
-            _ciempLocationRepository.DeleteCiempLocation(ciempLocation);
+            _unitOfWork.CiempLocationRepository.DeleteCiempLocation(ciempLocation);
 
-            if (await _ciempLocationRepository.Complete()) return Ok();
+            if (await _unitOfWork.CiempLocationRepository.Complete()) return Ok();
 
             return BadRequest("Problem deleting city");
 
@@ -100,13 +100,13 @@ namespace API.Controllers
         [HttpPut("{id}")]
         public async Task<ActionResult> UpdateCiempLocation(CiempLocationUpdateDto ciempLocationUpdateDto, int id)
         {
-            var ciempLocation = await _ciempLocationRepository.GetCiempLocationByIdAsync(id);
+            var ciempLocation = await _unitOfWork.CiempLocationRepository.GetCiempLocationByIdAsync(id);
 
             _mapper.Map(ciempLocationUpdateDto, ciempLocation);
 
-            _ciempLocationRepository.Update(ciempLocation);
+            _unitOfWork.CiempLocationRepository.Update(ciempLocation);
 
-            if (await _ciempLocationRepository.SaveAllAsync()) return NoContent();
+            if (await _unitOfWork.Complete()) return NoContent();
 
             return BadRequest("Failed to update city");
         }

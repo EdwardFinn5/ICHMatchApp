@@ -10,7 +10,7 @@ namespace API.Interfaces
     public interface ISkillsBulletRepository
     {
         void Update(SkillsBullet skillsBullet);
-        Task<bool> SaveAllAsync();
+        // Task<bool> SaveAllAsync();
         // Task<IEnumerable<DutyBulletDto>> GetDutyBulletDtosByAppUserIdAsync(int id);
         Task<IEnumerable<SkillsBulletDto>> GetSkillsBulletDtosByPositionIdAsync(int id);
         Task<SkillsBulletDto> GetSkillsBulletDtoByIdAsync(int id);

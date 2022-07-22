@@ -15,12 +15,12 @@ namespace API.Controllers
     public class EmpIndustryController : BaseApiController
     {
         private readonly DataContext _context;
-        private readonly IEmpIndustryRepository _empIndustryRepository;
         private readonly IMapper _mapper;
-        public EmpIndustryController(DataContext context, IEmpIndustryRepository empIndustryRepository, IMapper mapper)
+        private readonly IUnitOfWork _unitOfWork;
+        public EmpIndustryController(DataContext context, IUnitOfWork unitOfWork, IMapper mapper)
         {
+            _unitOfWork = unitOfWork;
             _mapper = mapper;
-            _empIndustryRepository = empIndustryRepository;
             _context = context;
         }
 
@@ -47,7 +47,7 @@ namespace API.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<EmpIndustryDto>>> GetEmpIndustries()
         {
-            var empIndustries = await _empIndustryRepository.GetEmpIndustriesAsync();
+            var empIndustries = await _unitOfWork.EmpIndustryRepository.GetEmpIndustriesAsync();
 
             return Ok(empIndustries);
         }
@@ -55,25 +55,25 @@ namespace API.Controllers
         [HttpGet("GetEmpIndustryById/{id}")] //this is the one I just added
         public async Task<ActionResult<EmpIndustry>> GetEmpIndustryByIdAsync(int id)
         {
-            return await _empIndustryRepository.GetEmpIndustryByIdAsync(id);
+            return await _unitOfWork.EmpIndustryRepository.GetEmpIndustryByIdAsync(id);
         }
 
         [HttpGet("{id}")]
         public async Task<ActionResult<EmpIndustryDto>> GetEmpIndustryDtoById(int id)
         {
-            return await _empIndustryRepository.GetEmpIndustryDtoByIdAsync(id);
+            return await _unitOfWork.EmpIndustryRepository.GetEmpIndustryDtoByIdAsync(id);
         }
 
         [HttpPut("{id}")]
         public async Task<ActionResult> UpdateEmpIndustry(EmpIndustryUpdateDto empIndustryUpdateDto, int id)
         {
-            var empIndustry = await _empIndustryRepository.GetEmpIndustryByIdAsync(id);
+            var empIndustry = await _unitOfWork.EmpIndustryRepository.GetEmpIndustryByIdAsync(id);
 
             _mapper.Map(empIndustryUpdateDto, empIndustry);
 
-            _empIndustryRepository.Update(empIndustry);
+            _unitOfWork.EmpIndustryRepository.Update(empIndustry);
 
-            if (await _empIndustryRepository.SaveAllAsync()) return NoContent();
+            if (await _unitOfWork.Complete()) return NoContent();
 
             return BadRequest("Failed to update industry");
         }
@@ -81,11 +81,11 @@ namespace API.Controllers
         [HttpDelete("{id}")]
         public async Task<ActionResult> DeleteEmpIndustry(int id)
         {
-            var empIndustry = await _empIndustryRepository.GetEmpIndustryByIdAsync(id);
+            var empIndustry = await _unitOfWork.EmpIndustryRepository.GetEmpIndustryByIdAsync(id);
 
-            _empIndustryRepository.DeleteEmpIndustry(empIndustry);
+            _unitOfWork.EmpIndustryRepository.DeleteEmpIndustry(empIndustry);
 
-            if (await _empIndustryRepository.Complete()) return Ok();
+            if (await _unitOfWork.EmpIndustryRepository.Complete()) return Ok();
 
             return BadRequest("Problem deleting the industry");
 

@@ -21,10 +21,10 @@
             <br>
             from {{cardMember.ciLocation}}, {{cardMember.stLocation}}
             <br>
-            attending {{cardMember.college}}
+            attending {{cardMember.college}}{{cardMember.icfNote}}
         </p>
-        <div *ngIf="member.icfNote" class="a-level text-center p-1">
-            <strong>{{member.icfNote}}</strong>
+        <div *ngIf="cardMember.icfNote" class="a-level text-center p-1">
+            <strong>{{cardMember.icfNote}}</strong>
          </div>
         <button class="btn btn-info btn-block shadow-sm mr-2 mb-2" routerLink='/userlogin'>
            Employers click here to see student details

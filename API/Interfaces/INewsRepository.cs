@@ -10,7 +10,7 @@ namespace API.Interfaces
     public interface INewsRepository
     {
         void Update(News news);
-        Task<bool> SaveAllAsync();
+        // Task<bool> SaveAllAsync();
         Task<IEnumerable<NewsDto>> GetNewsDtosAsync();
         Task<NewsDto> GetNewsDtoByIdAsync(int id);
         Task<News> GetNewsByIdAsync(int id);

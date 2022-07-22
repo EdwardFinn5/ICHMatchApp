@@ -13,17 +13,17 @@ using Microsoft.EntityFrameworkCore;
 
 namespace API.Controllers
 {
-    [Authorize]
+    // [Authorize]
 
     public class CategoryController : BaseApiController
     {
         private readonly DataContext _context;
-        private readonly ICategoryRepository _categoryRepository;
         private readonly IMapper _mapper;
-        public CategoryController(DataContext context, ICategoryRepository categoryRepository, IMapper mapper)
+        private readonly IUnitOfWork _unitOfWork;
+        public CategoryController(DataContext context, IUnitOfWork unitOfWork, IMapper mapper)
         {
+            _unitOfWork = unitOfWork;
             _mapper = mapper;
-            _categoryRepository = categoryRepository;
             _context = context;
         }
 
@@ -51,7 +51,7 @@ namespace API.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<CategoryDto>>> GetCategories()
         {
-            var categories = await _categoryRepository.GetCategoriesAsync();
+            var categories = await _unitOfWork.CategoryRepository.GetCategoriesAsync();
 
             return Ok(categories);
         }
@@ -59,25 +59,25 @@ namespace API.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<CategoryDto>> GetCategoryById(int id)
         {
-            return await _categoryRepository.GetCategoryDtoByIdAsync(id);
+            return await _unitOfWork.CategoryRepository.GetCategoryDtoByIdAsync(id);
         }
 
         [HttpGet("GetCategoryById/{id}")] //this is the one I just added
         public async Task<ActionResult<Category>> GetCategoryByIdAsync(int id)
         {
-            return await _categoryRepository.GetCategoryByIdAsync(id);
+            return await _unitOfWork.CategoryRepository.GetCategoryByIdAsync(id);
         }
 
         [HttpPut("{id}")]
         public async Task<ActionResult> UpdateCategory(CategoryUpdateDto categoryUpdateDto, int id)
         {
-            var category = await _categoryRepository.GetCategoryByIdAsync(id);
+            var category = await _unitOfWork.CategoryRepository.GetCategoryByIdAsync(id);
 
             _mapper.Map(categoryUpdateDto, category);
 
-            _categoryRepository.Update(category);
+            _unitOfWork.CategoryRepository.Update(category);
 
-            if (await _categoryRepository.SaveAllAsync()) return NoContent();
+            if (await _unitOfWork.Complete()) return NoContent();
 
             return BadRequest("Failed to update category");
         }
@@ -85,11 +85,11 @@ namespace API.Controllers
         [HttpDelete("{id}")]
         public async Task<ActionResult> DeleteCategory(int id)
         {
-            var category = await _categoryRepository.GetCategoryByIdAsync(id);
+            var category = await _unitOfWork.CategoryRepository.GetCategoryByIdAsync(id);
 
-            _categoryRepository.DeleteCategory(category);
+            _unitOfWork.CategoryRepository.DeleteCategory(category);
 
-            if (await _categoryRepository.Complete()) return Ok();
+            if (await _unitOfWork.CategoryRepository.Complete()) return Ok();
 
             return BadRequest("Problem deleting the position");
 

@@ -10,7 +10,7 @@ namespace API.Interfaces
     public interface IEmpInfoRepository
     {
         void Update(EmpInfo empInfo);
-        Task<bool> SaveAllAsync();
+        // Task<bool> SaveAllAsync();
         Task<IEnumerable<EmpInfo>> GetEmpInfosAsync();
         Task<EmpInfo> GetEmpInfoByIdAsync(int id);
         // Task<StudInfo> GetStudInfoByUsernameAsync(string username);

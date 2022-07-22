@@ -15,12 +15,12 @@ namespace API.Controllers
     public class PosCategoryController : BaseApiController
     {
         private readonly DataContext _context;
-        private readonly IPosCategoryRepository _posCategoryRepository;
         private readonly IMapper _mapper;
-        public PosCategoryController(DataContext context, IPosCategoryRepository posCategoryRepository, IMapper mapper)
+        private readonly IUnitOfWork _unitOfWork;
+        public PosCategoryController(DataContext context, IUnitOfWork unitOfWork, IMapper mapper)
         {
+            _unitOfWork = unitOfWork;
             _mapper = mapper;
-            _posCategoryRepository = posCategoryRepository;
             _context = context;
         }
 
@@ -48,7 +48,7 @@ namespace API.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<PosCategoryDto>>> GetPosCategories()
         {
-            var posCategories = await _posCategoryRepository.GetPosCategoriesAsync();
+            var posCategories = await _unitOfWork.PosCategoryRepository.GetPosCategoriesAsync();
 
             return Ok(posCategories);
         }
@@ -56,26 +56,26 @@ namespace API.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<PosCategoryDto>> GetPosCategoryById(int id)
         {
-            return await _posCategoryRepository.GetPosCategoryDtoByIdAsync(id);
+            return await _unitOfWork.PosCategoryRepository.GetPosCategoryDtoByIdAsync(id);
         }
 
         [HttpGet("GetPosCategoryById/{id}")] //this is the one I just added
         public async Task<ActionResult<PosCategory>> GetPosCategoryByIdAsync(int id)
         {
-            return await _posCategoryRepository.GetPosCategoryByIdAsync(id);
+            return await _unitOfWork.PosCategoryRepository.GetPosCategoryByIdAsync(id);
         }
 
 
         [HttpPut("{id}")]
         public async Task<ActionResult> UpdatePosCategory(PosCategoryUpdateDto posCategoryUpdateDto, int id)
         {
-            var posCategory = await _posCategoryRepository.GetPosCategoryByIdAsync(id);
+            var posCategory = await _unitOfWork.PosCategoryRepository.GetPosCategoryByIdAsync(id);
 
             _mapper.Map(posCategoryUpdateDto, posCategory);
 
-            _posCategoryRepository.Update(posCategory);
+            _unitOfWork.PosCategoryRepository.Update(posCategory);
 
-            if (await _posCategoryRepository.SaveAllAsync()) return NoContent();
+            if (await _unitOfWork.Complete()) return NoContent();
 
             return BadRequest("Failed to update position category");
         }
@@ -83,11 +83,11 @@ namespace API.Controllers
         [HttpDelete("{id}")]
         public async Task<ActionResult> DeletePosCategory(int id)
         {
-            var posCategory = await _posCategoryRepository.GetPosCategoryByIdAsync(id);
+            var posCategory = await _unitOfWork.PosCategoryRepository.GetPosCategoryByIdAsync(id);
 
-            _posCategoryRepository.DeletePosCategory(posCategory);
+            _unitOfWork.PosCategoryRepository.DeletePosCategory(posCategory);
 
-            if (await _posCategoryRepository.Complete()) return Ok();
+            if (await _unitOfWork.PosCategoryRepository.Complete()) return Ok();
 
             return BadRequest("Problem deleting this position category");
 

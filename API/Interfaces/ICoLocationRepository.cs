@@ -10,7 +10,7 @@ namespace API.Interfaces
     public interface ICoLocationRepository
     {
         void Update(CoLocation coLocation);
-        Task<bool> SaveAllAsync();
+        // Task<bool> SaveAllAsync();
         // Task<IEnumerable<CoLocationDto>> GetCoLocationDtosAsync(int id);
         Task<IEnumerable<CoLocationDto>> GetCoLocationDtosAsync();
         Task<CoLocationDto> GetCoLocationDtoByIdAsync(int id);

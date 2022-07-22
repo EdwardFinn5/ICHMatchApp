@@ -11,7 +11,7 @@ namespace API.Interfaces
     public interface IStudInfoRepository
     {
         void Update(StudInfo studInfo);
-        Task<bool> SaveAllAsync();
+        // Task<bool> SaveAllAsync();
         Task<IEnumerable<StudInfo>> GetStudInfosAsync();
         Task<StudInfo> GetStudInfoByIdAsync(int id);
         Task<StudInfo> GetStudInfoByUsernameAsync(string username);

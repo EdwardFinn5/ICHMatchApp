@@ -14,23 +14,23 @@ namespace API.Controllers
 {
     public class CoLocationController : BaseApiController
     {
-        private readonly ICoLocationRepository _coLocationRepository;
+        private readonly IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
         private readonly DataContext _context;
 
-        public CoLocationController(ICoLocationRepository coLocationRepository,
+        public CoLocationController(IUnitOfWork unitOfWork,
                                 IMapper mapper,
                                 DataContext context)
         {
             _context = context;
+            _unitOfWork = unitOfWork;
             _mapper = mapper;
-            _coLocationRepository = coLocationRepository;
         }
 
         [HttpGet]
         public async Task<ActionResult<IEnumerable<CoLocationDto>>> GetCoLocations()
         {
-            var coLocations = await _coLocationRepository.GetCoLocationDtosAsync();
+            var coLocations = await _unitOfWork.CoLocationRepository.GetCoLocationDtosAsync();
 
             return Ok(coLocations);
             // could also combine the above into: return Ok(await _userRepository.GetMembersAsync());
@@ -39,7 +39,7 @@ namespace API.Controllers
         // [HttpGet("GetById/{id}")]
         // public async Task<ActionResult<IEnumerable<CoLocationDto>>> GetById(int id)
         // {
-        //     var coLocations = await _coLocationRepository.GetCoLocationDtosAsync(id);
+        //     var coLocations = await _unitOfWork.CoLocationRepository.GetCoLocationDtosAsync(id);
 
         //     return Ok(coLocations);
 
@@ -48,13 +48,13 @@ namespace API.Controllers
         [HttpGet("GetCoLocationById/{id}")] //this is the one I just added
         public async Task<ActionResult<CoLocation>> GetCoLocationById(int id)
         {
-            return await _coLocationRepository.GetCoLocationByIdAsync(id);
+            return await _unitOfWork.CoLocationRepository.GetCoLocationByIdAsync(id);
         }
 
         [HttpGet("GetCoLocationDtoById/{id}")] //this is the one I just added
         public async Task<ActionResult<CoLocationDto>> GetCoLocationDtoById(int id)
         {
-            return await _coLocationRepository.GetCoLocationDtoByIdAsync(id);
+            return await _unitOfWork.CoLocationRepository.GetCoLocationDtoByIdAsync(id);
         }
 
         [HttpPost]
@@ -83,11 +83,11 @@ namespace API.Controllers
         [HttpDelete("{id}")]
         public async Task<ActionResult> DeleteCoLocation(int id)
         {
-            var coLocation = await _coLocationRepository.GetCoLocationByIdAsync(id);
+            var coLocation = await _unitOfWork.CoLocationRepository.GetCoLocationByIdAsync(id);
 
-            _coLocationRepository.DeleteCoLocation(coLocation);
+            _unitOfWork.CoLocationRepository.DeleteCoLocation(coLocation);
 
-            if (await _coLocationRepository.Complete()) return Ok();
+            if (await _unitOfWork.CoLocationRepository.Complete()) return Ok();
 
             return BadRequest("Problem deleting country");
 
@@ -96,13 +96,13 @@ namespace API.Controllers
         [HttpPut("{id}")]
         public async Task<ActionResult> UpdateCoLocation(CoLocationUpdateDto coLocationUpdateDto, int id)
         {
-            var coLocation = await _coLocationRepository.GetCoLocationByIdAsync(id);
+            var coLocation = await _unitOfWork.CoLocationRepository.GetCoLocationByIdAsync(id);
 
             _mapper.Map(coLocationUpdateDto, coLocation);
 
-            _coLocationRepository.Update(coLocation);
+            _unitOfWork.CoLocationRepository.Update(coLocation);
 
-            if (await _coLocationRepository.SaveAllAsync()) return NoContent();
+            if (await _unitOfWork.Complete()) return NoContent();
 
             return BadRequest("Failed to update country");
         }
